@@ -1,0 +1,261 @@
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus { background-color:transparent; color:#2bba57; }
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus { color:#2bba57; }
+.about .about-bottom span {
+	color:#2bba57;
+}
+
+.service-right::after {
+	border: 3px solid #2bba57;
+}
+
+.service-left::after {
+	border: 3px solid #2bba57;
+}
+
+.service-right:hover .service-info h4 ,
+.service-left:hover .service-info h4 {
+	color: #2bba57;
+}
+
+.main-team ul.cs-style-7 li::before {
+	border:5px solid #2bba57;
+}
+
+.main-team ul.cs-style-7 li .figcaption {
+	border-bottom:5px solid #2bba57;
+	border-left:5px solid #2bba57;
+	border-right:5px solid #2bba57;
+}
+
+.main-team ul.cs-style-7 li .figcaption ul.social li:hover a {
+	color:#2bba57;
+}
+
+.folio-thumb::after {
+    border: 5px solid #2bba57;
+}
+
+.portfolio-gal-filter li a.active ,
+.portfolio-gal-filter li a:hover ,
+.journal-filter li a.active ,
+.journal-filter li a:hover {
+	color: #2bba57;
+}
+
+.pricing-bg .main-pricing .price-block {
+	border: 6px solid #2bba57;
+}
+
+.pricing-bg .main-pricing .price-block:hover .inner-price {
+	background-color:#2bba57;
+}
+
+.pricing-bg .main-pricing .price-block:hover .inner-price .main-btn {
+	color:#2bba57;
+}
+
+.blog .main-blog ul li:hover .box-holder .blog-detail {
+	background-color:#2bba57;	
+}
+
+.blog .main-blog ul li .box-holder .blog-detail .link a {
+	color:#2bba57;
+}
+
+h2.post-title a:hover {
+	color: #2bba57;
+}
+
+.post-meta span {
+	color:#2bba57;
+}
+
+.post-meta span a {
+	color: #2bba57;
+}
+
+.rmore {
+    color: #2bba57;
+    border-bottom:1px solid #2bba57;
+}
+
+.page_nav a:hover {
+	background: #2bba57;
+}
+
+.page_header p {
+    color: #2bba57;
+}
+
+.product-price {
+	color:#2bba57;
+}
+
+.product-overlay span a {
+	background:#2bba57;
+}
+
+.product-overlay span a:hover {
+   color: #2bba57;
+}
+
+#contactForm button {
+    background: #2bba57;
+}
+
+.page_nav a:hover {
+	background: #2bba57;
+}
+
+.page_header p {
+    color: #2bba57;
+}
+
+.product-price {
+	color:#2bba57;
+}
+
+.product-overlay span a {
+	background:#2bba57;
+}
+
+.product-overlay span a:hover {
+   color: #2bba57;
+}
+
+#contactForm button {
+    background: #2bba57;
+}
+
+.contact-info strong {
+	color:#2bba57 ;
+}
+
+.contact-info a {
+	color:#2bba57 ;
+}
+
+.button.color {
+	border-color:#2bba57;
+	background:#2bba57;
+}
+
+.button.btn-bdr.color {
+	border-color:#2bba57;
+	color:#2bba57;
+}
+
+.button.lite {
+	color:#2bba57;
+}
+
+.button:hover {
+	background:#2bba57;
+	border-color:#2bba57;
+}
+
+.ts-testimonial-item  .client-name{
+	color:#2bba57;
+}
+
+.ts-testimonial-item  .client-position{
+	color:#2bba57;
+}
+.ts-testimonial-item  .client-position a{
+	color: #2bba57;
+}
+
+blockquote.style3 span {
+	color:#2bba57;
+}
+
+.highlight-full {
+    background: #2bba57;
+}
+
+.highlight-text {
+	color:#2bba57;
+}
+
+.footer-social li a {
+    background-color: #2bba57;
+}
+
+#footer p a {
+    color: #2bba57;
+}
+
+.filter li a.selected,
+.filter li a:hover {
+	border-color:#2bba57;
+	color:#2bba57;
+}
+
+.cart-info {
+    border-top: 4px solid #2bba57;
+}
+
+.ci-item-info h5 a:hover {
+	color: #2bba57;
+}
+
+.cart-btn a {
+	background: #2bba57;
+}
+
+.ssc-inner form input {
+	border-bottom:4px solid #2bba57;
+}
+
+.tb-info a i {
+    color: #2bba57;
+}
+
+.sf-menu > li > a:hover {
+    color: #2bba57;
+}
+
+#home-slider2 .owl-controls .owl-page.active span {
+    background: #2bba57;
+}
+
+.hs-caption h4 span {
+    color: #2bba57;
+}
+
+.header-xtra .ss-ico:hover ,
+.header-xtra .sc-ico:hover {
+    color: #2bba57;
+}
+
+.header-xtra .sc-ico em {
+    background: #2bba57;
+}
+
+.map .map-box .map-detail:before {
+	border: 5px solid #2bba57;
+}
+
+.comment-section a.reply {
+	color:#2bba57;
+}
+
+.right-side .catgorie ul li a {
+	color:#2bba57;
+}
+
+.right-side .recent-post ul li a:hover {
+	color:#2bba57;
+}
+
+.f-news li a:hover {
+	color:#2bba57;
+}
+
+.footer-bottom a {
+	color:#2bba57;
+}
+
+.timer_popup h3 {
+    background: #2bba57;
+}

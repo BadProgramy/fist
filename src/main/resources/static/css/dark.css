@@ -3110,9 +3110,8 @@ top: 0px;
 color: #FFF;
 text-align: left;
 margin-top:10px;
-margin-left:7px;
 top: 50%;
-transform:translateY(-50%);
+transform:translate(50%,-50%);
 
 }
 

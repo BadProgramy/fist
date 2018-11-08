@@ -1634,7 +1634,8 @@ pre code {
   width: 66.66666667%;
 }
 .col-xs-7 {
-  width: 58.33333333%;
+  float: right;
+  /*width: 58.33333333%;*/
 }
 .col-xs-6 {
   width: 50%;
@@ -1943,7 +1944,8 @@ pre code {
     width: 83.33333333%;
   }
   .col-md-9 {
-    width: 75%;
+    /*width: 75%;*/
+    float: right;
   }
   .col-md-8 {
     width: 66.66666667%;

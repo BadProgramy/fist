@@ -3258,13 +3258,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .top-bar {
     display: table;
-    float: right;
-    margin: 23px 0 0px;
+    /*float: right;
+    margin: 23px 0 0px;*/
 }
 
 .top-bar ul li {
 	float:left;
-	margin-left:80px;
+	/*margin-left:80px;*/
 }
 
 .top-bar ul li a {
@@ -3274,7 +3274,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .top-bar ul li:last-child {
 	float:left;
-	margin-left:50px;
+	/*margin-left:50px;*/
 }
 
 .tb-info a {

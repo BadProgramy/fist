@@ -548,7 +548,7 @@ h1 {
 .service-left .service-info {
 	margin-right: 204px;
 	text-align: right;
-	padding: 28px 0;
+	padding: 60px 0;
 }
 
 .service-info h4 {
@@ -605,7 +605,7 @@ h1 {
 
 .service-right .service-info {
 	margin-left:204px;
-	padding: 28px 0;
+	padding: 60px 0;
 }
 
 .service-info h4 {
@@ -2901,13 +2901,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .top-bar {
     display: table;
-    float: right;
-    margin: 23px 0 0px;
+    /*float: right;
+    margin: 23px 0 0px;*/
 }
 
 .top-bar ul li {
 	float:left;
-	margin-left:80px;
+	/*margin-left:80px;*/
 }
 
 .top-bar ul li a {
@@ -2917,7 +2917,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .top-bar ul li:last-child {
 	float:left;
-	margin-left:80px;
+	/*margin-left:80px;*/
 }
 
 .tb-info a {

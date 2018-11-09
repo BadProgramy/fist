@@ -1,10 +1,16 @@
+/*
    	// GOOGLEMAP
     google.maps.event.addDomListener(window, 'load', init);
+
+    function disabledForm() {
+        var mapElement = document.getElementById('dialog__content');
+        mapElement.display = 'none';
+    }
 
     function init() {
         var mapOptions = {
             zoom: 11,
-            center: new google.maps.LatLng(40.6700, -73.9400), // New York
+            center: new google.maps.LatLng(53.225875, 50.194178), // Самара, ПГУТИ Московское Шоссе 77
             styles: [{
                 "featureType": "landscape",
                 "stylers": [{
@@ -88,8 +94,9 @@
         var map = new google.maps.Map(mapElement, mapOptions);
 
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(40.6700, -73.9400),
+            position: new google.maps.LatLng(53.225875, 50.194178),
             map: map,
             title: 'Snazzy!'
         });
     }
+*/

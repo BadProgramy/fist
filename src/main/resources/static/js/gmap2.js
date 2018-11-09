@@ -1,95 +1,34 @@
-   	// GOOGLEMAP
-    google.maps.event.addDomListener(window, 'load', init);
+type="text/javascript">
 
-    function init() {
-        var mapOptions = {
-            zoom: 11,
-            center: new google.maps.LatLng(40.6700, -73.9400), // New York
-            styles: [{
-                "featureType": "landscape",
-                "stylers": [{
-                    "saturation": -100
-                }, {
-                    "lightness": 65
-                }, {
-                    "visibility": "on"
-                }]
-            }, {
-                "featureType": "poi",
-                "stylers": [{
-                    "saturation": -100
-                }, {
-                    "lightness": 51
-                }, {
-                    "visibility": "simplified"
-                }]
-            }, {
-                "featureType": "road.highway",
-                "stylers": [{
-                    "saturation": -100
-                }, {
-                    "visibility": "simplified"
-                }]
-            }, {
-                "featureType": "road.arterial",
-                "stylers": [{
-                    "saturation": -100
-                }, {
-                    "lightness": 30
-                }, {
-                    "visibility": "on"
-                }]
-            }, {
-                "featureType": "road.local",
-                "stylers": [{
-                    "saturation": -100
-                }, {
-                    "lightness": 40
-                }, {
-                    "visibility": "on"
-                }]
-            }, {
-                "featureType": "transit",
-                "stylers": [{
-                    "saturation": -100
-                }, {
-                    "visibility": "simplified"
-                }]
-            }, {
-                "featureType": "administrative.province",
-                "stylers": [{
-                    "visibility": "off"
-                }]
-            }, {
-                "featureType": "water",
-                "elementType": "labels",
-                "stylers": [{
-                    "visibility": "on"
-                }, {
-                    "lightness": -25
-                }, {
-                    "saturation": -100
-                }]
-            }, {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                    "hue": "#ffff00"
-                }, {
-                    "lightness": -25
-                }, {
-                    "saturation": -97
-                }]
-            }]
-        };
+    ymaps.ready(init);
+var myMap;
 
-        var mapElement = document.getElementById('map-pop');
+function init() {
 
-        var map = new google.maps.Map(mapElement, mapOptions);
+    myMap = new ymaps.Map("map", {
+        center: [53.225875, 50.194178], // Координаты объекта
+        zoom: 13 // Маштаб карты
+    });
 
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(40.6700, -73.9400),
-            map: map,
-            title: 'Snazzy!'
-        });
-    }
+    myMap.controls.add(
+        new ymaps.control.ZoomControl()
+    );
+
+    myPlacemark1 = new ymaps.Placemark([53.225875, 50.194178], { // Координаты метки объекта
+        /*balloonContent: "<div class='ya_map'>Заезжайте в гости!</div>" // Надпись метки*/
+    }, {
+        preset: "twirl#redDotIcon" // Тип метки
+    });
+
+    myPlacemark2 = new ymaps.Placemark([53.192471, 50.092919], { // Координаты метки объекта
+        /*balloonContent: "<div class='ya_map'>Заезжайте в гости!</div>" // Надпись метки*/
+    }, {
+        preset: "twirl#redDotIcon" // Тип метки
+    });
+
+    myMap.geoObjects.add(myPlacemark1);
+    myMap.geoObjects.add(myPlacemark2);
+    myMap.controls.remove('fullscreenControl');
+    myPlacemark.balloon.open();
+
+};

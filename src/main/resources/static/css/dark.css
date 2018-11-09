@@ -1351,7 +1351,7 @@ h1 {
 }
 
 .pricing-bg .main-pricing .price-block .inner-price {
-	padding:40px 62px;
+	padding: 5% 5%;
 	background-color:transparent;
 	position:relative;
 	transition:all 300ms ease-in-out;
@@ -1359,6 +1359,9 @@ h1 {
 	-ms-transition:all 300ms ease-in-out;
 }
 
+.inner-price{
+
+}
 
 .pricing-bg .main-pricing .price-block:hover .inner-price {
 	background-color:#b59e5c;
@@ -4960,6 +4963,9 @@ p {
 
 .pricing-bg .main-pricing .price-block .inner-price h1 {
 	color:#ffffff;	
+}
+#vk_widget, #vk_groups, #vk_groupss,#vk_widget1 {
+	width: 100%;
 }
 
 

@@ -1505,7 +1505,7 @@ h1 {
 }
 
 .pricing-bg .main-pricing .price-block .inner-price {
-	padding:40px 62px;
+	padding: 5% 5%;
 	background-color:transparent;
 	position:relative;
 	transition:all 300ms ease-in-out;
@@ -1579,6 +1579,7 @@ h1 {
 .pricing-bg .main-pricing .price-block:hover .inner-price .main-btn::after {
 	content:url(../images/home-page/pricing-btn-bullet.png);	
 }
+
 
 /* 4.6. ========== Pricing Section End ==========*/
 

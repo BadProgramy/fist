@@ -9,5 +9,8 @@ public class MainController {
     public String mainPage() {
         return "index";
     }
-
+    @RequestMapping("/main2")
+    public String secondPage() {
+        return "index1";
+    }
 }

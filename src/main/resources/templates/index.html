@@ -279,7 +279,7 @@
 	<div class="container-fluid no-padding">
 		<div id="home-slider2" class="owl-carousel owl-theme">
 			<div class="item">
-				<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
+				<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
 				<div class="container no-padding">
 					<div class="hs-caption">
 						<div class="caption-inner">
@@ -513,15 +513,26 @@
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<div class="price-block">
 								<div class="inner-price">
+
 									<h3>Анонсы и объявления</h3>
 									<br>
-									<!--<h1>23<span>$</span></h1>-->
-									<script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
+									<!--&lt;!&ndash;<h1>23<span>$</span></h1>&ndash;&gt;
+									<script type="text/javascript" src="https://vk.com/js/api/openapi.js?159" ></script>
 
-									<!-- VK Widget -->
+									&lt;!&ndash; VK Widget &ndash;&gt;
 									<div id="vk_groupss"></div>
 									<script type="text/javascript">
-                                        VK.Widgets.Group("vk_groupss", {mode: 4, height: "400"}, 50489116);
+                                        VK.Widgets.Group("vk_groupss", {mode: 4, width: "auto", height: "400"}, 50489116);
+									</script>-->
+									<div id="vk_widget"></div>
+									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
+									<script>
+                                        function VK_Widget_Init(){
+                                            document.getElementById('vk_widget').innerHTML = '<div id="vk_groups"></div>';
+                                            VK.Widgets.Group("vk_groups", {mode: 4, width: "auto", height: "400"},50489116);
+                                        };
+                                        window.addEventListener('load', VK_Widget_Init, false);
+                                        window.addEventListener('resize', VK_Widget_Init, false);
 									</script>
 									<!--<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its</p>-->
 									<!--<button class="main-btn" type="submit">Order</button>-->
@@ -533,8 +544,9 @@
 								<div class="inner-price">
 									<h3>Фотогалерея</h3>
 									<div class='widget-content'>
-										<iframe src="//widget.instagramm.ru/?imageW=2&imageH=3&thumbnail_size=97&type=0&typetext=fist.psuti&head_show=1&profile_show=0&shadow_show=1&bg=255,255,255,1&opacity=true&head_bg=46729b&subscribe_bg=ad4141&border_color=c3c3c3&head_title=%25D0%25A4%25D0%2598%25D0%25A1%25D0%25A2%2520%25D0%259F%25D0%2593%25D0%25A3%25D0%25A2%25D0%2598" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:auto;height:400px;"></iframe>
-									</div>							<!--<h1>12<span>$</span></h1>
+										<iframe src="//widget.instagramm.ru/?imageW=2&imageH=3&thumbnail_size=97&type=0&typetext=fist.psuti&head_show=1&profile_show=0&shadow_show=1&bg=255,255,255,1&opacity=true&head_bg=46729b&subscribe_bg=ad4141&border_color=c3c3c3&head_title=%25D0%25A4%25D0%2598%25D0%25A1%25D0%25A2%2520%25D0%259F%25D0%2593%25D0%25A3%25D0%25A2%25D0%2598" allowtransparency="true" frameborder="0" scrolling="yes" style="border:none;overflow:hidden;width:auto;height:410px;"></iframe>
+									</div>
+									<!--<h1>12<span>$</span></h1>
 									<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
 									<button class="main-btn" type="submit">Order</button>-->
 								</div>
@@ -545,13 +557,24 @@
 								<div class="inner-price">
 									<h3>Студенческий ИТ-клуб</h3>
 									<br>
-									<script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
-
-									<!-- VK Widget -->
-									<div id="vk_groups"></div>
-									<script type="text/javascript">
-                                        VK.Widgets.Group("vk_groups", {mode: 4, height: "400"}, 17785357);
+									<div id="vk_widget1"></div>
+									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
+									<script>
+                                        function VK_Widget_Init(){
+                                            document.getElementById('vk_widget1').innerHTML = '<div id="vk_groupss"></div>';
+                                            VK.Widgets.Group("vk_groupss", {mode: 4, width: "auto", height: "400"},17785357);
+                                        };
+                                        window.addEventListener('load', VK_Widget_Init, false);
+                                        window.addEventListener('resize', VK_Widget_Init, false);
 									</script>
+									<!--<script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
+
+									&lt;!&ndash; VK Widget &ndash;&gt;
+									<div id="vk_groupss"></div>
+									<script type="text/javascript">
+                                        VK.Widgets.Group("vk_groupss", {mode: 4,width: "auto", height: "400"}, 17785357);
+									</script>-->
+
 									<!--<h1>35<span>$</span></h1>
 									<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
 									<button class="main-btn" type="submit">Order</button>-->

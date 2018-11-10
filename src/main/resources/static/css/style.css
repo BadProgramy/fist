@@ -1078,7 +1078,7 @@ h1 {
 	content: "";
 	width: 100%;
 	height: 100%;
-	background: url(../images/plus.png) no-repeat center center;
+	/*background: url(../images/plus.png) no-repeat center center;*/
 	position: absolute;
 	right: 0px;
 	left: 0;
@@ -1278,26 +1278,26 @@ h1 {
 }
 
 .folio-thumb::after {
-    content: "";
-    border: 5px solid #B59E5C;
-    position: absolute;
-    top: 3%;
-    left: 1.5%;
-    right: 0px;
-    width: 97%;
-    height: 94%;
+	content: "";
+	/*border: 5px solid black;*/
+	position: absolute;
+	top: 3%;
+	left: 1.5%;
+	right: 0px;
+	width: 97%;
+	height: 94%;
 	opacity:0;
 	transition:.3s;
 }
 
-.folio-thumb:hover:after {
+.folio-thumb:after {
 	opacity:1;
 	transition:.3s;
 }
 
-.portfolio-gal .folio-thumb a img {
-	width:100%;	
-}
+/*.portfolio-gal .folio-thumb a img {*/
+	/*width:100%;	*/
+/*}*/
 
 #portfolio-gal {
 	display: table;

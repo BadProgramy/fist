@@ -1124,9 +1124,29 @@ h1 {
 	position:relative;
 }
 
+.folio-thumb h2{
+	position	: absolute;
+	top:50px;
+	left		: 0;
+	width		: 100%;
+}
+
+.folio-thumb h5{
+	position	: absolute;
+	top: 100px;
+	left		: 0;
+	width		: 100%;
+}
+/*h5 span.spacer {*/
+	/*padding	: 0 5px;*/
+/*}*/
+.pic4a{
+	position: absolute;
+	z-index: 1;}
+.img-responsive{z-index: 2;}
 .folio-thumb::after {
     content: "";
-    border: 5px solid #B59E5C;
+  /*  border: 5px solid black;*/
     position: absolute;
     top: 3%;
     left: 1.5%;
@@ -1137,14 +1157,14 @@ h1 {
 	transition:.3s;
 }
 
-.folio-thumb:hover:after {
+.folio-thumb:after {
 	opacity:1;
 	transition:.3s;
 }
 
 .portfolio-gal .folio-thumb a img {
 	max-width: 100%;
-	width:100%;	
+	/*width:100%;	*/
 }
 
 #portfolio-gal {

@@ -1350,7 +1350,7 @@ h1 {
 	transition:.4s;
 }
 
-.portfolio-gal .folio-item .folio-border .folio-detail {
+.portfolio-gal .folio-item .folio-border .folio-detail  {
 	padding:67px 55px;
 	opacity:0;
 	text-align:center;
@@ -1371,7 +1371,6 @@ h1 {
 	font-size:13px;
 	line-height:13px;
 	opacity:0;
-	
 }
 
 

@@ -1125,25 +1125,26 @@ h1 {
 }
 
 .folio-thumb h2{
+	font-family: 'Roboto Slab', serif;
+	font-size:16px;
+	line-height:16px;
 	position	: absolute;
-	top:50px;
+	top:5%;
+	text-align: center;
 	left		: 0;
 	width		: 100%;
 }
 
 .folio-thumb h5{
+	font-family: 'Open Sans', sans-serif;
+	font-size:13px;
+	line-height:13px;
 	position	: absolute;
-	top: 100px;
+	top: 20%;
 	left		: 0;
 	width		: 100%;
 }
-/*h5 span.spacer {*/
-	/*padding	: 0 5px;*/
-/*}*/
-.pic4a{
-	position: absolute;
-	z-index: 1;}
-.img-responsive{z-index: 2;}
+
 .folio-thumb::after {
     content: "";
   /*  border: 5px solid black;*/
@@ -1164,8 +1165,53 @@ h1 {
 
 .portfolio-gal .folio-thumb a img {
 	max-width: 100%;
-	/*width:100%;	*/
+	width:100%;
 }
+
+.news-text{
+	display: block;
+	width: 100%;
+	height: 70%;
+	position:absolute;
+	top:0;
+}
+
+.news-png{
+	display: block;
+	width: 100%;
+	height: 30%;
+	position:absolute;
+	top: 70%;
+
+}
+
+#news1 #news2 #news3 #news4 {
+	width:100%;
+	overflow:hidden;
+}
+
+#news1 #news2 #news3 #news4 a {
+	position:relative;
+	float:left;
+	margin:5px;}
+
+#news1 a span {
+	display:block; background-image:url(../images/home-page/projects/sobranie.png);
+	background-repeat:no-repeat; width:100%; height:100%; position:absolute; background-position:left bottom; background-size:40%;}
+
+#news2 a span {
+	display:none; background-image:url(../images/home-page/projects/sobranie.png);
+	background-repeat:no-repeat; width:100%; height:100%; position:absolute; background-position:left bottom; background-size:30%;}
+
+#news3 a span {
+	display:none; background-image:url(../images/home-page/projects/sobranie.png);
+	background-repeat:no-repeat; width:100%; height:100%; position:absolute; background-position:left bottom; background-size:30%;}
+
+#news4 a span {
+	display:block; background-image:url(../images/home-page/projects/aneme.jpg);
+	background-repeat:no-repeat; width:100%; height:100%; position:absolute; background-position:left bottom; background-size:30%;}
+/*#news1 #news2 #news3 #news4 img { border: solid 1px #999;;}
+#news1 #news2 #news3 #news4 a:hover span { display:block;}*/
 
 #portfolio-gal {
 	display: table;

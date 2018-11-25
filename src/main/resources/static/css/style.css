@@ -440,14 +440,26 @@ h1 {
 .h-page-title h1 {
 	padding-bottom:20px;	
 }
+.h-page-title h2{
+	font-family: bebas-neue, sans-serif;
+	color:#ffffff;
+	text-transform:uppercase;
+	font-weight: 700;
+	font-size: 50px;
+	line-height: 50px;
+	padding-bottom:20px;
+}
+
 
 
 .h-page-title span.sub-title {
 	text-align:center;
-	font-family: 'Parisienne', cursive; 
+	font-family: "Droid Serif",serif;
 	font-size:20px;
 	line-height:20px;
 	font-weight:400;
+	font-style: italic;
+	color: #B59E5C;
 	margin-bottom:13px;
 	display:inline-block;
 }
@@ -1273,38 +1285,29 @@ h1 {
 	margin: 0 -15px;
 }
 
+
 .folio-thumb {
 	position:relative;
 }
 
-.folio-thumb::after {
-	content: "";
-	/*border: 5px solid black;*/
-	position: absolute;
-	top: 3%;
-	left: 1.5%;
-	right: 0px;
-	width: 97%;
-	height: 94%;
-	opacity:0;
-	transition:.3s;
+.portfolio-gal .folio-thumb a img {
+	max-width: 100%;
+	width:100%;
 }
-
-.folio-thumb:after {
-	opacity:1;
-	transition:.3s;
-}
-
-/*.portfolio-gal .folio-thumb a img {*/
-	/*width:100%;	*/
-/*}*/
 
 #portfolio-gal {
 	display: table;
 	width: 100%;
 	padding:44px 0 0 0;
 	position:relative;
-	text-align:center;
+	/*text-align:center;*/
+}
+
+.main-btn{
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)
 }
 
 #portfolio-gal .main-navigation {
@@ -1391,13 +1394,13 @@ h1 {
 	color: #171717;
 }
 
-.portfolio-gal .folio-item p {
+/*.portfolio-gal .folio-item p {
 	color: #c4c4c4;
 	font-size: 15px;
 	letter-spacing: 0.05em;
 	text-align: center;
 	margin: 0 0 -5px;
-}
+}*/
 
 .portfolio-gal-filter, .journal-filter {
 	margin:0 auto;

@@ -9,4 +9,7 @@ public class MainController {
     public String mainPage() {
         return "index";
     }
+
+    @RequestMapping("/newsBlog")
+    public String newsBlog(){return  "news-blog"; }
 }

@@ -11,5 +11,5 @@ public class MainController {
     }
 
     @RequestMapping("/newsBlog")
-    public String newsBlog(){return  "news-blog"; }
+    public String newsBlog(){return "newsBlog"; }
 }

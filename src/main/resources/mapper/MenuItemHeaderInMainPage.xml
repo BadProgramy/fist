@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MenuItemHeaderInMainPage">
+    <resultMap id="result" type="MenuItemHeaderInMainPage">
+        <id property="id" column="id"/>
+        <result property="idMenuItemParentHeaderInMainPage" column="id_menu_item_parent_header_in_main_page"/>
+        <result property="name" column="name"/>
+        <result property="level" column="level"/>
+        <result property="pinNumber" column="pin_number"/>
+        <result property="urlHref" column="url_href"/>
+        <result property="keyWord" column="key_word"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM menu_item_header_in_main_page;
+    </select>
+
+    <select id="selectOnlyMainHeaders" resultMap="result">
+        SELECT * FROM menu_item_header_in_main_page
+        where id_menu_item_parent_header_in_main_page = -1 and level = 0;
+    </select>
+
+    <select id="selectMinorHeadersByIdMainHeader" parameterType="long" resultMap="result">
+        SELECT * FROM menu_item_header_in_main_page
+        where id_menu_item_parent_header_in_main_page = #{idMainHeader};
+    </select>
+
+    <select id="findItemById" parameterType="long" resultMap="result">
+        SELECT * FROM menu_item_header_in_main_page
+        where id = #{id};
+    </select>
+
+    <select id="findCharacterUniversity" parameterType="String" resultMap="result">
+        SELECT name, level, pin_number FROM menu_item_header_in_main_page
+        where key_word = #{keyWord}
+        order by pin_number ASC;
+    </select>
+</mapper>

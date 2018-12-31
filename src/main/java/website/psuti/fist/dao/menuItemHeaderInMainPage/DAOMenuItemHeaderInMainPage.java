@@ -1,0 +1,21 @@
+package website.psuti.fist.dao.menuItemHeaderInMainPage;
+
+import org.apache.ibatis.annotations.Mapper;
+import website.psuti.fist.model.MenuItemHeaderInMainPage;
+import website.psuti.fist.model.Pictures;
+
+import java.util.List;
+import java.util.Map;
+
+@Mapper
+public interface DAOMenuItemHeaderInMainPage {
+    List<MenuItemHeaderInMainPage> getAll();
+    int insert (MenuItemHeaderInMainPage menuItemHeaderInMainPage);
+    void update(MenuItemHeaderInMainPage menuItemHeaderInMainPage);
+    void delete(int id);
+
+    List<MenuItemHeaderInMainPage> getMinorHeadersByMainHeader(long idMainHeader);
+    Map<MenuItemHeaderInMainPage,List<MenuItemHeaderInMainPage>> getAllHeadersMainPage();
+    MenuItemHeaderInMainPage findItemById(long id);
+    Map<String, Integer> getCharacterUniversity();
+}

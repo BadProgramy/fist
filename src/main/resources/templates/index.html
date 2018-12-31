@@ -2,6 +2,7 @@
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
 
 	<!-- Meta -->
@@ -55,167 +56,36 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-5 logo">
-					<a href="./index.html"><img src="images/logo-dark.png" class="img-responsive" alt=""/></a>
+					<a href="/main"><img th:src="${logotipFIST.getUrlPicture()}" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="col-md-9 col-xs-7">
 					<div class="top-bar">
 						<ul>
 							<li class="tb-info">
-							<li style="color: aquamarine">тел. (846) 228-00-05</li>
-							<!--<a data-dialog2="somedialog2" class="trigger">
-                            <i class="fa fa-map-marker"></i>
-                            <span>Find us on<br><em>Google Map</em></span>
-                            </a>    -->
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: aquamarine"></li>
+
 							</li>
 							<br>
 							<li class="tb-info">
-							<li style="color: aquamarine">e-mail: fist@psati.ru</li>
-							<!--<a data-dialog1="somedialog1" class="trigger">
-                            <i class="fa fa-clock-o"></i>
-                            <span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
-                            <span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>
-                            </a>    -->
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: aquamarine"></li>
 							</li>
-							<!--<li>
-                                <a data-dialog="somedialog" class="trigger button btn-xs color">Войти</a>
-                            </li>-->
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="menu-wrap">
-				<div id="mobnav-btn">Меню <!--<i class="fa fa-bars"></i>--></div>
-				<ul class="sf-menu">
+				<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+				<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
 					<li>
-						<a href="#">Главная</a>
+						<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
 						<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-						<!--<ul>
-							<li><a href="./index.html">Пока незнаю</a></li>
-							<li><a href="./index-onepage.html">Пока незнаю</a></li>
-							<li><a href="./index-onepage2.html">Пока незнаю</a></li>
-						</ul>-->
-					</li>
-					<li>
-						<a href="#">О факультете</a>
-						<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-						<ul>
-							<li><a href="#">О факультете</a></li>
-							<li><a href="#">Ученый совет факультета</a></li>
-							<li><a href="#">План работы Ученого совета ФИСТ</a></li>
-							<li><a href="#">Коллектив деканата</a></li>
-							<li><a href="#">Кафедры факультета</a></li>
-							<li><a href="#">Грамоты и дипломы</a></li>
-							<li><a href="#">Выпускники факультета</a></li>
-							<li><a href="https://vk.com/club161199157">Объявление о научных конкурсах и грантах</a></li>
-							<li><a href="#">Комиссии факультета</a></li>
-							<li><a href="#">Коллектив деканата</a></li>
-
-							<!--<li>
-								<a class="sf-with-ul" href="#">Пока незнаюe</a>
-								<ul>
-									<li><a href="./service-single-image.html">Пока незнаю</a></li>
-									<li><a href="./service-single-slider.html">Пока незнаю</a></li>
-									<li><a href="./service-single-video.html">Пока незнаю</a></li>
-								</ul>
-							</li>-->
-						</ul>
-					</li>
-					<!--<li class="sf-mmenu">
-						<a href="#">Новости факультета</a>
-						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
-						<div class="sf-mega">
-							<div class="sf-mega-section">
-								<span>
-								<a href="./accordion.html">Accordion</a>
-								<a href="./buttons.html">Button</a>
-								<a href="./blockquote.html">Blockquotes</a>
-								</span>
+						<ul >
+							<div th:each="menuItemMinor : ${mapEntry.value}">
+							<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+								<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
+							</li>
 							</div>
-							<div class="sf-mega-section">
-								<span>
-								<a href="./columns.html">Columns</a>
-								<a href="./headings.html">Headings</a>
-								<a href="./parallax.html">Parallax</a>
-								</span>
-							</div>
-							<div class="sf-mega-section">
-								<span>
-								<a href="./services-2col.html">Services</a>
-								<a href="./tabs.html">Tabs</a>
-								<a href="./testimonial.html">Testimonial</a>
-								</span>
-							</div>
-							<div class="sf-mega-section">
-								<span>
-								<a href="./video.html">Video</a>
-								<a href="./shop-full.html">Shop</a>
-								<a href="./shop-single-full.html">Shop Single Page</a>
-								</span>
-							</div>
-						</div>
-					</li>-->
-					<li>
-						<a href="#">Абитуриентам</a>
-						<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-						<ul>
-							<li><a href="#">Профили подготовки</a></li>
-							<li><a href="#">Бюджетные места</a></li>
-							<li><a href="#">Стоимость обучения</a></li>
-							<li><a href="#">Сведения по образовательным программам</a></li>
-							<li><a href="#">Сайт приёмной комиссии</a></li>
-							<!--<li>
-								<a class="sf-with-ul" href="./shop-single-left.html">Shop - Single</a>
-								<ul>
-									<li><a href="./shop-single-left.html">Left Sidebar</a></li>
-									<li><a href="./shop-single-right.html">Right Sidebar</a></li>
-									<li><a href="./shop-single-full.html">Full Width</a></li>
-								</ul>
-							</li>-->
 						</ul>
-					</li>
-
-					<li>
-						<a href="#">Студентам</a>
-						<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-						<ul>
-							<li><a href="#">Права и обязанности</a></li>
-							<li><a href="#">Лучшие студенты</a></li>
-							<li><a href="#">Кураторы групп</a></li>
-							<!--<li>
-								<a class="sf-with-ul" href="./shop-single-left.html">Shop - Single</a>
-								<ul>
-									<li><a href="./shop-single-left.html">Left Sidebar</a></li>
-									<li><a href="./shop-single-right.html">Right Sidebar</a></li>
-									<li><a href="./shop-single-full.html">Full Width</a></li>
-								</ul>
-							</li>-->
-							<li><a href="#">Стоимость обучения</a></li>
-							<li><a href="https://www.psuti.ru/students/timetable/">Расписание занятий и экзаменов</a></li>
-							<li><a href="https://www.psuti.ru/ru/students/doc">Формы заявлений</a></li>
-							<li><a href="https://www.psuti.ru/ru/sveden/vacant">Вакантные бюджетные места</a></li>
-							<li><a href="https://www.psuti.ru/ru/sveden/grants">Стипендии и иные виды материальной поддержки</a></li>
-							<li><a href="#">Консультации преподавателей</a></li>
-							<li><a href="#">Формы заявлений</a></li>
-							<li><a href="#">Вакантные бюджетные места</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Преподавателям</a>
-						<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-						<ul>
-							<li><a href="#">Требования к профессорско-преподавательскому составу</a></li>
-							<li><a href="#">Списки групп</a></li>
-							<li><a href="http://fgosvo.ru/fgosvo/92/91/4">ФГОС ВО 3+</a></li>
-							<li><a href="http://fgosvo.ru/fgosvo/151/150/24">ФГОС ВО 3++</a></li>
-							<li><a href="http://profstandart.rosmintrud.ru/">Профессиональные стандарты</a></li>
-							<li><a href="http://reestr.fgosvo.ru/">Реестр примерных ООП высшего образования</a></li>
-							<li><a href="https://www.psuti.ru/ru/sveden/education">Сведения по образовательным программам</a></li>
-							<li><a href="https://www.psuti.ru/university/quality/doc">Перечень руководящих документов СМК ПГУТИ</a></li>
-							<li><a href="https://www.psuti.ru/ru/university/quality/pologenia">Положения ПГУТИ</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="./contact.html">Контакты</a>
 					</li>
 				</ul>
 
@@ -278,46 +148,17 @@
 	<!-- SLIDER -->
 	<div class="container-fluid no-padding">
 		<div id="home-slider2" class="owl-carousel owl-theme">
-			<div class="item">
-				<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
-				<div class="container no-padding">
-					<div class="hs-caption">
-						<div class="caption-inner">
-							<h4>Пока незнаю <span>НО МОЖНО ПРО ФИСТ или же новости</span></h4>
-							<p>Что писать на 1 ленте (КРАТКОЕ ОПИСАНИЕ)</p>
-							<br>
-							<a href="#" class="button btn-xs btn-center color">Возможная кнопка</a>
-						</div>
-					</div>
-				</div>
+			<div class="item" th:each="picture : ${slider}">
+				<img th:src="${picture.getUrlPicture()}" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
+			</div>
 
+			<!--<div class="item">
+				<img th:src="${slider2.getUrlPicture()}" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
 			</div>
+
 			<div class="item">
-				<img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-				<div class="container no-padding">
-					<div class="hs-caption">
-						<div class="caption-inner">
-							<h4>Пока незнаю <span>НО МОЖНО ПРО ФИСТ или же новости</span></h4>
-							<p>Что писать на 2 ленте (КРАТКОЕ ОПИСАНИЕ)</p>
-							<br>
-							<a href="#" class="button btn-xs btn-center color">Возможная кнопка</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-				<div class="container no-padding">
-					<div class="hs-caption">
-						<div class="caption-inner">
-							<h4>Пока незнаю <span>НО МОЖНО ПРО ФИСТ или же новости</span></h4>
-							<p>Что писать на 3 ленте (КРАТКОЕ ОПИСАНИЕ)</p>
-							<br>
-							<a href="#" class="button btn-xs btn-center color">Возможная кнопка</a>
-						</div>
-					</div>
-				</div>
-			</div>
+				<img th:src="${slider3.getUrlPicture()}" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
+			</div>-->
 		</div>
 	</div>
 
@@ -325,10 +166,10 @@
 	<section id="gallery" class="gallery">
 		<div class="container">
 			<div class="h-page-title">
-				<h1>Новости</h1>
+				<h1 th:object="${ItemHeader1}" th:text="${ItemHeader1.getName()}"></h1>
 				<!--<span class="sub-title">our works</span>-->
 				<div class="mustache">
-					<span><img class="img-responsive" src="images/home-page/fist.png" alt=""></span>
+					<span><img class="img-responsive" th:src="${ItemHeaderPictureSplit.getUrlPicture()}" alt=""></span>
 				</div>
 			</div>
 		</div>
@@ -414,7 +255,7 @@
 				</div>
 				<div class="clearfix"></div>
 				<!--<div class="space30"></div>-->
-				<a href="./blog.html" class="main-btn">Больше новостей</a>
+				<a th:object="${ItemButton1}" th:text="${ItemButton1.getName()}" th:href="${ItemButton1.getUrlHref()}" class="main-btn"></a>
 			</div>
 		</div>
 	</section>
@@ -424,74 +265,36 @@
 	<section id="service" class="service">
 		<div class="container">
 			<div class="h-page-title">
-				<h1>учебный процесс</h1>
+				<h1 th:object="${ItemHeader2}" th:text="${ItemHeader2.getName()}"></h1>
 				<!--<span class="sub-title">what we can do</span>-->
 				<div class="mustache">
-					<span><img class="img-responsive" src="images/home-page/fist.png" alt=""></span>
+					<span><img class="img-responsive" th:src="${ItemHeaderPictureSplit.getUrlPicture()}" alt=""></span>
 				</div>
 			</div>
 
 			<div class="main-service">
-				<div class="row">
+				<div class="row" th:each="mapEntry : ${educationProcess}">
 					<div class="col-md-6 col-sm-6 service-left">
-						<span class="ico"><img class="icon_1" src="images/home-page/diplomniki.png" alt=""><img class="icon_2" src="images/home-page/diplomniki.png" alt=""></span>
+						<span class="ico" >
+							<img class="icon_1" th:src="${mapEntry.getPicturesLeft().getUrlPicture()}" alt="">
+							<img class="icon_2" th:src="${mapEntry.getPicturesLeft().getUrlPicture()}" alt="">
+						</span>
 						<div class="service-info">
-							<h4>дипломникам</h4>
+							<h4>
+								<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageLeft().getName()}"></a>
+							</h4>
 						</div>
 					</div>
 
 					<div class="col-md-6 col-sm-6 service-right">
-						<span class="ico"><img class="icon_1" src="images/home-page/raspisanie.png" alt=""><img class="icon_2" src="images/home-page/raspisanie.png" alt=""></span>
+						<span class="ico">
+							<img class="icon_1" th:src="${mapEntry.getPicturesRight().getUrlPicture()}" alt="">
+							<img class="icon_2" th:src="${mapEntry.getPicturesRight().getUrlPicture()}" alt="">
+						</span>
 						<div class="service-info">
-							<h4>расписание занятий и экзаменов</h4>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 col-sm-6 service-left">
-						<span class="ico"><img class="icon_1" src="images/home-page/spiskiGroup.png" alt=""><img class="icon_2" src="images/home-page/spiskiGroup.png" alt=""></span>
-						<div class="service-info">
-							<h4>Списки групп</h4>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-sm-6 service-right">
-						<span class="ico"><img class="icon_1" src="images/home-page/control.png" alt=""><img class="icon_2" src="images/home-page/control.png" alt=""></span>
-						<div class="service-info">
-							<h4>промежуточный контроль</h4>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 col-sm-6 service-left">
-						<span class="ico"><img class="icon_1" src="images/home-page/spisokNaOtchislenie.png" alt=""><img class="icon_2" src="images/home-page/spisokNaOtchislenie.png" alt=""></span>
-						<div class="service-info">
-							<h4>кандидаты на отчисление</h4>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-sm-6 service-right">
-						<span class="ico"><img class="icon_1" src="images/home-page/Nauka.png" alt=""><img class="icon_2" src="images/home-page/Nauka.png" alt=""></span>
-						<div class="service-info">
-							<h4>Научные конкурсы, конференции и олимпиады</h4>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 col-sm-6 service-left">
-						<span class="ico"><img class="icon_1" src="images/home-page/Internet.png" alt=""><img class="icon_2" src="images/home-page/Internet.png" alt=""></span>
-						<div class="service-info">
-							<h4>Электронная информационно-образовательная среда</h4>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-sm-6 service-right">
-						<span class="ico"><img class="icon_1" src="images/home-page/Library.png" alt=""><img class="icon_2" src="images/home-page/Library.png" alt=""></span>
-						<div class="service-info">
-							<h4>Инструкции по работе с электронными библиотечными системами</h4>
+							<h4>
+								<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageRight().getName()}"></a>
+							</h4>
 						</div>
 					</div>
 				</div>
@@ -499,104 +302,12 @@
 		</div>
 	</section>
 
-	<!-- GALLERY -->
-	<!--<section id="gallery" class="gallery">
-		<div class="container">
-			<div class="h-page-title">
-				<h1>gallery</h1>
-				<span class="sub-title">our works</span>
-				<div class="mustache">
-					<span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
-				</div>
-			</div>
-		</div>
-
-		<div id="portfolio-gal">
-			<div class="col-md-12 main-navigation">
-				<ul id="filters" class="clearfix portfolio-gal-filter" data-option-key="filter">
-					<li><a href="#filter" class="active" data-option-value="*">All</a></li>
-					<li><a href="#filter" data-option-value=".headshaves">Head shaves</a></li>
-					<li><a href="#filter" data-option-value=".restyle">Restyle</a></li>
-					<li><a href="#filter" data-option-value=".manicure">Manicure</a></li>
-					<li><a href="#filter" data-option-value=".stubble">Stubble</a></li>
-				</ul>
-			</div>
-			<div class="col-md-12">
-				<div class="portfolio-gal isotope">
-					<div class="folio-item headshaves col-sm-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="folio-thumb">
-							<a href="images/portfolio/1/1.jpg" class="pop_lbox">
-								<div class="overlay-bg"></div>
-								<img src="images/home-page/projects/1.jpg" class="img-responsive" alt=""/>
-							</a>
-							<div class="folio-border">
-								<div class="folio-detail">
-									<h5>OUR Best shaves</h5>
-									<h6>design and idea</h6>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="folio-item restyle col-sm-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="folio-thumb">
-							<a href="images/portfolio/1/2.jpg" class="pop_lbox">
-								<div class="overlay-bg"></div>
-								<img src="images/home-page/projects/2.jpg" class="img-responsive" alt=""/>
-							</a>
-							<div class="folio-border">
-								<div class="folio-detail">
-									<h5>OUR Best restle</h5>
-									<h6>design and idea</h6>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="folio-item manicure col-sm-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="folio-thumb">
-							<a href="images/portfolio/1/3.jpg" class="pop_lbox">
-								<div class="overlay-bg"></div>
-								<img src="images/home-page/projects/3.jpg" class="img-responsive" alt=""/>
-							</a>
-							<div class="folio-border">
-								<div class="folio-detail">
-									<h5>OUR Best manicure</h5>
-									<h6>design and idea</h6>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="folio-item stubble col-sm-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="folio-thumb">
-							<a href="images/portfolio/1/4.jpg" class="pop_lbox">
-								<div class="overlay-bg"></div>
-								<img src="images/home-page/projects/4.jpg" class="img-responsive" alt=""/>
-							</a>
-							<div class="folio-border">
-								<div class="folio-detail">
-									<h5>OUR Best stubble</h5>
-									<h6>design and idea</h6>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="space30"></div>
-				<a href="./blog.html" class="main-btn">more</a>
-			</div>
-		</div>
-	</section>-->
-
 	<!-- PRICING -->
 	<section id="pricing" class="pricing">
 		<div class="pricing-bg">
 			<div class="container">
 				<div class="h-page-title">
-					<h1>Мы в социальных сетях</h1>
-					<!--<span class="sub-title">hot deals</span>
-					<div class="mustache">
-						<span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
-					</div>-->
+					<h1 th:object="${ItemHeader3}" th:text="${ItemHeader3.getName()}"></h1>
 				</div>
 
 				<div class="main-pricing">
@@ -604,17 +315,8 @@
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<div class="price-block">
 								<div class="inner-price">
-
-									<h3>Анонсы и объявления</h3>
+									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}"></h3>
 									<br>
-									<!--&lt;!&ndash;<h1>23<span>$</span></h1>&ndash;&gt;
-									<script type="text/javascript" src="https://vk.com/js/api/openapi.js?159" ></script>
-
-									&lt;!&ndash; VK Widget &ndash;&gt;
-									<div id="vk_groupss"></div>
-									<script type="text/javascript">
-                                        VK.Widgets.Group("vk_groupss", {mode: 4, width: "auto", height: "400"}, 50489116);
-									</script>-->
 									<div id="vk_widget"></div>
 									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
 									<script>
@@ -625,28 +327,23 @@
                                         window.addEventListener('load', VK_Widget_Init, false);
                                         window.addEventListener('resize', VK_Widget_Init, false);
 									</script>
-									<!--<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its</p>-->
-									<!--<button class="main-btn" type="submit">Order</button>-->
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<div class="price-block">
 								<div class="inner-price">
-									<h3>Фотогалерея</h3>
+									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}"></h3>
 									<div class='widget-content'>
 										<iframe src="//widget.instagramm.ru/?imageW=2&imageH=3&thumbnail_size=97&type=0&typetext=fist.psuti&head_show=1&profile_show=0&shadow_show=1&bg=255,255,255,1&opacity=true&head_bg=46729b&subscribe_bg=ad4141&border_color=c3c3c3&head_title=%25D0%25A4%25D0%2598%25D0%25A1%25D0%25A2%2520%25D0%259F%25D0%2593%25D0%25A3%25D0%25A2%25D0%2598" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;height:410px;"></iframe>
 									</div>
-									<!--<h1>12<span>$</span></h1>
-									<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-									<button class="main-btn" type="submit">Order</button>-->
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<div class="price-block">
 								<div class="inner-price">
-									<h3>Студенческий ИТ-клуб</h3>
+									<h3 th:object="${ItemHeader6}" th:text="${ItemHeader6.getName()}"></h3>
 									<br>
 									<div id="vk_widget1"></div>
 									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
@@ -658,17 +355,6 @@
                                         window.addEventListener('load', VK_Widget_Init, false);
                                         window.addEventListener('resize', VK_Widget_Init, false);
 									</script>
-									<!--<script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
-
-									&lt;!&ndash; VK Widget &ndash;&gt;
-									<div id="vk_groupss"></div>
-									<script type="text/javascript">
-                                        VK.Widgets.Group("vk_groupss", {mode: 4,width: "auto", height: "400"}, 17785357);
-									</script>-->
-
-									<!--<h1>35<span>$</span></h1>
-									<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-									<button class="main-btn" type="submit">Order</button>-->
 								</div>
 							</div>
 						</div>
@@ -682,25 +368,10 @@
 	<section id="stats">
 		<div class="stats">
 			<div class="container">
-				<div class="col-xs-12 col-sm-3 col-md-3">
-					<h1>26</h1>
+				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
+					<h1 th:text="${mapEntry.value}"></h1>
 					<!--<img src="images/mustache.png" alt="">-->
-					<h6>направлений бакалавриата</h6>
-				</div>
-				<div class="col-xs-12 col-sm-3 col-md-3">
-					<h1>11000</h1>
-					<!--<img src="images/mustache.png" alt="">-->
-					<h6>студентов</h6>
-				</div>
-				<div class="col-xs-12 col-sm-3 col-md-3">
-					<h1>6</h1>
-					<!--<img src="images/mustache.png" alt="">-->
-					<h6>специальностей</h6>
-				</div>
-				<div class="col-xs-12 col-sm-3 col-md-3">
-					<h1>39</h1>
-					<!--<img src="images/mustache.png" alt="">-->
-					<h6>магистерских программ</h6>
+					<h6 th:text="${mapEntry.key}"></h6>
 				</div>
 			</div>
 		</div>
@@ -710,7 +381,7 @@
 		<div class="container">
 			<div class="col-md-12">
 				<div class="h-page-title">
-					<h1>Лучшие студнеты</h1>
+					<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}"></h1>
 					<!--<span class="sub-title">hot deals</span>-->
 					<!--<div class="mustache">
 						<span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
@@ -719,217 +390,13 @@
 				<div class="clearfix space35"></div>
 
 				<div id="home-shop-carousel" class="owl-carousel owl-theme">
-					<div class="sm-item text-center">
+					<div th:each="student : ${bestStudents}" class="sm-item text-center">
 						<div class="product">
 							<div class="product-thumb">
-								<img src="images/shop/1.jpg" class="img-responsive" alt="">
-								<!--<div class="product-overlay">
-                                    <span>
-                                    <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                    <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                    </span>
-                                </div>-->
+								<img th:src="${student.getPicture().getUrlPicture()}"  class="img-responsive" alt="">
 							</div>
-							<!--<div class="rating">
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                            </div>-->
-							<h2 class="product-title"><a href="#">Ильина Алёна</a></h2>
-							<div class="product-price">Группа:<span>ЭБ-51</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/2.jpg" class="img-responsive" alt="">
-								<!--<div class="product-overlay">
-                                            <span>
-                                            <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                            <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                            </span>
-                                </div>-->
-							</div>
-							<!--<div class="rating">
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                            </div>-->
-							<h2 class="product-title"><a href="#">Кузнецов Александр</a></h2>
-							<div class="product-price">Группа:<span>ПО-53пр</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/3.jpg" class="img-responsive" alt="">
-								<!--<div class="product-overlay">
-                                            <span>
-                                            <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                            <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                            </span>
-                                </div>-->
-							</div>
-							<!--<div class="rating">
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                            </div>-->
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/4.jpg" class="img-responsive" alt="">
-								<!--<div class="product-overlay">
-                                            <span>
-                                            <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                            <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                            </span>
-                                </div>-->
-							</div>
-							<!--<div class="rating">
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                            </div>-->
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/5.jpg" class="img-responsive" alt="">
-								<!--<div class="product-overlay">
-                                            <span>
-                                            <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                            <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                            </span>
-                                </div>-->
-							</div>
-							<!--<div class="rating">
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                            </div>-->
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/6.jpg" class="img-responsive" alt="">
-								<!--<div class="product-overlay">
-                                            <span>
-                                            <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                            <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                            </span>
-                                </div>-->
-							</div>
-							<!--<div class="rating">
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                                <span class="fa fa-star act"></span>
-                            </div>-->
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/7.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Аброськина Елена</a></h2>
-							<div class="product-price">Группа:<span>ПО-51</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/8.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/9.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-					<div class="product">
-						<div class="product-thumb">
-							<img src="images/shop/10.jpg" class="img-responsive" alt="">
-						</div>
-						<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-						<div class="product-price">Группа:<span>Неизвестно</span></div>
-					</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/11.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/12.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/13.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/14.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Неизвестно</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
-						</div>
-					</div>
-					<div class="sm-item text-center">
-						<div class="product">
-							<div class="product-thumb">
-								<img src="images/shop/15.jpg" class="img-responsive" alt="">
-							</div>
-							<h2 class="product-title"><a href="#">Владимир Осанов</a></h2>
-							<div class="product-price">Группа:<span>Неизвестно</span></div>
+							<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
+							<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}"></span></div>
 						</div>
 					</div>
 				</div>
@@ -943,7 +410,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
-					<h3>Расположение</h3>
+					<h3 th:text="${ItemHeader8.getName()}"></h3>
 					<div class="top-bar">
 						<ul>
 							<li class="tb-info">
@@ -978,18 +445,20 @@
 				</div>-->
 
 				<div class="col-md-3">
-					<h3>Здесь тоже незнаю, как пример</h3>
+					<h3 th:text="${ItemHeader9.getName()}"></h3>
 					<ul class="f-news">
-						<li><a href="#">Пример 1<i class="fa fa-angle-right"></i></a></li>
-						<li><a href="#">Пример 2<i class="fa fa-angle-right"></i></a></li>
+						<li th:each="subtitle : ${subtitles}">
+							<a th:href="${subtitle.getUrlHref()}" th:text="${subtitle.getName()}"><i class="fa fa-angle-right"></i></a>
+						</li>
+						<!--<li><a href="#">Пример 2<i class="fa fa-angle-right"></i></a></li>
 						<li><a href="#">Пример 3<i class="fa fa-angle-right"></i></a></li>
 						<li><a href="#">Пример 4<i class="fa fa-angle-right"></i></a></li>
-						<li><a href="#">Пример 5<i class="fa fa-angle-right"></i></a></li>
+						<li><a href="#">Пример 5<i class="fa fa-angle-right"></i></a></li>-->
 					</ul>
 				</div>
 
 				<div class="col-md-3 twitterfeed">
-					<h3>А мы забыли что тут</h3>
+					<h3 th:text="${ItemHeader10.getName()}"></h3>
 <!--
 					<a class="twitter-timeline" href="https://twitter.com/fist_psuti?ref_src=twsrc%5Etfw" data-tweet-limit = "2">Tweets by fist_psuti</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 -->
@@ -1001,14 +470,14 @@
 				</div>
 
 				<div class="col-md-3">
-					<img src="images/logo-silver.png" class="img-responsive" alt=""/>
+					<img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
 				</div>
 			</div>
 		</div>
 		<div class="footer-bottom container">
 			<div class="row">
 				<div class="col-md-6">
-					<p>&copy; 2018 Факультет информационных систем и технологий</p>
+					<p th:text="${ItemHeader11.getName()}"></p>
 				</div>
 				<!--<div class="col-md-6">
 					<p class="pull-right">Design by <a target="_blank" href="http://themeforest.net/user/Theme-Squared">ThemeSquared</a></p>
@@ -1023,80 +492,6 @@
 	<div class="dialog__overlay"></div>
 	<div class="dialog__content">
 		<div id="booking_pop" class="booking_pop">
-			<!--<h3>Book Online</h3>-->
-			<!--<form class="book_online" id="bookingForm" action="php/booking.php" method="post">
-				<div class="row">
-					<div class="col-md-6">
-						<label>Name <span>*</span></label>
-						<input name="senderName2" id="senderName2" type="text" required="required" />
-					</div>
-					<div class="col-md-6">
-						<label>Email <span>*</span></label>
-						<input type="email" name="senderEmail2" id="senderEmail2" required="required"/>
-					</div>
-					<div class="col-md-6">
-						<label>Phone <span>*</span></label>
-						<input name="senderPhone2" id="senderPhone2" type="text" required="required"/>
-					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="datepicker-input col-md-7">
-								<label>Date <span>*</span></label>
-								<input type="text" id="bookingDate" name="bookingDate" placeholder="mm/dd/yyyy" min="10" required="required"/>
-							</div>
-							<div class="time-picker col-md-5">
-								<label>Time <span>*</span></label>
-								<select class="selectbox-input" id="reservationtime" name="reservationtime" required="required"/>
-								<option value="8:00">8:00</option>
-								<option value="8:30">8:30</option>
-								<option value="9:00">9:00</option>
-								<option value="9:30">9:30</option>
-								<option value="10:00">10:00</option>
-								<option value="10:30">10:30</option>
-								<option value="11:00">11:00</option>
-								<option value="11:30">11:30</option>
-								<option value="12:00">12:00</option>
-								<option value="12:30">12:30</option>
-								<option value="13:00">13:00</option>
-								<option value="13:30">13:30</option>
-								<option value="14:00">14:00</option>
-								<option value="14:30">14:30</option>
-								<option value="15:00">15:00</option>
-								<option value="15:30">15:30</option>
-								<option value="16:00">16:00</option>
-								<option value="16:30">16:30</option>
-								<option value="17:00">17:00</option>
-								<option value="17:30">17:30</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-					<div class="col-md-12">
-						<label>Message <span>*</span></label>
-						<textarea name="message2" id="message2" cols="6" rows="6" required="required"/></textarea>
-					</div>
-					<div class="col-md-5">
-						<button class="button btn-xs" id="submit">Send Order</button>
-					</div>
-					<div class="col-md-7">
-						<p><em>*</em> Fields are Mandatory</p>
-					</div>
-				</div>
-			</form>-->
-			<!--<div id="sendingMessage2" class="statusMessage2">
-				<p><i class="fa fa-spin fa-spinner"></i> Sending your message. Please wait...</p>
-			</div>
-			<div id="successMessage2" class="successmessage2">
-				<p><i class="fa fa-check"></i> Thanks for sending your message! We'll get back to you shortly.</p>
-			</div>
-			<div id="failureMessage2" class="errormessage2">
-				<p><i class="fa fa-close"></i> There was a problem sending your message. Please try again.</p>
-			</div>
-			<div id="incompleteMessage2" class="statusMessage2">
-				<p><i class="fa fa-warning"></i> Please complete all the fields in the form before sending.</p>
-			</div>-->
-
 		</div>
 		<button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
 	</div>
@@ -1106,39 +501,6 @@
 	<div class="dialog__overlay"></div>
 	<div class="dialog__content">
 		<div class="timer_popup">
-			<!--<div>
-				<h3>Opening time</h3>
-				<ul>
-					<li>
-						<span class="week-day">Monday</span>
-						<span class="week-time">8.00 - 18.00</span>
-					</li>
-					<li>
-						<span class="week-day">Tuesday</span>
-						<span class="week-time">8.00 - 18.00</span>
-					</li>
-					<li>
-						<span class="week-day">Wednesday</span>
-						<span class="week-time">8.00 - 18.00</span>
-					</li>
-					<li>
-						<span class="week-day">Thursday</span>
-						<span class="week-time">8.00 - 18.00</span>
-					</li>
-					<li>
-						<span class="week-day">Friday</span>
-						<span class="week-time">8.00 - 18.00</span>
-					</li>
-					<li>
-						<span class="week-day">Saturday</span>
-						<span class="week-time">9.00 - 15.00</span>
-					</li>
-					<li>
-						<span class="week-day">Sunday</span>
-						<span class="week-time">Closed Day</span>
-					</li>
-				</ul>
-			</div>-->
 			<button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
 		</div>
 	</div>
@@ -1198,28 +560,11 @@
 <script src="js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <!---->
-
-
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="js/gmap2.js"></script>
 <script src="js/jquery.prettyphoto.js"></script>
 <script src="js/script.js"></script>
 <script src="js/booking.js"></script>
-<!--<script type="text/javascript">-->
-
-    <!--$(function() {-->
-
-        <!--$("h2")-->
-            <!--.wrapInner("<span></span>")-->
-
-        <!--$("h2 br")-->
-            <!--.before("<span class='spacer'>&nbsp;</span>")-->
-            <!--.after("<span class='spacer'>&nbsp;</span>");-->
-
-    <!--});-->
-
-<!--</script>-->
-
 </body>
 </html>

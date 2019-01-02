@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Pictures">
+    <resultMap id="result" type="Pictures">
+        <id property="id" column="id"/>
+        <result property="idPage" column="id_page"/>
+        <result property="namePicture" column="name_picture"/>
+        <result property="urlPicture" column="url_picture"/>
+        <result property="date" column="date"/>
+        <result property="keyPicture" column="key_picture"/>
+
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM pictures;
+    </select>
+
+    <select id="selectPicturesByKey" parameterType="long" resultMap="result">
+        SELECT * FROM pictures where pictures.key_picture = #{keyPicture};
+    </select>
+
+    <select id="selectPicturesByName" parameterType="String" resultMap="result">
+        SELECT * FROM pictures where name_picture = #{namePicture};
+    </select>
+
+    <select id="findById" parameterType="long" resultMap="result">
+        SELECT * FROM pictures where id = #{id};
+    </select>
+
+
+</mapper>

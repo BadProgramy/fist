@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias alias="MainPage" type="website.psuti.fist.model.MainPage"/>
+        <typeAlias alias="MenuItemHeaderInMainPage" type="website.psuti.fist.model.MenuItemHeaderInMainPage"/>
+        <typeAlias alias="Pictures" type="website.psuti.fist.model.Pictures"/>
+        <typeAlias alias="EducationProcess" type="website.psuti.fist.model.EducationProcess"/>
+        <typeAlias alias="BestStudent" type="website.psuti.fist.model.BestStudent"/>
+        <!--<typeAlias alias="Employee" type="organizational.model.Employee"/>
+        <typeAlias alias="Department" type="organizational.model.Department"/>
+        <typeAlias type="organizational.model.Post" alias="Post"/>
+        <typeAlias type="organizational.model.Event" alias="Event"/>-->
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mapper/MainPage.xml"/>
+        <mapper resource="mapper/MenuItemHeaderInMainPage.xml"/>
+        <mapper resource="mapper/Pictures.xml"/>
+        <mapper resource="mapper/EducationProcess.xml"/>
+        <mapper resource="mapper/BestStudent.xml"/>
+        <!--<mapper resource="mapper/Employee.xml"/>
+        <mapper resource="mapper/Department.xml"/>
+        <mapper resource="mapper/Post.xml"/>
+        <mapper resource="mapper/Event.xml"/>-->
+    </mappers>
+</configuration>

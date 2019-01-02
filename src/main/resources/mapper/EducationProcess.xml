@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EducationProcess">
+    <resultMap id="result" type="EducationProcess">
+        <id property="id" column="id"/>
+        <result property="idMenuItemHeaderInMainPageLeft" column="id_menu_item_header_in_main_page_left"/>
+        <result property="idMenuItemHeaderInMainPageRight" column="id_menu_item_header_in_main_page_right"/>
+        <result property="idPictureLeft" column="id_picture_left"/>
+        <result property="idPictureRight" column="id_picture_right"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM education_process;
+    </select>
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NewsOfFaculty">
+    <resultMap id="result" type="NewsOfFaculty">
+        <id property="id" column="id"/>
+        <result property="heading" column="heading"/>
+        <result property="text" column="text"/>
+        <result property="date" column="date"/>
+        <result property="idLeftPicture" column="id_left_picture"/>
+        <result property="idRightPicture" column="id_right_picture"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM news_of_faculty;
+    </select>
+
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM news_of_faculty WHERE id = #{id};
+    </delete>
+
+    <update id="update" parameterType="NewsOfFaculty">
+        UPDATE news_of_faculty SET
+        heading = #{heading},
+        id_left_picture = #{idLeftPicture},
+        id_right_picture = #{idRightPicture},
+        text = #{text},
+        date = #{date}
+        WHERE id = #{id};
+    </update>
+
+    <select id="findById" parameterType="long" resultType="NewsOfFaculty">
+        SELECT * FROM news_of_faculty WHERE id = #{id};
+    </select>
+</mapper>

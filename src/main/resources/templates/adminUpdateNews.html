@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Редактор новостей</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/js/isotope/isotope.css" type="text/css">
+    <link rel="stylesheet" href="/js/flexslider/flexslider.css" type="text/css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css" type="text/css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css" type="text/css">
+    <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="/js/pikaday/pikaday.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/dark.css" type="text/css">
+    <link rel="stylesheet" href="/css/responsive.css" type="text/css">
+    <link rel="stylesheet" href="/css/adminNews/style.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="/css/adminNews/updateNews.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="/css/adminNews/reset.css">
+
+    <!-- JS Font Script -->
+    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizer -->
+    <script src="js/modernizr.custom.js"></script>
+
+</head>
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+    <!-- HEADER -->
+    <header id="header2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-5 logo">
+                    <!--<a href="./index.html"><img src="images/logo-dark.png" class="img-responsive" alt=""/></a>-->
+                </div>
+                <h2 align="center">Меню администратора</h2>
+                <div class="col-md-9 col-xs-7">
+                    <div class="top-bar">
+                        <ul>
+
+                            <li class="tb-info">
+                                <!--<li style="color: aquamarine">Меню администратора</li>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-wrap" style="height: 68px">
+                <div id="mobnav-btn">Меню <!--<i class="fa fa-bars"></i>--></div>
+                <ul class="sf-menu">
+                    <!--<li>
+                        <a href="#">Главная</a>
+                        <div class="mobnav-subarrow">&lt;!&ndash;<i class="fa fa-plus"></i>&ndash;&gt;</div>
+                        &lt;!&ndash;<ul>
+                            <li><a href="./index.html">Пока незнаю</a></li>
+                            <li><a href="./index-onepage.html">Пока незнаю</a></li>
+                            <li><a href="./index-onepage2.html">Пока незнаю</a></li>
+                        </ul>&ndash;&gt;
+                    </li>-->
+                    <li>
+                        <a href="#">Страницы</a>
+                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <ul>
+                            <li><a href="#">Главная (fist.psuti.ru)</a></li>
+                            <!--<li><a href="#">Ученый совет факультета</a></li>
+                            <li><a href="#">План работы Ученого совета ФИСТ</a></li>
+                            <li><a href="#">Коллектив деканата</a></li>
+                            <li><a href="#">Кафедры факультета</a></li>
+                            <li><a href="#">Грамоты и дипломы</a></li>
+                            <li><a href="#">Выпускники факультета</a></li>
+                            <li><a href="https://vk.com/club161199157">Объявление о научных конкурсах и грантах</a></li>
+                            <li><a href="#">Комиссии факультета</a></li>
+                            <li><a href="#">Коллектив деканата</a></li>-->
+
+                            <!--<li>
+                                <a class="sf-with-ul" href="#">Пока незнаюe</a>
+                                <ul>
+                                    <li><a href="./service-single-image.html">Пока незнаю</a></li>
+                                    <li><a href="./service-single-slider.html">Пока незнаю</a></li>
+                                    <li><a href="./service-single-video.html">Пока незнаю</a></li>
+                                </ul>
+                            </li>-->
+                        </ul>
+                    </li>
+                    <!--<li class="sf-mmenu">
+                        <a href="#">Новости факультета</a>
+                        <div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
+                        <div class="sf-mega">
+                            <div class="sf-mega-section">
+                                <span>
+                                <a href="./accordion.html">Accordion</a>
+                                <a href="./buttons.html">Button</a>
+                                <a href="./blockquote.html">Blockquotes</a>
+                                </span>
+                            </div>
+                            <div class="sf-mega-section">
+                                <span>
+                                <a href="./columns.html">Columns</a>
+                                <a href="./headings.html">Headings</a>
+                                <a href="./parallax.html">Parallax</a>
+                                </span>
+                            </div>
+                            <div class="sf-mega-section">
+                                <span>
+                                <a href="./services-2col.html">Services</a>
+                                <a href="./tabs.html">Tabs</a>
+                                <a href="./testimonial.html">Testimonial</a>
+                                </span>
+                            </div>
+                            <div class="sf-mega-section">
+                                <span>
+                                <a href="./video.html">Video</a>
+                                <a href="./shop-full.html">Shop</a>
+                                <a href="./shop-single-full.html">Shop Single Page</a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>-->
+                    <li>
+                        <a href="#">Контент</a>
+                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <ul>
+                            <li><a href="/admin/news">Новости факультета</a></li>
+                            <li><a href="#">Лучшие студенты</a></li>
+                            <!--<li><a href="#">Стоимость обучения</a></li>
+                            <li><a href="#">Сведения по образовательным программам</a></li>
+                            <li><a href="#">Сайт приёмной комиссии</a></li>-->
+                            <!--<li>
+                                <a class="sf-with-ul" href="./shop-single-left.html">Shop - Single</a>
+                                <ul>
+                                    <li><a href="./shop-single-left.html">Left Sidebar</a></li>
+                                    <li><a href="./shop-single-right.html">Right Sidebar</a></li>
+                                    <li><a href="./shop-single-full.html">Full Width</a></li>
+                                </ul>
+                            </li>-->
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Пользователи</a>
+                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <ul>
+                            <!--<li><a href="#">Права и обязанности</a></li>
+                            <li><a href="#">Лучшие студенты</a></li>
+                            <li><a href="#">Кураторы групп</a></li>-->
+                            <!--<li>
+                                <a class="sf-with-ul" href="./shop-single-left.html">Shop - Single</a>
+                                <ul>
+                                    <li><a href="./shop-single-left.html">Left Sidebar</a></li>
+                                    <li><a href="./shop-single-right.html">Right Sidebar</a></li>
+                                    <li><a href="./shop-single-full.html">Full Width</a></li>
+                                </ul>
+                            </li>-->
+                            <!--<li><a href="#">Стоимость обучения</a></li>
+                            <li><a href="https://www.psuti.ru/students/timetable/">Расписание занятий и экзаменов</a></li>
+                            <li><a href="https://www.psuti.ru/ru/students/doc">Формы заявлений</a></li>
+                            <li><a href="https://www.psuti.ru/ru/sveden/vacant">Вакантные бюджетные места</a></li>
+                            <li><a href="https://www.psuti.ru/ru/sveden/grants">Стипендии и иные виды материальной поддержки</a></li>
+                            <li><a href="#">Консультации преподавателей</a></li>
+                            <li><a href="#">Формы заявлений</a></li>
+                            <li><a href="#">Вакантные бюджетные места</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Настройка</a>
+                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <ul>
+                            <!--<li><a href="#">Требования к профессорско-преподавательскому составу</a></li>
+                            <li><a href="#">Списки групп</a></li>
+                            <li><a href="http://fgosvo.ru/fgosvo/92/91/4">ФГОС ВО 3+</a></li>
+                            <li><a href="http://fgosvo.ru/fgosvo/151/150/24">ФГОС ВО 3++</a></li>
+                            <li><a href="http://profstandart.rosmintrud.ru/">Профессиональные стандарты</a></li>
+                            <li><a href="http://reestr.fgosvo.ru/">Реестр примерных ООП высшего образования</a></li>
+                            <li><a href="https://www.psuti.ru/ru/sveden/education">Сведения по образовательным программам</a></li>
+                            <li><a href="https://www.psuti.ru/university/quality/doc">Перечень руководящих документов СМК ПГУТИ</a></li>
+                            <li><a href="https://www.psuti.ru/ru/university/quality/pologenia">Положения ПГУТИ</a></li>-->
+                        </ul>
+                    </li>
+                    <!--<li>
+                        <a href="./contact.html">Контакты</a>
+                    </li>-->
+                </ul>
+
+                <!--<div class="header-xtra">
+
+                    <div class="s-cart">
+                        &lt;!&ndash;<div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>2</em></div>
+
+                        <div class="cart-info">
+                            <small>You have <em class="highlight">2 item(s)</em> in your shopping bag</small>
+                            <br>
+                            <br>
+                            <div class="ci-item">
+                                <img src="images/shop/2.jpg" width="70" alt=""/>
+                                <div class="ci-item-info">
+                                    <h5><a href="./single-product.html">Product fashion</a></h5>
+                                    <p>2 x $250.00</p>
+                                    <div class="ci-edit">
+                                        <a href="#" class="edit fa fa-edit"></a>
+                                        <a href="#" class="edit fa fa-trash"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ci-item">
+                                <img src="images/shop/8.jpg" width="70" alt=""/>
+                                <div class="ci-item-info">
+                                    <h5><a href="./single-product.html">Product fashion</a></h5>
+                                    <p>2 x $250.00</p>
+                                    <div class="ci-edit">
+                                        <a href="#" class="edit fa fa-edit"></a>
+                                        <a href="#" class="edit fa fa-trash"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ci-total">Subtotal: $750.00</div>
+                            <div class="cart-btn">
+                                <a href="#">View Bag</a>
+                                <a href="#">Checkout</a>
+                            </div>
+                        </div>&ndash;&gt;
+                    </div>
+                    &lt;!&ndash;<div class="s-search">
+                        <div class="ss-ico"><i class="fa fa-search"></i></div>
+                        <div class="search-block">
+                            <div class="ssc-inner">
+                                <form>
+                                    <input type="text" placeholder="Type Search text here...">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>&ndash;&gt;
+                </div>-->
+            </div>
+        </div>
+    </header>
+
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Редактирование</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
+
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form">
+                    <fieldset>
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
+                        <textarea name="heading" th:utext="${heading}" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
+                        <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signin-password">Текст</label>
+                        <textarea name="text" th:utext="${text}" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
+                        <!--<a href="#0" class="hide-password">Hide</a>-->
+                        <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
+                    </p>
+
+                    <p class="fieldset">
+                        <button class="full-width" type="submit">Изменить</button>
+                    </p>
+                    </fieldset>
+                </form>
+
+                <!--<form th:action="@{/admin/news/update}" th:object="${topic}" method="post" class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
+                        <textarea name="heading" th:value="${heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
+                        <span class="cd-error-message">Ошибка ввода загаловка!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signin-password">Текст</label>
+                        <textarea name="text" th:value="${text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
+                        &lt;!&ndash;<a href="#0" class="hide-password">Hide</a>&ndash;&gt;
+                        <span class="cd-error-message">Ошибка ввода текста!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width" type="submit" value="Изменить">
+                    </p>
+                </form>-->
+
+                <!--<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>-->
+                <!-- <a href="#0" class="cd-close-form">Close</a> -->
+            </div> <!-- cd-login -->
+
+            <!--<div id="cd-signup"> &lt;!&ndash; sign up form &ndash;&gt;
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="signup-username">Username</label>
+                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+                        <span class="cd-error-message">Error message here!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+                        <span class="cd-error-message">Error message here!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="signup-password">Password</label>
+                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+                        <a href="#0" class="hide-password">Hide</a>
+                        <span class="cd-error-message">Error message here!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width has-padding" type="submit" value="Create account">
+                    </p>
+                </form>
+
+                &lt;!&ndash; <a href="#0" class="cd-close-form">Close</a> &ndash;&gt;
+            </div> &lt;!&ndash; cd-signup &ndash;&gt;
+
+            <div id="cd-reset-password"> &lt;!&ndash; reset password form &ndash;&gt;
+                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+                        <span class="cd-error-message">Error message here!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width has-padding" type="submit" value="Reset password">
+                    </p>
+                </form>
+
+                <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+            </div> &lt;!&ndash; cd-reset-password &ndash;&gt;
+            <a href="#0" class="cd-close-form">Close</a>-->
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
+
+    <div class="close-btn fa fa-times"></div>
+
+    <!--&lt;!&ndash; SLIDER &ndash;&gt;
+    <div class="container-fluid no-padding">
+        <div id="home-slider2" class="owl-carousel owl-theme">
+            <div class="item">
+                &lt;!&ndash;<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>&ndash;&gt;
+
+            </div>
+            &lt;!&ndash;<div class="item">
+                <img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
+
+            </div>
+            <div class="item">
+                <img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
+
+            </div>&ndash;&gt;
+        </div>
+    </div>-->
+</div>
+
+<!-- Javascript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/flexslider/jquery.flexslider.js"></script>
+
+<!--sds-->
+<script src="/js/adminNews/modernizr.js"></script> <!-- Modernizr -->
+<script src="/js/adminNews/main.js"></script>
+<script src="/js/navigation/jquery.easing.js"></script>
+<script src="/js/navigation/scroll.js"></script>
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/owl-carousel/owl.carousel.min.js"></script>
+<script src="/js/superfish/js/hoverIntent.js"></script>
+<script src="/js/superfish/js/superfish.js"></script>
+<script src="/js/tweecool.js"></script>
+<script src="/js/jquery.bpopup.js"></script>
+<script src="/js/pikaday/pikaday.js"></script>
+<script src="/js/dialogFx.js"></script>
+<script src="/js/dialog-js.js"></script>
+<script src="/js/classie.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="/js/isotope/isotope.pkgd.js"></script>
+<!--<script src="js/jquery.prettyphoto.js"></script>-->
+<!---->
+
+
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="/js/gmap2.js"></script>
+<script src="/js/jquery.prettyphoto.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/booking.js"></script>
+<!--<script type="text/javascript">-->
+
+<!--$(function() {-->
+
+<!--$("h2")-->
+<!--.wrapInner("<span></span>")-->
+
+<!--$("h2 br")-->
+<!--.before("<span class='spacer'>&nbsp;</span>")-->
+<!--.after("<span class='spacer'>&nbsp;</span>");-->
+
+<!--});-->
+
+<!--</script>-->
+
+<!-- Custom-scroll JS -->
+<!--<script src="js/jquery.custom-scroll.js"></script>-->
+
+</body>
+</html>

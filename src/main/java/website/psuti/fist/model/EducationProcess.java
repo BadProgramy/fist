@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class EducationProcess {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long idMenuItemHeaderInMainPageLeft;
     private long idPictureLeft;

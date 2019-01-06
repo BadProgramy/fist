@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class MenuItemHeaderInMainPage {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     //Если -1, то это в главных загаловках (Менюшки), у которых нет родителей
     //Если 0, то это просто названия (загаловки), какого либо контента т.е различные надписи на старнице

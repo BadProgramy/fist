@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 public class NewsOfFaculty {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String heading;
     @Column
@@ -61,13 +61,15 @@ public class NewsOfFaculty {
         this.idLeftPicture = idLeftPicture;
     }
 
+    public void setIdRightPicture(long idRightPicture) {
+        this.idRightPicture = idRightPicture;
+    }
+
     public long getIdRightPicture() {
         return idRightPicture;
     }
 
-    public void setIdRightPicture(long idRightPicture) {
-        this.idRightPicture = idRightPicture;
-    }
+
 
     public Pictures getLeftPicture() {
         return leftPicture;

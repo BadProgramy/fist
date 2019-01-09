@@ -95,21 +95,64 @@ a:hover {
 
 
 
-/* 2. ========== Bootstrap Class Overwrite Start ==========*/
+/* 2. ========== Bootstrap Class Overwrite Start ==========
+НАШ навбар*/
+.navbr{
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	z-index: 999;
+	width: 100%;
+	max-height: 40px;
+	background: white;
+	-webkit-box-shadow: 0px 2px 5px #000000;
+	-moz-box-shadow: 0px 2px 5px #000000;
+	box-shadow: 0px 2px 5px #000000;
+	position: fixed;
+	margin-top:-30px;
+}
 
+.site-fist{
+    float:left;
+	max-height: 60px;
+	max-width: 60px;
+	height: 100%;
+	width: 100%;
+}
 
+/*.inst-fist{
+    float: left;
+}*/
+
+.logo-psuti{
+	float:left;
+	max-width: 200px;
+	max-height:200px;
+}
+.logo1-psuti{
+	margin-top: 5px;
+	 float:left;
+	 max-width: 100px;
+	 max-height:200px;
+ }
+.logo2-psuti{
+	margin-top: 5px;
+	float:left;
+	max-width: 200px;
+	max-height:200px;
+}
 
 /* 2.1. ========== Home Navigation Start ==========*/
 .navbar-inverse {
-	border:none;
-	background:none;
-	border-radius:0;
-	margin:0;
-	z-index:999999;
+    border:none;
+    background:none;
+    border-radius:0;
+    margin:0;
+    z-index:999999;
 }
 
 .navbar-nav > li:after {
-	display:none;	
+    display:none;
 }
 
 .navbar-nav { display:inline-block; float:none; }
@@ -119,64 +162,64 @@ a:hover {
 
 
 .navbar-nav > li {
-	padding:0 20px;
-	position:relative;
-	display:inline-block;
-	float:none;
+    padding:0 20px;
+    position:relative;
+    display:inline-block;
+    float:none;
 }
 
 .navbar-nav > li:last-child:after {
-	display:none;
+    display:none;
 }
 
 .navbar-nav > li:after {
-	background:url(../images/dot.png) no-repeat;
+    background:url(../images/dot.png) no-repeat;
     content: "";
     height:5px;
     position: absolute;
     right: -5px;
     top:5px;
     width: 5px;
-	display:block;
+    display:block;
 }
 .navbar-inverse .navbar-nav > li > a { color:#fff; }
 
 .navbar-nav > li > a {
-	padding:0;
-	font-family: 'roboto_slabregular';
-	font-size:14px;
-	line-height:14px;
-	color:#ffffff;
-	text-transform:uppercase;
+    padding:0;
+    font-family: 'roboto_slabregular';
+    font-size:14px;
+    line-height:14px;
+    color:#ffffff;
+    text-transform:uppercase;
 }
 
 #navbar ,
 #navbar2 ,
 #navbar3 {
-	position:relative;
-	padding:31px 0 18px 0;
-	text-align:center;
+    position:relative;
+    padding:31px 0 18px 0;
+    text-align:center;
 }
 
 .navbar-brand {
-	height:auto;
-	padding:0;
-	position:relative;
-	margin:0 auto !important;
-	z-index:1;	
+    height:auto;
+    padding:0;
+    position:relative;
+    margin:0 auto !important;
+    z-index:1;
 }
 
 #onepage .navbar .container-fluid {
-	width:100%;
-	max-width:1200px;
+    width:100%;
+    max-width:1200px;
 }
 
 #onepage .navbar .container-fluid .col-md-5 {
-	width:40%;
+    width:40%;
 }
 
 #onepage .navbar .container-fluid .col-md-2 {
-	width:20%;
+    width:20%;
 }
 
 #onepage .navbar-brand > img {
@@ -202,114 +245,116 @@ a:hover {
 
 #onepage .is-sticky .navbar-nav {
     margin-top: 17px;
-	transition:.5s;
+    transition:.5s;
 }
 
 #onepage .is-sticky .navbar .container-fluid .col-md-5 {
-	width:43%;
+    width:43%;
 }
 
 #onepage .is-sticky .navbar .container-fluid .col-md-2 {
-	width:14%;
+    width:14%;
+}
+container-fluid{
+	margin: 200px 0px 0px 0px ;
 }
 
 .mob-menu {
-	display:none;
+    display:none;
 }
 
 .mob-menu.active {
-	display:block;
+    display:block;
 }
 
 .mob-menu ul li {
-	margin:0;
-	padding:7px 15px;
-	border-bottom:1px solid rgba(255,255,255,0.1);
+    margin:0;
+    padding:7px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .mob-menu ul {
-	width:100%;
-	max-width:260px;
-	margin:15px auto 0;
-	border:1px solid rgba(255,255,255,0.1);
-	
+    width:100%;
+    max-width:260px;
+    margin:15px auto 0;
+    border:1px solid rgba(255,255,255,0.1);
+
 }
 
 .mob-menu ul li:last-child {
-	border-bottom:none;
+    border-bottom:none;
 }
 
 .mob-menu ul li a {
-	color:#fff;
-	text-transform:uppercase;
-	font-size:13px;
+    color:#fff;
+    text-transform:uppercase;
+    font-size:13px;
 }
 
 
 .blog-page .navbar-brand {
-	height:auto;
-	padding:0;
-	position:absolute;
-	left:48%;
-	margin-right:-52%;
-	transform:translate(-50%,-50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-webkit-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	top:50%;
-	margin:0;
-	z-index:1;	
+    height:auto;
+    padding:0;
+    position:absolute;
+    left:48%;
+    margin-right:-52%;
+    transform:translate(-50%,-50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    top:50%;
+    margin:0;
+    z-index:1;
 }
 
 .header .border {
-	float:left;
-	width:100%;
-	border-top:2px solid #818181;
-	border-bottom:1px solid #818181;
+    float:left;
+    width:100%;
+    border-top:2px solid #818181;
+    border-bottom:1px solid #818181;
 
 }
 
 .header .container {
-	position:relative;
+    position:relative;
 }
 
 #onepage body {
-	background: #FFF url("../images/pattern/wood_pattern.png") repeat scroll 0% 0%;
+    background: #FFF url("../images/pattern/wood_pattern.png") repeat scroll 0% 0%;
 }
 
 #onepage .wrapper {
-	background: #FFF;
-	display: table;
-	width: 100%;
+    background: #FFF;
+    display: table;
+    width: 100%;
 }
 
 #onepage #intro {
-	height: 100vh;
-	overflow: hidden;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #onepage .header {
-	float: left;
-	width: 100%;
-	position: relative;
-	height: 100vh;
+    float: left;
+    width: 100%;
+    position: relative;
+
 }
 
 #onepage .stick {
-	display:table;
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	float:left;
+    display:table;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    float:left;
 }
 
 #index2 #wrapper {
     margin-top: -75px;
 }
-
 /* 2.1. ========== Home Navigation End ==========*/
 
 /* 2.2. ========== Blog Navigation Start ==========*/
@@ -1900,6 +1945,7 @@ blockquote {
 	width:50%;
 	padding:0 15px;
 	margin:0 0 65px;
+	display: inline-block;
 }
 
 .blog-mason-3col .bm-item {
@@ -2440,7 +2486,7 @@ margin:0 0 25px;
 
 .container {
 	width:100%;
-	max-width:1140px;
+	max-width:100%;
 	margin:0 auto;
 }
 
@@ -3261,13 +3307,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .top-bar {
     display: table;
-    /*float: right;
-    margin: 23px 0 0px;*/
+    float: left;
+   /* margin: 23px 0 0px;*/
 }
 
 .top-bar ul li {
 	float:left;
-	/*margin-left:80px;*/
 }
 
 .top-bar ul li a {

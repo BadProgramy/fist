@@ -29,6 +29,6 @@ function init() {
     myMap.geoObjects.add(myPlacemark1);
     myMap.geoObjects.add(myPlacemark2);
     myMap.controls.remove('fullscreenControl');
-    myPlacemark.balloon.open();
+    /*myPlacemark.balloon.open();*/
 
 };

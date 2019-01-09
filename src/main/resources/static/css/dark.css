@@ -1928,9 +1928,10 @@ blockquote {
 }
 
 .blog-mason-2col .bm-item {
-	width:50%;
+	width:49%;
 	padding:0 15px;
 	margin:0 0 65px;
+	display:inline-block !important;
 }
 
 .blog-mason-3col .bm-item {
@@ -4882,7 +4883,7 @@ body {
 }
 
 #header2 {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid white;
 }
 
 .sf-menu > li > a {

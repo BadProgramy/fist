@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="keywords" content="HTML5 Template" />
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Главная страница</title>
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="js/isotope/isotope.css">
+	<link rel="stylesheet" href="js/flexslider/flexslider.css">
+	<link rel="stylesheet" href="js/owl-carousel/owl.carousel.css">
+	<link rel="stylesheet" href="js/owl-carousel/owl.theme.css">
+	<link rel="stylesheet" href="js/owl-carousel/owl.transitions.css">
+	<link rel="stylesheet" href="js/superfish/css/megafish.css" media="screen">
+	<link rel="stylesheet" href="js/superfish/css/superfish.css" media="screen">
+	<link rel="stylesheet" href="js/pikaday/pikaday.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/dark.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<!--<link rel="stylesheet" href="css/prettyphoto.css">-->
+    <link rel="stylesheet" href="css/studentStyle.css">
+
+	<!-- JS Font Script -->
+	<script src="http://use.edgefonts.net/bebas-neue.js"></script>
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- Modernizer -->
+	<script src="js/modernizr.custom.97074.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+
+</head>
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+	<!-- HEADER -->
+	<header id="header">
+		<div class="navbr">
+			<div class="menu-wrap">
+				<div class="row">
+					<div class="logo-psuti">
+						<a href="/main"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
+					</div>
+					<div class="logo-psuti">
+						<a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
+					</div>
+					<!--<div class="logo-psuti">
+						<a href="/main"><img src="images\mustache1.png" class="img-responsive" alt=""/></a>
+					</div>-->
+					<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+						<li>
+							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
+							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+							<ul >
+								<div th:each="menuItemMinor : ${mapEntry.value}">
+									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
+									</li>
+								</div>
+							</ul>
+						</li>
+					</ul>
+					<div class="top-bar "style="float:right !important; margin-right: 50px;">
+						<ul>
+							<li class="tb-info "style="float:right !important;">
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black"></li>
+
+							</li>
+							<br>
+							<li class="tb-info "style="float:right !important;">
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black"></li>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!--HEADER-->
+	<div class="header" style="height: 100px"></div>
+
+		<!--<div class="flexslider">
+			<ul class="slides">
+				<li>
+					<img src="images/slider/1/1.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="images/slider/1/2.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="images/slider/1/3.jpg" alt=""/>
+				</li>
+			</ul>
+		</div>
+			</div>
+		</div>-->
+
+	<!-- SLIDER -->
+	<div class="container-fluid no-padding">
+		<div id="home-slider2" class="owl-carousel owl-theme">
+			<div class="item" th:each="picture : ${slider}">
+				<img th:src="${picture.getUrlPicture()}" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
+			</div>
+		</div>
+	</div>
+
+	<!-- GALLERY -->
+	<section id="content">
+		<div class="content-blog">
+			<div class="container">
+				<div class="row">
+					<!--<div class="page_header text-center">
+						<h2>Новости</h2>
+						<div class="mustache">
+							<span><img class="img-responsive" src="images/home-page/fist.png" alt=""></span>
+						</div>
+					</div>-->
+					<div class="h-page-title">
+						<h2>Новости</h2>
+						<div class="mustache">
+							<span class="sub-title">Актуальное на сегодня</span>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="row">
+							<div id="blog-mason" class="blog-mason-2col">
+								<article class="blogpost bm-item isotope-item">
+									<!-- Media Gallery -->
+									<div class="post-media">
+										<img src="images/home-page/projects/sobranie.png" class="img-responsive" alt=""> <!--500 X 300-->
+									</div>
+									<h2 class="post-title"><a href="#">Уважаемые родители</a></h2>
+									<div class="post-meta">
+										<span><a href="#"><i class="fa fa-calendar"></i> 9 Ноября</a></span>
+										<!--<span><a href="#"><i class="fa fa-edit"></i> John Doe</a></span>-->
+										<!--<span><i class="fa fa-folder-o"></i> <a href="">Vector</a>, <a href="#">Design</a></span>-->
+										<!--<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
+									</div>
+									<div class="post-excerpt">
+										<p>01 декабря в 12:00 (ауд. 2-05, корпус №2 ПГУТИ: Московское шоссе, 77) состоится собрание родителей студентов 1 курса факультета "Информационные системы и технологии".
+											<br>
+											Повестка дня:
+											<br>
+											1. Встреча с представителями факультета	<br>
+											2. Итоги внутрисеместровой аттестации студентов факультета	<br>
+											3. Ответы на вопросы</p>
+									</div>
+									<!--<a href="#" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
+								</article>
+
+								<article class="blogpost bm-item isotope-item">
+									<div class="post-media">
+										<img src="images/home-page/projects/aneme.jpg" class="img-responsive" alt="">   <!--500 X 300-->
+									</div>
+									<h2 class="post-title"><a href="#">Внимание!Картинка!</a></h2>
+									<div class="post-meta">
+										<span><a href="#"><i class="fa fa-calendar"></i> 29 Октября</a></span>
+										<!--<span><a href="#"><i class="fa fa-edit"></i> John Doe</a></span>
+										<span><i class="fa fa-folder-o"></i> <a href="">Vector</a>, <a href="#">Design</a></span>
+										<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
+									</div>
+									<div class="post-excerpt">
+										<p>Изображение </p>
+									</div>
+									<!--<a href="http://fist.psuti.ru/index.php/456-itogi-promezhutochnogo-kontrolya-1-semestra-2018-2019-uch-goda" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
+								</article>
+
+
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+						<div class="space30"></div>
+						<a href="/newsBlog" class="main-btn">Больше новостей</a>
+						<!-- End Pagination -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- GALLERY -->
+	<!--<section id="content">
+		<div class="content-blog">
+			<div class="container">
+				<div class="row">
+					<div class="h-page-title">
+				<h1 th:object="${ItemHeader1}" th:text="${ItemHeader1.getName()}"></h1>
+				<div class="mustache">
+					<span><img class="img-responsive" th:src="${ItemHeaderPictureSplit.getUrlPicture()}" alt=""></span>
+				</div>
+			</div>
+		</div>
+
+		<div id="portfolio-gal">
+			<div class="col-md-12">
+				<div class="portfolio-gal isotope">
+					<div class="folio-item headshaves col-sm-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="folio-thumb">
+							<a class="pop_lbox">
+								<div class="overlay-bg"></div>
+								<img src="images/home-page/projects/1.jpg" class="img-responsive" alt=""><img src="images/home-page/projects/sobranie.png" class="pic4a" alt=""/></img>
+								<h2>Уважаемые родители!</h2>
+								<h5>
+									01 декабря в 12:00 (ауд. 2-05, корпус №2 ПГУТИ: Московское шоссе, 77) состоится собрание родителей студентов 1 курса факультета "Информационные системы и технологии".<br />Повестка дня:<br />1. Встреча с представителями факультета
+										 <br />
+									2. Итоги внутрисеместровой аттестации студентов факультета
+										 <br />
+									3. Ответы на вопросы
+
+								</h5>
+
+							</a>
+						</div>
+					</div>
+					<div class="folio-item restyle col-sm-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="folio-thumb">
+							<a class="pop_lbox">
+								<div class="overlay-bg"></div>
+								<img src="images/home-page/projects/2.jpg" class="img-responsive" alt=""/>
+							</a>
+						</div>
+					</div>
+					<div class="folio-item manicure col-sm-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="folio-thumb">
+							<a class="pop_lbox">
+								<div class="overlay-bg"></div>
+								<img src="images/home-page/projects/3.jpg" class="img-responsive" alt=""/>
+							</a>
+						</div>
+					</div>
+					<div class="folio-item stubble col-sm-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="folio-thumb">
+							<a class="pop_lbox">
+								<div class="overlay-bg"></div>
+								<img src="images/home-page/projects/4.jpg" class="img-responsive" alt=""/>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<a th:object="${ItemButton1}" th:text="${ItemButton1.getName()}" th:href="${ItemButton1.getUrlHref()}" class="main-btn"></a>
+			</div>
+		</div>
+	</section>-->
+
+
+	<!-- SERVICES -->
+	<section id="service" class="service">
+		<div class="container">
+			<div class="h-page-title">
+				<h1 th:object="${ItemHeader2}" th:text="${ItemHeader2.getName()}"></h1>
+				<!--<span class="sub-title">what we can do</span>-->
+				<div class="mustache">
+					<span><img class="img-responsive" th:src="${ItemHeaderPictureSplit.getUrlPicture()}" alt=""></span>
+				</div>
+			</div>
+
+			<div class="main-service">
+				<div class="row" th:each="mapEntry : ${educationProcess}">
+					<div class="col-md-6 col-sm-6 service-left">
+						<span class="ico" >
+							<img class="icon_1" th:src="${mapEntry.getPicturesLeft().getUrlPicture()}" alt="">
+							<img class="icon_2" th:src="${mapEntry.getPicturesLeft().getUrlPicture()}" alt="">
+						</span>
+						<div class="service-info">
+							<h4>
+								<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageLeft().getName()}"></a>
+							</h4>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-6 service-right">
+						<span class="ico">
+							<img class="icon_1" th:src="${mapEntry.getPicturesRight().getUrlPicture()}" alt="">
+							<img class="icon_2" th:src="${mapEntry.getPicturesRight().getUrlPicture()}" alt="">
+						</span>
+						<div class="service-info">
+							<h4>
+								<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageRight().getName()}"></a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- PRICING -->
+	<section id="pricing" class="pricing">
+		<div class="pricing-bg">
+			<div class="container">
+				<div class="h-page-title">
+					<h1 th:object="${ItemHeader3}" th:text="${ItemHeader3.getName()}"></h1>
+				</div>
+
+				<div class="main-pricing">
+					<div class="row">
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="price-block">
+								<div class="inner-price">
+									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}"></h3>
+									<br>
+									<div id="vk_widget"></div>
+									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
+									<script>
+                                        function VK_Widget_Init(){
+                                            document.getElementById('vk_widget').innerHTML = '<div id="vk_groups"></div>';
+                                            VK.Widgets.Group("vk_groups", {mode: 4, width: "auto", height: "400"},50489116);
+                                        };
+                                        window.addEventListener('load', VK_Widget_Init, false);
+                                        window.addEventListener('resize', VK_Widget_Init, false);
+									</script>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="price-block">
+								<div class="inner-price">
+									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}"></h3>
+									<div class='widget-content'>
+										<iframe src="//widget.instagramm.ru/?imageW=2&imageH=3&thumbnail_size=97&type=0&typetext=fist.psuti&head_show=1&profile_show=0&shadow_show=1&bg=255,255,255,1&opacity=true&head_bg=46729b&subscribe_bg=ad4141&border_color=c3c3c3&head_title=%25D0%25A4%25D0%2598%25D0%25A1%25D0%25A2%2520%25D0%259F%25D0%2593%25D0%25A3%25D0%25A2%25D0%2598" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;height:410px;"></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="price-block">
+								<div class="inner-price">
+									<h3 th:object="${ItemHeader6}" th:text="${ItemHeader6.getName()}"></h3>
+									<br>
+									<div id="vk_widget1"></div>
+									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
+									<script>
+                                        function VK_Widget_Init(){
+                                            document.getElementById('vk_widget1').innerHTML = '<div id="vk_groupss"></div>';
+                                            VK.Widgets.Group("vk_groupss", {mode: 4, width: "auto", height: "400"},17785357);
+                                        };
+                                        window.addEventListener('load', VK_Widget_Init, false);
+                                        window.addEventListener('resize', VK_Widget_Init, false);
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!--<ul id="da-thumbs" class="da-thumbs">
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/1.jpg">
+				<img src="images/home-page/gallery/1.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/2.jpg">
+				<img src="images/home-page/gallery/2.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/3.jpg">
+				<img src="images/home-page/gallery/3.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/4.jpg">
+				<img src="images/home-page/gallery/4.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/5.jpg">
+				<img src="images/home-page/gallery/5.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/6.jpg">
+				<img src="images/home-page/gallery/6.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/7.jpg">
+				<img src="images/home-page/gallery/7.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/8.jpg">
+				<img src="images/home-page/gallery/8.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/9.jpg">
+				<img src="images/home-page/gallery/9.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/10.jpg">
+				<img src="images/home-page/gallery/10.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/11.jpg">
+				<img src="images/home-page/gallery/11.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/12.jpg">
+				<img src="images/home-page/gallery/12.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+	</ul>
+-->
+
+	<!-- STATS -->
+	<section id="stats">
+		<div class="stats">
+			<div class="container">
+				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
+					<h1 th:text="${mapEntry.value}"></h1>
+					<!--<img src="images/mustache.png" alt="">-->
+					<h6 th:text="${mapEntry.key}"></h6>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="home-shop">
+		<div class="h2-gallery" id="5">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="h-page-title">
+					<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}"></h1>
+					<!--<span class="sub-title">hot deals</span>-->
+					<!--<div class="mustache">
+						<span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
+					</div>-->
+				</div>
+				<div class="clearfix space35"></div>
+
+				<div id="home-shop-carousel" class="owl-carousel owl-theme">
+					<div th:each="student : ${bestStudents}" class="sm-item text-center">
+						<div class="product">
+							<div class="product-thumb">
+                                <li><a class="cd-signin">
+								<img th:src="${student.getPicture().getUrlPicture()}"  class="img-responsive" alt="">
+									<div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                                </div>
+							<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
+							<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}"></span></div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+        <div class="border-stud">
+         <div class="stud-photo">
+        <a><img src="images\shop\1.jpg" class="img-responsive" alt=""/></a>
+         </div>
+            <h2 class="stud-name">Аброськина Елена Сергеевна</a></h2>
+            <div class="text-stud">
+                <p>
+                    Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
+                    вычислительная техника». С начала своего обучения принимает активное
+                    участие в общественной жизни университета. Выступает в качестве
+                    организатора в культурных мероприятиях ВУЗа. В 2015 году прошла
+                    обучение студенческого Профактива. В первичной профсоюзной
+                    организации студентов (ППОС ПГУТИ) с сентября 2017 года была
+                    заместителем председателя профбюро ФИСТ. С сентября 2018 года
+                    является председателем профбюро ФИСТ. Имеет оценки отлично и хорошо
+                    в течение всего периода обучения.
+                    Активно занимается научно-исследовательской деятельностью. Принимала
+                    участие в следующих конкурсах и олимпиадах: “У.М.Н.И.К.”, "IT-прорыв”,
+                    Студенческая научная конференция и олимпиады ПГУТИ.
+                    Интересуется и регулярно участвует в командных интеллектуальных
+                    играх: “Кроссворд-шоу” на кубок совета ректоров Самарской области,
+                    “Что? Где? Когда” в ПГУТИ и Самарском университете, "#SIB_LAB".
+                </p>
+            </div>
+        </div>
+
+    </div> <!-- cd-user-modal-container -->
+</div> <!-- cd-user-modal -->
+
+
+	<!-- FOOTER -->
+	<footer id="footer2">
+		<div class="container">
+			<div class="row">
+
+                <div class="col-md-3">
+					<h3 th:text="${ItemHeader8.getName()}"></h3>
+					<div class="top-bar">
+						<ul>
+							<li class="tb-info">
+								<a data-dialog2="somedialog2" class="trigger">
+									<i class="fa fa-map-marker"></i>
+									<span class="navigation-YK">Мы находимся в<br><em class="navigation-YK">Яндекс Картах</em></span>
+								</a>
+							</li>
+							<li class="tb-info">
+								<a data-dialog1="somedialog1" class="trigger">
+									<!--<i class="fa fa-clock-o"></i>
+									<span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
+									<span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>-->
+								</a>
+							</li>
+							<li>
+								<a style="display: none" data-dialog="somedialog" class="trigger button btn-xs color"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--<div class="col-md-3">
+					<h3>Неизветсно</h3>
+					<p>Надо узнать, что тут можно интересного написать!</p>
+
+
+
+					&lt;!&ndash;<form class="newsletter">
+						<input type="text" placeholder="Email Address here..">
+						<button type="submit"><i class="fa fa-paper-plane"></i></button>
+					</form>&ndash;&gt;
+				</div>-->
+                <div class="col-md-3">
+                    <h3>Подписка</h3>
+                    <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
+                    <form class="newsletter">
+                        <input type="text" placeholder="Email адрес сюда..">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+				<!--<div class="col-md-3">
+					<h3 th:text="${ItemHeader9.getName()}"></h3>
+					<ul class="f-news">
+						<li th:each="subtitle : ${subtitles}">
+							<a th:href="${subtitle.getUrlHref()}" th:text="${subtitle.getName()}"><i class="fa fa-angle-right"></i></a>
+						</li>
+					</ul>
+				</div>-->
+
+				<div class="col-md-3">
+					<h4 style="line-height: 35px">Полезные ссылки</h4>
+                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                     </div>
+
+                <div class="col-md-3">
+                <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
+                <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
+                </div>-->
+			</div>
+		</div>
+		<div class="footer-bottom container">
+			<div class="row">
+				<div class="col-md-6">
+					<p th:text="${ItemHeader11.getName()}"></p>
+				</div>
+				<!--<div class="col-md-6">
+					<p class="pull-right">Design by <a target="_blank" href="http://themeforest.net/user/Theme-Squared">ThemeSquared</a></p>
+				</div>-->
+			</div>
+		</div>
+	</footer>
+	<!-- FOOTER -->
+</div>
+
+<div id="somedialog" class="dialog">
+	<div class="dialog__overlay"></div>
+	<div class="dialog__content">
+		<div id="booking_pop" class="booking_pop">
+		</div>
+		<button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+	</div>
+</div>
+
+<div id="somedialog1" class="dialog">
+	<div class="dialog__overlay"></div>
+	<div class="dialog__content">
+		<div class="timer_popup">
+			<button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+		</div>
+	</div>
+</div>
+
+
+<div id="somedialog2" class="dialog">
+	<div class="dialog__overlay"></div>
+	<div class="dialog__content">
+		<div class="contact-pop">
+			<div class="row">
+				<div class="col-md-6">
+					<div id="map"></div>
+				</div>
+				<div class="col-md-6 pop-contact">
+					<ul class="contact-info">
+						<li>
+							<p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №1:</strong> <span>г. Самара, Льва Толстого 23</span></p>
+						</li>
+						<li>
+							<p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №2:</strong> <span>г. Самара, Московское шоссе 77</span></p>
+						</li>
+						<li>
+							<p><strong><i class="fa fa-envelope"></i> Сайт:</strong> <span><a href="#">fist.psuti.ru</a></span></p>
+						</li>
+						<li>
+							<p><strong><i class="fa fa-phone"></i> Телефон:</strong> <span>+7(846) 228-00-05</span></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+		</div>
+	</div>
+</div>
+
+<!-- Javascript -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/navigation/jquery.sticky.js"></script>
+<script src="js/flexslider/jquery.flexslider.js"></script>
+
+<!--sds-->
+<script src="js/navigation/jquery.easing.js"></script>
+<script src="js/navigation/scroll.js"></script>
+
+<script src="js/owl-carousel/owl.carousel.min.js"></script>
+<!--<script src="js/isotope/isotope.pkgd.js"></script>-->
+<script src="js/navigation/jquery.sticky.js"></script>
+<script src="js/superfish/js/hoverIntent.js"></script>
+<script src="js/superfish/js/superfish.js"></script>
+
+<script src="js/jquery.bpopup.js"></script>
+<script src="js/pikaday/pikaday.js"></script>
+<script src="js/dialogFx.js"></script>
+<script src="js/dialog-js.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!---->
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="js/gmap2.js"></script>
+<!--<script src="js/jquery.prettyphoto.js"></script>-->
+<script src="js/script.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/student_character.js"></script>
+</body>
+</html>

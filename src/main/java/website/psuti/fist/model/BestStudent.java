@@ -7,7 +7,6 @@ public class BestStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
     private String characteristic;
     private String groupInUniversity;

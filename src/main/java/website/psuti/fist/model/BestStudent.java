@@ -9,6 +9,7 @@ public class BestStudent {
     private long id;
 
     private String name;
+    private String characteristic;
     private String groupInUniversity;
     private String url;
     private long idPicture;
@@ -65,5 +66,13 @@ public class BestStudent {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getCharacteristic() {
+        return characteristic;
+    }
+
+    public void setCharacteristic(String characteristic) {
+        this.characteristic = characteristic;
     }
 }

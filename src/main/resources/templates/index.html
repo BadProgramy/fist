@@ -33,6 +33,8 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/dark.css">
 	<link rel="stylesheet" href="css/responsive.css">
+	<!--<link rel="stylesheet" href="css/prettyphoto.css">-->
+    <link rel="stylesheet" href="css/studentStyle.css">
 
 	<!-- JS Font Script -->
 	<script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -45,6 +47,7 @@
 	<![endif]-->
 
 	<!-- Modernizer -->
+	<script src="js/modernizr.custom.97074.js"></script>
 	<script src="js/modernizr.custom.js"></script>
 
 </head>
@@ -52,98 +55,68 @@
 
 <div id="wrapper" class="wrapper">
 	<!-- HEADER -->
-	<header id="header2">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-xs-5 logo">
-					<a href="/main"><img th:src="${logotipFIST.getUrlPicture()}" class="img-responsive" alt=""/></a>
-				</div>
-				<div class="col-md-9 col-xs-7">
-					<div class="top-bar">
-						<ul>
-							<li class="tb-info">
-							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: aquamarine"></li>
-
-							</li>
-							<br>
-							<li class="tb-info">
-							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: aquamarine"></li>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+	<header id="header">
+		<div class="navbr">
 			<div class="menu-wrap">
-				<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
-				<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
-					<li>
-						<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
-						<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-						<ul >
-							<div th:each="menuItemMinor : ${mapEntry.value}">
-							<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-								<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
-							</li>
-							</div>
-						</ul>
-					</li>
-				</ul>
-
-				<div class="header-xtra">
-
-					<div class="s-cart">
-						<!--<div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>2</em></div>
-
-						<div class="cart-info">
-							<small>You have <em class="highlight">2 item(s)</em> in your shopping bag</small>
-							<br>
-							<br>
-							<div class="ci-item">
-								<img src="images/shop/2.jpg" width="70" alt=""/>
-								<div class="ci-item-info">
-									<h5><a href="./single-product.html">Product fashion</a></h5>
-									<p>2 x $250.00</p>
-									<div class="ci-edit">
-										<a href="#" class="edit fa fa-edit"></a>
-										<a href="#" class="edit fa fa-trash"></a>
-									</div>
-								</div>
-							</div>
-							<div class="ci-item">
-								<img src="images/shop/8.jpg" width="70" alt=""/>
-								<div class="ci-item-info">
-									<h5><a href="./single-product.html">Product fashion</a></h5>
-									<p>2 x $250.00</p>
-									<div class="ci-edit">
-										<a href="#" class="edit fa fa-edit"></a>
-										<a href="#" class="edit fa fa-trash"></a>
-									</div>
-								</div>
-							</div>
-							<div class="ci-total">Subtotal: $750.00</div>
-							<div class="cart-btn">
-								<a href="#">View Bag</a>
-								<a href="#">Checkout</a>
-							</div>
-						</div>-->
+				<div class="row">
+					<div class="logo-psuti">
+						<a href="/main"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
 					</div>
-					<!--<div class="s-search">
-						<div class="ss-ico"><i class="fa fa-search"></i></div>
-						<div class="search-block">
-							<div class="ssc-inner">
-								<form>
-									<input type="text" placeholder="Type Search text here...">
-									<button type="submit"><i class="fa fa-search"></i></button>
-								</form>
-							</div>
-						</div>
+					<div class="logo-psuti">
+						<a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
+					</div>
+					<!--<div class="logo-psuti">
+						<a href="/main"><img src="images\mustache1.png" class="img-responsive" alt=""/></a>
 					</div>-->
+					<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+						<li>
+							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
+							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+							<ul >
+								<div th:each="menuItemMinor : ${mapEntry.value}">
+									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
+									</li>
+								</div>
+							</ul>
+						</li>
+					</ul>
+					<div class="top-bar "style="float:right !important; margin-right: 50px;">
+						<ul>
+							<li class="tb-info "style="float:right !important;">
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black"></li>
+
+							</li>
+							<br>
+							<li class="tb-info "style="float:right !important;">
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black"></li>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<div class="close-btn fa fa-times"></div>
+	<!--HEADER-->
+	<div class="header" style="height: 100px"></div>
+
+		<!--<div class="flexslider">
+			<ul class="slides">
+				<li>
+					<img src="images/slider/1/1.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="images/slider/1/2.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="images/slider/1/3.jpg" alt=""/>
+				</li>
+			</ul>
+		</div>
+			</div>
+		</div>-->
 
 	<!-- SLIDER -->
 	<div class="container-fluid no-padding">
@@ -151,23 +124,93 @@
 			<div class="item" th:each="picture : ${slider}">
 				<img th:src="${picture.getUrlPicture()}" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
 			</div>
-
-			<!--<div class="item">
-				<img th:src="${slider2.getUrlPicture()}" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-			</div>
-
-			<div class="item">
-				<img th:src="${slider3.getUrlPicture()}" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-			</div>-->
 		</div>
 	</div>
 
 	<!-- GALLERY -->
-	<section id="gallery" class="gallery">
-		<div class="container">
-			<div class="h-page-title">
+	<section id="content">
+		<div class="content-blog">
+			<div class="container">
+				<div class="row">
+					<!--<div class="page_header text-center">
+						<h2>Новости</h2>
+						<div class="mustache">
+							<span><img class="img-responsive" src="images/home-page/fist.png" alt=""></span>
+						</div>
+					</div>-->
+					<div class="h-page-title">
+						<h2>Новости</h2>
+						<div class="mustache">
+							<span class="sub-title">Актуальное на сегодня</span>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="row">
+							<div id="blog-mason" class="blog-mason-2col">
+								<article class="blogpost bm-item isotope-item">
+									<!-- Media Gallery -->
+									<div class="post-media">
+										<img src="images/home-page/projects/sobranie.png" class="img-responsive" alt=""> <!--500 X 300-->
+									</div>
+									<h2 class="post-title"><a href="#">Уважаемые родители</a></h2>
+									<div class="post-meta">
+										<span><a href="#"><i class="fa fa-calendar"></i> 9 Ноября</a></span>
+										<!--<span><a href="#"><i class="fa fa-edit"></i> John Doe</a></span>-->
+										<!--<span><i class="fa fa-folder-o"></i> <a href="">Vector</a>, <a href="#">Design</a></span>-->
+										<!--<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
+									</div>
+									<div class="post-excerpt">
+										<p>01 декабря в 12:00 (ауд. 2-05, корпус №2 ПГУТИ: Московское шоссе, 77) состоится собрание родителей студентов 1 курса факультета "Информационные системы и технологии".
+											<br>
+											Повестка дня:
+											<br>
+											1. Встреча с представителями факультета	<br>
+											2. Итоги внутрисеместровой аттестации студентов факультета	<br>
+											3. Ответы на вопросы</p>
+									</div>
+									<!--<a href="#" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
+								</article>
+
+								<article class="blogpost bm-item isotope-item">
+									<div class="post-media">
+										<img src="images/home-page/projects/aneme.jpg" class="img-responsive" alt="">   <!--500 X 300-->
+									</div>
+									<h2 class="post-title"><a href="#">Внимание!Картинка!</a></h2>
+									<div class="post-meta">
+										<span><a href="#"><i class="fa fa-calendar"></i> 29 Октября</a></span>
+										<!--<span><a href="#"><i class="fa fa-edit"></i> John Doe</a></span>
+										<span><i class="fa fa-folder-o"></i> <a href="">Vector</a>, <a href="#">Design</a></span>
+										<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
+									</div>
+									<div class="post-excerpt">
+										<p>Изображение </p>
+									</div>
+									<!--<a href="http://fist.psuti.ru/index.php/456-itogi-promezhutochnogo-kontrolya-1-semestra-2018-2019-uch-goda" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
+								</article>
+
+
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+						<div class="space30"></div>
+						<a href="/newsBlog" class="main-btn">Больше новостей</a>
+						<!-- End Pagination -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- GALLERY -->
+	<!--<section id="content">
+		<div class="content-blog">
+			<div class="container">
+				<div class="row">
+					<div class="h-page-title">
 				<h1 th:object="${ItemHeader1}" th:text="${ItemHeader1.getName()}"></h1>
-				<!--<span class="sub-title">our works</span>-->
 				<div class="mustache">
 					<span><img class="img-responsive" th:src="${ItemHeaderPictureSplit.getUrlPicture()}" alt=""></span>
 				</div>
@@ -175,15 +218,6 @@
 		</div>
 
 		<div id="portfolio-gal">
-			<!--<div class="col-md-12 main-navigation">
-				<ul id="filters" class="clearfix portfolio-gal-filter" data-option-key="filter">
-					<li><a href="#filter" class="active" data-option-value="*">All</a></li>
-					<li><a href="#filter" data-option-value=".headshaves">Head shaves</a></li>
-					<li><a href="#filter" data-option-value=".restyle">Restyle</a></li>
-					<li><a href="#filter" data-option-value=".manicure">Manicure</a></li>
-					<li><a href="#filter" data-option-value=".stubble">Stubble</a></li>
-				</ul>
-			</div>-->
 			<div class="col-md-12">
 				<div class="portfolio-gal isotope">
 					<div class="folio-item headshaves col-sm-12 col-sm-6 col-md-6 col-lg-6">
@@ -202,12 +236,6 @@
 								</h5>
 
 							</a>
-							<!--<div class="folio-border">
-								<div class="folio-detail">
-									<h5>Родительское собрание</h5>
-									<h6>Уважаемые родители!</h6>
-								</div>
-							</div>-->
 						</div>
 					</div>
 					<div class="folio-item restyle col-sm-12 col-sm-6 col-md-6 col-lg-6">
@@ -216,12 +244,6 @@
 								<div class="overlay-bg"></div>
 								<img src="images/home-page/projects/2.jpg" class="img-responsive" alt=""/>
 							</a>
-							<!--<div class="folio-border">
-								<div class="folio-detail">
-									<h5>Новость</h5>
-									<h6>и её описание</h6>
-								</div>
-							</div>-->
 						</div>
 					</div>
 					<div class="folio-item manicure col-sm-12 col-sm-6 col-md-6 col-lg-6">
@@ -230,12 +252,6 @@
 								<div class="overlay-bg"></div>
 								<img src="images/home-page/projects/3.jpg" class="img-responsive" alt=""/>
 							</a>
-							<!--<div class="folio-border">
-								<div class="folio-detail">
-									<h5>Новость</h5>
-									<h6>и её описание</h6>
-								</div>
-							</div>-->
 						</div>
 					</div>
 					<div class="folio-item stubble col-sm-12 col-sm-6 col-md-6 col-lg-6">
@@ -244,21 +260,14 @@
 								<div class="overlay-bg"></div>
 								<img src="images/home-page/projects/4.jpg" class="img-responsive" alt=""/>
 							</a>
-							<!--<div class="folio-border">
-								<div class="folio-detail">
-									<h5>Новость</h5>
-									<h6>и её описание</h6>
-								</div>
-							</div>-->
 						</div>
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<!--<div class="space30"></div>-->
 				<a th:object="${ItemButton1}" th:text="${ItemButton1.getName()}" th:href="${ItemButton1.getUrlHref()}" class="main-btn"></a>
 			</div>
 		</div>
-	</section>
+	</section>-->
 
 
 	<!-- SERVICES -->
@@ -364,6 +373,83 @@
 		</div>
 	</section>
 
+
+	<!--<ul id="da-thumbs" class="da-thumbs">
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/1.jpg">
+				<img src="images/home-page/gallery/1.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/2.jpg">
+				<img src="images/home-page/gallery/2.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/3.jpg">
+				<img src="images/home-page/gallery/3.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/4.jpg">
+				<img src="images/home-page/gallery/4.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/5.jpg">
+				<img src="images/home-page/gallery/5.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/6.jpg">
+				<img src="images/home-page/gallery/6.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/7.jpg">
+				<img src="images/home-page/gallery/7.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/8.jpg">
+				<img src="images/home-page/gallery/8.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/9.jpg">
+				<img src="images/home-page/gallery/9.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/10.jpg">
+				<img src="images/home-page/gallery/10.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/11.jpg">
+				<img src="images/home-page/gallery/11.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+		<li>
+			<a class="prettyPhoto" href="images/home-page/gallery/12.jpg">
+				<img src="images/home-page/gallery/12.jpg" class="img-responsive" alt=""/>
+				<div><span class="fa fa-search-plus"></span></div>
+			</a>
+		</li>
+	</ul>
+-->
+
 	<!-- STATS -->
 	<section id="stats">
 		<div class="stats">
@@ -377,7 +463,9 @@
 		</div>
 	</section>
 
+
 	<section id="home-shop">
+		<div class="h2-gallery" id="5">
 		<div class="container">
 			<div class="col-md-12">
 				<div class="h-page-title">
@@ -393,23 +481,61 @@
 					<div th:each="student : ${bestStudents}" class="sm-item text-center">
 						<div class="product">
 							<div class="product-thumb">
+                                <li><a class="cd-signin">
 								<img th:src="${student.getPicture().getUrlPicture()}"  class="img-responsive" alt="">
-							</div>
+									<div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                                </div>
 							<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
 							<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}"></span></div>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</section>
+
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+        <div class="border-stud">
+         <div class="stud-photo">
+        <a><img src="images\shop\1.jpg" class="img-responsive" alt=""/></a>
+         </div>
+            <h2 class="stud-name">Аброськина Елена Сергеевна</a></h2>
+            <div class="text-stud">
+                <p>
+                    Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
+                    вычислительная техника». С начала своего обучения принимает активное
+                    участие в общественной жизни университета. Выступает в качестве
+                    организатора в культурных мероприятиях ВУЗа. В 2015 году прошла
+                    обучение студенческого Профактива. В первичной профсоюзной
+                    организации студентов (ППОС ПГУТИ) с сентября 2017 года была
+                    заместителем председателя профбюро ФИСТ. С сентября 2018 года
+                    является председателем профбюро ФИСТ. Имеет оценки отлично и хорошо
+                    в течение всего периода обучения.
+                    Активно занимается научно-исследовательской деятельностью. Принимала
+                    участие в следующих конкурсах и олимпиадах: “У.М.Н.И.К.”, "IT-прорыв”,
+                    Студенческая научная конференция и олимпиады ПГУТИ.
+                    Интересуется и регулярно участвует в командных интеллектуальных
+                    играх: “Кроссворд-шоу” на кубок совета ректоров Самарской области,
+                    “Что? Где? Когда” в ПГУТИ и Самарском университете, "#SIB_LAB".
+                </p>
+            </div>
+        </div>
+
+    </div> <!-- cd-user-modal-container -->
+</div> <!-- cd-user-modal -->
 
 
 	<!-- FOOTER -->
 	<footer id="footer2">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3">
+
+                <div class="col-md-3">
 					<h3 th:text="${ItemHeader8.getName()}"></h3>
 					<div class="top-bar">
 						<ul>
@@ -443,35 +569,48 @@
 						<button type="submit"><i class="fa fa-paper-plane"></i></button>
 					</form>&ndash;&gt;
 				</div>-->
+                <div class="col-md-3">
+                    <h3>Подписка</h3>
+                    <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
+                    <form class="newsletter">
+                        <input type="text" placeholder="Email адрес сюда..">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
 
-				<div class="col-md-3">
+				<!--<div class="col-md-3">
 					<h3 th:text="${ItemHeader9.getName()}"></h3>
 					<ul class="f-news">
 						<li th:each="subtitle : ${subtitles}">
 							<a th:href="${subtitle.getUrlHref()}" th:text="${subtitle.getName()}"><i class="fa fa-angle-right"></i></a>
 						</li>
-						<!--<li><a href="#">Пример 2<i class="fa fa-angle-right"></i></a></li>
-						<li><a href="#">Пример 3<i class="fa fa-angle-right"></i></a></li>
-						<li><a href="#">Пример 4<i class="fa fa-angle-right"></i></a></li>
-						<li><a href="#">Пример 5<i class="fa fa-angle-right"></i></a></li>-->
 					</ul>
-				</div>
-
-				<div class="col-md-3 twitterfeed">
-					<h3 th:text="${ItemHeader10.getName()}"></h3>
-<!--
-					<a class="twitter-timeline" href="https://twitter.com/fist_psuti?ref_src=twsrc%5Etfw" data-tweet-limit = "2">Tweets by fist_psuti</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
--->
-					<!--<div class="tweet-info">
-						<div id="tweetcool">
-
-						</div>
-					</div>-->
-				</div>
+				</div>-->
 
 				<div class="col-md-3">
-					<img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
-				</div>
+					<h4 style="line-height: 35px">Полезные ссылки</h4>
+                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                     </div>
+
+                <div class="col-md-3">
+                <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
+                <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
+                </div>-->
 			</div>
 		</div>
 		<div class="footer-bottom container">
@@ -540,17 +679,19 @@
 <!-- Javascript -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/navigation/jquery.sticky.js"></script>
 <script src="js/flexslider/jquery.flexslider.js"></script>
 
 <!--sds-->
 <script src="js/navigation/jquery.easing.js"></script>
 <script src="js/navigation/scroll.js"></script>
-<script src="js/navigation/jquery.sticky.js"></script>
+
 <script src="js/owl-carousel/owl.carousel.min.js"></script>
 <!--<script src="js/isotope/isotope.pkgd.js"></script>-->
+<script src="js/navigation/jquery.sticky.js"></script>
 <script src="js/superfish/js/hoverIntent.js"></script>
 <script src="js/superfish/js/superfish.js"></script>
-<script src="js/tweecool.js"></script>
+
 <script src="js/jquery.bpopup.js"></script>
 <script src="js/pikaday/pikaday.js"></script>
 <script src="js/dialogFx.js"></script>
@@ -563,8 +704,9 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="js/gmap2.js"></script>
-<script src="js/jquery.prettyphoto.js"></script>
+<!--<script src="js/jquery.prettyphoto.js"></script>-->
 <script src="js/script.js"></script>
 <script src="js/booking.js"></script>
+<script src="js/student_character.js"></script>
 </body>
 </html>

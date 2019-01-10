@@ -1,5 +1,4 @@
 /**
-/**
  * jquery.hoverdir.js v1.1.0
  * http://www.codrops.com
  *

@@ -76,4 +76,7 @@ public class MainController {
         model.addAttribute("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
         return "index";
     }
+
+    @RequestMapping("/newsBlog")
+    public String newsBlog(){return "newsBlog"; }
 }

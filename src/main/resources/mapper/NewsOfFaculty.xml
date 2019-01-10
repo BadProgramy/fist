@@ -9,9 +9,18 @@
         <result property="heading" column="heading"/>
         <result property="text" column="text"/>
         <result property="date" column="date"/>
-        <result property="idLeftPicture" column="id_left_picture"/>
-        <result property="idRightPicture" column="id_right_picture"/>
+        <result property="idPicture" column="id_picture"/>
     </resultMap>
+
+
+    <insert id="add" parameterType="NewsOfFaculty">
+        INSERT INTO news_of_faculty(heading, id_picture, text, date)
+        VALUES (#{heading}, #{idPicture}, #{text}, #{date});
+    </insert>
+
+    <select id="getLastIdInsert" resultType="long">
+        SELECT LAST_INSERT_ID() FROM news_of_faculty;
+    </select>
 
     <select id="selectAll" resultMap="result">
         SELECT * FROM news_of_faculty;
@@ -24,14 +33,23 @@
     <update id="update" parameterType="NewsOfFaculty">
         UPDATE news_of_faculty SET
         heading = #{heading},
-        id_left_picture = #{idLeftPicture},
-        id_right_picture = #{idRightPicture},
+        id_picture = #{idPicture},
         text = #{text},
         date = #{date}
         WHERE id = #{id};
     </update>
 
-    <select id="findById" parameterType="long" resultType="NewsOfFaculty">
+    <select id="findById" parameterType="long" resultMap="result">
         SELECT * FROM news_of_faculty WHERE id = #{id};
+    </select>
+
+    <select id="selectLastTenByDate" parameterType="int" resultMap="result">
+        SELECT * from news_of_faculty
+        ORDER BY date DESC LIMIT #{count};
+    </select>
+
+    <select id="selectNewsByRangeDate" parameterType="java.util.Map" resultMap="result">
+        SELECT * from news_of_faculty WHERE
+        date between #{dateWith} AND #{dateFrom};
     </select>
 </mapper>

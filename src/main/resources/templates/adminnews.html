@@ -147,7 +147,14 @@
                         <a href="#">Контент</a>
                         <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
                         <ul>
-                            <li><a href="/admin/news">Новости факультета</a></li>
+                            <li>
+                                <a class="sf-with-ul" href="/admin/news">Новости факультета</a>
+                                <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                                <ul>
+                                    <li><a href="/admin/news/add">Добавить новость</a></li>
+                                    <li><a href="/admin/news">Редактировать новость</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Лучшие студенты</a></li>
                             <!--<li><a href="#">Стоимость обучения</a></li>
                             <li><a href="#">Сведения по образовательным программам</a></li>
@@ -262,6 +269,11 @@
         </div>
     </header>
 
+    <form style="left: 40%; position: absolute;" action="/admin/news/range" method="POST">
+        с <input type="date" name="withDate" modelAttribute ="withDate" th:value="${withDate}">
+        до <input type="date" name="fromDate" modelAttribute = "fromDate" th:value="${fromDate}">
+        <input type="submit" value="Показать">
+    </form>
     <section id="cd-timeline" class="cd-container">
         <div class="cd-timeline-block" th:each="topic : ${news}">
        <!--     <div class="cd-timeline-img cd-picture">

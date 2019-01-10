@@ -3,6 +3,7 @@ package website.psuti.fist.model;
 import org.hibernate.annotations.JoinColumnOrFormula;
 
 import javax.persistence.*;
+import java.io.File;
 import java.time.LocalDate;
 
 @Entity

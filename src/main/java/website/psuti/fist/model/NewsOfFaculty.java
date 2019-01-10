@@ -2,8 +2,10 @@ package website.psuti.fist.model;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.type.TextType;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.File;
 import java.time.LocalDate;
 
 @Entity
@@ -15,16 +17,17 @@ public class NewsOfFaculty {
     @Column
     @Type(type = "org.hibernate.type.TextType")
     private String text;
-    private long idLeftPicture;
-    private long idRightPicture;
+    private long idPicture;
 
     private LocalDate date;
+    @Transient
+    private String dateStringLocalDate;
 
     @Transient
-    private Pictures leftPicture;
+    private Pictures picture;
 
     @Transient
-    private Pictures rightPicture;
+    private MultipartFile pictureFile;
 
     public NewsOfFaculty() {
     }
@@ -53,38 +56,28 @@ public class NewsOfFaculty {
         this.text = text;
     }
 
-    public long getIdLeftPicture() {
-        return idLeftPicture;
+    public long getIdPicture() {
+        return idPicture;
     }
 
-    public void setIdLeftPicture(long idLeftPicture) {
-        this.idLeftPicture = idLeftPicture;
+    public void setIdPicture(long idPicture) {
+        this.idPicture = idPicture;
     }
 
-    public void setIdRightPicture(long idRightPicture) {
-        this.idRightPicture = idRightPicture;
+    public Pictures getPicture() {
+        return picture;
     }
 
-    public long getIdRightPicture() {
-        return idRightPicture;
+    public void setPicture(Pictures picture) {
+        this.picture = picture;
     }
 
-
-
-    public Pictures getLeftPicture() {
-        return leftPicture;
+    public MultipartFile getPictureFile() {
+        return pictureFile;
     }
 
-    public void setLeftPicture(Pictures leftPicture) {
-        this.leftPicture = leftPicture;
-    }
-
-    public Pictures getRightPicture() {
-        return rightPicture;
-    }
-
-    public void setRightPicture(Pictures rightPicture) {
-        this.rightPicture = rightPicture;
+    public void setPictureFile(MultipartFile pictureFile) {
+        this.pictureFile = pictureFile;
     }
 
     public LocalDate getDate() {
@@ -95,6 +88,14 @@ public class NewsOfFaculty {
         this.date = date;
     }
 
+    public String getDateStringLocalDate() {
+        return dateStringLocalDate;
+    }
+
+    public void setDateStringLocalDate(String dateStringLocalDate) {
+        this.dateStringLocalDate = dateStringLocalDate;
+    }
+
     public void update(NewsOfFaculty newsOfFaculty) {
         if (newsOfFaculty.getDate()!=null)
             date = newsOfFaculty.getDate();
@@ -102,9 +103,7 @@ public class NewsOfFaculty {
             heading = newsOfFaculty.getHeading();
         if (newsOfFaculty.getText()!=null)
             text = newsOfFaculty.getText();
-        if (newsOfFaculty.getIdLeftPicture()!=0 || newsOfFaculty.getIdLeftPicture()!=-1)
-            idLeftPicture = newsOfFaculty.getIdLeftPicture();
-        if (newsOfFaculty.getIdRightPicture()!=0 || newsOfFaculty.getIdRightPicture()!=-1)
-            idRightPicture = newsOfFaculty.getIdRightPicture();
+        if (newsOfFaculty.getIdPicture()!=0 || newsOfFaculty.getIdPicture()!=-1)
+            idPicture = newsOfFaculty.getIdPicture();
     }
 }

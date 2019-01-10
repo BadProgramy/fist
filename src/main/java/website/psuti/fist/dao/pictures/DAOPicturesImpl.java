@@ -30,7 +30,15 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public int insert(Pictures pictures) {
-        return 0;
+        SqlSession session = factory.getFactory().openSession();
+        int id = -1;
+        try {
+            id = session.insert("Pictures.add", pictures);
+            if (id == 1) id = session.selectOne("Pictures.getLastIdInsert");
+        } finally {
+            session.close();
+        }
+        return id;
     }
 
     @Override

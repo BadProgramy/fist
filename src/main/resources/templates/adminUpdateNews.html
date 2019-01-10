@@ -147,7 +147,14 @@
                         <a href="#">Контент</a>
                         <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
                         <ul>
-                            <li><a href="/admin/news">Новости факультета</a></li>
+                            <li>
+                                <a class="sf-with-ul" href="/admin/news">Новости факультета</a>
+                                <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                                <ul>
+                                    <li><a href="/admin/news/add">Добавить новость</a></li>
+                                    <li><a href="/admin/news">Редактировать новость</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Лучшие студенты</a></li>
                             <!--<li><a href="#">Стоимость обучения</a></li>
                             <li><a href="#">Сведения по образовательным программам</a></li>
@@ -284,8 +291,12 @@
                         <!--<a href="#0" class="hide-password">Hide</a>-->
                         <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
                     </p>
-
+                        <input name="id" type="hidden" th:field="*{id}">
+                        <input name="date" type="hidden" th:field="*{date}">
+                        <input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
+                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">
                     <p class="fieldset">
+
                         <button class="full-width" type="submit">Изменить</button>
                     </p>
                     </fieldset>

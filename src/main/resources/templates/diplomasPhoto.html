@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Выпускники</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="js/isotope/isotope.css">
+    <link rel="stylesheet" href="js/flexslider/flexslider.css">
+    <link rel="stylesheet" href="js/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="js/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="js/owl-carousel/owl.transitions.css">
+    <link rel="stylesheet" href="js/superfish/css/megafish.css" media="screen">
+    <link rel="stylesheet" href="js/superfish/css/superfish.css" media="screen">
+    <link rel="stylesheet" href="js/pikaday/pikaday.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- JS Font Script -->
+    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizer -->
+    <script src="js/modernizr.custom.js"></script>
+
+</head>
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+    <!-- HEADER -->
+    <header id="header" style="background:white">
+        <div class="container">
+            <div class="row">
+                <div class="logo-psuti col-md-3 col-xs-5 ">
+                    <a href="https://www.psuti.ru/"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
+                </div>
+                <div class="logo-psuti col-md-3 col-xs-5 ">
+                    <a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
+                </div>
+                <div class="col-md-9 col-xs-7">
+                    <div class="top-bar">
+                        <ul>
+                            <li class="tb-info">
+                            <li style="color: black">тел. (846) 228-00-05</li>
+                            </li>
+                            <br>
+                            <li class="tb-info">
+                            <li style="color: black">e-mail: fist@psati.ru</li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-wrap">
+                <div id="mobnav-btn">Меню </div>
+                <ul class="sf-menu">
+                    <li>
+                        <a href="#">Главная</a>
+                        <div class="mobnav-subarrow"></div>
+                    </li>
+                    <li>
+                        <a href="#">О факультете</a>
+                        <div class="mobnav-subarrow"></div>
+                        <ul>
+                            <li><a href="#">О факультете</a></li>
+                            <li><a href="#">Ученый совет факультета</a></li>
+                            <li><a href="#">План работы Ученого совета ФИСТ</a></li>
+                            <li><a href="#">Коллектив деканата</a></li>
+                            <li><a href="#">Кафедры факультета</a></li>
+                            <li><a href="#">Грамоты и дипломы</a></li>
+                            <li><a href="#">Выпускники факультета</a></li>
+                            <li><a href="https://vk.com/club161199157">Объявление о научных конкурсах и грантах</a></li>
+                            <li><a href="#">Комиссии факультета</a></li>
+                            <li><a href="#">Коллектив деканата</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Абитуриентам</a>
+                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <ul>
+                            <li><a href="#">Профили подготовки</a></li>
+                            <li><a href="#">Бюджетные места</a></li>
+                            <li><a href="#">Стоимость обучения</a></li>
+                            <li><a href="#">Сведения по образовательным программам</a></li>
+                            <li><a href="#">Сайт приёмной комиссии</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Студентам</a>
+                        <div class="mobnav-subarrow"></div>
+                        <ul>
+                            <li><a href="#">Права и обязанности</a></li>
+                            <li><a href="#">Лучшие студенты</a></li>
+                            <li><a href="#">Кураторы групп</a></li>
+                            <li><a href="#">Стоимость обучения</a></li>
+                            <li><a href="https://www.psuti.ru/students/timetable/">Расписание занятий и экзаменов</a></li>
+                            <li><a href="https://www.psuti.ru/ru/students/doc">Формы заявлений</a></li>
+                            <li><a href="https://www.psuti.ru/ru/sveden/vacant">Вакантные бюджетные места</a></li>
+                            <li><a href="https://www.psuti.ru/ru/sveden/grants">Стипендии и иные виды материальной поддержки</a></li>
+                            <li><a href="#">Консультации преподавателей</a></li>
+                            <li><a href="#">Формы заявлений</a></li>
+                            <li><a href="#">Вакантные бюджетные места</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Преподавателям</a>
+                        <div class="mobnav-subarrow"></div>
+                        <ul>
+                            <li><a href="#">Требования к профессорско-преподавательскому составу</a></li>
+                            <li><a href="#">Списки групп</a></li>
+                            <li><a href="http://fgosvo.ru/fgosvo/92/91/4">ФГОС ВО 3+</a></li>
+                            <li><a href="http://fgosvo.ru/fgosvo/151/150/24">ФГОС ВО 3++</a></li>
+                            <li><a href="http://profstandart.rosmintrud.ru/">Профессиональные стандарты</a></li>
+                            <li><a href="http://reestr.fgosvo.ru/">Реестр примерных ООП высшего образования</a></li>
+                            <li><a href="https://www.psuti.ru/ru/sveden/education">Сведения по образовательным программам</a></li>
+                            <li><a href="https://www.psuti.ru/university/quality/doc">Перечень руководящих документов СМК ПГУТИ</a></li>
+                            <li><a href="https://www.psuti.ru/ru/university/quality/pologenia">Положения ПГУТИ</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./contact.html">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- SHOP CONTENT -->
+    <section id="content">
+        <div class="content-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="page_header text-center">
+                        <h2>Shop</h2>
+                        <p>Get the best kit for smooth shave</p>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div id="shop-mason" class="shop-mason-4col">
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/1.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Shave Knives</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/2.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Comb Scissors</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/3.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Water Spray</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/4.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Electric Shaving Machine</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/5.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Rasiermesser</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/6.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Accessoires de coiffure</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/7.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">Accessoires de vectoriel</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/8.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">The white background</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/9.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">The white background</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/10.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">The white background</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/11.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">The white background</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                                <div class="sm-item isotope-item">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img src="images/shop/12.jpg" class="img-responsive" alt="">
+                                            <div class="product-overlay">
+												<span>
+												<a href="./shop-single-full.html" class="fa fa-link"></a>
+												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+												</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                            <span class="fa fa-star act"></span>
+                                        </div>
+                                        <h2 class="product-title"><a href="#">The white background</a></h2>
+                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- Pagination -->
+                        <div class="page_nav">
+                            <a href=""><i class="fa fa-angle-left"></i></a>
+                            <a href="" class="active">1</a>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a class="no-active">...</a>
+                            <a href="">9</a>
+                            <a href=""><i class="fa fa-angle-right"></i></a>
+                        </div>
+                        <!-- End Pagination -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="clearfix space70"></div>
+    <!-- FOOTER -->
+    <footer id="footer2">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <!--<h3 th:text="${ItemHeader8.getName()}"></h3>-->
+                    <div class="top-bar">
+                        <ul>
+                            <li class="tb-info">
+                                <a data-dialog2="somedialog2" class="trigger">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span class="navigation-YK">Мы находимся в<br><em class="navigation-YK">Яндекс Картах</em></span>
+                                </a>
+                            </li>
+                            <li class="tb-info">
+                                <a data-dialog1="somedialog1" class="trigger">
+                                    <!--<i class="fa fa-clock-o"></i>
+                                    <span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
+                                    <span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>-->
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display: none" data-dialog="somedialog" class="trigger button btn-xs color"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h3>Подписка</h3>
+                    <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
+                    <form class="newsletter">
+                        <input type="text" placeholder="Email адрес сюда..">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 style="line-height: 35px">Полезные ссылки</h4>
+                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
+                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
+                </div>-->
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- <p th:text="${ItemHeader11.getName()}"></p>-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER -->
+</div>
+
+<div id="somedialog" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div id="booking_pop" class="booking_pop">
+        </div>
+        <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+    </div>
+</div>
+
+<div id="somedialog1" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div class="timer_popup">
+            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</div>
+
+
+<div id="somedialog2" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div class="contact-pop">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="map"></div>
+                </div>
+                <div class="col-md-6 pop-contact">
+                    <ul class="contact-info">
+                        <li>
+                            <p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №1:</strong> <span>г. Самара, Льва Толстого 23</span></p>
+                        </li>
+                        <li>
+                            <p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №2:</strong> <span>г. Самара, Московское шоссе 77</span></p>
+                        </li>
+                        <li>
+                            <p><strong><i class="fa fa-envelope"></i> Сайт:</strong> <span><a href="#">fist.psuti.ru</a></span></p>
+                        </li>
+                        <li>
+                            <p><strong><i class="fa fa-phone"></i> Телефон:</strong> <span>+7(846) 228-00-05</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Javascript -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/navigation/jquery.sticky.js"></script>
+<script src="js/flexslider/jquery.flexslider.js"></script>
+
+<!--sds-->
+<script src="js/navigation/jquery.easing.js"></script>
+<script src="js/navigation/scroll.js"></script>
+
+<script src="js/owl-carousel/owl.carousel.min.js"></script>
+<script src="js/isotope/isotope.pkgd.js"></script>
+<script src="js/navigation/jquery.sticky.js"></script>
+<script src="js/superfish/js/hoverIntent.js"></script>
+<script src="js/superfish/js/superfish.js"></script>
+
+<script src="js/jquery.bpopup.js"></script>
+<script src="js/pikaday/pikaday.js"></script>
+<script src="js/dialogFx.js"></script>
+<script src="js/dialog-js.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!---->
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="js/gmap2.js"></script>
+<!--<script src="js/jquery.prettyphoto.js"></script>-->
+<script src="js/script.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

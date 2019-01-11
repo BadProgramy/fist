@@ -59,50 +59,49 @@
 		<div class="navbr">
 			<div class="menu-wrap">
 				<div class="row">
-					<div class="logo-psuti">
-						<a href="/main"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
+					<div class="logo-psuti col-md-3 col-xs-5 ">
+						<a href="https://www.psuti.ru/"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
 					</div>
-					<div class="logo-psuti">
+					<div class="logo-psuti col-md-3 col-xs-5 ">
 						<a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
 					</div>
 					<!--<div class="logo-psuti">
 						<a href="/main"><img src="images\mustache1.png" class="img-responsive" alt=""/></a>
 					</div>-->
-					<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
-					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
-						<li>
-							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
-							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-							<ul >
-								<div th:each="menuItemMinor : ${mapEntry.value}">
-									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
-									</li>
-								</div>
-							</ul>
-						</li>
-					</ul>
+
 					<div class="top-bar "style="float:right !important; margin-right: 50px;">
 						<ul>
-							<li class="tb-info "style="float:right !important;">
-							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black"></li>
-
-							</li>
+							<li class="tb-info " th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black; float:right !important;"></li>
 							<br>
-							<li class="tb-info "style="float:right !important;">
-							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black"></li>
-							</li>
+							<li class="tb-info " th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black; float:right !important;"></li>
 						</ul>
 					</div>
 				</div>
+
 			</div>
+            <div class="menu-wrap2">
+            <div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"></div>
+            <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+                <li>
+                    <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
+                    <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                    <ul >
+                        <div th:each="menuItemMinor : ${mapEntry.value}">
+                            <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+                                <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+            </div>
 		</div>
 	</header>
 
 	<!--HEADER-->
 	<div class="header" style="height: 100px"></div>
-
-		<!--<div class="flexslider">
+<!--
+		<div class="flexslider">
 			<ul class="slides">
 				<li>
 					<img src="images/slider/1/1.jpg" alt=""/>
@@ -151,7 +150,7 @@
 								<article class="blogpost bm-item isotope-item">
 									<!-- Media Gallery -->
 									<div class="post-media">
-										<img src="images/home-page/projects/sobranie.png" class="img-responsive" alt=""> <!--500 X 300-->
+										<img src="images/2012_i-can-see-clearly-now.jpg" class="img-responsive" alt=""> <!--500 X 300-->
 									</div>
 									<h2 class="post-title"><a href="#">Уважаемые родители</a></h2>
 									<div class="post-meta">
@@ -184,7 +183,7 @@
 										<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
 									</div>
 									<div class="post-excerpt">
-										<p>Изображение </p>
+										<p>Изображение</p>
 									</div>
 									<!--<a href="http://fist.psuti.ru/index.php/456-itogi-promezhutochnogo-kontrolya-1-semestra-2018-2019-uch-goda" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
 								</article>
@@ -463,6 +462,206 @@
 		</div>
 	</section>
 
+   <!-- <section id="home-shop">
+        <div class="h2-gallery" id="5">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="h-page-title">
+                    <h1>Лучшие студнеты</h1>
+                    &lt;!&ndash;<span class="sub-title">hot deals</span>&ndash;&gt;
+                    &lt;!&ndash;<div class="mustache">
+                        <span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
+                    </div>&ndash;&gt;
+                </div>
+                <div class="clearfix space35"></div>
+
+                <div id="home-shop-carousel" class="owl-carousel owl-theme">
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/1.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Ильина Алёна</a></h2>
+                            <div class="product-price">Группа:<span>ЭБ-51</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/2.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Кузнецов Александр</a></h2>
+                            <div class="product-price">Группа:<span>ПО-53пр</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/3.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/4.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/5.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/6.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/7.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Аброськина Елена</a></h2>
+                            <div class="product-price">Группа:<span>ПО-51</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/8.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/9.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/10.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/11.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/12.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/13.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/14.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                    <div class="sm-item text-center">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <li><a class="cd-signin">
+                                    <img src="images/shop/15.jpg" class="img-responsive" alt="">
+                                    <div><span class="fa fa-search-plus"></span></div></a>
+                                </li>
+                            </div>
+                            <h2 class="product-title"><a href="#">Владимир Осанов</a></h2>
+                            <div class="product-price">Группа:<span>Неизвестно</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>-->
+
 
 	<section id="home-shop">
 		<div class="h2-gallery" id="5">
@@ -470,20 +669,116 @@
 			<div class="col-md-12">
 				<div class="h-page-title">
 					<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}"></h1>
-					<!--<span class="sub-title">hot deals</span>-->
-					<!--<div class="mustache">
+					<!--&lt;!&ndash;<span class="sub-title">hot deals</span>&ndash;&gt;
+					&lt;!&ndash;<div class="mustache">
 						<span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
-					</div>-->
+					</div>&ndash;&gt;-->
 				</div>
 				<div class="clearfix space35"></div>
 
 				<div id="home-shop-carousel" class="owl-carousel owl-theme">
-					<div th:each="student : ${bestStudents}" class="sm-item text-center">
-						<div class="product">
+					<div id="Some-Container"  th:each="student : ${bestStudents}" class="sm-item text-center">
+						<div class="product" >
 							<div class="product-thumb">
                                 <li><a class="cd-signin">
-								<img th:src="${student.getPicture().getUrlPicture()}"  class="img-responsive" alt="">
-									<div><span class="fa fa-search-plus"></span></div></a>
+								<img th:id="@{'student' + ${student.getId()}}" th:src="${student.getPicture().getUrlPicture()}"  class="img-responsive" alt="">
+									<div><span class="fa fa-search-plus"></span></div>
+                                    <script >
+                                        document.body.onclick = function(e) {
+                                            var elem = e ? e.target : window.event.srcElement;
+                                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
+                                            if (!elem.id) return; else id = elem.id;
+                                            var rightPart =/*([[${bestStudents}]])*/ null;
+                                            var srcImg=document.getElementById(id).getAttribute("src");
+                                           /* var jsonData = JSON.parse(rightPart);*/
+                                           /* for (var i = 0; i < jsonData.BestStudents.length; i++) {
+                                                alert(jsonData.BestStudents[i].picture.urlPicture);
+                                                if (srcImg == jsonData.BestStudents[i].picture.urlPicture) {
+                                                    document.getElementById("stud-name").innerHTML = rightPart[i].getName();
+                                                    document.getElementById("char").innerHTML =  rightPart[i].getCharacteristic();
+                                                }
+                                            }*/
+
+                                           /* th:each="student : ${bestStudents}"*/
+                                               rightPart ="[[${bestStudents.get(0).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(0).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(0).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(1).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(1).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(1).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(2).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(2).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(2).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(3).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(3).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(3).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(4).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(4).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(4).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(5).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(5).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(5).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(6).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(6).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(6).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(7).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(7).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(7).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(8).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(8).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(8).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(9).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(9).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(9).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(10).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(10).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(10).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(11).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(11).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(11).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(12).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(12).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(12).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(13).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(13).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(13).getCharacteristic()}]])";
+                                            }
+                                            rightPart ="[[${bestStudents.get(14).getPicture().getUrlPicture()}]]";
+                                            if (srcImg == rightPart) {
+                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(14).getName()}]])";
+                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(14).getCharacteristic()}]])";
+                                            }
+
+                                        }
+                                    </script>
+                                </a>
                                 </li>
                                 </div>
 							<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
@@ -499,36 +794,35 @@
 	</section>
 
     <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-        <div class="border-stud">
-         <div class="stud-photo">
-        <a><img src="images\shop\1.jpg" class="img-responsive" alt=""/></a>
-         </div>
-            <h2 class="stud-name">Аброськина Елена Сергеевна</a></h2>
-            <div class="text-stud">
-                <p>
-                    Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
-                    вычислительная техника». С начала своего обучения принимает активное
-                    участие в общественной жизни университета. Выступает в качестве
-                    организатора в культурных мероприятиях ВУЗа. В 2015 году прошла
-                    обучение студенческого Профактива. В первичной профсоюзной
-                    организации студентов (ППОС ПГУТИ) с сентября 2017 года была
-                    заместителем председателя профбюро ФИСТ. С сентября 2018 года
-                    является председателем профбюро ФИСТ. Имеет оценки отлично и хорошо
-                    в течение всего периода обучения.
-                    Активно занимается научно-исследовательской деятельностью. Принимала
-                    участие в следующих конкурсах и олимпиадах: “У.М.Н.И.К.”, "IT-прорыв”,
-                    Студенческая научная конференция и олимпиады ПГУТИ.
-                    Интересуется и регулярно участвует в командных интеллектуальных
-                    играх: “Кроссворд-шоу” на кубок совета ректоров Самарской области,
-                    “Что? Где? Когда” в ПГУТИ и Самарском университете, "#SIB_LAB".
-                </p>
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <div class="border-stud">
+                <div class="stud-photo">
+                    <a><img class="img-responsive" alt=""/></a>
+                </div>
+                <h2 id="stud-name" class="stud-name"><!--Аброськина Елена Сергеевна--></a></h2>
+                <div class="text-stud">
+                    <p id="char">
+                        <!--Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
+                        вычислительная техника». С начала своего обучения принимает активное
+                        участие в общественной жизни университета. Выступает в качестве
+                        организатора в культурных мероприятиях ВУЗа. В 2015 году прошла
+                        обучение студенческого Профактива. В первичной профсоюзной
+                        организации студентов (ППОС ПГУТИ) с сентября 2017 года была
+                        заместителем председателя профбюро ФИСТ. С сентября 2018 года
+                        является председателем профбюро ФИСТ. Имеет оценки отлично и хорошо
+                        в течение всего периода обучения.
+                        Активно занимается научно-исследовательской деятельностью. Принимала
+                        участие в следующих конкурсах и олимпиадах: “У.М.Н.И.К.”, "IT-прорыв”,
+                        Студенческая научная конференция и олимпиады ПГУТИ.
+                        Интересуется и регулярно участвует в командных интеллектуальных
+                        играх: “Кроссворд-шоу” на кубок совета ректоров Самарской области,
+                        “Что? Где? Когда” в ПГУТИ и Самарском университете, "#SIB_LAB".-->
+                    </p>
+                </div>
             </div>
-        </div>
 
-    </div> <!-- cd-user-modal-container -->
-</div> <!-- cd-user-modal -->
-
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
 
 	<!-- FOOTER -->
 	<footer id="footer2">

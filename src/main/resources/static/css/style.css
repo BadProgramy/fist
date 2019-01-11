@@ -126,21 +126,21 @@ a:hover {
 
 .logo-psuti{
 	float:left;
-	max-width: 200px;
-	max-height:200px;
+	max-width: 150px;
+	max-height:150px;
 }
-.logo1-psuti{
-	margin-top: 5px;
+/*.logo1-psuti{
+	!*margin-top: 5px;*!
 	 float:left;
 	 max-width: 100px;
-	 max-height:200px;
- }
-.logo2-psuti{
+	 max-height:150px;*/
+/* }*/
+/*.logo2-psuti{
 	margin-top: 5px;
 	float:left;
 	max-width: 200px;
 	max-height:200px;
-}
+}*/
 
 /* 2.1. ========== Home Navigation Start ==========*/
 .navbar-inverse {
@@ -907,12 +907,27 @@ h1 {
 	width:100%;
 }
 
-.cs-style-7 li:first-child { z-index: 6; }
-.cs-style-7 li:nth-child(2) { z-index: 5; }
-.cs-style-7 li:nth-child(3) { z-index: 4; }
-.cs-style-7 li:nth-child(4) { z-index: 3; }
-.cs-style-7 li:nth-child(5) { z-index: 2; }
-.cs-style-7 li:nth-child(6) { z-index: 1; }
+.cs-style-7 li:first-child { z-index: 21; }
+.cs-style-7 li:nth-child(2) { z-index: 20; }
+.cs-style-7 li:nth-child(3) { z-index: 19; }
+.cs-style-7 li:nth-child(4) { z-index: 18; }
+.cs-style-7 li:nth-child(5) { z-index: 17; }
+.cs-style-7 li:nth-child(6) { z-index: 16; }
+.cs-style-7 li:nth-child(7) { z-index: 15; }
+.cs-style-7 li:nth-child(8) { z-index: 14; }
+.cs-style-7 li:nth-child(9) { z-index: 13; }
+.cs-style-7 li:nth-child(10) { z-index: 12; }
+.cs-style-7 li:nth-child(11) { z-index: 11; }
+.cs-style-7 li:nth-child(12) { z-index: 10; }
+.cs-style-7 li:nth-child(13) { z-index: 9; }
+.cs-style-7 li:nth-child(14) { z-index: 8; }
+.cs-style-7 li:nth-child(15) { z-index: 7; }
+.cs-style-7 li:nth-child(16) { z-index: 6; }
+.cs-style-7 li:nth-child(17) { z-index: 5; }
+.cs-style-7 li:nth-child(18) { z-index: 4; }
+.cs-style-7 li:nth-child(19) { z-index: 3; }
+.cs-style-7 li:nth-child(20) { z-index: 2; }
+.cs-style-7 li:nth-child(21) { z-index: 1; }
 
 
 .main-team ul.cs-style-7 {
@@ -935,7 +950,7 @@ h1 {
 
 .main-team ul.cs-style-7 li::before {
 	content:"";
-	border:5px solid #b59e5c;
+	/*border:5px solid #b59e5c;*/
 	position:absolute;
 	top:20px;
 	left:20px;
@@ -3433,10 +3448,10 @@ font-size:12px;
     background: #000;
     display: table;
     width: 100%;
-    position: 5px;
     position: relative;
-    top: 35px;
+    /*top: 35px;*/
 	z-index:888;
+
 }
 
 .sf-menu > li {
@@ -5064,9 +5079,14 @@ color:#B59E5C;
 	padding:0 5%;
 }
 
+.teacher {
+	max-width: 100% !important;
+	max-height: 280px;
+}
+
 .top-info h2 {
 	font-family:bebas-neue;
-	font-size:80px;
+	font-size:60px;
 	font-weight:300;
 	text-transform:uppercase;
 	margin:0 0 15px;

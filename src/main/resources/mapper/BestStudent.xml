@@ -10,6 +10,7 @@
         <result property="groupInUniversity" column="group_in_university"/>
         <result property="idPicture" column="id_picture"/>
         <result property="url" column="url"/>
+        <result property="characteristic" column="characteristic"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">

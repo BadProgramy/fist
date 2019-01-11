@@ -76,7 +76,39 @@ public class MainController {
         model.addAttribute("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
         return "index";
     }
-
+ //новости(есть кнопка под 2умя новостями на главной)
     @RequestMapping("/newsBlog")
     public String newsBlog(){return "newsBlog"; }
+
+//коллектив деканата
+    @RequestMapping("/deanTeam")
+    public String deanTeam(){return "deanTeam"; }
+
+    //комиссии фиста
+    @RequestMapping("/commissionsFIST")
+    public String commissionsFIST(){return "commissionsFIST"; }
+
+    //выпускники
+    @RequestMapping("/graduates")
+    public String graduates(){return "graduates"; }
+
+    //Богомолова
+    @RequestMapping("/bogomolova")
+    public String bogomolova(){return "bogomolova"; }
+
+    //Чернова
+    @RequestMapping("/chernova")
+    public String chernova(){return "chernova"; }
+
+    //Тучкова
+    @RequestMapping("/tychkova")
+    public String tychkova(){return "tychkova"; }
+
+    //Белова
+    @RequestMapping("/belova")
+    public String belova(){return "belova"; }
+
+    //Коняева
+    @RequestMapping("/konyaeva")
+    public String konyaeva(){return "konyaeva"; }
 }

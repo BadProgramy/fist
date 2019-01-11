@@ -1,5 +1,7 @@
 package website.psuti.fist.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,9 @@ public class BestStudent {
     private String groupInUniversity;
     private String url;
     private long idPicture;
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String characteristic;
 
     @Transient
     private Pictures picture;
@@ -65,5 +70,13 @@ public class BestStudent {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getCharacteristic() {
+        return characteristic;
+    }
+
+    public void setCharacteristic(String characteristic) {
+        this.characteristic = characteristic;
     }
 }

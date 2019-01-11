@@ -10,6 +10,7 @@
         <typeAlias alias="Pictures" type="website.psuti.fist.model.Pictures"/>
         <typeAlias alias="EducationProcess" type="website.psuti.fist.model.EducationProcess"/>
         <typeAlias alias="BestStudent" type="website.psuti.fist.model.BestStudent"/>
+        <typeAlias alias="NewsOfFaculty" type="website.psuti.fist.model.NewsOfFaculty"/>
         <!--<typeAlias alias="Employee" type="organizational.model.Employee"/>
         <typeAlias alias="Department" type="organizational.model.Department"/>
         <typeAlias type="organizational.model.Post" alias="Post"/>
@@ -22,6 +23,7 @@
         <mapper resource="mapper/Pictures.xml"/>
         <mapper resource="mapper/EducationProcess.xml"/>
         <mapper resource="mapper/BestStudent.xml"/>
+        <mapper resource="mapper/NewsOfFaculty.xml"/>
         <!--<mapper resource="mapper/Employee.xml"/>
         <mapper resource="mapper/Department.xml"/>
         <mapper resource="mapper/Post.xml"/>

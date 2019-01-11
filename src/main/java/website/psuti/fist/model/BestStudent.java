@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Entity
 public class BestStudent {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
+    private String characteristic;
     private String groupInUniversity;
     private String url;
     private long idPicture;

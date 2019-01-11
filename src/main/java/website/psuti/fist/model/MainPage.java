@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class MainPage {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String headerPhone;
     private String headerEmail;

@@ -111,4 +111,8 @@ public class MainController {
     //Коняева
     @RequestMapping("/konyaeva")
     public String konyaeva(){return "konyaeva"; }
+
+    //Грамоты и дипломы
+    @RequestMapping("/diplomasPhoto")
+    public String diplomasPhoto(){return "diplomasPhoto"; }
 }

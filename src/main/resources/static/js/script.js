@@ -249,10 +249,10 @@ $(window).load(function() {
     });
 
     // MASONRY
-   /* var $container = $('#blog-mason');
+    var $container = $('#blog-mason');
     $container.isotope({
         itemSelector: '.bm-item'
-    });*/
+    });
     var $optionSets = $('#portfolio .folio-filter'),
         $optionLinks = $optionSets.find('a');
     $optionLinks.on('click', function() {
@@ -278,10 +278,10 @@ $(window).load(function() {
     });
 
     // MASONRY
-    /*var $container = $('#shop-mason');
+    var $container = $('#shop-mason');
     $container.isotope({
         itemSelector: '.sm-item'
-    });*/
+    });
     var $optionSets = $('#portfolio .folio-filter'),
         $optionLinks = $optionSets.find('a');
     $optionLinks.on('click', function() {
@@ -306,10 +306,10 @@ $(window).load(function() {
     });
 
     // MASONRY
- /*   var $container = $('#portfolio-home');
+   var $container = $('#portfolio-home');
     $container.isotope({
         itemSelector: '.project-item'
-    });*/
+    });
     var $optionSets = $('#portfolio-section .filter'),
         $optionLinks = $optionSets.find('a');
     $optionLinks.on('click', function() {
@@ -334,10 +334,10 @@ $(window).load(function() {
     });
 
     // MASONRY
-    /*var $container = $('.portfolio-gal');
+    var $container = $('.portfolio-gal');
     $container.isotope({
         itemSelector: '.folio-item'
-    });*/
+    });
     var $optionSets = $('#portfolio-gal .portfolio-gal-filter'),
         $optionLinks = $optionSets.find('a');
     $optionLinks.on('click', function() {

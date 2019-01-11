@@ -2,6 +2,7 @@
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
 
     <!-- Meta -->
@@ -51,53 +52,39 @@
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
-    <header id="header2">
+    <header id="header" style="background:white">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-xs-5 logo">
-                    <a href="./index.html"><img src="images/logo-dark.png" class="img-responsive" alt=""/></a>
+                <div class="logo-psuti col-md-3 col-xs-5 ">
+                    <a href="https://www.psuti.ru/"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
+                </div>
+                <div class="logo-psuti col-md-3 col-xs-5 ">
+                    <a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
                 </div>
                 <div class="col-md-9 col-xs-7">
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
-                            <li style="color: aquamarine">тел. (846) 228-00-05</li>
-                            <!--<a data-dialog2="somedialog2" class="trigger">
-                            <i class="fa fa-map-marker"></i>
-                            <span>Find us on<br><em>Google Map</em></span>
-                            </a>    -->
+                            <li style="color: black">тел. (846) 228-00-05</li>
                             </li>
                             <br>
                             <li class="tb-info">
-                            <li style="color: aquamarine">e-mail: fist@psati.ru</li>
-                            <!--<a data-dialog1="somedialog1" class="trigger">
-                            <i class="fa fa-clock-o"></i>
-                            <span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
-                            <span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>
-                            </a>    -->
+                            <li style="color: black">e-mail: fist@psati.ru</li>
                             </li>
-                            <!--<li>
-                                <a data-dialog="somedialog" class="trigger button btn-xs color">Войти</a>
-                            </li>-->
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="menu-wrap">
-                <div id="mobnav-btn">Меню <!--<i class="fa fa-bars"></i>--></div>
+                <div id="mobnav-btn">Меню </div>
                 <ul class="sf-menu">
                     <li>
                         <a href="#">Главная</a>
-                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-                        <!--<ul>
-                            <li><a href="./index.html">Пока незнаю</a></li>
-                            <li><a href="./index-onepage.html">Пока незнаю</a></li>
-                            <li><a href="./index-onepage2.html">Пока незнаю</a></li>
-                        </ul>-->
+                        <div class="mobnav-subarrow"></div>
                     </li>
                     <li>
                         <a href="#">О факультете</a>
-                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <div class="mobnav-subarrow"></div>
                         <ul>
                             <li><a href="#">О факультете</a></li>
                             <li><a href="#">Ученый совет факультета</a></li>
@@ -109,86 +96,27 @@
                             <li><a href="https://vk.com/club161199157">Объявление о научных конкурсах и грантах</a></li>
                             <li><a href="#">Комиссии факультета</a></li>
                             <li><a href="#">Коллектив деканата</a></li>
-
-                            <!--<li>
-                                <a class="sf-with-ul" href="#">Пока незнаюe</a>
-                                <ul>
-                                    <li><a href="./service-single-image.html">Пока незнаю</a></li>
-                                    <li><a href="./service-single-slider.html">Пока незнаю</a></li>
-                                    <li><a href="./service-single-video.html">Пока незнаю</a></li>
-                                </ul>
-                            </li>-->
                         </ul>
                     </li>
-                    <!--<li class="sf-mmenu">
-                        <a href="#">Новости факультета</a>
-                        <div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
-                        <div class="sf-mega">
-                            <div class="sf-mega-section">
-                                <span>
-                                <a href="./accordion.html">Accordion</a>
-                                <a href="./buttons.html">Button</a>
-                                <a href="./blockquote.html">Blockquotes</a>
-                                </span>
-                            </div>
-                            <div class="sf-mega-section">
-                                <span>
-                                <a href="./columns.html">Columns</a>
-                                <a href="./headings.html">Headings</a>
-                                <a href="./parallax.html">Parallax</a>
-                                </span>
-                            </div>
-                            <div class="sf-mega-section">
-                                <span>
-                                <a href="./services-2col.html">Services</a>
-                                <a href="./tabs.html">Tabs</a>
-                                <a href="./testimonial.html">Testimonial</a>
-                                </span>
-                            </div>
-                            <div class="sf-mega-section">
-                                <span>
-                                <a href="./video.html">Video</a>
-                                <a href="./shop-full.html">Shop</a>
-                                <a href="./shop-single-full.html">Shop Single Page</a>
-                                </span>
-                            </div>
-                        </div>
-                    </li>-->
                     <li>
                         <a href="#">Абитуриентам</a>
-                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <div class="mobnav-subarrow"></div>
                         <ul>
                             <li><a href="#">Профили подготовки</a></li>
                             <li><a href="#">Бюджетные места</a></li>
                             <li><a href="#">Стоимость обучения</a></li>
                             <li><a href="#">Сведения по образовательным программам</a></li>
                             <li><a href="#">Сайт приёмной комиссии</a></li>
-                            <!--<li>
-                                <a class="sf-with-ul" href="./shop-single-left.html">Shop - Single</a>
-                                <ul>
-                                    <li><a href="./shop-single-left.html">Left Sidebar</a></li>
-                                    <li><a href="./shop-single-right.html">Right Sidebar</a></li>
-                                    <li><a href="./shop-single-full.html">Full Width</a></li>
-                                </ul>
-                            </li>-->
                         </ul>
                     </li>
 
                     <li>
                         <a href="#">Студентам</a>
-                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <div class="mobnav-subarrow"></div>
                         <ul>
                             <li><a href="#">Права и обязанности</a></li>
                             <li><a href="#">Лучшие студенты</a></li>
                             <li><a href="#">Кураторы групп</a></li>
-                            <!--<li>
-                                <a class="sf-with-ul" href="./shop-single-left.html">Shop - Single</a>
-                                <ul>
-                                    <li><a href="./shop-single-left.html">Left Sidebar</a></li>
-                                    <li><a href="./shop-single-right.html">Right Sidebar</a></li>
-                                    <li><a href="./shop-single-full.html">Full Width</a></li>
-                                </ul>
-                            </li>-->
                             <li><a href="#">Стоимость обучения</a></li>
                             <li><a href="https://www.psuti.ru/students/timetable/">Расписание занятий и экзаменов</a></li>
                             <li><a href="https://www.psuti.ru/ru/students/doc">Формы заявлений</a></li>
@@ -201,7 +129,7 @@
                     </li>
                     <li>
                         <a href="#">Преподавателям</a>
-                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                        <div class="mobnav-subarrow"></div>
                         <ul>
                             <li><a href="#">Требования к профессорско-преподавательскому составу</a></li>
                             <li><a href="#">Списки групп</a></li>
@@ -218,61 +146,9 @@
                         <a href="./contact.html">Контакты</a>
                     </li>
                 </ul>
-
-                <!--<div class="header-xtra">
-                    <div class="s-cart">
-                        <div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>2</em></div>
-
-                        <div class="cart-info">
-                            <small>You have <em class="highlight">2 item(s)</em> in your shopping bag</small>
-                            <br>
-                            <br>
-                            <div class="ci-item">
-                                <img src="images/shop/2.jpg" width="70" alt=""/>
-                                <div class="ci-item-info">
-                                    <h5><a href="./single-product.html">Product fashion</a></h5>
-                                    <p>2 x $250.00</p>
-                                    <div class="ci-edit">
-                                        <a href="#" class="edit fa fa-edit"></a>
-                                        <a href="#" class="edit fa fa-trash"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ci-item">
-                                <img src="images/shop/8.jpg" width="70" alt=""/>
-                                <div class="ci-item-info">
-                                    <h5><a href="./single-product.html">Product fashion</a></h5>
-                                    <p>2 x $250.00</p>
-                                    <div class="ci-edit">
-                                        <a href="#" class="edit fa fa-edit"></a>
-                                        <a href="#" class="edit fa fa-trash"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ci-total">Subtotal: $750.00</div>
-                            <div class="cart-btn">
-                                <a href="#">View Bag</a>
-                                <a href="#">Checkout</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="s-search">
-                        <div class="ss-ico"><i class="fa fa-search"></i></div>
-                        <div class="search-block">
-                            <div class="ssc-inner">
-                                <form>
-                                    <input type="text" placeholder="Type Search text here...">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
     </header>
-
-    <!--<div class="close-btn fa fa-times"></div> -->
 
     <!-- INNER CONTENT -->
     <section id="content">
@@ -286,7 +162,7 @@
                     <div class="col-md-12">
 
                         <article class="blogpost">
-                            <div class="post-media">
+                            <div class="post-media ">
                                 <img src="images/kap.jpg" class="img-responsive" alt="">
                             </div>
                             <h2 class="post-title"><a>Молодежная IT-школа Приволжского федерального округа</a></h2>
@@ -326,79 +202,6 @@
                         </div>
                         <!-- End Pagination -->
                     </div>
-
-                   <!-- <div class="col-xs-12 col-sm-4 col-md-4">
-                        <div class="right-side">
-                            <div class="search-box">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-
-                            <div class="catgorie">
-                                <div class="title">
-                                    <h5>categories</h5>
-                                </div>
-                                <ul>
-                                    <li><a href="#">traditional haircuts</a></li>
-                                    <li><a href="#">head shaves</a></li>
-                                    <li><a href="#">restyle</a></li>
-                                    <li><a href="#">manicure</a></li>
-                                    <li><a href="#">Shaves</a></li>
-                                </ul>
-                            </div>
-                            <div class="recent-post">
-                                <div class="title">
-                                    <h5>recent post</h5>
-                                </div>
-                                <ul>
-                                    <li>
-                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <div class="row">
-                                                <img class="img-responsive" src="images/home-page/other/1.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                            <div class="row">
-                                                <div class="detail">
-                                                    <a href="#">Nulla pharetra a nunc</a>
-                                                    <span>december 27, 2015</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <div class="row">
-                                                <img class="img-responsive" src="images/home-page/other/2.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                            <div class="row">
-                                                <div class="detail">
-                                                    <a href="#">pellentesque dapibus.</a>
-                                                    <span>december 27, 2015</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                            <div class="row">
-                                                <img class="img-responsive" src="images/home-page/other/3.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                            <div class="row">
-                                                <div class="detail">
-                                                    <a href="#">Duis feugiat</a>
-                                                    <span>december 27, 2015</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
             </div>
         </div>
@@ -409,8 +212,9 @@
     <footer id="footer2">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-3">
-                    <h3>Расположение</h3>
+                    <h3 th:text="${ItemHeader8.getName()}"></h3>
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
@@ -432,50 +236,45 @@
                         </ul>
                     </div>
                 </div>
-                <!--<div class="col-md-3">
-                    <h3>Неизветсно</h3>
-                    <p>Надо узнать, что тут можно интересного написать!</p>
-
-
-
-                    &lt;!&ndash;<form class="newsletter">
-                        <input type="text" placeholder="Email Address here..">
+                <div class="col-md-3">
+                    <h3>Подписка</h3>
+                    <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
+                    <form class="newsletter">
+                        <input type="text" placeholder="Email адрес сюда..">
                         <button type="submit"><i class="fa fa-paper-plane"></i></button>
-                    </form>&ndash;&gt;
+                    </form>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 style="line-height: 35px">Полезные ссылки</h4>
+                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
+                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
                 </div>-->
-
-                <div class="col-md-3">
-                    <h3>Здесь тоже незнаю, как пример</h3>
-                    <ul class="f-news">
-                        <li><a href="#">Пример 1<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Пример 2<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Пример 3<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Пример 4<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Пример 5<i class="fa fa-angle-right"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 twitterfeed">
-                    <h3>А мы забыли что тут</h3>
-                    <!--
-                                        <a class="twitter-timeline" href="https://twitter.com/fist_psuti?ref_src=twsrc%5Etfw" data-tweet-limit = "2">Tweets by fist_psuti</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    -->
-                    <!--<div class="tweet-info">
-                        <div id="tweetcool">
-
-                        </div>
-                    </div>-->
-                </div>
-
-                <div class="col-md-3">
-                    <img src="images/logo-silver.png" class="img-responsive" alt=""/>
-                </div>
             </div>
         </div>
         <div class="footer-bottom container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>&copy; 2018 Факультет информационных систем и технологий</p>
+                    <p th:text="${ItemHeader11.getName()}"></p>
                 </div>
                 <!--<div class="col-md-6">
                     <p class="pull-right">Design by <a target="_blank" href="http://themeforest.net/user/Theme-Squared">ThemeSquared</a></p>

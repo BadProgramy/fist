@@ -1,5 +1,7 @@
 package website.psuti.fist.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,10 +10,12 @@ public class BestStudent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String characteristic;
     private String groupInUniversity;
     private String url;
     private long idPicture;
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String characteristic;
 
     @Transient
     private Pictures picture;

@@ -47,7 +47,8 @@
 
 .flexslider .slides img {
     width: auto;
-    height: 100vh !important;
+    max-height:70vh;
+    height: 70vh !important;
 }
 
 }
@@ -126,7 +127,8 @@
 
 .flexslider .slides img {
     width: auto;
-    height: 100vh !important;
+    max-height:70vh;
+    height: 70vh !important;
 }
 
 #onepage #intro ,
@@ -301,7 +303,7 @@
 
 }
 
-@media (min-width: 200px) and (max-width:919px){
+@media (min-width: 200px) and (max-width:1130px){
 
 .is-sticky .navbar-brand {
     display: none;
@@ -319,7 +321,7 @@
 
 .flexslider .slides img {
     width: auto;
-    height: 100vh !important;
+    height: 80vh !important;
 }
 
 .dialog__content {
@@ -558,7 +560,7 @@ clear: both;
 
 .sf-menu {
     width: 100% !important;
-    position: absolute !important;
+    /*position: absolute !important;*/
     background: #000 none repeat scroll 0% 0%;
     max-height: 61vh;
     overflow: auto;
@@ -797,7 +799,7 @@ h2.big-text {font-size: 93px;}
 
 .flexslider .slides img {
     max-width: auto;
-    height: 600px;
+    height: 500px;
     display: block;
     width: 200%;
 }
@@ -843,6 +845,11 @@ h2.big-text {font-size: 93px;}
 .pricing-bg .main-pricing .price-block { margin-bottom:50px; }
 .content-blog .right-side { margin-top:70px;}
 
-
+.menu-wrap2{
+    top:10px;
+}
+.tb-info{
+    top:-5px;
+}
 
 }

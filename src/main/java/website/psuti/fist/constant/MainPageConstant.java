@@ -4,15 +4,15 @@ package website.psuti.fist.constant;
 //Добавлять можно
 public enum MainPageConstant {
     NO_FOTO("Нет ФОТО", "images/no_foto.png"),
-    LOGOTIP_PSUTI("LOGOTIP_PSUTI", 0L),
+    LOGOTIP_PSUTI("Логотип ПГУТИ", 0L),
     LOGOTIP_FIST("Логотип ФИСТ", 0L),
     SLIDER_1("Слайдер №1", 1L),
     SLIDER_2("Слайдер №2", 1L),
     SLIDER_3("Слайдер №3", 1L),
-    LOGOTIP(30L),
     ITEM_HEADER_PICTURE_SPLIT("Разделитель загаловка", 0L),
     MOBILE_MENU(44L),
     HEADER_NEWS(45L),
+    HEADER_ACTUAL_NEWS(73),
     BUTTON_NEWS(46L),
     HEADER_EDUCATIONAL_PROCESS(47L),
     SOCIAL_NETWORKS(56L),

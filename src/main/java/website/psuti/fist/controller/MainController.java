@@ -1,9 +1,13 @@
 package website.psuti.fist.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import website.psuti.fist.constant.MainPageConstant;
 import website.psuti.fist.model.EducationProcess;
 import website.psuti.fist.model.MainPage;
@@ -30,6 +34,9 @@ public class MainController {
     @Autowired
     private BestStudentService bestStudentService;
 
+    @Autowired
+    private NewsFacultyService newsFacultyService;
+
     /*@Autowired
     private PicturesService picturesService;*/
 
@@ -54,6 +61,7 @@ public class MainController {
         model.addAttribute("menuItemMobile", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MOBILE_MENU.getId()));//Меню
 
         model.addAttribute("ItemHeader1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
+        model.addAttribute("ItemHeader1_1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
         model.addAttribute("ItemButton1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
         model.addAttribute("ItemHeader2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс
         model.addAttribute("ItemHeader3", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.SOCIAL_NETWORKS.getId()));//Мы в социальных сетях
@@ -72,9 +80,16 @@ public class MainController {
         model.addAttribute("educationProcess", educationProcessService.educationProcess());
         model.addAttribute("characterUniversity", menuItemHeaderInMainPagesService.getCharacterUniversity());
         model.addAttribute("bestStudents", bestStudentService.filledBestStudent());
-        model.addAttribute("logotip", picturesService.findPictureById(MainPageConstant.LOGOTIP.getId()));
+        model.addAttribute("logotipPSUTI", picturesService.findPictureByName(MainPageConstant.LOGOTIP_PSUTI.getName()));
         model.addAttribute("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
+        model.addAttribute("newsOfFaculty", newsFacultyService.getLastTwoNewsFaculty());
         return "index";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getPhoto(@PathVariable long idPicture) {
+        return picturesService.findPictureById(idPicture).getPictureFile();
     }
 
     @RequestMapping("/newsBlog")

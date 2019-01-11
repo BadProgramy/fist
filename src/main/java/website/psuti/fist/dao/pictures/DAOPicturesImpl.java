@@ -29,9 +29,9 @@ public class DAOPicturesImpl implements DAOPictures {
     }
 
     @Override
-    public int insert(Pictures pictures) {
+    public long insert(Pictures pictures) {
         SqlSession session = factory.getFactory().openSession();
-        int id = -1;
+        long id = -1;
         try {
             id = session.insert("Pictures.add", pictures);
             if (id == 1) id = session.selectOne("Pictures.getLastIdInsert");
@@ -43,7 +43,12 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public void update(Pictures pictures) {
-
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            session.update("Pictures.update", pictures);
+        } finally {
+            session.close();
+        }
     }
 
     @Override

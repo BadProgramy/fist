@@ -1,0 +1,4 @@
+UPDATE fist.education_process SET id_menu_item_header_in_main_page_left = 48, id_menu_item_header_in_main_page_right = 49, id_picture_left = 7, id_picture_right = 8 WHERE id = 1;
+UPDATE fist.education_process SET id_menu_item_header_in_main_page_left = 50, id_menu_item_header_in_main_page_right = 51, id_picture_left = 9, id_picture_right = 10 WHERE id = 2;
+UPDATE fist.education_process SET id_menu_item_header_in_main_page_left = 52, id_menu_item_header_in_main_page_right = 53, id_picture_left = 11, id_picture_right = 12 WHERE id = 3;
+UPDATE fist.education_process SET id_menu_item_header_in_main_page_left = 54, id_menu_item_header_in_main_page_right = 55, id_picture_left = 13, id_picture_right = 14 WHERE id = 4;

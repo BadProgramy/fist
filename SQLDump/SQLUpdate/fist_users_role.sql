@@ -1,0 +1,1 @@
+UPDATE fist.users_role SET users_id = 1, role = 'FULLADMIN';

@@ -1,0 +1,1 @@
+INSERT INTO fist.main_page (id, header_email, header_phone) VALUES (2, 'e-mail: fist@psati.ru', 'тел. (846) 228-00-05');

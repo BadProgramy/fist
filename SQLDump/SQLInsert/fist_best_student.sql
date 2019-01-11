@@ -1,0 +1,15 @@
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (1, 15, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (2, 16, 'Кузнецов Александр', '#', 'ПО-53пр', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (3, 17, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (4, 18, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (5, 19, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (6, 20, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (7, 21, 'Аброськина Елена', '#', 'ПО-51', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (8, 22, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (9, 23, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (10, 24, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (11, 25, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (12, 26, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (13, 27, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (14, 28, 'Неизвестно', '#', 'Неизвестно', null);
+INSERT INTO fist.best_student (id, id_picture, name, url, group_in_university, characteristic) VALUES (15, 29, 'Осанов Владимир', '#', 'Неизвестно', null);

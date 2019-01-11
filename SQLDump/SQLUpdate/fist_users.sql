@@ -1,0 +1,1 @@
+UPDATE fist.users SET account_non_expired = true, account_non_locked = true, credentials_non_expired = true, enabled = true, firstname = 'Айрат', pagevk = 'https://vk.com/id109488730', password = '$2a$10$Hb0SOZJg6jz7hLSTUhHuzOaURVrHtFvrlooT3Xh8MXRf5csP1UELS', secondname = 'Мухутдинов', username = 'airat23059' WHERE id = 1;

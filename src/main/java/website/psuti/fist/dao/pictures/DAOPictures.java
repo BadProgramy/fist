@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface DAOPictures {
     List<Pictures> getAll();
-    int insert (Pictures pictures);
+    long insert (Pictures pictures);
     void update(Pictures pictures);
     void delete(int id);
 

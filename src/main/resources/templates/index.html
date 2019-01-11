@@ -34,7 +34,7 @@
 	<link rel="stylesheet" href="css/dark.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<!--<link rel="stylesheet" href="css/prettyphoto.css">-->
-    <link rel="stylesheet" href="css/studentStyle.css">
+    <link rel="stylesheet" href="/css/studentStyle.css">
 
 	<!-- JS Font Script -->
 	<script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -59,49 +59,50 @@
 		<div class="navbr">
 			<div class="menu-wrap">
 				<div class="row">
-					<div class="logo-psuti col-md-3 col-xs-5 ">
-						<a href="https://www.psuti.ru/"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
+					<div class="logo-psuti">
+						<a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
 					</div>
-					<div class="logo-psuti col-md-3 col-xs-5 ">
-						<a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
+					<div class="logo-psuti">
+						<a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
 					</div>
 					<!--<div class="logo-psuti">
 						<a href="/main"><img src="images\mustache1.png" class="img-responsive" alt=""/></a>
 					</div>-->
-
+					<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+						<li>
+							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
+							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+							<ul >
+								<div th:each="menuItemMinor : ${mapEntry.value}">
+									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
+									</li>
+								</div>
+							</ul>
+						</li>
+					</ul>
 					<div class="top-bar "style="float:right !important; margin-right: 50px;">
 						<ul>
-							<li class="tb-info " th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black; float:right !important;"></li>
+							<li class="tb-info "style="float:right !important;">
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black"></li>
+
+							</li>
 							<br>
-							<li class="tb-info " th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black; float:right !important;"></li>
+							<li class="tb-info "style="float:right !important;">
+							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black"></li>
+							</li>
 						</ul>
 					</div>
 				</div>
-
 			</div>
-            <div class="menu-wrap2">
-            <div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"></div>
-            <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
-                <li>
-                    <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
-                    <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-                    <ul >
-                        <div th:each="menuItemMinor : ${mapEntry.value}">
-                            <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-                                <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
-                            </li>
-                        </div>
-                    </ul>
-                </li>
-            </ul>
-            </div>
 		</div>
 	</header>
 
 	<!--HEADER-->
 	<div class="header" style="height: 100px"></div>
-<!--
-		<div class="flexslider">
+
+		<!--<div class="flexslider">
 			<ul class="slides">
 				<li>
 					<img src="images/slider/1/1.jpg" alt=""/>
@@ -121,7 +122,7 @@
 	<div class="container-fluid no-padding">
 		<div id="home-slider2" class="owl-carousel owl-theme">
 			<div class="item" th:each="picture : ${slider}">
-				<img th:src="${picture.getUrlPicture()}" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
+				<img th:src="@{'/main/picture/' + ${picture.getId()}}" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>
 			</div>
 		</div>
 	</div>
@@ -140,53 +141,39 @@
 					<div class="h-page-title">
 						<h2>Новости</h2>
 						<div class="mustache">
-							<span class="sub-title">Актуальное на сегодня</span>
+							<span class="sub-title" th:utext="${ItemHeader1_1.getName()}"></span>
 						</div>
 					</div>
 
 					<div class="col-md-12">
 						<div class="row">
 							<div id="blog-mason" class="blog-mason-2col">
-								<article class="blogpost bm-item isotope-item">
-									<!-- Media Gallery -->
+								<article th:each="newFaculty : ${newsOfFaculty}" class="blogpost bm-item isotope-item">
 									<div class="post-media">
-										<img src="images/2012_i-can-see-clearly-now.jpg" class="img-responsive" alt=""> <!--500 X 300-->
+										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt=""> <!--500 X 300-->
 									</div>
-									<h2 class="post-title"><a href="#">Уважаемые родители</a></h2>
+									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" href="#"><!--Уважаемые родители--></a></h2>
 									<div class="post-meta">
-										<span><a href="#"><i class="fa fa-calendar"></i> 9 Ноября</a></span>
-										<!--<span><a href="#"><i class="fa fa-edit"></i> John Doe</a></span>-->
-										<!--<span><i class="fa fa-folder-o"></i> <a href="">Vector</a>, <a href="#">Design</a></span>-->
-										<!--<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
+										<span><a th:utext="${newFaculty.getDate()}" href="#"><i class="fa fa-calendar"></i> <!--9 Ноября--></a></span>
 									</div>
 									<div class="post-excerpt">
-										<p>01 декабря в 12:00 (ауд. 2-05, корпус №2 ПГУТИ: Московское шоссе, 77) состоится собрание родителей студентов 1 курса факультета "Информационные системы и технологии".
-											<br>
-											Повестка дня:
-											<br>
-											1. Встреча с представителями факультета	<br>
-											2. Итоги внутрисеместровой аттестации студентов факультета	<br>
-											3. Ответы на вопросы</p>
+										<p th:utext="${newFaculty.getText()}"></p>
 									</div>
 									<!--<a href="#" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
 								</article>
 
-								<article class="blogpost bm-item isotope-item">
+								<!--<article class="blogpost bm-item isotope-item">
 									<div class="post-media">
-										<img src="images/home-page/projects/aneme.jpg" class="img-responsive" alt="">   <!--500 X 300-->
+										<img src="images/home-page/projects/aneme.jpg" class="img-responsive" alt="">   &lt;!&ndash;500 X 300&ndash;&gt;
 									</div>
 									<h2 class="post-title"><a href="#">Внимание!Картинка!</a></h2>
 									<div class="post-meta">
 										<span><a href="#"><i class="fa fa-calendar"></i> 29 Октября</a></span>
-										<!--<span><a href="#"><i class="fa fa-edit"></i> John Doe</a></span>
-										<span><i class="fa fa-folder-o"></i> <a href="">Vector</a>, <a href="#">Design</a></span>
-										<span><a href="#"><i class="fa fa-comments"></i> 13 Comments</a></span>-->
 									</div>
 									<div class="post-excerpt">
-										<p>Изображение</p>
+										<p>Изображение </p>
 									</div>
-									<!--<a href="http://fist.psuti.ru/index.php/456-itogi-promezhutochnogo-kontrolya-1-semestra-2018-2019-uch-goda" class="rmore">Continue Reading&nbsp;&nbsp;&rarr;</a>-->
-								</article>
+								</article>-->
 
 
 							</div>
@@ -194,7 +181,7 @@
 
 						<div class="clearfix"></div>
 						<div class="space30"></div>
-						<a href="/newsBlog" class="main-btn">Больше новостей</a>
+						<a th:href="${ItemButton1.getUrlHref()}" class="main-btn" th:utext="${ItemButton1.getName()}"></a>
 						<!-- End Pagination -->
 					</div>
 				</div>
@@ -276,7 +263,7 @@
 				<h1 th:object="${ItemHeader2}" th:text="${ItemHeader2.getName()}"></h1>
 				<!--<span class="sub-title">what we can do</span>-->
 				<div class="mustache">
-					<span><img class="img-responsive" th:src="${ItemHeaderPictureSplit.getUrlPicture()}" alt=""></span>
+					<span><img class="img-responsive" th:src="@{'/main/picture/' + ${ItemHeaderPictureSplit.getId()}}" alt=""></span>
 				</div>
 			</div>
 
@@ -284,8 +271,8 @@
 				<div class="row" th:each="mapEntry : ${educationProcess}">
 					<div class="col-md-6 col-sm-6 service-left">
 						<span class="ico" >
-							<img class="icon_1" th:src="${mapEntry.getPicturesLeft().getUrlPicture()}" alt="">
-							<img class="icon_2" th:src="${mapEntry.getPicturesLeft().getUrlPicture()}" alt="">
+							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
+							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
 						</span>
 						<div class="service-info">
 							<h4>
@@ -296,8 +283,8 @@
 
 					<div class="col-md-6 col-sm-6 service-right">
 						<span class="ico">
-							<img class="icon_1" th:src="${mapEntry.getPicturesRight().getUrlPicture()}" alt="">
-							<img class="icon_2" th:src="${mapEntry.getPicturesRight().getUrlPicture()}" alt="">
+							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
+							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
 						</span>
 						<div class="service-info">
 							<h4>
@@ -454,355 +441,155 @@
 		<div class="stats">
 			<div class="container">
 				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
-					<h1 th:text="${mapEntry.value}"></h1>
+					<h1 th:utext="${mapEntry.value}"></h1>
 					<!--<img src="images/mustache.png" alt="">-->
-					<h6 th:text="${mapEntry.key}"></h6>
+					<h6 th:utext="${mapEntry.key}"></h6>
 				</div>
 			</div>
 		</div>
 	</section>
-
-   <!-- <section id="home-shop">
-        <div class="h2-gallery" id="5">
-        <div class="container">
-            <div class="col-md-12">
-                <div class="h-page-title">
-                    <h1>Лучшие студнеты</h1>
-                    &lt;!&ndash;<span class="sub-title">hot deals</span>&ndash;&gt;
-                    &lt;!&ndash;<div class="mustache">
-                        <span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
-                    </div>&ndash;&gt;
-                </div>
-                <div class="clearfix space35"></div>
-
-                <div id="home-shop-carousel" class="owl-carousel owl-theme">
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/1.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Ильина Алёна</a></h2>
-                            <div class="product-price">Группа:<span>ЭБ-51</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/2.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Кузнецов Александр</a></h2>
-                            <div class="product-price">Группа:<span>ПО-53пр</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/3.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/4.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/5.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/6.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/7.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Аброськина Елена</a></h2>
-                            <div class="product-price">Группа:<span>ПО-51</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/8.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/9.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/10.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/11.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/12.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/13.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/14.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Неизвестно</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                    <div class="sm-item text-center">
-                        <div class="product">
-                            <div class="product-thumb">
-                                <li><a class="cd-signin">
-                                    <img src="images/shop/15.jpg" class="img-responsive" alt="">
-                                    <div><span class="fa fa-search-plus"></span></div></a>
-                                </li>
-                            </div>
-                            <h2 class="product-title"><a href="#">Владимир Осанов</a></h2>
-                            <div class="product-price">Группа:<span>Неизвестно</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </section>-->
 
 
 	<section id="home-shop">
 		<div class="h2-gallery" id="5">
-		<div class="container">
-			<div class="col-md-12">
-				<div class="h-page-title">
-					<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}"></h1>
-					<!--&lt;!&ndash;<span class="sub-title">hot deals</span>&ndash;&gt;
-					&lt;!&ndash;<div class="mustache">
-						<span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
-					</div>&ndash;&gt;-->
-				</div>
-				<div class="clearfix space35"></div>
+			<div class="container">
+				<div class="col-md-12">
+					<div class="h-page-title">
+						<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}"></h1>
+						<!--&lt;!&ndash;<span class="sub-title">hot deals</span>&ndash;&gt;
+                        &lt;!&ndash;<div class="mustache">
+                            <span><img class="img-responsive" src="images/home-page/mustache.png" alt=""></span>
+                        </div>&ndash;&gt;-->
+					</div>
+					<div class="clearfix space35"></div>
 
-				<div id="home-shop-carousel" class="owl-carousel owl-theme">
-					<div id="Some-Container"  th:each="student : ${bestStudents}" class="sm-item text-center">
-						<div class="product" >
-							<div class="product-thumb">
-                                <li><a class="cd-signin">
-								<img th:id="@{'student' + ${student.getId()}}" th:src="${student.getPicture().getUrlPicture()}"  class="img-responsive" alt="">
-									<div><span class="fa fa-search-plus"></span></div>
-                                    <script >
-                                        document.body.onclick = function(e) {
-                                            var elem = e ? e.target : window.event.srcElement;
-                                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
-                                            if (!elem.id) return; else id = elem.id;
-                                            var rightPart =/*([[${bestStudents}]])*/ null;
-                                            var srcImg=document.getElementById(id).getAttribute("src");
-                                           /* var jsonData = JSON.parse(rightPart);*/
-                                           /* for (var i = 0; i < jsonData.BestStudents.length; i++) {
-                                                alert(jsonData.BestStudents[i].picture.urlPicture);
-                                                if (srcImg == jsonData.BestStudents[i].picture.urlPicture) {
-                                                    document.getElementById("stud-name").innerHTML = rightPart[i].getName();
-                                                    document.getElementById("char").innerHTML =  rightPart[i].getCharacteristic();
+					<div id="home-shop-carousel" class="owl-carousel owl-theme">
+						<div id="Some-Container"  th:each="student : ${bestStudents}" class="sm-item text-center">
+							<div class="product" >
+								<div class="product-thumb">
+									<li><a class="cd-signin">
+										<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}"  class="img-responsive" alt="">
+										<div><span class="fa fa-search-plus"></span></div>
+										<script >
+                                            document.body.onclick = function(e) {
+                                                var elem = e ? e.target : window.event.srcElement;
+                                                while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
+                                                if (!elem.id) return; else id = elem.id;
+                                                var rightPart =/*([[${bestStudents}]])*/ null;
+                                                var srcImg=document.getElementById(id).getAttribute("src");
+                                                /* var jsonData = JSON.parse(rightPart);*/
+                                                /* for (var i = 0; i < jsonData.BestStudents.length; i++) {
+                                                     alert(jsonData.BestStudents[i].picture.urlPicture);
+                                                     if (srcImg == jsonData.BestStudents[i].picture.urlPicture) {
+                                                         document.getElementById("stud-name").innerHTML = rightPart[i].getName();
+                                                         document.getElementById("char").innerHTML =  rightPart[i].getCharacteristic();
+                                                     }
+                                                 }*/
+
+                                                /* th:each="student : ${bestStudents}"*/
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(0).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(0).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(0).getCharacteristic()}]])";
                                                 }
-                                            }*/
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(1).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(1).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(1).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(2).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(2).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(2).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(3).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(3).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(3).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(4).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(4).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(4).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(5).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(5).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(5).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(6).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(6).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(6).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(7).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(7).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(7).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(8).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(8).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(8).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(9).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(9).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(9).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(10).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(10).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(10).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(11).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(11).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(11).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(12).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(12).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(12).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(13).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(13).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(13).getCharacteristic()}]])";
+                                                }
+                                                rightPart = "/main/picture/"+"[[${bestStudents.get(14).getIdPicture()}]]";
+                                                if (srcImg == rightPart) {
+                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(14).getName()}]])";
+                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(14).getCharacteristic()}]])";
+                                                }
 
-                                           /* th:each="student : ${bestStudents}"*/
-                                               rightPart ="[[${bestStudents.get(0).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(0).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(0).getCharacteristic()}]])";
                                             }
-                                            rightPart ="[[${bestStudents.get(1).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(1).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(1).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(2).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(2).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(2).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(3).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(3).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(3).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(4).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(4).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(4).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(5).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(5).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(5).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(6).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(6).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(6).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(7).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(7).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(7).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(8).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(8).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(8).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(9).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(9).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(9).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(10).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(10).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(10).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(11).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(11).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(11).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(12).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(12).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(12).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(13).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(13).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(13).getCharacteristic()}]])";
-                                            }
-                                            rightPart ="[[${bestStudents.get(14).getPicture().getUrlPicture()}]]";
-                                            if (srcImg == rightPart) {
-                                                document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(14).getName()}]])";
-                                                document.getElementById("char").innerHTML = "([[${bestStudents.get(14).getCharacteristic()}]])";
-                                            }
+										</script>
+									</a>
+									</li>
+								</div>
+								<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
+								<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}"></span></div>
 
-                                        }
-                                    </script>
-                                </a>
-                                </li>
-                                </div>
-							<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
-							<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}"></span></div>
+							</div>
 
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
 	</section>
 
-    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-            <div class="border-stud">
-                <div class="stud-photo">
-                    <a><img class="img-responsive" alt=""/></a>
-                </div>
-                <h2 id="stud-name" class="stud-name"><!--Аброськина Елена Сергеевна--></a></h2>
-                <div class="text-stud">
-                    <p id="char">
-                        <!--Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
+	<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<div class="border-stud">
+				<div class="stud-photo">
+					<a><img class="img-responsive" alt=""/></a>
+				</div>
+				<h2 id="stud-name" class="stud-name"><!--Аброськина Елена Сергеевна--></a></h2>
+				<div class="text-stud">
+					<p id="char">
+						<!--Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
                         вычислительная техника». С начала своего обучения принимает активное
                         участие в общественной жизни университета. Выступает в качестве
                         организатора в культурных мероприятиях ВУЗа. В 2015 году прошла
@@ -817,12 +604,13 @@
                         Интересуется и регулярно участвует в командных интеллектуальных
                         играх: “Кроссворд-шоу” на кубок совета ректоров Самарской области,
                         “Что? Где? Когда” в ПГУТИ и Самарском университете, "#SIB_LAB".-->
-                    </p>
-                </div>
-            </div>
+					</p>
+				</div>
+			</div>
 
-        </div> <!-- cd-user-modal-container -->
-    </div> <!-- cd-user-modal -->
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal --
+
 
 	<!-- FOOTER -->
 	<footer id="footer2">
@@ -830,7 +618,7 @@
 			<div class="row">
 
                 <div class="col-md-3">
-					<h3 th:text="${ItemHeader8.getName()}"></h3>
+					<h3 th:utext="${ItemHeader8.getName()}"></h3>
 					<div class="top-bar">
 						<ul>
 							<li class="tb-info">
@@ -910,7 +698,7 @@
 		<div class="footer-bottom container">
 			<div class="row">
 				<div class="col-md-6">
-					<p th:text="${ItemHeader11.getName()}"></p>
+					<p th:utext="${ItemHeader11.getName()}"></p>
 				</div>
 				<!--<div class="col-md-6">
 					<p class="pull-right">Design by <a target="_blank" href="http://themeforest.net/user/Theme-Squared">ThemeSquared</a></p>

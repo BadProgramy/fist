@@ -11,16 +11,28 @@
         <result property="urlPicture" column="url_picture"/>
         <result property="date" column="date"/>
         <result property="keyPicture" column="key_picture"/>
+        <result property="pictureFile" column="picture_file"/>
 
     </resultMap>
 
-    <insert id="add" parameterType="NewsOfFaculty">
-        INSERT INTO pictures(date, id_page, key_picture, url_picture, name_picture)
-        VALUES (#{date}, #{id_page}, #{key_picture}, #{url_picture}, #{name_picture});
+    <insert id="add" parameterType="Pictures">
+        INSERT INTO pictures(date, id_page, key_picture, url_picture, name_picture, picture_file)
+        VALUES (#{date}, #{idPage}, #{keyPicture}, #{urlPicture}, #{namePicture}, #{pictureFile});
     </insert>
 
+    <update id="update" parameterType="Pictures">
+        UPDATE pictures SET
+        date = #{date},
+        id_page = #{idPage},
+        key_picture = #{keyPicture},
+        url_picture = #{urlPicture},
+        name_picture = #{namePicture},
+        picture_file = #{pictureFile}
+        WHERE id = #{id};
+    </update>
+
     <select id="getLastIdInsert" resultType="long">
-        SELECT LAST_INSERT_ID() FROM pictures;
+        SELECT LAST_INSERT_ID() FROM pictures LIMIT 1;
     </select>
 
     <select id="selectAll" resultMap="result">

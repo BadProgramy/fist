@@ -1,13 +1,14 @@
 package website.psuti.fist.controller;
 
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.model.NewsOfFaculty;
@@ -19,13 +20,9 @@ import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.*;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -67,7 +64,7 @@ public class AdminController {
         }
         //model.addAttribute("newFaculty", new NewsOfFaculty());
         ModelAndView modelAndView = new ModelAndView("adminnews");
-        modelAndView.addObject("news",  newsFacultyService.getLastTenByDate(NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount()));
+        modelAndView.addObject("news",  newsFacultyService.getLastTenByDateFilledPicture(NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount()));
         modelAndView.addObject("withDate", LocalDate.now());
         modelAndView.addObject("fromDate", LocalDate.now());
         return modelAndView;
@@ -87,34 +84,17 @@ public class AdminController {
         return modelAndView;
     }
 
-    /*private static void downloadUsingNIO(String urlStr, String file) throws IOException {
-        URL url = new URL(urlStr);
-        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        fos.close();
-        rbc.close();
-    }
-
-    private static void downloadUsingStream(String urlStr, String file) throws IOException{
-        URL url = new URL(urlStr);
-        BufferedInputStream bis = new BufferedInputStream(url.openStream());
-        FileOutputStream fis = new FileOutputStream(file);
-        byte[] buffer = new byte[1024];
-        int count=0;
-        while((count = bis.read(buffer,0,1024)) != -1)
-        {
-            fis.write(buffer, 0, count);
-        }
-        fis.close();
-        bis.close();
-    }*/
-
     private void writeFile(byte[] buffer, String filename) throws IOException {
         FileOutputStream fos = new FileOutputStream("src\\main\\resources\\static\\images\\downloadNewsPicture\\" + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getPhoto(@PathVariable long idPicture) {
+        return picturesService.findPictureById(idPicture).getPictureFile();
     }
 
     @RequestMapping("/admin/news/add/submit")
@@ -123,13 +103,25 @@ public class AdminController {
         writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
         Pictures pictures = new Pictures();
         pictures.setUrlPicture("images\\downloadNewsPicture\\"+ newFaculty.getPictureFile().getOriginalFilename());
-        pictures.setDate(LocalDate.now());
         pictures.setIdPage(2);
         pictures.setKeyPicture(-1);
+        pictures.setPictureFile(newFaculty.getPictureFile().getBytes());
         pictures.setNamePicture(newFaculty.getPictureFile().getOriginalFilename());
-        picturesService.insert(pictures);
+        long idPicture = picturesService.insert(pictures);
+        newFaculty.setIdPicture(idPicture);
         newsFacultyService.insert(newFaculty);
         return "redirect:../";
+    }
+
+    @RequestMapping("/test")
+    public String test() throws IOException {
+        File f ;
+        for (Pictures pictures: picturesService.getAll()) {
+                f = new File("src\\main\\resources\\static\\" + pictures.getUrlPicture());
+                pictures.setPictureFile(Files.readAllBytes(f.toPath()));
+                picturesService.update(pictures);
+        }
+        return "newsBlog";
     }
 
     @RequestMapping("/admin/news/range")
@@ -152,7 +144,7 @@ public class AdminController {
         return zdt.toLocalDate();
     }
 
-    @RequestMapping(value = "/admin/news/delete/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/news/delete/{id}",method = RequestMethod.GET)
     public String deleteNewFaculty(@PathVariable("id") long newsId, Model model) {
         if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

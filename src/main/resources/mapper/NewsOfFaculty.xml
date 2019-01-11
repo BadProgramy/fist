@@ -19,7 +19,7 @@
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
-        SELECT LAST_INSERT_ID() FROM news_of_faculty;
+        SELECT LAST_INSERT_ID() FROM news_of_faculty LIMIT 1;
     </select>
 
     <select id="selectAll" resultMap="result">
@@ -51,5 +51,10 @@
     <select id="selectNewsByRangeDate" parameterType="java.util.Map" resultMap="result">
         SELECT * from news_of_faculty WHERE
         date between #{dateWith} AND #{dateFrom};
+    </select>
+
+    <select id="selectLastTwoNewsFaculty" resultMap="result">
+        SELECT * from news_of_faculty
+        ORDER BY date DESC LIMIT 2;
     </select>
 </mapper>

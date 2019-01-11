@@ -1,6 +1,7 @@
 package website.psuti.fist.model;
 
 import org.hibernate.annotations.JoinColumnOrFormula;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.File;
@@ -17,6 +18,9 @@ public class Pictures {
     private String urlPicture;
     private LocalDate date;
     private long keyPicture; //
+
+    @Column(columnDefinition="longblob")
+    private byte[] pictureFile;
 
     public Pictures() {
         date = LocalDate.now();
@@ -44,6 +48,14 @@ public class Pictures {
         this.namePicture = namePicture;
     }
 
+    public long getIdPage() {
+        return idPage;
+    }
+
+    public void setIdPage(long idPage) {
+        this.idPage = idPage;
+    }
+
     public String getUrlPicture() {
         return urlPicture;
     }
@@ -60,19 +72,19 @@ public class Pictures {
         this.date = date;
     }
 
-    public long getIdPage() {
-        return idPage;
-    }
-
-    public void setIdPage(long idPage) {
-        this.idPage = idPage;
-    }
-
     public long getKeyPicture() {
         return keyPicture;
     }
 
     public void setKeyPicture(long keyPicture) {
         this.keyPicture = keyPicture;
+    }
+
+    public byte[] getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(byte[] pictureFile) {
+        this.pictureFile = pictureFile;
     }
 }

@@ -47,7 +47,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -283,6 +283,7 @@
             <div class="cd-timeline-content">
                 <h2 th:utext="${topic.getHeading()}"></h2>
                 <p th:utext="${topic.getText()}"></p>
+                <img th:src="@{'/admin/news/' + ${topic.getIdPicture()}}" alt="">
                 <nav class="main-nav">
                     <ul>
                         <!-- inser more links here -->

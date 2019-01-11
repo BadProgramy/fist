@@ -18,6 +18,9 @@ public class PicturesService {
     public long insert(Pictures pictures) { return daoPictures.insert(pictures); }
 
     @Transactional
+    public void update(Pictures pictures) { daoPictures.update(pictures);}
+
+    @Transactional
     public List<Pictures> getAll() {
         return daoPictures.getAll();
     }

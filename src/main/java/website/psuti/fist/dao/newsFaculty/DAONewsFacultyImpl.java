@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.NewsOfFaculty;
+import website.psuti.fist.service.PicturesService;
 
 import javax.sql.DataSource;
 import java.sql.Date;
@@ -26,7 +27,7 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     private Factory factory;
 
     @Autowired
-    private DataSource dataSource;
+    private PicturesService picturesService;
 
     @Override
     public List<NewsOfFaculty> getAll() {
@@ -43,7 +44,7 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     @Override
     public long insert(NewsOfFaculty newsOfFaculty) {
         SqlSession session = factory.getFactory().openSession();
-        int id = -1;
+        long id = -1;
         try {
             id = session.insert("NewsOfFaculty.add", newsOfFaculty);
             if (id == 1) id = session.selectOne("NewsOfFaculty.getLastIdInsert");
@@ -86,11 +87,14 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     }
 
     @Override
-    public List<NewsOfFaculty> getLastTenByDate(int count) {
+    public List<NewsOfFaculty> getLastTenByDateFilledPicture(int count) {
         List<NewsOfFaculty> newsOfFaculties;
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTenByDate", count);
+            for (NewsOfFaculty newFaculty : newsOfFaculties) {
+                newFaculty.setPicture(picturesService.findPictureById(newFaculty.getIdPicture()));
+            }
         } finally {
             session.close();
         }
@@ -106,6 +110,18 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectNewsByRangeDate", dateMap);
+        } finally {
+            session.close();
+        }
+        return newsOfFaculties;
+    }
+
+    @Override
+    public List<NewsOfFaculty> getLastTwoNewsFaculty() {
+        List<NewsOfFaculty> newsOfFaculties;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTwoNewsFaculty");
         } finally {
             session.close();
         }

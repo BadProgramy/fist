@@ -16,7 +16,7 @@ public interface DAONewsFaculty {
     void delete(long id);
 
     NewsOfFaculty findById(long id);
-    List<NewsOfFaculty> getLastTenByDateFilledPicture(int count);
+    List<NewsOfFaculty> getLastCountByDateFilledPicture(int count);
     List<NewsOfFaculty> getLastNewsByRangeDate(LocalDate withDate, LocalDate fromDate) throws SQLException;
     List<NewsOfFaculty> getLastTwoNewsFaculty();
 }

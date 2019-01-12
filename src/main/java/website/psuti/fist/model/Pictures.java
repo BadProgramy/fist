@@ -18,6 +18,7 @@ public class Pictures {
     private String urlPicture;
     private LocalDate date;
     private long keyPicture; //
+    private String href;
 
     @Column(columnDefinition="longblob")
     private byte[] pictureFile;
@@ -86,5 +87,13 @@ public class Pictures {
 
     public void setPictureFile(byte[] pictureFile) {
         this.pictureFile = pictureFile;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
     }
 }

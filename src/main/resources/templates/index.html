@@ -68,15 +68,15 @@
 					<!--<div class="logo-psuti">
 						<a href="/main"><img src="images\mustache1.png" class="img-responsive" alt=""/></a>
 					</div>-->
-					<div th:object="${menuItemMobile}" th:text="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+					<div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
 					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
 						<li>
-							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:text="${mapEntry.key.getName()}"></a>
+							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
 							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
 							<ul >
 								<div th:each="menuItemMinor : ${mapEntry.value}">
 									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:text="${menuItemHeaderInMainPage.getName()}"></a>
+										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
 									</li>
 								</div>
 							</ul>
@@ -85,12 +85,12 @@
 					<div class="top-bar "style="float:right !important; margin-right: 50px;">
 						<ul>
 							<li class="tb-info "style="float:right !important;">
-							<li th:object="${mainPage}" th:text="${mainPage.getHeaderPhone()}" style="color: black"></li>
+							<li th:object="${mainPage}" th:utext="${mainPage.getHeaderPhone()}" style="color: black"></li>
 
 							</li>
 							<br>
 							<li class="tb-info "style="float:right !important;">
-							<li th:object="${mainPage}" th:text="${mainPage.getHeaderEmail()}" style="color: black"></li>
+							<li th:object="${mainPage}" th:utext="${mainPage.getHeaderEmail()}" style="color: black"></li>
 							</li>
 						</ul>
 					</div>
@@ -470,100 +470,26 @@
 									<li><a class="cd-signin">
 										<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}"  class="img-responsive" alt="">
 										<div><span class="fa fa-search-plus"></span></div>
-										<script >
+										<script th:inline="javascript">
                                             document.body.onclick = function(e) {
                                                 var elem = e ? e.target : window.event.srcElement;
                                                 while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
                                                 if (!elem.id) return; else id = elem.id;
                                                 var rightPart =/*([[${bestStudents}]])*/ null;
                                                 var srcImg=document.getElementById(id).getAttribute("src");
-                                                /* var jsonData = JSON.parse(rightPart);*/
-                                                /* for (var i = 0; i < jsonData.BestStudents.length; i++) {
-                                                     alert(jsonData.BestStudents[i].picture.urlPicture);
-                                                     if (srcImg == jsonData.BestStudents[i].picture.urlPicture) {
-                                                         document.getElementById("stud-name").innerHTML = rightPart[i].getName();
-                                                         document.getElementById("char").innerHTML =  rightPart[i].getCharacteristic();
-                                                     }
-                                                 }*/
 
-                                                /* th:each="student : ${bestStudents}"*/
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(0).getIdPicture()}]]";
+                                                /*<![CDATA[*/
+                                                /*[# th:each="stud : ${bestStudents}"]*/
+                                                rightPart = /*[[@{'/main/picture/'+${stud.getIdPicture()}}]]*/ null;
                                                 if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(0).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(0).getCharacteristic()}]])";
+                                                    document.getElementById("studPicture").src = /*[[@{'/main/picture/' + ${stud.getIdPicture()}}]]*/ null;
+                                                    document.getElementById("stud-name").innerHTML = /*[[${stud.getName()}]]*/ null;
+                                                    document.getElementById("char").innerHTML = /*[[${stud.getCharacteristic()}]]*/ null;
                                                 }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(1).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(1).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(1).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(2).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(2).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(2).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(3).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(3).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(3).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(4).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(4).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(4).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(5).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(5).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(5).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(6).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(6).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(6).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(7).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(7).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(7).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(8).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(8).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(8).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(9).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(9).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(9).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(10).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(10).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(10).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(11).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(11).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(11).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(12).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(12).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(12).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(13).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(13).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(13).getCharacteristic()}]])";
-                                                }
-                                                rightPart = "/main/picture/"+"[[${bestStudents.get(14).getIdPicture()}]]";
-                                                if (srcImg == rightPart) {
-                                                    document.getElementById("stud-name").innerHTML = "([[${bestStudents.get(14).getName()}]])";
-                                                    document.getElementById("char").innerHTML = "([[${bestStudents.get(14).getCharacteristic()}]])";
-                                                }
+                                                /*[/]*/
+                                                /*]]>*/
 
-                                            }
+                                         }
 										</script>
 									</a>
 									</li>
@@ -584,7 +510,7 @@
 		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
 			<div class="border-stud">
 				<div class="stud-photo">
-					<a><img class="img-responsive" alt=""/></a>
+					<a><img id="studPicture" class="img-responsive" alt=""/></a>
 				</div>
 				<h2 id="stud-name" class="stud-name"><!--Аброськина Елена Сергеевна--></a></h2>
 				<div class="text-stud">

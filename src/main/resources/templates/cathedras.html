@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Новости</title>
+    <title>Кафедры факультета</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,12 +64,13 @@
                 <div class="col-md-9 col-xs-7">
                     <div class="top-bar">
                         <ul>
-                            <li class="tb-info">
-                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderPhone()}" style="color: black"></li>
+                            <li class="tb-info "style="float:right !important;">
+                            <li th:object="${phone}" th:utext="${phone.getName()}" style="color: black"></li>
+
                             </li>
                             <br>
-                            <li class="tb-info">
-                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderEmail()}" style="color: black"></li>
+                            <li class="tb-info "style="float:right !important;">
+                            <li th:object="${email}" th:utext="${email.getName()}" style="color: black"></li>
                             </li>
                         </ul>
                     </div>
@@ -102,7 +103,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/baxareva.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/baxareva.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра"Информатики и вычислительной техники" (ИВТ)</h3>
@@ -115,7 +116,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/tarasov.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/tarasov.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра "Программного обеспечения и управления в технических системах" (ПОУТС)</h3>
@@ -128,7 +129,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/abramov-s.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/abramov-s.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра "Иностранных языков" (ИНО)</h3>
@@ -141,7 +142,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/Limanova__N_I_.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/Limanova__N_I_.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра "Информационных систем и технологий" (ИСТ)</h3>
@@ -154,7 +155,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/maslov-s.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/maslov-s.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра "Прикладная информатика" (ПИ)</h3>
@@ -167,7 +168,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/Xas.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/Xas.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра "Цифровая экономика" (ЦЭ)</h3>
@@ -180,7 +181,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cathedras/andronova.jpg" class="img-responsive static-image" alt=""/>
+                    <img src="/images/cathedras/andronova.jpg" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
                     <h3>Кафедра "Связей с общественностью" (СО)</h3>

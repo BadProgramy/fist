@@ -948,9 +948,9 @@ h1 {
 	cursor:pointer;
 }
 
-.main-team ul.cs-style-7 li::before {
+/*.main-team ul.cs-style-7 li::before {
 	content:"";
-	/*border:5px solid #b59e5c;*/
+	!*border:5px solid #b59e5c;*!
 	position:absolute;
 	top:20px;
 	left:20px;
@@ -958,7 +958,7 @@ h1 {
 	bottom:20px;
 	z-index:9999;
 	
-}
+}*/
 
 .main-team ul.cs-style-7 li .figcaption {
 	position:absolute;

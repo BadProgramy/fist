@@ -198,6 +198,7 @@ public class MainController {
         return modelview;
     }
 
+    //TODO PREPOD//////////////////////////////////////////////////////////////////////////
     @RequestMapping("/about/faculty")
     public ModelAndView aboutOfFaculty() {
         ModelAndView modelAndView = initModelAndView();
@@ -205,12 +206,136 @@ public class MainController {
         return modelAndView;
     }
 
-    @RequestMapping("/prepod")
+    @RequestMapping("/deanTeam")
     public ModelAndView prepod() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("deanTeam");
         return modelAndView;
     }
-    @RequestMapping("/groupCurators")
-    public String groupCurators(){return "groupCurators"; }
+
+    @RequestMapping("/bogomolova")
+    public ModelAndView bogomolova(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("bogomolova");
+        return modelAndView;
+    }
+
+    @RequestMapping("/chernova")
+    public ModelAndView chernova(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("chernova");
+        return modelAndView;
+    }
+
+    @RequestMapping("/tychkova")
+    public ModelAndView tychkova(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("tychkova");
+        return modelAndView;
+    }
+
+    @RequestMapping("/belova")
+    public ModelAndView belova(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("belova");
+        return modelAndView;
+    }
+
+    @RequestMapping("/konyaeva")
+    public ModelAndView konyaeva(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("konyaeva");
+        return modelAndView;
+    }
+
+    @RequestMapping("/vorobeva")
+    public ModelAndView vorobeva(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("vorobeva");
+        return modelAndView;
+    }
+    //TODO STUDENT ////////////////////////////////////////////////////////
+
+    @RequestMapping("/students/rightAndObligations")
+    public ModelAndView studentRightAndObligations(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("rightsAndObligations");
+        return modelAndView;
+    }
+
+    @RequestMapping("/students/groupCurators")
+    public ModelAndView groupCurators(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("groupCurators");
+        return modelAndView;
+    }
+
+    @RequestMapping("/students/costEducation")
+    public ModelAndView costEducation(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("costEducation");
+        return modelAndView;
+    }
+
+
+    //TODO faculty /////////////////////////////////////////////////////////////
+
+    @RequestMapping("/faculty/academicSoviet")
+    public ModelAndView academicSoviet(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("academicSoviet");
+        return modelAndView;
+    }
+
+    @RequestMapping("/faculty/cathedras")
+    public ModelAndView cathedras(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("cathedras");
+        return modelAndView;
+    }
+
+    @RequestMapping("/faculty/diplomasPhoto")
+    public ModelAndView diplomasPhoto(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("diplomasPhoto");
+        return modelAndView;
+    }
+
+    @RequestMapping("/faculty/graduates")
+    public ModelAndView graduates(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("graduates");
+        return modelAndView;
+    }
+
+    @RequestMapping("/faculty/commissionsFIST")
+    public ModelAndView commissionsFIST(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("commissionsFIST");
+        return modelAndView;
+    }
+
+    //TODO контакты/////////////////////////////////////////////////////////////
+    @RequestMapping("/contacts")
+    public ModelAndView contacts(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("contacts");
+        return modelAndView;
+    }
+
+
+    //TODO абитуриентам.....................................................................
+    @RequestMapping("/abitur/trainingDirections")
+    public ModelAndView trainingDirections(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("trainingDirections");
+        return modelAndView;
+    }
+
+    @RequestMapping("/abitur/costEducation")
+    public ModelAndView abiturCostEducation(){
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("costEducation");
+        return modelAndView;
+    }
 }

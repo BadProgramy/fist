@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import website.psuti.fist.constant.MainPageObjectConstant;
+import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.Pictures;
 
@@ -34,7 +36,10 @@ public class DAOPicturesImpl implements DAOPictures {
         long id = -1;
         try {
             id = session.insert("Pictures.add", pictures);
-            if (id == 1) id = session.selectOne("Pictures.getLastIdInsert");
+            if (id == 1) {
+                id = session.selectOne("Pictures.getLastIdInsert");
+                MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.PICTURES);
+            }
         } finally {
             session.close();
         }
@@ -43,9 +48,11 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public void update(Pictures pictures) {
+        int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {
-            session.update("Pictures.update", pictures);
+            check = session.update("Pictures.update", pictures);
+            if (check == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.PICTURES);
         } finally {
             session.close();
         }

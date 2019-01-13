@@ -64,12 +64,13 @@
                 <div class="col-md-9 col-xs-7">
                     <div class="top-bar">
                         <ul>
-                            <li class="tb-info">
-                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderPhone()}" style="color: black"></li>
+                            <li class="tb-info "style="float:right !important;">
+                            <li th:object="${phone}" th:utext="${phone.getName()}" style="color: black"></li>
+
                             </li>
                             <br>
-                            <li class="tb-info">
-                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderEmail()}" style="color: black"></li>
+                            <li class="tb-info "style="float:right !important;">
+                            <li th:object="${email}" th:utext="${email.getName()}" style="color: black"></li>
                             </li>
                         </ul>
                     </div>
@@ -100,7 +101,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page_header text-center">
-                        <h2 th:object="${ItemHeader1_1}" th:utext="${ItemHeader1_1.getName()}"></h2>
+                        <h2 th:object="${ItemHeader1_3}" th:utext="${ItemHeader1_1.getName()}"></h2>
                         <p th:object="${ItemHeader1_2}" th:utext="${ItemHeader1_2.getName()}"></p>
                     </div>
                     <div class="col-md-12">

@@ -4,6 +4,8 @@ package website.psuti.fist.constant;
 //Добавлять можно
 public enum MainPageConstant {
     NO_FOTO("Нет ФОТО", "images/no_foto.png"),
+    PHONE(77L),
+    EMAIL(76L),
     LOGOTIP_PSUTI("Логотип ПГУТИ", 0L),
     LOGOTIP_FIST("Логотип ФИСТ", 0L),
     SLIDER_1("Слайдер №1", 1L),

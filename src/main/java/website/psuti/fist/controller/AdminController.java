@@ -13,7 +13,6 @@ import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.model.User;
-import website.psuti.fist.service.MainPageService;
 import website.psuti.fist.service.NewsFacultyService;
 import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
@@ -29,8 +28,6 @@ import java.util.Date;
 
 @Controller
 public class AdminController {
-    @Autowired
-    private MainPageService mainPageService;
 
     @Autowired
     private NewsFacultyService newsFacultyService;

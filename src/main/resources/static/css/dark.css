@@ -501,9 +501,37 @@ h1 {
     position: relative;
     z-index: 777;
 }
+/*----------------Начало.таблица--------------------------------*/
+table{
+	/*padding: 30px 30px 5px;*/
+	border: 4px solid #ddd;
+}
+td {
+	border: 2px solid #ddd;
+	padding: 10px 10px 5px;
+	color:white;
+}
 
+td:nth-child(3) {
+	border-left: solid transparent ;
+}
+td:nth-child(4) {
+	border-left: solid transparent ;
+}
+th {
+	border: 2px solid #dddddd !important;
+	padding: 30px 30px 5px;
+	color:white !important;
+}
+caption {
+	caption-side: top;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 30px;
+	color:whitesmoke;
+}
 
-
+/*----------------Конец.таблица--------------------------------*/
 
 .service .main-service .service-left {
 	padding-left: 10px;

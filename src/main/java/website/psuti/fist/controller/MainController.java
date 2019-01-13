@@ -211,4 +211,6 @@ public class MainController {
         modelAndView.setViewName("deanTeam");
         return modelAndView;
     }
+    @RequestMapping("/groupCurators")
+    public String groupCurators(){return "groupCurators"; }
 }

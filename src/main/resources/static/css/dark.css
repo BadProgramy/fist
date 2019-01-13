@@ -768,9 +768,13 @@ caption {
 	cursor:pointer;
 }
 
-.main-team ul.cs-style-7 li::before {
+.black_p {
+	color: #1f1f1f;
+}
+
+/*.main-team ul.cs-style-7 li::before {
 	content:"";
-	/*border:5px solid #b59e5c;*/
+	!*border:5px solid #b59e5c;*!
 	position:absolute;
 	top:20px;
 	left:20px;
@@ -778,7 +782,7 @@ caption {
 	bottom:20px;
 	z-index:9999;
 	
-}
+}*/
 
 .main-team ul.cs-style-7 li .figcaption {
 	position:absolute;

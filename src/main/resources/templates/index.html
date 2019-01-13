@@ -269,18 +269,23 @@
 
 			<div class="main-service">
 				<div class="row" th:each="mapEntry : ${educationProcess}">
+					<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}">
 					<div class="col-md-6 col-sm-6 service-left">
 						<span class="ico" >
 							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
 							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
 						</span>
+
 						<div class="service-info">
 							<h4>
 								<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageLeft().getName()}"></a>
 							</h4>
 						</div>
-					</div>
 
+					</div>
+					</a>
+
+					<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}">
 					<div class="col-md-6 col-sm-6 service-right">
 						<span class="ico">
 							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
@@ -291,7 +296,9 @@
 								<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageRight().getName()}"></a>
 							</h4>
 						</div>
+
 					</div>
+					</a>
 				</div>
 			</div>
 		</div>

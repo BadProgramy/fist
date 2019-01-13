@@ -282,7 +282,7 @@
 
             <div class="cd-timeline-content">
                 <h2 th:utext="${topic.getHeading()}"></h2>
-                <p th:utext="${topic.getText()}"></p>
+                <p class="black_p" th:utext="${topic.getText()}"></p>
                 <img th:src="@{'/admin/news/' + ${topic.getIdPicture()}}" alt="">
                 <nav class="main-nav">
                     <ul>

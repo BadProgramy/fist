@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Новости</title>
+    <title>Комииссия факультета</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,12 +64,13 @@
                 <div class="col-md-9 col-xs-7">
                     <div class="top-bar">
                         <ul>
-                            <li class="tb-info">
-                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderPhone()}" style="color: black"></li>
+                            <li class="tb-info "style="float:right !important;">
+                            <li th:object="${phone}" th:utext="${phone.getName()}" style="color: black"></li>
+
                             </li>
                             <br>
-                            <li class="tb-info">
-                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderEmail()}" style="color: black"></li>
+                            <li class="tb-info "style="float:right !important;">
+                            <li th:object="${email}" th:utext="${email.getName()}" style="color: black"></li>
                             </li>
                         </ul>
                     </div>

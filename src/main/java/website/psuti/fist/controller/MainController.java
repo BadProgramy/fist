@@ -123,4 +123,6 @@ public class MainController {
         model.addAttribute("newsOfFaculty", resultTopic);
         return "newsBlog";
     }
+    @RequestMapping("/groupCurators")
+    public String groupCurators(){return "groupCurators"; }
 }

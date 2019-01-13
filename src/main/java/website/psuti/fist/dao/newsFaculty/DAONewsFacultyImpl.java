@@ -4,6 +4,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import website.psuti.fist.constant.MainPageConstant;
+import website.psuti.fist.constant.MainPageObjectConstant;
+import website.psuti.fist.constant.NameTableBD;
+import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.service.PicturesService;
@@ -35,10 +39,6 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectAll");
-            /*for (NewsOfFaculty topic: newsOfFaculties) {
-                topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
-                topic.setText(topic.getText().replace("<br>","\r\n"));
-            }*/
         } finally {
             session.close();
         }
@@ -53,7 +53,10 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("\r\n","<br>").replace("\n","<br>"));
         try {
             id = session.insert("NewsOfFaculty.add", newsOfFaculty);
-            if (id == 1) id = session.selectOne("NewsOfFaculty.getLastIdInsert");
+            if (id == 1) {
+                id = session.selectOne("NewsOfFaculty.getLastIdInsert");
+                MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
+            }
         } finally {
             session.close();
         }
@@ -62,11 +65,13 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
 
     @Override
     public void update(NewsOfFaculty newsOfFaculty) {
+        int id = -1;
         SqlSession session = factory.getFactory().openSession();
         newsOfFaculty.setText(newsOfFaculty.getText().replace("\r\n","<br>").replace("\n","<br>"));
         newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("\r\n","<br>").replace("\n","<br>"));
         try {
-            session.update("NewsOfFaculty.update", newsOfFaculty);
+            id = session.update("NewsOfFaculty.update", newsOfFaculty);
+            if (id == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
         } finally {
             session.close();
         }
@@ -74,9 +79,11 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
 
     @Override
     public void delete(long id) {
+        int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {
-            session.delete("NewsOfFaculty.deleteById", id);
+            check = session.delete("NewsOfFaculty.deleteById", id);
+            if (check == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
         } finally {
             session.close();
         }
@@ -88,8 +95,6 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculty = session.selectOne("NewsOfFaculty.findById", id);
-            /*newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("<br>","\r\n"));
-            newsOfFaculty.setText(newsOfFaculty.getText().replace("<br>","\r\n"));*/
         } finally {
             session.close();
         }
@@ -104,8 +109,6 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTenByDate", count);
             for (NewsOfFaculty newFaculty : newsOfFaculties) {
                 newFaculty.setPicture(picturesService.findPictureById(newFaculty.getIdPicture()));
-/*                newFaculty.setHeading(newFaculty.getHeading().replace("<br>","\r\n"));
-                newFaculty.setText(newFaculty.getText().replace("<br>","\r\n"));*/
             }
         } finally {
             session.close();
@@ -122,10 +125,6 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectNewsByRangeDate", dateMap);
-/*            for (NewsOfFaculty topic: newsOfFaculties) {
-                topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
-                topic.setText(topic.getText().replace("<br>","\r\n"));
-            }*/
         } finally {
             session.close();
         }
@@ -138,10 +137,6 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTwoNewsFaculty");
-/*            for (NewsOfFaculty topic: newsOfFaculties) {
-                topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
-                topic.setText(topic.getText().replace("<br>","\r\n"));
-            }*/
         } finally {
             session.close();
         }

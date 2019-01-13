@@ -5,7 +5,6 @@
 
 <configuration>
     <typeAliases>
-        <typeAlias alias="MainPage" type="website.psuti.fist.model.MainPage"/>
         <typeAlias alias="MenuItemHeaderInMainPage" type="website.psuti.fist.model.MenuItemHeaderInMainPage"/>
         <typeAlias alias="Pictures" type="website.psuti.fist.model.Pictures"/>
         <typeAlias alias="EducationProcess" type="website.psuti.fist.model.EducationProcess"/>
@@ -18,7 +17,6 @@
     </typeAliases>
 
     <mappers>
-        <mapper resource="mapper/MainPage.xml"/>
         <mapper resource="mapper/MenuItemHeaderInMainPage.xml"/>
         <mapper resource="mapper/Pictures.xml"/>
         <mapper resource="mapper/EducationProcess.xml"/>

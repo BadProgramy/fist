@@ -25,7 +25,8 @@
 
     <select id="selectMinorHeadersByIdMainHeader" parameterType="long" resultMap="result">
         SELECT * FROM menu_item_header_in_main_page
-        where id_menu_item_parent_header_in_main_page = #{idMainHeader};
+        where id_menu_item_parent_header_in_main_page = #{idMainHeader}
+        order by pin_number;
     </select>
 
     <select id="findItemById" parameterType="long" resultMap="result">

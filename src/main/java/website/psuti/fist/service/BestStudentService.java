@@ -22,4 +22,5 @@ public class BestStudentService {
     public List<BestStudent> filledBestStudent() {
         return daoBestStudent.filledBestStudent();
     }
+
 }

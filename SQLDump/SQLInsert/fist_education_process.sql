@@ -1,4 +1,4 @@
-INSERT INTO fist.education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (1, 48, 49, 7, 8);
-INSERT INTO fist.education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (2, 50, 51, 9, 10);
-INSERT INTO fist.education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (3, 52, 53, 11, 12);
-INSERT INTO fist.education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (4, 54, 55, 13, 14);
+INSERT INTO education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (1, 48, 49, 7, 8);
+INSERT INTO education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (2, 50, 51, 9, 10);
+INSERT INTO education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (3, 52, 53, 11, 12);
+INSERT INTO education_process (id, id_menu_item_header_in_main_page_left, id_menu_item_header_in_main_page_right, id_picture_left, id_picture_right) VALUES (4, 54, 55, 13, 14);

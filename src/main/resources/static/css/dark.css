@@ -1680,7 +1680,7 @@ h1 {
 	bottom:0;
 	padding:30px 25px;
 	height:193px;
-	width:187px; 	
+	width:260px;
 	transition:.4s;
 }
 
@@ -1804,9 +1804,9 @@ h2.post-title a:hover {
 }
 
 .post-excerpt p {
-	font-size:13px;
-	color:#777;
-	line-height:23px;
+	font-size: 15px;
+	color: #d8d6d6;
+	line-height: 23px;
 }
 
 .rmore {
@@ -1986,7 +1986,7 @@ article.bm-item h2.post-title {
 	font-family: bebas-neue, sans-serif;
 	color:#000;
 	text-transform:uppercase;
-	font-size:80px;
+	font-size:50px;
 	font-weight:400;
 }
 
@@ -2401,9 +2401,11 @@ margin:0 0 25px;
 }
 
 .accordion .panel-body p {
-	font-size:13px;
+	font-size:15px;
 }
-
+.panel-body h6,h5{
+	line-height:1.5;
+}
 /* ---------------------- */
 /*       TESTIMONIAL      */
 /* ---------------------- */
@@ -2834,7 +2836,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 	display: none;
 }
 
-
+.mobnav-subarrow ul{
+	margin-top:5%;
+}
 .multi-page .service {
     padding: 70px 0px 0px;
 }
@@ -5090,7 +5094,7 @@ h2.post-title a {
 
 
 p {
-	color:#9a9a9a;
+	color:#dcdcdc;
 }
 
 .main-btn {

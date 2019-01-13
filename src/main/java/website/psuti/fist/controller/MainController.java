@@ -94,4 +94,25 @@ public class MainController {
 
     @RequestMapping("/newsBlog")
     public String newsBlog(){return "newsBlog"; }
+    @RequestMapping("/diplomasPhoto")
+    public String diplomasPhoto(){return "diplomasPhoto"; }
+    @RequestMapping("/cathedras")
+    public String cathedras(){return "cathedras"; }
+
+    @RequestMapping("/academicSoviet")
+    public String academicSoviet(){return "academicSoviet"; }
+
+    @RequestMapping("/trainingDirections")
+    public String trainingDirections(){return "trainingDirections"; }
+
+    @RequestMapping("/faculty")
+    public String faculty(){return "faculty"; }
+
+    @RequestMapping("/contacts")
+    public String contacts(){return "contacts"; }
+    @RequestMapping("/costEducation")
+    public String costEducation(){return "costEducation"; }
+
+    @RequestMapping("/rightsAndObligations")
+    public String rightsAndObligations(){return "rightsAndObligations"; }
 }

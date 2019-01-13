@@ -11,32 +11,31 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Тучкова А.С.</title>
+    <title>Новости</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="/images/favicon.png">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="js/isotope/isotope.css">-->
-    <link rel="stylesheet" href="js/flexslider/flexslider.css">
-    <link rel="stylesheet" href="js/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="js/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="js/owl-carousel/owl.transitions.css">
-    <link rel="stylesheet" href="js/superfish/css/megafish.css" media="screen">
-    <link rel="stylesheet" href="js/superfish/css/superfish.css" media="screen">
-    <link rel="stylesheet" href="js/pikaday/pikaday.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dark.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/js/isotope/isotope.css">
+    <link rel="stylesheet" href="/js/flexslider/flexslider.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css">
+    <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen">
+    <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
+    <link rel="stylesheet" href="/js/pikaday/pikaday.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +45,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -57,94 +56,38 @@
         <div class="container">
             <div class="row">
                 <div class="logo-psuti col-md-3 col-xs-5 ">
-                    <a href="https://www.psuti.ru/"><img src="images\psuti_black.png" class="img-responsive" alt=""/></a>
+                    <a th:href="${logotipPSUTI.getHref()}" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
                 </div>
                 <div class="logo-psuti col-md-3 col-xs-5 ">
-                    <a href="/main"><img src="images\s.png" class="img-responsive" alt=""/></a>
+                    <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                 </div>
                 <div class="col-md-9 col-xs-7">
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
-                            <li style="color: black">тел. (846) 228-00-05</li>
+                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderPhone()}" style="color: black"></li>
                             </li>
                             <br>
                             <li class="tb-info">
-                            <li style="color: black">e-mail: fist@psati.ru</li>
+                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderEmail()}" style="color: black"></li>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="menu-wrap">
-                <div id="mobnav-btn">Меню </div>
-                <ul class="sf-menu">
+                <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+                <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
                     <li>
-                        <a href="#">Главная</a>
+                        <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
                         <div class="mobnav-subarrow"></div>
-                    </li>
-                    <li>
-                        <a href="#">О факультете</a>
-                        <div class="mobnav-subarrow"></div>
-                        <ul>
-                            <li><a href="#">О факультете</a></li>
-                            <li><a href="#">Ученый совет факультета</a></li>
-                            <li><a href="#">План работы Ученого совета ФИСТ</a></li>
-                            <li><a href="#">Коллектив деканата</a></li>
-                            <li><a href="#">Кафедры факультета</a></li>
-                            <li><a href="#">Грамоты и дипломы</a></li>
-                            <li><a href="#">Выпускники факультета</a></li>
-                            <li><a href="https://vk.com/club161199157">Объявление о научных конкурсах и грантах</a></li>
-                            <li><a href="#">Комиссии факультета</a></li>
-                            <li><a href="#">Коллектив деканата</a></li>
+                        <ul >
+                            <div th:each="menuItemMinor : ${mapEntry.value}">
+                                <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+                                    <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
+                                </li>
+                            </div>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#">Абитуриентам</a>
-                        <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-                        <ul>
-                            <li><a href="#">Профили подготовки</a></li>
-                            <li><a href="#">Бюджетные места</a></li>
-                            <li><a href="#">Стоимость обучения</a></li>
-                            <li><a href="#">Сведения по образовательным программам</a></li>
-                            <li><a href="#">Сайт приёмной комиссии</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#">Студентам</a>
-                        <div class="mobnav-subarrow"></div>
-                        <ul>
-                            <li><a href="#">Права и обязанности</a></li>
-                            <li><a href="#">Лучшие студенты</a></li>
-                            <li><a href="#">Кураторы групп</a></li>
-                            <li><a href="#">Стоимость обучения</a></li>
-                            <li><a href="https://www.psuti.ru/students/timetable/">Расписание занятий и экзаменов</a></li>
-                            <li><a href="https://www.psuti.ru/ru/students/doc">Формы заявлений</a></li>
-                            <li><a href="https://www.psuti.ru/ru/sveden/vacant">Вакантные бюджетные места</a></li>
-                            <li><a href="https://www.psuti.ru/ru/sveden/grants">Стипендии и иные виды материальной поддержки</a></li>
-                            <li><a href="#">Консультации преподавателей</a></li>
-                            <li><a href="#">Формы заявлений</a></li>
-                            <li><a href="#">Вакантные бюджетные места</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Преподавателям</a>
-                        <div class="mobnav-subarrow"></div>
-                        <ul>
-                            <li><a href="#">Требования к профессорско-преподавательскому составу</a></li>
-                            <li><a href="#">Списки групп</a></li>
-                            <li><a href="http://fgosvo.ru/fgosvo/92/91/4">ФГОС ВО 3+</a></li>
-                            <li><a href="http://fgosvo.ru/fgosvo/151/150/24">ФГОС ВО 3++</a></li>
-                            <li><a href="http://profstandart.rosmintrud.ru/">Профессиональные стандарты</a></li>
-                            <li><a href="http://reestr.fgosvo.ru/">Реестр примерных ООП высшего образования</a></li>
-                            <li><a href="https://www.psuti.ru/ru/sveden/education">Сведения по образовательным программам</a></li>
-                            <li><a href="https://www.psuti.ru/university/quality/doc">Перечень руководящих документов СМК ПГУТИ</a></li>
-                            <li><a href="https://www.psuti.ru/ru/university/quality/pologenia">Положения ПГУТИ</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="./contact.html">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -185,8 +128,9 @@
     <footer id="footer2">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-3">
-                    <!--<h3 th:text="${ItemHeader8.getName()}"></h3>-->
+                    <h3 th:utext="${ItemHeader8.getName()}"></h3>
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
@@ -208,6 +152,17 @@
                         </ul>
                     </div>
                 </div>
+                <!--<div class="col-md-3">
+                    <h3>Неизветсно</h3>
+                    <p>Надо узнать, что тут можно интересного написать!</p>
+
+
+
+                    &lt;!&ndash;<form class="newsletter">
+                        <input type="text" placeholder="Email Address here..">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>&ndash;&gt;
+                </div>-->
                 <div class="col-md-3">
                     <h3>Подписка</h3>
                     <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
@@ -217,26 +172,35 @@
                     </form>
                 </div>
 
+                <!--<div class="col-md-3">
+                    <h3 th:text="${ItemHeader9.getName()}"></h3>
+                    <ul class="f-news">
+                        <li th:each="subtitle : ${subtitles}">
+                            <a th:href="${subtitle.getUrlHref()}" th:text="${subtitle.getName()}"><i class="fa fa-angle-right"></i></a>
+                        </li>
+                    </ul>
+                </div>-->
+
                 <div class="col-md-3">
                     <h4 style="line-height: 35px">Полезные ссылки</h4>
                     <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
-                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images/vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images/inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images/twitter-logo.png" class="img-responsive" alt=""/></a> </div>
                 </div>
 
                 <div class="col-md-3">
                     <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
-                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
                 </div>
                 <!--<div class="col-md-3">
                     <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
@@ -246,8 +210,11 @@
         <div class="footer-bottom container">
             <div class="row">
                 <div class="col-md-6">
-                    <!-- <p th:text="${ItemHeader11.getName()}"></p>-->
+                    <p th:utext="${ItemHeader11.getName()}"></p>
                 </div>
+                <!--<div class="col-md-6">
+                    <p class="pull-right">Design by <a target="_blank" href="http://themeforest.net/user/Theme-Squared">ThemeSquared</a></p>
+                </div>-->
             </div>
         </div>
     </footer>
@@ -304,37 +271,36 @@
 </div>
 
 <!-- Javascript -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/navigation/jquery.sticky.js"></script>
-<script src="js/flexslider/jquery.flexslider.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/flexslider/jquery.flexslider.js"></script>
 
 <!--sds-->
-<script src="js/navigation/jquery.easing.js"></script>
-<script src="js/navigation/scroll.js"></script>
+<script src="/js/navigation/jquery.easing.js"></script>
+<script src="/js/navigation/scroll.js"></script>
 
-<script src="js/owl-carousel/owl.carousel.min.js"></script>
+<script src="/js/owl-carousel/owl.carousel.min.js"></script>
 <!--<script src="js/isotope/isotope.pkgd.js"></script>-->
-<script src="js/navigation/jquery.sticky.js"></script>
-<script src="js/superfish/js/hoverIntent.js"></script>
-<script src="js/superfish/js/superfish.js"></script>
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/superfish/js/hoverIntent.js"></script>
+<script src="/js/superfish/js/superfish.js"></script>
 
-<script src="js/jquery.bpopup.js"></script>
-<script src="js/pikaday/pikaday.js"></script>
-<script src="js/dialogFx.js"></script>
-<script src="js/dialog-js.js"></script>
-<script src="js/classie.js"></script>
-<script src="js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="/js/jquery.bpopup.js"></script>
+<script src="/js/pikaday/pikaday.js"></script>
+<script src="/js/dialogFx.js"></script>
+<script src="/js/dialog-js.js"></script>
+<script src="/js/classie.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="js/gmap2.js"></script>
 <!--<script src="js/jquery.prettyphoto.js"></script>-->
-<script src="js/script.js"></script>
-<script src="js/booking.js"></script>
-<script src="js/student_character.js"></script>
-
+<script src="/js/script.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/student_character.js"></script>
 </body>
 </html>

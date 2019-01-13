@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Новости</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/js/isotope/isotope.css">
+    <link rel="stylesheet" href="/js/flexslider/flexslider.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css">
+    <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen">
+    <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
+    <link rel="stylesheet" href="/js/pikaday/pikaday.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- JS Font Script -->
+    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizer -->
+    <script src="/js/modernizr.custom.js"></script>
+
+</head>
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+    <!-- HEADER -->
+    <header id="header" style="background:white">
+        <div class="container">
+            <div class="row">
+                <div class="logo-psuti col-md-3 col-xs-5 ">
+                    <a th:href="${logotipPSUTI.getHref()}" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+                </div>
+                <div class="logo-psuti col-md-3 col-xs-5 ">
+                    <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
+                </div>
+                <div class="col-md-9 col-xs-7">
+                    <div class="top-bar">
+                        <ul>
+                            <li class="tb-info">
+                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderPhone()}" style="color: black"></li>
+                            </li>
+                            <br>
+                            <li class="tb-info">
+                            <li th:object="${mainPage}" th:utext="${mainPage.getHeaderEmail()}" style="color: black"></li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-wrap">
+                <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+                <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+                    <li>
+                        <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
+                        <div class="mobnav-subarrow"></div>
+                        <ul >
+                            <div th:each="menuItemMinor : ${mapEntry.value}">
+                                <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+                                    <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- INNER CONTENT -->
+    <section id="content">
+        <div class="page_header page_header2 text-center">
+            <h3>Права, обязанности и поощрения студентов ПГУТИ</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="accordion">
+                        <div class="panel-group" id="accordion-e1">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseOne">
+                                            Студенты имеют право:
+                                            <span class="fa fa-angle-down"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <p>-получать в вузе знания, соответствующие современному уровню развития науки, техники и культуры; <br>-посещать все виды учебных занятий в ПГУТИ, предусмотренные учебными планами и графиками учебного процесса;<br>-бюджетные студенты имеют право на получение академической и социальной стипендии (в соответствии с Положением о стипендиальном обеспечении);<br>-участвовать в обсуждении и решении важнейших вопросов деятельности университета, в том числе через общественные организации и органы управления университетом (студенческий профком, Ученый Совет ПГУТИ, студсовет и т.д.);<br>-бесплатно пользоваться фондом библиотеки, информационным фондом, оборудованием учебных лабораторий, услугами учебных, научных, лечебных и других подразделений университета;<br>-ставить перед деканом вопросы улучшения учебного процесса;<br>-на льготное питание в порядке, определяемом студенческим профкомом, а также другие льготы, предусмотренные законодательством Российской Федерации;<br>-создавать органы самоуправления для решения вопросов студенческой жизни, не противоречащих законодательству Российской Федерации;<br>-принимать участие во всех видах научно-исследовательских работ, конференциях, симпозиумах, представлять к публикации свои работы;<br>-выбирать факультативные курсы, предусмотренные учебными планами;<br>-переходить с платного обучения на бесплатное при наличии вакантных бюджетных мест и при обучении в течение не менее двух последних семестров на «хорошо» и «отлично»;<br>-совмещать учебу с работой без ущерба для учебного процесса. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseTwo">
+                                            Студенты обязаны:
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>-овладевать теоретическими знаниями, практическими навыками и современными методами исследования по избранному направлению (специальности);<br>-выполнять в установленные сроки все виды заданий, предусмотренных соответствующими учебными планами и программами обучения;<br>-постоянно стремиться к повышению общей культуры, нравственному и физическому совершенствованию;<br>-активно участвовать в общественной жизни университета и в трудовых субботниках;<br>-соблюдать правила внутреннего распорядка и правила проживания в студенческих общежитиях;<br>-быть дисциплинированным, опрятно одетым, соблюдать правила взаимной вежливости и уважения к профессорско-преподавательскому составу, сотрудникам и другим студентам;<br>-поддерживать во всех помещениях университета чистоту и порядок;<br>-предупреждать нарушения норм поведения другими студентами, о всех нарушениях порядка или учебного процесса сообщать в деканат или сотрудникам административно-хозяйственной части ПГУТИ;<br>-при входе в здания университета предъявлять контролерам отдела режима студенческий билет (или зачетную книжку) в развернутом виде;<br>-в помещениях университета соблюдать нормальный, спокойный режим разговоров, общения и поведения;<br>-при входе руководителей вуза и преподавателей в аудиторию студенты приветствуют их вставанием;<br>-при неявке на занятия студент обязан поставить об этом в известность декана (зам. декана) факультета через старосту или по телефону и в первый день явки в университет представить данные о причинах пропуска занятий. В случае болезни студент представляет декану факультета справку установленного образца соответствующего лечебного учреждения. При длительном отсутствии на занятиях (более двух недель) надо сообщить причину своего отсутствия на занятиях (по телефону, e-mail и т.д.) в деканат, иначе вас могут отчислить, как прекратившего посещать занятия. </p>
+                                    <h5>Студенты обязаны бережно хранить студенческий билет, зачетную книжку (за их потерю неизбежно следует дисциплинарное наказание – выговор или замечание приказом ректора) и аккуратно относиться к собственности университета (инвентарь, учебные пособия, книги, приборы и т.д.). Студентам запрещается без разрешения администрации выносить предметы и оборудование из лабораторий, учебных и других помещений. Надлежащую чистоту и порядок во всех учебных и учебно-производственных помещениях обеспечивает технический персонал и студенты на началах самообслуживания в соответствии с установленным распорядком.</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseThree">
+                                            Студенту запрещается:
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                    <p>-нарушать установленные правила внутреннего распорядка и поведения студентов в вузе;<br> -приносить и распивать спиртные напитки (в том числе пиво);<br>-употреблять и распространять наркотические и токсичные вещества;<br>-находиться в помещениях ПГУТИ в состоянии алкогольного или наркотического опьянения;<br>-находиться на занятиях в верхней одежде и ходить по коридорам в головных уборах (юноши);<br>-появляться в университете в одежде пляжного вида (короткие юбки, короткие шорты, обнаженная спина и т. д.);<br>-курить во всех помещениях университета, кроме специально отведенных для этого местах и курительных комнатах;<br>-портить имущество и оборудование, причинять ущерб учебно-материальной базе университета;<br>-выносить имущество, оборудование и другие материальные ценности из помещений университета;<br>-находиться в зданиях университета после установленных внутренним распорядком сроков, а также в выходные и праздничные дни (в случае отсутствия плановых занятий);<br>-играть в карты и в другие азартные игры;<br>-приводить с собой в университет посторонних лиц.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseFour">
+                                            Ответственность студентов
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>За нарушения перечисленных выше правил и обязанностей, предусмотренных Уставом ПГУТИ и Правилами внутреннего распорядка ПГУТИ, к студенту могут быть применены следующие меры дисциплинарного воздействия:
+                                            <br>- объявление замечания по университету (факультету);
+                                            <br>- объявление выговора по университету (факультету);
+                                            <br>- отчисление из университета.<br>Если в результате преднамеренных действий, нарушающих установленные Правила внутреннего распорядка и требования Устава ПГУТИ, будет причинен материальный ущерб университету, то виновный в этом студент может нести материальную и уголовную ответственность в пределах установленных законодательством РФ. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseFive">
+                                            Студенты могут быть отчислены из ПГУТИ:
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                     <p>по собственному желанию, в том числе:<br>
+                                         * по семейным обстоятельствам,<br>
+                                         * по состоянию здоровья,<br>
+                                         * в связи с переводом в другое образовательное учреждение;<br>
+                                         по инициативе администрации университета, в том числе:<br>
+                                         * за академическую неуспеваемость;<br>
+                                         * за пропуски занятий без уважительных причин;<br>
+                                         * за нарушение правил внутреннего распорядка вуза (дисциплинарные нарушения, невыполнение студентом условий контракта и т. д.).<br>
+                                         Если студент получил в сессию три и более неудовлетворительные оценки, то он отчисляется из вуза. При двух или одном «неуде» студенту дается возможность пересдачи в установленные деканатом сроки, обычно это две-три недели в начале следующего семестра. Если в эти сроки студент не ликвидировал «неуды», то он отчисляется из вуза.</p>
+                                    <h4>В высшем учебном заведении студенту доверяется самому контролировать себя в течение семестра по усвоению материала лекций, семинаров, практических и лабораторных занятий.</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseSix">
+                                            Поощрение студентов
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSix" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>За отличную успеваемость, активное участие в научно-исследовательской работе и общественной жизни для студентов устанавливаются следующие виды поощрения:<br>
+                                            - объявление благодарности;<br>
+                                            - награждение грамотами;<br>
+                                            - награждение ценным подарком;<br>
+                                            - выдача премии;<br>
+                                            - назначение именной или повышенной стипендии;<br>
+                                            - назначение стипендии «За активную общественную работу».<br>
+                                            Поощрения объявляются приказом ректора по представлению декана и доводятся до сведения студентов группы (факультета). Выписка из приказа о поощрении хранится в личном деле студента.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseSeven">
+                                            Стипендии студентам ПГУТИ:
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSeven" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>стипендии Президента Российской Федерации;<br>стипендии Правительства Российской Федерации;<br>
+                                            государственные академические стипендии;<br>
+                                            государственные социальные стипендии;<br>
+                                            государственные стипендии;<br>
+                                            именные стипендии.<br>
+                                            В ПГУТИ назначаются повышенные стипендии студентам, имеющим достижения в учебной, научно-исследовательской, общественной, культурно-творческой и спортивной деятельности. Повышенная стипендия может быть назначена студенту со 2 курса на 1 семестр, сдавшему сессию «на отлично», по решению Ученого совета за достижения в общественной, спортивной, научной деятельности в дополнение к академической стипендии.
+                                            <br>
+                                            В ПГУТИ учреждены стипендии Ученого совета «За активную общественную работу» (по представлению от студенческого профкома, СМЦ, Студ. городка, IT-клуба). Учреждены стипендии Ученого совета «За спортивные достижения» в размере 1500 рублей в месяц и стипендии Ученого совета «За успехи в спорте» в размере 1000 рублей в месяц для студентов-спортсменов, выступающих за ПГУТИ во внешних соревнованиях и добившихся высоких спортивных результатов. Стипендии Ученого Совета могут быть назначены как бюджетным студентам, так и обучающимся по контракту.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseEight">
+                                            Возможности для студентов, в т.ч. досуг:
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseEight" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>1. участие в научно-исследовательской работе;<br>
+                                            2. обучение иностранному языку;<br>
+                                            3. физическое развитие;<br>
+                                            4. участие в студенческом молодежном центре (СМЦ): вокал, КВН, актерское мастерство;<br>
+                                            5. участие в студенческом ИТ-Клубе: олимпиады, мастер-классы, семинары, конкурсы в сфере ИТ.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseNine">
+                                            Внешний вид студента
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseNine" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>На территории учебно-лабораторного комплекса университета студентам рекомендуется иметь опрятный внешний вид, соблюдать общепринятые правила общения, придерживаться повседневного делового стиля одежды (не допускать ношение пляжной и спортивно-тренировочной одежды и обуви, головных уборов, рваных джинсов, слишком открытых нарядов и коротких миниюбок для женщин, элементов одежды и аксессуаров вызывающей формы и расцветок), иметь аккуратную причёску, воздержаться от пирсинга и татуировок на видимых частях тела.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="clearfix space70"></div>
+    <!-- FOOTER -->
+    <footer id="footer2">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h3 th:utext="${ItemHeader8.getName()}"></h3>
+                    <div class="top-bar">
+                        <ul>
+                            <li class="tb-info">
+                                <a data-dialog2="somedialog2" class="trigger">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span class="navigation-YK">Мы находимся в<br><em class="navigation-YK">Яндекс Картах</em></span>
+                                </a>
+                            </li>
+                            <li class="tb-info">
+                                <a data-dialog1="somedialog1" class="trigger">
+                                    <!--<i class="fa fa-clock-o"></i>
+                                    <span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
+                                    <span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>-->
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display: none" data-dialog="somedialog" class="trigger button btn-xs color"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <h3>Неизветсно</h3>
+                    <p>Надо узнать, что тут можно интересного написать!</p>
+
+
+
+                    &lt;!&ndash;<form class="newsletter">
+                        <input type="text" placeholder="Email Address here..">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>&ndash;&gt;
+                </div>-->
+                <div class="col-md-3">
+                    <h3>Подписка</h3>
+                    <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
+                    <form class="newsletter">
+                        <input type="text" placeholder="Email адрес сюда..">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+                <!--<div class="col-md-3">
+                    <h3 th:text="${ItemHeader9.getName()}"></h3>
+                    <ul class="f-news">
+                        <li th:each="subtitle : ${subtitles}">
+                            <a th:href="${subtitle.getUrlHref()}" th:text="${subtitle.getName()}"><i class="fa fa-angle-right"></i></a>
+                        </li>
+                    </ul>
+                </div>-->
+
+                <div class="col-md-3">
+                    <h4 style="line-height: 35px">Полезные ссылки</h4>
+                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images/vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images/inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images/twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
+                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
+                </div>-->
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p th:utext="${ItemHeader11.getName()}"></p>
+                </div>
+                <!--<div class="col-md-6">
+                    <p class="pull-right">Design by <a target="_blank" href="http://themeforest.net/user/Theme-Squared">ThemeSquared</a></p>
+                </div>-->
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER -->
+</div>
+
+<div id="somedialog" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div id="booking_pop" class="booking_pop">
+        </div>
+        <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+    </div>
+</div>
+
+<div id="somedialog1" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div class="timer_popup">
+            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</div>
+
+
+<div id="somedialog2" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div class="contact-pop">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="map"></div>
+                </div>
+                <div class="col-md-6 pop-contact">
+                    <ul class="contact-info">
+                        <li>
+                            <p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №1:</strong> <span>г. Самара, Льва Толстого 23</span></p>
+                        </li>
+                        <li>
+                            <p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №2:</strong> <span>г. Самара, Московское шоссе 77</span></p>
+                        </li>
+                        <li>
+                            <p><strong><i class="fa fa-envelope"></i> Сайт:</strong> <span><a href="#">fist.psuti.ru</a></span></p>
+                        </li>
+                        <li>
+                            <p><strong><i class="fa fa-phone"></i> Телефон:</strong> <span>+7(846) 228-00-05</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Javascript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/flexslider/jquery.flexslider.js"></script>
+
+<!--sds-->
+<script src="/js/navigation/jquery.easing.js"></script>
+<script src="/js/navigation/scroll.js"></script>
+
+<script src="/js/owl-carousel/owl.carousel.min.js"></script>
+<!--<script src="js/isotope/isotope.pkgd.js"></script>-->
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/superfish/js/hoverIntent.js"></script>
+<script src="/js/superfish/js/superfish.js"></script>
+
+<script src="/js/jquery.bpopup.js"></script>
+<script src="/js/pikaday/pikaday.js"></script>
+<script src="/js/dialogFx.js"></script>
+<script src="/js/dialog-js.js"></script>
+<script src="/js/classie.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!---->
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="js/gmap2.js"></script>
+<!--<script src="js/jquery.prettyphoto.js"></script>-->
+<script src="/js/script.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/student_character.js"></script>
+</body>
+</html>

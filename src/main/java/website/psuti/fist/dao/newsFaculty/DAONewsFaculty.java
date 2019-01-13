@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper
 public interface DAONewsFaculty {
-    List<NewsOfFaculty> getAll();
+    List<NewsOfFaculty> getAll() throws SQLException;
     long insert (NewsOfFaculty newsOfFaculty);
     void update(NewsOfFaculty newsOfFaculty);
     void delete(long id);

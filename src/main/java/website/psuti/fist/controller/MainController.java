@@ -51,10 +51,10 @@ public class MainController {
             modelAndView.addObject("phone", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.PHONE.getId())); //почта
             modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
 
-            modelAndView.addObject("logotipFIST", picturesService.findPictureByName(MainPageConstant.LOGOTIP_FIST.getName()));
+            modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getKeyPicture()));
             modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
 
-            modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureByName(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getName()));
+            modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getKeyPicture()));
             modelAndView.addObject("menuItemMobile", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MOBILE_MENU.getId()));//Меню
 
             modelAndView.addObject("ItemHeader1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
@@ -77,7 +77,7 @@ public class MainController {
             modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
             modelAndView.addObject("characterUniversity", menuItemHeaderInMainPagesService.getCharacterUniversity());
             modelAndView.addObject("bestStudents", bestStudentService.filledBestStudent());
-            modelAndView.addObject("logotipPSUTI", picturesService.findPictureByName(MainPageConstant.LOGOTIP_PSUTI.getName()));
+            modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getKeyPicture()));
             modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
             modelAndView.addObject("newsOfFaculty", newsFacultyService.getLastTwoNewsFaculty());
 
@@ -143,10 +143,10 @@ public class MainController {
     }
 
     private void updatePicturesTable() {
-        modelAndView.addObject("logotipFIST", picturesService.findPictureByName(MainPageConstant.LOGOTIP_FIST.getName()));
+        modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getKeyPicture()));
         modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
-        modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureByName(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getName()));
-        modelAndView.addObject("logotipPSUTI", picturesService.findPictureByName(MainPageConstant.LOGOTIP_PSUTI.getName()));
+        modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getKeyPicture()));
+        modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getKeyPicture()));
     }
 
     private void updateUsersTable() {

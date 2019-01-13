@@ -11,6 +11,7 @@ import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.service.PicturesService;
+import website.psuti.fist.service.RequestPostConnection;
 
 import javax.sql.DataSource;
 import java.sql.Date;
@@ -33,6 +34,9 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     @Autowired
     private PicturesService picturesService;
 
+    @Autowired
+    private DataSource dataSource;
+
     @Override
     public List<NewsOfFaculty> getAll() {
         List<NewsOfFaculty> newsOfFaculties;
@@ -52,11 +56,14 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         newsOfFaculty.setText(newsOfFaculty.getText().replace("\r\n","<br>").replace("\n","<br>"));
         newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("\r\n","<br>").replace("\n","<br>"));
         try {
+            RequestPostConnection.requestions(dataSource);
             id = session.insert("NewsOfFaculty.add", newsOfFaculty);
             if (id == 1) {
                 id = session.selectOne("NewsOfFaculty.getLastIdInsert");
                 MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -70,8 +77,11 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         newsOfFaculty.setText(newsOfFaculty.getText().replace("\r\n","<br>").replace("\n","<br>"));
         newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("\r\n","<br>").replace("\n","<br>"));
         try {
+            RequestPostConnection.requestions(dataSource);
             id = session.update("NewsOfFaculty.update", newsOfFaculty);
             if (id == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }

@@ -277,25 +277,31 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form">
+                <form th:action="@{/admin/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                     <p class="fieldset">
                         <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                        <textarea name="heading" th:utext="${heading}" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
+                        <textarea name="heading" th:utext="${newFaculty.getHeading()}" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
                         <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
                     </p>
 
                     <p class="fieldset">
                         <label class="image-replace cd-password" for="signin-password">Текст</label>
-                        <textarea name="text" th:utext="${text}" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
+                        <textarea name="text" th:utext="${newFaculty.getText()}" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
                         <!--<a href="#0" class="hide-password">Hide</a>-->
                         <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
                     </p>
-                        <input name="id" type="hidden" th:field="*{id}">
-                        <input name="date" type="hidden" th:field="*{date}">
-                        <input name="idLeftPicture" type="hidden" th:field="*{idPicture}">
-                    <p class="fieldset">
 
+                        <p class="fieldset">
+                            <input id="dateStringLocalDate" type="date" name="dateStringLocalDate" th:value="${newFaculty.getDate()}" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <input name="id" type="hidden" th:field="*{id}">
+
+                        <img th:src="@{'/admin/news/' + ${newFaculty.getIdPicture()}}" alt="">
+                        <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+
+                    <p class="fieldset">
                         <button class="full-width" type="submit">Изменить</button>
                     </p>
                     </fieldset>

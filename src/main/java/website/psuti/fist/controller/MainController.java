@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import website.psuti.fist.constant.MainPageConstant;
-import website.psuti.fist.model.EducationProcess;
+import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.model.MainPage;
-import website.psuti.fist.model.MenuItemHeaderInMainPage;
+import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -93,26 +94,33 @@ public class MainController {
     }
 
     @RequestMapping("/newsBlog")
-    public String newsBlog(){return "newsBlog"; }
-    @RequestMapping("/diplomasPhoto")
-    public String diplomasPhoto(){return "diplomasPhoto"; }
-    @RequestMapping("/cathedras")
-    public String cathedras(){return "cathedras"; }
+    public String newsBlog(Model model){
+        return newsBlogPage(1, model);
+    }
 
-    @RequestMapping("/academicSoviet")
-    public String academicSoviet(){return "academicSoviet"; }
+    @RequestMapping("/newsBlog/page/{idPage}")
+    public String newsBlogPage(@PathVariable int idPage, Model model) {
+        if (idPage <= 0) idPage = 1;
+        List<MainPage> temp = mainPageService.getAll();
+        model.addAttribute("mainPage", temp.get(temp.size() - 1)); //так как позиция 1ая начинается с 0
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
+        model.addAttribute("logotipPSUTI", picturesService.findPictureByName(MainPageConstant.LOGOTIP_PSUTI.getName()));
+        model.addAttribute("logotipFIST", picturesService.findPictureByName(MainPageConstant.LOGOTIP_FIST.getName()));
+        model.addAttribute("menuItemMobile", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MOBILE_MENU.getId()));//Меню
+        model.addAttribute("ItemHeader8", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MAP_LOCATION.getId()));//Расположение
+        model.addAttribute("ItemHeader11", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.FOOTER_MAIN_PAGE.getId()));//footer main page
+        //model.addAttribute("newsOfFaculty", newsFacultyService.getLastCountByDateFilledPicture(NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount()));
+        model.addAttribute("ItemHeader1_1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
+        model.addAttribute("ItemHeader1_2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
 
-    @RequestMapping("/trainingDirections")
-    public String trainingDirections(){return "trainingDirections"; }
-
-    @RequestMapping("/faculty")
-    public String faculty(){return "faculty"; }
-
-    @RequestMapping("/contacts")
-    public String contacts(){return "contacts"; }
-    @RequestMapping("/costEducation")
-    public String costEducation(){return "costEducation"; }
-
-    @RequestMapping("/rightsAndObligations")
-    public String rightsAndObligations(){return "rightsAndObligations"; }
+        model.addAttribute("firstPage", idPage);
+        List<NewsOfFaculty> topics = newsFacultyService.getAll();
+        model.addAttribute("pageCount", (topics.size() / (NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount() + 1)) + 1);
+        List<NewsOfFaculty> resultTopic = new ArrayList<>();
+        for (int i = (idPage - 1) * NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(), j = 0; i < topics.size() && j < NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(); i++, j++) {
+            resultTopic.add(topics.get(i));
+        }
+        model.addAttribute("newsOfFaculty", resultTopic);
+        return "newsBlog";
+    }
 }

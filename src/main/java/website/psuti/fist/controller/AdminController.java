@@ -8,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.model.NewsOfFaculty;
@@ -19,8 +18,6 @@ import website.psuti.fist.service.NewsFacultyService;
 import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.sql.SQLException;
@@ -64,7 +61,7 @@ public class AdminController {
         }
         //model.addAttribute("newFaculty", new NewsOfFaculty());
         ModelAndView modelAndView = new ModelAndView("adminnews");
-        modelAndView.addObject("news",  newsFacultyService.getLastTenByDateFilledPicture(NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount()));
+        modelAndView.addObject("news",  newsFacultyService.getLastCountByDateFilledPicture(NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount()));
         modelAndView.addObject("withDate", LocalDate.now());
         modelAndView.addObject("fromDate", LocalDate.now());
         return modelAndView;
@@ -100,15 +97,9 @@ public class AdminController {
     @RequestMapping("/admin/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
         newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
-        writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
-        Pictures pictures = new Pictures();
-        pictures.setUrlPicture("images\\downloadNewsPicture\\"+ newFaculty.getPictureFile().getOriginalFilename());
-        pictures.setIdPage(2);
-        pictures.setKeyPicture(-1);
-        pictures.setPictureFile(newFaculty.getPictureFile().getBytes());
-        pictures.setNamePicture(newFaculty.getPictureFile().getOriginalFilename());
-        long idPicture = picturesService.insert(pictures);
-        newFaculty.setIdPicture(idPicture);
+        if (!newFaculty.getPictureFile().isEmpty()) {
+            newFaculty.setIdPicture(savePicture(newFaculty));
+        }
         newsFacultyService.insert(newFaculty);
         return "redirect:../";
     }
@@ -162,22 +153,37 @@ public class AdminController {
             this.user = userService.findUserByName(authentication.getName());
         }
         ModelAndView modelAndView = new ModelAndView("adminUpdateNews");
-        modelAndView.addObject("newFaculty", newsFacultyService.findById(id));
-        //model.addAttribute("newFaculty", newFaculty);
+        NewsOfFaculty topic = newsFacultyService.findById(id);
+        topic.setText(topic.getText().replace("<br>","\r\n"));
+        topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
+        modelAndView.addObject("newFaculty", topic);
         return modelAndView;
         //return "adminUpdateNews";
     }
 
     @RequestMapping(value = "/admin/news/update/submit", method = RequestMethod.POST)
-    public String updateNewFaculty(@ModelAttribute NewsOfFaculty newFaculty) {
+    public String updateNewFaculty(@ModelAttribute NewsOfFaculty newFaculty) throws IOException {
         if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
         }
-        //this.newFaculty.update(newFaculty);
+        newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
+        if (!newFaculty.getPictureFile().isEmpty()) {
+            newFaculty.setIdPicture(savePicture(newFaculty));
+        }
         newsFacultyService.update(newFaculty);
-        //this.newFaculty = null;
         return "redirect:../../news";
+    }
+
+    private long savePicture(NewsOfFaculty newFaculty) throws IOException {
+        writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
+        Pictures pictures = new Pictures();
+        pictures.setUrlPicture("images\\downloadNewsPicture\\" + newFaculty.getPictureFile().getOriginalFilename());
+        pictures.setIdPage(2);
+        pictures.setKeyPicture(-1);
+        pictures.setPictureFile(newFaculty.getPictureFile().getBytes());
+        pictures.setNamePicture(newFaculty.getPictureFile().getOriginalFilename());
+        return picturesService.insert(pictures);
     }
 
 

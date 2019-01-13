@@ -49,7 +49,10 @@ public class NewsOfFaculty {
     }
 
     public String getText() {
-        return text;//text.replaceAll("<br>", "\r\n").replaceAll("<br />", "\r\n");
+        return text;
+        /*if (text == null) return text;
+        return text.replace("<br>", "\r\n")
+                .replace("<br />", "\r\n");*/
     }
 
     public void setText(String text) {

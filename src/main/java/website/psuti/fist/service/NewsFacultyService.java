@@ -42,8 +42,8 @@ public class NewsFacultyService {
     }
 
     @Transactional
-    public List<NewsOfFaculty> getLastTenByDateFilledPicture(int count) {
-        return daoNewsFaculty.getLastTenByDateFilledPicture(count);
+    public List<NewsOfFaculty> getLastCountByDateFilledPicture(int count) {
+        return daoNewsFaculty.getLastCountByDateFilledPicture(count);
     }
 
     @Transactional

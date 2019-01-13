@@ -35,6 +35,10 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectAll");
+            /*for (NewsOfFaculty topic: newsOfFaculties) {
+                topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
+                topic.setText(topic.getText().replace("<br>","\r\n"));
+            }*/
         } finally {
             session.close();
         }
@@ -45,6 +49,8 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     public long insert(NewsOfFaculty newsOfFaculty) {
         SqlSession session = factory.getFactory().openSession();
         long id = -1;
+        newsOfFaculty.setText(newsOfFaculty.getText().replace("\r\n","<br>").replace("\n","<br>"));
+        newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("\r\n","<br>").replace("\n","<br>"));
         try {
             id = session.insert("NewsOfFaculty.add", newsOfFaculty);
             if (id == 1) id = session.selectOne("NewsOfFaculty.getLastIdInsert");
@@ -57,6 +63,8 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     @Override
     public void update(NewsOfFaculty newsOfFaculty) {
         SqlSession session = factory.getFactory().openSession();
+        newsOfFaculty.setText(newsOfFaculty.getText().replace("\r\n","<br>").replace("\n","<br>"));
+        newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("\r\n","<br>").replace("\n","<br>"));
         try {
             session.update("NewsOfFaculty.update", newsOfFaculty);
         } finally {
@@ -80,6 +88,8 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculty = session.selectOne("NewsOfFaculty.findById", id);
+            /*newsOfFaculty.setHeading(newsOfFaculty.getHeading().replace("<br>","\r\n"));
+            newsOfFaculty.setText(newsOfFaculty.getText().replace("<br>","\r\n"));*/
         } finally {
             session.close();
         }
@@ -87,13 +97,15 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     }
 
     @Override
-    public List<NewsOfFaculty> getLastTenByDateFilledPicture(int count) {
+    public List<NewsOfFaculty> getLastCountByDateFilledPicture(int count) {
         List<NewsOfFaculty> newsOfFaculties;
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTenByDate", count);
             for (NewsOfFaculty newFaculty : newsOfFaculties) {
                 newFaculty.setPicture(picturesService.findPictureById(newFaculty.getIdPicture()));
+/*                newFaculty.setHeading(newFaculty.getHeading().replace("<br>","\r\n"));
+                newFaculty.setText(newFaculty.getText().replace("<br>","\r\n"));*/
             }
         } finally {
             session.close();
@@ -110,6 +122,10 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectNewsByRangeDate", dateMap);
+/*            for (NewsOfFaculty topic: newsOfFaculties) {
+                topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
+                topic.setText(topic.getText().replace("<br>","\r\n"));
+            }*/
         } finally {
             session.close();
         }
@@ -122,6 +138,10 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTwoNewsFaculty");
+/*            for (NewsOfFaculty topic: newsOfFaculties) {
+                topic.setHeading(topic.getHeading().replace("<br>","\r\n"));
+                topic.setText(topic.getText().replace("<br>","\r\n"));
+            }*/
         } finally {
             session.close();
         }

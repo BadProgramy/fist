@@ -23,7 +23,8 @@
     </select>
 
     <select id="selectAll" resultMap="result">
-        SELECT * FROM news_of_faculty;
+        SELECT * FROM news_of_faculty
+        ORDER BY date DESC;
     </select>
 
     <delete id="deleteById" parameterType="long">

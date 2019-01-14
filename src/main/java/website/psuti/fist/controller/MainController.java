@@ -191,7 +191,7 @@ public class MainController {
         for (int i = (idPage - 1) * NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(), j = 0; i < topics.size() && j < NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(); i++, j++) {
             resultTopic.add(topics.get(i));
         }
-        model.addAttribute("newsOfFaculty", resultTopic);
+        model.addAttribute("resultTopic", resultTopic);
         ModelAndView modelview = initModelAndView();
         modelview.addAllObjects(model.asMap()) ;
         modelview.setViewName("newsBlog");

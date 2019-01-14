@@ -105,7 +105,7 @@
                         <p th:object="${ItemHeader1_2}" th:utext="${ItemHeader1_2.getName()}"></p>
                     </div>
                     <div class="col-md-12">
-                        <div th:each="newFaculty : ${newsOfFaculty}">
+                        <div th:each="newFaculty : ${resultTopic}">
                             <article class="blogpost">
                                 <div>
                                     <img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt="">

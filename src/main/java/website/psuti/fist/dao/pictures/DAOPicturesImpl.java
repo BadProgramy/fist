@@ -8,7 +8,10 @@ import website.psuti.fist.constant.MainPageObjectConstant;
 import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.Pictures;
+import website.psuti.fist.service.RequestPostConnection;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.List;
 
 @Primary
@@ -17,6 +20,9 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Autowired
     private Factory factory;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     public List<Pictures> getAll() {
@@ -35,11 +41,14 @@ public class DAOPicturesImpl implements DAOPictures {
         SqlSession session = factory.getFactory().openSession();
         long id = -1;
         try {
+            RequestPostConnection.requestions(dataSource);
             id = session.insert("Pictures.add", pictures);
             if (id == 1) {
                 id = session.selectOne("Pictures.getLastIdInsert");
                 MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.PICTURES);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -51,8 +60,11 @@ public class DAOPicturesImpl implements DAOPictures {
         int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             check = session.update("Pictures.update", pictures);
             if (check == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.PICTURES);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -65,10 +77,13 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public List<Pictures> findPicturesByKey(long keyPicture) {
-        List<Pictures> pictures;
+        List<Pictures> pictures = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             pictures = session.selectList("Pictures.selectPicturesByKey", keyPicture);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -77,10 +92,13 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public Pictures findPictureByName(String namePicture) {
-        Pictures pictures;
+        Pictures pictures = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             pictures = session.selectOne("Pictures.selectPicturesByName", namePicture);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -89,10 +107,13 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public Pictures findPictureById(long id) {
-        Pictures pictures;
+        Pictures pictures = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             pictures = session.selectOne("Pictures.findById", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }

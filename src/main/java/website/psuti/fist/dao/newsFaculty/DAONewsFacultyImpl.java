@@ -39,10 +39,13 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
 
     @Override
     public List<NewsOfFaculty> getAll() {
-        List<NewsOfFaculty> newsOfFaculties;
+        List<NewsOfFaculty> newsOfFaculties = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             newsOfFaculties = session.selectList("NewsOfFaculty.selectAll");
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -101,10 +104,13 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
 
     @Override
     public NewsOfFaculty findById(long id) {
-        NewsOfFaculty newsOfFaculty;
+        NewsOfFaculty newsOfFaculty = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             newsOfFaculty = session.selectOne("NewsOfFaculty.findById", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -113,13 +119,16 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
 
     @Override
     public List<NewsOfFaculty> getLastCountByDateFilledPicture(int count) {
-        List<NewsOfFaculty> newsOfFaculties;
+        List<NewsOfFaculty> newsOfFaculties = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTenByDate", count);
             for (NewsOfFaculty newFaculty : newsOfFaculties) {
                 newFaculty.setPicture(picturesService.findPictureById(newFaculty.getIdPicture()));
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -127,14 +136,17 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     }
 
     @Override
-    public List<NewsOfFaculty> getLastNewsByRangeDate(LocalDate withDate, LocalDate fromDate) throws SQLException {
+    public List<NewsOfFaculty> getLastNewsByRangeDate(LocalDate withDate, LocalDate fromDate) {
         Map<String, Date> dateMap = new HashMap<>();
         dateMap.put("dateWith", java.sql.Date.valueOf(withDate));
         dateMap.put("dateFrom", java.sql.Date.valueOf(fromDate));
-        List<NewsOfFaculty> newsOfFaculties;
+        List<NewsOfFaculty> newsOfFaculties = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             newsOfFaculties = session.selectList("NewsOfFaculty.selectNewsByRangeDate", dateMap);
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -143,10 +155,13 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
 
     @Override
     public List<NewsOfFaculty> getLastTwoNewsFaculty() {
-        List<NewsOfFaculty> newsOfFaculties;
+        List<NewsOfFaculty> newsOfFaculties = null;
         SqlSession session = factory.getFactory().openSession();
         try {
+            RequestPostConnection.requestions(dataSource);
             newsOfFaculties = session.selectList("NewsOfFaculty.selectLastTwoNewsFaculty");
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }

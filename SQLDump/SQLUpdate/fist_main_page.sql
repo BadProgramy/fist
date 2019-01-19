@@ -1,1 +1,0 @@
-UPDATE fist.main_page SET header_email = 'e-mail: fist@psati.ru', header_phone = 'тел. (846) 228-00-05' WHERE id = 2;

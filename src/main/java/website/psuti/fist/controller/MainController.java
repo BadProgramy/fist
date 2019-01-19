@@ -56,6 +56,7 @@ public class MainController {
     }
 
     private ModelAndView initModelAndView() {
+        initPicturesCashe();
         if (modelAndView == null) {
             modelAndView = new ModelAndView();
             modelAndView = new ModelAndView("","","");

@@ -34,17 +34,4 @@ public abstract class MainPageObjectConstant {
             checkModelAndView = new HashMap<>();
         }
     }
-
-    public static final Pictures NO_FOTO = new Pictures(MainPageConstant.NO_FOTO.getName(),
-            MainPageConstant.NO_FOTO.getUrl(),
-            LocalDate.now());
-
-    private static ModelAndView model;
-
-
-
-    public static ModelAndView getModel() {
-        return model;
-    }
-
 }

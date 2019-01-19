@@ -18,6 +18,7 @@ import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,18 @@ public class MainController {
     private NewsFacultyService newsFacultyService;
 
     private ModelAndView modelAndView;
+    private HashMap<Long, byte[]> picturesCache;
 
+
+    private HashMap<Long, byte[]> initPicturesCashe() {
+        if (picturesCache == null) {
+            picturesCache = new HashMap<>();
+            for (Pictures pictures: picturesService.getAll()) {
+                picturesCache.put(pictures.getId(), pictures.getPictureFile());
+            }
+        }
+        return picturesCache;
+    }
 
     private ModelAndView initModelAndView() {
         if (modelAndView == null) {
@@ -51,10 +63,10 @@ public class MainController {
             modelAndView.addObject("phone", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.PHONE.getId())); //почта
             modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
 
-            modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getKeyPicture()));
+            modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getId()));
             modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
 
-            modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getKeyPicture()));
+            modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
             modelAndView.addObject("menuItemMobile", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MOBILE_MENU.getId()));//Меню
 
             modelAndView.addObject("ItemHeader1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
@@ -77,7 +89,7 @@ public class MainController {
             modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
             modelAndView.addObject("characterUniversity", menuItemHeaderInMainPagesService.getCharacterUniversity());
             modelAndView.addObject("bestStudents", bestStudentService.filledBestStudent());
-            modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getKeyPicture()));
+            modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getId()));
             modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
             modelAndView.addObject("newsOfFaculty", newsFacultyService.getLastTwoNewsFaculty());
 
@@ -173,7 +185,10 @@ public class MainController {
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
-        return picturesService.findPictureById(idPicture).getPictureFile();
+        for (Map.Entry picture: initPicturesCashe().entrySet()) {
+            if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
+        }
+        return null;
     }
 
     @RequestMapping("/newsBlog")

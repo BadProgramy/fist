@@ -25,6 +25,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -39,6 +41,19 @@ public class AdminController {
     private UserService userService;
 
     private User user;
+
+    private HashMap<Long, byte[]> picturesCache;
+
+
+    private HashMap<Long, byte[]> initPicturesCashe() {
+        if (picturesCache == null) {
+            picturesCache = new HashMap<>();
+            for (Pictures pictures: picturesService.getAll()) {
+                picturesCache.put(pictures.getId(), pictures.getPictureFile());
+            }
+        }
+        return picturesCache;
+    }
 
     @RequestMapping("/admin")
     public String adminPage() {
@@ -88,7 +103,10 @@ public class AdminController {
     @ResponseBody
     @RequestMapping(value = "/admin/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
-        return picturesService.findPictureById(idPicture).getPictureFile();
+        for (Map.Entry picture: initPicturesCashe().entrySet()) {
+            if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
+        }
+        return null;
     }
 
     @RequestMapping("/admin/news/add/submit")

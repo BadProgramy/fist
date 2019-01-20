@@ -31,8 +31,10 @@
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
     <link rel="stylesheet" href="/js/pikaday/pikaday.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <!--<link rel="stylesheet" href="css/prettyphoto.css">-->
+    <link rel="stylesheet" href="/css/studentStyle.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -52,9 +54,9 @@
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
-    <header id="header" style="background:white">
+    <header id="header" class="color-silver">
         <div class="container">
-            <div class="row">
+            <div class="row padding5p">
                 <div class="logo-psuti col-md-3 col-xs-5 ">
                     <a th:href="${logotipPSUTI.getHref()}" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
                 </div>
@@ -62,35 +64,36 @@
                     <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                 </div>
                 <div class="col-md-9 col-xs-7">
-                    <div class="top-bar">
+                    <div class="top-bar padding-right50">
                         <ul>
-                            <li class="tb-info "style="float:right !important;">
-                            <li th:object="${phone}" th:utext="${phone.getName()}" style="color: black"></li>
+                            <ul>
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
+                                <li class="tb-info"  style="float: left;color: black;padding-right:5%" th:object="${phone}" th:utext="${phone.getName()}"></li>
 
-                            </li>
-                            <br>
-                            <li class="tb-info "style="float:right !important;">
-                            <li th:object="${email}" th:utext="${email.getName()}" style="color: black"></li>
-                            </li>
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
+                                <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
+                            </ul>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="menu-wrap">
-                <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
-                <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
-                    <li>
-                        <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
-                        <div class="mobnav-subarrow"></div>
-                        <ul >
-                            <div th:each="menuItemMinor : ${mapEntry.value}">
-                                <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-                                    <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
-                                </li>
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="row" style="margin-left:5%;">
+                    <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+                    <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+                        <li>
+                            <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
+                            <div class="mobnav-subarrow"></div>
+                            <ul >
+                                <div th:each="menuItemMinor : ${mapEntry.value}">
+                                    <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+                                        <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -205,23 +208,20 @@
     <!-- FOOTER -->
     <footer id="footer2">
         <div class="container">
-            <div class="row">
+            <div class="row" style="padding-left: 5%">
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <h3 th:utext="${ItemHeader8.getName()}"></h3>
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
                                 <a data-dialog2="somedialog2" class="trigger">
                                     <i class="fa fa-map-marker"></i>
-                                    <span class="navigation-YK">Мы находимся в<br><em class="navigation-YK">Яндекс Картах</em></span>
+                                    <span class="navigation-YK">Мы находимся<br><em class="navigation-YK">Яндекс карты</em></span>
                                 </a>
                             </li>
                             <li class="tb-info">
                                 <a data-dialog1="somedialog1" class="trigger">
-                                    <!--<i class="fa fa-clock-o"></i>
-                                    <span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
-                                    <span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>-->
                                 </a>
                             </li>
                             <li>
@@ -230,18 +230,7 @@
                         </ul>
                     </div>
                 </div>
-                <!--<div class="col-md-3">
-                    <h3>Неизветсно</h3>
-                    <p>Надо узнать, что тут можно интересного написать!</p>
-
-
-
-                    &lt;!&ndash;<form class="newsletter">
-                        <input type="text" placeholder="Email Address here..">
-                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
-                    </form>&ndash;&gt;
-                </div>-->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <h3>Подписка</h3>
                     <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
                     <form class="newsletter">
@@ -260,25 +249,24 @@
                 </div>-->
 
                 <div class="col-md-3">
-                    <h4 style="line-height: 35px">Полезные ссылки</h4>
-                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
-                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images/vk-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images/inst-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images/twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <h3>ФИСТ в социальных сетях</h3>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
                 </div>
 
                 <div class="col-md-3">
-                    <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
-                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                    <h3 >Подразделения ПГУТИ</h3>
+                    <div class="row">
+                        <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    </div>
+                    <div class="row">
+                        <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                    </div>
                 </div>
                 <!--<div class="col-md-3">
                     <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
@@ -359,7 +347,7 @@
 <script src="/js/navigation/scroll.js"></script>
 
 <script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<!--<script src="js/isotope/isotope.pkgd.js"></script>-->
+<script src="/js/isotope/isotope.pkgd.js"></script>
 <script src="/js/navigation/jquery.sticky.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
 <script src="/js/superfish/js/superfish.js"></script>
@@ -375,7 +363,7 @@
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="js/gmap2.js"></script>
+<script src="/js/gmap2.js"></script>
 <!--<script src="js/jquery.prettyphoto.js"></script>-->
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>

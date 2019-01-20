@@ -25,6 +25,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -39,6 +41,19 @@ public class AdminController {
     private UserService userService;
 
     private User user;
+
+    private HashMap<Long, byte[]> picturesCache;
+
+
+    private HashMap<Long, byte[]> initPicturesCashe() {
+        if (picturesCache == null) {
+            picturesCache = new HashMap<>();
+            for (Pictures pictures: picturesService.getAll()) {
+                picturesCache.put(pictures.getId(), pictures.getPictureFile());
+            }
+        }
+        return picturesCache;
+    }
 
     @RequestMapping("/admin")
     public String adminPage() {
@@ -88,13 +103,16 @@ public class AdminController {
     @ResponseBody
     @RequestMapping(value = "/admin/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
-        return picturesService.findPictureById(idPicture).getPictureFile();
+        for (Map.Entry picture: initPicturesCashe().entrySet()) {
+            if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
+        }
+        return null;
     }
 
     @RequestMapping("/admin/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
         newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
-        if (newFaculty.getIdPicture() <= 0) {
+        if (newFaculty.getPictureFile() == null) {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.insert(newFaculty);
@@ -103,7 +121,6 @@ public class AdminController {
 
     @RequestMapping("/test")
     public String test() throws IOException {
-
         File f ;
         for (Pictures pictures: picturesService.getAll()) {
                 f = new File("src\\main\\resources\\static\\" + pictures.getUrlPicture());
@@ -139,7 +156,6 @@ public class AdminController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
         }
-        picturesService.delete(newsFacultyService.findById(newsId).getIdPicture());
         newsFacultyService.delete(newsId);
         model.addAttribute("news", newsFacultyService.getAll());
         return "redirect:../../news";
@@ -168,7 +184,6 @@ public class AdminController {
         }
         newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
         if (!newFaculty.getPictureFile().isEmpty()) {
-            picturesService.delete(newFaculty.getIdPicture());
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.update(newFaculty);
@@ -187,18 +202,6 @@ public class AdminController {
     }
 
 
-    private void test1() {
-        Pictures pictures;
-        for (int i = 15; i < 30; i++) {
-            pictures = new Pictures();
-            pictures.setDate(LocalDate.now());
-            pictures.setIdPage(2);
-            pictures.setKeyPicture(3);
-            pictures.setUrlPicture("images/shop/"+i+".jpg");
-            pictures.setNamePicture("Лучший студент");
-            //pictures.setPictureFile();
-        }
-    }
     /*@RequestMapping("/admin/login/submit")
     public String testCreateUser() throws SQLException {
         List<Role> roles = new ArrayList<>();

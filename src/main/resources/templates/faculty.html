@@ -31,8 +31,10 @@
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
     <link rel="stylesheet" href="/js/pikaday/pikaday.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <!--<link rel="stylesheet" href="css/prettyphoto.css">-->
+    <link rel="stylesheet" href="/css/studentStyle.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -52,9 +54,9 @@
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
-    <header id="header" style="background:white">
+    <header id="header" class="color-silver">
         <div class="container">
-            <div class="row">
+            <div class="row padding5p">
                 <div class="logo-psuti col-md-3 col-xs-5 ">
                     <a th:href="${logotipPSUTI.getHref()}" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
                 </div>
@@ -62,21 +64,21 @@
                     <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                 </div>
                 <div class="col-md-9 col-xs-7">
-                    <div class="top-bar">
+                    <div class="top-bar padding-right50">
                         <ul>
-                            <li class="tb-info "style="float:right !important;">
-                            <li th:object="${phone}" th:utext="${phone.getName()}" style="color: black"></li>
+                            <ul>
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
+                                <li class="tb-info"  style="float: left;color: black;padding-right:5%" th:object="${phone}" th:utext="${phone.getName()}"></li>
 
-                            </li>
-                            <br>
-                            <li class="tb-info "style="float:right !important;">
-                            <li th:object="${email}" th:utext="${email.getName()}" style="color: black"></li>
-                            </li>
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
+                                <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
+                            </ul>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="menu-wrap">
+                <div class="row" style="margin-left:5%;">
                 <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
                 <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
                     <li>
@@ -92,26 +94,33 @@
                     </li>
                 </ul>
             </div>
+            </div>
         </div>
     </header>
 
-    <!-- INNER CONTENT -->
     <section id="content">
-        <div class="content-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <article class="blogpost">
-                            <h2 class="post-title"><a>О факультете</a></h2>
-                            <div class="post-excerpt">
-                                <br>
+        <div class="page_header page_header2 text-center">
+            <h2>О факультете</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="tab-wrap">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1-1" data-toggle="tab">О факультете</a></li>
+                            <li><a href="#tab1-2" data-toggle="tab">Научные направления</a></li>
+                            <li><a href="#tab1-3" data-toggle="tab">Направления для бакалавров</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1-1">
                                 <p>Факультет «Информационных систем и технологий» (ИСТ) был преобразован в начале 2000 годов из факультета «Экономики, телекоммуникаций и информатики». В состав факультета входят семь кафедр, где работают 97 высококвалифицированных преподавателей, среди которых 12 докторов и 58 кандидатов наук. Профессорско-преподавательский состав кафедр факультета активно работает над совершенствованием учебного процесса, повышением качества образования, осуществляет организацию и проведение научных исследований.</p>
                                 <p>Основная цель факультета - подготовка специалистов, обеспечивающих переход к современному информационному обществу, в котором информационные системы и технологии оказывают определяющее влияние не только на способ производства продуктов и услуг, но и на социальную структуру общества, экономику и политику.</p>
                                 <p>Студенты и выпускники факультета ИСТ призваны решать самые актуальные проблемы в инфокоммуникационной области. За время своего существования факультет подготовил свыше 2 тысяч специалистов, которые успешно трудятся в сфере информационных технологий как в Самарской области, так и за ее пределами. Наибольший вклад в развитие факультета внесли Тяжев А.И., д-р техн. наук, профессор; Кораблин М.А., д-р техн. наук, профессор; Тарасов В.Н., д-р техн. наук, профессор; Димов Э.М., д-р техн. наук, профессор; Маслов О.Н., д-р техн. наук, профессор; Юрасов А.В., д-р эконом. наук, доцент; Салмин А.А., канд. техн. наук, доцент и мн.др.</p>
                                 <p>В настоящее время на факультете обучается свыше 1000 студентов очной формы обучения. Эта цифра включает в себя студентов, обучающихся как на бюджетной, так и на контрактной основах.</p>
                                 <p>Студенты факультета активно принимают участие и занимают высокие призовые места в различных научно-технических школах, семинарах, конференциях и олимпиадах в сфере IT разного уровня.</p>
                                 <p>Факультет информационных систем и технологий располагает современными оснащенными учебными лабораториями и специализированными кабинетами, в числе которых центр информационных образовательных технологий, лаборатория цифровой трансформации бизнеса и мн.др. Представленные лаборатории оснащены современным оборудованием и программным обеспечением, позволяющим обеспечить не только учебный процесс, но и проведение научных исследований.</p>
-                                <h2 class="post-title"><a>На факультете сложились и успешно развиваются научные направления:</a></h2>
+                            </div>
+                            <div class="tab-pane" id="tab1-2">
                                 <p>- проектирование и моделирование компьютерных сетей;<br>
                                     - системы реального времени;<br>
                                     - геоинформационные системы;<br>
@@ -127,37 +136,36 @@
                                     - электронные платежные системы;<br>
                                     - автоматизированные системы финансового анализа и бизнес-планирования;<br>
                                     - интернет-маркетинг и др.</p>
-                                <h2 class="post-title"><a>В связи с переходом на двухуровневую систему образования с сентября 2011 года факультет готовит бакалавров по направлениям:</a></h2>
-                                <p>02.03.03 - Математическое обеспечение и администрирование информационных систем, профиль: Технология программирования<br>09.03.01 - Информатика и вычислительная техника, профиль: Программное обеспечение средств вычислительной техники и автоматизированных систем<br>09.03.02 - Информационные системы и технологии, профиль: Информационные системы и технологии<br>09.03.03 - Прикладная информатика, профиль: Прикладная информатика в экономике<br>09.03.04 - Программная инженерия, профиль:  Разработка программно-информационных систем<br>27.03.04 - Управление в технических системах, профиль: Управление и информатика в технических системах<br>27.03.05 - Инноватика, профиль: Управление инновациями<br>38.03.05 - Бизнес-информатика, профиль: Электронный бизнес<br>42.03.01 - Реклама и связи с общественностью, профиль: Реклама и связи с общественностью в отрасли<br>С 01.11.2017 года факультет возглавляет декан Богомолова Мария Анатольевна, к.т.н., доцент.</p>
                             </div>
-                        </article>
+                            <div class="tab-pane" id="tab1-3">
+                                <p>02.03.03 - Математическое обеспечение и администрирование информационных систем, профиль: Технология программирования<br>09.03.01 - Информатика и вычислительная техника, профиль: Программное обеспечение средств вычислительной техники и автоматизированных систем<br>09.03.02 - Информационные системы и технологии, профиль: Информационные системы и технологии<br>09.03.03 - Прикладная информатика, профиль: Прикладная информатика в экономике<br>09.03.04 - Программная инженерия, профиль:  Разработка программно-информационных систем<br>27.03.04 - Управление в технических системах, профиль: Управление и информатика в технических системах<br>27.03.05 - Инноватика, профиль: Управление инновациями<br>38.03.05 - Бизнес-информатика, профиль: Электронный бизнес<br>42.03.01 - Реклама и связи с общественностью, профиль: Реклама и связи с общественностью в отрасли</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <h2 style="padding-left: 10%;padding-top: 20px;">С 01.11.2017 года факультет возглавляет декан Богомолова Мария Анатольевна, к.т.н., доцент.</h2>
     </section>
 
     <div class="clearfix space70"></div>
     <!-- FOOTER -->
     <footer id="footer2">
         <div class="container">
-            <div class="row">
+            <div class="row" style="padding-left: 5%">
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <h3 th:utext="${ItemHeader8.getName()}"></h3>
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
                                 <a data-dialog2="somedialog2" class="trigger">
                                     <i class="fa fa-map-marker"></i>
-                                    <span class="navigation-YK">Мы находимся в<br><em class="navigation-YK">Яндекс Картах</em></span>
+                                    <span class="navigation-YK">Мы находимся<br><em class="navigation-YK">Яндекс карты</em></span>
                                 </a>
                             </li>
                             <li class="tb-info">
                                 <a data-dialog1="somedialog1" class="trigger">
-                                    <!--<i class="fa fa-clock-o"></i>
-                                    <span class="hidden-xs">Our Salon Open Timings<br><em>We Work Every Day a Week</em></span>
-                                    <span class="visible-xs hidden-sm hidden-md hidden-lg">Open Timings</span>-->
                                 </a>
                             </li>
                             <li>
@@ -166,18 +174,7 @@
                         </ul>
                     </div>
                 </div>
-                <!--<div class="col-md-3">
-                    <h3>Неизветсно</h3>
-                    <p>Надо узнать, что тут можно интересного написать!</p>
-
-
-
-                    &lt;!&ndash;<form class="newsletter">
-                        <input type="text" placeholder="Email Address here..">
-                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
-                    </form>&ndash;&gt;
-                </div>-->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <h3>Подписка</h3>
                     <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
                     <form class="newsletter">
@@ -196,25 +193,24 @@
                 </div>-->
 
                 <div class="col-md-3">
-                    <h4 style="line-height: 35px">Полезные ссылки</h4>
-                    <h4 style="line-height: 35px">ФИСТ в социальных сетях</h4>
-                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images/vk-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images/inst-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images/twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <h3>ФИСТ в социальных сетях</h3>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
                 </div>
 
                 <div class="col-md-3">
-                    <h4 style="line-height: 35px; float: left">Подразделения ПГУТИ</h4>
-                    <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                    <h3 >Подразделения ПГУТИ</h3>
+                    <div class="row">
+                        <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                    </div>
+                    <div class="row">
+                        <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                        <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+                    </div>
                 </div>
                 <!--<div class="col-md-3">
                     <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
@@ -295,7 +291,7 @@
 <script src="/js/navigation/scroll.js"></script>
 
 <script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<!--<script src="js/isotope/isotope.pkgd.js"></script>-->
+<script src="/js/isotope/isotope.pkgd.js"></script>
 <script src="/js/navigation/jquery.sticky.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
 <script src="/js/superfish/js/superfish.js"></script>
@@ -311,7 +307,7 @@
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="js/gmap2.js"></script>
+<script src="/js/gmap2.js"></script>
 <!--<script src="js/jquery.prettyphoto.js"></script>-->
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>

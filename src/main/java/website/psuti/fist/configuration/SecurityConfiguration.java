@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity config) throws Exception {
-        config.csrf().disable()//.headers().cacheControl().disable().disable()
+        config.csrf().disable().headers().cacheControl().disable().disable()
                 .authorizeRequests()
                 .antMatchers("admin").permitAll()
                 .antMatchers("/admin/**").authenticated()//.permitAll()

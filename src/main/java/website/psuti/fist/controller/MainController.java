@@ -1,11 +1,10 @@
-/*
 package website.psuti.fist.controller;
 
 import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,7 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-    private final static Logger log = LoggerFactory.getLogger(Application.class);
+    //private final static Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
     private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
@@ -193,7 +192,7 @@ public class MainController {
         return modelview;
     }
 
-    //@Cacheable("mainPictures")
+    @Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
 
         for (Map.Entry picture: initPicturesCashe().entrySet()) {
@@ -205,7 +204,7 @@ public class MainController {
         return null;
     }
 
-    //@Cacheable("mainPictures")
+    @Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
@@ -375,4 +374,3 @@ public class MainController {
         return modelAndView;
     }
 }
-*/

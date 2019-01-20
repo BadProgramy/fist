@@ -40,10 +40,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/admin/logout").permitAll().invalidateHttpSession(true).permitAll();
     }
 
-    /*@Override
+    @Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/static/**");
-    }*/
+    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

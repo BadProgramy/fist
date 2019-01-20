@@ -17,6 +17,7 @@ import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -204,9 +205,8 @@ public class MainController {
     @Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getPhoto(@PathVariable long idPicture, HttpServletResponse response) {
+    public byte[] getPhoto(@PathVariable long idPicture) {
         byte[] b = getPicture(idPicture);
-        response.setHeader("Cache-Control", "max-age = 7200, must-revalidate");
         return b;
     }
 

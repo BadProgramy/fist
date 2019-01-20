@@ -107,14 +107,14 @@ xsigin/signup popup
 }
  .text-stud p{
      text-align: justify;
-     font-family: 'Open Sans', sans-serif;
+     font-family: 'Baloo Thambi', cursive;
+     color: #000;
+     line-height: 25px;
      font-size:13px;
-     color:#000;
-     line-height:23px;
  }
  .stud-name {
      color:#000;
-     font-family: 'Roboto Slab', serif;
+     font-family: 'Pacifico', cursive;
      font-size: 25px;
      line-height: 25px;
      margin-bottom:5px;

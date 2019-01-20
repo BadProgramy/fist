@@ -151,7 +151,7 @@
 									</div>
 									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" href="#"><!--Уважаемые родители--></a></h2>
 									<div class="post-meta">
-										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}" href="#"><i class="fa fa-calendar"></i> <!--9 Ноября--></a></span>
+										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}"><i class="fa fa-calendar"></i></a></span>
 									</div>
 									<div class="post-excerpt">
 										<p th:utext="${newFaculty.getText()}"></p>
@@ -500,25 +500,9 @@
 				<div class="stud-photo">
 					<a><img id="studPicture" class="img-responsive" alt=""/></a>
 				</div>
-				<h2 id="stud-name" class="stud-name"><!--Аброськина Елена Сергеевна--></a></h2>
+				<h2 id="stud-name" class="stud-name"></h2>
 				<div class="text-stud">
-					<p id="char">
-						<!--Студентка 4 курса, направление подготовки 09.03.01 «Информатика и
-                        вычислительная техника». С начала своего обучения принимает активное
-                        участие в общественной жизни университета. Выступает в качестве
-                        организатора в культурных мероприятиях ВУЗа. В 2015 году прошла
-                        обучение студенческого Профактива. В первичной профсоюзной
-                        организации студентов (ППОС ПГУТИ) с сентября 2017 года была
-                        заместителем председателя профбюро ФИСТ. С сентября 2018 года
-                        является председателем профбюро ФИСТ. Имеет оценки отлично и хорошо
-                        в течение всего периода обучения.
-                        Активно занимается научно-исследовательской деятельностью. Принимала
-                        участие в следующих конкурсах и олимпиадах: “У.М.Н.И.К.”, "IT-прорыв”,
-                        Студенческая научная конференция и олимпиады ПГУТИ.
-                        Интересуется и регулярно участвует в командных интеллектуальных
-                        играх: “Кроссворд-шоу” на кубок совета ректоров Самарской области,
-                        “Что? Где? Когда” в ПГУТИ и Самарском университете, "#SIB_LAB".-->
-					</p>
+					<p id="char"></p>
 				</div>
 			</div>
 
@@ -571,22 +555,22 @@
 
 				<div class="col-md-3">
                     <h3>ФИСТ в социальных сетях</h3>
-                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images\vk-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images\inst-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images\twitter-logo.png" class="img-responsive" alt=""/></a> </div>
 				</div>
 
                 <div class="col-md-3">
                 <h3 >Подразделения ПГУТИ</h3>
 					<div class="row">
-                <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
+                <div class="site-fist"> <a href="https://www.psuti.ru/"><img src="/images/logo-silver.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://abitur.psuti.ru"><img src="/images/logo-pr.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/spr-psuti.jpg" class="img-responsive" alt=""/></a> </div>
                 </div>
                 <div class="row">
-					<div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
+					<div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/logo-HTB.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/logo-pg.jpg" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/profkom-logo.jpg" class="img-responsive" alt=""/></a> </div>
                 </div>
 				</div>
                 <!--<div class="col-md-3">

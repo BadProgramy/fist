@@ -485,11 +485,11 @@ h1 {
 	padding-bottom:20px;	
 }
 .h-page-title h2{
-	font-family: 'Russo One', sans-serif;
+	font-family: 'Ultra', serif;
+	font-size:50px;
+	font-weight: 600;
 	color: #000000;
 	text-transform: uppercase;
-	font-weight: 700;
-	font-size: 60px;
 	line-height: 50px;
 	padding-bottom: 3%;
 }
@@ -1680,7 +1680,7 @@ h1 {
 }
 
 .blog .main-blog {
-	padding:43px 0 0 0;
+	padding: 43px 0 0 0;
 	float:left;
 	width:100%;	
 }
@@ -1768,6 +1768,8 @@ h1 {
 .masonry-feed {
   padding-left: 0;
   list-style: none;
+	max-width: 1140px;
+	margin: 0 auto;
 }
 .masonry-feed:before,
 .masonry-feed:after {
@@ -1782,8 +1784,6 @@ h1 {
   max-width: 100%;
 }
 
-.blogpost {
-}
 
 h2.post-title {
 	font-size: 32px;
@@ -2013,11 +2013,11 @@ article.bm-item h2.post-title {
 }
 
 .page_header h2 {
-	font-family: bebas-neue, sans-serif;
-	color:#000;
-	text-transform:uppercase;
-	font-size:80px;
-	font-weight:400;
+	font-family: 'Ultra', serif;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: 700;
 }
 
 .page_header p {
@@ -2521,9 +2521,14 @@ margin:0 0 25px;
     border-top: none;
 }
 
-
+.padding-right50{
+    padding-right: 50px;
+}
+.padding5p{
+    padding: 5px;
+}
 .tab-content .tab-pane p {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 24px;
     margin-bottom: 25px;
 }
@@ -2533,6 +2538,19 @@ margin:0 0 25px;
 	max-width:100%;
 	margin:0 auto;
 }
+
+.content-blog>.container{
+	max-width: 1140px;
+}
+.blogpost img{
+	max-height: 500px;
+}
+
+.post-excerpt h4,h5{
+	color: #000;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
 
 .nav-tabs > li {
     margin-right: -3px;
@@ -3369,10 +3387,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 
-.top-bar ul li:last-child {
+/*.top-bar ul li:last-child {
 	float:left;
-	/*margin-left:50px;*/
-}
+	margin-left:50px;
+}*/
 
 .tb-info a {
 	cursor:pointer;
@@ -3387,6 +3405,10 @@ left: 0px;
 display: table;
 color: #B59E5C;
 font-size: 40px;
+}
+
+.color-silver{
+	background: #d7d7d7;
 }
 
 .tb-info a span {
@@ -5124,9 +5146,9 @@ color:#B59E5C;
 }
 
 .top-info h2 {
-	font-family:bebas-neue;
-	font-size:60px;
-	font-weight:300;
+	font-family: 'Ultra', serif;
+	font-size:50px;
+	font-weight: 600;
 	text-transform:uppercase;
 	margin:0 0 15px;
 }

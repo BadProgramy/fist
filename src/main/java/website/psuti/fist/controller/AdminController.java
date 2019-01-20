@@ -103,6 +103,7 @@ public class AdminController {
 
     @RequestMapping("/test")
     public String test() throws IOException {
+
         File f ;
         for (Pictures pictures: picturesService.getAll()) {
                 f = new File("src\\main\\resources\\static\\" + pictures.getUrlPicture());

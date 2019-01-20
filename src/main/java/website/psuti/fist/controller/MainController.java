@@ -194,6 +194,7 @@ public class MainController {
 
     @Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
+
         for (Map.Entry picture: initPicturesCashe().entrySet()) {
 
             if (picture.getKey().equals(idPicture)) {

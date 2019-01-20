@@ -3472,7 +3472,7 @@ color:#999;
 	font-size:14px;
 	padding:13px 15px;
 	/*box-shadow: 1px 1px 29px -5px;*/
-	/*background-color: #eaebf785;;*/
+	/*background-color: rgba(234, 235, 247, 0.77);*/
 }
 
 .sf-menu ul li a:hover {
@@ -5137,7 +5137,8 @@ color:#B59E5C;
 
 .teacher {
 	max-width: 100% !important;
-	max-height: 280px;
+
+	/*max-height: 280px;*/
 }
 
 .top-info h2 {

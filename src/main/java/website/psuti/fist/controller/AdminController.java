@@ -112,7 +112,7 @@ public class AdminController {
     @RequestMapping("/admin/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
         newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
-        if (newFaculty.getPictureFile() == null) {
+        if (newFaculty.getPictureFile() != null) {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.insert(newFaculty);

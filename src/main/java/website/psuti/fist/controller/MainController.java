@@ -192,7 +192,7 @@ public class MainController {
         return modelview;
     }
 
-    @Cacheable("mainPictures")
+    //@Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
 
         for (Map.Entry picture: initPicturesCashe().entrySet()) {
@@ -204,7 +204,7 @@ public class MainController {
         return null;
     }
 
-    @Cacheable("mainPictures")
+    //@Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {

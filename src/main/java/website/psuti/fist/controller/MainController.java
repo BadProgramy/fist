@@ -1,6 +1,6 @@
 package website.psuti.fist.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +17,8 @@ import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +27,7 @@ import java.util.Map;
 @Controller
 public class MainController {
 
+    //private final static Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
     private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
@@ -98,8 +101,8 @@ public class MainController {
             modelAndView.addObject("ItemHeader1_2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
             return modelAndView;
         } else if (MainPageObjectConstant.checkModelAndView.size() > 0){
-            for (Map.Entry<Boolean, NameTableBD> change : MainPageObjectConstant.checkModelAndView.entrySet()) {
-                changeModel(change.getValue());
+            for (NameTableBD change : MainPageObjectConstant.checkModelAndView) {
+                changeModel(change);
             }
             MainPageObjectConstant.checkModelAndView.clear();
             return modelAndView;
@@ -156,10 +159,14 @@ public class MainController {
     }
 
     private void updatePicturesTable() {
-        modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getKeyPicture()));
+        modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getId()));
         modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
-        modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getKeyPicture()));
-        modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getKeyPicture()));
+        modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
+        modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getId()));
+        if (picturesCache != null) {
+            picturesCache.clear();
+            picturesCache = null;
+        }
     }
 
     private void updateUsersTable() {
@@ -180,16 +187,27 @@ public class MainController {
         ModelAndView modelview = initModelAndView();
         modelview.addAllObjects(model.asMap()) ;
         modelview.setViewName("index");
+        //response.setHeader("Cache-Control", "max-age= 3600");
         return modelview;
     }
 
+    @Cacheable("mainPictures")
+    public byte[] getPicture(long idPicture) {
+        for (Map.Entry picture: initPicturesCashe().entrySet()) {
+
+            if (picture.getKey().equals(idPicture)) {
+                return (byte[]) picture.getValue();
+            }
+        }
+        return null;
+    }
+
+    @Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
-        for (Map.Entry picture: initPicturesCashe().entrySet()) {
-            if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
-        }
-        return null;
+        byte[] b = getPicture(idPicture);
+        return b;
     }
 
     @RequestMapping("/newsBlog")

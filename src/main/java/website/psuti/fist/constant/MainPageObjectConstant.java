@@ -8,6 +8,7 @@ import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +29,11 @@ public abstract class MainPageObjectConstant {
     @Autowired
     private static NewsFacultyService newsFacultyService;
 
-    public static Map<Boolean, NameTableBD> checkModelAndView;
+    public static List<NameTableBD> checkModelAndView;
+
     static {
         if (checkModelAndView == null) {
-            checkModelAndView = new HashMap<>();
+            checkModelAndView = new ArrayList<>();
         }
     }
 }

@@ -1,1 +1,0 @@
-INSERT INTO fist.users_role (users_id, role) VALUES (1, 'FULLADMIN');

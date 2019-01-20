@@ -63,7 +63,7 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
             id = session.insert("NewsOfFaculty.add", newsOfFaculty);
             if (id == 1) {
                 id = session.selectOne("NewsOfFaculty.getLastIdInsert");
-                MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
+                MainPageObjectConstant.checkModelAndView.add(NameTableBD.NEWS_OF_FACULTY);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("NewsOfFaculty.update", newsOfFaculty);
-            if (id == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
+            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.NEWS_OF_FACULTY);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -96,7 +96,7 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("NewsOfFaculty.deleteById", id);
-            if (check == 1) MainPageObjectConstant.checkModelAndView.put(true, NameTableBD.NEWS_OF_FACULTY);
+            if (check == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.NEWS_OF_FACULTY);
         } finally {
             session.close();
         }

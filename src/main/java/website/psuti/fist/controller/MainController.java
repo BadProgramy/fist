@@ -193,9 +193,7 @@ public class MainController {
     }
 
     @Cacheable("mainPictures")
-    @ResponseBody
-    @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getPhoto(@PathVariable long idPicture) {
+    public byte[] getPicture(long idPicture) {
         for (Map.Entry picture: initPicturesCashe().entrySet()) {
 
             if (picture.getKey().equals(idPicture)) {
@@ -203,6 +201,13 @@ public class MainController {
             }
         }
         return null;
+    }
+
+    @Cacheable("mainPictures")
+    @ResponseBody
+    @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getPhoto(@PathVariable long idPicture) {
+        return getPicture(idPicture);
     }
 
     @RequestMapping("/newsBlog")

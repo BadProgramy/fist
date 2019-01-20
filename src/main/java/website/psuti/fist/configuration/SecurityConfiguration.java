@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity config) throws Exception {
-        config.csrf().disable()
+        config.csrf().disable().headers().cacheControl().disable().disable()
                 .authorizeRequests()
                 .antMatchers("admin").permitAll()
                 .antMatchers("/admin/**").authenticated()//.permitAll()
@@ -37,6 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/admin/login").defaultSuccessUrl("/admin").permitAll()
                 .and()
                 .logout().logoutUrl("/admin/logout").permitAll().invalidateHttpSession(true).permitAll();
+    }
+
+    @Override
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/static/**");
     }
 
     @Autowired

@@ -186,6 +186,18 @@ public class AdminController {
     }
 
 
+    private void test1() {
+        Pictures pictures;
+        for (int i = 15; i < 30; i++) {
+            pictures = new Pictures();
+            pictures.setDate(LocalDate.now());
+            pictures.setIdPage(2);
+            pictures.setKeyPicture(3);
+            pictures.setUrlPicture("images/shop/"+i+".jpg");
+            pictures.setNamePicture("Лучший студент");
+            //pictures.setPictureFile();
+        }
+    }
     /*@RequestMapping("/admin/login/submit")
     public String testCreateUser() throws SQLException {
         List<Role> roles = new ArrayList<>();

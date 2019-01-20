@@ -15,9 +15,9 @@ http://www.springframework.org/schema/task http://www.springframework.org/schema
     <!--<bean id="scheduler" class="organizational.dao.department.DAODepartmentImpl"></bean>-->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/fist"/>
-        <property name="username" value="marie" />
-        <property name="password" value="735915penekman" />
+        <property name="url" value="jdbc:mysql://eu-cdbr-west-02.cleardb.net:3306/heroku_368f361921627d0"/>
+        <property name="username" value="b282b555911092" />
+        <property name="password" value="f5fdf609" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -39,4 +39,9 @@ public class PicturesService {
     public Pictures findPictureByName(String name) {
         return daoPictures.findPictureByName(name);
     }
+
+    @Transactional
+    public int delete(long id) {
+        return daoPictures.delete(id);
+    }
 }

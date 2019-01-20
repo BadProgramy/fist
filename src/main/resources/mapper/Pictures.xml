@@ -51,5 +51,8 @@
         SELECT * FROM pictures where id = #{id};
     </select>
 
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM fist.pictures where id = #{id};
+    </delete>
 
 </mapper>

@@ -10,7 +10,7 @@ public interface DAOPictures {
     List<Pictures> getAll();
     long insert (Pictures pictures);
     void update(Pictures pictures);
-    void delete(int id);
+    int delete(long id);
 
     Pictures findPictureById(long id);
     List<Pictures> findPicturesByKey(long keyPicture);

@@ -1,3 +1,4 @@
+/*
 package website.psuti.fist.controller;
 
 import javafx.application.Application;
@@ -374,3 +375,4 @@ public class MainController {
         return modelAndView;
     }
 }
+*/

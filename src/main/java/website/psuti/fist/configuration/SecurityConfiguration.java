@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity config) throws Exception {
-        config.csrf().disable().headers().cacheControl().disable().disable()
+        config.csrf().disable()//.headers().cacheControl().disable().disable()
                 .authorizeRequests()
                 .antMatchers("admin").permitAll()
                 .antMatchers("/admin/**").authenticated()//.permitAll()
@@ -40,10 +40,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/admin/logout").permitAll().invalidateHttpSession(true).permitAll();
     }
 
-    @Override
+    /*@Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/static/**");
-    }
+    }*/
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

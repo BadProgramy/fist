@@ -17,6 +17,7 @@ import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -185,12 +186,12 @@ public class MainController {
         ModelAndView modelview = initModelAndView();
         modelview.addAllObjects(model.asMap()) ;
         modelview.setViewName("index");
+        //response.setHeader("Cache-Control", "max-age= 3600");
         return modelview;
     }
 
     @Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
-
         for (Map.Entry picture: initPicturesCashe().entrySet()) {
 
             if (picture.getKey().equals(idPicture)) {
@@ -203,8 +204,10 @@ public class MainController {
     @Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getPhoto(@PathVariable long idPicture) {
-        return getPicture(idPicture);
+    public byte[] getPhoto(@PathVariable long idPicture, HttpServletResponse response) {
+        byte[] b = getPicture(idPicture);
+        response.setHeader("Cache-Control", "max-age = 7200, must-revalidate");
+        return b;
     }
 
     @RequestMapping("/newsBlog")

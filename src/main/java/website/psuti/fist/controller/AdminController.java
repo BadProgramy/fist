@@ -45,7 +45,7 @@ public class AdminController {
     private HashMap<Long, byte[]> picturesCache;
 
 
-    private HashMap<Long, byte[]> initPicturesCashe() {
+    private HashMap<Long, byte[]> initPicturesCache() {
         if (picturesCache == null) {
             picturesCache = new HashMap<>();
             for (Pictures pictures: picturesService.getAll()) {
@@ -103,10 +103,13 @@ public class AdminController {
     @ResponseBody
     @RequestMapping(value = "/admin/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
-        for (Map.Entry picture: initPicturesCashe().entrySet()) {
+        /*for (Map.Entry picture: initPicturesCashe().entrySet()) {
             if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
-        }
-        return null;
+        }*/
+        Pictures foto = picturesService.findPictureById(idPicture);
+        if (foto!=null)
+            return foto.getPictureFile();
+        else return new byte[0];
     }
 
     @RequestMapping("/admin/news/add/submit")

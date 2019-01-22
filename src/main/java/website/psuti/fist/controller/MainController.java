@@ -205,8 +205,9 @@ public class MainController {
     @Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getPhoto(@PathVariable long idPicture) {
+    public byte[] getPhoto(@PathVariable long idPicture, HttpServletResponse response) {
         byte[] b = getPicture(idPicture);
+        response.setHeader("cache-control", "max-age=7200");
         return b;
     }
 

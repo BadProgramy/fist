@@ -60,7 +60,8 @@
                 <div class="logo-psuti" style="margin: 10px;">
                     <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                 </div>
-                <div class="top-bar "style="float:right !important; margin-right: 50px;">
+                <div class="col-md-9 col-xs-7">
+                    <div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
                     <ul>
                         <li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
                         <li class="tb-info"  style="float: left;color: black;padding-right:4%"> Московское шоссе 77, кабинет 302</li>
@@ -72,6 +73,7 @@
                         <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
                     </ul>
                 </div>
+                    </div>
             </div>
             <div class="menu-wrap">
                 <div class="row" style="margin-left: 5%;">

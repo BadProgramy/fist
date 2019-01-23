@@ -56,36 +56,32 @@
     <!-- HEADER -->
     <header id="header" class="color-silver">
         <div class="container">
-            <div class="row padding5p">
-                <div class="logo-psuti col-md-3 col-xs-5 ">
-                    <a th:href="${logotipPSUTI.getHref()}" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
-                </div>
-                <div class="logo-psuti col-md-3 col-xs-5 ">
+            <div class="row">
+                <div class="logo-psuti" style="margin: 10px;">
                     <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                 </div>
-                <div class="col-md-9 col-xs-7">
-                    <div class="top-bar padding-right50">
-                        <ul>
-                            <ul>
-                                <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
-                                <li class="tb-info"  style="float: left;color: black;padding-right:5%" th:object="${phone}" th:utext="${phone.getName()}"></li>
+                <div class="top-bar "style="float:right !important; margin-right: 50px;">
+                    <ul>
+                        <li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
+                        <li class="tb-info"  style="float: left;color: black;padding-right:4%"> Московское шоссе 77, кабинет 302</li>
 
-                                <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
-                                <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
-                            </ul>
-                        </ul>
-                    </div>
+                        <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
+                        <li class="tb-info"  style="float: left;color: black;padding-right:4%" th:object="${phone}" th:utext="${phone.getName()}"></li>
+
+                        <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
+                        <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
+                    </ul>
                 </div>
             </div>
             <div class="menu-wrap">
-                <div class="row" style="margin-left:5%;">
+                <div class="row" style="margin-left: 5%;">
                     <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
                     <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
                         <li>
                             <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
-                            <div class="mobnav-subarrow"></div>
+                            <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
                             <ul >
-                                <div th:each="menuItemMinor : ${mapEntry.value}">
+                                <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
                                     <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
                                         <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
                                     </li>
@@ -93,6 +89,12 @@
                             </ul>
                         </li>
                     </ul>
+                    <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
+                        <a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
+                    </div>
+                    <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
+                        <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,7 +109,7 @@
                         <h2 th:object="${ItemHeader1_3}" th:utext="${ItemHeader1_1.getName()}"></h2>
                         <p th:object="${ItemHeader1_2}" th:utext="${ItemHeader1_2.getName()}"></p>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div th:each="newFaculty : ${resultTopic}">
                             <article class="blogpost">
                                 <div>

@@ -17,7 +17,6 @@ import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +47,7 @@ public class MainController {
     private HashMap<Long, byte[]> picturesCache;
 
 
-    private HashMap<Long, byte[]> initPicturesCashe() {
+    private HashMap<Long, byte[]> initPicturesCache() {
         if (picturesCache == null) {
             picturesCache = new HashMap<>();
             for (Pictures pictures: picturesService.getAll()) {
@@ -59,7 +58,7 @@ public class MainController {
     }
 
     private ModelAndView initModelAndView() {
-        initPicturesCashe();
+        initPicturesCache();
         if (modelAndView == null) {
             modelAndView = new ModelAndView();
             modelAndView = new ModelAndView("","","");
@@ -165,7 +164,10 @@ public class MainController {
         modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getId()));
         if (picturesCache != null) {
             picturesCache.clear();
-            picturesCache = null;
+            picturesCache = new HashMap<>();
+            for (Pictures pictures: picturesService.getAll()) {
+                picturesCache.put(pictures.getId(), pictures.getPictureFile());
+            }
         }
     }
 
@@ -191,9 +193,9 @@ public class MainController {
         return modelview;
     }
 
-    @Cacheable("mainPictures")
+    //@Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
-        for (Map.Entry picture: initPicturesCashe().entrySet()) {
+        for (Map.Entry picture: initPicturesCache().entrySet()) {
 
             if (picture.getKey().equals(idPicture)) {
                 return (byte[]) picture.getValue();
@@ -202,11 +204,12 @@ public class MainController {
         return null;
     }
 
-    @Cacheable("mainPictures")
+    //@Cacheable("mainPictures")
     @ResponseBody
     @RequestMapping(value = "/main/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getPhoto(@PathVariable long idPicture) {
+    public byte[] getPhoto(@PathVariable long idPicture, HttpServletResponse response) {
         byte[] b = getPicture(idPicture);
+        response.setHeader("cache-control", "max-age=86400, must-revalidate");
         return b;
     }
 

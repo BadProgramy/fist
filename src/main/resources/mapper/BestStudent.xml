@@ -17,4 +17,30 @@
         SELECT * FROM best_student;
     </select>
 
+    <insert id="add" parameterType="BestStudent">
+        insert into best_student(id_picture, name, url, group_in_university, characteristic)
+        values (#{idPicture}, #{name}, #{url}, #{groupInUniversity}, #{characteristic});
+    </insert>
+
+    <select id="getLastIdInsert" resultType="long">
+        SELECT LAST_INSERT_ID() FROM best_student LIMIT 1;
+    </select>
+
+    <select id="findById" parameterType="long" resultMap="result">
+        SELECT * FROM best_student WHERE id = #{id};
+    </select>
+
+    <update id="update" parameterType="BestStudent">
+        UPDATE best_student SET
+        id_picture = #{idPicture},
+        name = #{name},
+        url = #{url},
+        group_in_university = #{groupInUniversity},
+        characteristic = #{characteristic}
+        WHERE id = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM best_student where id = #{id};
+    </delete>
 </mapper>

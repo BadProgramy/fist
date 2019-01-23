@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор новостей</title>
+    <title>Редактор лучших студентов</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,135 +135,40 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/bestStudents/update/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                    <p class="fieldset black_p">
-                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                        <textarea name="heading" th:utext="${newFaculty.getHeading()}" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
-                        <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                    </p>
-
-                    <p class="fieldset black_p">
-                        <label class="image-replace cd-password" for="signin-password">Текст</label>
-                        <textarea name="text" th:utext="${newFaculty.getText()}" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
-                        <!--<a href="#0" class="hide-password">Hide</a>-->
-                        <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
-                    </p>
+                        <p class="fieldset black_p">
+                            <textarea name="name" th:utext="${bestStudent.getName()}" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилие и имя: Пример - Иван Иванов"></textarea>
+                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                        </p>
 
                         <p class="fieldset black_p">
-                            <input id="dateStringLocalDate" type="date" name="dateStringLocalDate" th:value="${newFaculty.getDate()}" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                            <textarea name="groupInUniversity" th:utext="${bestStudent.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Группа: Пример - ПО-52"></textarea>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <textarea name="characteristic" th:utext="${bestStudent.getCharacteristic()}" th:field="*{characteristic}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Характеристика"></textarea>
                         </p>
 
                         <input name="id" type="hidden" th:field="*{id}">
                         <input name="idPicture" type="hidden" th:field="*{idPicture}">
 
-                        <img th:src="@{'/admin/news/' + ${newFaculty.getIdPicture()}}" alt="">
+                        <img th:src="@{'/admin/news/' + ${bestStudent.getIdPicture()}}" alt="">
                         <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
 
-                    <p class="fieldset black_p">
-                        <button class="full-width" type="submit">Изменить</button>
-                    </p>
+                        <p class="fieldset black_p">
+                            <button class="full-width" type="submit">Изменить</button>
+                        </p>
                     </fieldset>
                 </form>
 
-                <!--<form th:action="@{/admin/news/update}" th:object="${topic}" method="post" class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                        <textarea name="heading" th:value="${heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
-                        <span class="cd-error-message">Ошибка ввода загаловка!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signin-password">Текст</label>
-                        <textarea name="text" th:value="${text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
-                        &lt;!&ndash;<a href="#0" class="hide-password">Hide</a>&ndash;&gt;
-                        <span class="cd-error-message">Ошибка ввода текста!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width" type="submit" value="Изменить">
-                    </p>
-                </form>-->
-
-                <!--<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>-->
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
             </div> <!-- cd-login -->
 
-            <!--<div id="cd-signup"> &lt;!&ndash; sign up form &ndash;&gt;
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username" for="signup-username">Username</label>
-                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-                        <a href="#0" class="hide-password">Hide</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Create account">
-                    </p>
-                </form>
-
-                &lt;!&ndash; <a href="#0" class="cd-close-form">Close</a> &ndash;&gt;
-            </div> &lt;!&ndash; cd-signup &ndash;&gt;
-
-            <div id="cd-reset-password"> &lt;!&ndash; reset password form &ndash;&gt;
-                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Reset password">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-            </div> &lt;!&ndash; cd-reset-password &ndash;&gt;
-            <a href="#0" class="cd-close-form">Close</a>-->
         </div> <!-- cd-user-modal-container -->
     </div> <!-- cd-user-modal -->
 
 
     <div class="close-btn fa fa-times"></div>
-
-    <!--&lt;!&ndash; SLIDER &ndash;&gt;
-    <div class="container-fluid no-padding">
-        <div id="home-slider2" class="owl-carousel owl-theme">
-            <div class="item">
-                &lt;!&ndash;<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>&ndash;&gt;
-
-            </div>
-            &lt;!&ndash;<div class="item">
-                <img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-
-            </div>
-            <div class="item">
-                <img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-
-            </div>&ndash;&gt;
-        </div>
-    </div>-->
 </div>
 
 <!-- Javascript -->
@@ -287,23 +192,6 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<!--<script type="text/javascript">-->
-
-<!--$(function() {-->
-
-<!--$("h2")-->
-<!--.wrapInner("<span></span>")-->
-
-<!--$("h2 br")-->
-<!--.before("<span class='spacer'>&nbsp;</span>")-->
-<!--.after("<span class='spacer'>&nbsp;</span>");-->
-
-<!--});-->
-
-<!--</script>-->
-
-<!-- Custom-scroll JS -->
-<!--<script src="js/jquery.custom-scroll.js"></script>-->
 
 </body>
 </html>

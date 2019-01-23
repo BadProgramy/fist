@@ -1,0 +1,41 @@
+h3 { font-size:28px; font-weight:bold; text-transform: uppercase; }
+
+.i_comments { position:relative; width:100%; /*margin-top:56px;*/ }
+.i_comments h3 { font-size:28px; font-weight:bold; text-transform: uppercase; }
+.i_comments__card { margin-top:16px; }
+.i_comments__card-h { padding-bottom:16px;font-size:20px; line-height:24px; color:#a1a1a1; }
+.i_comments__card-b { position: relative; font-family:'Times New Roman'; line-height:30px; background-color:#f2f2f2; padding:36px 56px; font-size:24px; text-align: center; border-radius: 8px; }
+.i_comments__card-f { font-family:'Times New Roman'; font-style:italic; text-align: right; padding-top: 40px; padding-right:24px; }
+.i_comments__card-f i {
+display: block; overflow:hidden; width: 90px; height: 90px; float:right; margin-left:24px; border: 5px solid #f2f2f2; border-radius: 100%;
+background: #ffffff url('/local/templates/test/images/icon_profile.jpg') no-repeat center center;
+background-size: cover;
+}
+.i_comments__card-f i img { width:100%; height:100%; }
+.i_comments__card-f b { display: block; /*font-family:'Courgette';*/ font-size:28px; line-height:28px; margin-top:4px; margin-bottom:16px; }
+.i_comments__card-f span { display:block; font-size:18px; line-height:18px; }
+
+.i_comments__card-b:after {
+	top: 100%;
+	right: 40px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(242, 242, 242, 0);
+	border-top-color: #f2f2f2;
+	border-width: 32px;
+	margin-left: -32px;
+}
+
+.i_nav-button-prev,
+.i_nav-button-next { z-index:auto; position:absolute; top:50%; margin-top:-28px; width:48px; height:48px; line-height:48px; text-align:center; color:#0e7bd9; border: 3px solid #0e7bd9; border-radius: 100%; }
+.i_nav-button-prev { left:-24px; cursor:pointer; background: #ffffff url('/local/templates/test/images/arr_prev.png') no-repeat center center; }
+.i_nav-button-next { right:-24px; cursor:pointer; background: #ffffff url('/local/templates/test/images/arr_next.png') no-repeat center center; }
+
+.owl-carousel-1 { z-index:auto; overflow:visible; }
+.owl-carousel-1 .owl-stage-outer,
+.owl-carousel-1 .owl-stage-outer .owl-stage,
+.owl-carousel-1 .owl-stage-outer .owl-stage .owl-item { /*height:100%;*/ overflow:visible; }

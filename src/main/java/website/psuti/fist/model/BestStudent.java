@@ -1,6 +1,7 @@
 package website.psuti.fist.model;
 
 import org.hibernate.annotations.Type;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
@@ -16,6 +17,9 @@ public class BestStudent {
     @Column
     @Type(type = "org.hibernate.type.TextType")
     private String characteristic;
+
+    @Transient
+    private MultipartFile pictureFile;
 
     @Transient
     private Pictures picture;
@@ -39,12 +43,12 @@ public class BestStudent {
         this.idPicture = idPicture;
     }
 
-    public Pictures getPicture() {
-        return picture;
+    public MultipartFile getPictureFile() {
+        return pictureFile;
     }
 
-    public void setPicture(Pictures picture) {
-        this.picture = picture;
+    public void setPictureFile(MultipartFile pictureFile) {
+        this.pictureFile = pictureFile;
     }
 
     public String getName() {
@@ -77,5 +81,13 @@ public class BestStudent {
 
     public void setCharacteristic(String characteristic) {
         this.characteristic = characteristic;
+    }
+
+    public Pictures getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Pictures picture) {
+        this.picture = picture;
     }
 }

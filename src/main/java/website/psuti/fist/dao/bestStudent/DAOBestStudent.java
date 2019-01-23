@@ -8,9 +8,10 @@ import java.util.List;
 @Mapper
 public interface DAOBestStudent {
     List<BestStudent> getAll();
-    int insert (BestStudent bestStudent);
+    long insert (BestStudent bestStudent);
     void update(BestStudent bestStudent);
-    void delete(int id);
+    void delete(long id);
 
+    BestStudent findById(long id);
     List<BestStudent> filledBestStudent();//заполненные студенты со всеми ссылками на картинки и тд. тп.
 }

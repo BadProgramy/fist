@@ -14,6 +14,15 @@ public class BestStudentService {
     private DAOBestStudent daoBestStudent;
 
     @Transactional
+    public long insert(BestStudent bestStudent) { return daoBestStudent.insert(bestStudent); }
+
+    @Transactional
+    public void update(BestStudent bestStudent) { daoBestStudent.update(bestStudent); }
+
+    @Transactional
+    public void delete(long id) { daoBestStudent.delete(id);}
+
+    @Transactional
     public List<BestStudent> getAll() {
         return daoBestStudent.getAll();
     }
@@ -22,5 +31,8 @@ public class BestStudentService {
     public List<BestStudent> filledBestStudent() {
         return daoBestStudent.filledBestStudent();
     }
+
+    @Transactional
+    public BestStudent findById(long id) { return daoBestStudent.findById(id); }
 
 }

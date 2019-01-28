@@ -105,13 +105,14 @@
 	</header>
 
 	<!--HEADER-->
-	<div class="header" style="height: 125px"></div>
+	<div class="header" style="height: 100px"></div>
 
 	<!-- SLIDER -->
 	<div class="container-fluid no-padding main-background">
 		<div id="home-slider2" class="owl-carousel owl-theme">
 			<div class="item" th:each="picture : ${slider}">
-				<a href="/main"><img th:src="@{'/main/picture/' + ${picture.getId()}}" class="img-responsive" alt=""/></a>
+			<img th:src="@{'/main/picture/' + ${picture.getId()}}" class="img-responsive max-wid" alt=""/>
+				<a href="#" class="button btn-radius button-napr">Подробнее о направлениях</a>
 			</div>
 		</div>
 	</div>
@@ -409,22 +410,23 @@
 
 				<div class="col-md-3">
                     <h3>ФИСТ в социальных сетях</h3>
-                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images/vk-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images/inst-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images/twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="site-fist"> <a href="https://vk.com/fist_psuti" title="VK ФИСТ"><img src="/images/vk-logo.png" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/" title="Inst ФИСТ"><img src="/images/inst-logo.png" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti" title="Twit ФИСТ"><img src="/images/twitter-logo.png" class="img-responsive" alt="" ></a> </div>
 				</div>
 
                 <div class="col-md-4">
                 <h3 >Подразделения ПГУТИ</h3>
 					<div class="row">
-                <div class="big-logo"> <a href="https://www.psuti.ru/"><img src="/images/footer/logo-psuti.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="big-logo"> <a href="https://abitur.psuti.ru"><img src="/images/footer/logo-priem.png" class="img-responsive" alt=""/></a> </div>
+                <div class="big-logo"> <a href="https://www.psuti.ru/" title="ПГУТИ"><img src="/images/footer/logo-psuti.png" class="img-responsive" alt="" ></a> </div>
+                    <div class="big-logo"> <a href="https://abitur.psuti.ru" title="Приемная комиссия ПГУТИ"><img src="/images/footer/logo-priem.png" class="img-responsive" alt="" ></a> </div>
                 </div>
                 <div class="row" style="margin:0 auto">
-					<div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/footer/phone-psuti.png" class="img-responsive" alt=""/></a> </div>
-					<div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/footer/library.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/footer/logo-pg.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/footer/logo-profkom.png" class="img-responsive" alt=""/></a> </div>
+					<div class="site-fist" > <a href="http://phone.psuti.ru/" title="Телефонная книга ПГУТИ"><img src="/images/footer/phone-psuti.png" class="img-responsive" alt="" ></a> </div>
+					<div class="site-fist" > <a href="http://lib.psuti.ru/" title="Библиотека ПУГТИ"><img src="/images/footer/library.png" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist" > <a href="http://cz.psuti.ru/" title="Центр занятости ПГУТИ"><img src="/images/footer/logo-pg.png" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist" > <a href="https://vk.com/profkom_psuti" title="Профком студентов ПГУТИ"><img src="/images/footer/logo-profkom.png" class="img-responsive" alt="" ></a> </div>
+					<div class="site-fist" > <a href="https://vk.com/profkom_psuti" title="Электронная информационно-образовательная среда"><img src="/images/footer/ios.png" class="img-responsive" alt="" style="max-width: 60px !important;margin: 15px 0;" ></a> </div>
                 </div>
 				</div>
                 <!--<div class="col-md-3">

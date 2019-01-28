@@ -496,7 +496,6 @@ h1 {
 	padding-bottom:20px;	
 }
 .h-page-title h2{
-	font-family: 'Ultra', serif;
 	font-size:50px;
 	font-weight: 600;
 	color: #000000;
@@ -675,7 +674,7 @@ h1 {
 }
 
 #stats {
-	background: #4a7ac2;
+	background: #3c689e;
     /*background:url(../images/home-page/1.jpg) no-repeat center center fixed;*/
 	background-size:cover;
 	display:table;
@@ -919,7 +918,7 @@ h1 {
 
 .service-right::after {
 	content: "";
-    background: #4a7ac2 !important;
+    background: #3c689e !important;
 	height: 128px;
 	position: absolute;
 	width: 100%;
@@ -932,7 +931,7 @@ h1 {
 
 .service-left::after {
     content: "";
-    background: #4a7ac2 !important;
+    background: #3c689e !important;
     height: 127px;
     position: absolute;
     width: 100%;
@@ -1066,6 +1065,13 @@ h1 {
 	z-index: -1;
 }
 
+.button-napr{
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    width: 15%;
+}
+
 .main-team ul.cs-style-7 li:hover:before {
 	border:none;
 }
@@ -1075,6 +1081,11 @@ h1 {
 	top:90%;
 }
 
+.max-wid{
+    width: 100%;
+    height: 500px;
+    max-width: 100%;
+}
 
 .main-team ul.cs-style-7 li:hover .figcaption h5 ,
 .main-team ul.cs-style-7 li:hover .figcaption p , 
@@ -1683,7 +1694,7 @@ h1 {
 
 
 .pricing-bg .main-pricing .price-block:hover .inner-price {
-	background-color:#4a7ac2;
+	background-color:#3c689e;
 }
 
 .pricing-bg .main-pricing .price-block .inner-price h3 {
@@ -2088,7 +2099,7 @@ article.bm-item h2.post-title {
 }
 
 .page_header h2 {
-    font-family: "PT Serif", serif;
+    font-family: 'Open Sans', sans-serif;
     color: #333333;
     font-size: 48px;
     font-weight: bold;
@@ -2355,9 +2366,9 @@ right: 0;
 }
 
 .button:hover {
-	background:#b59e5c;
-	border-color:#b59e5c;
-	color:#fff;
+    background: white;
+    border-color: white;
+    color: black;
 }
 
 .btn-xs {
@@ -2967,9 +2978,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     padding: 120px 0px 70px;
 }
 
-.multi-page .stats {
+/*.multi-page .stats {
     background-image: none;
-}
+}*/
 
 
 .cart-info {

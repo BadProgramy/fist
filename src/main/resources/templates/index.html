@@ -33,7 +33,6 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/light.css">
 	<link rel="stylesheet" href="/css/responsive.css">
-	<!--<link rel="stylesheet" href="css/prettyphoto.css">-->
     <link rel="stylesheet" href="/css/studentStyle.css">
 
 	<!-- JS Font Script -->
@@ -109,10 +108,10 @@
 
 	<!-- SLIDER -->
 	<div class="container-fluid no-padding main-background">
-		<div id="home-slider2" class="owl-carousel owl-theme">
+		<div > <!--id="home-slider2" class="owl-carousel owl-theme"-->
 			<div class="item" th:each="picture : ${slider}">
 			<img th:src="@{'/main/picture/' + ${picture.getId()}}" class="img-responsive max-wid" alt=""/>
-				<a href="#" class="button btn-radius button-napr">Подробнее о направлениях</a>
+				<!--<a href="/mainTrend" class="button btn-radius button-napr">Подробнее о направлениях</a>-->
 			</div>
 		</div>
 	</div>
@@ -136,7 +135,7 @@
 									<div class="post-media current-size">
 										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt=""> <!--500 X 300-->
 									</div>
-									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" href="#"><!--Уважаемые родители--></a></h2>
+									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" ><!--Уважаемые родители--></a></h2>
 									<div class="post-meta">
 										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}"><i class="fa fa-calendar"></i></a></span>
 									</div>
@@ -231,7 +230,7 @@
 
 				<div class="main-pricing">
 					<div class="row" style="margin-left: 10%">
-						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
 							<div class="price-block">
 								<div class="inner-price">
 									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}"></h3>
@@ -289,8 +288,9 @@
 		<div class="stats">
 			<div class="container">
 				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
-					<h1 th:utext="${mapEntry.value}"></h1>
-					<h6 th:utext="${mapEntry.key}"></h6>
+					<h1 th:utext="${mapEntry.getLevel()}"></h1>
+					<img th:src="@{'/main/picture/' + ${mapEntry.getIdPicture()}}">
+					<h6 th:utext="${mapEntry.getName()}"></h6>
 				</div>
 			</div>
 		</div>

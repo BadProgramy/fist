@@ -5,9 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import website.psuti.fist.constant.MainPageConstant;
+import website.psuti.fist.constant.MainPageObjectConstant;
+import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.MenuItemHeaderInMainPage;
+import website.psuti.fist.service.RequestPostConnection;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.*;
 
 @Primary
@@ -16,6 +21,9 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
 
     @Autowired
     private Factory factory;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     public List<MenuItemHeaderInMainPage> getAll() {
@@ -36,7 +44,17 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
 
     @Override
     public void update(MenuItemHeaderInMainPage menuItemHeaderInMainPage) {
-
+        int id = -1;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.update("MenuItemHeaderInMainPage.update", menuItemHeaderInMainPage);
+            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
@@ -91,19 +109,19 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
     }
 
     @Override
-    public Map<String, Integer> getCharacterUniversity() {
+    public List<MenuItemHeaderInMainPage> getCharacterUniversity() {
         Map<String, Integer> menuItem = new LinkedHashMap<>();
         List<MenuItemHeaderInMainPage> menuItemHeaderInMainPages;
         SqlSession session = factory.getFactory().openSession();
         try {
             menuItemHeaderInMainPages = session.selectList("MenuItemHeaderInMainPage.findCharacterUniversity", MainPageConstant.CHARACTER_UNIVERSITY.getKeyWord());
-            for (MenuItemHeaderInMainPage map: menuItemHeaderInMainPages) {
+/*            for (MenuItemHeaderInMainPage map: menuItemHeaderInMainPages) {
                 menuItem.put(map.getName(), map.getLevel());
-            }
+            }*/
         } finally {
             session.close();
         }
-        return menuItem;
+        return menuItemHeaderInMainPages;
     }
 
     /*//Пришлось извратиться, другой выход с созданием для него отдельного класса не хочется. Можно было в виде JSON сделать

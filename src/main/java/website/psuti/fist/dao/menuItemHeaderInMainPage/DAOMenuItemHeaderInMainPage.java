@@ -17,5 +17,5 @@ public interface DAOMenuItemHeaderInMainPage {
     List<MenuItemHeaderInMainPage> getMinorHeadersByMainHeader(long idMainHeader);
     Map<MenuItemHeaderInMainPage,List<MenuItemHeaderInMainPage>> getAllHeadersMainPage();
     MenuItemHeaderInMainPage findItemById(long id);
-    Map<String, Integer> getCharacterUniversity();
+    List<MenuItemHeaderInMainPage> getCharacterUniversity();
 }

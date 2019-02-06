@@ -24,6 +24,7 @@ public class MenuItemHeaderInMainPage {
     private String urlHref;
     //keyWord ключевое слово для поиска элементов
     private String keyWord;
+    private long idPicture;
     /*@ElementCollection(targetClass = MenuItemHeaderInMainPage.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "menuItemHeaderInMainPage_menuItemHeaderInMainPage", joinColumns = @JoinColumn(name = "menuItemHeaderInMainPage_id"))
     @Enumerated(EnumType.STRING)
@@ -52,6 +53,14 @@ public class MenuItemHeaderInMainPage {
     public void addChildMenuItem(MenuItemHeaderInMainPage menuItemHeaderInMainPage) {
         menuItemHeaderInMainPages.add(menuItemHeaderInMainPage);
     }*/
+
+    public long getIdPicture() {
+        return idPicture;
+    }
+
+    public void setIdPicture(long idPicture) {
+        this.idPicture = idPicture;
+    }
 
     public long getIdMenuItemParentHeaderInMainPage() {
         return idMenuItemParentHeaderInMainPage;

@@ -16,6 +16,9 @@ public class MenuItemHeaderInMainPagesService {
     private DAOMenuItemHeaderInMainPage daoMenuItemHeaderInMainPage;
 
     @Transactional
+    public void update(MenuItemHeaderInMainPage menuItemHeaderInMainPage) { daoMenuItemHeaderInMainPage.update(menuItemHeaderInMainPage); }
+
+    @Transactional
     public List<MenuItemHeaderInMainPage> getAll() {
         return daoMenuItemHeaderInMainPage.getAll();
     }
@@ -36,7 +39,7 @@ public class MenuItemHeaderInMainPagesService {
     }
 
     @Transactional
-    public Map<String, Integer> getCharacterUniversity() {
+    public List<MenuItemHeaderInMainPage> getCharacterUniversity() {
         return daoMenuItemHeaderInMainPage.getCharacterUniversity();
     }
 }

@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/css/admin/style.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/reset.css">
+    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -135,69 +136,31 @@
         </div>
     </header>
 
-    <form style="left: 40%; position: absolute;" action="/admin/news/range" method="POST">
-        с <input type="date" name="withDate" modelAttribute ="withDate" th:value="${withDate}">
-        до <input type="date" name="fromDate" modelAttribute = "fromDate" th:value="${fromDate}">
-        <input type="submit" value="Показать">
-    </form>
-    <section id="cd-timeline" class="cd-container">
-        <div class="cd-timeline-block" th:each="topic : ${news}">
-       <!--     <div class="cd-timeline-img cd-picture">
-                <img src="img/cd-icon-picture.svg" alt="Picture">
-            </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
-
-            <div class="cd-timeline-content">
-                <h2 th:utext="${topic.getHeading()}"></h2>
-                <p class="black_p" th:utext="${topic.getText()}"></p>
-                <img th:src="@{'/admin/news/' + ${topic.getIdPicture()}}" alt="">
-                <nav class="main-nav">
-                    <ul>
-                        <!-- inser more links here -->
-                        <li><a th:href="@{'/admin/news/update/' + ${topic.getId()}}" class="cd-read-more" >Изменить</a></li>
-                        <li><a th:href="@{'/admin/news/delete/' + ${topic.getId()}}" class="cd-read-more">Удалить</a></li>
-                    </ul>
-                </nav>
-                <!--<ul><li><a th:href="@{'/admin/news/delete/' + ${newFaculty.getId()}}" class="cd-read-more">Удалить</a></li></ul>-->
-
-                <span style="color: white;" th:text="${topic.getDate().toString()}" class="cd-date"></span>
-            </div> <!-- cd-timeline-content -->
-        </div> <!-- cd-timeline-block -->
-
-        <!--<div class="cd-timeline-block">
-          &lt;!&ndash;  <div class="cd-timeline-img cd-picture">
-                <img src="img/cd-icon-picture.svg" alt="Picture">
-            </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;&ndash;&gt;
-
-            <div class="cd-timeline-content">
-                <h2>Title of section 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                <a href="#0" class="cd-read-more">Read more</a>
-
-                <span class="cd-date">Jan 14</span>
-            </div> &lt;!&ndash; cd-timeline-content &ndash;&gt;
-        </div> &lt;!&ndash; cd-timeline-block &ndash;&gt;-->
-    </section> <!-- cd-timeline -->
-
-
-    <div class="close-btn fa fa-times"></div>
-
-    <!--&lt;!&ndash; SLIDER &ndash;&gt;
-    <div class="container-fluid no-padding">
-        <div id="home-slider2" class="owl-carousel owl-theme">
-            <div class="item">
-                &lt;!&ndash;<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>&ndash;&gt;
-
-            </div>
-            &lt;!&ndash;<div class="item">
-                <img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-
-            </div>
-            <div class="item">
-                <img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-
-            </div>&ndash;&gt;
-        </div>
-    </div>-->
+    <form method="post" id="myform"></form>
+    <table class="color">
+        <tr>
+            <th>Название поля</th>
+            <th>Идентификатор</th>
+            <th>Идентификатор родителя</th>
+            <th>Уровень вложенности</th>
+            <th>Номер в очереди</th>
+            <th>Ссылка</th>
+            <th>Ключевое слово</th>
+            <th id="labelUpdateMenuItem">Действие</th>
+        </tr>
+        <tr th:each="menuItem : ${menuItems}">
+            <form th:action="@{/admin/mainPage/update/submit}" th:object="${item}" method="post">
+            <td><input id="name" class="menuItemTables" name="name" th:value="${menuItem.getName()}"></td>
+            <td><input id="id" class="menuItemTables" name="id" th:value="${menuItem.getId()}" readonly></td>
+            <td><input id="idMenuItemParentHeaderInMainPage" class="menuItemTables" name="idMenuItemParentHeaderInMainPage" th:value="${menuItem.getIdMenuItemParentHeaderInMainPage()}"></td>
+            <td><input id="level" class="menuItemTables" name="level" th:value="${menuItem.getLevel()}"></td>
+            <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${menuItem.getPinNumber()}"></td>
+            <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}"></td>
+            <td><input id="keyWord" class="menuItemTables" name="keyWord" th:value="${menuItem.getKeyWord()}"></td>
+            <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>
+            </form>
+        </tr>
+    </table>
 </div>
 
 <!-- Javascript -->

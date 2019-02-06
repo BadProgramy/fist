@@ -1,0 +1,45 @@
+.color {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+}
+.color th, .color td:first-child {
+    background: #AFCDE7;
+    color: white;
+    padding: 10px 20px;
+}
+.color th, .color td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: #b47a7a;
+}
+
+.menuItemTables{
+    width: 100%;
+    background: #1e456a;
+    border: 2px solid #b85858;
+}
+
+#buttonUpdateMenuItem {
+    background: #4cae4c;
+}
+
+#labelUpdateMenuItem {
+    background: #4cae4c;
+}
+
+.color td {
+    background: #1e456a;
+}
+.color th:first-child, .color td:first-child {
+    text-align: left;
+}
+
+table {
+    table-layout:fixed; width:1250px;
+    margin:auto;
+}
+table td {
+    overflow:hidden;
+}

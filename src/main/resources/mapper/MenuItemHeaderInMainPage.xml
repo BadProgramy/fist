@@ -12,11 +12,23 @@
         <result property="pinNumber" column="pin_number"/>
         <result property="urlHref" column="url_href"/>
         <result property="keyWord" column="key_word"/>
+        <result property="idPicture" column="id_picture"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
         SELECT * FROM menu_item_header_in_main_page;
     </select>
+
+    <update id="update" parameterType="MenuItemHeaderInMainPage">
+        UPDATE menu_item_header_in_main_page SET
+        id_menu_item_parent_header_in_main_page = #{idMenuItemParentHeaderInMainPage},
+        name = #{name},
+        level = #{level},
+        pin_number = #{pinNumber},
+        url_href = #{urlHref},
+        key_word = #{keyWord}
+        WHERE id = #{id};
+    </update>
 
     <select id="selectOnlyMainHeaders" resultMap="result">
         SELECT * FROM menu_item_header_in_main_page
@@ -35,7 +47,7 @@
     </select>
 
     <select id="findCharacterUniversity" parameterType="String" resultMap="result">
-        SELECT name, level, pin_number FROM menu_item_header_in_main_page
+        SELECT name, level, pin_number, id_picture FROM menu_item_header_in_main_page
         where key_word = #{keyWord}
         order by pin_number ASC;
     </select>

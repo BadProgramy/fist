@@ -29,14 +29,7 @@ public class MenuItemHeaderInMainPage {
     @CollectionTable(name = "menuItemHeaderInMainPage_menuItemHeaderInMainPage", joinColumns = @JoinColumn(name = "menuItemHeaderInMainPage_id"))
     @Enumerated(EnumType.STRING)
     private List<MenuItemHeaderInMainPage> menuItemHeaderInMainPages;*/
-    private long idPicture;
-    public long getIdPicture() {
-        return idPicture;
-    }
 
-    public void setIdPicture(long idPicture) {
-        this.idPicture = idPicture;
-    }
     public MenuItemHeaderInMainPage() {
         /*menuItemHeaderInMainPages = new ArrayList<>();*/
     }

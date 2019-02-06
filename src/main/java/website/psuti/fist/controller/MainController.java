@@ -1,6 +1,5 @@
 package website.psuti.fist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,7 @@ import website.psuti.fist.constant.MainPageConstant;
 import website.psuti.fist.constant.MainPageObjectConstant;
 import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.constant.NewsFacultyConstant;
+import website.psuti.fist.model.MenuItemHeaderInMainPage;
 import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
@@ -62,42 +62,70 @@ public class MainController {
         if (modelAndView == null) {
             modelAndView = new ModelAndView();
             modelAndView = new ModelAndView("", "", "");
-            modelAndView.addObject("email", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.EMAIL.getId())); //почта
-            modelAndView.addObject("phone", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.PHONE.getId())); //почта
+            List<MenuItemHeaderInMainPage> menuItems = menuItemHeaderInMainPagesService.getAll();
+            List<Pictures> pictures = picturesService.getAll();
+
+            modelAndView.addObject("email", getItemById(menuItems, MainPageConstant.EMAIL.getId())); //почта
+            modelAndView.addObject("phone", getItemById(menuItems, MainPageConstant.PHONE.getId())); //телефон
+            modelAndView.addObject("location", getItemById(menuItems, MainPageConstant.LOCATION.getId())); //адрес
             modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
 
-            modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getId()));
+            modelAndView.addObject("logotipFIST", getItemById(pictures, MainPageConstant.LOGOTIP_FIST.getId()));
             modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
 
-            modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
-            modelAndView.addObject("menuItemMobile", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MOBILE_MENU.getId()));//Меню
+            modelAndView.addObject("ItemHeaderPictureSplit", getItemById(pictures, MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
+            modelAndView.addObject("menuItemMobile", getItemById(menuItems, MainPageConstant.MOBILE_MENU.getId()));//Меню
 
-            modelAndView.addObject("ItemHeader1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
-            modelAndView.addObject("ItemHeader1_1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
-            modelAndView.addObject("ItemButton1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
-            modelAndView.addObject("ItemHeader2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс
-            modelAndView.addObject("ItemHeader3", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.SOCIAL_NETWORKS.getId()));//Мы в социальных сетях
-            modelAndView.addObject("ItemHeader4", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.ANONS_AND_DECLORATIONS.getId()));//Анонсы и объяявления
-            modelAndView.addObject("ItemHeader5", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.FOTO_GALLERY.getId()));//Фотогалерея от инстаграмма
-            modelAndView.addObject("ItemHeader6", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.STUDENT_IT_CLUB.getId()));//Студенческий it club
-            modelAndView.addObject("ItemHeader7", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.BEST_STUDENT.getId()));//Лучшие студенты
-            modelAndView.addObject("ItemHeader8", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MAP_LOCATION.getId()));//Расположение
-            modelAndView.addObject("ItemHeader9", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.CONTEXT1.getId()));//контекст 1
-            modelAndView.addObject("ItemHeader10", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.CONTEXT2.getId()));//контекст 2
-            modelAndView.addObject("ItemHeader11", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.FOOTER_MAIN_PAGE.getId()));//footer main page
 
-            // model.addAttribute("locations", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.MAP_LOCATION.getId()));
-            modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
-            //model.addAttribute("context2", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT2.getId()));
+            modelAndView.addObject("ItemHeader1", getItemById(menuItems, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Новости
+            modelAndView.addObject("ItemHeader1_1", getItemById(menuItems, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
+            modelAndView.addObject("ItemButton1", getItemById(menuItems, MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
+            modelAndView.addObject("ItemHeader2", getItemById(menuItems, MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс
+            modelAndView.addObject("ItemHeader3", getItemById(menuItems, MainPageConstant.SOCIAL_NETWORKS.getId()));//Мы в социальных сетях
+            modelAndView.addObject("ItemHeader4", getItemById(menuItems, MainPageConstant.ANONS_AND_DECLORATIONS.getId()));//Анонсы и объяявления
+            modelAndView.addObject("ItemHeader5", getItemById(menuItems, MainPageConstant.FOTO_GALLERY.getId()));//Фотогалерея от инстаграмма
+            modelAndView.addObject("ItemHeader6", getItemById(menuItems, MainPageConstant.STUDENT_IT_CLUB.getId()));//Студенческий it club
+            modelAndView.addObject("ItemHeader7", getItemById(menuItems, MainPageConstant.BEST_STUDENT.getId()));//Лучшие студенты
+            modelAndView.addObject("ItemHeader8", getItemById(menuItems, MainPageConstant.CONTEXT_1_FOOTER.getId()));//Расположение
+            modelAndView.addObject("ItemHeader9", getItemById(menuItems, MainPageConstant.CONTEXT_2_FOOTER.getId()));//Подписка
+            modelAndView.addObject("ItemHeader9_1", getItemById(menuItems, MainPageConstant.CONTEXT_2_1_FOOTER.getId()));//Введите свой email, чтобы ....
+            modelAndView.addObject("ItemHeader9_2", getItemById(menuItems, MainPageConstant.CONTEXT_2_2_FOOTER.getId()));//Email адрес сюда..
+            modelAndView.addObject("ItemHeader10", getItemById(menuItems, MainPageConstant.CONTEXT_3_FOOTER.getId()));//ФИСТ в соц сетях
+            modelAndView.addObject("ItemHeader10_1", getItemById(menuItems, MainPageConstant.CONTEXT_3_1_FOOTER.getId()));//VK
+            modelAndView.addObject("ItemHeader10_2", getItemById(menuItems, MainPageConstant.CONTEXT_3_2_FOOTER.getId()));//INST
+            modelAndView.addObject("ItemHeader10_3", getItemById(menuItems, MainPageConstant.CONTEXT_3_3_FOOTER.getId()));//TWIT
+            modelAndView.addObject("ItemHeader12", getItemById(menuItems, MainPageConstant.CONTEXT_4_FOOTER.getId()));//Подразделения ПГУТИ
+            modelAndView.addObject("ItemHeader12_1", getItemById(menuItems, MainPageConstant.CONTEXT_4_1_FOOTER.getId()));//Приемная комиссия
+            modelAndView.addObject("ItemHeader12_2", getItemById(menuItems, MainPageConstant.CONTEXT_4_2_FOOTER.getId()));//Телефонная книга ПГУТИ
+            modelAndView.addObject("ItemHeader12_3", getItemById(menuItems, MainPageConstant.CONTEXT_4_3_FOOTER.getId()));//Библиотека ПГУТИ
+            modelAndView.addObject("ItemHeader12_4", getItemById(menuItems, MainPageConstant.CONTEXT_4_4_FOOTER.getId()));//Центр занятости ПГУТИ
+            modelAndView.addObject("ItemHeader12_5", getItemById(menuItems, MainPageConstant.CONTEXT_4_5_FOOTER.getId()));//Профком студентов ПГУТИ
+            modelAndView.addObject("ItemHeader12_6", getItemById(menuItems, MainPageConstant.CONTEXT_4_6_FOOTER.getId()));//Электронно информационная среда
+            modelAndView.addObject("ItemHeader11", getItemById(menuItems, MainPageConstant.FOOTER_MAIN_PAGE.getId()));//footer main page
+
+            modelAndView.addObject("DialogItem1", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_1.getId()));//адрес корпуса №1
+            modelAndView.addObject("DialogItem1_1", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_1_1.getId()));//г. Самара, Льва Толстого 23
+            modelAndView.addObject("DialogItem2", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_2.getId()));//адрес корпуса №2
+            modelAndView.addObject("DialogItem2_1", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_2_1.getId()));//г. Самара, Московское шоссе 77
+            modelAndView.addObject("DialogItem3", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_3.getId()));//Сайт:
+            modelAndView.addObject("DialogItem3_1", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_3_1.getId()));//fist.psuti.ru
+            modelAndView.addObject("DialogItem4", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_4.getId()));//Телефон:
+            modelAndView.addObject("DialogItem4_1", getItemById(menuItems, MainPageConstant.DIALOG_CONTEXT_4_1.getId()));//+7(846) 228-00-05
+
+
+
+            // model.addAttribute("locations", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_1_FOOTER.getId()));
+            modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_2_FOOTER.getId()));
+            //model.addAttribute("context2", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_3_FOOTER.getId()));
             modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
             modelAndView.addObject("characterUniversity", menuItemHeaderInMainPagesService.getCharacterUniversity());
             modelAndView.addObject("bestStudents", bestStudentService.filledBestStudent());
-            modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getId()));
-            modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
+            modelAndView.addObject("logotipPSUTI", getItemById(pictures, MainPageConstant.LOGOTIP_PSUTI.getId()));
+            modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_2_FOOTER.getId()));
             modelAndView.addObject("newsOfFaculty", newsFacultyService.getLastTwoNewsFaculty());
 
-            modelAndView.addObject("ItemHeader1_3", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
-            modelAndView.addObject("ItemHeader1_2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
+            modelAndView.addObject("ItemHeader1_3", getItemById(menuItems, MainPageConstant.HEADER_NEWS.getId()));//Новости
+            modelAndView.addObject("ItemHeader1_2", getItemById(menuItems, MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
             return modelAndView;
         } else if (MainPageObjectConstant.checkModelAndView.size() > 0) {
             for (NameTableBD change : MainPageObjectConstant.checkModelAndView) {
@@ -127,28 +155,29 @@ public class MainController {
     }
 
     private void updateMenuItemHeaderInMainPageTable() {
-        modelAndView.addObject("email", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.EMAIL.getId())); //почта
-        modelAndView.addObject("phone", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.PHONE.getId())); //почта
+        List<MenuItemHeaderInMainPage> items = menuItemHeaderInMainPagesService.getAll();
+        modelAndView.addObject("email", getItemById(items, MainPageConstant.EMAIL.getId())); //почта
+        modelAndView.addObject("phone", getItemById(items, MainPageConstant.PHONE.getId())); //почта
         modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
-        modelAndView.addObject("menuItemMobile", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MOBILE_MENU.getId()));//Меню
-        modelAndView.addObject("ItemHeader1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
-        modelAndView.addObject("ItemHeader1_1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
-        modelAndView.addObject("ItemButton1", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
-        modelAndView.addObject("ItemHeader2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс
-        modelAndView.addObject("ItemHeader3", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.SOCIAL_NETWORKS.getId()));//Мы в социальных сетях
-        modelAndView.addObject("ItemHeader4", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.ANONS_AND_DECLORATIONS.getId()));//Анонсы и объяявления
-        modelAndView.addObject("ItemHeader5", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.FOTO_GALLERY.getId()));//Фотогалерея от инстаграмма
-        modelAndView.addObject("ItemHeader6", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.STUDENT_IT_CLUB.getId()));//Студенческий it club
-        modelAndView.addObject("ItemHeader7", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.BEST_STUDENT.getId()));//Лучшие студенты
-        modelAndView.addObject("ItemHeader8", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.MAP_LOCATION.getId()));//Расположение
-        modelAndView.addObject("ItemHeader9", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.CONTEXT1.getId()));//контекст 1
-        modelAndView.addObject("ItemHeader10", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.CONTEXT2.getId()));//контекст 2
-        modelAndView.addObject("ItemHeader11", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.FOOTER_MAIN_PAGE.getId()));//footer main page
-        modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
+        modelAndView.addObject("menuItemMobile", getItemById(items, MainPageConstant.MOBILE_MENU.getId()));//Меню
+        modelAndView.addObject("ItemHeader1", getItemById(items, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Новости
+        modelAndView.addObject("ItemHeader1_1", getItemById(items, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
+        modelAndView.addObject("ItemButton1", getItemById(items, MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
+        modelAndView.addObject("ItemHeader2", getItemById(items, MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс
+        modelAndView.addObject("ItemHeader3", getItemById(items, MainPageConstant.SOCIAL_NETWORKS.getId()));//Мы в социальных сетях
+        modelAndView.addObject("ItemHeader4", getItemById(items, MainPageConstant.ANONS_AND_DECLORATIONS.getId()));//Анонсы и объяявления
+        modelAndView.addObject("ItemHeader5", getItemById(items, MainPageConstant.FOTO_GALLERY.getId()));//Фотогалерея от инстаграмма
+        modelAndView.addObject("ItemHeader6", getItemById(items, MainPageConstant.STUDENT_IT_CLUB.getId()));//Студенческий it club
+        modelAndView.addObject("ItemHeader7", getItemById(items, MainPageConstant.BEST_STUDENT.getId()));//Лучшие студенты
+        modelAndView.addObject("ItemHeader8", getItemById(items, MainPageConstant.CONTEXT_1_FOOTER.getId()));//Расположение
+        modelAndView.addObject("ItemHeader9", getItemById(items, MainPageConstant.CONTEXT_2_FOOTER.getId()));//контекст 1
+        modelAndView.addObject("ItemHeader10", getItemById(items, MainPageConstant.CONTEXT_3_FOOTER.getId()));//контекст 2
+        modelAndView.addObject("ItemHeader11", getItemById(items, MainPageConstant.FOOTER_MAIN_PAGE.getId()));//footer main page
+        modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_2_FOOTER.getId()));
         modelAndView.addObject("characterUniversity", menuItemHeaderInMainPagesService.getCharacterUniversity());
-        modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT1.getId()));
-        modelAndView.addObject("ItemHeader1_3", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
-        modelAndView.addObject("ItemHeader1_2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
+        modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_2_FOOTER.getId()));
+        modelAndView.addObject("ItemHeader1_3", getItemById(items, MainPageConstant.HEADER_NEWS.getId()));//Новости
+        modelAndView.addObject("ItemHeader1_2", getItemById(items, MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
     }
 
     private void updateNewsOfFacultyTable() {
@@ -156,10 +185,11 @@ public class MainController {
     }
 
     private void updatePicturesTable() {
-        modelAndView.addObject("logotipFIST", picturesService.findPictureById(MainPageConstant.LOGOTIP_FIST.getId()));
+        List<Pictures> listPictures = picturesService.getAll();
+        modelAndView.addObject("logotipFIST", getItemById(listPictures, MainPageConstant.LOGOTIP_FIST.getId()));
         modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
-        modelAndView.addObject("ItemHeaderPictureSplit", picturesService.findPictureById(MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
-        modelAndView.addObject("logotipPSUTI", picturesService.findPictureById(MainPageConstant.LOGOTIP_PSUTI.getId()));
+        modelAndView.addObject("ItemHeaderPictureSplit", getItemById(listPictures, MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
+        modelAndView.addObject("logotipPSUTI", getItemById(listPictures, MainPageConstant.LOGOTIP_PSUTI.getId()));
         if (picturesCache != null) {
             picturesCache.clear();
             picturesCache = new HashMap<>();
@@ -394,5 +424,18 @@ public class MainController {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("mainTrend");
         return modelAndView;
+    }
+
+    private Object getItemById(List<?> list, long id) {
+        if(list.get(0) instanceof MenuItemHeaderInMainPage) {
+            for (MenuItemHeaderInMainPage item: (List<MenuItemHeaderInMainPage>) list) {
+                if (item.getId() == id) return item;
+            }
+        } else if (list.get(0) instanceof Pictures) {
+            for (Pictures pictures: (List<Pictures>) list) {
+                if (pictures.getId() == id) return pictures;
+            }
+        }
+        return new Object();
     }
 }

@@ -96,7 +96,7 @@
 					<a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
-					<a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
 				</div>
 			</div>
 		</div>

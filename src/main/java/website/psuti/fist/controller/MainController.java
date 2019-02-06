@@ -50,7 +50,7 @@ public class MainController {
     private HashMap<Long, byte[]> initPicturesCache() {
         if (picturesCache == null) {
             picturesCache = new HashMap<>();
-            for (Pictures pictures: picturesService.getAll()) {
+            for (Pictures pictures : picturesService.getAll()) {
                 picturesCache.put(pictures.getId(), pictures.getPictureFile());
             }
         }
@@ -61,7 +61,7 @@ public class MainController {
         initPicturesCache();
         if (modelAndView == null) {
             modelAndView = new ModelAndView();
-            modelAndView = new ModelAndView("","","");
+            modelAndView = new ModelAndView("", "", "");
             modelAndView.addObject("email", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.EMAIL.getId())); //почта
             modelAndView.addObject("phone", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.PHONE.getId())); //почта
             modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
@@ -99,15 +99,13 @@ public class MainController {
             modelAndView.addObject("ItemHeader1_3", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS.getId()));//Новости
             modelAndView.addObject("ItemHeader1_2", menuItemHeaderInMainPagesService.findItemById(MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
             return modelAndView;
-        } else if (MainPageObjectConstant.checkModelAndView.size() > 0){
+        } else if (MainPageObjectConstant.checkModelAndView.size() > 0) {
             for (NameTableBD change : MainPageObjectConstant.checkModelAndView) {
                 changeModel(change);
             }
             MainPageObjectConstant.checkModelAndView.clear();
             return modelAndView;
-        }
-
-        else return modelAndView;
+        } else return modelAndView;
     }
 
     public void changeModel(NameTableBD nameTable) {
@@ -165,7 +163,7 @@ public class MainController {
         if (picturesCache != null) {
             picturesCache.clear();
             picturesCache = new HashMap<>();
-            for (Pictures pictures: picturesService.getAll()) {
+            for (Pictures pictures : picturesService.getAll()) {
                 picturesCache.put(pictures.getId(), pictures.getPictureFile());
             }
         }
@@ -187,7 +185,7 @@ public class MainController {
     @RequestMapping("/main")
     public ModelAndView mainPage(Model model) {
         ModelAndView modelview = initModelAndView();
-        modelview.addAllObjects(model.asMap()) ;
+        modelview.addAllObjects(model.asMap());
         modelview.setViewName("index");
         //response.setHeader("Cache-Control", "max-age= 3600");
         return modelview;
@@ -195,7 +193,7 @@ public class MainController {
 
     //@Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
-        for (Map.Entry picture: initPicturesCache().entrySet()) {
+        for (Map.Entry picture : initPicturesCache().entrySet()) {
 
             if (picture.getKey().equals(idPicture)) {
                 return (byte[]) picture.getValue();
@@ -214,7 +212,7 @@ public class MainController {
     }
 
     @RequestMapping("/newsBlog")
-    public ModelAndView newsBlog(Model model){
+    public ModelAndView newsBlog(Model model) {
         return newsBlogPage(1, model);
     }
 
@@ -230,7 +228,7 @@ public class MainController {
         }
         model.addAttribute("resultTopic", resultTopic);
         ModelAndView modelview = initModelAndView();
-        modelview.addAllObjects(model.asMap()) ;
+        modelview.addAllObjects(model.asMap());
         modelview.setViewName("newsBlog");
         return modelview;
     }
@@ -250,43 +248,50 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/deanTeam2")
+    public ModelAndView prepod2() {
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("deanTeam2");
+        return modelAndView;
+    }
+
     @RequestMapping("/bogomolova")
-    public ModelAndView bogomolova(){
+    public ModelAndView bogomolova() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("bogomolova");
         return modelAndView;
     }
 
     @RequestMapping("/chernova")
-    public ModelAndView chernova(){
+    public ModelAndView chernova() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("chernova");
         return modelAndView;
     }
 
     @RequestMapping("/tychkova")
-    public ModelAndView tychkova(){
+    public ModelAndView tychkova() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("tychkova");
         return modelAndView;
     }
 
     @RequestMapping("/belova")
-    public ModelAndView belova(){
+    public ModelAndView belova() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("belova");
         return modelAndView;
     }
 
     @RequestMapping("/konyaeva")
-    public ModelAndView konyaeva(){
+    public ModelAndView konyaeva() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("konyaeva");
         return modelAndView;
     }
 
     @RequestMapping("/vorobeva")
-    public ModelAndView vorobeva(){
+    public ModelAndView vorobeva() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("vorobeva");
         return modelAndView;
@@ -294,21 +299,21 @@ public class MainController {
     //TODO STUDENT ////////////////////////////////////////////////////////
 
     @RequestMapping("/students/rightAndObligations")
-    public ModelAndView studentRightAndObligations(){
+    public ModelAndView studentRightAndObligations() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("rightsAndObligations");
         return modelAndView;
     }
 
     @RequestMapping("/students/groupCurators")
-    public ModelAndView groupCurators(){
+    public ModelAndView groupCurators() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("groupCurators");
         return modelAndView;
     }
 
     @RequestMapping("/students/costEducation")
-    public ModelAndView costEducation(){
+    public ModelAndView costEducation() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("costEducation");
         return modelAndView;
@@ -318,35 +323,35 @@ public class MainController {
     //TODO faculty /////////////////////////////////////////////////////////////
 
     @RequestMapping("/faculty/academicSoviet")
-    public ModelAndView academicSoviet(){
+    public ModelAndView academicSoviet() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("academicSoviet");
         return modelAndView;
     }
 
     @RequestMapping("/faculty/cathedras")
-    public ModelAndView cathedras(){
+    public ModelAndView cathedras() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("cathedras");
         return modelAndView;
     }
 
     @RequestMapping("/faculty/diplomasPhoto")
-    public ModelAndView diplomasPhoto(){
+    public ModelAndView diplomasPhoto() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("diplomasPhoto");
         return modelAndView;
     }
 
     @RequestMapping("/faculty/graduates")
-    public ModelAndView graduates(){
+    public ModelAndView graduates() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("graduates");
         return modelAndView;
     }
 
     @RequestMapping("/faculty/commissionsFIST")
-    public ModelAndView commissionsFIST(){
+    public ModelAndView commissionsFIST() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("commissionsFIST");
         return modelAndView;
@@ -354,7 +359,7 @@ public class MainController {
 
     //TODO контакты/////////////////////////////////////////////////////////////
     @RequestMapping("/contacts")
-    public ModelAndView contacts(){
+    public ModelAndView contacts() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("contacts");
         return modelAndView;
@@ -363,16 +368,31 @@ public class MainController {
 
     //TODO абитуриентам.....................................................................
     @RequestMapping("/abitur/trainingDirections")
-    public ModelAndView trainingDirections(){
+    public ModelAndView trainingDirections() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("trainingDirections");
         return modelAndView;
     }
 
+    @RequestMapping("/trainingDirections2")
+    public ModelAndView trainingDirections2() {
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("trainingDirections2");
+        return modelAndView;
+    }
+
     @RequestMapping("/abitur/costEducation")
-    public ModelAndView abiturCostEducation(){
+    public ModelAndView abiturCostEducation() {
         ModelAndView modelAndView = initModelAndView();
         modelAndView.setViewName("costEducation");
+        return modelAndView;
+    }
+
+    //TODO направления(основная страница).....................................................................
+    @RequestMapping("/mainTrend")
+    public ModelAndView mainTrend() {
+        ModelAndView modelAndView = initModelAndView();
+        modelAndView.setViewName("mainTrend");
         return modelAndView;
     }
 }

@@ -13,6 +13,7 @@
         <result property="urlHref" column="url_href"/>
         <result property="keyWord" column="key_word"/>
         <result property="idPicture" column="id_picture"/>
+        <result property="styles" column="styles"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
@@ -26,7 +27,8 @@
         level = #{level},
         pin_number = #{pinNumber},
         url_href = #{urlHref},
-        key_word = #{keyWord}
+        key_word = #{keyWord},
+        styles = #{styles}
         WHERE id = #{id};
     </update>
 
@@ -47,7 +49,7 @@
     </select>
 
     <select id="findCharacterUniversity" parameterType="String" resultMap="result">
-        SELECT name, level, pin_number, id_picture FROM menu_item_header_in_main_page
+        SELECT * FROM menu_item_header_in_main_page
         where key_word = #{keyWord}
         order by pin_number ASC;
     </select>

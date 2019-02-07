@@ -77,7 +77,7 @@ public class MainController {
             modelAndView.addObject("menuItemMobile", getItemById(menuItems, MainPageConstant.MOBILE_MENU.getId()));//Меню
 
 
-            modelAndView.addObject("ItemHeader1", getItemById(menuItems, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Новости
+            modelAndView.addObject("ItemHeader1", getItemById(menuItems, MainPageConstant.HEADER_NEWS.getId()));//Новости
             modelAndView.addObject("ItemHeader1_1", getItemById(menuItems, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
             modelAndView.addObject("ItemButton1", getItemById(menuItems, MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
             modelAndView.addObject("ItemHeader2", getItemById(menuItems, MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс

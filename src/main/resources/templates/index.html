@@ -58,19 +58,19 @@
 		<div class="navbr">
 				<div class="row">
 					<div class="logo-psuti" style="margin: 10px;">
-						<a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
+						<a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
 					</div>
 					<div class="col-md-9 col-xs-7">
 						<div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
 							<ul>
 								<li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
-								<li th:utext="${location.getName()}" class="tb-info"  style="float: left;color: black;padding-right:4%"></li>
+								<li th:utext="${location.getName()}" class="tb-info"  th:style="${location.getStyles()}"></li>
 
 								<li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
-								<li class="tb-info"  style="float: left;color: black;padding-right:4%" th:object="${phone}" th:utext="${phone.getName()}"></li>
+								<li class="tb-info" th:object="${phone}" th:utext="${phone.getName()}" th:style="${phone.getStyles()}"></li>
 
 								<li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
-								<li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
+								<li class="tb-info" th:object="${email}" th:utext="${email.getName()}" th:style="${email.getStyles()}"></li>
 							</ul>
 						</div>
 					</div>
@@ -78,15 +78,15 @@
 
 		<div class="menu-wrap">
 			<div class="row" style="margin-left: 5%;">
-				<div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+				<div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
 					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
 						<li>
-							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
+							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}" th:style="${mapEntry.key.getStyles()}"></a>
 							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
 							<ul >
 								<div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
 									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
+										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}" th:style="${menuItemHeaderInMainPage.getStyles()}"></a>
 									</li>
 								</div>
 							</ul>
@@ -96,7 +96,7 @@
 					<a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
-					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}" th:style="${logotipPSUTI.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
 				</div>
 			</div>
 		</div>
@@ -110,7 +110,7 @@
 	<div class="container-fluid no-padding main-background">
 		<div > <!--id="home-slider2" class="owl-carousel owl-theme"-->
 			<div class="item" th:each="picture : ${slider}">
-			<img th:src="@{'/main/picture/' + ${picture.getId()}}" class="img-responsive max-wid" alt=""/>
+			<img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
 				<!--<a href="/mainTrend" class="button btn-radius button-napr">Подробнее о направлениях</a>-->
 			</div>
 		</div>
@@ -122,9 +122,9 @@
 			<div class="container" style="max-width: 100%">
 				<div class="row">
 					<div class="h-page-title">
-						<h2>Новости</h2>
+						<h2 th:utext="${ItemHeader1.getName()}"></h2>
 						<div class="mustache">
-							<span class="sub-title" th:utext="${ItemHeader1_1.getName()}"></span>
+							<span class="sub-title" th:utext="${ItemHeader1_1.getName()}" th:style="${ItemHeader1_1.getStyles()}"></span>
 						</div>
 					</div>
 
@@ -133,14 +133,14 @@
 							<div id="blog-mason" class="blog-mason-2col">
 								<article th:each="newFaculty : ${newsOfFaculty}" class="blogpost bm-item isotope-item center-block">
 									<div class="post-media current-size">
-										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt=""> <!--500 X 300-->
+										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive" alt=""> <!--500 X 300-->
 									</div>
-									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" ><!--Уважаемые родители--></a></h2>
+									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"><!--Уважаемые родители--></a></h2>
 									<div class="post-meta">
-										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}"><i class="fa fa-calendar"></i></a></span>
+										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}" th:style="${newFaculty.getDateStyles()}"><i class="fa fa-calendar"></i></a></span>
 									</div>
 									<div class="post-excerpt" >
-										<p th:utext="${newFaculty.getText()}"></p>
+										<p th:utext="${newFaculty.getText()}" th:style="${newFaculty.getTextStyles()}"></p>
 									</div>
 									<!--<script>
                                         var box = document.querySelector('.texts'),
@@ -165,7 +165,7 @@
 
 						<div class="clearfix"></div>
 						<div class="space30"></div>
-						<a th:href="${ItemButton1.getUrlHref()}" class="main-btn" th:utext="${ItemButton1.getName()}"></a>
+						<a th:href="${ItemButton1.getUrlHref()}" class="main-btn" th:utext="${ItemButton1.getName()}" th:style="${ItemButton1.getStyles()}"></a>
 						<!-- End Pagination -->
 					</div>
 				</div>
@@ -177,9 +177,9 @@
 	<section id="service" class="service main-background">
 		<div class="container">
 			<div class="h-page-title">
-				<h1 th:object="${ItemHeader2}" th:text="${ItemHeader2.getName()}"></h1>
+				<h1 th:object="${ItemHeader2}" th:text="${ItemHeader2.getName()}" th:styles="${ItemHeader2.getStyles()}"></h1>
 				<div class="mustache">
-					<span><img class="img-responsive" th:src="@{'/main/picture/' + ${ItemHeaderPictureSplit.getId()}}" alt=""></span>
+					<span><img class="img-responsive" th:src="@{'/main/picture/' + ${ItemHeaderPictureSplit.getId()}}" th:style="${ItemHeaderPictureSplit.getStyles()}" alt=""></span>
 				</div>
 			</div>
 
@@ -188,13 +188,13 @@
 					<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}">
 					<div class="col-md-5 col-sm-6 service-left">
 						<span class="ico" >
-							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
-							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
+							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" th:style="${mapEntry.getPicturesLeft().getStyles()}" alt="">
+							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" th:style="${mapEntry.getPicturesLeft().getStyles()}" alt="">
 						</span>
 
 						<div class="service-info">
 							<h4>
-								<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageLeft().getName()}"></a>
+								<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageLeft().getName()}" th:style="${mapEntry.getMenuItemHeaderInMainPageLeft().getStyles()}"></a>
 							</h4>
 						</div>
 
@@ -204,12 +204,12 @@
 					<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}">
 					<div class="col-md-6 col-sm-6 service-right">
 						<span class="ico">
-							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
-							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
+							<img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" th:style="${mapEntry.getPicturesRight().getStyles()}" alt="">
+							<img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" th:style="${mapEntry.getPicturesRight().getStyles()}" alt="">
 						</span>
 						<div class="service-info">
 							<h4>
-								<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageRight().getName()}"></a>
+								<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}" th:text="${mapEntry.getMenuItemHeaderInMainPageRight().getName()}" th:style="${mapEntry.getMenuItemHeaderInMainPageRight().getStyles()}"></a>
 							</h4>
 						</div>
 
@@ -225,7 +225,7 @@
 		<div class="pricing-bg">
 			<div class="container">
 				<div class="h-page-title">
-					<h1 th:object="${ItemHeader3}" th:text="${ItemHeader3.getName()}"></h1>
+					<h1 th:object="${ItemHeader3}" th:text="${ItemHeader3.getName()}" th:style="${ItemHeader3.getStyles()}"></h1>
 				</div>
 
 				<div class="main-pricing">
@@ -233,7 +233,7 @@
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
 							<div class="price-block">
 								<div class="inner-price">
-									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}"></h3>
+									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}" th:style="${ItemHeader4.getStyles()}"></h3>
 									<br>
 									<div id="vk_widget"></div>
 									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
@@ -251,7 +251,7 @@
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 							<div class="price-block">
 								<div class="inner-price">
-									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}"></h3>
+									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}" th:style="${ItemHeader5.getStyles()}"></h3>
 									<div class='widget-content'>
 										<iframe src="//widget.instagramm.ru/?imageW=2&imageH=3&thumbnail_size=97&type=0&typetext=fist.psuti&head_show=1&profile_show=0&shadow_show=1&bg=255,255,255,1&opacity=true&head_bg=46729b&subscribe_bg=ad4141&border_color=c3c3c3&head_title=%25D0%25A4%25D0%2598%25D0%25A1%25D0%25A2%2520%25D0%259F%25D0%2593%25D0%25A3%25D0%25A2%25D0%2598" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;height:410px;"></iframe>
 									</div>
@@ -261,7 +261,7 @@
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 							<div class="price-block">
 								<div class="inner-price">
-									<h3 th:object="${ItemHeader6}" th:text="${ItemHeader6.getName()}"></h3>
+									<h3 th:object="${ItemHeader6}" th:text="${ItemHeader6.getName()}" th:style="${ItemHeader6.getStyles()}"></h3>
 									<br>
 									<div id="vk_widget1"></div>
 									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
@@ -290,7 +290,7 @@
 				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
 					<h1 th:utext="${mapEntry.getLevel()}"></h1>
 					<img th:src="@{'/main/picture/' + ${mapEntry.getIdPicture()}}">
-					<h6 th:utext="${mapEntry.getName()}"></h6>
+					<h6 th:utext="${mapEntry.getName()}" th:style="${mapEntry.getStyles()}"></h6>
 				</div>
 			</div>
 		</div>
@@ -302,7 +302,7 @@
 			<div class="container">
 				<div class="col-md-12">
 					<div class="h-page-title">
-						<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}"></h1>
+						<h1 th:object="${ItemHeader7}" th:text="${ItemHeader7.getName()}" th:style="${ItemHeader7.getStyles()}"></h1>
 					</div>
 					<div class="clearfix space35"></div>
 
@@ -311,7 +311,7 @@
 							<div class="product" >
 								<div class="product-thumb">
 									<li><a class="cd-signin">
-										<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}"  class="img-responsive" alt="">
+										<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">
 										<div><span class="fa fa-search-plus"></span></div>
 										<script th:inline="javascript">
                                             document.body.onclick = function(e) {
@@ -326,8 +326,11 @@
                                                 rightPart = /*[[@{'/main/picture/'+${stud.getIdPicture()}}]]*/ null;
                                                 if (srcImg == rightPart) {
                                                     document.getElementById("studPicture").src = /*[[@{'/main/picture/' + ${stud.getIdPicture()}}]]*/ null;
+                                                    document.getElementById("studPicture").style = /*[[${stud.getPictureStyles()}]]*/ null;
                                                     document.getElementById("stud-name").innerHTML = /*[[${stud.getName()}]]*/ null;
+                                                    document.getElementById("stud-name").style = /*[[${stud.getNameStyles()}]]*/ null;
                                                     document.getElementById("char").innerHTML = /*[[${stud.getCharacteristic()}]]*/ null;
+                                                    document.getElementById("char").style = /*[[${stud.getCharacteristicStyles()}]]*/ null;
                                                 }
                                                 /*[/]*/
                                                 /*]]>*/
@@ -337,8 +340,8 @@
 									</a>
 									</li>
 								</div>
-								<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}"></a></h2>
-								<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}"></span></div>
+								<h2 class="product-title"><a th:href="${student.getUrl()}" th:text="${student.getName()}" th:style="${student.getNameStyles()}"></a></h2>
+								<div class="product-price">Группа:<span th:text="${student.getGroupInUniversity()}" th:style="${student.getGroupInUniversityStyles()}"></span></div>
 
 							</div>
 
@@ -371,7 +374,7 @@
 			<div class="row" style="padding-left: 5%">
 
                 <div class="col-md-2">
-					<h3 th:utext="${ItemHeader8.getName()}"></h3>
+					<h3 th:utext="${ItemHeader8.getName()}" th:style="${ItemHeader8.getStyles()}"></h3>
 					<div class="top-bar">
 						<ul>
 							<li class="tb-info">
@@ -391,10 +394,10 @@
 					</div>
 				</div>
                 <div class="col-md-2">
-                    <h3 th:utext="${ItemHeader9.getName()}"></h3>
-                    <p th:utext="${ItemHeader9_1.getName()}"></p>
+                    <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
+                    <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
                     <form class="newsletter">
-                        <input type="text" th:placeholder="${ItemHeader9_2.getName()}">
+                        <input type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
                         <button type="submit"><i class="fa fa-paper-plane"></i></button>
                     </form>
                 </div>
@@ -409,23 +412,23 @@
 				</div>-->
 
 				<div class="col-md-3">
-                    <h3 th:utext="${ItemHeader10.getName()}"></h3>
-                    <div class="site-fist"> <a th:href="${ItemHeader10_1.getUrlHref()}" th:title="${ItemHeader10_1.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-                    <div class="site-fist"> <a th:href="${ItemHeader10_2.getUrlHref()}" th:title="${ItemHeader10_2.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-                    <div class="site-fist"> <a th:href="${ItemHeader10_3.getUrlHref()}" th:title="${ItemHeader10_3.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <h3 th:utext="${ItemHeader10.getName()}" th:style="${ItemHeader10.getStyles()}"></h3>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_1.getUrlHref()}" th:title="${ItemHeader10_1.getName()}" th:style="${ItemHeader10_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_2.getUrlHref()}" th:title="${ItemHeader10_2.getName()}" th:style="${ItemHeader10_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_3.getUrlHref()}" th:title="${ItemHeader10_3.getName()}" th:style="${ItemHeader10_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
 				</div>
 
                 <div class="col-md-4">
-                <h3 th:utext="${ItemHeader12.getName()}"></h3>
+                <h3 th:utext="${ItemHeader12.getName()}" th:style="${ItemHeader12.getStyles()}"></h3>
 					<div class="row">
-                    	<div class="big-logo"> <a th:href="${ItemHeader12_1.getUrlHref()}" th:title="${ItemHeader12_1.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    	<div class="big-logo"> <a th:href="${ItemHeader12_1.getUrlHref()}" th:title="${ItemHeader12_1.getName()}" th:style="${ItemHeader12_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                 	</div>
                 <div class="row" style="margin:0 auto">
-					<div class="site-fist" > <a th:href="${ItemHeader12_2.getUrlHref()}" th:title="${ItemHeader12_2.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-					<div class="site-fist" > <a th:href="${ItemHeader12_3.getUrlHref()}" th:title="${ItemHeader12_3.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-                    <div class="site-fist" > <a th:href="${ItemHeader12_4.getUrlHref()}" th:title="${ItemHeader12_4.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_4.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-                    <div class="site-fist" > <a th:href="${ItemHeader12_5.getUrlHref()}" th:title="${ItemHeader12_5.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_5.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-					<div class="site-fist" > <a th:href="${ItemHeader12_6.getUrlHref()}" th:title="${ItemHeader12_6.getName()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_6.getIdPicture()}}" class="img-responsive" alt="" style="max-width: 60px !important;margin: 15px 0;" ></a> </div>
+					<div class="site-fist" > <a th:href="${ItemHeader12_2.getUrlHref()}" th:title="${ItemHeader12_2.getName()}" th:style="${ItemHeader12_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+					<div class="site-fist" > <a th:href="${ItemHeader12_3.getUrlHref()}" th:title="${ItemHeader12_3.getName()}" th:style="${ItemHeader12_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist" > <a th:href="${ItemHeader12_4.getUrlHref()}" th:title="${ItemHeader12_4.getName()}" th:style="${ItemHeader12_4.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_4.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist" > <a th:href="${ItemHeader12_5.getUrlHref()}" th:title="${ItemHeader12_5.getName()}" th:style="${ItemHeader12_5.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_5.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+					<div class="site-fist" > <a th:href="${ItemHeader12_6.getUrlHref()}" th:title="${ItemHeader12_6.getName()}" th:style="${ItemHeader12_6.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_6.getIdPicture()}}" class="img-responsive" alt="" style="max-width: 60px !important;margin: 15px 0;" ></a> </div>
                 </div>
 				</div>
                 <!--<div class="col-md-3">
@@ -436,7 +439,7 @@
 		<div class="footer-bottom container">
 			<div class="row">
 				<div class="col-md-6">
-					<p th:utext="${ItemHeader11.getName()}"></p>
+					<p th:utext="${ItemHeader11.getName()}" th:style="${ItemHeader11.getStyles()}"></p>
 				</div>
 			</div>
 		</div>
@@ -474,16 +477,16 @@
 				<div class="col-md-6 pop-contact">
 					<ul class="contact-info">
 						<li>
-							<p><strong th:utext="${DialogItem1.getName()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem1_1.getName()}"></span></p>
+							<p><strong th:utext="${DialogItem1.getName()}" th:style="${DialogItem1.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem1_1.getName()}" th:style="${DialogItem1_1.getStyles()}"></span></p>
 						</li>
 						<li>
-							<p><strong th:utext="${DialogItem2.getName()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem2_1.getName()}"></span></p>
+							<p><strong th:utext="${DialogItem2.getName()}" th:style="${DialogItem2.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem2_1.getName()}" th:style="${DialogItem2_1.getStyles()}"></span></p>
 						</li>
 						<li>
-							<p><strong th:utext="${DialogItem3.getName()}"><i class="fa fa-envelope"></i></strong> <span><a th:utext="${DialogItem3_1.getName()}" th:href="${DialogItem3_1.getUrlHref()}"></a></span></p>
+							<p><strong th:utext="${DialogItem3.getName()}" th:style="${DialogItem3.getStyles()}"><i class="fa fa-envelope"></i></strong> <span><a th:utext="${DialogItem3_1.getName()}" th:style="${DialogItem3_1.getStyles()}" th:href="${DialogItem3_1.getUrlHref()}"></a></span></p>
 						</li>
 						<li>
-							<p><strong th:utext="${DialogItem4.getName()}"><i class="fa fa-phone"></i></strong> <span th:utext="${DialogItem4_1.getName()}"></span></p>
+							<p><strong th:utext="${DialogItem4.getName()}" th:style="${DialogItem4.getStyles()}"><i class="fa fa-phone"></i></strong> <span th:utext="${DialogItem4_1.getName()}" th:style="${DialogItem4_1.getStyles()}"></span></p>
 						</li>
 					</ul>
 				</div>

@@ -1,5 +1,7 @@
 package website.psuti.fist.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,22 @@ public class EducationProcess {
     private long idPictureLeft;
     private long idMenuItemHeaderInMainPageRight;
     private long idPictureRight;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String leftMenuItemStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String rightMenuItemStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String leftPictureStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String rightPictureStyles;
 
     @Transient
     private MenuItemHeaderInMainPage menuItemHeaderInMainPageLeft;

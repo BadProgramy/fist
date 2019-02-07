@@ -146,6 +146,7 @@
             <th>Номер в очереди</th>
             <th>Ссылка</th>
             <th>Ключевое слово</th>
+            <th>Стили для названия</th>
             <th id="labelUpdateMenuItem">Действие</th>
         </tr>
         <tr th:each="menuItem : ${menuItems}">
@@ -157,6 +158,7 @@
             <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${menuItem.getPinNumber()}"></td>
             <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}"></td>
             <td><input id="keyWord" class="menuItemTables" name="keyWord" th:value="${menuItem.getKeyWord()}"></td>
+                <td><input id="styles" class="menuItemTables" name="styles" th:value="${menuItem.getStyles()}"></td>
             <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>
             </form>
         </tr>

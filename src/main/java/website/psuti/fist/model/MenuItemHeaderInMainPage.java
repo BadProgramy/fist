@@ -1,6 +1,7 @@
 package website.psuti.fist.model;
 
 import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,10 +26,14 @@ public class MenuItemHeaderInMainPage {
     //keyWord ключевое слово для поиска элементов
     private String keyWord;
     private long idPicture;
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String styles;
     /*@ElementCollection(targetClass = MenuItemHeaderInMainPage.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "menuItemHeaderInMainPage_menuItemHeaderInMainPage", joinColumns = @JoinColumn(name = "menuItemHeaderInMainPage_id"))
     @Enumerated(EnumType.STRING)
     private List<MenuItemHeaderInMainPage> menuItemHeaderInMainPages;*/
+
 
     public MenuItemHeaderInMainPage() {
         /*menuItemHeaderInMainPages = new ArrayList<>();*/
@@ -42,17 +47,6 @@ public class MenuItemHeaderInMainPage {
         this.id = id;
     }
 
-   /* public List<MenuItemHeaderInMainPage> getMenuItemHeaderInMainPages() {
-        return menuItemHeaderInMainPages;
-    }*/
-
-   /* public void setMenuItemHeaderInMainPages(List<MenuItemHeaderInMainPage> menuItemHeaderInMainPages) {
-        this.menuItemHeaderInMainPages = menuItemHeaderInMainPages;
-    }
-
-    public void addChildMenuItem(MenuItemHeaderInMainPage menuItemHeaderInMainPage) {
-        menuItemHeaderInMainPages.add(menuItemHeaderInMainPage);
-    }*/
 
     public long getIdPicture() {
         return idPicture;
@@ -69,14 +63,6 @@ public class MenuItemHeaderInMainPage {
     public void setIdMenuItemParentHeaderInMainPage(long idMenuItemParentHeaderInMainPage) {
         this.idMenuItemParentHeaderInMainPage = idMenuItemParentHeaderInMainPage;
     }
-
-    /*public long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(long parentId) {
-        this.parentId = parentId;
-    }*/
 
     public String getName() {
         return name;
@@ -116,5 +102,13 @@ public class MenuItemHeaderInMainPage {
 
     public void setKeyWord(String keyWord) {
         this.keyWord = keyWord;
+    }
+
+    public String getStyles() {
+        return styles;
+    }
+
+    public void setStyles(String styles) {
+        this.styles = styles;
     }
 }

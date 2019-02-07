@@ -11,6 +11,10 @@
         <result property="idPicture" column="id_picture"/>
         <result property="url" column="url"/>
         <result property="characteristic" column="characteristic"/>
+        <result property="nameStyles" column="name_styles"/>
+        <result property="groupInUniversityStyles" column="group_in_university_styles"/>
+        <result property="pictureStyles" column="picture_styles"/>
+        <result property="characteristicStyles" column="characteristic_styles"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">

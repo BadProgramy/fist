@@ -82,7 +82,7 @@ public class DAOBestStudentImpl implements DAOBestStudent {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(long id) throws IllegalArgumentException {
         int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {

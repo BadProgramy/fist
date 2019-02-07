@@ -23,11 +23,11 @@ public class AdminMainPageController {
     }
 
     @RequestMapping("/admin/mainPage/update/submit")
-    public ModelAndView adminMainPageUpdateSubmit(@ModelAttribute("item") MenuItemHeaderInMainPage item) {
+    public String adminMainPageUpdateSubmit(@ModelAttribute("item") MenuItemHeaderInMainPage item) {
         ModelAndView modelAndView = new ModelAndView("adminUpdateMainPage");
         modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAll());
         modelAndView.addObject("item", new MenuItemHeaderInMainPage());
         menuItemHeaderInMainPagesService.update(item);
-        return modelAndView;
+        return "redirect:../update";
     }
 }

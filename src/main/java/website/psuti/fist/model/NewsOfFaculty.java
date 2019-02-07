@@ -17,9 +17,25 @@ public class NewsOfFaculty {
     @Column
     @Type(type = "org.hibernate.type.TextType")
     private String text;
+    private LocalDate date;
     private long idPicture;
 
-    private LocalDate date;
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String headingStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String textStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String pictureStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String dateStyles;
+
     @Transient
     private String dateStringLocalDate;
 
@@ -108,5 +124,45 @@ public class NewsOfFaculty {
             text = newsOfFaculty.getText();
         if (newsOfFaculty.getIdPicture()!=0 || newsOfFaculty.getIdPicture()!=-1)
             idPicture = newsOfFaculty.getIdPicture();
+        if (newsOfFaculty.getHeadingStyles()!=null)
+            headingStyles = newsOfFaculty.getHeadingStyles();
+        if (newsOfFaculty.getDateStyles()!=null)
+            dateStyles = newsOfFaculty.getDateStyles();
+        if (newsOfFaculty.getPictureStyles()!=null)
+            pictureStyles = newsOfFaculty.getPictureStyles();
+        if (newsOfFaculty.getTextStyles()!=null)
+            textStyles = newsOfFaculty.getTextStyles();
+    }
+
+    public String getHeadingStyles() {
+        return headingStyles;
+    }
+
+    public void setHeadingStyles(String headingStyles) {
+        this.headingStyles = headingStyles;
+    }
+
+    public String getTextStyles() {
+        return textStyles;
+    }
+
+    public void setTextStyles(String textStyles) {
+        this.textStyles = textStyles;
+    }
+
+    public String getPictureStyles() {
+        return pictureStyles;
+    }
+
+    public void setPictureStyles(String pictureStyles) {
+        this.pictureStyles = pictureStyles;
+    }
+
+    public String getDateStyles() {
+        return dateStyles;
+    }
+
+    public void setDateStyles(String dateStyles) {
+        this.dateStyles = dateStyles;
     }
 }

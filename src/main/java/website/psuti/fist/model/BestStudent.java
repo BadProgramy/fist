@@ -18,6 +18,22 @@ public class BestStudent {
     @Type(type = "org.hibernate.type.TextType")
     private String characteristic;
 
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String nameStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String groupInUniversityStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String pictureStyles;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String characteristicStyles;
+
     @Transient
     private MultipartFile pictureFile;
 
@@ -89,5 +105,37 @@ public class BestStudent {
 
     public void setPicture(Pictures picture) {
         this.picture = picture;
+    }
+
+    public String getNameStyles() {
+        return nameStyles;
+    }
+
+    public void setNameStyles(String nameStyles) {
+        this.nameStyles = nameStyles;
+    }
+
+    public String getGroupInUniversityStyles() {
+        return groupInUniversityStyles;
+    }
+
+    public void setGroupInUniversityStyles(String groupInUniversityStyles) {
+        this.groupInUniversityStyles = groupInUniversityStyles;
+    }
+
+    public String getPictureStyles() {
+        return pictureStyles;
+    }
+
+    public void setPictureStyles(String pictureStyles) {
+        this.pictureStyles = pictureStyles;
+    }
+
+    public String getCharacteristicStyles() {
+        return characteristicStyles;
+    }
+
+    public void setCharacteristicStyles(String characteristicStyles) {
+        this.characteristicStyles = characteristicStyles;
     }
 }

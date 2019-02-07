@@ -1,6 +1,7 @@
 package website.psuti.fist.model;
 
 import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.Type;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -19,6 +20,10 @@ public class Pictures {
     private LocalDate date;
     private long keyPicture; //
     private String href;
+
+    @Column
+    @Type(type = "org.hibernate.type.TextType")
+    private String styles;
 
     @Column(columnDefinition="longblob")
     private byte[] pictureFile;
@@ -95,5 +100,13 @@ public class Pictures {
 
     public void setHref(String href) {
         this.href = href;
+    }
+
+    public String getStyles() {
+        return styles;
+    }
+
+    public void setStyles(String styles) {
+        this.styles = styles;
     }
 }

@@ -278,10 +278,10 @@ public class MainController {
         return modelAndView;
     }
 
-    @RequestMapping("/deanTeam2")
+    @RequestMapping("/deanTeam(shadow)")
     public ModelAndView prepod2() {
         ModelAndView modelAndView = initModelAndView();
-        modelAndView.setViewName("deanTeam2");
+        modelAndView.setViewName("deanTeam(shadow)");
         return modelAndView;
     }
 

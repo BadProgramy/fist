@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Employee">
+    <resultMap id="result" type="Employee">
+        <id property="id" column="id"/>
+        <result property="nameDepartment" column="name_department"/>
+        <result property="idPictureMajor" column="id_picture_major"/>
+        <result property="idPictureMinor" column="id_picture_minor"/>
+        <result property="pinNumber" column="pin_number"/>
+        <result property="name" column="name"/>
+        <result property="post" column="post"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="curator" column="curator"/>
+        <result property="qualificationDetailed" column="qualification_detailed"/>
+        <result property="qualificationBriefly" column="qualification_briefly"/>
+        <result property="characteristic" column="characteristic"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM employee;
+    </select>
+
+    <insert id="add" parameterType="Employee">
+        insert into employee(characteristic, email, curator, pin_number, name_department, id_picture_major, id_picture_minor, name, phone, post, qualification_detailed, qualification_briefly)
+        values (#{characteristic}, #{email}, #{curator}, #{pinNumber}, #{nameDepartment}, #{idPictureMajor} , #{idPictureMinor}, #{name}, #{phone}, #{post}, #{qualificationDetailed}, #{qualificationBriefly});
+    </insert>
+
+    <select id="getLastIdInsert" resultType="long">
+        SELECT LAST_INSERT_ID() FROM employee LIMIT 1;
+    </select>
+
+    <select id="findById" parameterType="long" resultMap="result">
+        SELECT * FROM employee WHERE id = #{id};
+    </select>
+
+    <update id="update" parameterType="Employee">
+        UPDATE employee SET
+        name_department = #{nameDepartment},
+        id_picture_major = #{idPictureMajor},
+        name = #{name},
+        post = #{post},
+        phone = #{phone},
+        email = #{email},
+        curator = #{curator},
+        qualification_detailed = #{qualificationDetailed},
+        qualification_briefly = #{qualificationBriefly},
+        characteristic = #{characteristic}
+        WHERE id = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM employee where id = #{id};
+    </delete>
+
+    <select id="findEmployeesByNameDepartment" parameterType="String" resultMap="result">
+        SELECT * FROM employee WHERE name_department = #{nameDepartment}
+        order by pin_number;
+    </select>
+</mapper>

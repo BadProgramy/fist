@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Department">
+    <resultMap id="result" type="Department">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="idMainEmployee" column="id_main_Employee"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM department;
+    </select>
+
+</mapper>

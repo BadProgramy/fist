@@ -9,9 +9,10 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nameDepartment;
+    private long idDepartment;
     private long idPictureMajor;
     private long idPictureMinor;
+    private String nameDepartment;
     private long pinNumber;
     private String name;
     @Column
@@ -41,6 +42,14 @@ public class Employee {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdDepartment() {
+        return idDepartment;
+    }
+
+    public void setIdDepartment(long idDepartment) {
+        this.idDepartment = idDepartment;
     }
 
     public String getNameDepartment() {

@@ -30,30 +30,6 @@ import java.util.HashMap;
 @Controller
 public class AdminController {
 
-    @Autowired
-    private NewsFacultyService newsFacultyService;
-
-    @Autowired
-    private PicturesService picturesService;
-
-    @Autowired
-    private UserService userService;
-
-    private User user;
-
-    private HashMap<Long, byte[]> picturesCache;
-
-
-    private HashMap<Long, byte[]> initPicturesCache() {
-        if (picturesCache == null) {
-            picturesCache = new HashMap<>();
-            for (Pictures pictures: picturesService.getAll()) {
-                picturesCache.put(pictures.getId(), pictures.getPictureFile());
-            }
-        }
-        return picturesCache;
-    }
-
     @RequestMapping("/admin")
     public String adminPage() {
         return "admin";

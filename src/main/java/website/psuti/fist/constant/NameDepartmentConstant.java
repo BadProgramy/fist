@@ -1,7 +1,9 @@
 package website.psuti.fist.constant;
 
 public enum NameDepartmentConstant {
-    STRUCTURE_DEAN_TEAM("Состав деканата");
+    STRUCTURE_DEAN_TEAM("Деканат"),
+    DEPARTMENT("Кафедра");
+
 
     private String name;
 

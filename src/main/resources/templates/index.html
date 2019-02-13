@@ -107,11 +107,13 @@
 	<div class="header" style="height: 100px"></div>
 
 	<!-- SLIDER -->
-	<div class="container-fluid no-padding main-background">
-		<div > <!--id="home-slider2" class="owl-carousel owl-theme"-->
+	<div class="container-fluid no-padding" style="background: black">
+		<div style="position: relative"> <!--id="home-slider2" class="owl-carousel owl-theme"-->
 			<div class="item" th:each="picture : ${slider}">
+				<div class="ban">
 			<img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
-				<!--<a href="/mainTrend" class="button btn-radius button-napr">Подробнее о направлениях</a>-->
+					<p>Подробнее о направлениях <br>...</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -229,8 +231,8 @@
 				</div>
 
 				<div class="main-pricing">
-					<div class="row" style="margin-left: 10%">
-						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
+					<div class="row">
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-md-offset-1">
 							<div class="price-block">
 								<div class="inner-price">
 									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}" th:style="${ItemHeader4.getStyles()}"></h3>
@@ -285,13 +287,14 @@
 
 	<!-- STATS -->
 	<section id="stats">
-		<div class="stats">
+		<div class="stats" style="position: relative">
 			<div class="container">
 				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
 					<h1 th:utext="${mapEntry.getLevel()}"></h1>
 					<img th:src="@{'/main/picture/' + ${mapEntry.getIdPicture()}}">
 					<h6 th:utext="${mapEntry.getName()}" th:style="${mapEntry.getStyles()}"></h6>
 				</div>
+				<h6 style="text-transform: none;position: absolute;bottom: 5%;left:45%">за 2018-2019 год</h6>
 			</div>
 		</div>
 	</section>
@@ -418,17 +421,17 @@
                     <div class="site-fist"> <a th:href="${ItemHeader10_3.getUrlHref()}" th:title="${ItemHeader10_3.getName()}" th:style="${ItemHeader10_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
 				</div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                 <h3 th:utext="${ItemHeader12.getName()}" th:style="${ItemHeader12.getStyles()}"></h3>
 					<div class="row">
                     	<div class="big-logo"> <a th:href="${ItemHeader12_1.getUrlHref()}" th:title="${ItemHeader12_1.getName()}" th:style="${ItemHeader12_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                 	</div>
-                <div class="row" style="margin:0 auto">
+                <div class="row" >
 					<div class="site-fist" > <a th:href="${ItemHeader12_2.getUrlHref()}" th:title="${ItemHeader12_2.getName()}" th:style="${ItemHeader12_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
 					<div class="site-fist" > <a th:href="${ItemHeader12_3.getUrlHref()}" th:title="${ItemHeader12_3.getName()}" th:style="${ItemHeader12_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                     <div class="site-fist" > <a th:href="${ItemHeader12_4.getUrlHref()}" th:title="${ItemHeader12_4.getName()}" th:style="${ItemHeader12_4.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_4.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                     <div class="site-fist" > <a th:href="${ItemHeader12_5.getUrlHref()}" th:title="${ItemHeader12_5.getName()}" th:style="${ItemHeader12_5.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_5.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
-					<div class="site-fist" > <a th:href="${ItemHeader12_6.getUrlHref()}" th:title="${ItemHeader12_6.getName()}" th:style="${ItemHeader12_6.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_6.getIdPicture()}}" class="img-responsive" alt="" style="max-width: 60px !important;margin: 15px 0;" ></a> </div>
+					<div class="site-fist" > <a th:href="${ItemHeader12_6.getUrlHref()}" th:title="${ItemHeader12_6.getName()}" th:style="${ItemHeader12_6.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_6.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                 </div>
 				</div>
                 <!--<div class="col-md-3">

@@ -7,6 +7,7 @@
 @import url(http://fonts.googleapis.com/css?family=Arvo);
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,600,700,800,900);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC);
 
 @font-face {
 	font-family: 'fontee7cdaca20cd76a504334698de5b63c4';
@@ -22,11 +23,6 @@
 
 #futuraptcondbold { font-family:'FuturaPTCond-Bold'; }
 .fontee7cdaca20cd76a504334698de5b63c4 { font-family: 'fontee7cdaca20cd76a504334698de5b63c4'; }
-
-@font-face {
-	font-family: "WarnockPro-SemiboldCapt";
-	src: url("../fonts/WarnockPro-SemiboldCapt.otf") format("opentype");
-}
 
 /* 1. Global Styles */
 
@@ -52,8 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p{
-	/*font-family: WarnockPro-Regular,Georgia,"Times New Roman",Times,serif;*/
-	font-family: "WarnockPro-SemiboldCapt";
+	font-family: 'Noto Sans TC', sans-serif;
 	font-size: 16px;
 	line-height: 23px;
 	margin:0;
@@ -114,11 +109,15 @@ a:hover {
 }
 
 .big-logo img{
-	max-height: 50px;
+	max-height:80px;
 }
-
+.site-fist img{
+	border-radius: 100px;
+	border: 1px solid white;
+}
 .big-logo{
-	float:left;
+	float: left;
+	width: 300px;
 	margin-bottom: 10px;
 }
 
@@ -443,7 +442,34 @@ h1 {
 	font-weight:700;
 }
 
+/*=============================================*/
+.ban:hover img{
+	opacity: 0.2;
+	cursor: pointer;
+	transition:0.5s ease-in;
+}
 
+/*.ban a{
+	display:none;
+}
+.ban:hover a{
+display: unset;
+}*/
+.ban p{
+	display: none;
+	font-size: 30px !important;
+	font-weight: 700;
+	text-align: center;
+	color: #fff;
+}
+.ban:hover p{
+	position: absolute;
+	top: 25%;
+	left: 40%;
+	display: block;
+	cursor: pointer;
+	transition:0.5s ease-in;
+}
 /* 3.1. ========== Common Class End ==========*/
 
 
@@ -2303,7 +2329,7 @@ right: 0;
 }
 
 .contact-info strong {
-	color:#B59E5C ;
+	color:#3c689e ;
 	text-transform:uppercase;
 	font-size:13px;
 }
@@ -2315,7 +2341,7 @@ right: 0;
 }
 
 .contact-info a {
-	color:#B59E5C ;
+	color:#3c689e ;
 }
 
 .contact-info li {
@@ -3568,7 +3594,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 position: absolute;
 left: 0px;
 display: table;
-color: #3c689e;
+color: white;
 font-size: 40px;
 }
 
@@ -3674,16 +3700,7 @@ font-size:12px;
     background:transparent !important;
 }
 
-.sf-menu > li:after {
-    content: "";
-    width: 1px;
-    height: 76px;
-    background: #444;
-    position: absolute;
-    top: -4px;
-    transform: rotate(28deg);
-	margin-left: 4px;
-}
+
 
 .sf-menu > li:first-child:after {
 	display:none;
@@ -4327,7 +4344,14 @@ transform:translateY(-50%);
 
 
 /* 6. ========== Footer Start Here ==========*/
-
+#footer3{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background: black;
+}
 #footer {
     float: left;
     width: 100%;

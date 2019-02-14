@@ -1224,16 +1224,38 @@ display: unset;
 .right-teach{
 	margin-top: 2%;
 }
+.scroll{
+    width: 100%;
+}
 /*--------------------------------------------------------------------------------------------------*/
-table {
-	border-collapse: collapse;
-	border: 1px solid black;
+table{
+    /*padding: 30px 30px 5px;*/
+    border: 1px solid #040206;
 }
-caption{
-	color: black;
+td {
+    border: 1px solid #040206;
+    padding: 10px 10px 5px;
+    color:#040206;
 }
-th {border: 1px solid black;}
-td {border: 1px solid black;}
+
+td:nth-child(3) {
+    border-left: solid transparent ;
+}
+td:nth-child(4) {
+    border-left: solid transparent ;
+}
+th {
+    border: 1px solid #040206 !important;
+    padding: 30px 30px 5px;
+    color:black !important;
+}
+caption {
+    caption-side: top;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 30px;
+    color:black;
+}
 /*--------------------------------------------------------------------------------------------------*/
 .main-team ul.cs-style-7 li .figcaption p {
 	margin:0;

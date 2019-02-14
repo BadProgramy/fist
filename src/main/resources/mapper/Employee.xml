@@ -6,6 +6,7 @@
 <mapper namespace="Employee">
     <resultMap id="result" type="Employee">
         <id property="id" column="id"/>
+        <result property="idDepartment" column="id_department"/>
         <result property="nameDepartment" column="name_department"/>
         <result property="idPictureMajor" column="id_picture_major"/>
         <result property="idPictureMinor" column="id_picture_minor"/>
@@ -25,8 +26,8 @@
     </select>
 
     <insert id="add" parameterType="Employee">
-        insert into employee(characteristic, email, curator, pin_number, name_department, id_picture_major, id_picture_minor, name, phone, post, qualification_detailed, qualification_briefly)
-        values (#{characteristic}, #{email}, #{curator}, #{pinNumber}, #{nameDepartment}, #{idPictureMajor} , #{idPictureMinor}, #{name}, #{phone}, #{post}, #{qualificationDetailed}, #{qualificationBriefly});
+        insert into employee(characteristic, email, curator, pin_number, id_department, name_department, id_picture_major, id_picture_minor, name, phone, post, qualification_detailed, qualification_briefly)
+        values (#{characteristic}, #{email}, #{curator}, #{pinNumber}, #{idDepartment}, #{nameDepartment}, #{idPictureMajor} , #{idPictureMinor}, #{name}, #{phone}, #{post}, #{qualificationDetailed}, #{qualificationBriefly});
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
@@ -39,6 +40,7 @@
 
     <update id="update" parameterType="Employee">
         UPDATE employee SET
+        id_department = #{idDepartment},
         name_department = #{nameDepartment},
         id_picture_major = #{idPictureMajor},
         name = #{name},

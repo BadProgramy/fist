@@ -150,9 +150,9 @@ public class AdminNewsFacultyController {
     }
 
     private long savePicture(NewsOfFaculty newFaculty) throws IOException {
-        writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
+        //writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
         Pictures pictures = new Pictures();
-        pictures.setUrlPicture("images\\downloadNewsPicture\\" + newFaculty.getPictureFile().getOriginalFilename());
+        pictures.setUrlPicture(/*"images\\downloadNewsPicture\\" + */newFaculty.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
         pictures.setKeyPicture(-1);
         pictures.setPictureFile(newFaculty.getPictureFile().getBytes());
@@ -160,10 +160,10 @@ public class AdminNewsFacultyController {
         return picturesService.insert(pictures);
     }
 
-    private void writeFile(byte[] buffer, String filename) throws IOException {
+    /*private void writeFile(byte[] buffer, String filename) throws IOException {
         FileOutputStream fos = new FileOutputStream("src\\main\\resources\\static\\images\\downloadNewsPicture\\" + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
-    }
+    }*/
 }

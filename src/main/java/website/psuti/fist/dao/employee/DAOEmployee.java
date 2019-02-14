@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface DAOEmployee {
     List<Employee> getAll();
-    int insert (Employee employee);
+    long insert (Employee employee);
     void update(Employee employee);
     void delete(int id);
 

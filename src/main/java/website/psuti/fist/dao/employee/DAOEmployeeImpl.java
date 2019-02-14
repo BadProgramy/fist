@@ -8,8 +8,10 @@ import website.psuti.fist.constant.MainPageObjectConstant;
 import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.Employee;
+import website.psuti.fist.service.RequestPostConnection;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.List;
 
 @Primary
@@ -35,18 +37,57 @@ public class DAOEmployeeImpl implements DAOEmployee {
     }
 
     @Override
-    public int insert(Employee employee) {
-        return 0;
+    public long insert(Employee employee) {
+        SqlSession session = factory.getFactory().openSession();
+        long id = -1;
+        employee.setCharacteristic(employee.getCharacteristic().replace("\r\n","<br>").replace("\n","<br>"));
+        employee.setCurator(employee.getCurator().replace("\r\n","<br>").replace("\n","<br>"));
+        employee.setQualificationBriefly(employee.getQualificationBriefly().replace("\r\n","<br>").replace("\n","<br>"));
+        employee.setQualificationDetailed(employee.getQualificationDetailed().replace("\r\n","<br>").replace("\n","<br>"));
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.insert("Employee.add", employee);
+            if (id == 1) {
+                id = session.selectOne("Employee.getLastIdInsert");
+                MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return id;
     }
 
     @Override
     public void update(Employee employee) {
-
+        int id = -1;
+        SqlSession session = factory.getFactory().openSession();
+        employee.setCharacteristic(employee.getCharacteristic().replace("\r\n","<br>").replace("\n","<br>"));
+        employee.setCurator(employee.getCurator().replace("\r\n","<br>").replace("\n","<br>"));
+        employee.setQualificationBriefly(employee.getQualificationBriefly().replace("\r\n","<br>").replace("\n","<br>"));
+        employee.setQualificationDetailed(employee.getQualificationDetailed().replace("\r\n","<br>").replace("\n","<br>"));
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.update("Employee.update", employee);
+            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public void delete(int id) {
-
+        int check = -1;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            check = session.delete("Employee.deleteById", id);
+            if (check == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
+        } finally {
+            session.close();
+        }
     }
 
     @Override

@@ -107,7 +107,7 @@
         <div class="page_header page_header2 text-center">
             <h2 th:utext="${departmentName.getName()}"></h2>
         </div>
-        <div class="container">
+        <div class="container reducedPhoto">
             <div class="row" th:each="department : ${departments}">
                 <div class="col-md-6">
                     <img th:src="@{'/employees/picture/' + ${department.getIdPicture()}}" class="img-responsive static-image" alt=""/>

@@ -10,7 +10,18 @@ html,body {
 .trends .row{
     height:11.1%;
     margin-bottom: 0 !important;
+
 }
+.trends .row:hover{
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+}
+
+.trends .row:hover p{
+    color:white;
+    font-size: 23px;
+}
+
 .trend {
     width: 100%;
     margin: 0;
@@ -29,7 +40,7 @@ html,body {
     font-family: 'Roboto Slab', serif;
     font-size: 22px;
     line-height: 1;
-    color: #fff;
+    color: #d4cccc;
     text-transform: uppercase;
     font-weight: 400;
     /* padding-bottom: 24px; */

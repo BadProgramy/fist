@@ -121,6 +121,13 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/groupLists")
+    public ModelAndView groupLists() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("groupLists");
+        return modelAndView;
+    }
+
 
     //TODO STUDENT ////////////////////////////////////////////////////////
 
@@ -214,4 +221,12 @@ public class MainController {
         modelAndView.setViewName("mainTrend");
         return modelAndView;
     }
+//TODO учебный процесс /////////////////////////////////////////////////////////////
+@RequestMapping("/gradStudents")
+public ModelAndView gradStudents() {
+    ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+    modelAndView.setViewName("gradStudents");
+    return modelAndView;
+}
+
 }

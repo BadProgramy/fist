@@ -126,7 +126,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("location", getItemById(items, MainPageConstant.LOCATION.getId())); //адрес
         modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
         modelAndView.addObject("menuItemMobile", getItemById(items, MainPageConstant.MOBILE_MENU.getId()));//Меню
-        modelAndView.addObject("ItemHeader1", getItemById(items, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Новости
+        modelAndView.addObject("ItemHeader1", getItemById(items, MainPageConstant.HEADER_NEWS.getId()));//Новости
         modelAndView.addObject("ItemHeader1_1", getItemById(items, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
         modelAndView.addObject("ItemButton1", getItemById(items, MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
         modelAndView.addObject("ItemHeader2", getItemById(items, MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс

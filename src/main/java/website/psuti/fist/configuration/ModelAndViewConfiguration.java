@@ -105,6 +105,8 @@ public class ModelAndViewConfiguration {
 
     private void updateEmployee() {
         employees = employeeService.getAll();
+        modelAndView.addObject("deanTeams", employeeService.findEmployeesByNameDepartment(NameDepartmentConstant.STRUCTURE_DEAN_TEAM.getName()));
+
     }
 
     private void updateDepartment() { departments = departmentService.getAll(); }
@@ -166,7 +168,8 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("subtitles", menuItemHeaderInMainPagesService.getMinorHeadersByMainHeader(MainPageConstant.CONTEXT_2_FOOTER.getId()));
         modelAndView.addObject("ItemHeader1_3", getItemById(items, MainPageConstant.HEADER_NEWS.getId()));//Новости
         modelAndView.addObject("ItemHeader1_2", getItemById(items, MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
-        modelAndView.addObject("deanTeams", employeeService.findEmployeesByNameDepartment(NameDepartmentConstant.STRUCTURE_DEAN_TEAM.getName()));
+        modelAndView.addObject("deanTeamName", getItemById(items, MainPageConstant.DEAN_TEAM_NAME.getId()));//Состав деканата
+        modelAndView.addObject("departmentName", getItemById(items, MainPageConstant.DEPARTMENT.getId()));//кафедры
     }
 
     private void updateNewsOfFacultyTable() {

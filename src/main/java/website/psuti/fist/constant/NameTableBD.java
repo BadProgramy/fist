@@ -1,6 +1,7 @@
 package website.psuti.fist.constant;
 
 public enum NameTableBD {
+    DEPARTMENT("department"),
     EMPLOYEE("employee"),
     BEST_STUDENT("best_student"),
     EDUCATION_PROCESS("education_process"),
@@ -10,7 +11,6 @@ public enum NameTableBD {
     PICTURES("pictures"),
     USERS("users"),
     USERS_ROLE("users_role");
-
 
     private String name;
 

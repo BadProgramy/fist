@@ -116,7 +116,7 @@
                         <p th:utext="${employee.getCurator()}"></p>
                     </div>
                     <div class="col-md-3 col-md-push-2" style="margin-left:-15% ">
-                        <a th:href="'/deanTeams/' + ${employee.getId()}"><img th:src="@{'/main/picture/' + ${employee.getIdPictureMinor()}}" class="img-responsive static-image" alt=""/></a>
+                        <a th:href="'/deanTeams/' + ${employee.getId()}"><img th:src="@{'/employees/picture/' + ${employee.getIdPictureMinor()}}" class="img-responsive static-image" alt=""/></a>
                     </div>
                     <div class="col-md-4 col-md-push-2 about-info right-teach">
                         <h5 th:utext="${employee.getName()}"></h5>
@@ -128,7 +128,7 @@
                 <div th:if="${employee.getPinNumber()} % 2 == 0">
 
                     <div class="col-md-3 col-md-push-6" style="margin-left:-15%">
-                        <a th:href="'/deanTeams/' + ${employee.getId()}"><img th:src="@{'/main/picture/' + ${employee.getIdPictureMinor()}}" class="img-responsive static-image" alt=""/></a>
+                        <a th:href="'/deanTeams/' + ${employee.getId()}"><img th:src="@{'/employees/picture/' + ${employee.getIdPictureMinor()}}" class="img-responsive static-image" alt=""/></a>
                     </div>
                     <div class="col-md-4 col-md-pull-1 about-info left-teach">
                         <h5 th:utext="${employee.getName()}"></h5>

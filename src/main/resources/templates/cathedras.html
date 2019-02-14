@@ -108,20 +108,20 @@
             <h2>Кафедры</h2>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row" th:each="department : ${departments}">
                 <div class="col-md-6">
-                    <img src="/images/cathedras/baxareva.jpg" class="img-responsive static-image" alt=""/>
+                    <img th:src="@{'/employees/picture/' + ${department.getIdPicture()}}" class="img-responsive static-image" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
-                    <h3>Кафедра"Информатики и вычислительной техники" (ИВТ)</h3>
+                    <h3 th:utext="${department.getNameDepartment()}"></h3>
                     <br>
-                    <h4>Зав. кафедрой: д.т.н., профессор Бахарева Надежда Федоровна</h4>
-                    <p>адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-133</p>
-                    <p>тел.: (846) 339-11-31</p>
-                    <p>e-mail: bahareva-nf@psuti.ru</p>
+                    <h4 th:utext="${department.getEmployee()}"></h4>
+                    <p th:utext="${department.getAddress()}"></p>
+                    <p th:utext="${department.getPhone()}"></p>
+                    <p th:utext="${department.getEmail()}"></p>
                 </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-md-6">
                     <img src="/images/cathedras/tarasov.jpg" class="img-responsive static-image" alt=""/>
                 </div>
@@ -198,7 +198,7 @@
                     <p>тел.: (846) 228-00-65</p>
                     <p>e-mail: m838om@mail.ru</p>
                 </div>
-            </div>
+            </div>-->
         </div>
     </section>
 

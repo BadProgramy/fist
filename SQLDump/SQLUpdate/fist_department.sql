@@ -1,0 +1,7 @@
+UPDATE fist.department SET id_main_employee = 2, name = 'Состав деканата', address = null WHERE id = 1;
+UPDATE fist.department SET id_main_employee = 9, name = 'Кафедра"Информатики и вычислительной техники" (ИВТ)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-33' WHERE id = 2;
+UPDATE fist.department SET id_main_employee = 10, name = 'Кафедра "Программного обеспечения и управления в технических системах" (ПОУТС)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-35' WHERE id = 3;
+UPDATE fist.department SET id_main_employee = 11, name = 'Кафедра "Иностранных языков" (ИНО)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.4-02' WHERE id = 4;
+UPDATE fist.department SET id_main_employee = 12, name = 'Кафедра "Информационных систем и технологий" (ИСТ)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.5-14' WHERE id = 5;
+UPDATE fist.department SET id_main_employee = 13, name = 'Кафедра "Прикладная информатика" (ПИ)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.5-06' WHERE id = 6;
+UPDATE fist.department SET id_main_employee = 14, name = 'Кафедра "Цифровая экономика" (ЦЭ)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.10-10' WHERE id = 7;

@@ -214,6 +214,4 @@ public class MainController {
         modelAndView.setViewName("mainTrend");
         return modelAndView;
     }
-
-
 }

@@ -16,8 +16,8 @@ http://www.springframework.org/schema/task http://www.springframework.org/schema
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/fist"/>
-        <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="username" value="marie" />
+        <property name="password" value="735915penekman" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

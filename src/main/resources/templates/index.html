@@ -111,8 +111,8 @@
 		<div style="position: relative"> <!--id="home-slider2" class="owl-carousel owl-theme"-->
 			<div class="item" th:each="picture : ${slider}">
 				<div class="ban">
-			<img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
-					<p>Подробнее о направлениях <br>...</p>
+			<a href="/mainTrend"><img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/></a>
+					<p>Узнать подробнее<br> о направлениях подготовки <br>...</p>
 				</div>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 	<!-- Новости -->
 	<section id="content" class="main-background" >
 		<div class="content-blog">
-			<div class="container" style="max-width: 100%">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="h-page-title">
 						<h2 th:utext="${ItemHeader1.getName()}"></h2>
@@ -134,39 +134,37 @@
 						<div class="row">
 							<div id="blog-mason" class="blog-mason-2col">
 								<article th:each="newFaculty : ${newsOfFaculty}" class="blogpost bm-item isotope-item center-block">
-									<div class="post-media current-size">
-										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive" alt=""> <!--500 X 300-->
+									<div class="post-media">
+										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive" alt="">
 									</div>
-									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"><!--Уважаемые родители--></a></h2>
+									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"></a></h2>
 									<div class="post-meta">
 										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}" th:style="${newFaculty.getDateStyles()}"><i class="fa fa-calendar"></i></a></span>
 									</div>
-									<div class="post-excerpt" >
+									<div class="post-excerpt box">
 										<p th:utext="${newFaculty.getText()}" th:style="${newFaculty.getTextStyles()}"></p>
 									</div>
-									<!--<script>
-                                        var box = document.querySelector('.texts'),
+									<script>
+                                        var box = document.querySelector('.box'),
                                             text = box.innerHTML,
                                             clone = document.createElement('div');
 
-                                        clone.style.position = 'absolute';
+                                        clone.style.position = 'fixed';
                                         clone.style.visibility = 'hidden';
                                         clone.style.width = box.clientWidth + 'px';
                                         clone.innerHTML = text;
                                         document.body.appendChild(clone);
-
                                         var l = text.length - 1;
-                                        for (; l >= 0 && clone.clientHeight > box.clientHeight; &#45;&#45;l) {
+                                        for (; l >= 0 && clone.clientHeight > box.clientHeight; --l) {
                                             clone.innerHTML = text.substring(0, l) + '...';
                                         }
                                         box.innerHTML = clone.innerHTML;
-									</script>-->
+									</script>
 								</article>
 							</div>
 						</div>
 
 						<div class="clearfix"></div>
-						<div class="space30"></div>
 						<a th:href="${ItemButton1.getUrlHref()}" class="main-btn" th:utext="${ItemButton1.getName()}" th:style="${ItemButton1.getStyles()}"></a>
 						<!-- End Pagination -->
 					</div>
@@ -313,8 +311,8 @@
 						<div id="Some-Container"  th:each="student : ${bestStudents}" class="sm-item text-center">
 							<div class="product" >
 								<div class="product-thumb">
-									<li><a class="cd-signin">
-										<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">
+									<li><a class="cd-signin"><!--<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">-->
+										<img th:id="@{'student' + ${student.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">
 										<div><span class="fa fa-search-plus"></span></div>
 										<script th:inline="javascript">
                                             document.body.onclick = function(e) {
@@ -530,5 +528,38 @@
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
 <script src="/js/student_character.js"></script>
+<script>
+
+    function isVisible(elem) {
+
+        var coords = elem.getBoundingClientRect();
+
+        var windowHeight = document.documentElement.clientHeight;
+
+        // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
+        var topVisible = coords.top > 0 && coords.top < windowHeight;
+        var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+
+        return topVisible || bottomVisible;
+    }
+    function showVisible() {
+        var imgs = document.getElementsByTagName('img');
+        for (var i = 0; i < imgs.length; i++) {
+
+            var img = imgs[i];
+
+            var realsrc = img.getAttribute('realsrc');
+            if (!realsrc) continue;
+
+            if (isVisible(img)) {
+                img.src = realsrc;
+                img.setAttribute('realsrc', '');
+            }
+        }
+    }
+
+    window.onscroll = showVisible;
+    showVisible();
+</script>
 </body>
 </html>

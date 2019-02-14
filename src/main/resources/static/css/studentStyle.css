@@ -116,16 +116,16 @@ xsigin/signup popup
 }
  .text-stud p{
      text-align: justify;
-     font-family: 'Roboto Slab';
+     font-family: 'Oswald', sans-serif;
      color: #000;
-     line-height: 25px;
-     font-size:16px;
+     line-height: 30px;
+     font-size: 16px;
  }
  .stud-name {
      color: #000;
      font-family: 'Open Sans', sans-serif;
-     font-size: 25px;
-     line-height: 30px;
+     font-size: 30px;
+     line-height: 40px;
      font-weight: 700;
      margin-bottom: 5px;
  }

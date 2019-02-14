@@ -48,8 +48,9 @@ public enum MainPageConstant {
     DIALOG_CONTEXT_4(94L),
     DIALOG_CONTEXT_4_1(95L),
     FOOTER_MAIN_PAGE(68L),
-    CHARACTER_UNIVERSITY(60L, "character university");
-
+    CHARACTER_UNIVERSITY(60L, "character university"),
+    DEAN_TEAM_NAME(97),
+    DEPARTMENT(98);
 
     private long id;
     private String name;

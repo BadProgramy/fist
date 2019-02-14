@@ -55,7 +55,6 @@ public class DAOEmployeeImpl implements DAOEmployee {
         SqlSession session = factory.getFactory().openSession();
         try {
             employees = session.selectList("Employee.findEmployeesByNameDepartment", nameDepartment);
-            MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
         } finally {
             session.close();
         }

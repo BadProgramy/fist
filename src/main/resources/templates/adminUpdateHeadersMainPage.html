@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор новостей</title>
+    <title>Редактор меню</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,7 +67,16 @@
                         <a href="#">Страницы</a>
                         <div class="mobnav-subarrow"></div>
                         <ul>
-                            <li><a href="#">Главная (fist.psuti.ru)</a></li>
+                            <li>
+                                <a href="#">Главная (fist.psuti.ru)</a>
+                                <div class="mobnav-subarrow"></div>
+                                <ul>
+                                    <li><a href="/admin/mainPage/headers/update">Меню</a></li>
+                                    <li><a href="/admin/mainPage/labels/update">Загаловки</a></li>
+                                    <li><a href="/admin/mainPage/statistic/update">Статиситика</a></li>
+                                    <li><a href="/admin/mainPage/educationProcess/update">Учебный процесс</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -111,26 +120,28 @@
             </div>
         </div>
     </header>
-
+    <h3 class="text-center padding5p">Меню сайта</h3>
     <form method="post" id="myform"></form>
     <table class="color">
         <tr>
             <th>Название поля</th>
             <th>Идентификатор</th>
             <th>Идентификатор родителя</th>
+            <th>Идентификатор картинки</th>
             <th>Уровень вложенности</th>
             <th>Номер в очереди</th>
             <th>Ссылка</th>
             <th>Ключевое слово</th>
-            <th>Стили для названия</th>
+            <th>Стили для названий</th>
             <th id="labelUpdateMenuItem">Действие</th>
         </tr>
         <tr th:each="menuItem : ${menuItems}">
-            <form th:action="@{/admin/mainPage/update/submit}" th:object="${item}" method="post">
+            <form th:action="@{/admin/mainPage/headers/update/submit}" th:object="${item}" method="post">
             <td><input id="name" class="menuItemTables" name="name" th:value="${menuItem.getName()}"></td>
             <td><input id="id" class="menuItemTables" name="id" th:value="${menuItem.getId()}" readonly></td>
             <td><input id="idMenuItemParentHeaderInMainPage" class="menuItemTables" name="idMenuItemParentHeaderInMainPage" th:value="${menuItem.getIdMenuItemParentHeaderInMainPage()}"></td>
-            <td><input id="level" class="menuItemTables" name="level" th:value="${menuItem.getLevel()}"></td>
+                <td><input id="idPicture" class="menuItemTables" name="idPicture" th:value="${menuItem.getIdPicture()}"></td>
+                <td><input id="level" class="menuItemTables" name="level" th:value="${menuItem.getLevel()}"></td>
             <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${menuItem.getPinNumber()}"></td>
             <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}"></td>
             <td><input id="keyWord" class="menuItemTables" name="keyWord" th:value="${menuItem.getKeyWord()}"></td>

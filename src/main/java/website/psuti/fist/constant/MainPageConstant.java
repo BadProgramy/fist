@@ -50,7 +50,10 @@ public enum MainPageConstant {
     FOOTER_MAIN_PAGE(68L),
     CHARACTER_UNIVERSITY(60L, "character university"),
     DEAN_TEAM_NAME(97),
-    DEPARTMENT(98);
+    DEPARTMENT(98),
+    HEADERS(-1, "Header"),
+    LABEL_HEADER(-1, "Label"),
+    EDUCATION_PROCESS(-1, "EducationProcess");
 
     private long id;
     private String name;

@@ -53,4 +53,9 @@
         where key_word = #{keyWord}
         order by pin_number ASC;
     </select>
+
+    <select id="findItemByKeyWord" parameterType="String" resultMap="result">
+        SELECT * FROM menu_item_header_in_main_page
+        where key_word = #{keyWord};
+    </select>
 </mapper>

@@ -18,4 +18,6 @@ public interface DAOMenuItemHeaderInMainPage {
     Map<MenuItemHeaderInMainPage,List<MenuItemHeaderInMainPage>> getAllHeadersMainPage();
     MenuItemHeaderInMainPage findItemById(long id);
     List<MenuItemHeaderInMainPage> getCharacterUniversity();
+
+    List<MenuItemHeaderInMainPage> findItemByKeyWord(String keyWord);
 }

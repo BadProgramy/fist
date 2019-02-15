@@ -124,6 +124,18 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
         return menuItemHeaderInMainPages;
     }
 
+    @Override
+    public List<MenuItemHeaderInMainPage> findItemByKeyWord(String keyWord) {
+        List<MenuItemHeaderInMainPage> menuItemHeaderInMainPages;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            menuItemHeaderInMainPages = session.selectList("MenuItemHeaderInMainPage.findItemByKeyWord", keyWord);
+        } finally {
+            session.close();
+        }
+        return menuItemHeaderInMainPages;
+    }
+
     /*//Пришлось извратиться, другой выход с созданием для него отдельного класса не хочется. Можно было в виде JSON сделать
     //List<Map
     //         <Map <MenuItemHeaderInMainPage, Pictures>, Map<MenuItemHeaderInMainPage, Pictures>

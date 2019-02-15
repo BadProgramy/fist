@@ -10,10 +10,26 @@
         <result property="idMenuItemHeaderInMainPageRight" column="id_menu_item_header_in_main_page_right"/>
         <result property="idPictureLeft" column="id_picture_left"/>
         <result property="idPictureRight" column="id_picture_right"/>
+        <result property="leftMenuItemStyles" column="left_menu_item_styles"/>
+        <result property="leftPictureStyles" column="left_picture_styles"/>
+        <result property="rightMenuItemStyles" column="right_menu_item_styles"/>
+        <result property="rightPictureStyles" column="right_picture_styles"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
         SELECT * FROM education_process;
     </select>
 
+    <update id="update" parameterType="EducationProcess">
+        UPDATE education_process SET
+        id_menu_item_header_in_main_page_left = #{idMenuItemHeaderInMainPageLeft},
+        id_menu_item_header_in_main_page_right = #{idMenuItemHeaderInMainPageRight},
+        id_picture_left = #{idPictureLeft},
+        id_picture_right = #{idPictureRight},
+        left_menu_item_styles = #{leftMenuItemStyles},
+        left_picture_styles = #{leftPictureStyles},
+        right_menu_item_styles = #{rightMenuItemStyles},
+        right_picture_styles = #{rightPictureStyles}
+        WHERE id = #{id};
+    </update>
 </mapper>

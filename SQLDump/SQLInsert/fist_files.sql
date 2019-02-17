@@ -1,0 +1,3 @@
+INSERT INTO fist.files (id, date, extension, name, unique_nameuuid) VALUES (3, '2019-02-17', 'APPLICATION_PDF_VALUE', 'KonsultatsiiFIST', '0d37409d-c139-4e2b-9240-2f4ab362aa3e.pdf');
+INSERT INTO fist.files (id, date, extension, name, unique_nameuuid) VALUES (4, '2019-02-17', 'APPLICATION_PDF_VALUE', 'SovetFIST.pdf', 'a197f15b-4141-4ae9-820d-fadc11e4e52b');
+INSERT INTO fist.files (id, date, extension, name, unique_nameuuid) VALUES (5, '2019-02-17', 'APPLICATION_PDF_VALUE', 'Профессиональные_требования_к_ППС_ПГУТИ.pdf', '7b746690-9722-4782-aa72-e42a2a51d202');

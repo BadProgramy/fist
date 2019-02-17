@@ -213,24 +213,4 @@ public ModelAndView gradStudents() {
     return modelAndView;
 }
 
-
-    @RequestMapping(value = "/files/id={idFile}")
-    public String file(@PathVariable("idFile") Long idFile, HttpServletRequest request) throws IOException {
-       return getFile((website.psuti.fist.model.File) modelAndViewConfiguration.getItemById(modelAndViewConfiguration.getFiles(), idFile), request);
-    }
-
-    private String getFile(website.psuti.fist.model.File file, HttpServletRequest request) throws IOException {
-        switch (file.getExtension()) {
-            case APPLICATION_PDF_VALUE: return "redirect:" + request.getHeader("referer") + "files/" + file.getUniqueNameUUID();
-        }
-        return "redirect";
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/files/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE)
-    private byte[] outputPDFFile(@PathVariable("fileNameUnique") String fileNameUnique) throws IOException {
-        File ff = new File("src\\main\\resources\\files\\" + fileNameUnique);
-        return Files.readAllBytes(ff.toPath());
-    }
-
 }

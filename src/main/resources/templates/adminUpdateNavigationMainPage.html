@@ -127,24 +127,24 @@
         <tr>
             <th>Название поля</th>
             <th>Идентификатор</th>
-            <th>Идентификатор родителя</th>
             <th>Идентификатор картинки</th>
+            <!--<th>Идентификатор родителя</th>-->
             <th>Уровень вложенности</th>
             <th>Номер в очереди</th>
-            <th>Ссылка</th>
+            <!--<th>Ссылка</th>-->
             <th>Ключевое слово</th>
             <th>Стили для названий</th>
             <th id="labelUpdateMenuItem">Действие</th>
         </tr>
         <tr th:each="menuItem : ${menuItems}">
-            <form th:action="@{/admin/mainPage/labels/update/submit}" th:object="${item}" method="post">
+            <form th:action="@{/admin/mainPage/statistic/update/submit}" th:object="${item}" method="post">
                 <td><input id="name" class="menuItemTables" name="name" th:value="${menuItem.getName()}"></td>
                 <td><input id="id" class="menuItemTables" name="id" th:value="${menuItem.getId()}" readonly></td>
-                <td><input id="idMenuItemParentHeaderInMainPage" class="menuItemTables" name="idMenuItemParentHeaderInMainPage" th:value="${menuItem.getIdMenuItemParentHeaderInMainPage()}"></td>
+                <!--<td><input id="idMenuItemParentHeaderInMainPage" class="menuItemTables" name="idMenuItemParentHeaderInMainPage" th:value="${menuItem.getIdMenuItemParentHeaderInMainPage()}"></td>-->
                 <td><input id="idPicture" class="menuItemTables" name="idPicture" th:value="${menuItem.getIdPicture()}"></td>
                 <td><input id="level" class="menuItemTables" name="level" th:value="${menuItem.getLevel()}"></td>
                 <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${menuItem.getPinNumber()}"></td>
-                <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}"></td>
+                <!--                <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}"></td>-->
                 <td><input id="keyWord" class="menuItemTables" name="keyWord" th:value="${menuItem.getKeyWord()}"></td>
                 <td><input id="styles" class="menuItemTables" name="styles" th:value="${menuItem.getStyles()}"></td>
                 <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>

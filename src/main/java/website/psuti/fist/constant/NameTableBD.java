@@ -10,7 +10,8 @@ public enum NameTableBD {
     NEWS_OF_FACULTY("news_of_faculty"),
     PICTURES("pictures"),
     USERS("users"),
-    USERS_ROLE("users_role");
+    USERS_ROLE("users_role"),
+    FILE("files");
 
     private String name;
 

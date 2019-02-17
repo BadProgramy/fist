@@ -92,4 +92,20 @@ public class AdminMainPageController {
         menuItemHeaderInMainPagesService.update(item);
         return "redirect:../update";
     }
+
+    @RequestMapping("/admin/mainPage/navigation/update")
+    public String adminMainPageNavigationUpdate(Model model) {
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.NAVIGATION.getKeyWord()));
+        model.addAttribute("item", new MenuItemHeaderInMainPage());
+        return "adminUpdateNavigationMainPage";
+    }
+
+    @RequestMapping("/admin/mainPage/navigation/update/submit")
+    public String adminMainPageNavigationUpdateSubmit(@ModelAttribute("item") MenuItemHeaderInMainPage item) {
+        ModelAndView modelAndView = new ModelAndView("adminUpdateNavigationMainPage");
+        modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.NAVIGATION.getKeyWord()));
+        modelAndView.addObject("item", new MenuItemHeaderInMainPage());
+        menuItemHeaderInMainPagesService.update(item);
+        return "redirect:../update";
+    }
 }

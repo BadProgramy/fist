@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.*;
-import website.psuti.fist.model.Employee;
-import website.psuti.fist.model.MenuItemHeaderInMainPage;
-import website.psuti.fist.model.NewsOfFaculty;
-import website.psuti.fist.model.Pictures;
+import website.psuti.fist.model.*;
 import website.psuti.fist.service.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -28,22 +27,7 @@ public class MainController {
     //private final static Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
-    private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
-
-    @Autowired
-    private PicturesService picturesService;
-
-    @Autowired
-    private EducationProcessService educationProcessService;
-
-    @Autowired
-    private BestStudentService bestStudentService;
-
-    @Autowired
     private NewsFacultyService newsFacultyService;
-
-    @Autowired
-    private EmployeeService employeeService;
 
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
@@ -228,5 +212,25 @@ public ModelAndView gradStudents() {
     modelAndView.setViewName("gradStudents");
     return modelAndView;
 }
+
+
+    @RequestMapping(value = "/files/id={idFile}")
+    public String file(@PathVariable("idFile") Long idFile, HttpServletRequest request) throws IOException {
+       return getFile((website.psuti.fist.model.File) modelAndViewConfiguration.getItemById(modelAndViewConfiguration.getFiles(), idFile), request);
+    }
+
+    private String getFile(website.psuti.fist.model.File file, HttpServletRequest request) throws IOException {
+        switch (file.getExtension()) {
+            case APPLICATION_PDF_VALUE: return "redirect:" + request.getHeader("referer") + "files/" + file.getUniqueNameUUID();
+        }
+        return "redirect";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/files/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE)
+    private byte[] outputPDFFile(@PathVariable("fileNameUnique") String fileNameUnique) throws IOException {
+        File ff = new File("src\\main\\resources\\files\\" + fileNameUnique);
+        return Files.readAllBytes(ff.toPath());
+    }
 
 }

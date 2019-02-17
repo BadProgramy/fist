@@ -12,6 +12,7 @@
         <typeAlias alias="NewsOfFaculty" type="website.psuti.fist.model.NewsOfFaculty"/>
         <typeAlias alias="Employee" type="website.psuti.fist.model.Employee"/>
         <typeAlias alias="Department" type="website.psuti.fist.model.Department"/>
+        <typeAlias alias="File" type="website.psuti.fist.model.File"/>
         <!--<typeAlias alias="Employee" type="organizational.model.Employee"/>
         <typeAlias alias="Department" type="organizational.model.Department"/>
         <typeAlias type="organizational.model.Post" alias="Post"/>
@@ -26,6 +27,7 @@
         <mapper resource="mapper/NewsOfFaculty.xml"/>
         <mapper resource="mapper/Employee.xml"/>
         <mapper resource="mapper/Department.xml"/>
+        <mapper resource="mapper/File.xml"/>
         <!--<mapper resource="mapper/Employee.xml"/>
         <mapper resource="mapper/Department.xml"/>
         <mapper resource="mapper/Post.xml"/>

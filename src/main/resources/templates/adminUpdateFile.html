@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор меню</title>
+    <title>Редактор новостей</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/reset.css">
-    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -48,7 +47,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -67,17 +66,7 @@
                         <a href="#">Страницы</a>
                         <div class="mobnav-subarrow"></div>
                         <ul>
-                            <li>
-                                <a href="#">Главная (fist.psuti.ru)</a>
-                                <div class="mobnav-subarrow"></div>
-                                <ul>
-                                    <li><a href="/admin/mainPage/headers/update">Меню</a></li>
-                                    <li><a href="/admin/mainPage/labels/update">Загаловки</a></li>
-                                    <li><a href="/admin/mainPage/statistic/update">Статиситика</a></li>
-                                    <li><a href="/admin/mainPage/educationProcess/update">Учебный процесс</a></li>
-                                    <li><a href="/admin/mainPage/navigation/update">Расположение</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="#">Главная (fist.psuti.ru)</a></li>
                         </ul>
                     </li>
                     <li>
@@ -121,36 +110,50 @@
             </div>
         </div>
     </header>
-    <h3 class="text-center padding5p">Меню сайта</h3>
-    <form method="post" id="myform"></form>
-    <table class="color">
-        <tr>
-            <th>Название поля</th>
-            <th>Идентификатор</th>
-            <th>Идентификатор родителя</th>
-            <th>Идентификатор картинки</th>
-            <th>Уровень вложенности</th>
-            <th>Номер в очереди</th>
-            <th>Ссылка</th>
-            <th>Ключевое слово</th>
-            <th>Стили для названий</th>
-            <th id="labelUpdateMenuItem">Действие</th>
-        </tr>
-        <tr th:each="menuItem : ${menuItems}">
-            <form th:action="@{/admin/mainPage/labels/update/submit}" th:object="${item}" method="post">
-                <td><input id="name" class="menuItemTables" name="name" th:value="${menuItem.getName()}"></td>
-                <td><input id="id" class="menuItemTables" name="id" th:value="${menuItem.getId()}" readonly></td>
-                <td><input id="idMenuItemParentHeaderInMainPage" class="menuItemTables" name="idMenuItemParentHeaderInMainPage" th:value="${menuItem.getIdMenuItemParentHeaderInMainPage()}"></td>
-                <td><input id="idPicture" class="menuItemTables" name="idPicture" th:value="${menuItem.getIdPicture()}"></td>
-                <td><input id="level" class="menuItemTables" name="level" th:value="${menuItem.getLevel()}"></td>
-                <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${menuItem.getPinNumber()}"></td>
-                <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}"></td>
-                <td><input id="keyWord" class="menuItemTables" name="keyWord" th:value="${menuItem.getKeyWord()}"></td>
-                <td><input id="styles" class="menuItemTables" name="styles" th:value="${menuItem.getStyles()}"></td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>
-            </form>
-        </tr>
-    </table>
+
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить файл</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
+
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/files/add/submit}" th:object="${file}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p class="fieldset black_p">
+                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
+                            <input type="date" th:value="${file.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
+                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input type="file" id="file" name="file" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <select id="extension" name="extension" required>
+                                <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                            </select>
+                        </p>
+
+                        <!--<input name="date" type="hidden" th:field="*{date}">-->
+                        <!--<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
+                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">-->
+                        <p class="fieldset black_p">
+
+                            <button class="full-width" type="submit">Добавить</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div> <!-- cd-login -->
+
+
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
+
+    <div class="close-btn fa fa-times"></div>
 </div>
 
 <!-- Javascript -->

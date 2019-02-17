@@ -62,7 +62,7 @@ public class AdminFileController {
 
     private String getFile(website.psuti.fist.model.File file, HttpServletRequest request) throws IOException {
         switch (file.getExtension()) {
-            case APPLICATION_PDF_VALUE: return "redirect:" + request.getHeader("referer") + "files/" + file.getUniqueNameUUID();
+            case APPLICATION_PDF_VALUE: return "redirect:" + file.getUniqueNameUUID();
         }
         return "redirect";
     }

@@ -178,6 +178,8 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("ItemHeader1_2", getItemById(items, MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
         modelAndView.addObject("deanTeamName", getItemById(items, MainPageConstant.DEAN_TEAM_NAME.getId()));//Состав деканата
         modelAndView.addObject("departmentName", getItemById(items, MainPageConstant.DEPARTMENT.getId()));//кафедры
+
+        modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
     }
 
     private void updateNewsOfFacultyTable() {

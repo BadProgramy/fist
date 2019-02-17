@@ -5,10 +5,11 @@
 @import url(http://fonts.googleapis.com/css?family=Anton);
 @import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
 @import url(http://fonts.googleapis.com/css?family=Arvo);
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,800,900);
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC);
 @import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
 @font-face {
 	font-family: 'fontee7cdaca20cd76a504334698de5b63c4';
@@ -49,6 +50,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p{
+    /*font-family: 'Roboto', sans-serif;*/
+    /*font-family: 'PT Sans Narrow', sans-serif;*/
 	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
 	line-height: 23px;
@@ -62,9 +65,9 @@ a, a img {
 	outline: none !important;
 }
 
-a {
+/*a {
 	color:black;
-}
+}*/
 
 /*
 a:hover {
@@ -473,7 +476,7 @@ display: unset;
 
 .ban:hover p {
 	position: absolute;
-	top: 15%;
+	top: 35%;
 	left: 35%;
 	display: block;
 	cursor: pointer;
@@ -1208,11 +1211,8 @@ display: unset;
 .container-fluid p{
 	font-size: 16px;
 	line-height: 23px;
-	margin-top:5%;
+	/*margin-top:5%;*/
 }
-/*.teach{
-	margin-top: 2%;
-}*/
 
 .container-fluid .row{
 	margin-bottom: 3%;
@@ -1226,6 +1226,16 @@ display: unset;
 }
 .scroll{
     width: 100%;
+}
+
+.img-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.img-container img {
+   max-width: 100% !important;
 }
 /*--------------------------------------------------------------------------------------------------*/
 table{
@@ -1966,8 +1976,6 @@ caption {
 	text-decoration:underline !important;	
 }
 
-
-
 .blog .main-blog ul li .box-holder .blog-detail .date {
 	float:left;
 	width:100%;
@@ -2042,6 +2050,10 @@ h2.post-title a {
 	color: #000000;
 }
 
+.prepod p {
+    margin-top: 5%;
+}
+
 .wid50 img{
 	object-fit: cover;
 	width: 50% !important;
@@ -2094,7 +2106,7 @@ h2.post-title a {
 }
 
 .page_nav a:hover {
-	background: #B59E5C;
+	background: #3c689e;
 	color: #fff;
 }
 
@@ -2805,11 +2817,11 @@ margin:0 0 25px;
 .content-blog>.container{
 	max-width: 1140px;
 }
-.blogpost img{
+/*.blogpost img{
 	object-fit: cover;
 	width: 500px;
 	height: 400px;
-}
+}*/
 
 .post-excerpt h4,h5{
 	line-height: 1.3;

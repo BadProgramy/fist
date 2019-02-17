@@ -112,7 +112,7 @@
 			<div class="item" th:each="picture : ${slider}">
 				<div class="ban">
 			<a href="/mainTrend"><img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/></a>
-					<p>Узнать подробнее<br> о направлениях подготовки <br>...</p>
+					<a href="/mainTrend"><p>Узнать подробнее<br> о направлениях подготовки <br>...</p></a>
 				</div>
 			</div>
 		</div>
@@ -134,7 +134,7 @@
 						<div class="row">
 							<div id="blog-mason" class="blog-mason-2col">
 								<article th:each="newFaculty : ${newsOfFaculty}" class="blogpost bm-item isotope-item center-block">
-									<div class="post-media">
+									<div class="post-media img-container">
 										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive" alt="">
 									</div>
 									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"></a></h2>
@@ -599,16 +599,16 @@
         // проверка - виден див полностью или нет
         if( div_x1 >= see_x1 && div_x2 <= see_x2 && div_y1 >= see_y1 && div_y2 <= see_y2 ){
             // если виден
-            $({blurRadius: 5}).animate({blurRadius: 0}, {
+            /*$({blurRadius: 5}).animate({blurRadius: 0}, {
                 duration: 1000,
                 easing: 'swing',
-                /*step: function () {
+                step: function () {
                     $(".lines").css({
                         "-webkit-filter": "blur(" + this.blurRadius + "px)",
                         "filter": "blur(" + this.blurRadius + "px)"
                     });
-                }*/
-            });
+                }
+            });*/
             var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(' ');
             $(".lines").each(function () {
                 var tcount = $(this).data("count");
@@ -616,9 +616,7 @@
                         number: tcount,
                         easing: 'easeInQuad',
                         "font-size": "40px",
-                        numberStep: comma_separator_number_step
-                    },
-                    4000);
+                        numberStep: comma_separator_number_step}, 4000);
             });
         }
     }
@@ -638,5 +636,37 @@
 
     });
 </script>
+<script>
+    jQuery(function ($) {
+        function fix_size() {
+            var images = $('.img-container img');
+            images.each(setsize);
+
+            function setsize() {
+                var img = $(this),
+                    img_dom = img.get(0),
+                    container = img.parents('.img-container');
+                if (img_dom.complete) {
+                    resize();
+                } else img.one('load', resize);
+
+                function resize() {
+                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
+                        img.width('100%');
+                        img.height('auto');
+                    } else {
+                        img.height('100%');
+                        img.width('auto');
+                    }
+                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
+                    /*console.log(marginx);*/
+                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
+
+                }
+            }
+        }
+        $(window).on('resize', fix_size);
+        fix_size();
+    });</script>
 </body>
 </html>

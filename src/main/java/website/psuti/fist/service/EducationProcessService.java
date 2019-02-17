@@ -27,4 +27,8 @@ public class EducationProcessService {
     public List<EducationProcess> educationProcess() {
         return daoEducationProcess.educationProcess();
     }
+
+    public void update(EducationProcess itemEducationProcess) {
+        daoEducationProcess.update(itemEducationProcess);
+    }
 }

@@ -4,10 +4,16 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import website.psuti.fist.constant.MainPageObjectConstant;
+import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.dao.menuItemHeaderInMainPage.DAOMenuItemHeaderInMainPage;
 import website.psuti.fist.dao.pictures.DAOPictures;
 import website.psuti.fist.model.EducationProcess;
+import website.psuti.fist.service.RequestPostConnection;
+
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +23,9 @@ public class DAOEducationProcessImpl implements DAOEducationProcess {
 
     @Autowired
     private DAOPictures daoPictures;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     private DAOMenuItemHeaderInMainPage daoMenuItemHeaderInMainPage;
@@ -43,7 +52,17 @@ public class DAOEducationProcessImpl implements DAOEducationProcess {
 
     @Override
     public void update(EducationProcess educationProcess) {
-
+        int id = -1;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.update("EducationProcess.update", educationProcess);
+            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.EDUCATION_PROCESS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     @Override

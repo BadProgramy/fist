@@ -42,4 +42,8 @@ public class MenuItemHeaderInMainPagesService {
     public List<MenuItemHeaderInMainPage> getCharacterUniversity() {
         return daoMenuItemHeaderInMainPage.getCharacterUniversity();
     }
+
+    public List<MenuItemHeaderInMainPage> findItemByKeyWord(String keyWord) {
+        return daoMenuItemHeaderInMainPage.findItemByKeyWord(keyWord);
+    }
 }

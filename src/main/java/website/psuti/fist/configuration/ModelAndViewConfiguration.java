@@ -8,10 +8,7 @@ import website.psuti.fist.constant.MainPageConstant;
 import website.psuti.fist.constant.MainPageObjectConstant;
 import website.psuti.fist.constant.NameDepartmentConstant;
 import website.psuti.fist.constant.NameTableBD;
-import website.psuti.fist.model.Department;
-import website.psuti.fist.model.Employee;
-import website.psuti.fist.model.MenuItemHeaderInMainPage;
-import website.psuti.fist.model.Pictures;
+import website.psuti.fist.model.*;
 import website.psuti.fist.service.*;
 
 import javax.annotation.PostConstruct;
@@ -44,12 +41,16 @@ public class ModelAndViewConfiguration {
     @Autowired
     private DepartmentService departmentService;
 
+    @Autowired
+    private FileService fileService;
+
     private ModelAndView modelAndView;
 
     private HashMap<Long, byte[]> picturesCache;
 
     private List<Employee> employees;
     private List<Department> departments;
+    private List<File> files;
 
 
     public HashMap<Long, byte[]> initPicturesCache() {
@@ -69,6 +70,7 @@ public class ModelAndViewConfiguration {
             modelAndView = new ModelAndView();
             employees = new ArrayList<>();
             departments = new ArrayList<>();
+            files = new ArrayList<>();
             modelAndView = new ModelAndView("", "", "");
 
             updateBestStudentTable();
@@ -80,6 +82,7 @@ public class ModelAndViewConfiguration {
             updateUsersTable();
             updateEmployee();
             updateDepartment();
+            updateFile();
 
             return modelAndView;
         } else if (MainPageObjectConstant.checkModelAndView.size() > 0) {
@@ -101,6 +104,11 @@ public class ModelAndViewConfiguration {
         else if (nameTable.equals(NameTableBD.USERS_ROLE)) updateUsersRoleTable();
         else if (nameTable.equals(NameTableBD.EMPLOYEE)) updateEmployee();
         else if (nameTable.equals(NameTableBD.DEPARTMENT)) updateDepartment();
+        else if (nameTable.equals(NameTableBD.FILE)) updateFile();
+    }
+
+    private void updateFile() {
+        files = fileService.getAll();
     }
 
     private void updateEmployee() {
@@ -126,7 +134,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("location", getItemById(items, MainPageConstant.LOCATION.getId())); //адрес
         modelAndView.addObject("menuItems", menuItemHeaderInMainPagesService.getAllHeadersMainPage());
         modelAndView.addObject("menuItemMobile", getItemById(items, MainPageConstant.MOBILE_MENU.getId()));//Меню
-        modelAndView.addObject("ItemHeader1", getItemById(items, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Новости
+        modelAndView.addObject("ItemHeader1", getItemById(items, MainPageConstant.HEADER_NEWS.getId()));//Новости
         modelAndView.addObject("ItemHeader1_1", getItemById(items, MainPageConstant.HEADER_ACTUAL_NEWS.getId()));//Актуальное на сегодня
         modelAndView.addObject("ItemButton1", getItemById(items, MainPageConstant.BUTTON_NEWS.getId()));//Клавиша Больше новостей
         modelAndView.addObject("ItemHeader2", getItemById(items, MainPageConstant.HEADER_EDUCATIONAL_PROCESS.getId()));//учебный процесс
@@ -216,8 +224,21 @@ public class ModelAndViewConfiguration {
             for (Department department: (List<Department>) list) {
                 if (department.getId() == id) return department;
             }
+        } else if (list.get(0) instanceof File) {
+            for (File file: (List<File>) list) {
+                if (file.getId() == id) return file;
+            }
         }
         return new Object();
+    }
+
+    public File getFileByName(String nameFile) {
+        for (File file: files) {
+            if (file.getName().equals(nameFile)) {
+                return file;
+            }
+        }
+        return null;
     }
 
     public List<Employee> getEmployees() {
@@ -226,5 +247,9 @@ public class ModelAndViewConfiguration {
 
     public List<Department> getDepartments() {
         return departments;
+    }
+
+    public List<File> getFiles() {
+        return files;
     }
 }

@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.*;
-import website.psuti.fist.model.Employee;
-import website.psuti.fist.model.MenuItemHeaderInMainPage;
-import website.psuti.fist.model.NewsOfFaculty;
-import website.psuti.fist.model.Pictures;
+import website.psuti.fist.model.*;
 import website.psuti.fist.service.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -28,22 +27,7 @@ public class MainController {
     //private final static Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
-    private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
-
-    @Autowired
-    private PicturesService picturesService;
-
-    @Autowired
-    private EducationProcessService educationProcessService;
-
-    @Autowired
-    private BestStudentService bestStudentService;
-
-    @Autowired
     private NewsFacultyService newsFacultyService;
-
-    @Autowired
-    private EmployeeService employeeService;
 
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
@@ -118,6 +102,13 @@ public class MainController {
     public ModelAndView aboutOfFaculty() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("faculty");
+        return modelAndView;
+    }
+
+    @RequestMapping("/groupLists")
+    public ModelAndView groupLists() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("groupLists");
         return modelAndView;
     }
 
@@ -214,4 +205,12 @@ public class MainController {
         modelAndView.setViewName("mainTrend");
         return modelAndView;
     }
+//TODO учебный процесс /////////////////////////////////////////////////////////////
+@RequestMapping("/gradStudents")
+public ModelAndView gradStudents() {
+    ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+    modelAndView.setViewName("gradStudents");
+    return modelAndView;
+}
+
 }

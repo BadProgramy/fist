@@ -117,4 +117,36 @@ public class EducationProcess {
     public void setPicturesRight(Pictures picturesRight) {
         this.picturesRight = picturesRight;
     }
+
+    public String getLeftMenuItemStyles() {
+        return leftMenuItemStyles;
+    }
+
+    public void setLeftMenuItemStyles(String leftMenuItemStyles) {
+        this.leftMenuItemStyles = leftMenuItemStyles;
+    }
+
+    public String getRightMenuItemStyles() {
+        return rightMenuItemStyles;
+    }
+
+    public void setRightMenuItemStyles(String rightMenuItemStyles) {
+        this.rightMenuItemStyles = rightMenuItemStyles;
+    }
+
+    public String getLeftPictureStyles() {
+        return leftPictureStyles;
+    }
+
+    public void setLeftPictureStyles(String leftPictureStyles) {
+        this.leftPictureStyles = leftPictureStyles;
+    }
+
+    public String getRightPictureStyles() {
+        return rightPictureStyles;
+    }
+
+    public void setRightPictureStyles(String rightPictureStyles) {
+        this.rightPictureStyles = rightPictureStyles;
+    }
 }

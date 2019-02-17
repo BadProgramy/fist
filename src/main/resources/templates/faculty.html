@@ -159,13 +159,13 @@
             <div class="row" style="padding-left: 5%">
 
                 <div class="col-md-2">
-                    <h3 th:utext="${ItemHeader8.getName()}"></h3>
+                    <h3 th:utext="${ItemHeader8.getName()}" th:style="${ItemHeader8.getStyles()}"></h3>
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
                                 <a data-dialog2="somedialog2" class="trigger">
                                     <i class="fa fa-map-marker"></i>
-                                    <span class="navigation-YK">Мы находимся<br><em class="navigation-YK">Яндекс карты</em></span>
+                                    <span class="navigation-YK">Мы находимся <br><em class="navigation-YK">Яндекс карты</em></span>
                                 </a>
                             </li>
                             <li class="tb-info">
@@ -179,10 +179,10 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <h3>Подписка</h3>
-                    <p>Введите свой email чтобы узнавать самый свежие новости о нас.</p>
+                    <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
+                    <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
                     <form class="newsletter">
-                        <input type="text" placeholder="Email адрес сюда..">
+                        <input type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
                         <button type="submit"><i class="fa fa-paper-plane"></i></button>
                     </form>
                 </div>
@@ -197,23 +197,23 @@
                 </div>-->
 
                 <div class="col-md-3">
-                    <h3>ФИСТ в социальных сетях</h3>
-                    <div class="site-fist"> <a href="https://vk.com/fist_psuti"><img src="/images/vk-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://www.instagram.com/fist.psuti/"><img src="/images/inst-logo.png" class="img-responsive" alt=""/></a> </div>
-                    <div class="site-fist"> <a href="https://twitter.com/fist_psuti"><img src="/images/twitter-logo.png" class="img-responsive" alt=""/></a> </div>
+                    <h3 th:utext="${ItemHeader10.getName()}" th:style="${ItemHeader10.getStyles()}"></h3>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_1.getUrlHref()}" th:title="${ItemHeader10_1.getName()}" th:style="${ItemHeader10_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_2.getUrlHref()}" th:title="${ItemHeader10_2.getName()}" th:style="${ItemHeader10_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_3.getUrlHref()}" th:title="${ItemHeader10_3.getName()}" th:style="${ItemHeader10_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                 </div>
 
-                <div class="col-md-4">
-                    <h3 >Подразделения ПГУТИ</h3>
+                <div class="col-md-3">
+                    <h3 th:utext="${ItemHeader12.getName()}" th:style="${ItemHeader12.getStyles()}"></h3>
                     <div class="row">
-                        <div class="big-logo"> <a href="https://www.psuti.ru/"><img src="/images/footer/logo-psuti.png" class="img-responsive" alt=""/></a> </div>
-                        <div class="big-logo"> <a href="https://abitur.psuti.ru"><img src="/images/footer/logo-priem.png" class="img-responsive" alt=""/></a> </div>
+                        <div class="big-logo"> <a th:href="${ItemHeader12_1.getUrlHref()}" th:title="${ItemHeader12_1.getName()}" th:style="${ItemHeader12_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                     </div>
-                    <div class="row" style="margin:0 auto">
-                        <div class="site-fist" > <a href="http://phone.psuti.ru/"><img src="/images/footer/phone-psuti.png" class="img-responsive" alt=""/></a> </div>
-                        <div class="site-fist" > <a href="http://lib.psuti.ru/"><img src="/images/footer/library.png" class="img-responsive" alt=""/></a> </div>
-                        <div class="site-fist" > <a href="http://cz.psuti.ru/"><img src="/images/footer/logo-pg.png" class="img-responsive" alt=""/></a> </div>
-                        <div class="site-fist" > <a href="https://vk.com/profkom_psuti"><img src="/images/footer/logo-profkom.png" class="img-responsive" alt=""/></a> </div>
+                    <div class="row" >
+                        <div class="site-fist" > <a th:href="${ItemHeader12_2.getUrlHref()}" th:title="${ItemHeader12_2.getName()}" th:style="${ItemHeader12_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_3.getUrlHref()}" th:title="${ItemHeader12_3.getName()}" th:style="${ItemHeader12_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_4.getUrlHref()}" th:title="${ItemHeader12_4.getName()}" th:style="${ItemHeader12_4.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_4.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_5.getUrlHref()}" th:title="${ItemHeader12_5.getName()}" th:style="${ItemHeader12_5.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_5.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_6.getUrlHref()}" th:title="${ItemHeader12_6.getName()}" th:style="${ItemHeader12_6.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_6.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
                     </div>
                 </div>
                 <!--<div class="col-md-3">
@@ -224,7 +224,7 @@
         <div class="footer-bottom container">
             <div class="row">
                 <div class="col-md-6">
-                    <p th:utext="${ItemHeader11.getName()}"></p>
+                    <p th:utext="${ItemHeader11.getName()}" th:style="${ItemHeader11.getStyles()}"></p>
                 </div>
             </div>
         </div>
@@ -262,16 +262,16 @@
                 <div class="col-md-6 pop-contact">
                     <ul class="contact-info">
                         <li>
-                            <p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №1:</strong> <span>г. Самара, Льва Толстого 23</span></p>
+                            <p><strong th:utext="${DialogItem1.getName()}" th:style="${DialogItem1.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem1_1.getName()}" th:style="${DialogItem1_1.getStyles()}"></span></p>
                         </li>
                         <li>
-                            <p><strong><i class="fa fa-map-marker"></i> Адрес корпуса №2:</strong> <span>г. Самара, Московское шоссе 77</span></p>
+                            <p><strong th:utext="${DialogItem2.getName()}" th:style="${DialogItem2.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem2_1.getName()}" th:style="${DialogItem2_1.getStyles()}"></span></p>
                         </li>
                         <li>
-                            <p><strong><i class="fa fa-envelope"></i> Сайт:</strong> <span><a href="#">fist.psuti.ru</a></span></p>
+                            <p><strong th:utext="${DialogItem3.getName()}" th:style="${DialogItem3.getStyles()}"><i class="fa fa-envelope"></i></strong> <span><a th:utext="${DialogItem3_1.getName()}" th:style="${DialogItem3_1.getStyles()}" th:href="${DialogItem3_1.getUrlHref()}"></a></span></p>
                         </li>
                         <li>
-                            <p><strong><i class="fa fa-phone"></i> Телефон:</strong> <span>+7(846) 228-00-05</span></p>
+                            <p><strong th:utext="${DialogItem4.getName()}" th:style="${DialogItem4.getStyles()}"><i class="fa fa-phone"></i></strong> <span th:utext="${DialogItem4_1.getName()}" th:style="${DialogItem4_1.getStyles()}"></span></p>
                         </li>
                     </ul>
                 </div>

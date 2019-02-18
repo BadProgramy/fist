@@ -153,7 +153,7 @@ public class AdminNewsFacultyController {
     private long savePicture(NewsOfFaculty newFaculty) throws IOException {
         writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
         Pictures pictures = new Pictures();
-        pictures.setUrlPicture(PathConstant.SAVE_PICTURE + newFaculty.getPictureFile().getOriginalFilename());
+        pictures.setUrlPicture(PathConstant.SAVE_PICTURE.getPath() + newFaculty.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
         pictures.setKeyPicture(-1);
         pictures.setPictureFile(newFaculty.getPictureFile().getBytes());
@@ -162,7 +162,7 @@ public class AdminNewsFacultyController {
     }
 
     private void writeFile(byte[] buffer, String filename) throws IOException {
-        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE + filename);
+        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();

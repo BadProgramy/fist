@@ -38,12 +38,22 @@ public class AdminPictureController {
         ModelAndView modelAndView = new ModelAndView("adminUpdatePicture");
         modelAndView.addObject("pictures", picturesService.getAll() );
         modelAndView.addObject("item", new Pictures());
-        item.setPictureFile(item.getPictureFileMultipart().getBytes());
         item.setNamePicture(item.getPictureFileMultipart().getOriginalFilename());
-        item.setUrlPicture(PathConstant.SAVE_PICTURE +item.getNamePicture());
-        writeFile(item.getPictureFile(), item.getNamePicture());
+        item.setUrlPicture(PathConstant.SAVE_PICTURE.getPath() +item.getNamePicture());
         item.setDate(LocalDate.parse(item.getDateStringLocalDate()));
+        if (!item.getPictureFileMultipart().isEmpty()) {
+            item.setPictureFile(item.getPictureFileMultipart().getBytes());
+            writeFile(item.getPictureFile(), item.getNamePicture());
+        } else {
+            //item.setPictureFile(picturesService.findPictureById(item.getId()).getPictureFile());
+            for (Map.Entry entry : modelAndViewConfiguration.getPicturesCache().entrySet()) {
+                if (entry.getKey().equals(item.getId()))
+                    item.setPictureFile((byte[]) entry.getValue());
+            }
+
+        }
         picturesService.update(item);
+        modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 
@@ -62,12 +72,12 @@ public class AdminPictureController {
     @RequestMapping(value = "/admin/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture, HttpServletResponse response) {
         byte[] b = getPicture(idPicture);
-        response.setHeader("cache-control", "max-age=86400000, must-revalidate");
+        //response.setHeader("cache-control", "max-age=86400000, must-revalidate");
         return b;
     }
 
     private void writeFile(byte[] buffer, String filename) throws IOException {
-        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE + filename);
+        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();

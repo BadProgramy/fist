@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.*;
 
@@ -14,26 +15,25 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class MainPageObjectConstant {
-    @Autowired
-    private static MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
 
-    @Autowired
-    private static PicturesService picturesService;
-
-    @Autowired
-    private static EducationProcessService educationProcessService;
-
-    @Autowired
-    private static BestStudentService bestStudentService;
-
-    @Autowired
-    private static NewsFacultyService newsFacultyService;
-
-    public static List<NameTableBD> checkModelAndView;
+    private static List<NameTableBD> checkModelAndView;
 
     static {
         if (checkModelAndView == null) {
             checkModelAndView = new ArrayList<>();
         }
+    }
+
+    public static void addCheck(NameTableBD nameTableBD) {
+        checkModelAndView.add(nameTableBD);
+        //modelAndViewConfiguration.initModelAndView();
+    }
+
+    public static List<NameTableBD> getCheckModelAndView() {
+        return checkModelAndView;
+    }
+
+    public static void clearCheckModel() {
+        checkModelAndView.clear();
     }
 }

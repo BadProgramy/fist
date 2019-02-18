@@ -54,7 +54,7 @@ public class DAOBestStudentImpl implements DAOBestStudent {
             id = session.insert("BestStudent.add", bestStudent);
             if (id == 1) {
                 id = session.selectOne("BestStudent.getLastIdInsert");
-                MainPageObjectConstant.checkModelAndView.add(NameTableBD.BEST_STUDENT);
+                MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class DAOBestStudentImpl implements DAOBestStudent {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("BestStudent.update", bestStudent);
-            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.BEST_STUDENT);
+            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -87,7 +87,7 @@ public class DAOBestStudentImpl implements DAOBestStudent {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("BestStudent.deleteById", id);
-            if (check == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.BEST_STUDENT);
+            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
         } finally {
             session.close();
         }

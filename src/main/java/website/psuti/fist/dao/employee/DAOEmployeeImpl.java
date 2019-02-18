@@ -49,7 +49,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
             id = session.insert("Employee.add", employee);
             if (id == 1) {
                 id = session.selectOne("Employee.getLastIdInsert");
-                MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
+                MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("Employee.update", employee);
-            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
+            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -84,7 +84,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("Employee.deleteById", id);
-            if (check == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.EMPLOYEE);
+            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
         } finally {
             session.close();
         }

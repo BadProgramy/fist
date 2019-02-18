@@ -45,7 +45,7 @@ public class DAOFileImpl implements DAOFile{
             id = session.insert("File.add", file);
             if (id == 1) {
                 id = session.selectOne("File.getLastIdInsert");
-                MainPageObjectConstant.checkModelAndView.add(NameTableBD.FILE);
+                MainPageObjectConstant.addCheck(NameTableBD.FILE);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,11 +57,36 @@ public class DAOFileImpl implements DAOFile{
 
     @Override
     public void update(File file) {
-
+        int id = -1;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.update("File.update", file);
+            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.FILE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public void delete(int id) {
 
+    }
+
+    @Override
+    public File findFileById(Long id) {
+        File file = null;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            RequestPostConnection.requestions(dataSource);
+            file = session.selectOne("File.findById", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return file;
     }
 }

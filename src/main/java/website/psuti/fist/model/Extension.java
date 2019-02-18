@@ -1,13 +1,13 @@
 package website.psuti.fist.model;
 
 public enum Extension {
-     APPLICATION_ATOM_XML_VALUE("application/atom+xml"),
+     /*APPLICATION_ATOM_XML_VALUE("application/atom+xml"),
      APPLICATION_FORM_URLENCODED_VALUE("application/x-www-form-urlencoded"),
      APPLICATION_JSON_VALUE("application/json"),
      APPLICATION_JSON_UTF8_VALUE("application/json),charset=UTF-8"),
-     APPLICATION_OCTET_STREAM_VALUE("application/octet-stream"),
-     APPLICATION_PDF_VALUE("application/pdf"),
-     APPLICATION_PROBLEM_JSON_VALUE("application/problem+json"),
+     APPLICATION_OCTET_STREAM_VALUE("application/octet-stream"),*/
+     APPLICATION_PDF_VALUE("application/pdf");
+     /*APPLICATION_PROBLEM_JSON_VALUE("application/problem+json"),
      APPLICATION_PROBLEM_JSON_UTF8_VALUE("application/problem+json),charset=UTF-8"),
      APPLICATION_PROBLEM_XML_VALUE("application/problem+xml"),
      APPLICATION_RSS_XML_VALUE("application/rss+xml"),
@@ -22,7 +22,7 @@ public enum Extension {
      TEXT_HTML_VALUE("text/html"),
      TEXT_MARKDOWN_VALUE("text/markdown"),
      TEXT_PLAIN_VALUE("text/plain"),
-     TEXT_XML_VALUE("text/xml");
+     TEXT_XML_VALUE("text/xml");*/
 
      private String type;
 

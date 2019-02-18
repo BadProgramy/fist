@@ -20,4 +20,12 @@ public class FileService {
     public long insert(File file) {
         return daoFile.insert(file);
     }
+
+    public void update(File file) {
+        daoFile.update(file);
+    }
+
+    public File findFileById(Long id) {
+        return daoFile.findFileById(id);
+    }
 }

@@ -60,7 +60,7 @@ public class DAOEducationProcessImpl implements DAOEducationProcess {
             if (id == 1) {
 /*                MainPageObjectConstant.checkModelAndView.add(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
                 MainPageObjectConstant.checkModelAndView.add(NameTableBD.PICTURES);*/
-                MainPageObjectConstant.checkModelAndView.add(NameTableBD.EDUCATION_PROCESS);
+                MainPageObjectConstant.addCheck(NameTableBD.EDUCATION_PROCESS);
             }
         } catch (SQLException e) {
             e.printStackTrace();

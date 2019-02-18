@@ -49,7 +49,7 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("MenuItemHeaderInMainPage.update", menuItemHeaderInMainPage);
-            if (id == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

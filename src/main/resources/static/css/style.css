@@ -22,10 +22,6 @@
 @font-face { font-family: 'FuturaPTCond-Bold';  src: local('FuturaPTCond-Bold'), url('https://nomail.com.ua/files/woff/ee7cdaca20cd76a504334698de5b63c4.woff') format('woff'); }
 
 
-
-#futuraptcondbold { font-family:'FuturaPTCond-Bold'; }
-.fontee7cdaca20cd76a504334698de5b63c4 { font-family: 'fontee7cdaca20cd76a504334698de5b63c4'; }
-
 /* 1. Global Styles */
 
 * {
@@ -50,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p{
+	/*font-family:'FedraSans-Book';*/
     /*font-family: 'Roboto', sans-serif;*/
     /*font-family: 'PT Sans Narrow', sans-serif;*/
 	font-family: 'Oswald', sans-serif;
@@ -450,7 +447,18 @@ h1 {
 	text-transform:uppercase;
 	font-weight:700;
 }
-
+.info-doc a{
+	font-size: 17px;
+}
+.info-doc p{
+	line-height: 1.5;
+}
+.info-doc .row{
+	margin-bottom: 10px;
+}
+.info-doc h2{
+	margin-bottom: 20px;
+}
 /*=============================================*/
 .ban:hover img{
 	opacity: 0.2;
@@ -726,7 +734,9 @@ display: unset;
 	width: 350px;
 	height:350px;
 }
-
+.oval-photo img{
+	border-radius: 350px;
+}
 /* 4.2. ========== About-Us Section End ==========*/
 
 /* 4.3. ========== Services Section Start ==========*/
@@ -2619,11 +2629,27 @@ margin:0 0 35px;
 }
 .about-info h3 {
 	margin:0 0 20px;
-	font-size:35px;
+	font-size:20px;
+}
+.reducedPhoto .row{
+	margin-bottom: 20px;
 }
 .about-info h4 {
-	margin:0 0 5px;
-	font-size:20px;
+font-weight: 500;
+	font-size: 17px;
+	padding-top: 10px;
+	line-height: 1.5;
+	/* text-align: center; */
+	text-transform: uppercase;
+}
+
+.about-info h5{
+	font-family: FuturaPTCond-Bold;
+	font-weight: 600;
+	font-size: 30px;
+	padding-top: 10px;
+	line-height: 1.5;
+	text-transform: uppercase;
 }
 
 .employeeChar img {
@@ -2632,7 +2658,7 @@ margin:0 0 35px;
 .about-info p {
 font-size:15px;
 line-height:28px;
-margin:0 0 25px;
+/*margin:0 0 25px;*/
 }
 
 .panel-default > .panel-heading {

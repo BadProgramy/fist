@@ -213,4 +213,11 @@ public ModelAndView gradStudents() {
     return modelAndView;
 }
 
+    @RequestMapping("/interimControl")
+    public ModelAndView interimControl() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("interimControl");
+        return modelAndView;
+    }
+
 }

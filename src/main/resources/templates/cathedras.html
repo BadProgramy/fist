@@ -103,14 +103,15 @@
     </header>
 
     <!-- INNER CONTENT -->
-    <section id="content">
+    <section id="content" class="oval-photo">
         <div class="page_header page_header2 text-center">
             <h2 th:utext="${departmentName.getName()}"></h2>
         </div>
         <div class="container reducedPhoto">
-            <div class="row" th:each="department : ${departments}">
+            <!--<div class="row" th:each="department : ${departments}">
                 <div class="col-md-6">
                     <img th:src="@{'/employees/picture/' + ${department.getIdPicture()}}" class="img-responsive static-image" alt=""/>
+
                 </div>
                 <div class="col-md-6 about-info">
                     <h3 th:utext="${department.getNameDepartment()}"></h3>
@@ -120,19 +121,55 @@
                     <p th:utext="${department.getPhone()}"></p>
                     <p th:utext="${department.getEmail()}"></p>
                 </div>
-            </div>
-            <!--<div class="row">
-                <div class="col-md-6">
-                    <img src="/images/cathedras/tarasov.jpg" class="img-responsive static-image" alt=""/>
+            </div>-->
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 about-info">
+                        <h5>Кафедра"Информатики и вычислительной техники" (ИВТ)</h5>
+                        <p>Кафедра Информатики и вычислительной техники (ИВТ) была образована в 2004 году в результате реорганизации кафедры Вычислительной техники, созданной в 1976 году под названием "Вычислительная техника и АСУ".<br>
+                            Кафедра ИВТ обеспечивает цифровую экономику компетентными кадрами по направлению подготовки:<br>
+                            • 09.04.01 Информатика и вычислительная техника (уровень магистратуры), направленность (профиль) «Информатика и вычислительная техника», очная и заочная формы обучения.
+                        </p>
+                        <p>адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-133</p>
+                        <h4>Заведующий кафедрой:</h4>
+                        <div class="row">
+                        <div class="col-md-2"><img src="/images/cathedras/baxareva.jpg" class="img-responsive static-image" alt=""/> </div>
+                        <div class="col-md-8">
+                            <h5>д.т.н., профессор Бахарева Надежда Федоровна</h5>
+                            <p>тел.: (846) 339-11-31</p>
+                            <p>e-mail: bahareva-nf@psuti.ru</p>
+                        </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 about-info">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 about-info">
+                            <h5>Кафедра"Информатики и вычислительной техники" (ИВТ)</h5>
+                            <p>Кафедра Информатики и вычислительной техники (ИВТ) была образована в 2004 году в результате реорганизации кафедры Вычислительной техники, созданной в 1976 году под названием "Вычислительная техника и АСУ".<br>
+                                Кафедра ИВТ обеспечивает цифровую экономику компетентными кадрами по направлению подготовки:<br>
+                                • 09.04.01 Информатика и вычислительная техника (уровень магистратуры), направленность (профиль) «Информатика и вычислительная техника», очная и заочная формы обучения.
+                            </p>
+                            <p>адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-133</p>
+                            <h4>Заведующий кафедрой:</h4>
+                            <div class="row">
+                                <div class="col-md-2"><img src="/images/cathedras/tarasov.jpg" class="img-responsive static-image" alt=""/> </div>
+                                <div class="col-md-8">
+                                    <h5>д.т.н., профессор Бахарева Надежда Федоровна</h5>
+                                    <p>тел.: (846) 339-11-31</p>
+                                    <p>e-mail: bahareva-nf@psuti.ru</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>Кафедра "Программного обеспечения и управления в технических системах" (ПОУТС)</h3>
                     <br>
                     <h4>Зав. кафедрой: д.т.н., профессор Тарасов Вениамин Николаевич </h4>
                     <p>адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-35</p>
                     <p>тел.: (846) 228-00-13</p>
                     <p>e-mail: veniamin_tarasov@mail.ru</p>
-                </div>
+
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -198,7 +235,7 @@
                     <p>тел.: (846) 228-00-65</p>
                     <p>e-mail: m838om@mail.ru</p>
                 </div>
-            </div>-->
+            </div>
         </div>
     </section>
 

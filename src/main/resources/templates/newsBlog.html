@@ -105,16 +105,17 @@
     <!-- INNER CONTENT -->
     <section id="content">
         <div class="content-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="page_header text-center">
-                        <h2 th:object="${ItemHeader1_3}" th:utext="${ItemHeader1_3.getName()}"></h2>
-                        <p th:object="${ItemHeader1_2}" th:utext="${ItemHeader1_2.getName()}"></p>
-                    </div>
-                    <div class="col-md-9">
+            <div class="container ">
+                    <div class="col-md-7 col-md-offset-2">
+                        <div class="row">
+                            <div class="page_header text-center">
+                                <h2 th:object="${ItemHeader1_3}" th:utext="${ItemHeader1_3.getName()}"></h2>
+                                <p th:object="${ItemHeader1_2}" th:utext="${ItemHeader1_2.getName()}"></p>
+                            </div>
+                        </div>
                         <div th:each="newFaculty : ${resultTopic}">
-                            <article class="blogpost wid50">
-                                <div>
+                            <article class="blogpost">
+                                <div class="img-container">
                                     <img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt="">
                                 </div>
                                 <h2 class="post-title"><a th:utext="${newFaculty.getHeading()}"></a></h2>
@@ -128,18 +129,6 @@
 
                             <div class="blog-sep"></div>
                         </div>
-                        <!--<article class="blogpost">
-                            <div class="post-media">
-                                <img src="images/kap1.jpg" class="img-responsive" alt="">
-                            </div>
-                            <h2 class="post-title"><a >Итоги промежуточного контроля</a></h2>
-                            <div class="post-meta">
-                                <span><a ><i class="fa fa-calendar"></i> 26 Июня</a></span>
-                            </div>
-                            <div class="post-excerpt">
-                                <a href="http://fist.psuti.ru/index.php/456-itogi-promezhutochnogo-kontrolya-1-semestra-2018-2019-uch-goda" >Ссылка</a>
-                            </div>
-                        </article>-->
 
                         <!-- Pagination -->
                         <div class="page_nav" th:object="${pageCount}">
@@ -175,7 +164,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <div class="clearfix space70"></div>
@@ -335,9 +323,39 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
-<!--<script src="js/jquery.prettyphoto.js"></script>-->
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<script src="/js/student_character.js"></script>
+<script>
+    jQuery(function ($) {
+        function fix_size() {
+            var images = $('.img-container img');
+            images.each(setsize);
+
+            function setsize() {
+                var img = $(this),
+                    img_dom = img.get(0),
+                    container = img.parents('.img-container');
+                if (img_dom.complete) {
+                    resize();
+                } else img.one('load', resize);
+
+                function resize() {
+                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
+                        img.width('100%');
+                        img.height('auto');
+                    } else {
+                        img.height('100%');
+                        img.width('auto');
+                    }
+                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
+                    /*console.log(marginx);*/
+                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
+
+                }
+            }
+        }
+        $(window).on('resize', fix_size);
+        fix_size();
+    });</script>
 </body>
 </html>

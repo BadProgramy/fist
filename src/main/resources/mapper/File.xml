@@ -7,7 +7,7 @@
     <resultMap id="result" type="File">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="uniqueNameUUID" column="unique_nameuuid"/>
+        <result property="uniqueName" column="unique_name"/>
         <result property="extension" column="extension"/>
         <result property="date" column="date"/>
     </resultMap>
@@ -17,12 +17,24 @@
     </select>
 
     <insert id="add" parameterType="File">
-        insert into files(date, extension, name, unique_nameuuid)
-        values (#{date}, #{extension}, #{name}, #{uniqueNameUUID});
+        insert into files(date, extension, name, unique_name)
+        values (#{date}, #{extension}, #{name}, #{uniqueName});
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
         SELECT LAST_INSERT_ID() FROM files LIMIT 1;
     </select>
 
+    <update id="update" parameterType="File">
+        update files SET
+        date = #{date},
+        extension = #{extension},
+        name = #{name},
+        unique_name = #{uniqueName}
+        where id = #{id};
+    </update>
+
+    <select id="findById" parameterType="Long" resultMap="result">
+        SELECT * from files where id = #{id};
+    </select>
 </mapper>

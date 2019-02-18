@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор новостей</title>
+    <title>Редактор фотографий</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/reset.css">
+    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -47,7 +48,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -122,75 +123,35 @@
             </div>
         </div>
     </header>
-
-    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-            <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить файл</a></li>
-                <!--<li><a href="#0">New account</a></li>-->
-            </ul>
-
-            <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/files/add/submit}" th:object="${file}" method="post" class="cd-form" enctype="multipart/form-data">
-                    <fieldset>
-                        <p class="fieldset black_p">
-                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
-                            <input type="date" th:value="${file.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                        </p>
-
-                        <p class="fieldset black_p">
-                            <input type="file" id="file" name="file" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
-                        </p>
-
-                        <p class="fieldset black_p">
-                            <select id="extension" name="extension" required>
-                                <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
-                            </select>
-                        </p>
-
-                        <!--<input name="date" type="hidden" th:field="*{date}">-->
-                        <!--<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">-->
-                        <p class="fieldset black_p">
-
-                            <button class="full-width" type="submit">Добавить</button>
-                        </p>
-                    </fieldset>
-                </form>
-            </div> <!-- cd-login -->
-
-        </div> <!-- cd-user-modal-container -->
-    </div> <!-- cd-user-modal -->
-    <h2>Редактировать файл</h2>
+    <h3 class="text-center padding5p">Меню сайта</h3>
+    <form method="post" id="myform"></form>
     <table class="color">
         <tr>
             <th>Идентификатор</th>
-            <th>Дата создание</th>
-            <th>Тип файла</th>
-            <th>Навзание</th>
-            <th>Название файла</th>
-            <th>Вложенный файл</th>
+            <th>Название картинки</th>
+            <th>Путь к картинке на сервере</th>
+            <th>Дата создания</th>
+            <th>Ссылка</th>
+            <th>Стили для картинки</th>
+            <th>Картинка</th>
             <th id="labelUpdateMenuItem">Действие</th>
         </tr>
-        <tr th:each="file : ${files}">
-            <form th:action="@{/admin/files/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <td><input id="id" class="menuItemTables" name="id" th:value="${file.getId()}" readonly></td>
-                <td><input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}"></td>
-                <td><input class="menuItemTables" id="extension"  name="extension" th:value="${file.getExtension()}"></td>
-                <td><input class="menuItemTables" id="name" name="name" th:value="${file.getName()}"></td>
-
-                <td><input class="menuItemTables" name="uniqueName" id="uniqueName" th:value="${file.getUniqueName()}" readonly></td>
+        <tr th:each="picture : ${pictures}">
+            <form th:action="@{/admin/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
+                <td><input id="id" class="menuItemTables" name="id" th:value="${picture.getId()}" readonly></td>
+                <td><input id="namePicture" class="menuItemTables" name="namePicture" th:value="${picture.getNamePicture()}"></td>
+                <td><input id="urlPicture" class="menuItemTables" name="urlPicture" th:value="${picture.getUrlPicture()}"></td>
+                <td><input type="date" id="dateStringLocalDate" class="menuItemTables" name="dateStringLocalDate" th:value="${picture.getDate()}"></td>
+                <td><input id="href" class="menuItemTables" name="href" th:value="${picture.getHref()}"></td>
+                <td><input id="styles" class="menuItemTables" name="styles" th:value="${picture.getStyles()}"></td>
                 <td>
-                    <a th:href="@{'/files/id=' + ${file.getId()}}" alt="">Ссылка на файл для просмотра</a>
-                    <input type="file" accept=".jpg, .jpeg, .png" id="file" name="file" style="height: 60px; width: 100%;"/>
+                    <img th:src="@{'/admin/picture/' + ${picture.getId()}}" alt="">
+                    <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;"/>
                 </td>
                 <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>
             </form>
         </tr>
     </table>
-
-    <div class="close-btn fa fa-times"></div>
 </div>
 
 <!-- Javascript -->

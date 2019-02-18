@@ -11,4 +11,6 @@ public interface DAOFile {
     long insert (File file);
     void update(File file);
     void delete(int id);
+
+    File findFileById(Long id);
 }

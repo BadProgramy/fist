@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.constant.NewsFacultyConstant;
+import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.NewsFacultyService;
@@ -150,9 +151,9 @@ public class AdminNewsFacultyController {
     }
 
     private long savePicture(NewsOfFaculty newFaculty) throws IOException {
-        //writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
+        writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
         Pictures pictures = new Pictures();
-        pictures.setUrlPicture(/*"images\\downloadNewsPicture\\" + */newFaculty.getPictureFile().getOriginalFilename());
+        pictures.setUrlPicture(PathConstant.SAVE_PICTURE + newFaculty.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
         pictures.setKeyPicture(-1);
         pictures.setPictureFile(newFaculty.getPictureFile().getBytes());
@@ -160,10 +161,10 @@ public class AdminNewsFacultyController {
         return picturesService.insert(pictures);
     }
 
-    /*private void writeFile(byte[] buffer, String filename) throws IOException {
-        FileOutputStream fos = new FileOutputStream("src\\main\\resources\\static\\images\\downloadNewsPicture\\" + filename);
+    private void writeFile(byte[] buffer, String filename) throws IOException {
+        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
-    }*/
+    }
 }

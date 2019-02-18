@@ -85,11 +85,11 @@ public class ModelAndViewConfiguration {
             updateFile();
 
             return modelAndView;
-        } else if (MainPageObjectConstant.checkModelAndView.size() > 0) {
-            for (NameTableBD change : MainPageObjectConstant.checkModelAndView) {
+        } else if (MainPageObjectConstant.getCheckModelAndView().size() > 0) {
+            for (NameTableBD change : MainPageObjectConstant.getCheckModelAndView()) {
                 changeModel(change);
             }
-            MainPageObjectConstant.checkModelAndView.clear();
+            MainPageObjectConstant.clearCheckModel();
             return modelAndView;
         } else return modelAndView;
     }
@@ -178,6 +178,8 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("ItemHeader1_2", getItemById(items, MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
         modelAndView.addObject("deanTeamName", getItemById(items, MainPageConstant.DEAN_TEAM_NAME.getId()));//Состав деканата
         modelAndView.addObject("departmentName", getItemById(items, MainPageConstant.DEPARTMENT.getId()));//кафедры
+
+        modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
     }
 
     private void updateNewsOfFacultyTable() {
@@ -190,9 +192,10 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
         modelAndView.addObject("ItemHeaderPictureSplit", getItemById(listPictures, MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
         modelAndView.addObject("logotipPSUTI", getItemById(listPictures, MainPageConstant.LOGOTIP_PSUTI.getId()));
-        if (picturesCache != null) {
-            picturesCache.clear();
+        if (picturesCache != null)
+        {
             picturesCache = new HashMap<>();
+            picturesCache.clear();
             for (Pictures pictures : picturesService.getAll()) {
                 picturesCache.put(pictures.getId(), pictures.getPictureFile());
             }
@@ -251,5 +254,9 @@ public class ModelAndViewConfiguration {
 
     public List<File> getFiles() {
         return files;
+    }
+
+    public HashMap<Long, byte[]> getPicturesCache() {
+        return picturesCache;
     }
 }

@@ -45,7 +45,7 @@ public class DAOPicturesImpl implements DAOPictures {
             id = session.insert("Pictures.add", pictures);
             if (id == 1) {
                 id = session.selectOne("Pictures.getLastIdInsert");
-                MainPageObjectConstant.checkModelAndView.add(NameTableBD.PICTURES);
+                MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,7 +62,7 @@ public class DAOPicturesImpl implements DAOPictures {
         try {
             RequestPostConnection.requestions(dataSource);
             check = session.update("Pictures.update", pictures);
-            if (check == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.PICTURES);
+            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -76,7 +76,7 @@ public class DAOPicturesImpl implements DAOPictures {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("Pictures.deleteById", id);
-            if (check == 1) MainPageObjectConstant.checkModelAndView.add(NameTableBD.PICTURES);
+            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
         } finally {
             session.close();
         }

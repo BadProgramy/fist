@@ -14,7 +14,7 @@ public class File {
     private Long id;
     private String name;
     @Column(unique = true)
-    private String uniqueNameUUID;
+    private String uniqueName;
     @Enumerated(EnumType.STRING)
     private Extension extension;
     private LocalDate date;
@@ -45,12 +45,12 @@ public class File {
         this.name = name;
     }
 
-    public String getUniqueNameUUID() {
-        return uniqueNameUUID;
+    public String getUniqueName() {
+        return uniqueName;
     }
 
-    public void setUniqueNameUUID(String uniqueNameUUID) {
-        this.uniqueNameUUID = uniqueNameUUID;
+    public void setUniqueName(String uniqueName) {
+        this.uniqueName = uniqueName;
     }
 
     public Extension getExtension() {

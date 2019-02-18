@@ -28,6 +28,12 @@ public class Pictures {
     @Column(columnDefinition="longblob")
     private byte[] pictureFile;
 
+    @Transient
+    private String dateStringLocalDate;
+
+    @Transient
+    private MultipartFile pictureFileMultipart;
+
     public Pictures() {
         date = LocalDate.now();
     }
@@ -108,5 +114,21 @@ public class Pictures {
 
     public void setStyles(String styles) {
         this.styles = styles;
+    }
+
+    public String getDateStringLocalDate() {
+        return dateStringLocalDate;
+    }
+
+    public void setDateStringLocalDate(String dateStringLocalDate) {
+        this.dateStringLocalDate = dateStringLocalDate;
+    }
+
+    public MultipartFile getPictureFileMultipart() {
+        return pictureFileMultipart;
+    }
+
+    public void setPictureFileMultipart(MultipartFile pictureFileMultipart) {
+        this.pictureFileMultipart = pictureFileMultipart;
     }
 }

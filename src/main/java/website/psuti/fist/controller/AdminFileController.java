@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
+import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.Extension;
 import website.psuti.fist.model.File;
 import website.psuti.fist.service.FileService;
@@ -49,7 +50,7 @@ public class AdminFileController {
     }
 
     private void writeFile(byte[] buffer, String filename) throws IOException {
-        FileOutputStream fos = new FileOutputStream("src\\main\\resources\\files\\" + filename);
+        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_FILE + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
@@ -70,7 +71,7 @@ public class AdminFileController {
     @ResponseBody
     @RequestMapping(value = "/files/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE)
     private byte[] outputPDFFile(@PathVariable("fileNameUnique") String fileNameUnique) throws IOException {
-        java.io.File ff = new java.io.File("src\\main\\resources\\files\\" + fileNameUnique);
+        java.io.File ff = new java.io.File(PathConstant.SAVE_FILE + fileNameUnique);
         return Files.readAllBytes(ff.toPath());
     }
 }

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.BestStudent;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.BestStudentService;
 import website.psuti.fist.service.PicturesService;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -92,9 +94,10 @@ public class AdminBestStudentsController {
     }
 
     private long savePicture(BestStudent bestStudent) throws IOException {
-        writeFile(bestStudent.getPictureFile().getBytes(), bestStudent.getPictureFile().getOriginalFilename());
+        if (!bestStudent.getPictureFile().isEmpty())
+            writeFile(bestStudent.getPictureFile().getBytes(), bestStudent.getPictureFile().getOriginalFilename());
         Pictures pictures = new Pictures();
-        pictures.setUrlPicture("images\\downloadNewsPicture\\" + bestStudent.getPictureFile().getOriginalFilename());
+        pictures.setUrlPicture(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + bestStudent.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
         pictures.setKeyPicture(3);
         pictures.setPictureFile(bestStudent.getPictureFile().getBytes());
@@ -103,7 +106,8 @@ public class AdminBestStudentsController {
     }
 
     private void writeFile(byte[] buffer, String filename) throws IOException {
-        FileOutputStream fos = new FileOutputStream("src\\main\\resources\\static\\images\\downloadNewsPicture\\" + filename);
+        //new File(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + filename).mkdir();
+        FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();

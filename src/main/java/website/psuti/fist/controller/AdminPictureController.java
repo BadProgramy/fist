@@ -13,6 +13,7 @@ import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.PicturesService;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -77,6 +78,7 @@ public class AdminPictureController {
     }
 
     private void writeFile(byte[] buffer, String filename) throws IOException {
+        //new File(PathConstant.SAVE_PICTURE.getPath() + filename).mkdir();
         FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);

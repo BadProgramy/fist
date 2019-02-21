@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import website.psuti.fist.constant.MainPageObjectConstant;
 import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
+import website.psuti.fist.model.KeyPicture;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.RequestPostConnection;
 
@@ -84,12 +85,12 @@ public class DAOPicturesImpl implements DAOPictures {
     }
 
     @Override
-    public List<Pictures> findPicturesByKey(long keyPicture) {
+    public List<Pictures> findPicturesByKey(KeyPicture keyPicture) {
         List<Pictures> pictures = null;
         SqlSession session = factory.getFactory().openSession();
         try {
             RequestPostConnection.requestions(dataSource);
-            pictures = session.selectList("Pictures.selectPicturesByKey", keyPicture);
+            pictures = session.selectList("Pictures.selectPicturesByKey", keyPicture.toString());
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

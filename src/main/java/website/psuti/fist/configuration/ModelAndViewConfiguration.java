@@ -189,7 +189,7 @@ public class ModelAndViewConfiguration {
     private void updatePicturesTable() {
         List<Pictures> listPictures = picturesService.getAll();
         modelAndView.addObject("logotipFIST", getItemById(listPictures, MainPageConstant.LOGOTIP_FIST.getId()));
-        modelAndView.addObject("slider", picturesService.findPicturesByKey(MainPageConstant.SLIDER_1.getKeyPicture()));//слайдеры на месте вывода список направлений подготовки
+        modelAndView.addObject("slider", picturesService.findPictureById(MainPageConstant.SLIDER_1.getId()));
         modelAndView.addObject("ItemHeaderPictureSplit", getItemById(listPictures, MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
         modelAndView.addObject("logotipPSUTI", getItemById(listPictures, MainPageConstant.LOGOTIP_PSUTI.getId()));
         if (picturesCache != null)

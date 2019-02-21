@@ -9,15 +9,16 @@
         <result property="idPage" column="id_page"/>
         <result property="namePicture" column="name_picture"/>
         <result property="urlPicture" column="url_picture"/>
+        <result property="href" column="href"/>
         <result property="date" column="date"/>
         <result property="keyPicture" column="key_picture"/>
         <result property="pictureFile" column="picture_file"/>
-
+        <result property="styles" column="styles"/>
     </resultMap>
 
     <insert id="add" parameterType="Pictures">
-        INSERT INTO pictures(date, id_page, key_picture, url_picture, name_picture, picture_file)
-        VALUES (#{date}, #{idPage}, #{keyPicture}, #{urlPicture}, #{namePicture}, #{pictureFile});
+        INSERT INTO pictures(date, id_page, key_picture, url_picture, href, name_picture, picture_file, styles)
+        VALUES (#{date}, #{idPage}, #{keyPicture}, #{urlPicture}, #{href}, #{namePicture}, #{pictureFile}, #{styles});
     </insert>
 
     <update id="update" parameterType="Pictures">
@@ -26,8 +27,10 @@
         id_page = #{idPage},
         key_picture = #{keyPicture},
         url_picture = #{urlPicture},
+        href = #{href},
         name_picture = #{namePicture},
-        picture_file = #{pictureFile}
+        picture_file = #{pictureFile},
+        styles = #{styles}
         WHERE id = #{id};
     </update>
 
@@ -39,8 +42,8 @@
         SELECT * FROM pictures;
     </select>
 
-    <select id="selectPicturesByKey" parameterType="long" resultMap="result">
-        SELECT * FROM pictures where pictures.key_picture = #{keyPicture};
+    <select id="selectPicturesByKey" parameterType="String" resultMap="result">
+        SELECT * FROM pictures where key_picture = #{keyPicture};
     </select>
 
     <select id="selectPicturesByName" parameterType="String" resultMap="result">
@@ -52,7 +55,7 @@
     </select>
 
     <delete id="deleteById" parameterType="long">
-        DELETE FROM fist.pictures where id = #{id};
+        DELETE FROM pictures where id = #{id};
     </delete>
 
 </mapper>

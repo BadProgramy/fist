@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import website.psuti.fist.dao.pictures.DAOPictures;
+import website.psuti.fist.model.KeyPicture;
 import website.psuti.fist.model.Pictures;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class PicturesService {
     }
 
     @Transactional
-    public List<Pictures> findPicturesByKey(long keyPicture) {
+    public List<Pictures> findPicturesByKey(KeyPicture keyPicture) {
         return daoPictures.findPicturesByKey(keyPicture);
     }
 

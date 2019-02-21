@@ -9,7 +9,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,800,900);
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC);
 @import url(https://fonts.googleapis.com/css?family=Oswald);
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
 @font-face {
 	font-family: 'fontee7cdaca20cd76a504334698de5b63c4';
@@ -46,9 +45,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p{
-	/*font-family:'FedraSans-Book';*/
-    /*font-family: 'Roboto', sans-serif;*/
-    /*font-family: 'PT Sans Narrow', sans-serif;*/
 	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
 	line-height: 23px;
@@ -120,7 +116,6 @@ a:hover {
 }
 .site-fist img{
 	border-radius: 100px;
-	border: 1px solid white;
 }
 .big-logo{
 	float: left;
@@ -939,7 +934,9 @@ display: unset;
 .service-info h4 {
     z-index: 999;
 }
-
+.service-left .service-info{
+    width: 70%;
+}
 .service-info h4:hover {
     opacity:1;
     z-index:99;

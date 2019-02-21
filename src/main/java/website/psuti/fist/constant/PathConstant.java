@@ -3,7 +3,7 @@ package website.psuti.fist.constant;
 import java.io.IOException;
 
 public enum PathConstant {
-    SAVE_PICTURE(""),//"src\\main\\resources\\downloadPictures\\
+    SAVE_PICTURE("src\\main\\resources\\downloadPictures\\"),//"src\\main\\resources\\downloadPictures\\
     SAVE_PICTURE_NEWS_FACULTY(""),//downloadPictures\newsFaculty\
     SAVE_PICTURE_BEST_STUDENT(""),//downloadPictures\bestStudents\
     SAVE_FILE("");//files\

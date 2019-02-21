@@ -177,7 +177,11 @@
             <form th:action="@{/admin/files/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                 <td><input id="id" class="menuItemTables" name="id" th:value="${file.getId()}" readonly></td>
                 <td><input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}"></td>
-                <td><input class="menuItemTables" id="extension"  name="extension" th:value="${file.getExtension()}"></td>
+                <td><!--<input class="menuItemTables" id="extension"  name="extension" th:value="${file.getExtension()}">-->
+                    <select id="extension" name="extension" required>
+                        <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                    </select>
+                </td>
                 <td><input class="menuItemTables" id="name" name="name" th:value="${file.getName()}"></td>
 
                 <td><input class="menuItemTables" name="uniqueName" id="uniqueName" th:value="${file.getUniqueName()}" readonly></td>

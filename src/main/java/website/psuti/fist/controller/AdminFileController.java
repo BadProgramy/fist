@@ -30,7 +30,7 @@ public class AdminFileController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/admin/files/add")
+    @RequestMapping("/admin/files/update")
     public ModelAndView addFile() {
         ModelAndView modelAndView = new ModelAndView("adminUpdateFile");
         modelAndView.addObject("file", new File());

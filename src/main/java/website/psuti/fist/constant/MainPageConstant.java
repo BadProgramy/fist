@@ -1,5 +1,7 @@
 package website.psuti.fist.constant;
 
+import website.psuti.fist.model.KeyPicture;
+
 //Этот файл нельзя менять без ведома разработчика, так как от их имени зависит управление html контентом!!!
 //Добавлять можно
 public enum MainPageConstant {
@@ -9,9 +11,9 @@ public enum MainPageConstant {
     LOCATION(96L),
     LOGOTIP_PSUTI(1L),
     LOGOTIP_FIST(40L),
-    SLIDER_1("Слайдер №1", 1L),
-    SLIDER_2("Слайдер №2", 1L),
-    SLIDER_3("Слайдер №3", 1L),
+    SLIDER_1(3),
+/*    SLIDER_2("Слайдер №2", KeyPicture.OTHER),
+    SLIDER_3("Слайдер №3", KeyPicture.OTHER),*/
     ITEM_HEADER_PICTURE_SPLIT(6L),
     MOBILE_MENU(44L),
     HEADER_NEWS(45L),
@@ -59,7 +61,7 @@ public enum MainPageConstant {
     private long id;
     private String name;
     private String url;
-    private Long keyPicture;
+    private KeyPicture keyPicture;
     private String keyWord;
 
     MainPageConstant() {
@@ -78,7 +80,7 @@ public enum MainPageConstant {
         this.name = name;
     }
 
-    MainPageConstant(String name, Long keyPicture) {
+    MainPageConstant(String name, KeyPicture keyPicture) {
         this.name = name;
         this.keyPicture = keyPicture;
     }
@@ -104,11 +106,11 @@ public enum MainPageConstant {
         this.name = name;
     }
 
-    public Long getKeyPicture() {
+    public KeyPicture getKeyPicture() {
         return keyPicture;
     }
 
-    public void setKeyPicture(Long keyPicture) {
+    public void setKeyPicture(KeyPicture keyPicture) {
         this.keyPicture = keyPicture;
     }
 

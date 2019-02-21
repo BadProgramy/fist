@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.BestStudent;
+import website.psuti.fist.model.KeyPicture;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.BestStudentService;
 import website.psuti.fist.service.PicturesService;
@@ -99,7 +100,7 @@ public class AdminBestStudentsController {
         Pictures pictures = new Pictures();
         pictures.setUrlPicture(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + bestStudent.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
-        pictures.setKeyPicture(3);
+        pictures.setKeyPicture(KeyPicture.BEST_STUDENT);
         pictures.setPictureFile(bestStudent.getPictureFile().getBytes());
         pictures.setNamePicture(bestStudent.getPictureFile().getOriginalFilename());
         return picturesService.insert(pictures);

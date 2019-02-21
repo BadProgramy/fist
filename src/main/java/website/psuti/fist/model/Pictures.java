@@ -18,7 +18,8 @@ public class Pictures {
     private long idPage;
     private String urlPicture;
     private LocalDate date;
-    private long keyPicture; //
+    @Enumerated(EnumType.STRING)
+    private KeyPicture keyPicture; //
     private String href;
 
     @Column
@@ -84,11 +85,11 @@ public class Pictures {
         this.date = date;
     }
 
-    public long getKeyPicture() {
+    public KeyPicture getKeyPicture() {
         return keyPicture;
     }
 
-    public void setKeyPicture(long keyPicture) {
+    public void setKeyPicture(KeyPicture keyPicture) {
         this.keyPicture = keyPicture;
     }
 

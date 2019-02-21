@@ -1,6 +1,7 @@
 package website.psuti.fist.dao.pictures;
 
 import org.apache.ibatis.annotations.Mapper;
+import website.psuti.fist.model.KeyPicture;
 import website.psuti.fist.model.Pictures;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public interface DAOPictures {
     int delete(long id);
 
     Pictures findPictureById(long id);
-    List<Pictures> findPicturesByKey(long keyPicture);
+    List<Pictures> findPicturesByKey(KeyPicture keyPicture);
     Pictures findPictureByName(String namePicture);
 }

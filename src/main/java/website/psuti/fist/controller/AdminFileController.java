@@ -32,7 +32,7 @@ public class AdminFileController {
 
     @RequestMapping("/admin/table/files/update")
     public ModelAndView addFile() {
-        ModelAndView modelAndView = new ModelAndView("adminUpdateFile");
+        ModelAndView modelAndView = new ModelAndView("adminTableUpdateFile");
         modelAndView.addObject("file", new File());
         modelAndView.addObject("files", fileService.getAll());
         modelAndView.addObject("extensions", Extension.values());

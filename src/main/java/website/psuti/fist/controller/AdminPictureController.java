@@ -43,7 +43,7 @@ public class AdminPictureController {
         model.addAttribute("picture", new Pictures());
         model.addAttribute("keyPictures", KeyPicture.values());
         model.addAttribute("item", new Pictures());
-        return "adminUpdatePicture";
+        return "adminTableUpdatePicture";
     }
 
     @RequestMapping("/admin/table/picture/bestStudent/update")
@@ -52,7 +52,7 @@ public class AdminPictureController {
         model.addAttribute("picture", new Pictures());
         model.addAttribute("keyPictures", KeyPicture.values());
         model.addAttribute("item", new Pictures());
-        return "adminUpdatePicture";
+        return "adminTableUpdatePicture";
     }
 
     @RequestMapping("/admin/table/picture/deanTeam/update")
@@ -61,7 +61,7 @@ public class AdminPictureController {
         model.addAttribute("picture", new Pictures());
         model.addAttribute("keyPictures", KeyPicture.values());
         model.addAttribute("item", new Pictures());
-        return "adminUpdatePicture";
+        return "adminTableUpdatePicture";
     }
 
     @RequestMapping("/admin/table/picture/topicFaculty/update")
@@ -70,7 +70,7 @@ public class AdminPictureController {
         model.addAttribute("picture", new Pictures());
         model.addAttribute("keyPictures", KeyPicture.values());
         model.addAttribute("item", new Pictures());
-        return "adminUpdatePicture";
+        return "adminTableUpdatePicture";
     }
 
     @RequestMapping("/admin/table/picture/other/update")
@@ -79,7 +79,7 @@ public class AdminPictureController {
         model.addAttribute("picture", new Pictures());
         model.addAttribute("keyPictures", KeyPicture.values());
         model.addAttribute("item", new Pictures());
-        return "adminUpdatePicture";
+        return "adminTableUpdatePicture";
     }
 
     @RequestMapping("/admin/table/picture/update/submit")

@@ -30,22 +30,14 @@ public class AdminPictureController {
 
 
 
-    @RequestMapping("/admin/picture/add/submit")
+    @RequestMapping("/admin/table/picture/add/submit")
     public String adminAddPicture(Model model, @ModelAttribute("picture") Pictures picture) throws IOException {
         picturesService.insert(updatePicture(picture));
         modelAndViewConfiguration.initModelAndView();
-        switch (picture.getKeyPicture()) {
-            case BEST_STUDENT: return adminPictureBestStudentUpdate(model);
-            case TOPIC_FACULTY: return adminPictureTopicFacultyUpdate(model);
-            case DEAN_TEAM: adminPictureDeanTeamUpdate(model);
-            case DEPARTMENT: adminPictureDepartmentUpdate(model);
-            case OTHER: return adminPictureOtherUpdate(model);
-            //case DEAN_TEAM: return
-            default: return "404";
-        }
+        return returnPage(picture, model);
     }
 
-    @RequestMapping("/admin/picture/department/update")
+    @RequestMapping("/admin/table/picture/department/update")
     public String adminPictureDepartmentUpdate( Model model) {
         model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.DEPARTMENT));
         model.addAttribute("picture", new Pictures());
@@ -54,7 +46,7 @@ public class AdminPictureController {
         return "adminUpdatePicture";
     }
 
-    @RequestMapping("/admin/picture/bestStudent/update")
+    @RequestMapping("/admin/table/picture/bestStudent/update")
     public String adminPictureBestStudentUpdate( Model model) {
         model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.BEST_STUDENT));
         model.addAttribute("picture", new Pictures());
@@ -63,7 +55,7 @@ public class AdminPictureController {
         return "adminUpdatePicture";
     }
 
-    @RequestMapping("/admin/picture/deanTeam/update")
+    @RequestMapping("/admin/table/picture/deanTeam/update")
     public String adminPictureDeanTeamUpdate(Model model) {
         model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.DEAN_TEAM));
         model.addAttribute("picture", new Pictures());
@@ -72,7 +64,7 @@ public class AdminPictureController {
         return "adminUpdatePicture";
     }
 
-    @RequestMapping("/admin/picture/topicFaculty/update")
+    @RequestMapping("/admin/table/picture/topicFaculty/update")
     public String adminPictureTopicFacultyUpdate(Model model) {
         model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.TOPIC_FACULTY));
         model.addAttribute("picture", new Pictures());
@@ -81,7 +73,7 @@ public class AdminPictureController {
         return "adminUpdatePicture";
     }
 
-    @RequestMapping("/admin/picture/other/update")
+    @RequestMapping("/admin/table/picture/other/update")
     public String adminPictureOtherUpdate(Model model) {
         model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.OTHER));
         model.addAttribute("picture", new Pictures());
@@ -90,16 +82,30 @@ public class AdminPictureController {
         return "adminUpdatePicture";
     }
 
-    @RequestMapping("/admin/picture/update/submit")
-    public String adminPictureUpdateSubmit(@ModelAttribute("item") Pictures item) throws IOException {
-        ModelAndView modelAndView = new ModelAndView("adminUpdatePicture");
-        modelAndView.addObject("pictures", picturesService.getAll() );
-        modelAndView.addObject("picture", new Pictures());
-        modelAndView.addObject("keyPictures", KeyPicture.values());
-        modelAndView.addObject("item", new Pictures());
+    @RequestMapping("/admin/table/picture/update/submit")
+    public String adminPictureUpdateSubmit(@ModelAttribute("item") Pictures item, Model model) throws IOException {
         picturesService.update(updatePicture(item));
         modelAndViewConfiguration.initModelAndView();
-        return "redirect:../update";
+        return returnPage(item, model);
+    }
+
+    @RequestMapping("/admin/table/picture/delete/id={id}")
+    public String adminPictureDelete(Model model, @PathVariable("id") Long id) {
+        Pictures picture = picturesService.findPictureById(id);
+        picturesService.delete(id);
+        return returnPage(picture, model);
+    }
+
+    private String returnPage(Pictures item, Model model) {
+        switch (item.getKeyPicture()) {
+            case BEST_STUDENT: return "redirect:../bestStudent/update";//adminPictureBestStudentUpdate(model);
+            case TOPIC_FACULTY: return "redirect:../topicFaculty/update";//adminPictureTopicFacultyUpdate(model);
+            case DEAN_TEAM: return "redirect:../deanTeam/update";//adminPictureDeanTeamUpdate(model);
+            case DEPARTMENT: return "redirect:../department/update";//adminPictureDepartmentUpdate(model);
+            case OTHER: return "redirect:../other/update";//adminPictureOtherUpdate(model);
+            //case DEAN_TEAM: return
+            default: return "404";
+        }
     }
 
     private Pictures updatePicture(Pictures item) throws IOException {

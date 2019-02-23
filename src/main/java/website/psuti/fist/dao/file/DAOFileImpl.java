@@ -71,8 +71,16 @@ public class DAOFileImpl implements DAOFile{
     }
 
     @Override
-    public void delete(int id) {
-
+    public int delete(long id) {
+        int check = -1;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            check = session.delete("File.deleteById", id);
+            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.FILE);
+        } finally {
+            session.close();
+        }
+        return check;
     }
 
     @Override

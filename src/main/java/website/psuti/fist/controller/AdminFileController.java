@@ -30,7 +30,7 @@ public class AdminFileController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/admin/files/update")
+    @RequestMapping("/admin/table/files/update")
     public ModelAndView addFile() {
         ModelAndView modelAndView = new ModelAndView("adminUpdateFile");
         modelAndView.addObject("file", new File());
@@ -39,7 +39,7 @@ public class AdminFileController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/files/add/submit")
+    @RequestMapping("/admin/table/files/add/submit")
     public String addFileSubmit(@ModelAttribute File file, Model model ) throws IOException {
         model.addAttribute("file", new File());
         model.addAttribute("files", fileService.getAll());
@@ -51,10 +51,10 @@ public class AdminFileController {
             writeFile(file.getFile().getBytes(), file.getUniqueName());
         }
         fileService.insert(file);
-        return "redirect:../add";
+        return "redirect:../update";
     }
 
-    @RequestMapping("/admin/files/update/submit")
+    @RequestMapping("/admin/table/files/update/submit")
     public String updateFileSubmit(@ModelAttribute File file) throws IOException {
         file.setDate(LocalDate.parse(file.getDateStringLocalDate()));
         if (!file.getFile().isEmpty()) {
@@ -68,7 +68,14 @@ public class AdminFileController {
             file.setUniqueName(temp.getUniqueName());
         }*/
         fileService.update(file);
-        return "redirect:../add";
+        return "redirect:../update";
+    }
+
+    @RequestMapping("/admin/table/files/delete/id={id}")
+    public String adminPictureDelete(@PathVariable("id") Long id) {
+        File file = fileService.findFileById(id);
+        fileService.delete(id);
+        return "redirect:../update";
     }
 
 

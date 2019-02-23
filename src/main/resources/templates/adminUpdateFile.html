@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор новостей</title>
+    <title>Редактор файлов</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,14 +111,14 @@
                                 <a href="#">Картинки</a>
                                 <div class="mobnav-subarrow"></div>
                                 <ul>
-                                    <li><a href="/admin/picture/bestStudent/update">Лучшие студенты</a></li>
-                                    <li><a href="/admin/picture/topicFaculty/update">Новости</a></li>
-                                    <li><a href="/admin/picture/deanTeam/update">Состав деканата</a></li>
-                                    <li><a href="/admin/picture/department/update">Состав кафедры</a></li>
-                                    <li><a href="/admin/picture/other/update">Разное</a></li>
+                                    <li><a href="/admin/table/picture/bestStudent/update">Лучшие студенты</a></li>
+                                    <li><a href="/admin/table/picture/topicFaculty/update">Новости</a></li>
+                                    <li><a href="/admin/table/picture/deanTeam/update">Состав деканата</a></li>
+                                    <li><a href="/admin/table/picture/department/update">Состав кафедры</a></li>
+                                    <li><a href="/admin/table/picture/other/update">Разное</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/admin/files/update">Файлы</a></li>
+                            <li><a href="/admin/table/files/update">Файлы</a></li>
                         </ul>
                     </li>
 
@@ -148,7 +148,7 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/files/add/submit}" th:object="${file}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/table/files/add/submit}" th:object="${file}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
                             <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
@@ -191,7 +191,7 @@
             <th id="labelUpdateMenuItem">Действие</th>
         </tr>
         <tr th:each="file : ${files}">
-            <form th:action="@{/admin/files/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/admin/table/files/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                 <td><input id="id" class="menuItemTables" name="id" th:value="${file.getId()}" readonly></td>
                 <td><input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}"></td>
                 <td><!--<input class="menuItemTables" id="extension"  name="extension" th:value="${file.getExtension()}">-->
@@ -206,7 +206,9 @@
                     <a th:href="@{'/files/id=' + ${file.getId()}}" alt="">Ссылка на файл для просмотра</a>
                     <input type="file" accept=".jpg, .jpeg, .png" id="file" name="file" style="height: 60px; width: 100%;"/>
                 </td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>
+                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить">
+                    <a th:href="@{'/admin/table/files/delete/id=' + ${file.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
+                </td>
             </form>
         </tr>
     </table>

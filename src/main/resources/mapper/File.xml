@@ -37,4 +37,8 @@
     <select id="findById" parameterType="Long" resultMap="result">
         SELECT * from files where id = #{id};
     </select>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE from files where id = #{id};
+    </delete>
 </mapper>

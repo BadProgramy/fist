@@ -112,14 +112,14 @@
                                 <a href="#">Картинки</a>
                                 <div class="mobnav-subarrow"></div>
                                 <ul>
-                                    <li><a href="/admin/picture/bestStudent/update">Лучшие студенты</a></li>
-                                    <li><a href="/admin/picture/topicFaculty/update">Новости</a></li>
-                                    <li><a href="/admin/picture/deanTeam/update">Состав деканата</a></li>
-                                    <li><a href="/admin/picture/department/update">Состав кафедры</a></li>
-                                    <li><a href="/admin/picture/other/update">Разное</a></li>
+                                    <li><a href="/admin/table/picture/bestStudent/update">Лучшие студенты</a></li>
+                                    <li><a href="/admin/table/picture/topicFaculty/update">Новости</a></li>
+                                    <li><a href="/admin/table/picture/deanTeam/update">Состав деканата</a></li>
+                                    <li><a href="/admin/table/picture/department/update">Состав кафедры</a></li>
+                                    <li><a href="/admin/table/picture/other/update">Разное</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/admin/files/update">Файлы</a></li>
+                            <li><a href="/admin/table/files/update">Файлы</a></li>
                         </ul>
                     </li>
 
@@ -149,7 +149,7 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/picture/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/table/picture/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
                             <select id="keyPicture" name="keyPicture" required>
@@ -209,7 +209,7 @@
             <th id="labelUpdateMenuItem">Действие</th>
         </tr>
         <tr th:each="picture : ${pictures}">
-            <form th:action="@{/admin/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/admin/table/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                 <td><input id="id" class="menuItemTables" name="id" th:value="${picture.getId()}" readonly></td>
                 <td><input id="idPage" class="menuItemTables" name="idPage" th:value="${picture.getIdPage()}"></td>
                 <td><input id="namePicture" class="menuItemTables" name="namePicture" th:value="${picture.getNamePicture()}"></td>
@@ -226,7 +226,9 @@
                     <img th:src="@{'/admin/picture/' + ${picture.getId()}}" alt="">
                     <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;"/>
                 </td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"></td>
+                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
+                    <a th:href="@{'/admin/table/picture/delete/id=' + ${picture.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
+                </td>
             </form>
         </tr>
     </table>

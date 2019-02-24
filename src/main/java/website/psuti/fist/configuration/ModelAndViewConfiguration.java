@@ -44,6 +44,7 @@ public class ModelAndViewConfiguration {
     @Autowired
     private FileService fileService;
 
+    //--------------------------------------------------КЭШ------------------------------------------
     private ModelAndView modelAndView;
 
     private HashMap<Long, byte[]> picturesCache;
@@ -51,7 +52,8 @@ public class ModelAndViewConfiguration {
     private List<Employee> employees;
     private List<Department> departments;
     private List<File> files;
-
+    private List<NewsOfFaculty> newsOfFaculties;
+    //-------------------------------------------------Оперативная память-----------------------------
 
     public HashMap<Long, byte[]> initPicturesCache() {
         if (picturesCache == null) {
@@ -71,6 +73,7 @@ public class ModelAndViewConfiguration {
             employees = new ArrayList<>();
             departments = new ArrayList<>();
             files = new ArrayList<>();
+            newsOfFaculties = new ArrayList<>();
             modelAndView = new ModelAndView("", "", "");
 
             updateBestStudentTable();
@@ -183,6 +186,7 @@ public class ModelAndViewConfiguration {
     }
 
     private void updateNewsOfFacultyTable() {
+        newsOfFaculties = newsFacultyService.getAll();
         modelAndView.addObject("newsOfFaculty", newsFacultyService.getLastTwoNewsFaculty());
     }
 
@@ -258,5 +262,9 @@ public class ModelAndViewConfiguration {
 
     public HashMap<Long, byte[]> getPicturesCache() {
         return picturesCache;
+    }
+
+    public List<NewsOfFaculty> getNewsOfFaculties() {
+        return newsOfFaculties;
     }
 }

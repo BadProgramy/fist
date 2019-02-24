@@ -11,23 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
-import website.psuti.fist.service.*;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.*;
 
 @Controller
 public class MainController {
 
     //private final static Logger log = LoggerFactory.getLogger(Application.class);
-
-    @Autowired
-    private NewsFacultyService newsFacultyService;
 
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
@@ -84,7 +74,7 @@ public class MainController {
     public ModelAndView newsBlogPage(@PathVariable int idPage, Model model) {
         if (idPage <= 0) idPage = 1;
         model.addAttribute("firstPage", idPage);
-        List<NewsOfFaculty> topics = newsFacultyService.getAll();
+        List<NewsOfFaculty> topics = modelAndViewConfiguration.getNewsOfFaculties();
         model.addAttribute("pageCount", (topics.size() / (NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount() + 1)) + 1);
         List<NewsOfFaculty> resultTopic = new ArrayList<>();
         for (int i = (idPage - 1) * NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(), j = 0; i < topics.size() && j < NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(); i++, j++) {

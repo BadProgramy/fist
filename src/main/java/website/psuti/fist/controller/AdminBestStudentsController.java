@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.BestStudent;
 import website.psuti.fist.model.KeyPicture;
@@ -23,6 +24,9 @@ import java.io.IOException;
 public class AdminBestStudentsController {
     @Autowired
     private BestStudentService bestStudentService;
+
+    @Autowired
+    private ModelAndViewConfiguration modelAndViewConfiguration;
 
     @Autowired
     private PicturesService picturesService;
@@ -92,6 +96,29 @@ public class AdminBestStudentsController {
         bestStudentService.delete(bestStudentId);
         model.addAttribute("bestStudents", bestStudentService.getAll());
         return "redirect:../../bestStudents";
+    }
+
+    @RequestMapping("/admin/table/bestStudent/update")
+    public ModelAndView updateBestStudent() {
+        ModelAndView modelAndView = new ModelAndView("adminTableUpdateBestStudent");
+        modelAndView.addObject("item", new BestStudent());
+        modelAndView.addObject("bestStudents", bestStudentService.getAll());
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/admin/table/bestStudent/update/submit")
+    public String adminBestStudentUpdateSubmit(@ModelAttribute("item") BestStudent item) {
+        bestStudentService.update(item);
+        modelAndViewConfiguration.initModelAndView();
+        return "redirect:../update";
+    }
+
+    @RequestMapping("/admin/table/bestStudent/delete/id={id}")
+    public String adminBestStudentDelete(@PathVariable("id") Long id) {
+        //BestStudent bestStudent = bestStudentService.findById(id);
+        picturesService.delete(id);
+        return "redirect:../update";
     }
 
     private long savePicture(BestStudent bestStudent) throws IOException {

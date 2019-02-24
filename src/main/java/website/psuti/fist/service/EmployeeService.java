@@ -20,4 +20,12 @@ public class EmployeeService {
     public List<Employee> getAll() {
         return daoEmployee.getAll();
     }
+
+    public void update(Employee employee) {
+        daoEmployee.update(employee);
+    }
+
+    public void delete(Long id) {
+        daoEmployee.delete(id);
+    }
 }

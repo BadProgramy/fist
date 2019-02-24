@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор новостей</title>
+    <title>Таблица лучших студентов</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/reset.css">
+    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -47,7 +48,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -156,143 +157,95 @@
         </div>
     </header>
 
-    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+    <!--<div class="cd-user-modal"> &lt;!&ndash; this is the entire modal form, including the background &ndash;&gt;
+        <div class="cd-user-modal-container"> &lt;!&ndash; this is the container wrapper &ndash;&gt;
             <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Редактирование</a></li>
-                <!--<li><a href="#0">New account</a></li>-->
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить картинку</a></li>
+                &lt;!&ndash;<li><a href="#0">New account</a></li>&ndash;&gt;
             </ul>
 
-            <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
+            <div id="cd-login"> &lt;!&ndash; log in form &ndash;&gt;
+                <form th:action="@{/admin/table/picture/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                    <p class="fieldset black_p">
-                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                        <textarea name="heading" th:utext="${newFaculty.getHeading()}" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
-                        <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                    </p>
-
-                    <p class="fieldset black_p">
-                        <label class="image-replace cd-password" for="signin-password">Текст</label>
-                        <textarea name="text" th:utext="${newFaculty.getText()}" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
-                        <!--<a href="#0" class="hide-password">Hide</a>-->
-                        <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
-                    </p>
-
                         <p class="fieldset black_p">
-                            <input id="dateStringLocalDate" type="date" name="dateStringLocalDate" th:value="${newFaculty.getDate()}" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                            <select id="keyPicture" name="keyPicture" required>
+                                <option th:each="keyPicture : ${keyPictures}" th:value="${keyPicture}" th:utext="${keyPicture.getName()}"></option>
+                            </select>
                         </p>
 
-                        <input name="id" type="hidden" th:field="*{id}">
-                        <input name="idPicture" type="hidden" th:field="*{idPicture}">
+                        <p class="fieldset black_p">
+                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
+                            <input th:value="${picture.href}" id="href" name="href" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Ссылка - http://vk.com (НЕОБЯЗАТЕЛЬНО)">
+                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
+                        </p>
 
-                        <img th:src="@{'/admin/news/' + ${newFaculty.getIdPicture()}}" alt="">
-                        <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        <p class="fieldset black_p">
+                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
+                            <input type="date" th:value="${picture.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
+                        </p>
 
-                    <p class="fieldset black_p">
-                        <button class="full-width" type="submit">Изменить</button>
-                    </p>
+                        <p class="fieldset black_p">
+                            <input type="file" required id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
+                            <input th:value="${picture.styles}" id="styles" name="styles" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Пример: color : red (Знание css)">
+                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
+                        </p>
+
+                        &lt;!&ndash;<input name="date" type="hidden" th:field="*{date}">&ndash;&gt;
+                        &lt;!&ndash;<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
+                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">&ndash;&gt;
+                        <p class="fieldset black_p">
+
+                            <button class="full-width" type="submit">Добавить</button>
+                        </p>
                     </fieldset>
                 </form>
+            </div> &lt;!&ndash; cd-login &ndash;&gt;
 
-                <!--<form th:action="@{/admin/news/update}" th:object="${topic}" method="post" class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                        <textarea name="heading" th:value="${heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
-                        <span class="cd-error-message">Ошибка ввода загаловка!</span>
-                    </p>
+        </div> &lt;!&ndash; cd-user-modal-container &ndash;&gt;
+    </div> &lt;!&ndash; cd-user-modal &ndash;&gt;-->
 
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signin-password">Текст</label>
-                        <textarea name="text" th:value="${text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
-                        &lt;!&ndash;<a href="#0" class="hide-password">Hide</a>&ndash;&gt;
-                        <span class="cd-error-message">Ошибка ввода текста!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width" type="submit" value="Изменить">
-                    </p>
-                </form>-->
-
-                <!--<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>-->
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
-            </div> <!-- cd-login -->
-
-            <!--<div id="cd-signup"> &lt;!&ndash; sign up form &ndash;&gt;
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username" for="signup-username">Username</label>
-                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-                        <a href="#0" class="hide-password">Hide</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Create account">
-                    </p>
-                </form>
-
-                &lt;!&ndash; <a href="#0" class="cd-close-form">Close</a> &ndash;&gt;
-            </div> &lt;!&ndash; cd-signup &ndash;&gt;
-
-            <div id="cd-reset-password"> &lt;!&ndash; reset password form &ndash;&gt;
-                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Reset password">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-            </div> &lt;!&ndash; cd-reset-password &ndash;&gt;
-            <a href="#0" class="cd-close-form">Close</a>-->
-        </div> <!-- cd-user-modal-container -->
-    </div> <!-- cd-user-modal -->
-
-
-    <div class="close-btn fa fa-times"></div>
-
-    <!--&lt;!&ndash; SLIDER &ndash;&gt;
-    <div class="container-fluid no-padding">
-        <div id="home-slider2" class="owl-carousel owl-theme">
-            <div class="item">
-                &lt;!&ndash;<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>&ndash;&gt;
-
-            </div>
-            &lt;!&ndash;<div class="item">
-                <img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-
-            </div>
-            <div class="item">
-                <img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-
-            </div>&ndash;&gt;
-        </div>
-    </div>-->
+    <h3 class="text-center padding5p">Добавлять студентов можно только через контент</h3>
+    <form method="post" id="myform"></form>
+    <table class="color">
+        <tr>
+            <th>Идентификатор</th>
+            <th>Характеристика</th>
+            <th>Группа</th>
+            <th>Идентификатор картинки</th>
+            <th>ФИО</th>
+            <th>Ссылка</th>
+            <th>Стили для характеристики</th>
+            <th>Стили для группы</th>
+            <th>Стили для ФИО</th>
+            <th>Стили для картинки</th>
+            <th id="labelUpdateMenuItem">Действие</th>
+        </tr>
+        <tr th:each="student : ${bestStudents}">
+            <form th:action="@{/admin/table/bestStudent/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
+                <td><input id="id" class="menuItemTables" name="id" th:value="${student.getId()}" readonly></td>
+                <td><input id="characteristic" class="menuItemTables" name="characteristic" th:value="${student.getCharacteristic()}"></td>
+                <td><input id="groupInUniversity" class="menuItemTables" name="groupInUniversity" th:value="${student.getGroupInUniversity()}"></td>
+                <td>
+                    <input id="idPicture" name="idPicture" th:value="${student.getIdPicture()}"/>
+                    <img th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" alt="">
+                </td>
+                <td><input id="name" class="menuItemTables" name="name" th:value="${student.getName()}"></td>
+                <td><input id="url" class="menuItemTables" name="url" th:value="${student.getUrl()}"></td>
+                <td><input id="characteristicStyles" class="menuItemTables" name="characteristicStyles" th:value="${student.getCharacteristicStyles()}"></td>
+                <td><input id="groupInUniversityStyles" class="menuItemTables" name="groupInUniversityStyles" th:value="${student.getGroupInUniversityStyles()}"></td>
+                <td><input id="nameStyles" class="menuItemTables" name="nameStyles" th:value="${student.getNameStyles()}"></td>
+                <td><input id="pictureStyles" class="menuItemTables" name="pictureStyles" th:value="${student.getPictureStyles()}"></td>
+                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
+                    <a th:href="@{'/admin/table/bestStudent/delete/id=' + ${student.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
+                </td>
+            </form>
+        </tr>
+    </table>
 </div>
 
 <!-- Javascript -->

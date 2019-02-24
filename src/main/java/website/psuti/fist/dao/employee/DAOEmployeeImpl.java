@@ -79,7 +79,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {

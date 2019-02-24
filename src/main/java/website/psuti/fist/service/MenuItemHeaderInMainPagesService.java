@@ -46,4 +46,8 @@ public class MenuItemHeaderInMainPagesService {
     public List<MenuItemHeaderInMainPage> findItemByKeyWord(String keyWord) {
         return daoMenuItemHeaderInMainPage.findItemByKeyWord(keyWord);
     }
+
+    public void delete(Long id) {
+        daoMenuItemHeaderInMainPage.delete(id);
+    }
 }

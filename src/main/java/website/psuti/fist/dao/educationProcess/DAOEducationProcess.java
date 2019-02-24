@@ -13,7 +13,7 @@ public interface DAOEducationProcess {
     List<EducationProcess> getAll();
     int insert (EducationProcess educationProcess);
     void update(EducationProcess educationProcess);
-    void delete(int id);
+    void delete(long id);
 
     List<EducationProcess> educationProcess();
 }

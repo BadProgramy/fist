@@ -10,7 +10,7 @@ public interface DAOEmployee {
     List<Employee> getAll();
     long insert (Employee employee);
     void update(Employee employee);
-    void delete(int id);
+    void delete(long id);
 
     List<Employee> findEmployeesByNameDepartment(String nameDepartment);
 }

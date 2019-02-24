@@ -58,8 +58,16 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
     }
 
     @Override
-    public void delete(int id) {
-
+    public void delete(long id) {
+        int check = -1;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            check = session.delete("MenuItemHeaderInMainPage.deleteById", id);
+            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+        } finally {
+            session.close();
+        }
+        //return check;
     }
 
     public List<MenuItemHeaderInMainPage> getOnlyMainHeaders() {

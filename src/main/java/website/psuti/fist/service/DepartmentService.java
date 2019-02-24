@@ -14,4 +14,12 @@ public class DepartmentService {
     private DAODepartment daoDepartment;
 
     public List<Department> getAll() { return daoDepartment.getAll(); }
+
+    public void update(Department department) {
+        daoDepartment.update(department);
+    }
+
+    public void delete(long id) {
+        daoDepartment.delete(id);
+    }
 }

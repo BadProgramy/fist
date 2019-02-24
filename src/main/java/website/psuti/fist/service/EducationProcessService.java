@@ -31,4 +31,8 @@ public class EducationProcessService {
     public void update(EducationProcess itemEducationProcess) {
         daoEducationProcess.update(itemEducationProcess);
     }
+
+    public void delete(long id) {
+        daoEducationProcess.delete(id);
+    }
 }

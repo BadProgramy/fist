@@ -128,25 +128,6 @@ public class AdminPictureController {
         return item;
     }
 
-    private byte[] getPicture(long idPicture) {
-        for (Map.Entry picture : modelAndViewConfiguration.initPicturesCache().entrySet()) {
-
-            if (picture.getKey().equals(idPicture)) {
-                return (byte[]) picture.getValue();
-            }
-        }
-        return null;
-    }
-
-    //@Cacheable("mainPictures")
-    @ResponseBody
-    @RequestMapping(value = "/admin/picture/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getPhoto(@PathVariable long idPicture, HttpServletResponse response) {
-        byte[] b = getPicture(idPicture);
-        //response.setHeader("cache-control", "max-age=86400000, must-revalidate");
-        return b;
-    }
-
     private void writeFile(byte[] buffer, String filename) throws IOException {
         //new File(PathConstant.SAVE_PICTURE.getPath() + filename).mkdir();
         FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE.getPath() + filename);

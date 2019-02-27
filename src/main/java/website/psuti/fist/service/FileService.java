@@ -28,4 +28,8 @@ public class FileService {
     public File findFileById(Long id) {
         return daoFile.findFileById(id);
     }
+
+    public int delete(Long id) {
+       return daoFile.delete(id);
+    }
 }

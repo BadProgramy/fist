@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.KeyPicture;
@@ -28,6 +29,9 @@ import java.time.LocalDate;
 public class AdminNewsFacultyController {
     @Autowired
     private NewsFacultyService newsFacultyService;
+
+    @Autowired
+    private ModelAndViewConfiguration modelAndViewConfiguration;
 
     @Autowired
     private PicturesService picturesService;
@@ -149,6 +153,30 @@ public class AdminNewsFacultyController {
         }*/
         newsFacultyService.update(newFaculty);
         return "redirect:../../news";
+    }
+
+    @RequestMapping("/admin/table/newsOfFaculty/update")
+    public ModelAndView updateNewsFaculty() {
+        ModelAndView modelAndView = new ModelAndView("adminTableUpdateNewsOfFaculty");
+        modelAndView.addObject("item", new NewsOfFaculty());
+        modelAndView.addObject("newsOfFaculty", newsFacultyService.getAll());
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/admin/table/newsOfFaculty/update/submit")
+    public String adminNewsFacultyUpdateSubmit(@ModelAttribute("item") NewsOfFaculty item) {
+        newsFacultyService.update(item);
+        modelAndViewConfiguration.initModelAndView();
+        return "redirect:../update";
+    }
+
+    @RequestMapping("/admin/table/newsOfFaculty/delete/id={id}")
+    public String adminNewsFacultyDelete(@PathVariable("id") long id) {
+        //NewsOfFaculty newsOfFaculty = newsFacultyService.findById(id);
+        newsFacultyService.delete(id);
+        modelAndViewConfiguration.initModelAndView();
+        return "redirect:../update";
     }
 
     private long savePicture(NewsOfFaculty newFaculty) throws IOException {

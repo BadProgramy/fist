@@ -12,7 +12,7 @@ public interface DAOMenuItemHeaderInMainPage {
     List<MenuItemHeaderInMainPage> getAll();
     int insert (MenuItemHeaderInMainPage menuItemHeaderInMainPage);
     void update(MenuItemHeaderInMainPage menuItemHeaderInMainPage);
-    void delete(int id);
+    void delete(long id);
 
     List<MenuItemHeaderInMainPage> getMinorHeadersByMainHeader(long idMainHeader);
     Map<MenuItemHeaderInMainPage,List<MenuItemHeaderInMainPage>> getAllHeadersMainPage();

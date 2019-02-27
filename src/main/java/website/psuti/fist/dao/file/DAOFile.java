@@ -10,7 +10,7 @@ public interface DAOFile {
     List<File> getAll();
     long insert (File file);
     void update(File file);
-    void delete(int id);
+    int delete(long id);
 
     File findFileById(Long id);
 }

@@ -15,4 +15,15 @@
         SELECT * FROM department;
     </select>
 
+    <update id="update" parameterType="Department">
+        UPDATE department SET
+        id_main_employee = #{idMainEmployee},
+        name = #{name},
+        address = #{address}
+        where id = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE FROM department where id = #{id};
+    </delete>
 </mapper>

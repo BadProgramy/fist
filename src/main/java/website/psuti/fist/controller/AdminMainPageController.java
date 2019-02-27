@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.MainPageConstant;
 import website.psuti.fist.model.EducationProcess;
 import website.psuti.fist.model.MenuItemHeaderInMainPage;
@@ -19,9 +21,12 @@ public class AdminMainPageController {
     private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
 
     @Autowired
+    private ModelAndViewConfiguration modelAndViewConfiguration;
+
+    @Autowired
     private EducationProcessService educationProcessService;
 
-    @RequestMapping("/admin/mainPage/headers/update")
+    /*@RequestMapping("/admin/mainPage/headers/update")
     public String adminMainPageHeadersUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.HEADERS.getKeyWord()));
         model.addAttribute("item", new MenuItemHeaderInMainPage());
@@ -35,11 +40,11 @@ public class AdminMainPageController {
         modelAndView.addObject("item", new MenuItemHeaderInMainPage());
         menuItemHeaderInMainPagesService.update(item);
         return "redirect:../update";
-    }
+    }*/
 
 
 
-    @RequestMapping("/admin/mainPage/labels/update")
+    /*@RequestMapping("/admin/mainPage/labels/update")
     public String adminMainPageLabelUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.LABEL_HEADER.getKeyWord()));
         model.addAttribute("item", new MenuItemHeaderInMainPage());
@@ -53,9 +58,9 @@ public class AdminMainPageController {
         modelAndView.addObject("item", new MenuItemHeaderInMainPage());
         menuItemHeaderInMainPagesService.update(item);
         return "redirect:../update";
-    }
+    }*/
 
-    @RequestMapping("/admin/mainPage/statistic/update")
+    /*@RequestMapping("/admin/mainPage/statistic/update")
     public String adminMainPageStatisticUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.CHARACTER_UNIVERSITY.getKeyWord()));
         model.addAttribute("item", new MenuItemHeaderInMainPage());
@@ -69,9 +74,9 @@ public class AdminMainPageController {
         modelAndView.addObject("item", new MenuItemHeaderInMainPage());
         menuItemHeaderInMainPagesService.update(item);
         return "redirect:../update";
-    }
+    }*/
 
-    @RequestMapping("/admin/mainPage/educationProcess/update")
+    /*@RequestMapping("/admin/mainPage/educationProcess/update")
     public String adminMainPageEducationProcessUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.EDUCATION_PROCESS.getKeyWord()));
         model.addAttribute("educationProcess", educationProcessService.getAll());
@@ -91,9 +96,9 @@ public class AdminMainPageController {
         educationProcessService.update(itemEducationProcess);
         menuItemHeaderInMainPagesService.update(item);
         return "redirect:../update";
-    }
+    }*/
 
-    @RequestMapping("/admin/mainPage/navigation/update")
+    /*@RequestMapping("/admin/mainPage/navigation/update")
     public String adminMainPageNavigationUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.NAVIGATION.getKeyWord()));
         model.addAttribute("item", new MenuItemHeaderInMainPage());
@@ -107,5 +112,64 @@ public class AdminMainPageController {
         modelAndView.addObject("item", new MenuItemHeaderInMainPage());
         menuItemHeaderInMainPagesService.update(item);
         return "redirect:../update";
+    }*/
+
+    @RequestMapping("/admin/table/menuItem/headers/update")
+    public String adminHeaderUpdate(Model model) {
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.HEADERS.getKeyWord()));
+        model.addAttribute("item", new MenuItemHeaderInMainPage());
+        return "adminTableUpdateMenuItems";
+    }
+
+    @RequestMapping("/admin/table/menuItem/navigation/update")
+    public String adminNavigationUpdate(Model model) {
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.NAVIGATION.getKeyWord()));
+        model.addAttribute("item", new MenuItemHeaderInMainPage());
+        return "adminTableUpdateMenuItems";
+    }
+
+    @RequestMapping("/admin/table/menuItem/educationProcess/update")
+    public String adminEducationProcessUpdate(Model model) {
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.EDUCATION_PROCESS.getKeyWord()));
+        model.addAttribute("item", new MenuItemHeaderInMainPage());
+        return "adminTableUpdateMenuItems";
+    }
+
+    @RequestMapping("/admin/table/menuItem/statistic/update")
+    public String adminStatisticUpdate(Model model) {
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.CHARACTER_UNIVERSITY.getKeyWord()));
+        model.addAttribute("item", new MenuItemHeaderInMainPage());
+        return "adminTableUpdateMenuItems";
+    }
+
+    @RequestMapping("/admin/table/menuItem/labels/update")
+    public String adminLabelUpdate(Model model) {
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.LABEL_HEADER.getKeyWord()));
+        model.addAttribute("item", new MenuItemHeaderInMainPage());
+        return "adminTableUpdateMenuItems";
+    }
+
+    @RequestMapping("/admin/table/menuItem/update/submit")
+    public String adminMainPageUpdateSubmit(@ModelAttribute("item") MenuItemHeaderInMainPage item) {
+        menuItemHeaderInMainPagesService.update(item);
+        modelAndViewConfiguration.initModelAndView();
+        return returnPage(item);
+    }
+
+    @RequestMapping("/admin/table/menuItem/delete/id={id}")
+    public String adminMenuItemDelete(@PathVariable("id") Long id) {
+        MenuItemHeaderInMainPage menuItemHeaderInMainPage = menuItemHeaderInMainPagesService.findItemById(id);
+        menuItemHeaderInMainPagesService.delete(id);
+        modelAndViewConfiguration.initModelAndView();
+        return returnPage(menuItemHeaderInMainPage);
+    }
+
+    private String returnPage(MenuItemHeaderInMainPage item) {
+        if (item.getKeyWord().equals(MainPageConstant.LABEL_HEADER.getKeyWord())) return "redirect:../labels/update";
+        else if(item.getKeyWord().equals(MainPageConstant.CHARACTER_UNIVERSITY.getKeyWord())) return "redirect:../statistic/update";
+        else if(item.getKeyWord().equals(MainPageConstant.EDUCATION_PROCESS.getKeyWord())) return "redirect:../educationProcess/update";
+        else if(item.getKeyWord().equals(MainPageConstant.NAVIGATION.getKeyWord())) return "redirect:../navigation/update";
+        else if(item.getKeyWord().equals(MainPageConstant.HEADERS.getKeyWord())) return "redirect:../headers/update";
+        else return "404";
     }
 }

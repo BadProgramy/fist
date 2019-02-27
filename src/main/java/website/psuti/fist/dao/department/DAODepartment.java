@@ -10,5 +10,5 @@ public interface DAODepartment {
     List<Department> getAll();
     int insert (Department department);
     void update(Department department);
-    void delete(int id);
+    void delete(long id);
 }

@@ -58,4 +58,8 @@
         SELECT * FROM menu_item_header_in_main_page
         where key_word = #{keyWord};
     </select>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE FROM menu_item_header_in_main_page where id = #{id};
+    </delete>
 </mapper>

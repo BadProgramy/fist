@@ -32,4 +32,8 @@
         right_picture_styles = #{rightPictureStyles}
         WHERE id = #{id};
     </update>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE FROM fist.education_process where id = #{id};
+    </delete>
 </mapper>

@@ -77,11 +77,11 @@
             </div>
             <div class="menu-wrap">
                 <div class="row" style="margin-left: 5%;">
-                    <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+                    <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"></div>
                     <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
                         <li>
                             <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
-                            <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+                            <div class="mobnav-subarrow"></div>
                             <ul >
                                 <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
                                     <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
@@ -102,7 +102,16 @@
         </div>
     </header>
 
-    <section id="content">
+    <!-- BANER -->
+    <div class="container-fluid no-padding" style="background: black">
+        <div style="position: relative">
+            <div class="item" th:each="picture : ${slider}">
+                    <img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
+            </div>
+        </div>
+    </div>
+
+    <section id="content" >
         <div class="page_header page_header2 text-center">
             <h2>О факультете</h2>
         </div>

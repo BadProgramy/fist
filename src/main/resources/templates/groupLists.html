@@ -102,6 +102,15 @@
         </div>
     </header>
 
+    <!-- BANER -->
+    <div class="container-fluid no-padding" style="background: black">
+        <div style="position: relative">
+            <div class="item" th:each="picture : ${slider}">
+                <img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
+            </div>
+        </div>
+    </div>
+
     <!-- INNER CONTENT -->
     <section id="content" style="margin-bottom: 10%">
         <div class="content-blog">

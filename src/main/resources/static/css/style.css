@@ -891,7 +891,7 @@ display: unset;
 .service-right .ico img.icon_1 {
 	max-height: 100px;
 	max-width: 100px;
-	margin-top: 5%;
+	margin-top: 10%;
 	opacity:1;
 	position:absolute;
 	left:55%;
@@ -907,7 +907,7 @@ display: unset;
 .service-right .ico img.icon_2 {
 	max-height: 100px;
 	max-width: 100px;
-	margin-top: 5%;
+	margin-top: 10%;
 	opacity:0;
 	position:absolute;
 	left:55%;
@@ -2268,7 +2268,7 @@ article.bm-item h2.post-title {
 .page_header h2 {
     font-family: 'Open Sans', sans-serif;
     color: black;
-    font-size: 48px;
+	font-size: 40px;
     font-weight: bold;
 }
 
@@ -2278,7 +2278,7 @@ article.bm-item h2.post-title {
     font-style: italic;
     color: #484848;
     font-weight: 500;
-    font-family: "Roboto";
+	font-family: 'Open Sans', sans-serif;
 }
 
 blockquote.style2 p {

@@ -37,6 +37,30 @@ body {
 li, ul, ol {
 	list-style: none;
 }
+.list-decimal li,.list-decimal ul,.list-decimal ol {
+    list-style:decimal ;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.list-decimal li>ul li {
+    margin-left: 50px;
+    list-style: circle;
+}
+.list-marker li>ul li {
+    margin-left: 50px;
+    list-style: disc;
+}
+.list-marker li{
+    list-style-type:circle;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.list-padding-left ul,.list-padding-left li,.list-padding-left ol{
+    margin-left:25px;
+}
 h1, h2, h3, h4, h5, h6 {
 	font-style:normal;
 	font-weight:normal;
@@ -1280,7 +1304,7 @@ td:nth-child(4) {
 }
 th {
     border: 1px solid #040206 !important;
-    padding: 30px 30px 5px;
+	padding: 15px 30px 15px;
     color:black !important;
 }
 caption {
@@ -2735,8 +2759,9 @@ line-height:28px;
 
 .accordion .panel-body {
     padding: 25px 45px;
-	font-size:13px;
-	line-height:24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .accordion .panel-body p {

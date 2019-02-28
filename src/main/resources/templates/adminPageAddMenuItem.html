@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Таблица департаментов</title>
+    <title>Редактор меню сайта</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/reset.css">
-    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -48,7 +47,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -158,80 +157,77 @@
         </div>
     </header>
 
-    <!--<div class="cd-user-modal"> &lt;!&ndash; this is the entire modal form, including the background &ndash;&gt;
-        <div class="cd-user-modal-container"> &lt;!&ndash; this is the container wrapper &ndash;&gt;
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить картинку</a></li>
-                &lt;!&ndash;<li><a href="#0">New account</a></li>&ndash;&gt;
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить меню</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
             </ul>
 
-            <div id="cd-login"> &lt;!&ndash; log in form &ndash;&gt;
-                <form th:action="@{/admin/table/picture/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/page/menuItem/add/submit}" th:object="${menuItem}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <select id="keyPicture" name="keyPicture" required>
-                                <option th:each="keyPicture : ${keyPictures}" th:value="${keyPicture}" th:utext="${keyPicture.getName()}"></option>
+                            <!--<textarea name="idMenuItemParentHeaderInMainPage" th:field="*{idMenuItemParentHeaderInMainPage}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="Выберите родителя..."></textarea>-->
+                            <label>Выберите родителя...</label>
+                            <select id="idMenuItemParentHeaderInMainPage" name="idMenuItemParentHeaderInMainPage" required>
+                                <option th:each="item : ${parentMenuItems}" th:value="${item.getId()}" th:utext="${item.getName()}"></option>
                             </select>
                         </p>
 
                         <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input th:value="${picture.href}" id="href" name="href" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Ссылка - http://vk.com (НЕОБЯЗАТЕЛЬНО)">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
+                            <label>Уровень вложенности...</label>
+                            <select id="level" name="level" required>
+                                <option>0</option>
+                                <option>1</option>
+                            </select>
                         </p>
 
                         <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input type="date" th:value="${picture.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
+                            <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Название"></textarea>
+                            <!--<a href="#0" class="hide-password">Hide</a>-->
+                            <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
                         </p>
 
                         <p class="fieldset black_p">
-                            <input type="file" required id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                            <textarea name="urlHref" th:field="*{urlHref}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ссылка"></textarea>
+                            <!--<a href="#0" class="hide-password">Hide</a>-->
+                            <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
                         </p>
 
                         <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input th:value="${picture.styles}" id="styles" name="styles" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Пример: color : red (Знание css)">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        &lt;!&ndash;<input name="date" type="hidden" th:field="*{date}">&ndash;&gt;
-                        &lt;!&ndash;<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">&ndash;&gt;
-                        <p class="fieldset black_p">
-
                             <button class="full-width" type="submit">Добавить</button>
                         </p>
                     </fieldset>
                 </form>
-            </div> &lt;!&ndash; cd-login &ndash;&gt;
+            </div> <!-- cd-login -->
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
 
-        </div> &lt;!&ndash; cd-user-modal-container &ndash;&gt;
-    </div> &lt;!&ndash; cd-user-modal &ndash;&gt;-->
-
-    <h3 class="text-center padding5p">Меню сайта</h3>
-    <form method="post" id="myform"></form>
+    <h2>Список для просмотра элементов меню. Для изменения потребуется права разработчика.</h2>
     <table class="color">
         <tr>
             <th>Идентификатор</th>
-            <th>Идентификатор главного сотрудника</th>
-            <th>Название</th>
-            <th>Адрес</th>
-            <th id="labelUpdateMenuItem">Действие</th>
+            <th>Идентификатор родителя</th>
+            <th>Уровень вложенности</th>
+            <th>Название поля</th>
+            <th>Номер в очереди</th>
+            <th>Ссылка</th>
         </tr>
-        <tr th:each="department : ${departments}">
-            <form th:action="@{/admin/table/department/update/submit}" th:object="${item}" method="post">
-                <td><input id="id" class="menuItemTables" name="id" th:value="${department.getId()}" readonly></td>
-                <td><input id="idMainEmployee" class="menuItemTables" name="idMainEmployee" th:value="${department.getIdMainEmployee()}"></td>
-                <td><input id="name" class="menuItemTables" name="name" th:value="${department.getName()}"></td>
-                <td><input id="address" class="menuItemTables" name="address" th:value="${department.getAddress()}"></td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
-                    <a th:href="@{'/admin/table/department/delete/id=' + ${department.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
-                </td>
+        <tr th:each="menuItem : ${menuItems}">
+            <form th:action="@{/admin/table/menuItem/update/submit}" method="post">
+                <td><input id="id" class="menuItemTables" name="id" th:value="${menuItem.getId()}" readonly></td>
+                <td><input id="idMenuItemParentHeaderInMainPage" class="menuItemTables" name="idMenuItemParentHeaderInMainPage" th:value="${menuItem.getIdMenuItemParentHeaderInMainPage()}" readonly></td>
+                <td><input id="level" class="menuItemTables" name="level" th:value="${menuItem.getLevel()}" readonly></td>
+                <td><input id="name" class="menuItemTables" name="name" th:value="${menuItem.getName()}" readonly></td>
+                <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${menuItem.getPinNumber()}" readonly></td>
+                <td><input id="urlHref" class="menuItemTables" name="urlHref" th:value="${menuItem.getUrlHref()}" readonly></td>
             </form>
         </tr>
     </table>
+
+
+    <div class="close-btn fa fa-times"></div>
 </div>
 
 <!-- Javascript -->
@@ -255,23 +251,6 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<!--<script type="text/javascript">-->
-
-<!--$(function() {-->
-
-<!--$("h2")-->
-<!--.wrapInner("<span></span>")-->
-
-<!--$("h2 br")-->
-<!--.before("<span class='spacer'>&nbsp;</span>")-->
-<!--.after("<span class='spacer'>&nbsp;</span>");-->
-
-<!--});-->
-
-<!--</script>-->
-
-<!-- Custom-scroll JS -->
-<!--<script src="js/jquery.custom-scroll.js"></script>-->
 
 </body>
 </html>

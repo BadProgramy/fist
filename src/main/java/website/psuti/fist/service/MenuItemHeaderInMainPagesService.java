@@ -50,4 +50,12 @@ public class MenuItemHeaderInMainPagesService {
     public void delete(Long id) {
         daoMenuItemHeaderInMainPage.delete(id);
     }
+
+    public List<MenuItemHeaderInMainPage> findItemByIdParent(long id) {
+        return daoMenuItemHeaderInMainPage.findItemByIdParent(id);
+    }
+
+    public long insert(MenuItemHeaderInMainPage menuItem) {
+        return daoMenuItemHeaderInMainPage.insert(menuItem);
+    }
 }

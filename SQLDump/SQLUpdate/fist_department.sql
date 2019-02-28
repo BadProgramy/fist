@@ -1,4 +1,4 @@
-UPDATE fist.department SET id_main_employee = 2, name = 'Состав деканата', address = null WHERE id = 1;
+UPDATE fist.department SET id_main_employee = 2, name = 'Состав деканата', address = '' WHERE id = 1;
 UPDATE fist.department SET id_main_employee = 9, name = 'Кафедра"Информатики и вычислительной техники" (ИВТ)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-33' WHERE id = 2;
 UPDATE fist.department SET id_main_employee = 10, name = 'Кафедра "Программного обеспечения и управления в технических системах" (ПОУТС)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-35' WHERE id = 3;
 UPDATE fist.department SET id_main_employee = 11, name = 'Кафедра "Иностранных языков" (ИНО)', address = 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.4-02' WHERE id = 4;

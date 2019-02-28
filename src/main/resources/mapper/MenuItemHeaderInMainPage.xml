@@ -16,6 +16,15 @@
         <result property="styles" column="styles"/>
     </resultMap>
 
+    <insert id="add" parameterType="MenuItemHeaderInMainPage">
+        INSERT INTO menu_item_header_in_main_page(id_menu_item_parent_header_in_main_page, key_word, level, name, pin_number, url_href, id_picture, styles)
+        VALUES (#{idMenuItemParentHeaderInMainPage}, #{keyWord}, #{level}, #{name}, #{pinNumber}, #{urlHref}, #{idPicture}, #{styles});
+    </insert>
+
+    <select id="getLastIdInsert" resultType="long">
+        SELECT LAST_INSERT_ID() FROM menu_item_header_in_main_page LIMIT 1;
+    </select>
+
     <select id="selectAll" resultMap="result">
         SELECT * FROM menu_item_header_in_main_page;
     </select>
@@ -62,4 +71,8 @@
     <delete id="deleteById" parameterType="Long">
         DELETE FROM menu_item_header_in_main_page where id = #{id};
     </delete>
+
+    <select id="findItemByIdParent" parameterType="Long" resultMap="result">
+        SELECT * from menu_item_header_in_main_page where id_menu_item_parent_header_in_main_page = #{id};
+    </select>
 </mapper>

@@ -1,4 +1,4 @@
-INSERT INTO fist.department (id, id_main_employee, name, address) VALUES (1, 2, 'Состав деканата', null);
+INSERT INTO fist.department (id, id_main_employee, name, address) VALUES (1, 2, 'Состав деканата', '');
 INSERT INTO fist.department (id, id_main_employee, name, address) VALUES (2, 9, 'Кафедра"Информатики и вычислительной техники" (ИВТ)', 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-33');
 INSERT INTO fist.department (id, id_main_employee, name, address) VALUES (3, 10, 'Кафедра "Программного обеспечения и управления в технических системах" (ПОУТС)', 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.1-35');
 INSERT INTO fist.department (id, id_main_employee, name, address) VALUES (4, 11, 'Кафедра "Иностранных языков" (ИНО)', 'адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.4-02');

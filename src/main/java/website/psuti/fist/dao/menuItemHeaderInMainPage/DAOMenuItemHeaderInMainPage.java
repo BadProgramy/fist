@@ -10,7 +10,7 @@ import java.util.Map;
 @Mapper
 public interface DAOMenuItemHeaderInMainPage {
     List<MenuItemHeaderInMainPage> getAll();
-    int insert (MenuItemHeaderInMainPage menuItemHeaderInMainPage);
+    long insert (MenuItemHeaderInMainPage menuItemHeaderInMainPage);
     void update(MenuItemHeaderInMainPage menuItemHeaderInMainPage);
     void delete(long id);
 
@@ -20,4 +20,6 @@ public interface DAOMenuItemHeaderInMainPage {
     List<MenuItemHeaderInMainPage> getCharacterUniversity();
 
     List<MenuItemHeaderInMainPage> findItemByKeyWord(String keyWord);
+
+    List<MenuItemHeaderInMainPage> findItemByIdParent(long id);
 }

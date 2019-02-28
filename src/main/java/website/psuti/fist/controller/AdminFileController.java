@@ -39,6 +39,13 @@ public class AdminFileController {
         return modelAndView;
     }
 
+    @RequestMapping("/admin/content/files/add")
+    public ModelAndView addContentFile() {
+        ModelAndView modelAndView = addFile();
+        modelAndView.setViewName("adminContentAddFile");
+        return modelAndView;
+    }
+
     @RequestMapping("/admin/table/files/add/submit")
     public String addFileSubmit(@ModelAttribute File file, Model model ) throws IOException {
         model.addAttribute("file", new File());
@@ -51,7 +58,14 @@ public class AdminFileController {
             writeFile(file.getFile().getBytes(), file.getUniqueName());
         }
         fileService.insert(file);
+        modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
+    }
+
+    @RequestMapping("/admin/content/files/add/submit")
+    public String addContentFileSubmit(@ModelAttribute File file, Model model) throws IOException {
+        addFileSubmit(file, model);
+        return "redirect:../add";
     }
 
     @RequestMapping("/admin/table/files/update/submit")
@@ -68,6 +82,7 @@ public class AdminFileController {
             file.setUniqueName(temp.getUniqueName());
         }*/
         fileService.update(file);
+        modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 
@@ -75,6 +90,7 @@ public class AdminFileController {
     public String adminPictureDelete(@PathVariable("id") Long id) {
         File file = fileService.findFileById(id);
         fileService.delete(id);
+        modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 

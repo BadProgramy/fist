@@ -38,8 +38,22 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
     }
 
     @Override
-    public int insert(MenuItemHeaderInMainPage menuItemHeaderInMainPage) {
-        return 0;
+    public long insert(MenuItemHeaderInMainPage menuItemHeaderInMainPage) {
+        SqlSession session = factory.getFactory().openSession();
+        long id = -1;
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.insert("MenuItemHeaderInMainPage.add", menuItemHeaderInMainPage);
+            if (id == 1) {
+                id = session.selectOne("MenuItemHeaderInMainPage.getLastIdInsert");
+                MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return id;
     }
 
     @Override
@@ -138,6 +152,18 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
         SqlSession session = factory.getFactory().openSession();
         try {
             menuItemHeaderInMainPages = session.selectList("MenuItemHeaderInMainPage.findItemByKeyWord", keyWord);
+        } finally {
+            session.close();
+        }
+        return menuItemHeaderInMainPages;
+    }
+
+    @Override
+    public List<MenuItemHeaderInMainPage> findItemByIdParent(long id) {
+        List<MenuItemHeaderInMainPage> menuItemHeaderInMainPages;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            menuItemHeaderInMainPages = session.selectList("MenuItemHeaderInMainPage.findItemByIdParent", id);
         } finally {
             session.close();
         }

@@ -26,6 +26,23 @@ public class AdminMainPageController {
     @Autowired
     private EducationProcessService educationProcessService;
 
+    @RequestMapping("/admin/page/menuItem/add")
+    public String adminAddMenuItemInHeader(Model model) {
+        model.addAttribute("menuItem", new MenuItemHeaderInMainPage());
+        model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.HEADERS.getKeyWord()));
+        model.addAttribute("parentMenuItems", menuItemHeaderInMainPagesService.findItemByIdParent(MainPageConstant.HEADERS.getId()));
+        return "adminPageAddMenuItem";
+    }
+
+    @RequestMapping("/admin/page/menuItem/add/submit")
+    public String adminAddMenuItemInHeaderSubmit(@ModelAttribute("menuItem") MenuItemHeaderInMainPage menuItem) {
+        menuItem.setIdPicture(0);
+        menuItem.setPinNumber(menuItemHeaderInMainPagesService.findItemByIdParent(menuItem.getIdMenuItemParentHeaderInMainPage()).size());
+        menuItem.setKeyWord(MainPageConstant.HEADERS.getKeyWord());
+        menuItemHeaderInMainPagesService.insert(menuItem);
+        return "redirect:../add";
+    }
+
     /*@RequestMapping("/admin/mainPage/headers/update")
     public String adminMainPageHeadersUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.HEADERS.getKeyWord()));

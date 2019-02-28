@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Таблица департаментов</title>
+    <title>Добавление файлов</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
     <link rel="stylesheet" href="/css/admin/reset.css">
-    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -48,7 +47,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -158,80 +157,73 @@
         </div>
     </header>
 
-    <!--<div class="cd-user-modal"> &lt;!&ndash; this is the entire modal form, including the background &ndash;&gt;
-        <div class="cd-user-modal-container"> &lt;!&ndash; this is the container wrapper &ndash;&gt;
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить картинку</a></li>
-                &lt;!&ndash;<li><a href="#0">New account</a></li>&ndash;&gt;
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить файл</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
             </ul>
 
-            <div id="cd-login"> &lt;!&ndash; log in form &ndash;&gt;
-                <form th:action="@{/admin/table/picture/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/content/files/add/submit}" th:object="${file}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <select id="keyPicture" name="keyPicture" required>
-                                <option th:each="keyPicture : ${keyPictures}" th:value="${keyPicture}" th:utext="${keyPicture.getName()}"></option>
+                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
+                            <input type="date" th:value="${file.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
+                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input type="file" id="file" name="file" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <select id="extension" name="extension" required>
+                                <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
                             </select>
                         </p>
 
-                        <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input th:value="${picture.href}" id="href" name="href" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Ссылка - http://vk.com (НЕОБЯЗАТЕЛЬНО)">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input type="date" th:value="${picture.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        <p class="fieldset black_p">
-                            <input type="file" required id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
-                        </p>
-
-                        <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input th:value="${picture.styles}" id="styles" name="styles" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Пример: color : red (Знание css)">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        &lt;!&ndash;<input name="date" type="hidden" th:field="*{date}">&ndash;&gt;
-                        &lt;!&ndash;<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">&ndash;&gt;
+                        <!--<input name="date" type="hidden" th:field="*{date}">-->
+                        <!--<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
+                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">-->
                         <p class="fieldset black_p">
 
                             <button class="full-width" type="submit">Добавить</button>
                         </p>
                     </fieldset>
                 </form>
-            </div> &lt;!&ndash; cd-login &ndash;&gt;
+            </div> <!-- cd-login -->
 
-        </div> &lt;!&ndash; cd-user-modal-container &ndash;&gt;
-    </div> &lt;!&ndash; cd-user-modal &ndash;&gt;-->
-
-    <h3 class="text-center padding5p">Меню сайта</h3>
-    <form method="post" id="myform"></form>
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+    <h2>Просмотр файлов. Для редактирования необходимо обладать правами разработчика</h2>
     <table class="color">
         <tr>
             <th>Идентификатор</th>
-            <th>Идентификатор главного сотрудника</th>
+            <th>Тип файла</th>
             <th>Название</th>
-            <th>Адрес</th>
-            <th id="labelUpdateMenuItem">Действие</th>
+            <th>Вложенный файл</th>
         </tr>
-        <tr th:each="department : ${departments}">
-            <form th:action="@{/admin/table/department/update/submit}" th:object="${item}" method="post">
-                <td><input id="id" class="menuItemTables" name="id" th:value="${department.getId()}" readonly></td>
-                <td><input id="idMainEmployee" class="menuItemTables" name="idMainEmployee" th:value="${department.getIdMainEmployee()}"></td>
-                <td><input id="name" class="menuItemTables" name="name" th:value="${department.getName()}"></td>
-                <td><input id="address" class="menuItemTables" name="address" th:value="${department.getAddress()}"></td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
-                    <a th:href="@{'/admin/table/department/delete/id=' + ${department.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
+        <tr th:each="file : ${files}">
+            <form th:action="@{/admin/table/files/update/submit}" method="post" enctype="multipart/form-data">
+                <td><input id="id" class="menuItemTables" name="id" th:value="${file.getId()}" readonly></td>
+               <input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}" hidden>
+                <td><!--<input class="menuItemTables" id="extension"  name="extension" th:value="${file.getExtension()}">-->
+                    <select id="extension" name="extension" required>
+                        <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                    </select>
+                </td>
+                <input class="menuItemTables" id="name" name="name" th:value="${file.getName()}" hidden>
+
+                <td><input class="menuItemTables" name="uniqueName" id="uniqueName" th:value="${file.getUniqueName()}" readonly></td>
+                <td>
+                    <a th:href="@{'/files/id=' + ${file.getId()}}" alt="">Ссылка на файл для просмотра</a>
                 </td>
             </form>
         </tr>
     </table>
+
+    <div class="close-btn fa fa-times"></div>
 </div>
 
 <!-- Javascript -->

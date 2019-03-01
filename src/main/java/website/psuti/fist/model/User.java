@@ -18,10 +18,10 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;//почта
     private String password;
-    private boolean accountNonExpired = true;//если давно не заходили
-    private boolean accountNonLocked = true;//если заблокированный
-    private boolean credentialsNonExpired = true; //если настройка учетных данных истекли
-    private boolean enabled = true;//активированный
+    private boolean accountNonExpired;//если давно не заходили
+    private boolean accountNonLocked; //если заблокированный
+    private boolean credentialsNonExpired; //если настройка учетных данных истекли
+    private boolean enabled;//активированный
 
     private String firstname;
     private String secondname;
@@ -31,6 +31,16 @@ public class User implements UserDetails {
     @CollectionTable(name = "users_role", joinColumns = @JoinColumn(name = "users_id"))
     @Enumerated(EnumType.STRING)
     private List<Role> role;
+
+    @Transient
+    private String[] rolesString;
+
+    public User() {
+        accountNonExpired = true;
+        accountNonLocked = true;
+        credentialsNonExpired = true;
+        enabled = true;
+    }
 
     /*@ManyToOne
     @JoinTable(name = "users", inverseJoinColumns = @JoinColumn(name = "user_id"))
@@ -137,12 +147,13 @@ public class User implements UserDetails {
         return role;
     }
 
-    /*public List<Order> getOrders() {
-        return orders;
+    public String[] getRolesString() {
+        return rolesString;
     }
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }*/
+
+    public void setRolesString(String[] rolesString) {
+        this.rolesString = rolesString;
+    }
 
     public void update(User user) {
         if (user.getUsername()!=null)

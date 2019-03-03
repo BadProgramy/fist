@@ -19,8 +19,8 @@ public class User implements UserDetails {
     private String username;//почта
     private String password;
     private boolean accountNonExpired;//если давно не заходили
-    private boolean accountNonLocked; //если заблокированный
-    private boolean credentialsNonExpired; //если настройка учетных данных истекли
+    private boolean accountNonLocked; //если не заблокированный
+    private boolean credentialsNonExpired; //если настройка учетных данных не истекли
     private boolean enabled;//активированный
 
     private String firstname;

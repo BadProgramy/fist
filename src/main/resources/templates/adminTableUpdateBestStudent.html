@@ -33,9 +33,6 @@
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-    <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
-    <link rel="stylesheet" href="/css/admin/reset.css">
-    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -210,43 +207,103 @@
         </div> &lt;!&ndash; cd-user-modal-container &ndash;&gt;
     </div> &lt;!&ndash; cd-user-modal &ndash;&gt;-->
 
-    <h3 class="text-center padding5p">Добавлять студентов можно только через контент</h3>
-    <form method="post" id="myform"></form>
-    <table class="color">
-        <tr>
-            <th>Идентификатор</th>
-            <th>Характеристика</th>
-            <th>Группа</th>
-            <th>Идентификатор картинки</th>
-            <th>ФИО</th>
-            <th>Ссылка</th>
-            <th>Стили для характеристики</th>
-            <th>Стили для группы</th>
-            <th>Стили для ФИО</th>
-            <th>Стили для картинки</th>
-            <th id="labelUpdateMenuItem">Действие</th>
-        </tr>
-        <tr th:each="student : ${bestStudents}">
+    <h3 class="text-center padding5p page_header2">Добавлять студентов можно только через контент</h3>
+
+    <div class="container">
+        <div th:each="student : ${bestStudents}">
+            <div class="col-md-4" style="margin-bottom: 50px">
+                <div class="product-thumb">
+                    <form th:action="@{/admin/table/bestStudent/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
+                        <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${student.getIdPicture()}}" th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" alt=""></a></li>
+                        <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
+                        <input value="Изменить" type="submit">
+                    </form>
+                    <li><a class="cd-signin"><input th:id="@{'student' + ${student.getId()}}" th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" value="Другие изменения.." type="submit"></a></li>
+                    <script th:inline="javascript">
+                        document.body.onclick = function(e) {
+                            var elem = e ? e.target : window.event.srcElement;
+                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
+                            if (!elem.id) return; else id = elem.id;
+                            var rightPart =/*([[${bestStudents}]])*/ null;
+                            var srcImg=document.getElementById(id).getAttribute("src");
+                            /*<![CDATA[*/
+                            /*[# th:each="stud : ${bestStudents}"]*/
+                            rightPart = /*[[@{'/admin/picture/' + ${stud.getIdPicture()}}]]*/ null;
+                            if (srcImg == rightPart) {
+                                document.getElementById("Picture").src = /*[[@{'/admin/picture/' + ${stud.getIdPicture()}}]]*/ null;
+                                document.getElementById("idPicture").value = /*[[@{${stud.getIdPicture()}}]]*/ null;
+                                document.getElementById("id").value = /*[[@{${stud.getId()}}]]*/ null;
+                                document.getElementById("characteristic").value = /*[[@{${stud.getCharacteristic()}}]]*/ null;
+                                document.getElementById("groupInUniversity").value = /*[[@{${stud.getGroupInUniversity()}}]]*/ null;
+                                document.getElementById("name").value = /*[[@{${stud.getName()}}]]*/ null;
+                                document.getElementById("url").value = /*[[@{${stud.getUrl()}}]]*/ null;
+                                document.getElementById("characteristicStyles").value = /*[[@{${stud.getCharacteristicStyles()}}]]*/ null;
+                                document.getElementById("groupInUniversityStyles").value = /*[[@{${stud.getCharacteristicStyles()}}]]*/ null;
+                                document.getElementById("nameStyles").value = /*[[@{${stud.getGroupInUniversityStyles()}}]]*/ null;
+                                document.getElementById("pictureStyles").value = /*[[@{${stud.getPictureStyles()}}]]*/ null;
+                                document.getElementById("del").href = /*[[@{'/admin/table/bestStudent/delete/id=' + ${stud.getId()}}]]*/ null;
+                            }
+                            /*[/]*/
+                            /*]]>*/
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cd-user-modal1">
+        <div class="cd-user-modal-container1">
             <form th:action="@{/admin/table/bestStudent/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <td><input id="id" class="menuItemTables" name="id" th:value="${student.getId()}" readonly></td>
-                <td><input id="characteristic" class="menuItemTables" name="characteristic" th:value="${student.getCharacteristic()}"></td>
-                <td><input id="groupInUniversity" class="menuItemTables" name="groupInUniversity" th:value="${student.getGroupInUniversity()}"></td>
-                <td>
-                    <input id="idPicture" name="idPicture" th:value="${student.getIdPicture()}"/>
-                    <img th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" alt="">
-                </td>
-                <td><input id="name" class="menuItemTables" name="name" th:value="${student.getName()}"></td>
-                <td><input id="url" class="menuItemTables" name="url" th:value="${student.getUrl()}"></td>
-                <td><input id="characteristicStyles" class="menuItemTables" name="characteristicStyles" th:value="${student.getCharacteristicStyles()}"></td>
-                <td><input id="groupInUniversityStyles" class="menuItemTables" name="groupInUniversityStyles" th:value="${student.getGroupInUniversityStyles()}"></td>
-                <td><input id="nameStyles" class="menuItemTables" name="nameStyles" th:value="${student.getNameStyles()}"></td>
-                <td><input id="pictureStyles" class="menuItemTables" name="pictureStyles" th:value="${student.getPictureStyles()}"></td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
-                    <a th:href="@{'/admin/table/bestStudent/delete/id=' + ${student.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
-                </td>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img id="Picture" class="img-responsive" alt=""/></a>
+                    <p>Идентификатор картинки</p>
+                    <input id="idPicture" name="idPicture"/>
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Идентификатор</p>
+                    <input id="id" class="menuItemTables" name="id" readonly>
+                </div>
+                <div class="col-md-4  left" style="padding: 10px 10px 10px;">
+                    <p>Характеристика</p>
+                    <input id="characteristic" class="menuItemTables" name="characteristic">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Группа</p>
+                    <input id="groupInUniversity" class="menuItemTables" name="groupInUniversity">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>ФИО</p>
+                    <input id="name" class="menuItemTables" name="name">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Ссылка</p>
+                    <input id="url" class="menuItemTables" name="url">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Стили для характеристики</p>
+                    <input id="characteristicStyles" class="menuItemTables" name="characteristicStyles">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Стили для группы</p>
+                    <input id="groupInUniversityStyles" class="menuItemTables" name="groupInUniversityStyles">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                <p>Стили для ФИО</p>
+                    <input id="nameStyles" class="menuItemTables" name="nameStyles">
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                <p>Стили для картинки</p>
+                    <input id="pictureStyles" class="menuItemTables" name="pictureStyles">
+            </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Действие</p>
+                    <a id="del" style="color: red;" class="cd-read-more">Удалить</a>
+                </div>
+                <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
             </form>
-        </tr>
-    </table>
+        </div>
+    </div>
+</div>
 </div>
 
 <!-- Javascript -->
@@ -270,23 +327,7 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<!--<script type="text/javascript">-->
-
-<!--$(function() {-->
-
-<!--$("h2")-->
-<!--.wrapInner("<span></span>")-->
-
-<!--$("h2 br")-->
-<!--.before("<span class='spacer'>&nbsp;</span>")-->
-<!--.after("<span class='spacer'>&nbsp;</span>");-->
-
-<!--});-->
-
-<!--</script>-->
-
-<!-- Custom-scroll JS -->
-<!--<script src="js/jquery.custom-scroll.js"></script>-->
+<script src="/js/modal.js"></script>
 
 </body>
 </html>

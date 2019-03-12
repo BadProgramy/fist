@@ -3,10 +3,10 @@ package website.psuti.fist.constant;
 import java.io.IOException;
 
 public enum PathConstant {
-    SAVE_PICTURE("src\\main\\resources\\downloadPictures\\"),//"src\\main\\resources\\downloadPictures\\
+    SAVE_PICTURE(""),//"src\\main\\resources\\downloadPictures\\
     SAVE_PICTURE_NEWS_FACULTY(""),//src\main\resources\downloadPictures\newsFaculty\
     SAVE_PICTURE_BEST_STUDENT(""),//src\main\resources\downloadPictures\bestStudents\
-    HTML_FILE_FOR_USER_ADD_CMS("src\\main\\resources\\downloadPictures\\sendEmailHtml\\email.html"),//src\main\resources\downloadPictures\sendEmailHtml\email.html
+    HTML_FILE_FOR_USER_ADD_CMS("email.html"),//src\main\resources\downloadPictures\sendEmailHtml\email.html
     SAVE_FILE("");//files\
 
     private String path;

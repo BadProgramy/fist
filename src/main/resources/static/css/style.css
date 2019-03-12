@@ -9,7 +9,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,800,900);
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC);
 @import url(https://fonts.googleapis.com/css?family=Oswald);
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
 @font-face {
 	font-family: 'fontee7cdaca20cd76a504334698de5b63c4';
@@ -38,6 +37,30 @@ body {
 li, ul, ol {
 	list-style: none;
 }
+.list-decimal li,.list-decimal ul,.list-decimal ol {
+    list-style:decimal ;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.list-decimal li>ul li {
+    margin-left: 50px;
+    list-style: circle;
+}
+.list-marker li>ul li {
+    margin-left: 50px;
+    list-style: disc;
+}
+.list-marker li{
+    list-style-type:circle;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.list-padding-left ul,.list-padding-left li,.list-padding-left ol{
+    margin-left:25px;
+}
 h1, h2, h3, h4, h5, h6 {
 	font-style:normal;
 	font-weight:normal;
@@ -46,9 +69,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p{
-	/*font-family:'FedraSans-Book';*/
-    /*font-family: 'Roboto', sans-serif;*/
-    /*font-family: 'PT Sans Narrow', sans-serif;*/
 	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
 	line-height: 23px;
@@ -120,7 +140,6 @@ a:hover {
 }
 .site-fist img{
 	border-radius: 100px;
-	border: 1px solid white;
 }
 .big-logo{
 	float: left;
@@ -896,7 +915,7 @@ display: unset;
 .service-right .ico img.icon_1 {
 	max-height: 100px;
 	max-width: 100px;
-	margin-top: 5%;
+	margin-top: 10%;
 	opacity:1;
 	position:absolute;
 	left:55%;
@@ -912,7 +931,7 @@ display: unset;
 .service-right .ico img.icon_2 {
 	max-height: 100px;
 	max-width: 100px;
-	margin-top: 5%;
+	margin-top: 10%;
 	opacity:0;
 	position:absolute;
 	left:55%;
@@ -939,7 +958,9 @@ display: unset;
 .service-info h4 {
     z-index: 999;
 }
-
+.service-left .service-info{
+    width: 70%;
+}
 .service-info h4:hover {
     opacity:1;
     z-index:99;
@@ -1283,7 +1304,7 @@ td:nth-child(4) {
 }
 th {
     border: 1px solid #040206 !important;
-    padding: 30px 30px 5px;
+	padding: 15px 30px 15px;
     color:black !important;
 }
 caption {
@@ -2271,7 +2292,7 @@ article.bm-item h2.post-title {
 .page_header h2 {
     font-family: 'Open Sans', sans-serif;
     color: black;
-    font-size: 48px;
+	font-size: 40px;
     font-weight: bold;
 }
 
@@ -2281,7 +2302,7 @@ article.bm-item h2.post-title {
     font-style: italic;
     color: #484848;
     font-weight: 500;
-    font-family: "Roboto";
+	font-family: 'Open Sans', sans-serif;
 }
 
 blockquote.style2 p {
@@ -2738,8 +2759,9 @@ line-height:28px;
 
 .accordion .panel-body {
     padding: 25px 45px;
-	font-size:13px;
-	line-height:24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .accordion .panel-body p {

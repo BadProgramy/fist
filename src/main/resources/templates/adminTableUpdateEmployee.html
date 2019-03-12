@@ -33,9 +33,6 @@
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-    <link rel="stylesheet" href="/css/admin/updateNews.css"> <!-- Resource style -->
-    <link rel="stylesheet" href="/css/admin/reset.css">
-    <link rel="stylesheet" href="/css/admin/mainPage/style.css">
 
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
@@ -158,100 +155,119 @@
         </div>
     </header>
 
-    <!--<div class="cd-user-modal"> &lt;!&ndash; this is the entire modal form, including the background &ndash;&gt;
-        <div class="cd-user-modal-container"> &lt;!&ndash; this is the container wrapper &ndash;&gt;
-            <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить картинку</a></li>
-                &lt;!&ndash;<li><a href="#0">New account</a></li>&ndash;&gt;
-            </ul>
+    <div class="container" style="padding-top: 5%">
+        <div th:each="employee : ${employees}">
+            <div class="col-md-4" style="margin-bottom: 50px">
+                <div class="product-thumb">
+                    <form th:action="@{/admin/table/employee/update/submit}" th:object="${item}" method="post">
+                        <li><a class="cd-signin"><p th:src="${employee.getId()}" th:id="${employee.getId()}" class="menuItemTables" name="name" th:value="${employee.getName()}" th:utext="${employee.getName()}"></p></a></li>
+                    </form>
+                    <!--<input  value="Другие изменения.." type="submit">-->
+                    <script th:inline="javascript">
+                        document.body.onclick = function(e) {
+                            var elem = e ? e.target : window.event.srcElement;
+                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
+                            if (!elem.id) return; else id = elem.id;
+                            var rightPart =/*([[${employees}]])*/ null;
+                            var srcImg=document.getElementById(id).getAttribute("src");
+                            /*<![CDATA[*/
+                            /*[# th:each="emp : ${employees}"]*/
+                            rightPart = /*[[@{${emp.getId()}}]]*/ null;
+                            if (srcImg == rightPart) {
+                                document.getElementById("id").value = /*[[@{${emp.getId()}}]]*/ null;
+                                document.getElementById("idPictureMajor").value = /*[[@{${emp.getIdPictureMajor()}}]]*/ null;
+                                document.getElementById("idPictureMinor").value = /*[[@{${emp.getIdPictureMinor()}}]]*/ null;
+                                document.getElementById("idDepartment").value = /*[[@{${emp.getIdDepartment()}}]]*/ null;
+                                document.getElementById("characteristic").value = /*[[@{${emp.getCharacteristic()}}]]*/ null;
+                                document.getElementById("email").value = /*[[@{${emp.getEmail()}}]]*/ null;
+                                document.getElementById("name").value = /*[[@{${emp.getName()}}]]*/ null;
+                                document.getElementById("phone").value = /*[[@{${emp.getPhone()}}]]*/ null;
+                                document.getElementById("post").value = /*[[@{${emp.getPost()}}]]*/ null;
+                                document.getElementById("qualificationDetailed").value = /*[[@{${emp.getQualificationDetailed()}}]]*/ null;
+                                document.getElementById("qualificationBriefly").value = /*[[@{${emp.getQualificationBriefly()}}]]*/ null;
+                                document.getElementById("pinNumber").value = /*[[@{${emp.getPinNumber()}}]]*/ null;
+                                document.getElementById("curator").value = /*[[@{${emp.getCurator()}}]]*/ null;
+                                document.getElementById("nameDepartment").value = /*[[@{${emp.getNameDepartment()}}]]*/ null;
+                                document.getElementById("del").href = /*[[@{'/admin/table/employee/delete/id=' + ${emp.getId()}}]]*/ null;
+                            }
+                            /*[/]*/
+                            /*]]>*/
 
-            <div id="cd-login"> &lt;!&ndash; log in form &ndash;&gt;
-                <form th:action="@{/admin/table/picture/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
-                    <fieldset>
-                        <p class="fieldset black_p">
-                            <select id="keyPicture" name="keyPicture" required>
-                                <option th:each="keyPicture : ${keyPictures}" th:value="${keyPicture}" th:utext="${keyPicture.getName()}"></option>
-                            </select>
-                        </p>
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input th:value="${picture.href}" id="href" name="href" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Ссылка - http://vk.com (НЕОБЯЗАТЕЛЬНО)">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input type="date" th:value="${picture.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        <p class="fieldset black_p">
-                            <input type="file" required id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
-                        </p>
-
-                        <p class="fieldset black_p">
-                            &lt;!&ndash;<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>&ndash;&gt;
-                            <input th:value="${picture.styles}" id="styles" name="styles" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Пример: color : red (Знание css)">
-                            &lt;!&ndash;<span class="cd-error-message">Ошибка ввода загаловка!</span>&ndash;&gt;
-                        </p>
-
-                        &lt;!&ndash;<input name="date" type="hidden" th:field="*{date}">&ndash;&gt;
-                        &lt;!&ndash;<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">&ndash;&gt;
-                        <p class="fieldset black_p">
-
-                            <button class="full-width" type="submit">Добавить</button>
-                        </p>
-                    </fieldset>
+        <div class="cd-user-modal1">
+            <div class="cd-user-modal-container1">
+                <form th:action="@{/admin/table/employee/update/submit}" th:object="${item}" method="post">
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Идентификатор</p>
+                        <input id="id" class="menuItemTables" name="id" readonly>
+                    </div>
+                    <div class="col-md-4  left" style="padding: 10px 10px 10px;">
+                        <p>Идентификатор главной картины</p>
+                        <input id="idPictureMajor" class="menuItemTables" name="idPictureMajor">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Идентификатор второстепенной картины</p>
+                        <input id="idPictureMinor" class="menuItemTables" name="idPictureMinor">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Идентификатор департамента</p>
+                        <input id="idDepartment" class="menuItemTables" name="idDepartment">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Характеристика</p>
+                        <input id="characteristic" class="menuItemTables" name="characteristic">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Почта</p>
+                        <input id="email" class="menuItemTables" name="email">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>ФИО</p>
+                        <input id="name" class="menuItemTables" name="name">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Телефон</p>
+                        <input id="phone" class="menuItemTables" name="phone">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Должность</p>
+                        <input id="post" class="menuItemTables" name="post">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Детальная квалификация</p>
+                        <input id="qualificationDetailed" class="menuItemTables" name="qualificationDetailed">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Краткая квалификация</p>
+                        <input id="qualificationBriefly" class="menuItemTables" name="qualificationBriefly">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Очередь вывода</p>
+                        <input id="pinNumber" class="menuItemTables" name="pinNumber">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Кураторство</p>
+                        <input id="curator" class="menuItemTables" name="curator">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Название департамента</p>
+                        <input id="nameDepartment" class="menuItemTables" name="nameDepartment">
+                    </div>
+                    <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                        <p>Действие</p>
+                        <a style="color: red;" class="cd-read-more">Удалить</a>
+                    </div>
+                    <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
                 </form>
-            </div> &lt;!&ndash; cd-login &ndash;&gt;
-
-        </div> &lt;!&ndash; cd-user-modal-container &ndash;&gt;
-    </div> &lt;!&ndash; cd-user-modal &ndash;&gt;-->
-
-    <h3 class="text-center padding5p">Меню сайта</h3>
-    <form method="post" id="myform"></form>
-    <table class="color">
-        <tr>
-            <th>Идентификатор</th>
-            <th>Идентификатор главной картины</th>
-            <th>Идентификатор второстепенной картины</th>
-            <th>Идентификатор департамента</th>
-            <th>Характеристика</th>
-            <th>Почта</th>
-            <th>ФИО</th>
-            <th>Телефон</th>
-            <th>Должность</th>
-            <th>Детальная квалификация</th>
-            <th>Краткая квалификация</th>
-            <th>Очередь вывода</th>
-            <th>Кураторство</th>
-            <th>Название департамента</th>
-            <th id="labelUpdateMenuItem">Действие</th>
-        </tr>
-        <tr th:each="employee : ${employees}">
-            <form th:action="@{/admin/table/employee/update/submit}" th:object="${item}" method="post">
-                <td><input id="id" class="menuItemTables" name="id" th:value="${employee.getId()}" readonly></td>
-                <td><input id="idPictureMajor" class="menuItemTables" name="idPictureMajor" th:value="${employee.getIdPictureMajor()}"></td>
-                <td><input id="idPictureMinor" class="menuItemTables" name="idPictureMinor" th:value="${employee.getIdPictureMinor()}"></td>
-                <td><input id="idDepartment" class="menuItemTables" name="idDepartment" th:value="${employee.getIdDepartment()}"></td>
-                <td><input id="characteristic" class="menuItemTables" name="characteristic" th:value="${employee.getCharacteristic()}"></td>
-                <td><input id="email" class="menuItemTables" name="email" th:value="${employee.getEmail()}"></td>
-                <td><input id="name" class="menuItemTables" name="name" th:value="${employee.getName()}"></td>
-                <td><input id="phone" class="menuItemTables" name="phone" th:value="${employee.getPhone()}"></td>
-                <td><input id="post" class="menuItemTables" name="post" th:value="${employee.getPost()}"></td>
-                <td><input id="qualificationDetailed" class="menuItemTables" name="qualificationDetailed" th:value="${employee.getQualificationDetailed()}"></td>
-                <td><input id="qualificationBriefly" class="menuItemTables" name="qualificationBriefly" th:value="${employee.getQualificationBriefly()}"></td>
-                <td><input id="pinNumber" class="menuItemTables" name="pinNumber" th:value="${employee.getPinNumber()}"></td>
-                <td><input id="curator" class="menuItemTables" name="curator" th:value="${employee.getCurator()}"></td>
-                <td><input id="nameDepartment" class="menuItemTables" name="nameDepartment" th:value="${employee.getNameDepartment()}"></td>
-                <td><input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
-                    <a th:href="@{'/admin/table/employee/delete/id=' + ${employee.getId()}}" style="color: red;" class="cd-read-more">Удалить</a>
-                </td>
-            </form>
-        </tr>
-    </table>
+            </div>
+        </div>
+</div>
 </div>
 
 <!-- Javascript -->
@@ -275,23 +291,6 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<!--<script type="text/javascript">-->
-
-<!--$(function() {-->
-
-<!--$("h2")-->
-<!--.wrapInner("<span></span>")-->
-
-<!--$("h2 br")-->
-<!--.before("<span class='spacer'>&nbsp;</span>")-->
-<!--.after("<span class='spacer'>&nbsp;</span>");-->
-
-<!--});-->
-
-<!--</script>-->
-
-<!-- Custom-scroll JS -->
-<!--<script src="js/jquery.custom-scroll.js"></script>-->
-
+<script src="/js/modal.js"></script>
 </body>
 </html>

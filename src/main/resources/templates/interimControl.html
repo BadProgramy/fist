@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Преподавателям</title>
+    <title>Промежуточный контроль</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,6 +100,15 @@
             </div>
         </div>
     </header>
+
+    <!-- BANER -->
+    <div class="container-fluid no-padding" style="background: black">
+        <div style="position: relative">
+            <div class="item" th:each="picture : ${slider}">
+                <img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
+            </div>
+        </div>
+    </div>
 
     <!-- INNER CONTENT -->
     <section id="content" class="info-doc">

@@ -163,8 +163,6 @@
                 <div class="product-thumb">
                     <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                         <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" alt=""></a></li>
-                        <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
-                        <input value="Изменить" type="submit">
                     </form>
                     <li><a class="cd-signin" th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:value="${topic.getHeading()}" th:utext="${topic.getHeading()}"></a></li>
                     <script th:inline="javascript">
@@ -206,6 +204,7 @@
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img id="Picture"  alt=""></a>
                     <p>Идентификатор картинки</p>
                     <input id="idPicture" name="idPicture"/>
+                    <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Идентификатор</p>

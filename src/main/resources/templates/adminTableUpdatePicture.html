@@ -213,8 +213,6 @@
             <div class="product-thumb">
             <form th:action="@{/admin/table/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                 <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${picture.getId()}}" th:src="@{'/admin/picture/' + ${picture.getId()}}" alt=""></a></li>
-            <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
-            <input value="Изменить" type="submit">
             </form>
                 <li><a class="cd-signin"><input th:id="@{'/admin/picture/' + ${picture.getId()}}" th:src="@{'/admin/picture/' + ${picture.getId()}}" value="Другие изменения.." type="submit"></a></li>
             <script th:inline="javascript">
@@ -251,7 +249,9 @@
     <div class="cd-user-modal1">
         <div class="cd-user-modal-container1">
             <form th:action="@{/admin/table/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img  id="Picture" class="img-responsive" alt=""/></a></div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img  id="Picture" class="img-responsive" alt=""/></a>
+                    <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
+                </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Идентификатор</p>
                     <input id="id" class="menuItemTables" name="id" value="" readonly>

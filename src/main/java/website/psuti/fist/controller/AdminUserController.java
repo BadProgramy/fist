@@ -73,8 +73,7 @@ public class AdminUserController {
                 .replace("#buttonHref", "http://109.124.219.82:8081/user/enable/email="+ user.getUsername());
 
         try {
-            throw new MessagingException();
-            //sender.send("Пример загаловка", htmlBody, user.getUsername());
+            sender.send("Пример загаловка", htmlBody, user.getUsername());
         } catch (MessagingException e) {
             System.out.println("Я открыл scheduler");
             HashMap<String, String> message = new HashMap<>();

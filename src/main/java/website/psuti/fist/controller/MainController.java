@@ -125,8 +125,14 @@ public class MainController {
         modelAndView.setViewName("costEducation");
         return modelAndView;
     }
-
-
+/////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////
+    @RequestMapping("/resultOfControl")
+    public ModelAndView resultOfControl() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("resultOfControl");
+        return modelAndView;
+    }
     //TODO faculty /////////////////////////////////////////////////////////////
 
     @RequestMapping("/faculty/academicSoviet")

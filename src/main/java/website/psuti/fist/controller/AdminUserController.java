@@ -60,17 +60,17 @@ public class AdminUserController {
         s.read(c);
         String htmlBody = String.copyValueOf(c)
                 .replace("#headerTop", "Факультет информационных систем и технологий")
-                .replace("#logotipFIST", "http://109.124.219.82:8081/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
-                .replace("#logotipPSUTI", "http://109.124.219.82:8081/main/picture/"+ MainPageConstant.LOGOTIP_PSUTI.getId())
-                .replace("#logotipTwitter", "http://109.124.219.82:8081/main/picture/"+ 73)
-                .replace("#logotipInstagram", "http://109.124.219.82:8081/main/picture/"+ 72)
-                .replace("#logotipVK", "http://109.124.219.82:8081/main/picture/"+ 71)
+                .replace("#logotipFIST", "http://85.236.182.212:8081/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
+                .replace("#logotipPSUTI", "http://85.236.182.212:8081/main/picture/"+ MainPageConstant.LOGOTIP_PSUTI.getId())
+                .replace("#logotipTwitter", "http://85.236.182.212:8081/main/picture/"+ 73)
+                .replace("#logotipInstagram", "http://85.236.182.212:8081/main/picture/"+ 72)
+                .replace("#logotipVK", "http://85.236.182.212:8081/main/picture/"+ 71)
                 .replace("#headerEmailHtml", "Добавлен пользователь в CMS")
                 .replace("#footer", "Вы получаете это письмо, потому что вас добавили в пользователи CMS сайта ФИСТ.")
                 .replace("#nameClient", "Здраствуйте, "+user.getFirstname()+",")
                 .replace("#textClient", "Здесь какой нить текст")
                 .replace("#buttonCheck", "Подтвердить почту")
-                .replace("#buttonHref", "http://109.124.219.82:8081/user/enable/email="+ user.getUsername());
+                .replace("#buttonHref", "http://85.236.182.212:8081/user/enable/email="+ user.getUsername());
 
         try {
             sender.send("Пример загаловка", htmlBody, user.getUsername());

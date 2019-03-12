@@ -2851,7 +2851,7 @@ line-height:28px;
 }
 
 #header{
-    z-index: 3;
+    z-index: 999;
     position: relative;
     background: #d7d7d7;
 }

@@ -110,7 +110,7 @@
                     <img th:src="@{'/employees/picture/' + ${employee.getIdPictureMajor()}}" class="img-responsive" alt=""/>
                 </div>
                 <div class="col-md-6 about-info">
-                    <h3 th:utext="${employee.getName()}"></h3>
+                    <h5 th:utext="${employee.getName()}"></h5>
                     <h4 th:utext="${employee.getPost()}"></h4>
                     <p th:utext="${employee.getPhone()} + ', ' + ${employee.getEmail()}"></p>
                     <p th:utext="${employee.getQualificationDetailed()}"></p>

@@ -453,6 +453,7 @@ h1 {
 
 
 #content {
+    z-index: 3;
 	 float:left;
 	 width:100%;
 	 position:relative;
@@ -1115,7 +1116,7 @@ display: unset;
 }
 .prepod img:hover{
  border:2px solid #4a7ac2;
-	border-radius: 150px;
+	border-radius: 500px;
 }
 
 .main-team ul.cs-style-7 li {
@@ -2849,7 +2850,14 @@ line-height:28px;
 	color: #000;
 }
 
+#header{
+    z-index: 999;
+    position: relative;
+    background: #d7d7d7;
+}
+
 .tab-content .tab-pane {
+    background: white;
     padding: 30px 30px 5px;
     border: 1px solid #ddd;
     border-top: none;
@@ -4540,6 +4548,8 @@ transform:translateY(-50%);
 #footer2 {
 	background:#141212;
 	padding:40px 0 0px;
+    position: relative;
+    z-index: 3;
 }
 
 #footer2 p {

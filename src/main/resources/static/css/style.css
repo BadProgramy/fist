@@ -37,6 +37,7 @@ body {
 li, ul, ol {
 	list-style: none;
 }
+
 .list-decimal li,.list-decimal ul,.list-decimal ol {
     list-style:decimal ;
     font-family: 'Oswald', sans-serif;
@@ -751,7 +752,6 @@ display: unset;
 .graduent img{
 	border-radius: 350px;
 	object-fit: cover;
-	width: 350px;
 	height:350px;
 }
 .oval-photo img{
@@ -1111,9 +1111,48 @@ display: unset;
 	width:100%;
 }
 
+.cathedras ul{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.cathedras li{
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    line-height: 2;
+    position: relative;
+    padding: 0 0 35px 0;
+    text-align: center;
+}
+.cath p{
+font-size: 18px;
+    text-align: justify;
+}
+
+.cath h5{
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.cath h4{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.cathedras li:hover{
+    font-size: 30px;
+    cursor: pointer;
+    color:#4a7ac2;
+    padding: 0 0 35px 0;
+    line-height: 2;
+}
+
 .teacher{
 	max-width: 50%;
 }
+
+.prepod img{
+    border-radius: 500px;
+}
+
 .prepod img:hover{
  border:2px solid #4a7ac2;
 	border-radius: 500px;
@@ -1297,12 +1336,6 @@ td {
     color:#040206;
 }
 
-td:nth-child(3) {
-    border-left: solid transparent ;
-}
-td:nth-child(4) {
-    border-left: solid transparent ;
-}
 th {
     border: 1px solid #040206 !important;
 	padding: 15px 30px 15px;
@@ -2299,11 +2332,10 @@ article.bm-item h2.post-title {
 
 .page_header p {
     margin-right: 15px;
-    font-size: 16px;
-    font-style: italic;
+    font-size: 18px;
     color: #484848;
     font-weight: 500;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 blockquote.style2 p {
@@ -2473,8 +2505,6 @@ right: 0;
 
 .contact-info span {
     float: right;
-    width: 192px;
-    text-align: right;
 }
 
 .parallax {
@@ -2766,7 +2796,7 @@ line-height:28px;
 }
 
 .accordion .panel-body p {
-	font-size:15px;
+	font-size:17px;
 }
 
 
@@ -2854,6 +2884,9 @@ line-height:28px;
     z-index: 999;
     position: relative;
     background: #d7d7d7;
+}
+.panel-body p{
+    margin-left: -20px;
 }
 
 .tab-content .tab-pane {

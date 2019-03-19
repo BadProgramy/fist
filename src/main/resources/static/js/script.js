@@ -159,7 +159,7 @@ $(document).ready(function() {
     });
 
     // SLIDER REVOLUTION
-    jQuery('.tp-banner').show().revolution({
+   /* jQuery('.tp-banner').show().revolution({
         dottedOverlay: "none",
         delay: 9000,
         startwidth: 1170,
@@ -211,7 +211,7 @@ $(document).ready(function() {
         hideAllCaptionAtLilmit: 0,
         startWithSlide: 0,
         fullScreenOffsetContainer: ".header"
-    });
+    });*/
 
     $('.navbar-collapse a').click(function(e) {
         $('.navbar-collapse').collapse('toggle');

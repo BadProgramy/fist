@@ -103,10 +103,10 @@
     </header>
 
     <section id="content">
-        <div class="page_header page_header2 text-center">
-            <h2 th:utext="${deanTeamName.getName()}"></h2>
-        </div>
         <div class="container-fluid">
+            <div class="page_header page_header2 text-center">
+                <h2 th:utext="${deanTeamName.getName()}"></h2>
+            </div>
             <div class="row prepod" th:each="employee : ${deanTeams}">
                 <div th:if="${employee.getPinNumber()} % 2 != 0">
                     <div class="col-md-4 left-teach">

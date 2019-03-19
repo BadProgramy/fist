@@ -5,6 +5,7 @@ public enum KeyPicture {
     TOPIC_FACULTY("Новость факультета"),
     DEAN_TEAM("Состав деканата"),
     DEPARTMENT("Состав кафедры"),
+    DIPLOMAS("Дипломы"),
     OTHER("Другое");
 
     private String name;

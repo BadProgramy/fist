@@ -267,4 +267,8 @@ public class ModelAndViewConfiguration {
     public List<NewsOfFaculty> getNewsOfFaculties() {
         return newsOfFaculties;
     }
+
+    public List<Pictures> getPicturesByKeyPicture(KeyPicture keyPicture) {
+        return picturesService.findPicturesByKey(keyPicture);
+    }
 }

@@ -88,8 +88,10 @@ public class AdminNewsFacultyController {
         File f ;
         for (Pictures pictures: picturesService.getAll()) {
             f = new File("src\\main\\resources\\static\\" + pictures.getUrlPicture());
-            pictures.setPictureFile(Files.readAllBytes(f.toPath()));
-            picturesService.update(pictures);
+            if (f.exists()) {
+                pictures.setPictureFile(Files.readAllBytes(f.toPath()));
+                picturesService.update(pictures);
+            }
         }
         return "newsBlog";
     }

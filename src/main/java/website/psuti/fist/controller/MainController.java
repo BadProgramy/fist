@@ -125,8 +125,14 @@ public class MainController {
         modelAndView.setViewName("costEducation");
         return modelAndView;
     }
-
-
+/////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////
+    @RequestMapping("/resultOfControl")
+    public ModelAndView resultOfControl() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("resultOfControl");
+        return modelAndView;
+    }
     //TODO faculty /////////////////////////////////////////////////////////////
 
     @RequestMapping("/faculty/academicSoviet")
@@ -138,8 +144,30 @@ public class MainController {
 
     @RequestMapping("/faculty/diplomasPhoto")
     public ModelAndView diplomasPhoto() {
+        return diplomasPhotoPage(1);
+        /*ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("diplomasPhoto");
+        return modelAndView;*/
+    }
+
+    @RequestMapping("/faculty/diplomasPhoto/page/{idPage}")
+    public ModelAndView diplomasPhotoPage(@PathVariable int idPage) {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("diplomasPhoto");
+
+        if (idPage <= 0) idPage = 1;
+        modelAndView.addObject("firstPage", idPage);
+        List<Pictures> diplomas = modelAndViewConfiguration.getPicturesByKeyPicture(KeyPicture.DIPLOMAS);
+        modelAndView.addObject("pageCount", (diplomas.size() / (DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount() + 1)) + 1);
+        List<Pictures> resultDiplomas = new ArrayList<>();
+        for (int i = (idPage - 1) * DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(), j = 0; i < diplomas.size() && j < DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(); i++, j++) {
+            resultDiplomas.add(diplomas.get(i));
+        }
+        modelAndView.addObject("resultDiplomas", resultDiplomas);
+       /* ModelAndView modelview = modelAndViewConfiguration.initModelAndView();
+        modelview.addAllObjects(modelAndView.asMap());
+        modelview.setViewName("newsBlog");*/
+
         return modelAndView;
     }
 

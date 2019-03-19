@@ -113,14 +113,14 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div id="shop-mason" class="shop-mason-4col">
-                                <div class="sm-item isotope-item">
+                                <div th:each="diplomPicture : ${resultDiplomas}" class="sm-item isotope-item">
                                     <div class="product">
                                         <div class="product-thumb">
-                                            <img src="/images/diplomasPhoto/Lushin.jpg" class="img-responsive" alt="">
+                                            <img th:src="@{'/main/picture/' + ${diplomPicture.getId()}}" class="img-responsive" alt="">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sm-item isotope-item">
+                                <!--<div class="sm-item isotope-item">
                                     <div class="product">
                                         <div class="product-thumb">
                                             <img src="/images/diplomasPhoto/Karnaukhov.jpg" class="img-responsive" alt="">
@@ -679,8 +679,40 @@
                                             <img src="/images/diplomasPhoto/8.jpg" class="img-responsive" alt="">
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
+
+                            <div class="page_nav" th:object="${pageCount}">
+
+                                <a th:href="@{'/faculty/diplomasPhoto/page/1'}" style="float: left;">
+                                    <i class="fa fa-angle-left"></i>
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+
+                                <a th:href="@{'/faculty/diplomasPhoto/page/' + ${firstPage - 1}}" style="float: left;"><i class="fa fa-angle-left"></i></a>
+
+                                <a style="float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/faculty/diplomasPhoto/page/' + ${firstPage}}" class="active"></a>
+
+                                <div style="float: left;" th:if="${pageCount - firstPage + 1} == true">
+                                    <a id="secondPage" th:utext="${firstPage + 1}" th:href="@{'/faculty/diplomasPhoto/page/' + ${firstPage + 1}}"></a>
+                                </div>
+
+                                <div style="float: left;" th:if="${pageCount - firstPage + 2} == true">
+                                    <a id="thirdPage" th:utext="${firstPage + 2}" th:href="@{'/faculty/diplomasPhoto/page/' + ${firstPage + 2}}"></a>
+                                </div>
+
+                                <a style="float: left;" class="no-active">...</a>
+                                <a style="float: left;" th:utext="${pageCount}" th:href="@{'/faculty/diplomasPhoto/page/' + ${pageCount}}"></a>
+
+                                <a th:href="@{'/faculty/diplomasPhoto/page/' + ${firstPage + 1}}" style="float: left;" href=""><i class="fa fa-angle-right"></i></a>
+
+                                <a style="float: left;" th:href="@{'/faculty/diplomasPhoto/page/' + ${pageCount}}">
+                                    <i class="fa fa-angle-right"></i>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                            <!-- End Pagination -->
+
                         </div>
                         <div class="clearfix"></div>
                     </div>

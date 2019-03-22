@@ -1,14 +1,16 @@
 package website.psuti.fist.controller;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.codec.Utf8;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
+import website.psuti.fist.constant.UrlForSearch;
 import website.psuti.fist.model.SearchObject;
 
 import java.io.IOException;
@@ -26,8 +28,11 @@ public class SearchController {
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
     private static final Pattern TITLE = Pattern.compile("\\<title\\>(.*)\\<\\/title\\>", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+    private final int RANDE_PLUS_MINUS_OUTPUT_TEXT = 200;
+    private final int COUNT_OUTPUT_RESULT_SEARCH = 15;
+    private final int MIN_COUNT_CHARACTER_INPUT_WORD = 2;
 
-    private HashMap<String, String> search(String url, String word) {
+    private HashMap<String, String> parse(String url, String word) {
         HashMap<String, String> result = new LinkedHashMap<>();
         try {
             InputStreamReader in = new InputStreamReader(new URL(url).openStream(), Charset.forName("utf-8"));
@@ -44,13 +49,22 @@ public class SearchController {
             if (matcherTitle.find()) {
                 title = matcherTitle.group(1);
             }
-            input = new StringBuilder(Jsoup.parse(input.toString()).text());
-            inputForOutput = new StringBuilder(Jsoup.parse(inputForOutput.toString()).text());
+            input = new StringBuilder(StripHtml(Jsoup.parseBodyFragment(input.toString())));
+            inputForOutput = new StringBuilder(StripHtml(Jsoup.parseBodyFragment(input.toString())));
             Pattern pattern = Pattern.compile(word);
             Matcher matcher = pattern.matcher(input);
             while (matcher.find()) {
-                text ="..." + inputForOutput.substring(matcher.start() - 200, matcher.end() + 200) + "...";
-                result.put(text, title );
+                if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT && matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
+                    text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
+                    result.put(text, title );
+                } else if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT) {
+                    text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, matcher.end()) + "...";
+                    result.put(text, title );
+                } else if (matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
+                    text ="..." + inputForOutput.substring(matcher.start(), matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
+                    result.put(text, title );
+                }
+                if (result.size() == COUNT_OUTPUT_RESULT_SEARCH) return result;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,16 +74,33 @@ public class SearchController {
         return result;
     }
 
+    public String StripHtml(Document thing){
+        String[] tags = {"footer", "header"};
+        for (String tag : tags) {
+            for (Element elem : thing.getElementsByTag(tag)) {
+                elem.remove();
+            }
+        }
+        return thing.body().text();
+    }
 
-    @RequestMapping("/search")
-    public String s(Model model) {
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(Model model, @RequestParam("searchword") String word) {
         model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModel());
         List<SearchObject> searchObjects = new ArrayList<>();
-        String[] argi = { "http://localhost:8081/faculty/cathedras"};
-        for (int i = 0; i < argi.length; i++) {
-            HashMap<String, String> result = search(argi[i], "заведующий кафедр".toLowerCase());
-            for (Map.Entry entry : result.entrySet()) {
-                searchObjects.add(new SearchObject(entry.getValue().toString(), argi[i], entry.getKey().toString()));
+        if (word.length() > MIN_COUNT_CHARACTER_INPUT_WORD) { //Начинаем поиск, если пользователь ввел более 2х букв
+            String[] argi = UrlForSearch.getListURL();//получаем все ссылки, где будет вести поиск
+            for (int i = 0; i < argi.length; i++) {
+                HashMap<String, String> result = parse(argi[i], word.toLowerCase());
+                for (Map.Entry entry : result.entrySet()) {
+                    searchObjects.add(new SearchObject(entry.getValue().toString(), argi[i], entry.getKey().toString()));
+                    if (searchObjects.size() >= COUNT_OUTPUT_RESULT_SEARCH) { // максимум результат вывода
+                        model.addAttribute("resultSearch", searchObjects);
+                        return "search";
+                    }
+                }
+
             }
         }
         model.addAttribute("resultSearch", searchObjects);

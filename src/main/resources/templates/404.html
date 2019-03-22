@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -37,9 +37,9 @@
 				<h1>404</h1>
 			</div>
 			<h2>УПС! Страница не найдена</h2>
-			<form class="notfound-search">
-				<input type="text" placeholder="Поиск...">
-				<button type="button">Поиск</button>
+			<form th:action="${'/search'}" th:object="${searchword}" class="notfound-search">
+				<input name="searchword" type="text" placeholder="Поиск...">
+				<button type="submit">Поиск</button>
 			</form>
 			<div class="notfound-social">
 				<a href="#"><i class="fa fa-vk"></i></a>

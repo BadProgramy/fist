@@ -280,8 +280,8 @@
                 <div class="col-md-2">
                     <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
                     <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
-                    <form class="newsletter">
-                        <input type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
+                    <form th:action="${'/user/add/subscriber'}" th:object="${username}" class="newsletter">
+                        <input name="username" type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
                         <button type="submit"><i class="fa fa-paper-plane"></i></button>
                     </form>
                 </div>

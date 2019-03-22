@@ -1,7 +1,9 @@
 package website.psuti.fist.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -9,21 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
-import website.psuti.fist.constant.NewsFacultyConstant;
-import website.psuti.fist.constant.PathConstant;
-import website.psuti.fist.model.KeyPicture;
-import website.psuti.fist.model.NewsOfFaculty;
-import website.psuti.fist.model.Pictures;
+import website.psuti.fist.configuration.Sender;
+import website.psuti.fist.constant.*;
+import website.psuti.fist.model.*;
+import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.NewsFacultyService;
 import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
 
+import javax.mail.MessagingException;
+import java.io.*;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
 
 @Controller
 public class AdminNewsFacultyController {
@@ -38,6 +40,12 @@ public class AdminNewsFacultyController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private Sender sender;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @RequestMapping("/admin/news")
     public ModelAndView news() {
@@ -80,6 +88,11 @@ public class AdminNewsFacultyController {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.insert(newFaculty);
+        for (User user : userService.getUsersByRole(Role.SUBSCRIBER)) {
+            modelAndViewConfiguration.sendMessageSubscriber(newFaculty.getHeading(), newFaculty.getText(), user,
+                    "Посмотреть на сайте", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi(), "",
+                    "Вы получаете это письмо, потому что вы подписаны на новости факультета.");
+        }
         return "redirect:../";
     }
 

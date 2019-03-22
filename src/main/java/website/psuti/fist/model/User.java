@@ -168,6 +168,10 @@ public class User implements UserDetails {
             pagevk = user.getPagevk();
     }
 
+    public void addRole(Role role) {
+        this.role.add(role);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this==obj) return true;

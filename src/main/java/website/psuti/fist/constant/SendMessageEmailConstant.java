@@ -32,7 +32,7 @@ public abstract class SendMessageEmailConstant {
         nonSendingMessage.clear();
    }
 
-   public static void removeNonSendinMessage(User user) {
+   public static void removeNonSendingMessage(User user) {
         nonSendingMessage.remove(user);
    }
 }

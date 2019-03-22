@@ -4,17 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Component;
-import website.psuti.fist.FistApplication;
 import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.SendMessageEmailConstant;
 import website.psuti.fist.model.User;
 
-import javax.annotation.PostConstruct;
 import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +33,7 @@ public class SendMessageScheduler {
                         sender.send(String.valueOf(valueMessage.getKey()),
                                 String.valueOf(valueMessage.getValue()),
                                 ((User)keyUser.getKey()).getUsername());
-                        SendMessageEmailConstant.removeNonSendinMessage((User) keyUser.getKey());
+                        SendMessageEmailConstant.removeNonSendingMessage((User) keyUser.getKey());
                         logger.info("Я отправил сообщение");
                         break;
                     } catch (MessagingException e) {

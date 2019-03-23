@@ -106,13 +106,13 @@
         <div class="page_header page_header2 text-center">
             <h2 th:utext="${departmentName.getName()}"></h2>
         </div>
-        <!--<div class="shortcontain cathedras list">
+        <div class="shortcontain cathedras list">
         <ul>
             <div th:each="department : ${departments}">
-            <li th:onclick="ScrollTo(${department.getId()})" th:utext="${department.getNameDepartment()}"></li>
+            <li th:onclick="ScrollTo([[${department.getId()}]])" th:utext="${department.getNameDepartment()}"></li>
             </div>
         </ul>
-           </div>-->
+           </div>
         <div class="container reducedPhoto list-marker">
             <!--<div class="row" th:each="department : ${departments}">
                 <div class="col-md-6">
@@ -492,7 +492,7 @@
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<!--<script>
+<script th:inline="javascript">
     function ScrollTo(name) {
         ScrollToResolver(document.getElementById(name));
     }
@@ -510,6 +510,6 @@
             elem.lastjump = null;
         }
     }
-</script>-->
+</script>
 </body>
 </html>

@@ -21,7 +21,7 @@ public enum  UrlForSearch {
     URL_LIST_GROUP("/groupLists");
 
 
-    private static final String URL_SITE = "http://localhost:8081";
+    private static final String URL_SITE = "http://109.124.244.164:8081";
 
     private String api;
 

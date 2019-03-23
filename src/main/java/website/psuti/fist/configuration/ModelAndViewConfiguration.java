@@ -1,17 +1,20 @@
 package website.psuti.fist.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
-import website.psuti.fist.constant.MainPageConstant;
-import website.psuti.fist.constant.MainPageObjectConstant;
-import website.psuti.fist.constant.NameDepartmentConstant;
-import website.psuti.fist.constant.NameTableBD;
+import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
+import website.psuti.fist.model.File;
+import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.*;
 
 import javax.annotation.PostConstruct;
+import javax.mail.MessagingException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +46,12 @@ public class ModelAndViewConfiguration {
 
     @Autowired
     private FileService fileService;
+
+    @Autowired
+    private Sender sender;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     //--------------------------------------------------КЭШ------------------------------------------
     private ModelAndView modelAndView;
@@ -152,6 +161,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("ItemHeader11", getItemById(items, MainPageConstant.FOOTER_MAIN_PAGE.getId()));//footer main page
         modelAndView.addObject("ItemHeader9_1", getItemById(items, MainPageConstant.CONTEXT_2_1_FOOTER.getId()));//Введите свой email, чтобы ....
         modelAndView.addObject("ItemHeader9_2", getItemById(items, MainPageConstant.CONTEXT_2_2_FOOTER.getId()));//Email адрес сюда..
+        modelAndView.addObject("username", "");
         modelAndView.addObject("ItemHeader10", getItemById(items, MainPageConstant.CONTEXT_3_FOOTER.getId()));//ФИСТ в соц сетях
         modelAndView.addObject("ItemHeader10_1", getItemById(items, MainPageConstant.CONTEXT_3_1_FOOTER.getId()));//VK
         modelAndView.addObject("ItemHeader10_2", getItemById(items, MainPageConstant.CONTEXT_3_2_FOOTER.getId()));//INST
@@ -212,6 +222,65 @@ public class ModelAndViewConfiguration {
 
     private void updateUsersRoleTable() {
 
+    }
+
+    public void sendMessageSubscriber(String header, String text, User user,
+                                      String buttonName, String buttonHref, String nameClient, String footer) {
+        Reader s = null;
+        try {
+            s = new InputStreamReader(new FileInputStream(PathConstant.HTML_FILE_FOR_USER_SUBSCRIBE.getPath()) );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        char c[] = new char[(int)(new java.io.File(PathConstant.HTML_FILE_FOR_USER_SUBSCRIBE.getPath())).length()];
+        try {
+            s.read(c);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String htmlBody = String.copyValueOf(c)
+                .replace("#footer", footer)
+                .replace("#nameClient", nameClient)
+                .replace("#textClient", text)
+                .replace("#buttonCheck", buttonName)
+                .replace("#buttonHref", buttonHref)
+                .replace("#siteFIST", UrlForSearch.getUrlSite())
+                .replace("#mainSiteName", "Главная")
+                .replace("#newsBlogSite", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi())
+                .replace("#newsFaculty", "Новости")
+                .replace("#aboutFacultyName", "О факультете")
+                .replace("#aboutFaculty", UrlForSearch.getUrlSite() + UrlForSearch.URL_FACULTY.getApi())
+                .replace("#deanTeamName", "Состав деканата")
+                .replace("#deanTeam", UrlForSearch.getUrlSite() + UrlForSearch.URL_DEAN_TEAM.getApi())
+                .replace("#unsubscribeName", "Отписаться")
+                .replace("#unsubscribe", UrlForSearch.getUrlSite() + "/user/unsubscribe/email=" + user.getUsername())
+                .replace("#contactName", "Контакты")
+                .replace("#contact", UrlForSearch.getUrlSite() + UrlForSearch.URL_CONTACT.getApi())
+
+                .replace("#headerTop", "Факультет информационных систем и технологий")
+                .replace("#logotipFIST", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
+                .replace("#logotipPSUTI", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_PSUTI.getId())
+                .replace("#logotipTwitter", UrlForSearch.getUrlSite() + "/main/picture/"+ 73)
+                .replace("#logotipInstagram", UrlForSearch.getUrlSite() + "/main/picture/"+ 72)
+                .replace("#logotipVK", UrlForSearch.getUrlSite() + "/main/picture/"+ 71)
+                .replace("#headerEmailHtml", header);
+
+        try {
+            sender.send(header, htmlBody, user.getUsername());
+        } catch (MessagingException e) {
+            System.out.println("Я открыл scheduler");
+            HashMap<String, String> message = new HashMap<>();
+            message.put(header, htmlBody);
+            SendMessageEmailConstant.addSendMessage(user, message);
+            ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor = applicationContext.getBean(ScheduledAnnotationBeanPostProcessor.class);
+            scheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
+            e.printStackTrace();
+        }
+        try {
+            s.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Object getItemById(List<?> list, long id) {

@@ -1,17 +1,24 @@
 package website.psuti.fist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
+import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
+import website.psuti.fist.scheduler.SendMessageScheduler;
+import website.psuti.fist.service.UserService;
+
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.io.File;
+import java.sql.SQLException;
 import java.util.*;
 
 @Controller
@@ -21,6 +28,9 @@ public class MainController {
 
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
+
+    @Autowired
+    private UserService userService;
 
 
     @RequestMapping("")
@@ -238,4 +248,41 @@ public ModelAndView gradStudents() {
         return modelAndView;
     }
 
+    //TODO а тут для подписки
+    @RequestMapping("/user/add/subscriber")
+    public ModelAndView addSubscriber(@RequestParam("username") String username) {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("enabledAccount");
+        User user = userService.findUserByName(username);
+        if (user == null) {
+            user = new User();
+            user.setUsername(username);
+            user.setEnabled(false);
+            user.setAccountNonExpired(false);
+            user.setAccountNonLocked(false);
+            user.setCredentialsNonExpired(false);
+            List<Role> roles = new ArrayList<>();
+            roles.add(Role.SUBSCRIBER);
+            user.setRole(roles);
+        } else if (!user.getRole().contains(Role.SUBSCRIBER)) {
+            user.addRole(Role.SUBSCRIBER);
+            user.setEnabled(true);
+        }
+        try {
+            userService.save(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        modelAndViewConfiguration.sendMessageSubscriber("Здравствуйте, уважаемый подписчик!", "Для того, чтобы подписаться на новости факультета, нажмите на кнопку!", user,
+                "Подписаться", UrlForSearch.getUrlSite() + "/user/enable/email=" + username, "",
+                "Вы получаете это письмо, потому что вы хотели подписаться на новости факультета.");
+        return modelAndView;
+    }
+
+    @RequestMapping("/user/unsubscribe/email={email}")
+    public String activationUser(@PathVariable("email") String email) {
+        User user = userService.findUserByName(email);
+        userService.delete(user);
+        return "enabledAccount";
+    }
 }

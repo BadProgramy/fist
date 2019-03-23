@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import website.psuti.fist.dao.user.DAOUser;
+import website.psuti.fist.model.Role;
 import website.psuti.fist.model.User;
 
 import javax.sql.DataSource;
@@ -73,5 +74,15 @@ public class UserService implements UserDetailsService {
     @Transactional
     public User findUserById(@NotNull long id) {
         return daoUser.findById(id).get();
+    }
+
+    @Transactional
+    public List<User> getUsersByRole(Role role) {
+        List<User> users = new ArrayList<>();
+        for (User user: getAll()) {
+            if (user.getRole().contains(Role.SUBSCRIBER) && user.isEnabled())
+                users.add(user);
+        }
+        return users;
     }
 }

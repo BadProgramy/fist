@@ -12,6 +12,7 @@ import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.MainPageConstant;
 import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.constant.SendMessageEmailConstant;
+import website.psuti.fist.constant.UrlForSearch;
 import website.psuti.fist.model.Role;
 import website.psuti.fist.model.User;
 import website.psuti.fist.scheduler.SendMessageScheduler;
@@ -47,30 +48,58 @@ public class AdminUserController {
     }
 
     @RequestMapping("/admin/user/add/submit")
-    public String userAddSubmit(@ModelAttribute("user") User user) throws SQLException, IOException {
+    public String userAddSubmit(@ModelAttribute("user") User user) {
         List<Role> roles = new ArrayList<>();
         for (String role: user.getRolesString()) {
             roles.add(Role.valueOf(role));
         }
-        user.setRole(roles);
-        user.setEnabled(false);
-        userService.save(user);
-        Reader s = new InputStreamReader(new FileInputStream(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath()) );
+        User userBD = userService.findUserByName(user.getUsername());
+        if (userBD == null) {
+            user.setRole(roles);
+            user.setEnabled(false);
+        } else {
+            for (Role role: roles) {
+                userBD.addRole(role);
+            }
+            userBD.setCredentialsNonExpired(true);
+            userBD.setAccountNonLocked(true);
+            userBD.setAccountNonExpired(true);
+            userBD.setFirstname(user.getFirstname());
+            userBD.setPassword(user.getPassword());
+            userBD.setPagevk(user.getPagevk());
+            userBD.setSecondname(user.getSecondname());
+            user = userBD;
+        }
+        try {
+            userService.save(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Reader s = null;
+        try {
+            s = new InputStreamReader(new FileInputStream(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath()) );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         char c[] = new char[(int)(new File(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath())).length()];
-        s.read(c);
+        try {
+            s.read(c);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String htmlBody = String.copyValueOf(c)
                 .replace("#headerTop", "Факультет информационных систем и технологий")
-                .replace("#logotipFIST", "http://85.236.182.212:8081/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
-                .replace("#logotipPSUTI", "http://85.236.182.212:8081/main/picture/"+ MainPageConstant.LOGOTIP_PSUTI.getId())
-                .replace("#logotipTwitter", "http://85.236.182.212:8081/main/picture/"+ 73)
-                .replace("#logotipInstagram", "http://85.236.182.212:8081/main/picture/"+ 72)
-                .replace("#logotipVK", "http://85.236.182.212:8081/main/picture/"+ 71)
+                .replace("#logotipFIST", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
+                .replace("#logotipPSUTI", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_PSUTI.getId())
+                .replace("#logotipTwitter", UrlForSearch.getUrlSite() + "/main/picture/"+ 73)
+                .replace("#logotipInstagram", UrlForSearch.getUrlSite() + "/main/picture/"+ 72)
+                .replace("#logotipVK", UrlForSearch.getUrlSite() + "/main/picture/"+ 71)
                 .replace("#headerEmailHtml", "Добавлен пользователь в CMS")
                 .replace("#footer", "Вы получаете это письмо, потому что вас добавили в пользователи CMS сайта ФИСТ.")
                 .replace("#nameClient", "Здраствуйте, "+user.getFirstname()+",")
                 .replace("#textClient", "Здесь какой нить текст")
                 .replace("#buttonCheck", "Подтвердить почту")
-                .replace("#buttonHref", "http://85.236.182.212:8081/user/enable/email="+ user.getUsername());
+                .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/email="+ user.getUsername());
 
         try {
             sender.send("Пример загаловка", htmlBody, user.getUsername());
@@ -83,7 +112,11 @@ public class AdminUserController {
             scheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
             e.printStackTrace();
         }
-        s.close();
+        try {
+            s.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:../add";
     }
 

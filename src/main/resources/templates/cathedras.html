@@ -102,18 +102,31 @@
     </header>
 
     <!-- INNER CONTENT -->
-    <section id="content" class="oval-photo list-padding-left cath">
+    <section id="content" class=" list-padding-left cath">
         <div class="page_header page_header2 text-center">
             <h2 th:utext="${departmentName.getName()}"></h2>
         </div>
         <!--<div class="shortcontain cathedras list">
         <ul>
             <div th:each="department : ${departments}">
-            <li th:onclick="ScrollTo(${department.getId()})" th:utext="${department.getNameDepartment()}"></li>
+            <li th:onclick="'ScrollTo(\'' + ${department.getId()} + '\');'" th:utext="${department.getNameDepartment()}"></li>
             </div>
         </ul>
            </div>-->
-        <div class="container reducedPhoto list-marker">
+
+        <div class="shortcontain cathedras list">
+            <ul class="img-padding">
+                    <li onclick="ScrollTo(2)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/IVT.png" class="img-responsive"></a></div>Информатика и вычислительная техника</li>
+                    <li onclick="ScrollTo(3)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/POUTS.png" class="img-responsive"></a></div>Программное обеспечение и управление в технических системах</li>
+                    <li onclick="ScrollTo(4)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/INO.png" class="img-responsive"></a></div>Иностранные языки</li>
+                    <li onclick="ScrollTo(5)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/IST.png" class="img-responsive"></a></div>Информационные системы и технологии</li>
+                    <li onclick="ScrollTo(6)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/PI.png" class="img-responsive"></a></div>Прикладная информатика</li>
+                    <li onclick="ScrollTo(7)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/CO.png" class="img-responsive"></a></div>Цифровая экономика</li>
+                    <li onclick="ScrollTo(8)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/SO.png" class="img-responsive"></a></div>Связи с общественностью</li>
+                    <li onclick="ScrollTo(9)"><div class="col-md-1"><a onclick="ScrollTo(2)"><img src="/images/logocath/IZ.png" class="img-responsive"></a></div>Инженерия знаний</li>
+            </ul>
+        </div>
+        <div class="container oval-photo reducedPhoto list-marker">
             <!--<div class="row" th:each="department : ${departments}">
                 <div class="col-md-6">
                     <img th:src="@{'/employees/picture/' + ${department.getIdPicture()}}" class="img-responsive static-image" alt=""/>
@@ -131,7 +144,7 @@
 
                 <div id="2" class="row">
                     <div class="col-md-6 col-md-offset-3 about-info">
-                        <h5 class="text-center">Кафедра"Информатики и вычислительной техники" (ИВТ)</h5>
+                        <h5 class="text-center">Кафедра "Информатики и вычислительной техники" (ИВТ)</h5>
                         <p>Образована в 2004 году в результате реорганизации кафедры Вычислительной техники, созданной в 1976 году под названием “Вычислительная техника и АСУ”. Кафедра ИВТ обеспечивает цифровую экономику компетентными кадрами по направлению подготовки 09.04.01 Информатика и вычислительная техника (уровень магистратуры).<br>
                             Преподаватели кафедры ведут подготовку студентов всех специальностей и направлений ПГУТИ по дисциплине «Информатика». Другие дисциплины кафедры: «Вычислительная техника и информационные технологии», «Машинно-зависимые языки программирования», «Программирование на ЯВУ», «Теория автоматов и формальных языков», «Цифровые устройства и микропроцессоры», «Конструирование компиляторов», «Проектирование человеко-машинного интерфейса», «Структуры данных», «Методология программной инженерии», «Алгоритмы сжатия данных» и др.<br>
                             Научно-исследовательская работа кафедры связана с повышением эффективности использования ЭВМ в технологиях связи и учебном процессе, разработкой новых информационных технологий, математическим моделированием, интеллектуальными информационными системами, анализом производительности вычислительных систем, исследованиями сетевых телекоммуникационных структур и вопросами защиты информации. </p>
@@ -255,7 +268,7 @@
                 </div>
             <div id="6" class="row">
                 <div class="col-md-6 col-md-offset-3 about-info">
-                    <h5 class="text-center">Кафедра "Прикладная информатика" (ПИ)</h5>
+                    <h5 class="text-center">Кафедра "Прикладной информатики" (ПИ)</h5>
                     <p>Образована в 1996 году под названием «Информационные системы в экономике». В октябре 1997 года произошло ее объединение с кафедрой «Инженерная графика» под общим названием «Экономические информационные системы». В сентябре 2017 года кафедра «Экономические информационные системы» была переименована в кафедру «Прикладная информатика».<br>Кафедра осуществляет подготовку высокопрофессиональных специалистов в области разработки и эксплуатации корпоративных экономических информационных систем по направлениям бакалавриата, магистратуры и аспирантуры: </p>
                         <ul>
                             <li>09.03.03 Прикладная информатика (уровень бакалавриата);</li>
@@ -283,7 +296,7 @@
             </div>
             <div id="7" class="row">
                 <div class="col-md-6 col-md-offset-3 about-info">
-                    <h5 class="text-center">Кафедра "Цифровая экономика" (ЦЭ)</h5>
+                    <h5 class="text-center">Кафедра "Цифровой экономики" (ЦЭ)</h5>
                     <p>Образована в 2017 году в результате объединения кафедры Электронной коммерции и кафедры Экономики и организации производства. Кафедра Цифровой экономики является одной из передовых кафедр на территории РФ и СНГ по подготовке высокопрофессиональных специалистов в области цифровой трансформации бизнеса, электронной коммерции и инноваций, внося тем самым существенный вклад в формирование кадрового потенциала будущего по направлениям подготовки:</p>
                     <ul>
                        <li>27.03.05 Инноватика (уровень бакалавриата);</li>
@@ -326,6 +339,31 @@
                             <p>тел.: (846) 228-00-65</p>
                             <p>e-mail: m838om@mail.ru</p>
                             <p>адрес: Россия, 443090, г.Самара, Московское шоссе, 77, ПГУТИ, корп.2, комн.2-20</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="9" class="row">
+                <div class="col-md-6 col-md-offset-3 about-info">
+                    <h5 class="text-center">Кафедра "Инженерии знаний" (ИЗ)</h5>
+                    <p>Кафедра Инженерии знаний (ИЗ) была образована в 1992 году в Институте проблем управления сложными системами Российской академии наук (ИПУСС РАН) на основании совместного приказа ПГУТИ и Самарского филиала Института машиноведения РАН им. А.А. Благонравова для подготовки специалистов по «физтеховской системе».</p>
+                    <h4>Кафедра ИЗ обеспечивает цифровую экономику компетентными кадрами по направлениям подготовки:</h4>
+                    <ul>
+                        <li>02.03.03 Математическое обеспечение и администрирование информационных систем (уровень бакалавриата);</li>
+                        <li>09.03.01 Информатика и вычислительная техника (уровень бакалавриата).</li>
+                    </ul>
+                    <p>Кафедра расположена на территории ИПУСС РАН, где проводятся лекционные, лабораторные и практические занятия для студентов 3 и 4 курсов. В своей работе кафедра использует оборудование учебных и научных лабораторий ИПУСС РАН.<br>
+                        На 3 курсе студенты привлекаются к исследовательской работе, тематика которой является основой для выпускных квалификационных работ и научных докладов на ежегодных студенческих конференциях ПГУТИ, где ежегодно практически все студенты 3 и 4 курсов сообщают о результатах своей работы на секции «Инженерия знаний».
+                        <br> В учебном процессе на кафедре заняты высококвалифицированные преподаватели – 2 доктора и 2 кандидата наук; разработаны учебники, учебные пособия и методические указания.
+                        <br> Выпускники базовой кафедры являются источником обновления кадрового состава исследователей ИПУСС РАН (сейчас почти треть научного и инженерного персонала ИПУСС РАН – выпускники кафедры разных лет, в том числе директор института – д.т.н. С.Ю. Боровик), занимают ответственные посты в крупных российских компаниях, IT-отделах коммерческих банков и т.п.</p>
+                    <h4>Заведующий кафедрой:</h4>
+                    <div class="row">
+                        <div class="col-md-4"> <img src="/images/cathedras/cmirnov.jpg" class="img-responsive static-image" alt=""/></div>
+                        <div class="col-md-8">
+                            <h5>д.т.н., доцент Смирнов Сергей Викторович</h5>
+                            <p>тел.: (846) 333-27-70</p>
+                            <p>сайт: http://www.iccs.ru/psuti_ke/psuti_ke.html</p>
+                            <p>адрес: г. Самара, ул. Садовая, д. 61</p>
                         </div>
                     </div>
                 </div>
@@ -413,25 +451,6 @@
     <!-- FOOTER -->
 </div>
 
-<div id="somedialog" class="dialog">
-    <div class="dialog__overlay"></div>
-    <div class="dialog__content">
-        <div id="booking_pop" class="booking_pop">
-        </div>
-        <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
-    </div>
-</div>
-
-<div id="somedialog1" class="dialog">
-    <div class="dialog__overlay"></div>
-    <div class="dialog__content">
-        <div class="timer_popup">
-            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
-        </div>
-    </div>
-</div>
-
-
 <div id="somedialog2" class="dialog">
     <div class="dialog__overlay"></div>
     <div class="dialog__content">
@@ -483,8 +502,6 @@
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -492,7 +509,7 @@
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<!--<script>
+<script>
     function ScrollTo(name) {
         ScrollToResolver(document.getElementById(name));
     }
@@ -510,6 +527,6 @@
             elem.lastjump = null;
         }
     }
-</script>-->
+</script>
 </body>
 </html>

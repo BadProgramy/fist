@@ -60,8 +60,12 @@
 					<div class="logo-psuti" style="margin: 10px;">
 						<a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
 					</div>
+					<form th:action="${'/search'}" th:object="${searchword}" class="search-block">
+						<button class="search-button" type="submit">Поиск</button>
+						<input class="search-input" name="searchword" type="text" placeholder="Поиск...">
+					</form>
 					<div class="col-md-9 col-xs-7">
-						<div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
+						<div class="top-bar "style="width:100%; margin-right: 50px;">
 							<ul>
 								<li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
 								<li th:utext="${location.getName()}" class="tb-info"  th:style="${location.getStyles()}"></li>
@@ -364,10 +368,10 @@
 			</div>
 
 		</div> <!-- cd-user-modal-container -->
-	</div> <!-- cd-user-modal --
+	</div> <!-- cd-user-modal -->
 
 
-	<*!-- FOOTER -->
+	<!-- FOOTER -->
 	<footer id="footer2">
 		<div class="container">
 			<div class="row" style="padding-left: 5%">

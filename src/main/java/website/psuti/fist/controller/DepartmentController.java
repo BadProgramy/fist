@@ -25,7 +25,7 @@ public class DepartmentController {
             for (Employee employee: modelAndViewConfiguration.getEmployees()) {
                 if (department.getIdMainEmployee() == employee.getId() &&
                     employee.getNameDepartment().equals(NameDepartmentConstant.DEPARTMENT.getName())) {
-                    departments.add(new HTMLOutputDepartmentForThymeleaf(department.getName(),
+                    departments.add(new HTMLOutputDepartmentForThymeleaf(department.getId(), department.getName(),
                             employee.getQualificationBriefly() + " " + employee.getName(), department.getAddress(),
                             employee.getPhone(), employee.getEmail(), employee.getIdPictureMinor()));
                 }
@@ -38,6 +38,7 @@ public class DepartmentController {
     }
 
     class HTMLOutputDepartmentForThymeleaf {
+        private Long id;
         private String nameDepartment;
         private String employee;
         private String address;
@@ -45,13 +46,22 @@ public class DepartmentController {
         private String email;
         private long idPicture;
 
-        public HTMLOutputDepartmentForThymeleaf(String nameDepartment, String employee, String address, String phone, String email, long idPicture) {
+        public HTMLOutputDepartmentForThymeleaf(long id, String nameDepartment, String employee, String address, String phone, String email, long idPicture) {
             this.nameDepartment = nameDepartment;
             this.employee = employee;
             this.address = address;
             this.phone = phone;
             this.email = email;
             this.idPicture = idPicture;
+            this.id = id;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
         }
 
         public String getNameDepartment() {

@@ -28,9 +28,9 @@ public class SearchController {
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
     private static final Pattern TITLE = Pattern.compile("\\<title\\>(.*)\\<\\/title\\>", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-    private final int RANDE_PLUS_MINUS_OUTPUT_TEXT = 200;
-    private final int COUNT_OUTPUT_RESULT_SEARCH = 15;
-    private final int MIN_COUNT_CHARACTER_INPUT_WORD = 2;
+    private final int RANDE_PLUS_MINUS_OUTPUT_TEXT = 200;//диапазон символов на вывод резульата
+    private final int COUNT_OUTPUT_RESULT_SEARCH = 15; //количесвто выводов поиска
+    private final int MIN_COUNT_CHARACTER_INPUT_WORD = 2;//минимальныое количество символов для поиска
 
     private HashMap<String, String> parse(String url, String word) {
         HashMap<String, String> result = new LinkedHashMap<>();
@@ -38,7 +38,7 @@ public class SearchController {
             InputStreamReader in = new InputStreamReader(new URL(url).openStream(), Charset.forName("utf-8"));
             StringBuilder input = new StringBuilder();
             StringBuilder inputForOutput = new StringBuilder();
-            String text;
+            String text = "";
             String title = "Ссылка";
             int ch;
             while ((ch = in.read()) != -1) {
@@ -53,18 +53,24 @@ public class SearchController {
             inputForOutput = new StringBuilder(StripHtml(Jsoup.parseBodyFragment(input.toString())));
             Pattern pattern = Pattern.compile(word);
             Matcher matcher = pattern.matcher(input);
+            if (!title.toLowerCase().contains(word) || !title.toLowerCase().equals(word)) // если загаловок совпадает с входным словом поиска
             while (matcher.find()) {
                 if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT && matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
                     text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
                     result.put(text, title );
                 } else if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT) {
-                    text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, matcher.end()) + "...";
+                    text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, inputForOutput.length() -1);
                     result.put(text, title );
                 } else if (matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
-                    text ="..." + inputForOutput.substring(matcher.start(), matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
+                    text = inputForOutput.substring(0, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
+                    result.put(text, title );
+                } else {
+                    text = inputForOutput.substring(0, inputForOutput.length() -1);
                     result.put(text, title );
                 }
                 if (result.size() == COUNT_OUTPUT_RESULT_SEARCH) return result;
+            } else {
+                result.put(text, title);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,7 +81,7 @@ public class SearchController {
     }
 
     public String StripHtml(Document thing){
-        String[] tags = {"footer", "header"};
+        String[] tags = {"footer", "header", "head"};
         for (String tag : tags) {
             for (Element elem : thing.getElementsByTag(tag)) {
                 elem.remove();
@@ -96,14 +102,22 @@ public class SearchController {
                 for (Map.Entry entry : result.entrySet()) {
                     searchObjects.add(new SearchObject(entry.getValue().toString(), argi[i], entry.getKey().toString()));
                     if (searchObjects.size() >= COUNT_OUTPUT_RESULT_SEARCH) { // максимум результат вывода
-                        model.addAttribute("resultSearch", searchObjects);
+                        model.addAttribute("resultSearch", sorted(searchObjects));
                         return "search";
                     }
                 }
-
             }
         }
-        model.addAttribute("resultSearch", searchObjects);
+        model.addAttribute("resultSearch",  sorted(searchObjects));
         return "search";
+    }
+
+    private List<SearchObject> sorted(List<SearchObject> searchObjects){
+        List<SearchObject> sortedList = new ArrayList<>();
+        for (SearchObject searchObject : searchObjects) {
+            if (searchObject.getText().equals("")) sortedList.add(0, searchObject);
+            else sortedList.add(searchObject);
+        }
+        return sortedList;
     }
 }

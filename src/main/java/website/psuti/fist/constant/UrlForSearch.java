@@ -18,7 +18,15 @@ public enum  UrlForSearch {
     URL_INTERIM_CONTROL("/interimControl"),
     URL_CONTACT("/contacts"),
     URL_NEWS_BLOG("/newsBlog"),
-    URL_LIST_GROUP("/groupLists");
+    URL_LIST_GROUP("/groupLists"),
+    URL_DEAN_TEAM2("/deanTeams/2"),
+    URL_DEAN_TEAM1("/deanTeams/1"),
+    URL_DEAN_TEAM3("/deanTeams/3"),
+    URL_DEAN_TEAM4("/deanTeams/4"),
+    URL_DEAN_TEAM5("/deanTeams/5"),
+    URL_DEAN_TEAM6("/deanTeams/6"),
+    URL_DEAN_TEAM7("/deanTeams/7"),
+    URL_DEAN_TEAM8("/deanTeams/8");
 
 
     private static final String URL_SITE = "http://109.124.244.164:8081";

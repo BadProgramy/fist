@@ -109,7 +109,7 @@
         <div class="shortcontain cathedras list">
         <ul>
             <div th:each="department : ${departments}">
-            <li th:onclick="ScrollTo([[${department.getId()}]])" th:utext="${department.getNameDepartment()}"></li>
+            <li th:onclick="'ScrollTo(\'' + ${department.getId()} + '\');'" th:utext="${department.getNameDepartment()}"></li>
             </div>
         </ul>
            </div>
@@ -413,25 +413,6 @@
     <!-- FOOTER -->
 </div>
 
-<div id="somedialog" class="dialog">
-    <div class="dialog__overlay"></div>
-    <div class="dialog__content">
-        <div id="booking_pop" class="booking_pop">
-        </div>
-        <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
-    </div>
-</div>
-
-<div id="somedialog1" class="dialog">
-    <div class="dialog__overlay"></div>
-    <div class="dialog__content">
-        <div class="timer_popup">
-            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
-        </div>
-    </div>
-</div>
-
-
 <div id="somedialog2" class="dialog">
     <div class="dialog__overlay"></div>
     <div class="dialog__content">
@@ -483,8 +464,6 @@
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -492,7 +471,7 @@
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<script th:inline="javascript">
+<script>
     function ScrollTo(name) {
         ScrollToResolver(document.getElementById(name));
     }

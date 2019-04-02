@@ -168,7 +168,7 @@
                             var elem = e ? e.target : window.event.srcElement;
                             while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
                             if (!elem.id) return; else id = elem.id;
-                            var rightPart =/*([[${departments}]])*/ null;
+                            var rightPart;
                             var srcImg=document.getElementById(id).getAttribute("src");
                             /*<![CDATA[*/
                             /*[# th:each="dep : ${departments}"]*/

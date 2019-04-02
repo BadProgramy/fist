@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
-    <!--<link rel="stylesheet" href="css/prettyphoto.css">-->
     <link rel="stylesheet" href="/css/studentStyle.css">
 
     <!-- JS Font Script -->
@@ -102,12 +101,17 @@
         </div>
     </header>
 
+    <h2 class="page_header2 text-center">Результаты поиска</h2>
+
     <section id="content">
+        <div class="shortcontain">
         <div th:each="item : ${resultSearch}">
-            <a th:text="${item.getTitle()}" th:href="${item.getUrl()}"></a>
+            <div class="row" style="padding-bottom: 10px">
+            <a th:href="${item.getUrl()}"><h3 style="padding-bottom: 15px" th:text="${item.getTitle()}"></h3></a>
             <p th:text="${item.getText()}"></p>
-            <br>
-            <br>
+            </div>
+            <div class="blog-sep" style="padding-bottom: 20px"></div>
+        </div>
         </div>
     </section>
 

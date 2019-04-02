@@ -212,9 +212,9 @@
         <div class="col-md-4" style="margin-bottom: 50px">
             <div class="product-thumb">
             <form th:action="@{/admin/table/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${picture.getId()}}" th:src="@{'/admin/picture/' + ${picture.getId()}}" alt=""></a></li>
+                <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${picture.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/admin/picture/' + ${picture.getId()}}" alt=""></a></li>
             </form>
-                <li><a class="cd-signin"><input th:id="@{'/admin/picture/' + ${picture.getId()}}" th:src="@{'/admin/picture/' + ${picture.getId()}}" value="Другие изменения.." type="submit"></a></li>
+                <li><a class="cd-signin"><input th:id="@{'/admin/picture/' + ${picture.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/admin/picture/' + ${picture.getId()}}" value="Другие изменения.." type="submit"></a></li>
             <script th:inline="javascript">
                 document.body.onclick = function(e) {
                     var elem = e ? e.target : window.event.srcElement;
@@ -315,5 +315,37 @@
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
 <script src="/js/modal.js"></script>
+<script>
+
+    function isVisible(elem) {
+
+        var coords = elem.getBoundingClientRect();
+
+        var windowHeight = document.documentElement.clientHeight;
+
+        var topVisible = coords.top > 0 && coords.top < windowHeight;
+        var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+
+        return topVisible || bottomVisible;
+    }
+    function showVisible() {
+        var imgs = document.getElementsByTagName('img');
+        for (var i = 0; i < imgs.length; i++) {
+
+            var img = imgs[i];
+
+            var realsrc = img.getAttribute('realsrc');
+            if (!realsrc) continue;
+
+            if (isVisible(img)) {
+                img.src = realsrc;
+                img.setAttribute('realsrc', '');
+            }
+        }
+    }
+
+    window.onscroll = showVisible;
+    showVisible();
+</script>
 </body>
 </html>

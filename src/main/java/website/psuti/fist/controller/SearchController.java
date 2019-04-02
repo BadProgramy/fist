@@ -53,22 +53,24 @@ public class SearchController {
             inputForOutput = new StringBuilder(StripHtml(Jsoup.parseBodyFragment(input.toString())));
             Pattern pattern = Pattern.compile(word);
             Matcher matcher = pattern.matcher(input);
-            if (!title.toLowerCase().contains(word) || !title.toLowerCase().equals(word)) // если загаловок совпадает с входным словом поиска
-            while (matcher.find()) {
-                if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT && matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
-                    text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
-                    result.put(text, title );
-                } else if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT) {
-                    text ="..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, inputForOutput.length() -1);
-                    result.put(text, title );
-                } else if (matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
-                    text = inputForOutput.substring(0, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
-                    result.put(text, title );
-                } else {
-                    text = inputForOutput.substring(0, inputForOutput.length() -1);
-                    result.put(text, title );
+            if (!title.toLowerCase().contains(word) || title.toLowerCase().replace(word, "").length() > 4) // если загаловок совпадает с входным словом поиска
+            {
+                if (matcher.find()) {
+                    if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT && matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
+                        text = "..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
+                        result.put(text, title);
+                    } else if (matcher.start() > RANDE_PLUS_MINUS_OUTPUT_TEXT) {
+                        text = "..." + inputForOutput.substring(matcher.start() - RANDE_PLUS_MINUS_OUTPUT_TEXT, inputForOutput.length() - 1);
+                        result.put(text, title);
+                    } else if (matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT < inputForOutput.toString().toCharArray().length) {
+                        text = inputForOutput.substring(0, matcher.end() + RANDE_PLUS_MINUS_OUTPUT_TEXT) + "...";
+                        result.put(text, title);
+                    } else {
+                        text = inputForOutput.substring(0, inputForOutput.length() - 1);
+                        result.put(text, title);
+                    }
+                    //if (result.size() == COUNT_OUTPUT_RESULT_SEARCH) return result;
                 }
-                if (result.size() == COUNT_OUTPUT_RESULT_SEARCH) return result;
             } else {
                 result.put(text, title);
             }
@@ -95,10 +97,12 @@ public class SearchController {
     public String search(Model model, @RequestParam("searchword") String word) {
         model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModel());
         List<SearchObject> searchObjects = new ArrayList<>();
+        HashMap<String, String> result = new HashMap<>();
         if (word.length() > MIN_COUNT_CHARACTER_INPUT_WORD) { //Начинаем поиск, если пользователь ввел более 2х букв
             String[] argi = UrlForSearch.getListURL();//получаем все ссылки, где будет вести поиск
             for (int i = 0; i < argi.length; i++) {
-                HashMap<String, String> result = parse(argi[i], word.toLowerCase());
+                result.clear();
+                result = parse(argi[i], word.toLowerCase());
                 for (Map.Entry entry : result.entrySet()) {
                     searchObjects.add(new SearchObject(entry.getValue().toString(), argi[i], entry.getKey().toString()));
                     if (searchObjects.size() >= COUNT_OUTPUT_RESULT_SEARCH) { // максимум результат вывода

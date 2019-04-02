@@ -170,7 +170,7 @@
                             var elem = e ? e.target : window.event.srcElement;
                             while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
                             if (!elem.id) return; else id = elem.id;
-                            var rightPart =/*([[${newsOfFaculty}]])*/ null;
+                            var rightPart;
                             var srcImg=document.getElementById(id).getAttribute("src");
                             /*<![CDATA[*/
                             /*[# th:each="top : ${newsOfFaculty}"]*/
@@ -190,7 +190,6 @@
                             }
                             /*[/]*/
                             /*]]>*/
-
                         }
                     </script>
                 </div>
@@ -259,10 +258,8 @@
 <script src="/js/navigation/jquery.sticky.js"></script>
 <script src="/js/jquery.bpopup.js"></script>
 
-
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
 <script src="/js/owl-carousel/owl.carousel.min.js"></script>
 <script src="/js/isotope/isotope.pkgd.js"></script>
 <!---->

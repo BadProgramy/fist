@@ -82,11 +82,11 @@
 
 		<div class="menu-wrap">
 			<div class="row" style="margin-left: 5%;">
-				<div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
+				<div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"></div>
 					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
 						<li>
 							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}" th:style="${mapEntry.key.getStyles()}"></a>
-							<div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
+							<div class="mobnav-subarrow"></div>
 							<ul >
 								<div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
 									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
@@ -112,7 +112,7 @@
 
 	<!-- BANER -->
 	<div class="container-fluid no-padding" style="background: black">
-		<div style="position: relative"> <!--id="home-slider2" class="owl-carousel owl-theme"-->
+		<div style="position: relative">
 			<div class="item" th:each="picture : ${slider}">
 				<div class="ban">
 			<a href="/mainTrend"><img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/></a>
@@ -386,24 +386,17 @@
 									<span class="navigation-YK">Мы находимся <br><em class="navigation-YK">Яндекс карты</em></span>
 								</a>
 							</li>
-							<li class="tb-info">
-								<a data-dialog1="somedialog1" class="trigger">
-								</a>
-							</li>
-							<li>
-								<a style="display: none" data-dialog="somedialog" class="trigger button btn-xs color"></a>
-							</li>
 						</ul>
 					</div>
 				</div>
-                <div class="col-md-2">
-                    <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
-                    <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
-                    <form class="newsletter">
-                        <input type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
-                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
-                    </form>
-                </div>
+				<div class="col-md-2">
+					<h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
+					<p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
+					<form th:action="${'/user/add/subscriber'}" th:object="${username}" class="newsletter">
+						<input name="username" type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
+						<button type="submit"><i class="fa fa-paper-plane"></i></button>
+					</form>
+				</div>
 
 				<!--<div class="col-md-3">
 					<h3 th:text="${ItemHeader9.getName()}"></h3>
@@ -502,7 +495,6 @@
 <script src="/js/dialog-js.js"></script>
 <script src="/js/classie.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
@@ -580,23 +572,13 @@
         // проверка - виден див полностью или нет
         if( div_x1 >= see_x1 && div_x2 <= see_x2 && div_y1 >= see_y1 && div_y2 <= see_y2 ){
             // если виден
-            /*$({blurRadius: 5}).animate({blurRadius: 0}, {
-                duration: 1000,
-                easing: 'swing',
-                step: function () {
-                    $(".lines").css({
-                        "-webkit-filter": "blur(" + this.blurRadius + "px)",
-                        "filter": "blur(" + this.blurRadius + "px)"
-                    });
-                }
-            });*/
             var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(' ');
             $(".lines").each(function () {
                 var tcount = $(this).data("count");
                 $(this).animateNumber({
                         number: tcount,
                         easing: 'easeInQuad',
-                        "font-size": "40px",
+                        "font-size": "50px",
                         numberStep: comma_separator_number_step}, 4000);
             });
         }

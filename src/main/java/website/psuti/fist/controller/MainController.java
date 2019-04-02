@@ -285,4 +285,11 @@ public ModelAndView gradStudents() {
         userService.delete(user);
         return "enabledAccount";
     }
+    //TODO кандидаты на отчисление.....................................................................
+    @RequestMapping("/candidatesForExpulsion")
+    public ModelAndView candidatesForExpulsion() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("candidatesForExpulsion");
+        return modelAndView;
+    }
 }

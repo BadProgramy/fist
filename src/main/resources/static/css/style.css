@@ -699,7 +699,7 @@ display: unset;
 .stats {
 	float:left;
 	width:100%;
-	padding:117px 0;
+	padding:50px 0;
 	background-repeat:repeat-x,repeat-x ;
 	background-position:left bottom,left top;
 	text-align:center;
@@ -722,7 +722,7 @@ display: unset;
 .stats h6 {
 	text-align:center;
 	font-family: 'Open Sans', sans-serif;
-	font-size:18px;
+	font-size:20px;
     line-height: 1.4;
 	color:#ffffff;
     font-weight: 700;
@@ -2706,18 +2706,18 @@ margin:0 0 35px;
 	padding:0px;
 }
 
-.about-info h2 {
+.about-info h2, .about-info2 h2 {
 	margin:0 0 20px;
 	font-size:35px;
 }
-.about-info h3 {
+.about-info h3, .about-info2 h3 {
 	margin:0 0 20px;
 	font-size:20px;
 }
 .reducedPhoto .row{
 	margin-bottom: 20px;
 }
-.about-info h4 {
+.about-info h4, .about-info2 h4 {
 font-weight: 500;
 	font-size: 17px;
 	padding-top: 10px;
@@ -2726,7 +2726,7 @@ font-weight: 500;
 	text-transform: uppercase;
 }
 
-.about-info h5{
+.about-info h5, .about-info2 h5{
 	font-family: FuturaPTCond-Bold;
 	font-weight: 600;
 	font-size: 30px;
@@ -2738,10 +2738,24 @@ font-weight: 500;
 .employeeChar img {
 	max-height: 800px;
 }
+
 .about-info p {
 font-size:15px;
 line-height:28px;
 /*margin:0 0 25px;*/
+}
+.about-info2 p{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.str{
+    cursor: pointer;
+    position: fixed;
+    display: block;
+    top: 75%;
+    left: 85%;
+    z-index: 99999;
 }
 
 .panel-default > .panel-heading {
@@ -3434,10 +3448,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     height: 40px;
     padding: 3px 15px;
     margin: 5px 0px 0 0;
-    color: #fff;
+    color: #000;
     font-weight: 400;
     font-size: 18px;
-    background: #222225;
+    background: white;
 }
 
 .search-block {

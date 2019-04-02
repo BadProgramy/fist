@@ -206,6 +206,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("slider", picturesService.findPictureById(MainPageConstant.SLIDER_1.getId()));
         modelAndView.addObject("ItemHeaderPictureSplit", getItemById(listPictures, MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
         modelAndView.addObject("logotipPSUTI", getItemById(listPictures, MainPageConstant.LOGOTIP_PSUTI.getId()));
+        modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
         if (picturesCache != null)
         {
             picturesCache = new HashMap<>();
@@ -248,7 +249,7 @@ public class ModelAndViewConfiguration {
                 .replace("#mainSiteName", "Главная")
                 .replace("#newsBlogSite", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi())
                 .replace("#newsFaculty", "Новости")
-                .replace("#aboutFacultyName", "О факультете")
+                .replace("#aboutFacultyName", "")//о факультете
                 .replace("#aboutFaculty", UrlForSearch.getUrlSite() + UrlForSearch.URL_FACULTY.getApi())
                 .replace("#deanTeamName", "Состав деканата")
                 .replace("#deanTeam", UrlForSearch.getUrlSite() + UrlForSearch.URL_DEAN_TEAM.getApi())

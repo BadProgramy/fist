@@ -71,7 +71,6 @@ public class SearchController {
                     }
                     //if (result.size() == COUNT_OUTPUT_RESULT_SEARCH) return result;
                 }
-                System.out.println(title);
             } else {
                 result.put(text, title);
             }

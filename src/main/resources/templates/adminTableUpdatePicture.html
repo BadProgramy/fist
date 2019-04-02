@@ -219,7 +219,7 @@
                     var elem = e ? e.target : window.event.srcElement;
                     while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
                     if (!elem.id) return; else id = elem.id;
-                    var rightPart =/*([[${pictures}]])*/ null;
+                    var rightPart;
                     var srcImg=document.getElementById(id).getAttribute("src");
                     /*<![CDATA[*/
                     /*[# th:each="pict : ${pictures}"]*/
@@ -305,9 +305,6 @@
 
 
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
 <script src="/js/isotope/isotope.pkgd.js"></script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>

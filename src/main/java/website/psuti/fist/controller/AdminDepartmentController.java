@@ -16,13 +16,18 @@ public class AdminDepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @Autowired
-    private ModelAndViewConfiguration modelAndViewConfiguration;
+
+    @RequestMapping("/admin/table/department/add/submit")
+    public String addDepartmentSubmit(@ModelAttribute("newDepartment") Department newDepartment) {
+        departmentService.add(newDepartment);
+        return "redirect:../update";
+    }
 
     @RequestMapping("/admin/table/department/update")
     public ModelAndView updateDepartment() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateDepartment");
         modelAndView.addObject("item", new Department());
+        modelAndView.addObject("newDepartment", new Department());
         modelAndView.addObject("departments", departmentService.getAll());
         return modelAndView;
     }
@@ -31,7 +36,6 @@ public class AdminDepartmentController {
     @RequestMapping("/admin/table/department/update/submit")
     public String adminDepartmentUpdateSubmit(@ModelAttribute("item") Department item) {
         departmentService.update(item);
-        modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 
@@ -39,7 +43,6 @@ public class AdminDepartmentController {
     public String adminDepartmentDelete(@PathVariable("id") long id) {
         //NewsOfFaculty newsOfFaculty = newsFacultyService.findById(id);
         departmentService.delete(id);
-        modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 }

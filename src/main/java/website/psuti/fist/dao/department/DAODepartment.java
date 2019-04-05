@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface DAODepartment {
     List<Department> getAll();
-    int insert (Department department);
+    long insert (Department department);
     void update(Department department);
     void delete(long id);
 }

@@ -22,4 +22,8 @@ public class DepartmentService {
     public void delete(long id) {
         daoDepartment.delete(id);
     }
+
+    public long add(Department newDepartment) {
+        return daoDepartment.insert(newDepartment);
+    }
 }

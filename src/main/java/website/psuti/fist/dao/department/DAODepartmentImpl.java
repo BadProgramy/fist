@@ -37,8 +37,22 @@ public class DAODepartmentImpl implements DAODepartment {
     }
 
     @Override
-    public int insert(Department department) {
-        return 0;
+    public long insert(Department department) {
+        SqlSession session = factory.getFactory().openSession();
+        long id = -1;
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.insert("Department.add", department);
+            if (id == 1) {
+                id = session.selectOne("Department.getLastIdInsert");
+                MainPageObjectConstant.addCheck(NameTableBD.DEPARTMENT);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return id;
     }
 
     @Override

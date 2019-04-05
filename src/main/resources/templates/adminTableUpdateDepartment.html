@@ -155,6 +155,49 @@
         </div>
     </header>
 
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#">Добавить департамент</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
+
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/table/department/add/submit}" th:object="${newDepartment}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p class="fieldset black_p">
+                            <label>Идентификатор главного сотрудника</label>
+                            <input placeholder="(Заведующий)" type="text" th:value="${newDepartment.idMainEmployee}" name="idMainEmployee" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <label>Идентификатор картинки</label>
+                            <input placeholder="(Иконка)" type="text" th:value="${newDepartment.idPictureIcon}" name="idPictureIcon" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Наименование департамента" type="text" th:value="${newDepartment.name}" name="name" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Адрес" type="text" VALUE="-1" th:value="${newDepartment.address}" name="address" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Описание в html структуре" type="text" th:value="${newDepartment.description}" name="description" style="height: 300px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+
+                            <button class="full-width" type="submit">Добавить</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div> <!-- cd-login -->
+
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
     <div class="container" style="padding-top: 5%">
         <div th:each="department : ${departments}">
             <div class="col-md-4" style="margin-bottom: 50px">
@@ -210,7 +253,7 @@
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Действие</p>
-                    <a style="color: red;" class="cd-read-more">Удалить</a>
+                    <a id="del" style="color: red;" class="cd-read-more">Удалить</a>
                 </div>
                 <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
             </form>

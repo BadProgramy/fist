@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор новостей</title>
+    <title>Редактор кандидатов на отчисление</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
@@ -45,7 +44,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -160,141 +159,56 @@
     <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить новость</a></li>
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить кандидата</a></li>
                 <!--<li><a href="#0">New account</a></li>-->
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/news/add/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/candidateAssignment/add/submit}" th:object="${candidateAssignment}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                            <textarea name="heading" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
+                            <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия, имя, отчество: Пример - Иван Иванов Иванович" required></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
                         </p>
 
                         <p class="fieldset black_p">
-                            <label class="image-replace cd-password" for="signin-password">Текст</label>
-                            <textarea name="text" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
-                            <!--<a href="#0" class="hide-password">Hide</a>-->
-                            <!--<span class="cd-error-message">Ошибка ввода текста!</span>-->
+                            <textarea name="course" th:field="*{course}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Курс: Пример - 4" required></textarea>
                         </p>
 
                         <p class="fieldset black_p">
-                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
-                            <input type="date" th:value="${date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                            <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Группа: Пример - ПО-52" required></textarea>
                         </p>
 
                         <p class="fieldset black_p">
-                            <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
-                        </p>
-                        <!--<input name="date" type="hidden" th:field="*{date}">-->
-                        <!--<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">-->
-                        <p class="fieldset black_p">
-
                             <button class="full-width" type="submit">Добавить</button>
                         </p>
                     </fieldset>
                 </form>
 
-                <!--<form th:action="@{/admin/news/update}" th:object="${topic}" method="post" class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
-                        <textarea name="heading" th:value="${heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
-                        <span class="cd-error-message">Ошибка ввода загаловка!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signin-password">Текст</label>
-                        <textarea name="text" th:value="${text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
-                        &lt;!&ndash;<a href="#0" class="hide-password">Hide</a>&ndash;&gt;
-                        <span class="cd-error-message">Ошибка ввода текста!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width" type="submit" value="Изменить">
-                    </p>
-                </form>-->
-
-                <!--<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>-->
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
             </div> <!-- cd-login -->
 
-            <!--<div id="cd-signup"> &lt;!&ndash; sign up form &ndash;&gt;
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username" for="signup-username">Username</label>
-                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-                        <a href="#0" class="hide-password">Hide</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Create account">
-                    </p>
-                </form>
-
-                &lt;!&ndash; <a href="#0" class="cd-close-form">Close</a> &ndash;&gt;
-            </div> &lt;!&ndash; cd-signup &ndash;&gt;
-
-            <div id="cd-reset-password"> &lt;!&ndash; reset password form &ndash;&gt;
-                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Reset password">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-            </div> &lt;!&ndash; cd-reset-password &ndash;&gt;
-            <a href="#0" class="cd-close-form">Close</a>-->
         </div> <!-- cd-user-modal-container -->
     </div> <!-- cd-user-modal -->
 
+    <section id="cd-timeline" class="cd-container">
+        <div class="cd-timeline-block" th:each="student : ${candidateAssignments}">
+            <div class="cd-timeline-content">
+                <h2 th:utext="${student.getName()}"></h2>
+                <p class="black_p" th:utext="${student.getCourse()}"></p>
+                <p class="black_p" th:utext="${student.getGroupInUniversity()}"></p>
+                <nav class="main-nav">
+                    <ul>
+                        <!-- inser more links here -->
+                        <li><a th:href="@{'/admin/content/candidateAssignment/update/' + ${student.getId()}}" class="cd-read-more" >Изменить</a></li>
+                        <li><a th:href="@{'/admin/content/candidateAssignment/delete/' + ${student.getId()}}" class="cd-read-more">Удалить</a></li>
+                    </ul>
+                </nav>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    </section> <!-- cd-timeline -->
 
-    <!--&lt;!&ndash; SLIDER &ndash;&gt;
-    <div class="container-fluid no-padding">
-        <div id="home-slider2" class="owl-carousel owl-theme">
-            <div class="item">
-                &lt;!&ndash;<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>&ndash;&gt;
 
-            </div>
-            &lt;!&ndash;<div class="item">
-                <img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-
-            </div>
-            <div class="item">
-                <img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-
-            </div>&ndash;&gt;
-        </div>
-    </div>-->
+    <div class="close-btn fa fa-times"></div>
 </div>
 
 <!-- Javascript -->
@@ -318,5 +232,6 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
+
 </body>
 </html>

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
-import website.psuti.fist.service.CandidateAssignmentService;
 
 @Controller
 public class CandidateAssignmentController {

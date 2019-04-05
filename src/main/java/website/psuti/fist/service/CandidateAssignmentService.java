@@ -26,4 +26,9 @@ public class CandidateAssignmentService {
     public List<CandidateAssignment> getAll() {
         return daoCandidateAssignment.getAll();
     }
+
+    @Transactional
+    public CandidateAssignment findById(Long id) {
+        return daoCandidateAssignment.findById(id);
+    }
 }

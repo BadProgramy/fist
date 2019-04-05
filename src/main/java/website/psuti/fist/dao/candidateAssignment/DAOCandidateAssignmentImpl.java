@@ -80,4 +80,19 @@ public class DAOCandidateAssignmentImpl implements DAOCandidateAssignment {
             session.close();
         }
     }
+
+    @Override
+    public CandidateAssignment findById(Long id) {
+        CandidateAssignment student = null;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            RequestPostConnection.requestions(dataSource);
+            student = session.selectOne("CandidateAssignment.findById", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return student;
+    }
 }

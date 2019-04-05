@@ -11,4 +11,6 @@ public interface DAOCandidateAssignment {
     long insert (CandidateAssignment student);
     void update(CandidateAssignment student);
     void delete(long id);
+
+    CandidateAssignment findById(Long id);
 }

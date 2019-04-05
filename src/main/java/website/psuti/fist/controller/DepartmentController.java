@@ -27,7 +27,7 @@ public class DepartmentController {
                     employee.getNameDepartment().equals(NameDepartmentConstant.DEPARTMENT.getName())) {
                     departments.add(new HTMLOutputDepartmentForThymeleaf(department.getId(), department.getName(),
                             employee.getQualificationBriefly() + " " + employee.getName(), department.getAddress(),
-                            employee.getPhone(), employee.getEmail(), employee.getIdPictureMinor()));
+                            employee.getPhone(), employee.getEmail(), employee.getIdPictureMinor(), department.getDescription(), department.getIdPictureIcon()));
                 }
             }
         }
@@ -40,20 +40,33 @@ public class DepartmentController {
     class HTMLOutputDepartmentForThymeleaf {
         private Long id;
         private String nameDepartment;
+        private String description;
         private String employee;
         private String address;
         private String phone;
         private String email;
-        private long idPicture;
+        private long idPictureEmployee;
+        private long idPictureIcon;
 
-        public HTMLOutputDepartmentForThymeleaf(long id, String nameDepartment, String employee, String address, String phone, String email, long idPicture) {
+        public HTMLOutputDepartmentForThymeleaf(long id,
+                                                String nameDepartment,
+                                                String employee,
+                                                String address,
+                                                String phone,
+                                                String email,
+                                                long idPictureEmployee,
+                                                String description,
+                                                long idPictureIcon
+                                                ) {
             this.nameDepartment = nameDepartment;
             this.employee = employee;
             this.address = address;
             this.phone = phone;
             this.email = email;
-            this.idPicture = idPicture;
+            this.idPictureEmployee = idPictureEmployee;
             this.id = id;
+            this.description = description;
+            this.idPictureIcon = idPictureIcon;
         }
 
         public Long getId() {
@@ -104,12 +117,28 @@ public class DepartmentController {
             this.email = email;
         }
 
-        public long getIdPicture() {
-            return idPicture;
+        public long getIdPictureEmployee() {
+            return idPictureEmployee;
         }
 
-        public void setIdPicture(long idPicture) {
-            this.idPicture = idPicture;
+        public void setIdPictureEmployee(long idPictureEmployee) {
+            this.idPictureEmployee = idPictureEmployee;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public long getIdPictureIcon() {
+            return idPictureIcon;
+        }
+
+        public void setIdPictureIcon(long idPictureIcon) {
+            this.idPictureIcon = idPictureIcon;
         }
     }
 }

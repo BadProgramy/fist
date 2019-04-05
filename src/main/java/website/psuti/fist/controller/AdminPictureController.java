@@ -116,7 +116,7 @@ public class AdminPictureController {
         if (!item.getPictureFileMultipart().isEmpty()) {
             item.setPictureFile(item.getPictureFileMultipart().getBytes());
             item.setNamePicture(item.getPictureFileMultipart().getOriginalFilename());
-            writeFile(item.getPictureFile(), item.getNamePicture());
+            //writeFile(item.getPictureFile(), item.getNamePicture());
         } else {
             //item.setPictureFile(picturesService.findPictureById(item.getId()).getPictureFile());
             for (Map.Entry entry : modelAndViewConfiguration.getPicturesCache().entrySet()) {
@@ -128,11 +128,11 @@ public class AdminPictureController {
         return item;
     }
 
-    private void writeFile(byte[] buffer, String filename) throws IOException {
+/*    private void writeFile(byte[] buffer, String filename) throws IOException {
         //new File(PathConstant.SAVE_PICTURE.getPath() + filename).mkdir();
         FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
-    }
+    }*/
 }

@@ -9,6 +9,8 @@
         <result property="name" column="name"/>
         <result property="idMainEmployee" column="id_main_Employee"/>
         <result property="address" column="address"/>
+        <result property="idPictureIcon" column="id_picture_icon"/>
+        <result property="description" column="description"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
@@ -19,7 +21,9 @@
         UPDATE department SET
         id_main_employee = #{idMainEmployee},
         name = #{name},
-        address = #{address}
+        address = #{address},
+        idPictureIcon = #{id_picture_icon},
+        description = #{description}
         where id = #{id};
     </update>
 

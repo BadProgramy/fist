@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CandidateAssignment">
+    <resultMap id="result" type="CandidateAssignment">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="course" column="course"/>
+        <result property="groupInUniversity" column="group_in_university"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM candidate_assignment;
+    </select>
+
+    <insert id="add" parameterType="CandidateAssignment">
+        insert into candidate_assignment(name, course, group_in_university)
+        values (#{name}, #{course}, #{groupInUniversity});
+    </insert>
+
+    <select id="getLastIdInsert" resultType="long">
+        SELECT LAST_INSERT_ID() FROM candidate_assignment LIMIT 1;
+    </select>
+
+    <update id="update" parameterType="CandidateAssignment">
+        update candidate_assignment SET
+        name = #{name},
+        course = #{course},
+        group_in_university = #{groupInUniversity}
+        where id = #{id};
+    </update>
+
+    <select id="findById" parameterType="Long" resultMap="result">
+        SELECT * from candidate_assignment where id = #{id};
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE from candidate_assignment where id = #{id};
+    </delete>
+</mapper>

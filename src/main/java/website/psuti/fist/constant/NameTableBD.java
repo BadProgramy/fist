@@ -11,7 +11,8 @@ public enum NameTableBD {
     PICTURES("pictures"),
     USERS("users"),
     USERS_ROLE("users_role"),
-    FILE("files");
+    FILE("files"),
+    CANDIDATE_ASSIGNMENT("candidate_assignment");
 
     private String name;
 

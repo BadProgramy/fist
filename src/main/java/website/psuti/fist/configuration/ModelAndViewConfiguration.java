@@ -27,6 +27,9 @@ public class ModelAndViewConfiguration {
     private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
 
     @Autowired
+    private CandidateAssignmentService candidateAssignmentService;
+
+    @Autowired
     private PicturesService picturesService;
 
     @Autowired
@@ -85,6 +88,7 @@ public class ModelAndViewConfiguration {
             newsOfFaculties = new ArrayList<>();
             modelAndView = new ModelAndView("", "", "");
 
+            updateCandidateAssignment();
             updateBestStudentTable();
             updateEducationProcessTable();
             updateMenuItemHeaderInMainPageTable();
@@ -108,6 +112,7 @@ public class ModelAndViewConfiguration {
 
     public void changeModel(NameTableBD nameTable) {
         if (nameTable.equals(NameTableBD.BEST_STUDENT)) updateBestStudentTable();
+        else if (nameTable.equals(NameTableBD.CANDIDATE_ASSIGNMENT)) updateCandidateAssignment();
         else if (nameTable.equals(NameTableBD.EDUCATION_PROCESS)) updateEducationProcessTable();
         else if (nameTable.equals(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE)) updateMenuItemHeaderInMainPageTable();
         else if (nameTable.equals(NameTableBD.NEWS_OF_FACULTY)) updateNewsOfFacultyTable();
@@ -119,6 +124,10 @@ public class ModelAndViewConfiguration {
         else if (nameTable.equals(NameTableBD.FILE)) updateFile();
     }
 
+    private void updateCandidateAssignment() {
+        modelAndView.addObject("candidateAssignments", candidateAssignmentService.getAll());
+    }
+
     private void updateFile() {
         files = fileService.getAll();
     }
@@ -126,7 +135,6 @@ public class ModelAndViewConfiguration {
     private void updateEmployee() {
         employees = employeeService.getAll();
         modelAndView.addObject("deanTeams", employeeService.findEmployeesByNameDepartment(NameDepartmentConstant.STRUCTURE_DEAN_TEAM.getName()));
-
     }
 
     private void updateDepartment() { departments = departmentService.getAll(); }
@@ -191,6 +199,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("ItemHeader1_2", getItemById(items, MainPageConstant.HEADER_NEWS_PSUTI_FIST.getId()));//Новости про ПГУТИ и ФИСТ
         modelAndView.addObject("deanTeamName", getItemById(items, MainPageConstant.DEAN_TEAM_NAME.getId()));//Состав деканата
         modelAndView.addObject("departmentName", getItemById(items, MainPageConstant.DEPARTMENT.getId()));//кафедры
+        modelAndView.addObject("candidateAssignment", getItemById(items, MainPageConstant.CANDIDATE_ASSIGNMENT.getId()));//КАНДИДАТЫ НА ОТЧИСЛЕНИЕ
 
         modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
     }

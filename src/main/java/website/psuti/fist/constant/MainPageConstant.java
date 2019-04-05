@@ -56,7 +56,8 @@ public enum MainPageConstant {
     HEADERS(-1, "Header"),
     LABEL_HEADER(-1, "Label"),
     EDUCATION_PROCESS(-1, "EducationProcess"),
-    NAVIGATION(-1, "Navigation");
+    NAVIGATION(-1, "Navigation"),
+    CANDIDATE_ASSIGNMENT(112);
 
     private long id;
     private String name;

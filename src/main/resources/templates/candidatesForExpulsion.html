@@ -109,7 +109,7 @@
     <!-- INNER CONTENT -->
     <section id="content">
         <div class="page_header page_header2 text-center">
-            <h2>Кандидаты на отчисление</h2>
+            <h2 th:utext="${candidateAssignment.getName()}"></h2>
         </div>
 
         <div class="container">
@@ -122,23 +122,11 @@
                             <th>Курс</th>
                             <th>Группа</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Зубков Евгений Романович</td>
-                            <td>4</td>
-                            <td>ПО-52</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Мухутдинов Айрат Анварович</td>
-                            <td>4</td>
-                            <td>ПО-52</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Печерин Алексей Олегович</td>
-                            <td>4</td>
-                            <td>ПО-52</td>
+                        <tr th:each="student,iterStat : ${candidateAssignments}">
+                            <td th:utext="${iterStat.count}"></td>
+                            <td th:utext="${student.getName()}"></td>
+                            <td th:utext="${student.getCourse()}"></td>
+                            <td th:utext="${student.getGroupInUniversity()}"></td>
                         </tr>
                     </table>
                 </div>

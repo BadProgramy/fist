@@ -87,16 +87,16 @@ public class DAOEducationProcessImpl implements DAOEducationProcess {
         List<EducationProcess> educationProcesses = new ArrayList<>();
         for (EducationProcess educationProcess: getAll()) {
             educationProcess.setPicturesLeft(daoPictures.findPictureById(educationProcess.getIdPictureLeft()));
-            educationProcess.setLeftPictureStyles(daoPictures.findPictureById(educationProcess.getIdPictureLeft()).getStyles());
+            //educationProcess.setLeftPictureStyles(daoPictures.findPictureById(educationProcess.getIdPictureLeft()).getStyles());
 
             educationProcess.setPicturesRight(daoPictures.findPictureById(educationProcess.getIdPictureRight()));
-            educationProcess.setRightPictureStyles(daoPictures.findPictureById(educationProcess.getIdPictureRight()).getStyles());
+            //educationProcess.setRightPictureStyles(daoPictures.findPictureById(educationProcess.getIdPictureRight()).getStyles());
 
             educationProcess.setMenuItemHeaderInMainPageLeft(daoMenuItemHeaderInMainPage.findItemById(educationProcess.getIdMenuItemHeaderInMainPageLeft()));
-            educationProcess.setLeftMenuItemStyles(daoMenuItemHeaderInMainPage.findItemById(educationProcess.getIdMenuItemHeaderInMainPageLeft()).getStyles());
+            //educationProcess.setLeftMenuItemStyles(daoMenuItemHeaderInMainPage.findItemById(educationProcess.getIdMenuItemHeaderInMainPageLeft()).getStyles());
 
             educationProcess.setMenuItemHeaderInMainPageRight(daoMenuItemHeaderInMainPage.findItemById(educationProcess.getIdMenuItemHeaderInMainPageRight()));
-            educationProcess.setRightPictureStyles(daoMenuItemHeaderInMainPage.findItemById(educationProcess.getIdMenuItemHeaderInMainPageRight()).getStyles());
+            //educationProcess.setRightPictureStyles(daoMenuItemHeaderInMainPage.findItemById(educationProcess.getIdMenuItemHeaderInMainPageRight()).getStyles());
 
             educationProcesses.add(educationProcess);
         }

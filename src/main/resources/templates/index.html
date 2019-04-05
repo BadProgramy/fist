@@ -189,7 +189,7 @@
 
 			<div class="main-service">
 				<div class="row" th:each="mapEntry : ${educationProcess}">
-					<div class="col-md-5 col-sm-6 service-left" th:style="${mapEntry.getPicturesLeft().getStyles()}">
+					<div class="col-md-5 col-sm-6 service-left" th:style="${mapEntry.getLeftPictureStyles()}">
 						<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}">
                         <span class="ico">
                             <img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
@@ -203,7 +203,7 @@
 					</div>
 
 
-					<div class="col-md-6 col-sm-6 service-right" th:style="${mapEntry.getPicturesRight().getStyles()}">
+					<div class="col-md-6 col-sm-6 service-right" th:style="${mapEntry.getRightPictureStyles()}">
 						<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}">
                         <span class="ico">
                             <img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">

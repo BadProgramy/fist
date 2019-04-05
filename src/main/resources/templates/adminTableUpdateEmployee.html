@@ -155,6 +155,89 @@
         </div>
     </header>
 
+
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#">Добавить сотрудника</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
+
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/table/employee/add/submit}" th:object="${employee}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p class="fieldset black_p">
+                            <label>Идентификатор департамента</label>
+                            <input placeholder="(Для связи)" type="text" th:value="${employee.idDepartment}" name="idDepartment" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <label>Идентификатор главной картинки</label>
+                            <input placeholder="(Для характеристики)" type="text" th:value="${employee.idPictureMajor}" name="idPictureMajor" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <label>Идентификатор второстепенной картинки</label>
+                            <input placeholder="(Для иконки)" type="text" th:value="${employee.idPictureMinor}" name="idPictureMinor" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <label>Куда отнести сотрудника?</label>
+                            <select  name="nameDepartment" required>
+                                <option th:each="name : ${nameDepartments}" th:value="${name}" th:utext="${name.getName()}"></option>
+                            </select>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <label>Номер в очереди</label>
+                            <input placeholder="(НЕОБЯЗАТЕЛЬНО)" type="text" VALUE="-1" th:value="${employee.pinNumber}" name="pinNumber" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Название департамента" type="text" th:value="${employee.name}" name="name" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Должность" type="text" th:value="${employee.post}" name="post" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Телефон" type="text" th:value="${employee.phone}" name="phone" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Почта" type="text" th:value="${employee.email}" name="email" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Детальная квалификация для вывода" type="text" th:value="${employee.qualificationDetailed}" name="qualificationDetailed" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Краткая квалификация для вывода" type="text" th:value="${employee.qualificationBriefly}" name="qualificationBriefly" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Характеристика" type="text" th:value="${employee.characteristic}" name="characteristic" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input placeholder="Куратор для кого? Пример: куратор направлений 02.03.03, 09.03.01, 09.03.04" type="text" th:value="${employee.curator}" name="curator" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+
+                            <button class="full-width" type="submit">Добавить</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div> <!-- cd-login -->
+
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
+    <h2>Редактировать сотрудника</h2>
     <div class="container" style="padding-top: 5%">
         <div th:each="employee : ${employees}">
             <div class="col-md-4" style="margin-bottom: 50px">
@@ -261,7 +344,7 @@
                     </div>
                     <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                         <p>Действие</p>
-                        <a style="color: red;" class="cd-read-more">Удалить</a>
+                        <a style="color: red;" id="del" class="cd-read-more">Удалить</a>
                     </div>
                     <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
                 </form>

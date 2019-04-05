@@ -28,4 +28,8 @@ public class EmployeeService {
     public void delete(Long id) {
         daoEmployee.delete(id);
     }
+
+    public long add(Employee employee) {
+        return daoEmployee.insert(employee);
+    }
 }

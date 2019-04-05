@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
+import website.psuti.fist.constant.NameDepartmentConstant;
 import website.psuti.fist.model.Employee;
 import website.psuti.fist.service.EmployeeService;
 
@@ -19,11 +20,19 @@ public class AdminEmployeeController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
+    @RequestMapping("/admin/table/employee/add/submit")
+    public String addEmployeeSubmit(@ModelAttribute("employee") Employee employee) {
+        employeeService.add(employee);
+        return "redirect:../update";
+    }
+
     @RequestMapping("/admin/table/employee/update")
     public ModelAndView updateEmployee() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateEmployee");
         modelAndView.addObject("item", new Employee());
+        modelAndView.addObject("employee", new Employee());
         modelAndView.addObject("employees", employeeService.getAll());
+        modelAndView.addObject("nameDepartments", NameDepartmentConstant.values());
         return modelAndView;
     }
 

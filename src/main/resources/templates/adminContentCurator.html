@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор лучших студентов</title>
+    <title>Редактор кандидатов на отчисление</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
@@ -45,7 +44,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -164,34 +163,35 @@
     <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Редактирование</a></li>
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить куратора группы</a></li>
                 <!--<li><a href="#0">New account</a></li>-->
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/bestStudents/update/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/curator/add/submit}" th:object="${curatorGroup}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <textarea name="name" th:utext="${bestStudent.getName()}" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия и имя: Пример - Иван Иванов"></textarea>
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                            <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="№ группы: Пример - ПО-52" required></textarea>
                         </p>
 
                         <p class="fieldset black_p">
-                            <textarea name="groupInUniversity" th:utext="${bestStudent.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Группа: Пример - ПО-52"></textarea>
+                            <textarea name="nameCuratorTeacher" th:field="*{nameCuratorTeacher}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-преподавателя: Пример - Часов Егор Александрович" required></textarea>
                         </p>
 
                         <p class="fieldset black_p">
-                            <textarea name="characteristic" th:utext="${bestStudent.getCharacteristic()}" th:field="*{characteristic}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Характеристика"></textarea>
+                            <textarea name="nameDepartment" th:field="*{nameDepartment}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Кафедра: Пример - ПОУТС" required></textarea>
                         </p>
 
-                        <input name="id" type="hidden" th:field="*{id}">
-                        <input name="idPicture" type="hidden" th:field="*{idPicture}">
-
-                        <img th:src="@{'/admin/news/' + ${bestStudent.getIdPicture()}}" alt="">
-                        <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        <p class="fieldset black_p">
+                            <textarea name="phone" th:field="*{phone}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Телефон: Пример - 228-00-13" required></textarea>
+                        </p>
 
                         <p class="fieldset black_p">
-                            <button class="full-width" type="submit">Изменить</button>
+                            <textarea name="nameCuratorStudentAndGroup" th:field="*{nameCuratorStudentAndGroup}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-студента, группа: Пример - Зубков Евгений Романович" required></textarea>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <button class="full-width" type="submit">Добавить</button>
                         </p>
                     </fieldset>
                 </form>
@@ -200,6 +200,40 @@
 
         </div> <!-- cd-user-modal-container -->
     </div> <!-- cd-user-modal -->
+
+    <section id="cd-timeline" class="cd-container">
+        <div class="cd-timeline-block" th:each="curator : ${curators}">
+            <div class="cd-timeline-content">
+                <h2 th:utext="${curator.getGroupInUniversity()}"></h2>
+                <label>Ф.И.О. куратора-преподавателя
+                    <p class="black_p" th:utext="${curator.getNameCuratorTeacher()}"></p>
+                </label>
+
+
+                <label>Кафедра
+                    <p class="black_p" th:utext="${curator.getNameDepartment()}"></p>
+                </label>
+
+
+                <label>Телефон
+                    <p class="black_p" th:utext="${curator.getPhone()}"></p>
+                </label>
+
+
+                <label>Ф.И.О. куратора-студента, группа
+                    <p class="black_p" th:utext="${curator.getNameCuratorStudentAndGroup()}"></p>
+                </label>
+
+                <nav class="main-nav">
+                    <ul>
+                        <!-- inser more links here -->
+                        <li><a th:href="@{'/admin/content/curator/update/' + ${curator.getId()}}" class="cd-read-more" >Изменить</a></li>
+                        <li><a th:href="@{'/admin/content/curator/delete/' + ${curator.getId()}}" class="cd-read-more">Удалить</a></li>
+                    </ul>
+                </nav>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    </section> <!-- cd-timeline -->
 
 
     <div class="close-btn fa fa-times"></div>
@@ -216,6 +250,7 @@
 <script src="/js/navigation/jquery.sticky.js"></script>
 <script src="/js/jquery.bpopup.js"></script>
 
+
 <script src="/js/classie.js"></script>
 <script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
@@ -225,7 +260,6 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-<script src="/js/modal.js"></script>
 
 </body>
 </html>

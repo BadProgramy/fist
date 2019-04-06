@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор лучших студентов</title>
+    <title>>Редактор кандидатов на отчисление</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -169,26 +169,29 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/bestStudents/update/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/curator/update/submit}" th:object="${curatorGroup}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <textarea name="name" th:utext="${bestStudent.getName()}" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия и имя: Пример - Иван Иванов"></textarea>
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                            <textarea name="groupInUniversity" th:utext="${curatorGroup.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="№ группы: Пример - ПО-52" required></textarea>
                         </p>
 
                         <p class="fieldset black_p">
-                            <textarea name="groupInUniversity" th:utext="${bestStudent.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Группа: Пример - ПО-52"></textarea>
+                            <textarea name="nameCuratorTeacher" th:utext="${curatorGroup.getNameCuratorTeacher()}" th:field="*{nameCuratorTeacher}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-преподавателя: Пример - Часов Егор Александрович" required></textarea>
                         </p>
 
                         <p class="fieldset black_p">
-                            <textarea name="characteristic" th:utext="${bestStudent.getCharacteristic()}" th:field="*{characteristic}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Характеристика"></textarea>
+                            <textarea name="nameDepartment" th:utext="${curatorGroup.getNameDepartment()}" th:field="*{nameDepartment}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Кафедра: Пример - ПОУТС" required></textarea>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <textarea name="phone" th:utext="${curatorGroup.getPhone()}" th:field="*{phone}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Телефон: Пример - 228-00-13" required></textarea>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <textarea name="nameCuratorStudentAndGroup" th:utext="${curatorGroup.getNameCuratorStudentAndGroup()}" th:field="*{nameCuratorStudentAndGroup}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-студента, группа: Пример - Зубков Евгений Романович" required></textarea>
                         </p>
 
                         <input name="id" type="hidden" th:field="*{id}">
-                        <input name="idPicture" type="hidden" th:field="*{idPicture}">
-
-                        <img th:src="@{'/admin/news/' + ${bestStudent.getIdPicture()}}" alt="">
-                        <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
 
                         <p class="fieldset black_p">
                             <button class="full-width" type="submit">Изменить</button>

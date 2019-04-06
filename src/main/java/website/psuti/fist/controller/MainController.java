@@ -122,13 +122,6 @@ public class MainController {
         return modelAndView;
     }
 
-    @RequestMapping("/students/groupCurators")
-    public ModelAndView groupCurators() {
-        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
-        modelAndView.setViewName("groupCurators");
-        return modelAndView;
-    }
-
     @RequestMapping("/students/costEducation")
     public ModelAndView costEducation() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();

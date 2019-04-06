@@ -50,6 +50,8 @@ public class ModelAndViewConfiguration {
     @Autowired
     private FileService fileService;
 
+    @Autowired CuratorService curatorService;
+
     @Autowired
     private Sender sender;
 
@@ -89,6 +91,7 @@ public class ModelAndViewConfiguration {
             modelAndView = new ModelAndView("", "", "");
 
             updateCandidateAssignment();
+            updateCurator();
             updateBestStudentTable();
             updateEducationProcessTable();
             updateMenuItemHeaderInMainPageTable();
@@ -113,6 +116,7 @@ public class ModelAndViewConfiguration {
     public void changeModel(NameTableBD nameTable) {
         if (nameTable.equals(NameTableBD.BEST_STUDENT)) updateBestStudentTable();
         else if (nameTable.equals(NameTableBD.CANDIDATE_ASSIGNMENT)) updateCandidateAssignment();
+        else if (nameTable.equals(NameTableBD.CURATOR)) updateCurator();
         else if (nameTable.equals(NameTableBD.EDUCATION_PROCESS)) updateEducationProcessTable();
         else if (nameTable.equals(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE)) updateMenuItemHeaderInMainPageTable();
         else if (nameTable.equals(NameTableBD.NEWS_OF_FACULTY)) updateNewsOfFacultyTable();
@@ -122,6 +126,10 @@ public class ModelAndViewConfiguration {
         else if (nameTable.equals(NameTableBD.EMPLOYEE)) updateEmployee();
         else if (nameTable.equals(NameTableBD.DEPARTMENT)) updateDepartment();
         else if (nameTable.equals(NameTableBD.FILE)) updateFile();
+    }
+
+    private void updateCurator() {
+        modelAndView.addObject("curators", curatorService.getAll());
     }
 
     private void updateCandidateAssignment() {

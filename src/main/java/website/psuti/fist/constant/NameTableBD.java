@@ -12,7 +12,8 @@ public enum NameTableBD {
     USERS("users"),
     USERS_ROLE("users_role"),
     FILE("files"),
-    CANDIDATE_ASSIGNMENT("candidate_assignment");
+    CANDIDATE_ASSIGNMENT("candidate_assignment"),
+    CURATOR("curator");
 
     private String name;
 

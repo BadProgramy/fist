@@ -133,12 +133,19 @@
                             <th>Телефон</th>
                             <th>Ф.И.О. куратора-студента, группа</th>
                         </tr>
-                        <tr>
-                        <td>ИСТ-81</td>
-                        <td>Лошкарев Алексей Сергеевич</td>
-                        <td>ИСТ</td>
-                        <td>228-00-21</td>
-                        <td>Сейидов Роман ИСТ-51</td>
+                        <tr th:each="curator : ${curators}">
+                            <td th:utext="${curator.getGroupInUniversity()}"></td>
+                            <td th:utext="${curator.getNameCuratorTeacher()}"></td>
+                            <td th:utext="${curator.getNameDepartment()}"></td>
+                            <td th:utext="${curator.getPhone()}"></td>
+                            <td th:utext="${curator.getNameCuratorStudentAndGroup()}"></td>
+                        </tr>
+                        <!--<tr>
+                            <td>ИСТ-81</td>
+                            <td>Лошкарев Алексей Сергеевич</td>
+                            <td>ИСТ</td>
+                            <td>228-00-21</td>
+                            <td>Сейидов Роман ИСТ-51</td>
                         </tr>
                         <tr>
                             <td>ИСТ-82</td>
@@ -230,7 +237,7 @@
                             <td>ПОУТС</td>
                             <td>228-00-05</td>
                             <td>Ашпетова Мария ПИвЭ-61 </td>
-                        </tr>
+                        </tr>-->
                         </table>
                     </div>
                 </div>

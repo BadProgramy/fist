@@ -162,6 +162,51 @@
         </div>
     </header>
 
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить меню</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
+
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/table/menuItem/add/submit}" th:object="${menuItem}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p class="fieldset black_p">
+                            <textarea name="id" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Идентификатор"></textarea>
+                        </p>
+                        <p class="fieldset black_p">
+                            <label>Выберите ключевое слово...</label>
+                            <select name="keyWord" required>
+                                <option th:each="item : ${keyWords}" th:value="${item.getKeyWord()}" th:utext="${item.getKeyWord()}"></option>
+                            </select>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <label>Уровень вложенности...</label>
+                            <select name="level" required>
+                                <option>0</option>
+                                <option>1</option>
+                            </select>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <textarea name="name" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Название"></textarea>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <textarea name="urlHref" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ссылка"></textarea>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <button class="full-width" type="submit">Добавить</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div> <!-- cd-login -->
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
     <div class="container" style="padding-top: 5%">
         <div th:each="menuItem : ${menuItems}">
             <div class="col-md-4" style="margin-bottom: 50px">

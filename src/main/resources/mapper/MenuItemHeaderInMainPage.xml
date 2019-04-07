@@ -21,6 +21,11 @@
         VALUES (#{idMenuItemParentHeaderInMainPage}, #{keyWord}, #{level}, #{name}, #{pinNumber}, #{urlHref}, #{idPicture}, #{styles});
     </insert>
 
+    <insert id="addById" parameterType="MenuItemHeaderInMainPage">
+        INSERT INTO menu_item_header_in_main_page(id, id_menu_item_parent_header_in_main_page, key_word, level, name, pin_number, url_href, id_picture, styles)
+        VALUES (#{id}, #{idMenuItemParentHeaderInMainPage}, #{keyWord}, #{level}, #{name}, #{pinNumber}, #{urlHref}, #{idPicture}, #{styles});
+    </insert>
+
     <select id="getLastIdInsert" resultType="long">
         SELECT LAST_INSERT_ID() FROM menu_item_header_in_main_page LIMIT 1;
     </select>

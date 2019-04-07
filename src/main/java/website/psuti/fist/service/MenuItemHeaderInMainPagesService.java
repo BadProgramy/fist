@@ -58,4 +58,8 @@ public class MenuItemHeaderInMainPagesService {
     public long insert(MenuItemHeaderInMainPage menuItem) {
         return daoMenuItemHeaderInMainPage.insert(menuItem);
     }
+
+    public long insertById(MenuItemHeaderInMainPage menuItem) {
+        return daoMenuItemHeaderInMainPage.insertById(menuItem);
+    }
 }

@@ -22,4 +22,6 @@ public interface DAOMenuItemHeaderInMainPage {
     List<MenuItemHeaderInMainPage> findItemByKeyWord(String keyWord);
 
     List<MenuItemHeaderInMainPage> findItemByIdParent(long id);
+
+    long insertById(MenuItemHeaderInMainPage menuItem);
 }

@@ -57,6 +57,25 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
     }
 
     @Override
+    public long insertById(MenuItemHeaderInMainPage menuItem) {
+        SqlSession session = factory.getFactory().openSession();
+        long id = -1;
+        try {
+            RequestPostConnection.requestions(dataSource);
+            id = session.insert("MenuItemHeaderInMainPage.addById", menuItem);
+            if (id == 1) {
+                id = session.selectOne("MenuItemHeaderInMainPage.getLastIdInsert");
+                MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return id;
+    }
+
+    @Override
     public void update(MenuItemHeaderInMainPage menuItemHeaderInMainPage) {
         int id = -1;
         SqlSession session = factory.getFactory().openSession();

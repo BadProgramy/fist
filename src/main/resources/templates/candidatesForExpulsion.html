@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
-    <!--<link rel="stylesheet" href="css/prettyphoto.css">-->
     <link rel="stylesheet" href="/css/studentStyle.css">
 
     <!-- JS Font Script -->
@@ -106,16 +105,24 @@
         </div>
     </header>
 
-    <!-- INNER CONTENT -->
-    <section id="content">
-        <div class="page_header page_header2 text-center">
-            <h2 th:utext="${candidateAssignment.getName()}"></h2>
+    <!-- BANER -->
+    <div class="container-fluid no-padding" style="background: black">
+        <div style="position: relative">
+            <div class="item" th:each="picture : ${slider}">
+                <img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
+            </div>
         </div>
+    </div>
 
+    <!-- INNER CONTENT -->
+    <section id="content ">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <table>
+                <div class="col-md-12 cand">
+                    <div class="page_header page_header2 text-center">
+                        <h2 th:utext="${candidateAssignment.getName()}"></h2>
+                    </div>
+                    <table id="mytd">
                         <tr>
                             <th>№</th>
                             <th>Ф.И.О.</th>
@@ -259,6 +266,16 @@
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
 <script src="/js/classie.js"></script>
+<script>
+        function showMy()
+        {
+            var td = document.getElementById("mytd");
+            var positionInfo = td.getBoundingClientRect();
+            var dlina = positionInfo.width;
+            td.style.left=36 +"%";
+        }
+        showMy();
+</script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>

@@ -105,6 +105,15 @@
         </div>
     </header>
 
+    <!-- BANER -->
+    <div class="container-fluid no-padding" style="background: black">
+        <div style="position: relative">
+            <div class="item" th:each="picture : ${slider}">
+                <img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
+            </div>
+        </div>
+    </div>
+
     <!-- INNER CONTENT -->
     <section id="content">
         <div class="page_header page_header2 text-center">
@@ -113,7 +122,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-1">
+                <div class="col-md-8 col-md-offset-2">
                     <h3 class="heading">Уважаемые студенты 1 курса и их родители.</h3>
                     <p>Для скорой и успешной адаптации к учебе в ПГУТИ к каждой студенческой группе прикреплены кураторы: куратор-преподаватель, куратор-студент. У них Вы можете получить любую консультацию по вопросам, связанным с учебой в университете, общественной, научной и культурной жизни, экзаменационной сессии и мн.др.</p>
                 </div>
@@ -123,7 +132,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-10 col-md-offset-2">
                     <table>
                         <caption>1 Курс</caption>
                         <tr>
@@ -140,104 +149,6 @@
                             <td th:utext="${curator.getPhone()}"></td>
                             <td th:utext="${curator.getNameCuratorStudentAndGroup()}"></td>
                         </tr>
-                        <!--<tr>
-                            <td>ИСТ-81</td>
-                            <td>Лошкарев Алексей Сергеевич</td>
-                            <td>ИСТ</td>
-                            <td>228-00-21</td>
-                            <td>Сейидов Роман ИСТ-51</td>
-                        </tr>
-                        <tr>
-                            <td>ИСТ-82</td>
-                            <td>Алашеева Елена Александровна</td>
-                            <td>ВМ</td>
-                            <td>228-00-81</td>
-                            <td>Барсукова Мария ИСТ-51</td>
-                        </tr>
-                        <tr>
-                            <td>ИСТ-83</td>
-                            <td>Знаткова Галина Юрьевна</td>
-                            <td>ИВТ</td>
-                            <td>228-00-58</td>
-                            <td>Гулевский Никита ИСТ-51</td>
-                        </tr>
-                        <tr>
-                            <td>ИСТ-84у</td>
-                            <td>Тучкова Анна Сергеевна</td>
-                            <td>ИСТ</td>
-                            <td>228-00-05</td>
-                            <td>Бровкина Анастасия ИСТ-51</td>
-                        </tr>
-                        <tr>
-                            <td>ПО-81</td>
-                            <td>Часов Егор Александрович</td>
-                            <td>ИВТ</td>
-                            <td>228-00-58</td>
-                            <td>Ивлиев Артем РПИС-611</td>
-                        </tr>
-                        <tr>
-                            <td>ПО-82</td>
-                            <td>Марина Мария Александровна</td>
-                            <td>ИВТ</td>
-                            <td>228-00-58</td>
-                            <td>Булгаков Евгений РПИС-61</td>
-                        </tr>
-                        <tr>
-                            <td>ПО-83</td>
-                            <td>Макаров Максим Игоревич</td>
-                            <td>ИВТ</td>
-                            <td>228-00-58</td>
-                            <td>Осанов Владимир УИТС-51</td>
-                        </tr>
-                        <tr>
-                            <td>УИ-81</td>
-                            <td>Крюкова Анастасия Александровна</td>
-                            <td>ЦЭ</td>
-                            <td>228-00-42</td>
-                            <td>Безруков Евгений УИ-71</td>
-                        </tr>
-                        <tr>
-                            <td>ЭБ-81</td>
-                            <td>Добробог Надежда Викторовна</td>
-                            <td>ВМ</td>
-                            <td>228-00-71</td>
-                            <td>Ильина Алена ЭБ-51</td>
-                        </tr>
-                        <tr>
-                            <td>РПИС-81</td>
-                            <td>Коняева Ольга Сергеевна</td>
-                            <td>ПОУТС</td>
-                            <td>228-00-13</td>
-                            <td>Безухова Полина РПИС-61</td>
-                        </tr>
-                        <tr>
-                            <td>РПИС-82</td>
-                            <td>Мезенцева Екатерина Михайловна</td>
-                            <td>ПОУТС</td>
-                            <td>228-00-13</td>
-                            <td>Арисова Дарья РПИС-61</td>
-                        </tr>
-                        <tr>
-                            <td>УИТС-81</td>
-                            <td>Ахметшина Элеонора Газинуровна</td>
-                            <td>ПОУТС</td>
-                            <td>228-00-13</td>
-                            <td>Юсупова Дина УИТС-51</td>
-                        </tr>
-                        <tr>
-                            <td>РСО-81</td>
-                            <td>Белова Оксана Викторовна</td>
-                            <td>СО</td>
-                            <td>339-11-91</td>
-                            <td>Лосева Анастасия РСО-61</td>
-                        </tr>
-                        <tr>
-                            <td>ПИвЭ-81</td>
-                            <td>Чернова Светлана Владимировна</td>
-                            <td>ПОУТС</td>
-                            <td>228-00-05</td>
-                            <td>Ашпетова Мария ПИвЭ-61 </td>
-                        </tr>-->
                         </table>
                     </div>
                 </div>

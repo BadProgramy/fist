@@ -106,13 +106,13 @@
     </header>
 
     <!-- BANER -->
- <!--   <div class="container-fluid no-padding" style="background: black">
+   <div class="container-fluid no-padding" style="background: black">
         <div style="position: relative">
             <div class="item" th:each="picture : ${slider}">
                     <img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/>
             </div>
         </div>
-    </div>-->
+    </div>
 
     <section id="content" >
         <div class="page_header page_header2 text-center">
@@ -176,14 +176,6 @@
     </section>
 
     <div class="clearfix space70"></div>
-
-    <div class="backstretch" th:each="picture : ${slider}" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; z-index: 1; position: fixed;"><img th:src="@{'/main/picture/' + ${picture.getId()}}"  style=" width: 200%;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    max-height: none;
-    max-width: none;
-    top: 0px;"></div>
 
     <!-- FOOTER -->
     <footer id="footer2" >
@@ -314,7 +306,5 @@
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
-
-
 </body>
 </html>

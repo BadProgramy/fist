@@ -205,24 +205,24 @@
         <div class="cd-timeline-block" th:each="curator : ${curators}">
             <div class="cd-timeline-content">
                 <h2 th:utext="${curator.getGroupInUniversity()}"></h2>
-                <label>Ф.И.О. куратора-преподавателя
-                    <p class="black_p" th:utext="${curator.getNameCuratorTeacher()}"></p>
-                </label>
+                <p class="black_p">Ф.И.О. куратора-преподавателя
+                    <p th:utext="${curator.getNameCuratorTeacher()}"></p>
+                </p>
 
 
-                <label>Кафедра
+                <p class="black_p">Кафедра
                     <p class="black_p" th:utext="${curator.getNameDepartment()}"></p>
-                </label>
+                </p>
 
 
-                <label>Телефон
+                <p class="black_p">Телефон
                     <p class="black_p" th:utext="${curator.getPhone()}"></p>
-                </label>
+                </p>
 
 
-                <label>Ф.И.О. куратора-студента, группа
+                <p class="black_p">Ф.И.О. куратора-студента, группа
                     <p class="black_p" th:utext="${curator.getNameCuratorStudentAndGroup()}"></p>
-                </label>
+                </p>
 
                 <nav class="main-nav">
                     <ul>

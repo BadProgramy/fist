@@ -1348,6 +1348,21 @@ td {
     border: 1px solid #040206;
     padding: 10px 10px 5px;
     color:#040206;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
+.cand table{
+    text-align: center;
+    font-size: 18px !important;
+    position: relative;
+}
+
+.cand th{
+    padding: 20px 40px 20px !important;
+    font-size: 18px !important;
+}
+.cand td{
+    font-size: 18px !important;
 }
 
 th {
@@ -1361,6 +1376,13 @@ caption {
     padding: 10px 0;
     font-size: 30px;
     color:black;
+}
+/*--------------------------------------------------------------------------------------------------*/
+.hiddenn{
+    display: none;
+}
+.img-hidden img{
+    display: none;
 }
 /*--------------------------------------------------------------------------------------------------*/
 .main-team ul.cs-style-7 li .figcaption p {
@@ -3427,11 +3449,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 	color: #fff;
 }
 .search-button{
-    float: right;
+    /*float: right;*/
     width: 100px;
     height: 38px;
     padding: 3px 15px;
-    margin: 5px 0px 0 0px;
+    margin: 5px 0px 5px 0px;
     text-align: center;
     border: none;
     background: #3c689e;
@@ -3442,7 +3464,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .search-input{
-    float: right;
+   /* float: right;*/
     width: 100%;
     max-width: 300px;
     height: 40px;

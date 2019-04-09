@@ -332,5 +332,19 @@
         $(window).on('resize', fix_size);
         fix_size();
     });</script>
+<script>
+    var someimage = document.getElementById('content');
+    var myimgs = someimage.getElementsByTagName('img');
+    var mysrc;
+    var i;
+    var parent;
+    for(i=0;i<myimgs.length;i++){
+        mysrc=myimgs[i].src;
+        if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0')){
+           parent=myimgs[i].parentNode;
+           parent.style.display='none';
+        }
+    }
+</script>
 </body>
 </html>

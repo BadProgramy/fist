@@ -20,6 +20,14 @@
     <link rel="shortcut icon" href="/images/favicon.png">
 
     <!-- CSS -->
+    <script>
+        function resizeTable() {
+            var table=document.getElementById("mytd");
+            var doc=document.getElementById("mytd").offsetWidth;
+            var marginx=doc/-2;
+            table.style.marginLeft=marginx+'px';
+        }
+    </script>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/js/isotope/isotope.css">
@@ -49,7 +57,7 @@
     <script src="/js/modernizr.custom.js"></script>
 
 </head>
-<body class="multi-page">
+<body class="multi-page" onload=resizeTable();>
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
@@ -95,7 +103,7 @@
                         </li>
                     </ul>
                     <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-                        <a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
+                        <a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
                     </div>
                     <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
                         <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
@@ -266,16 +274,7 @@
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
 <script src="/js/classie.js"></script>
-<script>
-        function showMy()
-        {
-            var td = document.getElementById("mytd");
-            var positionInfo = td.getBoundingClientRect();
-            var dlina = positionInfo.width;
-            td.style.left=36 +"%";
-        }
-        showMy();
-</script>
+
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>

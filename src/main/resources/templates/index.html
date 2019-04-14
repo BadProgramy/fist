@@ -60,13 +60,6 @@
 					<div class="logo-psuti" style="margin: 10px;">
 						<a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
 					</div>
-					<div class="logo-psuti" style="margin: 10px;">
-						<a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
-					</div>
-					<form th:action="${'/search'}" th:object="${searchword}" class="search-block">
-						<button class="search-button hiddenn" type="submit">Поиск</button
-						><input class="search-input hiddenn" name="searchword" type="text" placeholder="Поиск...">
-					</form>
 					<div class="col-md-9 col-xs-7">
 						<div class="top-bar" style="width:100%; margin-right: 50px;">
 							<ul>
@@ -100,16 +93,21 @@
 						</li>
 					</ul>
 				<div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-					<a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
+					<a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
 				</div>
-				<div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
+				<div class="logo-psuti" style=" float:right; margin: 15px 0px 0 0; ">
 					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}" th:style="${logotipPSUTI.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
 				</div>
 			</div>
 		</div>
 		</div>
 	</header>
-
+	<div class="other-pages-search">
+		<form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
+			<button class="search-button " type="submit">Поиск</button>
+			<input class="search-input " name="searchword" type="text" placeholder="Поиск...">
+		</form>
+	</div>
 	<!--HEADER-->
 	<div class="header" style="height: 100px"></div>
 
@@ -540,41 +538,24 @@
 </script>
 <script >
     function checkPosition(){
-        // координаты дива
         var div_position = $(".lines").offset();
-        // отступ сверху
         var div_top = div_position.top;
-        // отступ слева
         var div_left = div_position.left;
-        // ширина
         var div_width = $(".lines").width();
-        // высота
         var div_height = $(".lines").height();
-
-        // проскроллено сверху
         var top_scroll = $(document).scrollTop();
-        // проскроллено слева
         var left_scroll = $(document).scrollLeft();
-        // ширина видимой страницы
         var screen_width = $(window).width();
-        // высота видимой страницы
         var screen_height = $(window).height();
-
-        // координаты углов видимой области
         var see_x1 = left_scroll;
         var see_x2 = screen_width + left_scroll;
         var see_y1 = top_scroll;
         var see_y2 = screen_height + top_scroll;
-
-        // координаты углов искомого элемента
         var div_x1 = div_left;
         var div_x2 = div_left + div_width;
         var div_y1 = div_top;
         var div_y2 = div_top + div_height;
-
-        // проверка - виден див полностью или нет
         if( div_x1 >= see_x1 && div_x2 <= see_x2 && div_y1 >= see_y1 && div_y2 <= see_y2 ){
-            // если виден
             var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(' ');
             $(".lines").each(function () {
                 var tcount = $(this).data("count");
@@ -588,14 +569,9 @@
     }
     $(document).ready(function(){
         $(document).scroll(function(){
-            // при скролле страницы делаем проверку
             checkPosition();
         });
-
-        // после загрузки страницы сразу проверяем
         checkPosition();
-
-        // проверка при масштабировании и изменении размера страницы
         $(window).resize(function(){
             checkPosition();
         });
@@ -634,20 +610,38 @@
         $(window).on('resize', fix_size);
         fix_size();
     });</script>
-<script>
-function searchFunc(){
-var element=document.getElementsByClassName('img-nohidden');
-if (element.length===1){
-    var el=element[0];
-    el.style.display="none";
-}
-    var elements=document.getElementsByClassName('hiddenn');
-    if (elements.length>0){
-        for(var i=0;i<elements.length;i++){
-        elements[i].style.display="initial";
+<script type="text/javascript">
+    var opac=0;
+    function searchFunc() {
+        var elements=document.getElementsByClassName('other-pages-search');
+        if (elements.length>0){
+            if(opac===0){
+                opac++;
+                pull(elements[0]);
+            } else {
+                opac--;
+                push(elements[0]);
+            }
         }
-	}
-}
+        function pull(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/-1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1000, function () {
+            });
+        }
+        function push(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 2000, function () {
+            });
+        }
+    }
 </script>
 </body>
 </html>

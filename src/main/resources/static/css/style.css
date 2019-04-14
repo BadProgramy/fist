@@ -454,7 +454,7 @@ h1 {
 
 
 #content {
-    z-index: 3;
+
 	 float:left;
 	 width:100%;
 	 position:relative;
@@ -562,7 +562,7 @@ display: unset;
 }
 
 .admin{
-    max-width: 40px;
+    width: 65px;
 }
 
 .h-page-title span.sub-title {
@@ -806,7 +806,7 @@ display: unset;
     margin: 0px;
     padding: 0px;
     position: relative;
-    z-index: 777;
+    z-index: 50;
 }
 
 
@@ -1063,8 +1063,7 @@ display: unset;
 	height: 100%;
 	top: 0;
 	left: 0;
-
-	z-index: 1000;
+    z-index: 100;
 
 	/* fixes overlap error in IE7/8,
        make sure you have an empty gif */
@@ -3448,9 +3447,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 	background: #000;
 	color: #fff;
 }
-.search-button{
-    /*float: right;*/
-    width: 100px;
+.search-button {
+    float: right;
+    /* width: 100px; */
     height: 38px;
     padding: 3px 15px;
     margin: 5px 0px 5px 0px;
@@ -3462,12 +3461,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-size: 16px;
     text-transform: uppercase;
 }
-
 .search-input{
-   /* float: right;*/
-    width: 100%;
+    float: right;
+    /* width: 100%; */
     max-width: 300px;
-    height: 40px;
+    height: 38px;
     padding: 3px 15px;
     margin: 5px 0px 0 0;
     color: #000;
@@ -3475,7 +3473,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-size: 18px;
     background: white;
 }
-
+.other-pages-search{
+    position: fixed;
+    top: 14%;
+    left: 100%;
+    z-index: 50;
+    opacity: 0;
+    width: 100%;
+}
+#mytd{
+    left: 50%;
+}
 .search-block {
     visibility: visible;
     opacity: 0;

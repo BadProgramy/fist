@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>УИТС</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/light.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/trends.css">
+    <link rel='stylesheet' href='/css/nprogress.css'/>
+</head>
+
+<body style="background-color: #ededf1 !important;">
+<div id="content" class="trends text_shadow">
+        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        <div class="container-fluid only_one_trend">
+            <div class="row" style="background: url(../images/home-page/Layer/uits.jpg);background-size: cover">
+                <div class="trend">
+                    <div class="col-md-2"> <img src="/images/home-page/uits.png" class="img-responsive"></div>
+                    <div class="col-md-8"> <h1>Управление и информатика в технических университетах</h1></div>
+                </div>
+            </div>
+            <div class="container list-marker">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 about-info2">
+                    <p>Специальность утверждена приказом Министерства образования РФ в 2009 г. Область профессиональной деятельности включает проектирование, исследование, производство и эксплуатацию систем и средств управления в промышленной и оборонной отраслях, в экономике, на транспорте, в сельском хозяйстве, медицине; создание современных программных и аппаратных средств исследования и проектирования, контроля, технического диагностирования и промышленных испытаний систем автоматического и автоматизированного управления.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-push-2">
+                        <h5>Cтудент будет изучит дисциплины</h5>
+                        <ul>
+                            <li>Моделирование систем управления</li>
+                            <li>Технические средства автоматизации и управления</li>
+                            <li>Автоматизированные и информационно-управляющие системы</li>
+                            <li>Идентификация и диагностика систем</li>
+                            <li>Управление сложными техническими системами</li>
+                            <li>Системы реального времени</li>
+                            <li>Системное программное обеспечение</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-md-push-2">
+                        <h5>Места работы по профилю обучения</h5>
+                        <ul>
+                            <li>инженер</li>
+                            <li>конструктор</li>
+                            <li>технолог</li>
+                            <li>научный сотрудник</li>
+                            <li>в научно-исследовательских организациях, предприятиях, занимающимися системами управления, телекоммуникационных компаниях</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="site-fist logos">
+                    <div class="col-md-1">
+                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="background_img"><img src="/images/home-page/network.png"></div>
+
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var hash = window.location.hash.substr(1);
+        var href = $('#content a').each(function(){
+            var href = $(this).attr('href');
+            if(hash===href.substr(0,href.length)){
+                var toLoad = hash+' #content';
+                $('#content').load(toLoad)
+            }
+        });
+
+        $('#content a').click(function(){
+            if($(this).attr('href')==='/main'){return true}
+            if($(this).attr('href')==='/mainTrend'){
+                resizeY();
+            }
+            var toLoad = $(this).attr('href')+' #content';
+            $('#content').hide('fast',loadContent);
+            window.location.hash =$(this).attr('href');
+            function loadContent() {
+                $('#content').load(toLoad,'',showNewContent())
+            }
+            function showNewContent() {
+                $('#content').show('normal',hideLoader());
+            }
+            function hideLoader() {
+                $('.version').text(NProgress.version);
+                NProgress.start();
+                setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+            }
+            function resizeY(){
+                var img = $('.background_img img');
+                var con = img.parents('.background_img');
+                var marginy=(img.height()-con.height())/2;
+                img.animate({
+                    marginTop: "+=" + marginy/2 + "px",
+                    height: "-=35%"
+                }, 5000, function () {
+                });
+                /*img.css({ 'margin-top': marginy});*/
+            }
+            return false;
+        });
+    });
+</script>
+<!-- Javascript -->
+<script>
+    jQuery(function ($) {
+        function fix_size() {
+            var images = $('.background_img img');
+            images.each(setsize);
+
+            function setsize() {
+                var img = $(this),
+                    img_dom = img.get(0),
+                    container = img.parents('.background_img');
+                if (img_dom.complete) {
+                    resize();
+                } else img.one('load', resize);
+
+                function resize() {
+                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
+                        img.width('100%');
+                        img.height('135%');
+                    } else {
+                        img.height('135%');
+                        img.width('100%');
+                    }
+                    var marginx=(img.width()-container.width())/-2,marginy=(img.height()-container.height())/-2;
+                    img.css({ 'margin-left': marginx, 'margin-top': marginy/2});
+                }
+
+            }
+        }
+        $(window).on('resize', fix_size);
+        fix_size();
+    });
+</script>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src='/js/nprogress.js'></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+</body>
+</html>

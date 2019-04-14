@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Прикладная информатика</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/light.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/trends.css">
+    <link rel='stylesheet' href='/css/nprogress.css'/>
+</head>
+
+<body style="background-color: #ededf1 !important;">
+<div id="content" class="trends text_shadow">
+        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        <div class="container-fluid only_one_trend">
+            <div class="row" style="background: url(../images/home-page/Layer/prikladInfo.jpg);background-size: cover">
+                <div class="trend">
+                    <div class="col-md-2"> <img src="/images/home-page/prikladInfo.png" class="img-responsive"></div>
+                    <div class="col-md-8"> <h1>Прикладная информатика</h1></div>
+                </div>
+            </div>
+            <div class="container list-marker">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 about-info2">
+                        <p>Специальность утверждена приказом Министерства образования РФ в 2000 г.  Выпускник – информатик в своей практической деятельности анализирует, прогнозирует, моделирует и создает информационные процессы и технологии в рамках профессионально-ориентированных информационных систем. В большей степени имеет дело с профессионально-ориентированной оболочкой (которую он проектирует, создаёт и применяет), состоящей из специальных программных средств, информационного обеспечения и организационных мероприятий поддержки функционирования конкретных процессов в области применения, и в меньшей степени имеет дело с ядром информационной системы (разработкой комплекса вычислительных средств, операционной системы, систем управления базами данных и др.).</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-push-2">
+                        <h5>Cтудент будет изучит дисциплины</h5>
+                        <ul>
+                            <li>Имитационное моделирование</li>
+                            <li>Теорию имитационных экономических систем</li>
+                            <li>Проектирование информационных систем</li>
+                            <li>Информационные системы и технологии</li>
+                            <li>Базы данных</li>
+                            <li>Реинжиниринг бизнес-процессов</li>
+                            <li>Экономическая безопасность в корпоративных информационных системах</li>
+                            <li>Интеллектуальные информационные системы</li>
+                            <li>Электронный бизнес</li>
+                            <li>Информационные аналитические системы в бизнесе</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-md-push-2">
+                        <h5>Места работы по профилю обучения</h5>
+                        <ul>
+                            <li>специалистами по разработке и внедрению информационных систем</li>
+                            <li>менеджерами по поддержке информационных систем</li>
+                            <li>бизнес-аналитиками и т.п.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="site-fist logos">
+                    <div class="col-md-1">
+                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/uits"><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="background_img"><img src="/images/home-page/network.png"></div>
+
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var hash = window.location.hash.substr(1);
+        var href = $('#content a').each(function(){
+            var href = $(this).attr('href');
+            if(hash===href.substr(0,href.length)){
+                var toLoad = hash+' #content';
+                $('#content').load(toLoad)
+            }
+        });
+
+        $('#content a').click(function(){
+            if($(this).attr('href')==='/main'){return true}
+            if($(this).attr('href')==='/mainTrend'){
+                resizeY();
+            }
+            var toLoad = $(this).attr('href')+' #content';
+            $('#content').hide('fast',loadContent);
+            window.location.hash =$(this).attr('href');
+            function loadContent() {
+                $('#content').load(toLoad,'',showNewContent())
+            }
+            function showNewContent() {
+                $('#content').show('normal',hideLoader());
+            }
+            function hideLoader() {
+                $('.version').text(NProgress.version);
+                NProgress.start();
+                setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+            }
+            function resizeY(){
+                var img = $('.background_img img');
+                var con = img.parents('.background_img');
+                var marginy=(img.height()-con.height())/2;
+                img.animate({
+                    marginTop: "+=" + marginy/2 + "px",
+                    height: "-=35%"
+                }, 5000, function () {
+                });
+                /*img.css({ 'margin-top': marginy});*/
+            }
+            return false;
+        });
+    });
+</script>
+<!-- Javascript -->
+<script>
+    jQuery(function ($) {
+        function fix_size() {
+            var images = $('.background_img img');
+            images.each(setsize);
+
+            function setsize() {
+                var img = $(this),
+                    img_dom = img.get(0),
+                    container = img.parents('.background_img');
+                if (img_dom.complete) {
+                    resize();
+                } else img.one('load', resize);
+
+                function resize() {
+                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
+                        img.width('100%');
+                        img.height('135%');
+                    } else {
+                        img.height('135%');
+                        img.width('100%');
+                    }
+                    var marginx=(img.width()-container.width())/-2,marginy=(img.height()-container.height())/-2;
+                    img.css({ 'margin-left': marginx, 'margin-top': marginy/2});
+                }
+
+            }
+        }
+        $(window).on('resize', fix_size);
+        fix_size();
+    });
+</script>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src='/js/nprogress.js'></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+</body>
+</html>

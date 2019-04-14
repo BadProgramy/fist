@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
-    <!--<link rel="stylesheet" href="css/prettyphoto.css">-->
     <link rel="stylesheet" href="/css/studentStyle.css">
 
     <!-- JS Font Script -->
@@ -54,54 +53,59 @@
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
-    <header id="header" class="color-silver">
-        <div class="container">
-            <div class="row">
-                <div class="logo-psuti" style="margin: 10px;">
-                    <a href="/main" th:object="${logotipFIST}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
-                </div>
-                <div class="col-md-9 col-xs-7">
-                    <div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
-                        <ul>
-                            <li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
-                            <li class="tb-info"  style="float: left;color: black;padding-right:4%"> Московское шоссе 77, кабинет 302</li>
-
-                            <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
-                            <li class="tb-info"  style="float: left;color: black;padding-right:4%" th:object="${phone}" th:utext="${phone.getName()}"></li>
-
-                            <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
-                            <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}"></li>
-                        </ul>
+        <header id="header" class="color-silver">
+            <div class="container">
+                <div class="row">
+                    <div class="logo-psuti" style="margin: 10px;">
+                        <a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                     </div>
-                </div>
-            </div>
-            <div class="menu-wrap">
-                <div class="row" style="margin-left: 5%;">
-                    <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" id="mobnav-btn"> <!--<i class="fa fa-bars"></i>--></div>
-                    <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
-                        <li>
-                            <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
-                            <div class="mobnav-subarrow"><!--<i class="fa fa-plus"></i>--></div>
-                            <ul >
-                                <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
-                                    <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-                                        <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}"></a>
-                                    </li>
-                                </div>
+                    <div class="col-md-9 col-xs-7">
+                        <div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
+                            <ul>
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
+                                <li th:utext="${location.getName()}" class="tb-info"  th:style="${location.getStyles()}"></li>
+
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
+                                <li class="tb-info"  style="float: left;color: black;padding-right:4%" th:object="${phone}" th:utext="${phone.getName()}" th:style="${phone.getStyles()}"></li>
+
+                                <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
+                                <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}" th:style="${email.getStyles()}"></li>
                             </ul>
-                        </li>
-                    </ul>
-                    <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-                        <a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
+                        </div>
                     </div>
-                    <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
-                        <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+                </div>
+                <div class="menu-wrap">
+                    <div class="row" style="margin-left: 5%;">
+                        <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"></div>
+                        <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+                            <li>
+                                <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
+                                <div class="mobnav-subarrow"></div>
+                                <ul >
+                                    <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
+                                        <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+                                            <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}" th:style="${menuItemHeaderInMainPage.getStyles()}"></a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
+                            <a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
+                        </div>
+                        <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
+                            <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-
+        </header>
+    <div class="other-pages-search">
+    <form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
+        <button class="search-button " type="submit">Поиск</button>
+        <input class="search-input " name="searchword" type="text" placeholder="Поиск...">
+    </form>
+    </div>
     <!-- BANER -->
     <div class="container-fluid no-padding" style="background: black">
         <div style="position: relative">
@@ -294,25 +298,6 @@
     <!-- FOOTER -->
 </div>
 
-<div id="somedialog" class="dialog">
-    <div class="dialog__overlay"></div>
-    <div class="dialog__content">
-        <div id="booking_pop" class="booking_pop">
-        </div>
-        <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
-    </div>
-</div>
-
-<div id="somedialog1" class="dialog">
-    <div class="dialog__overlay"></div>
-    <div class="dialog__content">
-        <div class="timer_popup">
-            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
-        </div>
-    </div>
-</div>
-
-
 <div id="somedialog2" class="dialog">
     <div class="dialog__overlay"></div>
     <div class="dialog__content">
@@ -364,16 +349,47 @@
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
-<!--<script src="js/jquery.prettyphoto.js"></script>-->
+
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
 <script src="/js/student_character.js"></script>
+<script type="text/javascript">
+    var opac=0;
+    function searchFunc() {
+        var elements=document.getElementsByClassName('other-pages-search');
+        if (elements.length>0){
+            if(opac===0){
+                opac++;
+                pull(elements[0]);
+        } else {
+                opac--;
+                push(elements[0]);
+            }
+        }
+        function pull(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/-1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1500, function () {
+            });
+        }
+        function push(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1500, function () {
+            });
+        }
+    }
+</script>
 </body>
 </html>

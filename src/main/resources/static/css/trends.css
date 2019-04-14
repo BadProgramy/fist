@@ -2,7 +2,8 @@ html,body {
     width: 100%;
     height: 100%;
     margin: 0;
-    overflow-x: hidden ;
+    overflow-x: hidden;
+    overflow-y: overlay;
 }
 .trends{
     width: 100%;
@@ -16,19 +17,26 @@ html,body {
 
 .trends .row:hover p{
     color:white;
+    margin: 5px;
     font-size: 23px;
     cursor: pointer;
 }
-
+#container{
+    height: 100%;
+}
 .trends .row:hover {
     cursor: pointer;
 }
 
 .trend {
+    z-index: 40;
+    position: relative;
     width: 100%;
     margin: 0;
     height: 100%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 .container-fluid{
     width: 100%;
@@ -40,15 +48,20 @@ html,body {
 }
 
 .trend p {
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Open Sans', sans-serif; */
     font-size: 22px;
     line-height: 1;
     color: #d4cccc;
     text-transform: uppercase;
+    margin: 5px;
     font-weight: 400;
     text-align: center;
-    display: inline-block;
-    vertical-align: middle;
+    display: initial;
+    /* margin-top: 2%; */
+    /* vertical-align: middle; */
+    /* float: left; */
+    position: relative;
+    z-index: 50;
 }
 .trend:before { /* для IE8+ */
     content: "";
@@ -58,10 +71,12 @@ html,body {
     vertical-align: middle;
 }
 .trend img{
-    height:11%;
-    left: 50%;
-    position: absolute;
-    z-index: 1;
+    position: relative;
+    /* float: left; */
+    height: 80%;
+    /* margin-left: 20%; */
+    z-index: 49;
+    display: initial;
 }
 
 .lastrow{
@@ -80,13 +95,6 @@ html,body {
     color: black;
 }
 .pop-div {
-    /*display: none;
-    position: relative;
-    overflow: hidden;
-    background: red;
-    height: 300px;
-    border: 4px solid black;*/
-
     display: none;
     top: 0;
     z-index: 999;
@@ -96,4 +104,97 @@ html,body {
     height: 300px;
     width: 100%;
     border: 4px solid black;
+}
+
+.text_shadow p{
+    text-shadow:black 2px 2px 2px;
+}
+
+.background_img img{
+    display: block;
+    margin: 0 auto;
+    z-index:30;
+    position: absolute;
+}
+.back_img{
+    position: absolute;
+    z-index: 60;
+    top: 2%;
+    left:4%;
+}
+a.change {
+    background: url(/images/str3.png);
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+a.change:hover {
+    background: url(/images/str2.png);
+    width: 50px;
+    height: 50px;
+}
+
+.only_one_trend .row{
+    height: 30% !important;
+    margin-bottom: 0 !important;
+}
+
+.only_one_trend p{
+    font-size:18px !important;
+    color: black;
+    margin:5% 5px 5px 5px;
+    float: left;
+    text-shadow:black 0px 0px 0px;
+}
+
+.only_one_trend .trend{
+    margin-top: 3%;
+    margin-left: 5%;
+    height:0%;
+}
+
+.only_one_trend .trend:hover {
+    cursor: initial;
+}
+.only_one_trend .trend h1{
+    font-size:30px;
+    float:left;
+    text-shadow:black 2px 2px 2px;
+    color: #d4cccc;
+    margin-top:5%;
+}
+.only_one_trend .trend p{
+    font-size:18px !important;
+    margin: 5% 5px 5px 5px;
+    color:black; !important;
+    text-shadow:black 0px 0px 0px;
+}
+
+.only_one_trend .row:hover p {
+    float: left;
+    margin: 5% 5px 5px 5px;
+    font-size:18px;
+    color:black;
+    cursor: initial;
+    text-shadow:black 0px 0px 0px;
+}
+
+.only_one_trend .list-marker{
+    background: #f1f1f4;
+    z-index: 40;
+    position: relative;
+}
+
+.only_one_trend .row:hover{
+    cursor: initial;
+}
+
+.logos{
+    z-index: 50;
+    max-width: 100%;
+    position: relative;
+}
+
+.only_one_trend .site-fist a:after{
+    background: rgba(241, 241, 244, 0.38) !important;
 }

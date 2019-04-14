@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 @Controller
-public class MainController {
+public class  MainController {
 
     //private final static Logger log = LoggerFactory.getLogger(Application.class);
 
@@ -224,6 +224,61 @@ public class MainController {
     public ModelAndView mainTrend() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("mainTrend");
+        return modelAndView;
+    }
+
+    @RequestMapping("/BI")
+    public ModelAndView BI() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("BI");
+        return modelAndView;
+    }
+    @RequestMapping("/IVT")
+    public ModelAndView IVT() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("IVT");
+        return modelAndView;
+    }
+    @RequestMapping("/innovatika")
+    public ModelAndView innovatika() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("innovatika");
+        return modelAndView;
+    }
+    @RequestMapping("/RSO")
+    public ModelAndView RSO() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("RSO");
+        return modelAndView;
+    }
+    @RequestMapping("/uits")
+    public ModelAndView uits() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("uits");
+        return modelAndView;
+    }
+    @RequestMapping("/PI")
+    public ModelAndView PI() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("PI");
+        return modelAndView;
+    }
+    @RequestMapping("/prikladInfo")
+    public ModelAndView prikladInfo() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("prikladInfo");
+        return modelAndView;
+    }
+    @RequestMapping("/IST")
+    public ModelAndView IST() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("IST");
+        return modelAndView;
+    }
+    @RequestMapping("/matob")
+    public ModelAndView matob() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("matob");
         return modelAndView;
     }
 //TODO учебный процесс /////////////////////////////////////////////////////////////

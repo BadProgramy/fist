@@ -26,9 +26,17 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/trends.css">
     <link rel='stylesheet' href='/css/nprogress.css'/>
+    <script src='/js/particles.min.js'></script>
 </head>
 
 <body style="background-color: #ededf1 !important;">
+<div id="particles-js"></div>
+<script>
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    particlesJS.load('particles-js', '/assets/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+    });
+</script>
 <div id="content" class="trends text_shadow">
     <div id="container">
         <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
@@ -47,7 +55,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-md-push-2">
-                        <h5>Cтудент изучит дисциплины</h5>
+                        <h5>Какие дисциплины изучите</h5>
                         <ul>
                             <li>Операционные системы</li>
                             <li>Объектно-ориентированное программирование на языке Java</li>
@@ -60,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-push-2">
-                        <h5>Места работы по профилю обучения</h5>
+                        <h5>Кем сможете работать</h5>
                         <ul>
                             <li>ИТ-специалист</li>
                             <li>Программист</li>
@@ -101,8 +109,7 @@
         </div>
     </div>
 </div>
-<div class="background_img"><img src="/images/home-page/network.png"></div>
-
+<!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -111,16 +118,17 @@
             var href = $(this).attr('href');
             if(hash===href.substr(0,href.length)){
                 var toLoad = hash+' #content';
-                $('#container').load(toLoad)
+                $('#content').load(toLoad)
             }
         });
 
-        $('#container a').click(function(){
+        $('#content a').click(function(){
+            if($(this).attr('href')==='/main'){return true}
             var toLoad = $(this).attr('href')+' #content';
-            $('#content').hide('low',loadContent);
-            window.location.hash = $(this).attr('href');
+            $('#content').hide('fast',loadContent);
+            window.location.hash =$(this).attr('href');
             function loadContent() {
-                $('#container').load(toLoad,'',showNewContent())
+                $('#content').load(toLoad,'',showNewContent())
             }
             function showNewContent() {
                 $('#content').show('normal',hideLoader());
@@ -131,47 +139,12 @@
                 setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
             }
             return false;
-
         });
-
     });
 </script>
-<!-- Javascript -->
-<script>
-    jQuery(function ($) {
-        function fix_size() {
-            var images = $('.background_img img');
-            images.each(setsize);
-
-            function setsize() {
-                var img = $(this),
-                    img_dom = img.get(0),
-                    container = img.parents('.background_img');
-                if (img_dom.complete) {
-                    resize();
-                } else img.one('load', resize);
-
-                function resize() {
-                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
-                        img.width('auto');
-                        img.height('100%');
-                    } else {
-                        img.height('auto');
-                        img.width('100%');
-                    }
-                    var marginx=(img.width()-container.width())/-2;
-                    img.css({ 'margin-left': marginx});
-                }
-            }
-        }
-        $(window).on('resize', fix_size);
-        fix_size();
-    });
-</script>
-
-<script src="/js/bootstrap.min.js"></script>
-<script src='/js/nprogress.js'></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="/js/bootstrap.min.js" defer></script>
+<script src='/js/nprogress.js' defer></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer></script>
 
 </body>
 </html>

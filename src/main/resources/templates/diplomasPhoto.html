@@ -59,10 +59,6 @@
                 <div class="logo-psuti" style="margin: 10px;">
                     <a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
                 </div>
-                <form th:action="${'/search'}" th:object="${searchword}" class="search-block">
-                    <button class="search-button" type="submit">Поиск</button>
-                    <input class="search-input" name="searchword" type="text" placeholder="Поиск...">
-                </form>
                 <div class="col-md-9 col-xs-7">
                     <div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
                         <ul>
@@ -95,7 +91,7 @@
                         </li>
                     </ul>
                     <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-                        <a href="/admin"><img src="/images/admin.png" class="img-responsive" alt=""/></a>
+                        <a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
                     </div>
                     <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
                         <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
@@ -104,6 +100,12 @@
             </div>
         </div>
     </header>
+    <div class="other-pages-search">
+        <form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
+            <button class="search-button " type="submit">Поиск</button>
+            <input class="search-input " name="searchword" type="text" placeholder="Поиск...">
+        </form>
+    </div>
 
     <!-- SHOP CONTENT -->
     <section id="content">
@@ -296,5 +298,38 @@
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
+<script type="text/javascript">
+    var opac=0;
+    function searchFunc() {
+        var elements=document.getElementsByClassName('other-pages-search');
+        if (elements.length>0){
+            if(opac===0){
+                opac++;
+                pull(elements[0]);
+            } else {
+                opac--;
+                push(elements[0]);
+            }
+        }
+        function pull(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/-1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1500, function () {
+            });
+        }
+        function push(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1500, function () {
+            });
+        }
+    }
+</script>
 </body>
 </html>

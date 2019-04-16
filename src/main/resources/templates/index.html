@@ -232,8 +232,8 @@
 				<div class="main-pricing">
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-md-offset-1">
-							<div class="price-block">
-								<div class="inner-price">
+							<div id="firstT" class="price-block">
+								<div id="firstTT" class="inner-price">
 									<h3 th:object="${ItemHeader4}" th:text="${ItemHeader4.getName()}" th:style="${ItemHeader4.getStyles()}"></h3>
 									<br>
 									<div id="vk_widget"></div>
@@ -250,11 +250,11 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-							<div class="price-block">
-								<div class="inner-price">
+							<div id="secondT" class="price-block">
+								<div id="secondTT" class="inner-price">
 									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}" th:style="${ItemHeader5.getStyles()}"></h3>
 									<div class='widget-content'>
-										<iframe src="//widget.instagramm.ru/?imageW=2&imageH=3&thumbnail_size=97&type=0&typetext=fist.psuti&head_show=1&profile_show=0&shadow_show=1&bg=255,255,255,1&opacity=true&head_bg=46729b&subscribe_bg=ad4141&border_color=c3c3c3&head_title=%25D0%25A4%25D0%2598%25D0%25A1%25D0%25A2%2520%25D0%259F%25D0%2593%25D0%25A3%25D0%25A2%25D0%2598" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;height:410px;"></iframe>
+										<iframe src="https://snapwidget.com/embed/683995" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
 									</div>
 								</div>
 							</div>
@@ -314,7 +314,7 @@
 						<div id="Some-Container"  th:each="student : ${bestStudents}" class="sm-item text-center">
 							<div class="product" >
 								<div class="product-thumb">
-									<li><a class="cd-signin"><!--<img th:id="@{'student' + ${student.getId()}}" th:src="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">-->
+									<li><a class="cd-signin">
 										<img th:id="@{'student' + ${student.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">
 										<div><span class="fa fa-search-plus"></span></div>
 										<script th:inline="javascript">
@@ -356,8 +356,8 @@
 		</div>
 	</section>
 
-	<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+	<div class="cd-user-modal">
+		<div class="cd-user-modal-container">
 			<div class="border-stud">
 				<div class="stud-photo">
 					<a><img id="studPicture" class="img-responsive" alt=""/></a>
@@ -368,8 +368,8 @@
 				</div>
 			</div>
 
-		</div> <!-- cd-user-modal-container -->
-	</div> <!-- cd-user-modal -->
+		</div>
+	</div>
 
 
 	<!-- FOOTER -->
@@ -503,7 +503,8 @@
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
 <script src="/js/student_character.js"></script>
-
+<!-- SnapWidget -->
+<script src="https://snapwidget.com/js/snapwidget.js"></script>
 <script>
 
     function isVisible(elem) {
@@ -567,12 +568,24 @@
             });
         }
     }
+    function resizeTable() {
+        var secondItem=document.getElementById("secondT");
+        var second=document.getElementById("secondTT");
+        var doc1=document.getElementById("firstT").offsetHeight;
+        var doc2=document.getElementById("firstTT").offsetHeight;
+        secondItem.style.height=doc1+'px';
+        secondItem.style.overflow='hidden';
+        second.style.height=doc2+'px';
+    }
     $(document).ready(function(){
         $(document).scroll(function(){
+            resizeTable();
             checkPosition();
         });
+        resizeTable();
         checkPosition();
         $(window).resize(function(){
+            resizeTable();
             checkPosition();
         });
 

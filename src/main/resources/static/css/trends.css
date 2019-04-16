@@ -77,6 +77,8 @@ html,body {
     /* margin-left: 20%; */
     z-index: 49;
     display: initial;
+    border-radius: 350px;
+    box-shadow: -3px -3px 4px 2px black;
 }
 
 .lastrow{
@@ -87,7 +89,7 @@ html,body {
 }
 
 .lastrow img{
-    height: 100%;
+    height: 80%;
 }
 /*--------------------pop-up window---------------------------------*/
 .btn-pop {
@@ -144,7 +146,7 @@ a.change:hover {
     color: black;
     margin:5% 5px 5px 5px;
     float: left;
-    text-shadow:black 0px 0px 0px;
+    text-shadow: #ededf100 0px 0px 0px;
 }
 
 .only_one_trend .trend{
@@ -180,7 +182,6 @@ a.change:hover {
 }
 
 .only_one_trend .list-marker{
-    background: #f1f1f4;
     z-index: 40;
     position: relative;
 }
@@ -193,8 +194,18 @@ a.change:hover {
     z-index: 50;
     max-width: 100%;
     position: relative;
+    margin-top: 15px;
 }
 
 .only_one_trend .site-fist a:after{
     background: rgba(241, 241, 244, 0.38) !important;
+}
+
+#particles-js{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    z-index: 1;
 }

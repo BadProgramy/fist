@@ -204,13 +204,19 @@ public class  MainController {
         modelAndView.setViewName("trainingDirections");
         return modelAndView;
     }
-
-    @RequestMapping("/trainingDirections2")
-    public ModelAndView trainingDirections2() {
+    @RequestMapping("/example")
+    public ModelAndView example() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
-        modelAndView.setViewName("trainingDirections2");
+        modelAndView.setViewName("example");
         return modelAndView;
     }
+    @RequestMapping("/example2")
+    public ModelAndView example2() {
+        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
+        modelAndView.setViewName("example2");
+        return modelAndView;
+    }
+
 
     @RequestMapping("/abitur/costEducation")
     public ModelAndView abiturCostEducation() {

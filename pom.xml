@@ -119,19 +119,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<plugin>
-		<artifactId>maven-resources-plugin</artifactId>
-		<version>2.7</version>
-		<configuration>
-			<encoding>UTF-8</encoding>
-			<nonFilteredFileExtensions>
-				<nonFilteredFileExtension>ttf</nonFilteredFileExtension>
-				<nonFilteredFileExtension>woff</nonFilteredFileExtension>
-				<nonFilteredFileExtension>woff2</nonFilteredFileExtension>
-			</nonFilteredFileExtensions>
-		</configuration>
-	</plugin>
-
-
 </project>

@@ -109,9 +109,6 @@ public class AdminPictureController {
     }
 
     private Pictures updatePicture(Pictures item) throws IOException {
-        item.setUrlPicture(PathConstant.SAVE_PICTURE.getPath() +item.getNamePicture());
-        item.setDate(LocalDate.parse(item.getDateStringLocalDate()));
-        item.setIdPage(-1);
         //item.setStyles();
         if (!item.getPictureFileMultipart().isEmpty()) {
             item.setPictureFile(item.getPictureFileMultipart().getBytes());
@@ -123,8 +120,10 @@ public class AdminPictureController {
                 if (entry.getKey().equals(item.getId()))
                     item.setPictureFile((byte[]) entry.getValue());
             }
-
         }
+        item.setUrlPicture(PathConstant.SAVE_PICTURE.getPath() +item.getNamePicture());
+        item.setDate(LocalDate.parse(item.getDateStringLocalDate()));
+        item.setIdPage(-1);
         return item;
     }
 

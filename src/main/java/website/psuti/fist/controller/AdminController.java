@@ -35,6 +35,9 @@ public class AdminController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
+    @Autowired
+    private PicturesService picturesService;
+
     @RequestMapping("/admin")
     public String adminPage() {
         return "admin";
@@ -66,13 +69,15 @@ public class AdminController {
     }*/
 
     private byte[] getPicture(long idPicture) {
-        for (Map.Entry picture : modelAndViewConfiguration.initPicturesCache().entrySet()) {
+        //todo по кешу ищет картинку
+    /*    for (Map.Entry picture : modelAndViewConfiguration.initPicturesCache().entrySet()) {
 
             if (picture.getKey().equals(idPicture)) {
                 return (byte[]) picture.getValue();
             }
         }
-        return null;
+        return null;*/
+        return picturesService.findPictureById(idPicture).getPictureFile();
     }
 
     //@Cacheable("mainPictures")

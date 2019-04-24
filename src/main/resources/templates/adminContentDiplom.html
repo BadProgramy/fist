@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Таблица новостей</title>
+    <title>Таблица фотографий</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -166,96 +166,81 @@
         </div>
     </header>
 
-    <h2 class="text-center padding5p page_header2">Добавлять новости можно только через контент</h2>
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить диплом</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
 
-    <div class="container">
-        <div th:each="topic : ${newsOfFaculty}">
-            <div class="col-md-4" style="margin-bottom: 50px">
-                <div class="product-thumb">
-                    <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                        <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" alt=""></a></li>
-                    </form>
-                    <li><a class="cd-signin" th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:value="${topic.getHeading()}" th:utext="${topic.getHeading()}"></a></li>
-                    <script th:inline="javascript">
-                        document.body.onclick = function(e) {
-                            var elem = e ? e.target : window.event.srcElement;
-                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
-                            if (!elem.id) return; else id = elem.id;
-                            var rightPart;
-                            var srcImg=document.getElementById(id).getAttribute("src");
-                            /*<![CDATA[*/
-                            /*[# th:each="top : ${newsOfFaculty}"]*/
-                            rightPart = /*[[@{'/admin/picture/' + ${top.getIdPicture()}}]]*/ null;
-                            if (srcImg == rightPart) {
-                                document.getElementById("Picture").src = /*[[@{'/admin/picture/' + ${top.getIdPicture()}}]]*/ null;
-                                document.getElementById("idPicture").value = /*[[@{${top.getIdPicture()}}]]*/ null;
-                                document.getElementById("id").value = /*[[@{${top.getId()}}]]*/ null;
-                                document.getElementById("dateStringLocalDate").value = /*[[@{${top.getDate()}}]]*/ null;
-                                document.getElementById("heading").value = /*[[@{${top.getHeading()}}]]*/ null;
-                                document.getElementById("text").value = /*[[@{${top.getText()}}]]*/ null;
-                                document.getElementById("headingStyles").value = /*[[@{${top.getHeadingStyles()}}]]*/ null;
-                                document.getElementById("textStyles").value = /*[[@{${top.getTextStyles()}}]]*/ null;
-                                document.getElementById("dateStyles").value = /*[[@{${top.getDateStyles()}}]]*/ null;
-                                document.getElementById("pictureStyles").value = /*[[@{${top.getPictureStyles()}}]]*/ null;
-                                document.getElementById("del").href = /*[[@{'/admin/table/newsOfFaculty/delete/id=' + ${top.getId()}}]]*/ null;
-                            }
-                            /*[/]*/
-                            /*]]>*/
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/content/diplomas/add/submit}" th:object="${picture}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p class="fieldset black_p">
+                            <input type="date" th:value="${picture.date}"  name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
 
-    <div class="cd-user-modal1">
-        <div class="cd-user-modal-container1">
-            <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img id="Picture"  alt=""></a>
-                    <p>Идентификатор картинки</p>
-                    <input id="idPicture" name="idPicture"/>
-                    <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Идентификатор</p>
-                    <input id="id" class="menuItemTables" name="id" readonly>
-                </div>
-                <div class="col-md-4  left" style="padding: 10px 10px 10px;">
-                    <p>Дата создания</p>
-                    <input type="date" id="dateStringLocalDate" class="menuItemTables" name="dateStringLocalDate">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Загаловок</p>
-                    <input id="heading" class="menuItemTables" name="heading">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Текст</p>
-                    <input id="text" class="menuItemTables" name="text">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для загаловка</p>
-                    <input id="headingStyles" class="menuItemTables" name="headingStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для текста</p>
-                    <input id="textStyles" class="menuItemTables" name="textStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для даты</p>
-                    <input id="dateStyles" class="menuItemTables" name="dateStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для картинки</p>
-                    <input id="pictureStyles" class="menuItemTables" name="pictureStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Действие</p>
-                    <a id="del" style="color: red;" class="cd-read-more">Удалить</a>
-                </div>
-                <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
-            </form>
+                        <p class="fieldset black_p">
+                            <input type="file" required  name="pictureFileMultipart" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <button class="full-width" type="submit">Добавить</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div> <!-- cd-login -->
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
+
+    <section id="cd-timeline" class="cd-container">
+        <div class="cd-timeline-block" th:each="diplom : ${diploms}">
+            <div class="cd-timeline-content">
+                <h2 th:utext="${diplom.getNamePicture()}"></h2>
+                <img th:src="@{'/admin/picture/' + ${diplom.getId()}}" alt="">
+                <nav class="main-nav">
+                    <ul>
+                        <!-- inser more links here -->
+                        <li><a th:href="@{'/admin/content/diplomas/update/' + ${diplom.getId()}}" class="cd-read-more" >Изменить</a></li>
+                        <li><a th:href="@{'/admin/content/diplomas/delete/' + ${diplom.getId()}}" class="cd-read-more">Удалить</a></li>
+                    </ul>
+                </nav>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    </section> <!-- cd-timeline -->
+
+    <!-- Pagination -->
+    <div class="page_nav" th:object="${pageCount}">
+
+        <a th:href="@{'/admin/content/diplomas/page/1'}" style="float: left;">
+            <i class="fa fa-angle-left"></i>
+            <i class="fa fa-angle-left"></i>
+        </a>
+
+        <a th:href="@{'/admin/content/diplomas/page/' + ${firstPage - 1}}" style="float: left;"><i class="fa fa-angle-left"></i></a>
+
+        <a style="float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/admin/content/diplomas/page/' + ${firstPage}}" class="active"></a>
+
+        <div style="float: left;" th:if="${pageCount - firstPage + 1} == true">
+            <a id="secondPage" th:utext="${firstPage + 1}" th:href="@{'/admin/content/diplomas/page/' + ${firstPage + 1}}"></a>
         </div>
+
+        <div style="float: left;" th:if="${pageCount - firstPage + 2} == true">
+            <a id="thirdPage" th:utext="${firstPage + 2}" th:href="@{'/admin/content/diplomas/page/' + ${firstPage + 2}}"></a>
+        </div>
+
+        <a style="float: left;" class="no-active">...</a>
+        <a style="float: left;" th:utext="${pageCount}" th:href="@{'/admin/content/diplomas/page/' + ${pageCount}}"></a>
+
+        <a th:href="@{'/admin/content/diplomas/page/' + ${firstPage + 1}}" style="float: left;" href=""><i class="fa fa-angle-right"></i></a>
+
+        <a style="float: left;" th:href="@{'/admin/content/diplomas/page/' + ${pageCount}}">
+            <i class="fa fa-angle-right"></i>
+            <i class="fa fa-angle-right"></i>
+        </a>
     </div>
+    <!-- End Pagination -->
 </div>
 
 <!-- Javascript -->
@@ -269,14 +254,44 @@
 <script src="/js/navigation/jquery.sticky.js"></script>
 <script src="/js/jquery.bpopup.js"></script>
 
-<script src="/js/classie.js"></script>
 
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
+<script src="/js/classie.js"></script>
 <script src="/js/isotope/isotope.pkgd.js"></script>
+<script src="/js/owl-carousel/owl.carousel.min.js"></script>
 <!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
 <script src="/js/modal.js"></script>
+<script>
+    function isVisible(elem) {
+
+        var coords = elem.getBoundingClientRect();
+
+        var windowHeight = document.documentElement.clientHeight;
+
+        var topVisible = coords.top > 0 && coords.top < windowHeight;
+        var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+
+        return topVisible || bottomVisible;
+    }
+    function showVisible() {
+        var imgs = document.getElementsByTagName('img');
+        for (var i = 0; i < imgs.length; i++) {
+
+            var img = imgs[i];
+
+            var realsrc = img.getAttribute('realsrc');
+            if (!realsrc) continue;
+
+            if (isVisible(img)) {
+                img.src = realsrc;
+                img.setAttribute('realsrc', '');
+            }
+        }
+    }
+    window.onscroll = showVisible;
+    showVisible();
+</script>
 </body>
 </html>

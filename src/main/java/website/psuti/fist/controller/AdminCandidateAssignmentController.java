@@ -26,13 +26,13 @@ public class AdminCandidateAssignmentController {
     }
 
     @RequestMapping("/admin/content/candidateAssignment/add/submit")
-    public String addNewFacultySubmit(@ModelAttribute CandidateAssignment candidateAssignment ) {
+    public String addCandidateSubmit(@ModelAttribute CandidateAssignment candidateAssignment ) {
         candidateAssignmentService.insert(candidateAssignment);
         return "redirect:../";
     }
 
     @RequestMapping(value = "/admin/content/candidateAssignment/update/{id}", method = RequestMethod.GET)
-    public ModelAndView updateFaculty(@PathVariable("id") Long id/*, Model model*/) {
+    public ModelAndView updateCandidate(@PathVariable("id") Long id/*, Model model*/) {
         ModelAndView modelAndView = new ModelAndView("adminContentCandidateAssignmentUpdate");
         CandidateAssignment student = candidateAssignmentService.findById(id);
         modelAndView.addObject("candidateAssignment", student);
@@ -41,13 +41,13 @@ public class AdminCandidateAssignmentController {
     }
 
     @RequestMapping(value = "/admin/content/candidateAssignment/update/submit", method = RequestMethod.POST)
-    public String updateNewFaculty(@ModelAttribute CandidateAssignment candidateAssignment) {
+    public String updateCandidateSubmit(@ModelAttribute CandidateAssignment candidateAssignment) {
         candidateAssignmentService.update(candidateAssignment);
         return "redirect:../../candidateAssignment";
     }
 
     @RequestMapping(value = "/admin/content/candidateAssignment/delete/{id}",method = RequestMethod.GET)
-    public String deleteNewFaculty(@PathVariable("id") long studentId) {
+    public String deleteCandidate(@PathVariable("id") long studentId) {
         candidateAssignmentService.delete(studentId);
         return "redirect:../../candidateAssignment";
     }

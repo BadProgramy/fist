@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Таблица новостей</title>
+    <title>Редактор кандидатов на отчисление</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +45,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -166,96 +166,41 @@
         </div>
     </header>
 
-    <h2 class="text-center padding5p page_header2">Добавлять новости можно только через контент</h2>
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Редактирование</a></li>
+                <!--<li><a href="#0">New account</a></li>-->
+            </ul>
 
-    <div class="container">
-        <div th:each="topic : ${newsOfFaculty}">
-            <div class="col-md-4" style="margin-bottom: 50px">
-                <div class="product-thumb">
-                    <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                        <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" alt=""></a></li>
-                    </form>
-                    <li><a class="cd-signin" th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:value="${topic.getHeading()}" th:utext="${topic.getHeading()}"></a></li>
-                    <script th:inline="javascript">
-                        document.body.onclick = function(e) {
-                            var elem = e ? e.target : window.event.srcElement;
-                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
-                            if (!elem.id) return; else id = elem.id;
-                            var rightPart;
-                            var srcImg=document.getElementById(id).getAttribute("src");
-                            /*<![CDATA[*/
-                            /*[# th:each="top : ${newsOfFaculty}"]*/
-                            rightPart = /*[[@{'/admin/picture/' + ${top.getIdPicture()}}]]*/ null;
-                            if (srcImg == rightPart) {
-                                document.getElementById("Picture").src = /*[[@{'/admin/picture/' + ${top.getIdPicture()}}]]*/ null;
-                                document.getElementById("idPicture").value = /*[[@{${top.getIdPicture()}}]]*/ null;
-                                document.getElementById("id").value = /*[[@{${top.getId()}}]]*/ null;
-                                document.getElementById("dateStringLocalDate").value = /*[[@{${top.getDate()}}]]*/ null;
-                                document.getElementById("heading").value = /*[[@{${top.getHeading()}}]]*/ null;
-                                document.getElementById("text").value = /*[[@{${top.getText()}}]]*/ null;
-                                document.getElementById("headingStyles").value = /*[[@{${top.getHeadingStyles()}}]]*/ null;
-                                document.getElementById("textStyles").value = /*[[@{${top.getTextStyles()}}]]*/ null;
-                                document.getElementById("dateStyles").value = /*[[@{${top.getDateStyles()}}]]*/ null;
-                                document.getElementById("pictureStyles").value = /*[[@{${top.getPictureStyles()}}]]*/ null;
-                                document.getElementById("del").href = /*[[@{'/admin/table/newsOfFaculty/delete/id=' + ${top.getId()}}]]*/ null;
-                            }
-                            /*[/]*/
-                            /*]]>*/
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div id="cd-login"> <!-- log in form -->
+                <form th:action="@{/admin/content/diplomas/update/submit}" th:object="${diplom}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p class="fieldset black_p">
+                            <input type="date" th:value="${diplom.date}"  name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
 
-    <div class="cd-user-modal1">
-        <div class="cd-user-modal-container1">
-            <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img id="Picture"  alt=""></a>
-                    <p>Идентификатор картинки</p>
-                    <input id="idPicture" name="idPicture"/>
-                    <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Идентификатор</p>
-                    <input id="id" class="menuItemTables" name="id" readonly>
-                </div>
-                <div class="col-md-4  left" style="padding: 10px 10px 10px;">
-                    <p>Дата создания</p>
-                    <input type="date" id="dateStringLocalDate" class="menuItemTables" name="dateStringLocalDate">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Загаловок</p>
-                    <input id="heading" class="menuItemTables" name="heading">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Текст</p>
-                    <input id="text" class="menuItemTables" name="text">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для загаловка</p>
-                    <input id="headingStyles" class="menuItemTables" name="headingStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для текста</p>
-                    <input id="textStyles" class="menuItemTables" name="textStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для даты</p>
-                    <input id="dateStyles" class="menuItemTables" name="dateStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для картинки</p>
-                    <input id="pictureStyles" class="menuItemTables" name="pictureStyles">
-                </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Действие</p>
-                    <a id="del" style="color: red;" class="cd-read-more">Удалить</a>
-                </div>
-                <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
-            </form>
-        </div>
-    </div>
+                        <p class="fieldset black_p">
+                            <input type="file" required id="pictureFileMultipart" name="pictureFileMultipart" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                        </p>
+
+                        <img th:src="@{'/admin/picture/' + ${diplom.getId()}}" alt="">
+
+                        <input name="id" type="hidden" th:field="*{id}">
+
+                        <p class="fieldset black_p">
+                            <button class="full-width" type="submit">Изменить</button>
+                        </p>
+                    </fieldset>
+                </form>
+
+            </div> <!-- cd-login -->
+
+        </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+
+
+    <div class="close-btn fa fa-times"></div>
 </div>
 
 <!-- Javascript -->
@@ -270,7 +215,8 @@
 <script src="/js/jquery.bpopup.js"></script>
 
 <script src="/js/classie.js"></script>
-
+<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="/js/owl-carousel/owl.carousel.min.js"></script>
 <script src="/js/isotope/isotope.pkgd.js"></script>
 <!---->
@@ -278,5 +224,6 @@
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
 <script src="/js/modal.js"></script>
+
 </body>
 </html>

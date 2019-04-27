@@ -54,7 +54,6 @@
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
-    <!-- HEADER -->
     <header id="header2">
         <div class="container">
             <div class="row">
@@ -154,7 +153,8 @@
                         <a href="#">Пользователи</a>
                         <div class="mobnav-subarrow"></div>
                         <ul>
-
+                            <li><a href="/admin/user/cms">Список администраторов</a></li>
+                            <li><a href="/admin/user/subscriber">Список подписчиков</a></li>
                         </ul>
                     </li>
                     <li>
@@ -202,9 +202,6 @@
                             <select id="rolesString" name="rolesString" th:value="${rolesString}" multiple required>
                                 <option th:each="roleEnum : ${roles}" th:value="${roleEnum}" th:utext="${roleEnum.getName()}"></option>
                             </select>
-                            <!--<label><input type="checkbox" name="role" th:field="*{role}">Админ</label>
-                            <label><input type="checkbox" name="role" th:field="*{role}">Модератор</label>
-                            <label><input type="checkbox" name="role" th:field="*{role}">Разработчик</label>-->
                         </p>
 
                         <p class="fieldset black_p">
@@ -216,6 +213,95 @@
         </div> <!-- cd-user-modal-container -->
     </div> <!-- cd-user-modal -->
 
+    <section id="cd-timeline" class="cd-container">
+        <div class="cd-timeline-block" th:each="person : ${users}">
+            <div class="cd-timeline-content">
+                <h2 th:utext="${person.getFirstname() +' '+ person.getSecondname()}"></h2>
+                <p th:utext="'Почта - ' + ${person.getUsername()}"></p>
+                <p th:utext="'Активированный - ' + ${person.isEnabled()}"></p>
+
+                <p>Права доступа:</p>
+
+                <select multiple>
+                    <option th:each="roleEnum : ${person.getRole()}" th:value="${roleEnum}" th:utext="${roleEnum.getName()}"></option>
+                </select>
+
+                <nav class="main-nav">
+                    <ul>
+                        <!-- inser more links here -->
+                        <li><a th:href="@{'/admin/user/update/' + ${person.getId()}}" class="cd-read-more" >Изменить</a></li>
+                        <li><a th:href="@{'/admin/user/delete/' + ${person.getId()}}" class="cd-read-more">Удалить</a></li>
+                    </ul>
+                </nav>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    </section> <!-- cd-timeline -->
+
+    <!-- Pagination -->
+    <div th:if="${checkPage}">
+        <div class="page_nav" th:object="${pageCount}">
+
+            <a th:href="@{'/admin/user/cms/page/1'}" style="float: left;">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+            </a>
+
+            <a th:href="@{'/admin/user/cms/page/' + ${firstPage - 1}}" style="float: left;"><i class="fa fa-angle-left"></i></a>
+
+            <a style="float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/admin/user/cms/page/' + ${firstPage}}" class="active"></a>
+
+            <div style="float: left;" th:if="${pageCount - firstPage + 1} == true">
+                <a id="secondPage" th:utext="${firstPage + 1}" th:href="@{'/admin/user/cms/page/' + ${firstPage + 1}}"></a>
+            </div>
+
+            <div style="float: left;" th:if="${pageCount - firstPage + 2} == true">
+                <a id="thirdPage" th:utext="${firstPage + 2}" th:href="@{'/admin/user/cms/page/' + ${firstPage + 2}}"></a>
+            </div>
+
+            <a style="float: left;" class="no-active">...</a>
+            <a style="float: left;" th:utext="${pageCount}" th:href="@{'/admin/user/cms/page/' + ${pageCount}}"></a>
+
+            <a th:href="@{'/admin/user/cms/page/' + ${firstPage + 1}}" style="float: left;" href=""><i class="fa fa-angle-right"></i></a>
+
+            <a style="float: left;" th:href="@{'/admin/user/cms/page/' + ${pageCount}}">
+                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div th:unless="${checkPage}">
+        <div class="page_nav" th:object="${pageCount}">
+
+            <a th:href="@{'/admin/user/subscriber/page/1'}" style="float: left;">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+            </a>
+
+            <a th:href="@{'/admin/user/subscriber/page/' + ${firstPage - 1}}" style="float: left;"><i class="fa fa-angle-left"></i></a>
+
+            <a style="float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/admin/user/subscriber/page/' + ${firstPage}}" class="active"></a>
+
+            <div style="float: left;" th:if="${pageCount - firstPage + 1} == true">
+                <a id="secondPage" th:utext="${firstPage + 1}" th:href="@{'/admin/user/subscriber/page/' + ${firstPage + 1}}"></a>
+            </div>
+
+            <div style="float: left;" th:if="${pageCount - firstPage + 2} == true">
+                <a id="thirdPage" th:utext="${firstPage + 2}" th:href="@{'/admin/user/subscriber/page/' + ${firstPage + 2}}"></a>
+            </div>
+
+            <a style="float: left;" class="no-active">...</a>
+            <a style="float: left;" th:utext="${pageCount}" th:href="@{'/admin/user/subscriber/page/' + ${pageCount}}"></a>
+
+            <a th:href="@{'/admin/user/subscriber/page/' + ${firstPage + 1}}" style="float: left;" href=""><i class="fa fa-angle-right"></i></a>
+
+            <a style="float: left;" th:href="@{'/admin/user/subscriber/page/' + ${pageCount}}">
+                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+    <!-- End Pagination -->
 
     <div class="close-btn fa fa-times"></div>
 </div>

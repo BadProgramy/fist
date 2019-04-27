@@ -8,11 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.Sender;
-import website.psuti.fist.constant.MainPageConstant;
-import website.psuti.fist.constant.PathConstant;
-import website.psuti.fist.constant.SendMessageEmailConstant;
-import website.psuti.fist.constant.UrlForSearch;
+import website.psuti.fist.constant.*;
 import website.psuti.fist.model.Role;
 import website.psuti.fist.model.User;
 import website.psuti.fist.scheduler.SendMessageScheduler;
@@ -21,9 +20,7 @@ import website.psuti.fist.service.UserService;
 import javax.mail.MessagingException;
 import java.io.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class AdminUserController {
@@ -34,17 +31,87 @@ public class AdminUserController {
     @Autowired
     private UserService userService;
 
-/*    @Autowired
-    private ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor;*/
-
     @Autowired
     private ApplicationContext applicationContext;
 
-    @RequestMapping("/admin/user/add")
-    public String userAdd(Model model) {
+    @RequestMapping("/admin/user/cms")
+    public ModelAndView userCmsAdd(Model model) {
+
+        return adminUserPage(1, "cms", model);
+    }
+
+    @RequestMapping("/admin/user/subscriber")
+    public ModelAndView userSubscriberAdd(Model model) {
+        return adminUserPage(1, "subscriber", model);
+    }
+
+    @RequestMapping("/admin/user/{check}/page/{idPage}")
+    public ModelAndView adminUserPage(@PathVariable int idPage,
+                                          @PathVariable String check,
+                                          Model model) {
+        ModelAndView modelAndView = new ModelAndView("404");
+        List<User> cmsUsers = new ArrayList<>();
+        List<User> resulUser = new ArrayList<>();
+        List<Role> roles = new ArrayList<>();
+        if (check.equals("cms")) {
+            if (idPage <= 0) idPage = 1;
+            model.addAttribute("firstPage", idPage);
+            for (User user: userService.getAll()) {
+                if (user.getRole().contains(Role.ADMIN) ||
+                    user.getRole().contains(Role.DEVELOPER) ||
+                    user.getRole().contains(Role.MODERATOR))
+                    cmsUsers.add(user);
+            }
+            roles.clear();
+            roles.add(Role.ADMIN);
+            roles.add(Role.DEVELOPER);
+            roles.add(Role.MODERATOR);
+            model.addAttribute("checkPage", true);
+        } else if (check.equals("subscriber")) {
+            if (idPage <= 0) idPage = 1;
+            model.addAttribute("firstPage", idPage);
+            cmsUsers.addAll(userService.getUsersByRole(Role.SUBSCRIBER));
+            model.addAttribute("checkPage", false);
+            roles.clear();
+            roles.add(Role.SUBSCRIBER);
+        }
+
+        model.addAttribute("pageCount", (int) (Math.ceil((double) cmsUsers.size() / UserConstant.COUNT_USER_FOR_OUTPUT.getCount())));
+        for (int i = (idPage - 1) * UserConstant.COUNT_USER_FOR_OUTPUT.getCount(), j = 0; i < cmsUsers.size() && j < UserConstant.COUNT_USER_FOR_OUTPUT.getCount(); i++, j++) {
+            resulUser.add(cmsUsers.get(i));
+        }
         model.addAttribute("user", new User());
-        model.addAttribute("roles", Role.values());
-        return "adminUsersAdd";
+        model.addAttribute("roles", roles);
+        model.addAttribute("users", resulUser);
+        modelAndView.setViewName("adminUsersAdd");
+        modelAndView.addAllObjects(model.asMap());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/user/update/{id}", method = RequestMethod.GET)
+    public ModelAndView userUpdate(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView("adminUsersUpdate");
+        User user = userService.findUserById(id);
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("roles", Role.values());
+        return modelAndView;
+    }
+
+    @RequestMapping("/admin/user/update/submit")
+    public String adminUserUpdateSubmit(@ModelAttribute("item") User item) throws SQLException {
+        boolean checkMove = false;
+        List<Role> roles = new ArrayList<>();
+        for (String role: item.getRolesString()) {
+            roles.add(Role.valueOf(role));
+            if (Role.valueOf(role).equals(Role.ADMIN) ||
+                    Role.valueOf(role).equals(Role.DEVELOPER) ||
+                    Role.valueOf(role).equals(Role.MODERATOR)) checkMove = true;
+        }
+        item.setRole(roles);
+        userService.update(item);
+        if (checkMove)
+            return "redirect:../cms";
+        else return "redirect:../subscriber";
     }
 
     @RequestMapping("/admin/user/add/submit")

@@ -39,7 +39,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public void update(User user) {
+    public void update(User user) throws SQLException {
+        RequestPostConnection.requestions(dataSource);
         daoUser.save(user);
     }
 
@@ -77,10 +78,20 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
+    public List<User> getUsersByRoleAndEnable(Role role) {
+        List<User> users = new ArrayList<>();
+        for (User user: getAll()) {
+            if (user.getRole().contains(role) && user.isEnabled())
+                users.add(user);
+        }
+        return users;
+    }
+
+    @Transactional
     public List<User> getUsersByRole(Role role) {
         List<User> users = new ArrayList<>();
         for (User user: getAll()) {
-            if (user.getRole().contains(Role.SUBSCRIBER) && user.isEnabled())
+            if (user.getRole().contains(role))
                 users.add(user);
         }
         return users;

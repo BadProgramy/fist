@@ -86,7 +86,7 @@ public class  MainController {
         model.addAttribute("firstPage", idPage);
         List<NewsOfFaculty> topics = modelAndViewConfiguration.getNewsOfFaculties();
         //model.addAttribute("pageCount", (topics.size() / (NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount() + 1)) + 1);
-        model.addAttribute("pageCount", (int)(Math.ceil(topics.size() / NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount() + 1)));
+        model.addAttribute("pageCount", (int)(Math.ceil((double) topics.size() / NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount())));
         List<NewsOfFaculty> resultTopic = new ArrayList<>();
         for (int i = (idPage - 1) * NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(), j = 0; i < topics.size() && j < NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount(); i++, j++) {
             resultTopic.add(topics.get(i));

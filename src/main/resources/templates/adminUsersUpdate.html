@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Редактор кандидатов на отчисление</title>
+    <title>Редактор пользователей</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
+
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
@@ -44,7 +45,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -168,28 +169,43 @@
     <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
-                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить кандидата</a></li>
+                <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Редактирование</a></li>
                 <!--<li><a href="#0">New account</a></li>-->
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/content/candidateAssignment/add/submit}" th:object="${candidateAssignment}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/user/update/submit}" th:object="${user}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <p th:utext="${user.username}"  name="username" align="center"></p>
+                    <br>
                     <fieldset>
+
                         <p class="fieldset black_p">
-                            <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия, имя, отчество: Пример - Иван Иванов Иванович" required></textarea>
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
+                            <input required th:value="${user.firstname}" name="firstname" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Имя">
                         </p>
 
                         <p class="fieldset black_p">
-                            <textarea name="course" th:field="*{course}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Курс: Пример - 4" required></textarea>
+                            <input required th:value="${user.secondname}" name="secondname" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Фамилие">
                         </p>
 
-                        <p class="fieldset black_p">
-                            <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Группа: Пример - ПО-52" required></textarea>
-                        </p>
+                        <p>Права доступа:</p>
 
                         <p class="fieldset black_p">
-                            <button class="full-width" type="submit">Добавить</button>
+                            <select id="rolesString" name="rolesString" th:value="${rolesString}" multiple required>
+                                <option th:each="roleEnum : ${roles}" th:value="${roleEnum}" th:utext="${roleEnum.getName()}"></option>
+                            </select>
+                        </p>
+
+                        <input name="id" type="hidden" th:field="*{id}">
+                        <input name="username" type="hidden" th:field="*{username}">
+                        <input name="pagevk" type="hidden" th:field="*{pagevk}">
+                        <input name="password" type="hidden" th:field="*{password}">
+                        <input name="accountNonExpired" type="hidden" th:field="*{accountNonExpired}">
+                        <input name="accountNonLocked" type="hidden" th:field="*{accountNonLocked}">
+                        <input name="credentialsNonExpired" type="hidden" th:field="*{credentialsNonExpired}">
+                        <input name="enabled" type="hidden" th:field="*{enabled}">
+
+                        <p class="fieldset black_p">
+                            <button class="full-width" type="submit">Изменить</button>
                         </p>
                     </fieldset>
                 </form>
@@ -198,23 +214,6 @@
 
         </div> <!-- cd-user-modal-container -->
     </div> <!-- cd-user-modal -->
-
-    <section id="cd-timeline" class="cd-container">
-        <div class="cd-timeline-block" th:each="student : ${candidateAssignments}">
-            <div class="cd-timeline-content">
-                <h2 th:utext="${student.getName()}"></h2>
-                <p class="black_p" th:utext="${student.getCourse()}"></p>
-                <p class="black_p" th:utext="${student.getGroupInUniversity()}"></p>
-                <nav class="main-nav">
-                    <ul>
-                        <!-- inser more links here -->
-                        <li><a th:href="@{'/admin/content/candidateAssignment/update/' + ${student.getId()}}" class="cd-read-more" >Изменить</a></li>
-                        <li><a th:href="@{'/admin/content/candidateAssignment/delete/' + ${student.getId()}}" class="cd-read-more">Удалить</a></li>
-                    </ul>
-                </nav>
-            </div> <!-- cd-timeline-content -->
-        </div> <!-- cd-timeline-block -->
-    </section> <!-- cd-timeline -->
 
 
     <div class="close-btn fa fa-times"></div>
@@ -231,7 +230,6 @@
 <script src="/js/navigation/jquery.sticky.js"></script>
 <script src="/js/jquery.bpopup.js"></script>
 
-
 <script src="/js/classie.js"></script>
 <script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
@@ -241,6 +239,7 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/booking.js"></script>
+<script src="/js/modal.js"></script>
 
 </body>
 </html>

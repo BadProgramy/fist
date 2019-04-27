@@ -34,7 +34,7 @@ public class AdminDiplomasController {
         if (idPage <= 0) idPage = 1;
         model.addAttribute("firstPage", idPage);
         List<Pictures> topics = picturesService.findPicturesByKey(KeyPicture.DIPLOMAS);
-        model.addAttribute("pageCount", (int)(Math.ceil(topics.size() / DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount() + 1)));
+        model.addAttribute("pageCount", (int)(Math.ceil((double) topics.size() / DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount())));
         List<Pictures> resultTopic = new ArrayList<>();
         for (int i = (idPage - 1) * DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(), j = 0; i < topics.size() && j < DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(); i++, j++) {
             resultTopic.add(topics.get(i));

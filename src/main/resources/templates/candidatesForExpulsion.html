@@ -20,14 +20,6 @@
     <link rel="shortcut icon" href="/images/favicon.png">
 
     <!-- CSS -->
-    <script>
-        function resizeTable() {
-            var table=document.getElementById("mytd");
-            var doc=document.getElementById("mytd").offsetWidth;
-            var marginx=doc/-2;
-            table.style.marginLeft=marginx+'px';
-        }
-    </script>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/js/isotope/isotope.css">
@@ -57,7 +49,7 @@
     <script src="/js/modernizr.custom.js"></script>
 
 </head>
-<body class="multi-page" onload=resizeTable();>
+<body class="multi-page" >
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
@@ -150,6 +142,7 @@
             </div>
         </div>
     </section>
+
 
     <div class="clearfix space70"></div>
     <!-- FOOTER -->
@@ -256,34 +249,52 @@
 </div>
 
 <!-- Javascript -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
+<script src="/js/jquery.min.js" ></script>
+<script>
+    function resizeTable() {
+        var table=document.getElementById("mytd");
+        var doc=document.getElementById("mytd").offsetWidth;
+        var marginx=doc/-2;
+        table.style.marginLeft=marginx+'px';
+    }
+    $(document).ready(function(){
+        $(document).scroll(function(){
+            resizeTable();
+        });
+        resizeTable();
+        $(window).resize(function(){
+            resizeTable();
+        });
+
+    });
+</script>
+<script src="/js/bootstrap.min.js" defer></script>
+<script src="/js/navigation/jquery.sticky.js" defer></script>
+<script src="/js/flexslider/jquery.flexslider.js" defer></script>
 
 <!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
+<script src="/js/navigation/jquery.easing.js" defer></script>
+<script src="/js/navigation/scroll.js" defer></script>
 
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/superfish/js/hoverIntent.js"></script>
-<script src="/js/superfish/js/superfish.js"></script>
+<script src="/js/owl-carousel/owl.carousel.min.js" defer></script>
+<script src="/js/isotope/isotope.pkgd.js" defer></script>
+<script src="/js/navigation/jquery.sticky.js" defer></script>
+<script src="/js/superfish/js/hoverIntent.js" defer></script>
+<script src="/js/superfish/js/superfish.js" defer></script>
 
-<script src="/js/jquery.bpopup.js"></script>
-<script src="/js/pikaday/pikaday.js"></script>
-<script src="/js/dialogFx.js"></script>
-<script src="/js/dialog-js.js"></script>
-<script src="/js/classie.js"></script>
+<script src="/js/jquery.bpopup.js" defer></script>
+<script src="/js/pikaday/pikaday.js" defer></script>
+<script src="/js/dialogFx.js" defer></script>
+<script src="/js/dialog-js.js" defer></script>
+<script src="/js/classie.js" defer></script>
 
 <!---->
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="/js/gmap2.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
-<script type="text/javascript">
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
+<script src="/js/gmap2.js" defer></script>
+<script src="/js/script.js" defer></script>
+<script src="/js/booking.js" defer></script>
+<script type="text/javascript" defer>
     var opac=0;
     function searchFunc() {
         var elements=document.getElementsByClassName('other-pages-search');

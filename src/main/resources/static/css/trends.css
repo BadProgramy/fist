@@ -77,8 +77,8 @@ html,body {
     /* margin-left: 20%; */
     z-index: 49;
     display: initial;
-    border-radius: 350px;
-    box-shadow: -3px -3px 4px 2px black;
+/*    border-radius: 350px;
+    box-shadow: -3px -3px 4px 2px black;*/
 }
 
 .lastrow{
@@ -178,7 +178,7 @@ a.change:hover {
     font-size:18px;
     color:black;
     cursor: initial;
-    text-shadow:black 0px 0px 0px;
+    text-shadow:#ededf1 0px 0px 0px;
 }
 
 .only_one_trend .list-marker{

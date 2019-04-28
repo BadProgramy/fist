@@ -110,28 +110,35 @@
     <!-- INNER CONTENT -->
     <section id="content" style="margin-bottom: 10%">
         <div class="content-blog">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10">
-                        <h2 class="no-margin">Контакты</h2>
+                        <h1 class="no-margin">Контакты</h1>
                         <div class="space20"></div>
-                        <p>Часы работы деканата: с 9.00 до 17.00 (с 12.00 - 13.00 обед)<br>
+                        <p style="text-align: center;">Часы работы деканата: с 9.00 до 17.00 (с 12.00 - 13.00 обед)<br>
                             суббота, воскресенье – выходной день.</p>
+                        <div class="col-md-5 col-md-offset-1" style="margin-top: 10px">
                         <ul class="contact-info">
                             <li>
-                                <p><strong><i class="fa fa-map-marker"></i> Адрес:</strong> <span>443090, г. Самара, Московское шоссе, 77, каб.302 и 303</span></p>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-map-marker"></i> Адрес:</strong></p></div>
+                                <div class="col-md-7" style="float: right"><p style="float: left"><span>443090, г. Самара, Московское шоссе, 77, каб.302 и 303</span></p></div>
                             </li>
                             <li>
-                                <p><strong><i class="fa fa-envelope"></i> Электронной почта:</strong> <span><a href="#">fist@psuti.ru</a></span></p>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-envelope"></i> Электронная почта:</strong></p></div>
+                                <div class="col-md-7" style="float: right"><p style="float: left"><span><a href="#">fist@psuti.ru</a></span></p></div>
                             </li>
                             <li>
-                                <p><strong><i class="fa fa-phone"></i> Деканат:</strong> <span>(846) 228-00-05</span></p>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Деканат:</strong></p></div>
+                                <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 228-00-05</span></p></div>
                             </li>
                             <li>
-                                <p><strong><i class="fa fa-phone"></i> Декан:</strong> <span>(846) 339-11-96 </span></p>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Декан:</strong></p></div>
+                                <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 339-11-96 </span></p></div>
                             </li>
                         </ul>
-                    </div>
+                        </div>
+                        <div class="col-md-5" style="margin-top: 40px">
+                            <div id="map"></div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -144,21 +151,12 @@
             <div class="row" style="padding-left: 5%">
 
                 <div class="col-md-2">
-                    <h3 th:utext="${ItemHeader8.getName()}" th:style="${ItemHeader8.getStyles()}"></h3>
                     <div class="top-bar">
                         <ul>
                             <li class="tb-info">
                                 <a data-dialog2="somedialog2" class="trigger">
-                                    <i class="fa fa-map-marker"></i>
-                                    <span class="navigation-YK">Мы находимся <br><em class="navigation-YK">Яндекс карты</em></span>
+
                                 </a>
-                            </li>
-                            <li class="tb-info">
-                                <a data-dialog1="somedialog1" class="trigger">
-                                </a>
-                            </li>
-                            <li>
-                                <a style="display: none" data-dialog="somedialog" class="trigger button btn-xs color"></a>
                             </li>
                         </ul>
                     </div>
@@ -222,9 +220,6 @@
     <div class="dialog__content">
         <div class="contact-pop">
             <div class="row">
-                <div class="col-md-6">
-                    <div id="map"></div>
-                </div>
                 <div class="col-md-6 pop-contact">
                     <ul class="contact-info">
                         <li>

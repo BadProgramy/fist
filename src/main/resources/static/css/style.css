@@ -1113,6 +1113,14 @@ display: unset;
 .cs-style-7  li:nth-child(20) { z-index: 1; }
 
 
+.curators-table-center td:nth-child(3),.curators-table-center td:nth-child(4){
+    text-align: center;
+}
+
+.cand td:nth-child(2){
+    text-align: left;
+}
+
 .main-team ul.cs-style-7 {
 	display:block;
 	float:left;
@@ -2538,9 +2546,9 @@ right: 0;
 	margin-bottom:8px;
 }
 
-.contact-info span {
+/*.contact-info span {
     float: right;
-}
+}*/
 
 .parallax {
 	position:relative;
@@ -2845,7 +2853,7 @@ line-height:28px;
 }
 
 .accordion .panel-body p {
-	font-size:17px;
+	font-size:16px;
 }
 
 
@@ -3455,11 +3463,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin: 5px 0px 5px 0px;
     text-align: center;
     border: none;
-    background: #3c689e;
+    background: black;
     cursor: pointer;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
+}
+.search-input:focus{
+    border: 1px solid black;
+}
+.search-button:focus{
+    border: 1px solid black;
 }
 .search-input{
     float: right;
@@ -3471,6 +3486,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     color: #000;
     font-weight: 400;
     font-size: 18px;
+    font-family: 'Oswald', sans-serif;
     background: white;
 }
 .other-pages-search{

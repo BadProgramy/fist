@@ -26,7 +26,7 @@ public class DepartmentController {
                 if (department.getIdMainEmployee() == employee.getId() &&
                     employee.getNameDepartment().equals(NameDepartmentConstant.DEPARTMENT.getName())) {
                     departments.add(new HTMLOutputDepartmentForThymeleaf(department.getId(), department.getName(),
-                            employee.getQualificationBriefly() + " " + employee.getName(), department.getAddress(),
+                            employee.getName()  + ", " +  employee.getQualificationBriefly(), department.getAddress(),
                             employee.getPhone(), employee.getEmail(), employee.getIdPictureMinor(), department.getDescription(), department.getIdPictureIcon()));
                 }
             }

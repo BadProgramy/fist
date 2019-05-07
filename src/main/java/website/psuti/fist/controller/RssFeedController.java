@@ -56,7 +56,7 @@ public class RssFeedController {
                     UrlForSearch.URL_NEWS_BLOG.getApi() + "/id="+ topic.getId(),
                     topic.getText(),
                     Date.from(topic.getDate().atZone(ZoneId.systemDefault()).toInstant()),
-                    ""));
+                    "bogomolova-ma@psuti.ru (bogomolova)"));
             else
                 list.add(createFeedEntry(topic.getHeading(),
                     UrlForSearch.URL_NEWS_BLOG.getApi() + "/id="+ topic.getId(),

@@ -7,7 +7,7 @@ public class FeedEntry {
     String link;
     String content;
     Date date;
-    private String author;
+    String author;
 
     public String getTitle() {
         return title;

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Новости</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/js/isotope/isotope.css">
+    <link rel="stylesheet" href="/js/flexslider/flexslider.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css">
+    <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen">
+    <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
+    <link rel="stylesheet" href="/js/pikaday/pikaday.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/light.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/studentStyle.css">
+
+    <!-- JS Font Script -->
+    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizer -->
+    <script src="/js/modernizr.custom.js"></script>
+
+</head>
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+    <!-- HEADER -->
+    <header id="header" class="color-silver">
+        <div class="container">
+            <div class="row">
+                <div class="logo-psuti" style="margin: 10px;">
+                    <a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
+                </div>
+                <div class="col-md-9 col-xs-7">
+                    <div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
+                        <ul>
+                            <li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
+                            <li th:utext="${location.getName()}" class="tb-info"  th:style="${location.getStyles()}"></li>
+
+                            <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
+                            <li class="tb-info"  style="float: left;color: black;padding-right:4%" th:object="${phone}" th:utext="${phone.getName()}" th:style="${phone.getStyles()}"></li>
+
+                            <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
+                            <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}" th:style="${email.getStyles()}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-wrap">
+                <div class="row" style="margin-left: 5%;">
+                    <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"></div>
+                    <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
+                        <li>
+                            <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
+                            <div class="mobnav-subarrow"></div>
+                            <ul >
+                                <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
+                                    <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
+                                        <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}" th:style="${menuItemHeaderInMainPage.getStyles()}"></a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
+                        <a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
+                    </div>
+                    <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
+                        <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="other-pages-search">
+        <form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
+            <button class="search-button " type="submit">Поиск</button>
+            <input class="search-input " name="searchword" type="text" placeholder="Поиск...">
+        </form>
+    </div>
+
+    <!-- INNER CONTENT -->
+    <section id="content">
+        <div class="content-blog">
+            <div class="container ">
+                <div class="col-md-7 col-md-offset-2">
+                    <div th:object="${topic}">
+                        <article class="blogpost">
+                            <div class="img-container">
+                                <img th:src="@{'/main/picture/' + ${topic.getIdPicture()}}" class="img-responsive" alt="">
+                            </div>
+                            <h2 class="post-title"><a th:utext="${topic.getHeading()}"></a></h2>
+                            <div class="post-meta">
+                                <i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${topic.getDate().toLocalDate()}"><i class="fa fa-calendar"></i></a></span>
+                            </div>
+                            <div class="post-excerpt">
+                                <p th:utext="${topic.getText()}"></p>
+                            </div>
+                        </article>
+
+                        <div class="blog-sep"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="clearfix space70"></div>
+    <!-- FOOTER -->
+    <footer id="footer2">
+        <div class="container">
+            <div class="row" style="padding-left: 5%">
+
+                <div class="col-md-2">
+                    <h3 th:utext="${ItemHeader8.getName()}" th:style="${ItemHeader8.getStyles()}"></h3>
+                    <div class="top-bar">
+                        <ul>
+                            <li class="tb-info">
+                                <a data-dialog2="somedialog2" class="trigger">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span class="navigation-YK">Мы находимся <br><em class="navigation-YK">Яндекс карты</em></span>
+                                </a>
+                            </li>
+                            <li class="tb-info">
+                                <a data-dialog1="somedialog1" class="trigger">
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display: none" data-dialog="somedialog" class="trigger button btn-xs color"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
+                    <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
+                    <form class="newsletter">
+                        <input type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+                <!--<div class="col-md-3">
+                    <h3 th:text="${ItemHeader9.getName()}"></h3>
+                    <ul class="f-news">
+                        <li th:each="subtitle : ${subtitles}">
+                            <a th:href="${subtitle.getUrlHref()}" th:text="${subtitle.getName()}"><i class="fa fa-angle-right"></i></a>
+                        </li>
+                    </ul>
+                </div>-->
+
+                <div class="col-md-3">
+                    <h3 th:utext="${ItemHeader10.getName()}" th:style="${ItemHeader10.getStyles()}"></h3>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_1.getUrlHref()}" th:title="${ItemHeader10_1.getName()}" th:style="${ItemHeader10_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_2.getUrlHref()}" th:title="${ItemHeader10_2.getName()}" th:style="${ItemHeader10_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    <div class="site-fist"> <a th:href="${ItemHeader10_3.getUrlHref()}" th:title="${ItemHeader10_3.getName()}" th:style="${ItemHeader10_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader10_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                </div>
+
+                <div class="col-md-3">
+                    <h3 th:utext="${ItemHeader12.getName()}" th:style="${ItemHeader12.getStyles()}"></h3>
+                    <div class="row">
+                        <div class="big-logo"> <a th:href="${ItemHeader12_1.getUrlHref()}" th:title="${ItemHeader12_1.getName()}" th:style="${ItemHeader12_1.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_1.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    </div>
+                    <div class="row" >
+                        <div class="site-fist" > <a th:href="${ItemHeader12_2.getUrlHref()}" th:title="${ItemHeader12_2.getName()}" th:style="${ItemHeader12_2.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_2.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_3.getUrlHref()}" th:title="${ItemHeader12_3.getName()}" th:style="${ItemHeader12_3.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_3.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_4.getUrlHref()}" th:title="${ItemHeader12_4.getName()}" th:style="${ItemHeader12_4.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_4.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_5.getUrlHref()}" th:title="${ItemHeader12_5.getName()}" th:style="${ItemHeader12_5.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_5.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                        <div class="site-fist" > <a th:href="${ItemHeader12_6.getUrlHref()}" th:title="${ItemHeader12_6.getName()}" th:style="${ItemHeader12_6.getStyles()}"><img th:src="@{'/main/picture/' + ${ItemHeader12_6.getIdPicture()}}" class="img-responsive" alt="" ></a> </div>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">
+                    <img th:src="${logotip.getUrlPicture()}" class="img-responsive" alt=""/>
+                </div>-->
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p th:utext="${ItemHeader11.getName()}" th:style="${ItemHeader11.getStyles()}"></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER -->
+</div>
+
+<div id="somedialog2" class="dialog">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <div class="contact-pop">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="map"></div>
+                </div>
+                <div class="col-md-6 pop-contact">
+                    <ul class="contact-info">
+                        <li>
+                            <p><strong th:utext="${DialogItem1.getName()}" th:style="${DialogItem1.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem1_1.getName()}" th:style="${DialogItem1_1.getStyles()}"></span></p>
+                        </li>
+                        <li>
+                            <p><strong th:utext="${DialogItem2.getName()}" th:style="${DialogItem2.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem2_1.getName()}" th:style="${DialogItem2_1.getStyles()}"></span></p>
+                        </li>
+                        <li>
+                            <p><strong th:utext="${DialogItem3.getName()}" th:style="${DialogItem3.getStyles()}"><i class="fa fa-envelope"></i></strong> <span><a th:utext="${DialogItem3_1.getName()}" th:style="${DialogItem3_1.getStyles()}" th:href="${DialogItem3_1.getUrlHref()}"></a></span></p>
+                        </li>
+                        <li>
+                            <p><strong th:utext="${DialogItem4.getName()}" th:style="${DialogItem4.getStyles()}"><i class="fa fa-phone"></i></strong> <span th:utext="${DialogItem4_1.getName()}" th:style="${DialogItem4_1.getStyles()}"></span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="action b-close" data-dialog-close ><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Javascript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/flexslider/jquery.flexslider.js"></script>
+
+<!--sds-->
+<script src="/js/navigation/jquery.easing.js"></script>
+<script src="/js/navigation/scroll.js"></script>
+
+<script src="/js/owl-carousel/owl.carousel.min.js"></script>
+<script src="/js/isotope/isotope.pkgd.js"></script>
+<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/superfish/js/hoverIntent.js"></script>
+<script src="/js/superfish/js/superfish.js"></script>
+
+<script src="/js/jquery.bpopup.js"></script>
+<script src="/js/pikaday/pikaday.js"></script>
+<script src="/js/dialogFx.js"></script>
+<script src="/js/dialog-js.js"></script>
+<script src="/js/classie.js"></script>
+<!---->
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="/js/gmap2.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/booking.js"></script>
+<script>
+    jQuery(function ($) {
+        function fix_size() {
+            var images = $('.img-container img');
+            images.each(setsize);
+
+            function setsize() {
+                var img = $(this),
+                    img_dom = img.get(0),
+                    container = img.parents('.img-container');
+                if (img_dom.complete) {
+                    resize();
+                } else img.one('load', resize);
+
+                function resize() {
+                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
+                        img.width('100%');
+                        img.height('auto');
+                    } else {
+                        img.height('100%');
+                        img.width('auto');
+                    }
+                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
+                    /*console.log(marginx);*/
+                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
+
+                }
+            }
+        }
+        $(window).on('resize', fix_size);
+        fix_size();
+    });</script>
+<script>
+    var someimage = document.getElementById('content');
+    var myimgs = someimage.getElementsByTagName('img');
+    var mysrc;
+    var i;
+    var parent;
+    for(i=0;i<myimgs.length;i++){
+        mysrc=myimgs[i].src;
+        if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0')){
+            parent=myimgs[i].parentNode;
+            parent.style.display='none';
+        }
+    }
+</script>
+<script type="text/javascript">
+    var opac=0;
+    function searchFunc() {
+        var elements=document.getElementsByClassName('other-pages-search');
+        if (elements.length>0){
+            if(opac===0){
+                opac++;
+                pull(elements[0]);
+            } else {
+                opac--;
+                push(elements[0]);
+            }
+        }
+        function pull(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/-1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1500, function () {
+            });
+        }
+        function push(el){
+            var img = $('.other-pages-search');
+            var marginx=(img.width()+100)/1;
+            img.animate({
+                marginLeft: "+=" + marginx + "px",
+                opacity: "+=1"
+            }, 1500, function () {
+            });
+        }
+    }
+</script>
+</body>
+</html>

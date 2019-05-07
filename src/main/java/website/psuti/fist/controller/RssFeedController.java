@@ -53,13 +53,13 @@ public class RssFeedController {
         for (NewsOfFaculty topic : newsFacultyService.getLastCountByDateFilledPicture(NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_NEWSBLOG_OUTPUT.getCount())) {
             if (topic.getIdPicture() <= 0)
             list.add(createFeedEntry(topic.getHeading(),
-                    UrlForSearch.URL_NEWS_BLOG.getApi() + "/id="+ topic.getId(),
+                    UrlForSearch.URL_NEWS_BLOG.getApi() + "/topic/id="+ topic.getId(),
                     topic.getText(),
                     Date.from(topic.getDate().atZone(ZoneId.systemDefault()).toInstant()),
                     "bogomolova-ma@psuti.ru (bogomolova)"));
             else
                 list.add(createFeedEntry(topic.getHeading(),
-                    UrlForSearch.URL_NEWS_BLOG.getApi() + "/id="+ topic.getId(),
+                    UrlForSearch.URL_NEWS_BLOG.getApi() + "/topic/id="+ topic.getId(),
                     "<p style=\"text-align: center;\"><img src=\"" + UrlForSearch.getUrlSite() + "/main/picture/" + topic.getIdPicture() + "\" text-align=\"center\" height=\"500px\"></p>  <br><br>" +
                             topic.getText(),
                     Date.from(topic.getDate().atZone(ZoneId.systemDefault()).toInstant()),

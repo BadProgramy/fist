@@ -22,21 +22,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/js/isotope/isotope.css">
-    <link rel="stylesheet" href="/js/flexslider/flexslider.css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/studentStyle.css">
-
-    <!-- JS Font Script -->
-    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,8 +108,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="row">
-                            <div id="shop-mason" class="shop-mason-4col">
-                                <div th:each="diplomPicture : ${resultDiplomas}" class="sm-item isotope-item">
+                            <div id="shop-mason" class="grid shop-mason-4col">
+                                <div th:each="diplomPicture : ${resultDiplomas}" class="grid-item">
                                     <div class="product">
                                         <div class="product-thumb">
                                             <img th:src="@{'/main/picture/' + ${diplomPicture.getId()}}" class="img-responsive" alt="">
@@ -273,32 +264,16 @@
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
-
-<!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
-
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
 <script src="/js/superfish/js/superfish.js"></script>
-
-<script src="/js/jquery.bpopup.js"></script>
-<script src="/js/pikaday/pikaday.js"></script>
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
-<script src="/js/classie.js"></script>
-
-<!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
-<script type="text/javascript">
+<script >
     var opac=0;
     function searchFunc() {
         var elements=document.getElementsByClassName('other-pages-search');
@@ -330,6 +305,9 @@
             });
         }
     }
+    $('.grid').masonry({
+        itemSelector: '.grid-item'
+    });
 </script>
 </body>
 </html>

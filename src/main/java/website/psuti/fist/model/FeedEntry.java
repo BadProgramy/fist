@@ -7,6 +7,7 @@ public class FeedEntry {
     String link;
     String content;
     Date date;
+    private String author;
 
     public String getTitle() {
         return title;
@@ -38,5 +39,13 @@ public class FeedEntry {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

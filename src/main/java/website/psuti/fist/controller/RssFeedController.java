@@ -63,7 +63,7 @@ public class RssFeedController {
                     "<p style=\"text-align: center;\"><img src=\"" + UrlForSearch.getUrlSite() + "/main/picture/" + topic.getIdPicture() + "\" text-align=\"center\" height=\"500px\"></p>  <br><br>" +
                             topic.getText(),
                     Date.from(topic.getDate().atZone(ZoneId.systemDefault()).toInstant()),
-                        ""));
+                        "bogomolova-ma@psuti.ru (bogomolova)"));
 
         }
         feedInfo.setFeedEntries(list);

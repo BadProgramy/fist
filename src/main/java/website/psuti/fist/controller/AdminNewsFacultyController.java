@@ -165,6 +165,7 @@ public class AdminNewsFacultyController {
             newFaculty.setIdPicture(-1);
         }*/
         newsFacultyService.update(newFaculty);
+        modelAndViewConfiguration.initModelAndView();
         return "redirect:../../news";
     }
 

@@ -3,9 +3,6 @@ package website.psuti.fist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
-import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,18 +11,17 @@ import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
-import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.NewsFacultyService;
 import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
 
-import javax.mail.MessagingException;
 import java.io.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Controller
 public class AdminNewsFacultyController {
@@ -83,12 +79,12 @@ public class AdminNewsFacultyController {
 
     @RequestMapping("/admin/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
-        newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
+        newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
         if (newFaculty.getPictureFile() != null) {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.insert(newFaculty);
-        for (User user : userService.getUsersByRole(Role.SUBSCRIBER)) {
+        for (User user : userService.getUsersByRoleAndEnable(Role.SUBSCRIBER)) {
             modelAndViewConfiguration.sendMessageSubscriber(newFaculty.getHeading(), newFaculty.getText(), user,
                     "Посмотреть на сайте", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi(), "",
                     "Вы получаете это письмо, потому что вы подписаны на новости факультета.");
@@ -157,7 +153,7 @@ public class AdminNewsFacultyController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
         }*/
-        newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
+        newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
         if (!newFaculty.getPictureFile().isEmpty()) {
             picturesService.delete(newFaculty.getIdPicture());
             newFaculty.setIdPicture(savePicture(newFaculty));

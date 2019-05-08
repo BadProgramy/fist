@@ -130,20 +130,32 @@
 
                             <a th:href="@{'/newsBlog/page/' + ${firstPage - 1}}" style="float: left;"><i class="fa fa-angle-left"></i></a>
 
-                            <a style="float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/newsBlog/page/' + ${firstPage}}" class="active"></a>
+                            <a style="background: #3c689e; float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/newsBlog/page/' + ${firstPage}}" class="active"></a>
 
-                            <div style="float: left;" th:if="${pageCount - firstPage + 1} == true">
+                            <div style="float: left;" th:if="${pageCount - firstPage - 1 >= 0}">
                                 <a id="secondPage" th:utext="${firstPage + 1}" th:href="@{'/newsBlog/page/' + ${firstPage + 1}}"></a>
                             </div>
 
-                            <div style="float: left;" th:if="${pageCount - firstPage + 2} == true">
+                            <div style="float: left;" th:if="${pageCount - firstPage - 2 >= 0}">
                                 <a id="thirdPage" th:utext="${firstPage + 2}" th:href="@{'/newsBlog/page/' + ${firstPage + 2}}"></a>
                             </div>
 
-                            <a style="float: left;" class="no-active">...</a>
-                            <a style="float: left;" th:utext="${pageCount}" th:href="@{'/newsBlog/page/' + ${pageCount}}"></a>
+                            <div style="float: left;" th:if="${pageCount > firstPage + 2}">
+                                <a style="float: left;" class="no-active">...</a>
+                                <a style="float: left;" th:utext="${pageCount}" th:href="@{'/newsBlog/page/' + ${pageCount}}"></a>
+                            </div>
 
-                            <a th:href="@{'/newsBlog/page/' + ${firstPage + 1}}" style="float: left;" href=""><i class="fa fa-angle-right"></i></a>
+                            <div style="float: left;" th:if="${pageCount >= firstPage + 1}">
+                                <a th:href="@{'/newsBlog/page/' + ${firstPage + 1}}" style="float: left;" >
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+
+                            <div style="float: left;" th:if="${pageCount < firstPage + 1}">
+                                <a th:href="@{'/newsBlog/page/' + ${pageCount}}" style="float: left;" >
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
 
                             <a style="float: left;" th:href="@{'/newsBlog/page/' + ${pageCount}}">
                                 <i class="fa fa-angle-right"></i>

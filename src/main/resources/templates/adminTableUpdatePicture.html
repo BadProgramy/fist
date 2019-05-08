@@ -217,11 +217,13 @@
         </div>
 
         <div style="float: left;" th:if="${pageCount >= firstPage + 1}">
-            <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage + 1}}" style="float: left;" href=""><i class="fa fa-angle-right"></i></a>
+            <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage + 1}}" style="float: left;">
+                <i class="fa fa-angle-right"></i>
+            </a>
         </div>
 
         <div style="float: left;" th:if="${pageCount < firstPage + 1}">
-            <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${pageCount}}" style="float: left;" href="">
+            <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${pageCount}}" style="float: left;">
                 <i class="fa fa-angle-right"></i>
             </a>
         </div>

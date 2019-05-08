@@ -1,5 +1,5 @@
 /*
- * jQuery Superfish Menu Plugin - v1.7.5
+ * jQuery Superfish Menu Plugin
  * Copyright (c) 2014 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:

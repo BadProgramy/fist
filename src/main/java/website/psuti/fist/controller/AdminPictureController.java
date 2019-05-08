@@ -1,22 +1,16 @@
 package website.psuti.fist.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
-import website.psuti.fist.constant.MainPageConstant;
 import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.constant.PictureConstant;
 import website.psuti.fist.model.KeyPicture;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.PicturesService;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,52 +36,32 @@ public class AdminPictureController {
 
     @RequestMapping("/admin/table/picture/department/update")
     public String adminPictureDepartmentUpdate( Model model) {
-        model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.DEPARTMENT));
-        model.addAttribute("picture", new Pictures());
-        model.addAttribute("keyPictures", KeyPicture.values());
-        model.addAttribute("item", new Pictures());
-        return "adminTableUpdatePicture";
+        return pagination("department", 1, model);
     }
 
     @RequestMapping("/admin/table/picture/bestStudent/update")
     public String adminPictureBestStudentUpdate( Model model) {
-        model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.BEST_STUDENT));
-        model.addAttribute("picture", new Pictures());
-        model.addAttribute("keyPictures", KeyPicture.values());
-        model.addAttribute("item", new Pictures());
-        return "adminTableUpdatePicture";
+        return pagination("bestStudent", 1, model);
     }
 
     @RequestMapping("/admin/table/picture/deanTeam/update")
     public String adminPictureDeanTeamUpdate(Model model) {
-        model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.DEAN_TEAM));
-        model.addAttribute("picture", new Pictures());
-        model.addAttribute("keyPictures", KeyPicture.values());
-        model.addAttribute("item", new Pictures());
-        return "adminTableUpdatePicture";
+        return pagination("deanTeam", 1, model);
     }
 
     @RequestMapping("/admin/table/picture/topicFaculty/update")
     public String adminPictureTopicFacultyUpdate(Model model) {
-        model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.TOPIC_FACULTY));
-        model.addAttribute("picture", new Pictures());
-        model.addAttribute("keyPictures", KeyPicture.values());
-        model.addAttribute("item", new Pictures());
-        return "adminTableUpdatePicture";
+        return pagination("topicFaculty", 1, model);
     }
 
     @RequestMapping("/admin/table/picture/other/update")
     public String adminPictureOtherUpdate(Model model) {
-        model.addAttribute("pictures", picturesService.findPicturesByKey(KeyPicture.OTHER));
-        model.addAttribute("picture", new Pictures());
-        model.addAttribute("keyPictures", KeyPicture.values());
-        model.addAttribute("item", new Pictures());
-        return "adminTableUpdatePicture";
+        return pagination("other", 1, model);
     }
 
     @RequestMapping("/admin/table/picture/diploma/update")
     public String adminPictureDiplomaUpdate(Model model) {
-        return pagenation("diploma", 1, model);
+        return pagination("diploma", 1, model);
     }
 
     @RequestMapping("/admin/table/picture/update/submit")
@@ -137,7 +111,7 @@ public class AdminPictureController {
     }
 
     @RequestMapping("/admin/table/picture/{name}/update/page/{idPage}")
-    private String pagenation(@PathVariable String name, @PathVariable Integer idPage, Model model) {
+    private String pagination(@PathVariable String name, @PathVariable Integer idPage, Model model) {
         if (idPage <= 0) idPage = 1;
         KeyPicture keyPicture = KeyPicture.OTHER;
         switch (name) {

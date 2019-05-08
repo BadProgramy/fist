@@ -3,6 +3,10 @@ package website.psuti.fist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,9 +38,11 @@ public class AdminUserController {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private BCryptPasswordEncoder bcryptEncoder;
+
     @RequestMapping("/admin/user/cms")
     public ModelAndView userCmsAdd(Model model) {
-
         return adminUserPage(1, "cms", model);
     }
 
@@ -193,5 +199,60 @@ public class AdminUserController {
         user.setEnabled(true);
         userService.save(user);
         return "enabledAccount";
+    }
+
+    @RequestMapping("/admin/setting/profile")
+    public String settingProfile(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("user", userService.findUserByName(authentication.getName()));
+        model.addAttribute("newPassword", "");
+        model.addAttribute("passwordProfile", "");
+        model.addAttribute("prevPassword", "");
+        return "adminSettingProfile";
+    }
+
+    @RequestMapping("/admin/setting/profile/update/submit")
+    public String settingProfileUpdateSubmit(Model model,
+                                             @ModelAttribute("user") User user,
+                                             @ModelAttribute("newPassword") String newPassword,
+                                             @ModelAttribute("prevPassword") String prevPassword,
+                                             @ModelAttribute("passwordProfile") String passwordProfile) throws SQLException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User userOriginal = userService.findUserByName(authentication.getName());
+        if (user.getUsername().equals(userOriginal.getUsername())) {
+            if (bcryptEncoder.matches(passwordProfile, userOriginal.getPassword())) {
+                user.setPassword(passwordProfile);
+                userService.save(user);
+                model.addAttribute("checkPassword", true);
+            }
+            else if (bcryptEncoder.matches(prevPassword, userOriginal.getPassword())) {
+                user.setPassword(newPassword);
+                userService.save(user);
+                model.addAttribute("checkPassword", true);
+            } else {
+                model.addAttribute("checkPassword", false);
+            }
+        } else  model.addAttribute("checkPassword", false);
+        model.addAttribute("user", user);
+        return "redirect:../../profile";
+    }
+
+    @RequestMapping("/login/submit")
+    public String testCreateUser() throws SQLException {
+        List<Role> roles = new ArrayList<>();
+        roles.add(Role.DEVELOPER);
+        User user = new User();
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setEnabled(true);
+        user.setFirstname("Айрат");
+        user.setSecondname("Мухутдинов");
+        user.setUsername("airat23059");
+        user.setPassword("19970808");
+        user.setPagevk("https://vk.com/id109488730");
+        user.setRole(roles);
+        userService.save(user);
+        return "adminSettingProfile";
     }
 }

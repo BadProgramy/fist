@@ -5,7 +5,7 @@
  *  http://www.owlgraphic.com/owlcarousel/
  *
  *  Licensed under MIT
- *
+ * https://github.com/oakstudios/OwlCarousel---WNW/blob/master/LICENSE
  */
 
 /*JS Lint helpers: */

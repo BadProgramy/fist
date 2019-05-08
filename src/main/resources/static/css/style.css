@@ -2337,20 +2337,20 @@ blockquote {
     border-left: 0;
 }
 
-.blog-mason-2col .bm-item {
+.blog-mason-2col .grid-item {
 	width:48%;
 	padding:0 15px;
 	margin:0 0 65px;
 	display: inline-block;
 }
 
-.blog-mason-3col .bm-item {
+.blog-mason-3col .grid-item {
 	width:33.3333%;
 	padding:0 15px;
 	margin:0 0 65px;
 }
 
-article.bm-item h2.post-title {
+article.grid-item h2.post-title {
     font-size: 30px;
     margin: 20px 0px 5px;
 
@@ -2407,14 +2407,14 @@ blockquote.style2 p {
 	color:#eecf55;
 }
 
-.shop-mason-4col .sm-item {
+.shop-mason-4col .grid-item {
 	width:25%;
 	padding:0 15px;
 	margin:0 0 65px;
 	text-align:center;
 }
 
-.shop-mason-3col .sm-item {
+.shop-mason-3col .grid-item {
 	width:33.3333%;
 	padding:0 15px;
 	margin:0 0 65px;
@@ -2980,11 +2980,6 @@ line-height:28px;
 .content-blog>.container{
 	max-width: 1140px;
 }
-/*.blogpost img{
-	object-fit: cover;
-	width: 500px;
-	height: 400px;
-}*/
 
 .post-excerpt h4,h5{
 	line-height: 1.3;

@@ -47,59 +47,8 @@
 
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
-    <header id="header" class="color-silver">
-        <div class="container">
-            <div class="row">
-                <div class="logo-psuti" style="margin: 10px;">
-                    <a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
-                </div>
-                <div class="col-md-9 col-xs-7">
-                    <div class="top-bar "style="width:100%;float:left; margin-right: 50px;">
-                        <ul>
-                            <li style="float: left;padding-right: 5px"><i class="fa fa-map-marker"></i></li>
-                            <li th:utext="${location.getName()}" class="tb-info"  th:style="${location.getStyles()}"></li>
-
-                            <li style="float: left;padding-right: 5px"><i class="fa fa-phone"></i></li>
-                            <li class="tb-info"  style="float: left;color: black;padding-right:4%" th:object="${phone}" th:utext="${phone.getName()}" th:style="${phone.getStyles()}"></li>
-
-                            <li style="float: left;padding-right: 5px"><i class="fa fa-envelope" style="float: left;padding-right: 5px"></i></li>
-                            <li class="tb-info" style="float: left;color: black" th:object="${email}" th:utext="${email.getName()}" th:style="${email.getStyles()}"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-wrap">
-                <div class="row" style="margin-left: 5%;">
-                    <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"></div>
-                    <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
-                        <li>
-                            <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
-                            <div class="mobnav-subarrow"></div>
-                            <ul >
-                                <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
-                                    <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
-                                        <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}" th:style="${menuItemHeaderInMainPage.getStyles()}"></a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-                        <a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
-                    </div>
-                    <div class="logo-psuti" style=" float:right; margin: 15px 15px 0 0; ">
-                        <a href="/main" th:object="${logotipPSUTI}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="other-pages-search">
-        <form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
-            <button class="search-button " type="submit">Поиск</button>
-            <input class="search-input " name="searchword" type="text" placeholder="Поиск...">
-        </form>
-    </div>
+    <div th:replace="templates :: headerUser"></div>
+    <div th:insert="templates :: headerUserInsertSearch"></div>
 
     <!-- BANER -->
    <div class="container-fluid no-padding" style="background: black">

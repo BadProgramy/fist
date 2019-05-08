@@ -29,6 +29,7 @@ public class MyRssFeedView extends AbstractRssFeedView {
         feedChannel.setDescription(feedInfo.getDesc());
         feedChannel.setLanguage(feedInfo.getLanguage());
         feedChannel.setEncoding("utf-8");
+        feedChannel.setImage(feedInfo.getImage());
     }
 
     @Override
@@ -47,13 +48,13 @@ public class MyRssFeedView extends AbstractRssFeedView {
             item.setPubDate(feedEntry.getDate());
 
             Description description = new Description();
-            description.setValue("![CDATA[" + feedEntry.getContent() + "]");
+            description.setValue(feedEntry.getContent());
             item.setDescription(description);
 
+            item.setAuthor(feedEntry.getAuthor());
 
             items.add(item);
         }
-        httpServletResponse.setHeader("Content-Type" , "charset=utf-8");
         return items;
     }
 

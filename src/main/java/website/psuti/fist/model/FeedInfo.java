@@ -1,5 +1,7 @@
 package website.psuti.fist.model;
 
+import com.rometools.rome.feed.rss.Image;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class FeedInfo {
     private String link;
     private String desc;
     private String language;
+    private Image image;
     private List<FeedEntry> feedEntries;
 
     public FeedInfo() {
@@ -52,5 +55,13 @@ public class FeedInfo {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

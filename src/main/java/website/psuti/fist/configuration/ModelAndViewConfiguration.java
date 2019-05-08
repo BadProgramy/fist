@@ -322,6 +322,10 @@ public class ModelAndViewConfiguration {
             for (File file: (List<File>) list) {
                 if (file.getId() == id) return file;
             }
+        } else if (list.get(0) instanceof NewsOfFaculty) {
+            for (NewsOfFaculty topic: (List<NewsOfFaculty>) list) {
+                if (topic.getId() == id) return topic;
+            }
         }
         return new Object();
     }

@@ -87,7 +87,7 @@
 						</li>
 					</ul>
 				<div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-					<a onclick="searchFunc()"><img src="/images/search.png" class="img-responsive img-nohidden" alt=""/></a>
+					<a onclick="searchFunc()"><img src='/images/search.png' class="img-responsive img-nohidden" alt=""/></a>
 				</div>
 				<div class="logo-psuti" style=" float:right; margin: 15px 0px 0 0; ">
 					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}" th:style="${logotipPSUTI.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
@@ -216,8 +216,8 @@
 	</section>
 
 	<!-- Соц Сети -->
-	<section id="pricing" class="pricing">
-		<div class="pricing-bg">
+	<section id="pricing" class="pricing ">
+		<div class="pricing-bg widgets">
 			<div class="container">
 				<div class="h-page-title">
 					<h1 th:object="${ItemHeader3}" th:text="${ItemHeader3.getName()}" th:style="${ItemHeader3.getStyles()}"></h1>
@@ -236,8 +236,6 @@
                                             document.getElementById('vk_widget').innerHTML = '<div id="vk_groups"></div>';
                                             VK.Widgets.Group("vk_groups", {mode: 4, width: "auto", height: "400"},50489116);
                                         };
-                                        window.addEventListener('load', VK_Widget_Init, false);
-                                        window.addEventListener('resize', VK_Widget_Init, false);
 									</script>
 								</div>
 							</div>
@@ -247,7 +245,7 @@
 								<div id="secondTT" class="inner-price">
 									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}" th:style="${ItemHeader5.getStyles()}"></h3>
 									<div class='widget-content'>
-										<iframe src="https://snapwidget.com/embed/683995" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
+										<iframe src="" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
 									</div>
 								</div>
 							</div>
@@ -259,12 +257,11 @@
 									<div id="vk_widget1"></div>
 									<script type="text/javascript" src="//vk.com/js/api/openapi.js?159"></script>
 									<script>
-                                        function VK_Widget_Init(){
+                                        function VK_Widget_Init1(){
                                             document.getElementById('vk_widget1').innerHTML = '<div id="vk_groupss"></div>';
                                             VK.Widgets.Group("vk_groupss", {mode: 4, width: "auto", height: "400"},17785357);
                                         };
-                                        window.addEventListener('load', VK_Widget_Init, false);
-                                        window.addEventListener('resize', VK_Widget_Init, false);
+
 									</script>
 								</div>
 							</div>
@@ -293,7 +290,7 @@
 	</section>
 
 
-	<section id="home-shop" class="main-background">
+	<section id="home-shop" class="main-background ">
 		<div class="h2-gallery" id="5">
 			<div class="container">
 				<div class="col-md-12">
@@ -303,7 +300,7 @@
 					<div class="clearfix space35"></div>
 
 					<div id="home-shop-carousel" class="owl-carousel owl-theme" >
-						<div id="Some-Container"  th:each="student : ${bestStudents}" class="sm-item text-center">
+						<div id="Some-Container"  th:each="student : ${bestStudents}" class="grid-item text-center">
 							<div class="product" >
 								<div class="product-thumb">
 									<li><a class="cd-signin">
@@ -480,11 +477,9 @@
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
-
 <script src="/js/student_character.js"></script>
-<!-- SnapWidget -->
 <script src="https://snapwidget.com/js/snapwidget.js"></script>
-<script>
+<script >
 
     function isVisible(elem) {
 
@@ -500,21 +495,32 @@
     function showVisible() {
         var imgs = document.getElementsByTagName('img');
         for (var i = 0; i < imgs.length; i++) {
-
             var img = imgs[i];
-
             var realsrc = img.getAttribute('realsrc');
             if (!realsrc) continue;
-
             if (isVisible(img)) {
                 img.src = realsrc;
                 img.setAttribute('realsrc', '');
             }
         }
     }
-
-    window.onscroll = showVisible;
+    function homeShowVisible() {
+        var snap = document.getElementsByClassName('snapwidget-widget');
+        var widgets = document.getElementsByClassName('widgets');
+        if(widgets.length>0){
+            if (isVisible(widgets[0])) {
+                VK_Widget_Init();
+                VK_Widget_Init1();
+                $('.snapwidget-widget').attr('src', 'https://snapwidget.com/embed/683995');
+                $(".pricing-bg").removeClass('widgets');
+            }
+        }
+    }
+    window.onscroll = function () {  homeShowVisible();showVisible();};
+    homeShowVisible();
     showVisible();
+    window.addEventListener('resize', VK_Widget_Init, false);
+    window.addEventListener('resize', VK_Widget_Init1, false);
 </script>
 <script >
     function checkPosition(){
@@ -592,9 +598,8 @@
                         img.height('100%');
                         img.width('auto');
                     }
-                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
-                    /*console.log(marginx);*/
-                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
+                    var marginy=(img.height()-container.height())/-2;
+                    img.css({ 'margin-top': marginy});
 
                 }
             }
@@ -634,7 +639,6 @@
             });
         }
     }
-    // HOME SHOP CAROUSEL
     var carous = $("#home-shop-carousel");
     carous.owlCarousel({
         itemsCustom: [

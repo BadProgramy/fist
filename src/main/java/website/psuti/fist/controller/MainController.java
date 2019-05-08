@@ -98,6 +98,13 @@ public class  MainController {
         return modelview;
     }
 
+    @RequestMapping("/newsBlog/topic/id={id}")
+    public String newsBlogTopic(Model model, @PathVariable long id) {
+        model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
+        model.addAttribute("topic", modelAndViewConfiguration.getItemById(modelAndViewConfiguration.getNewsOfFaculties(), id));
+        return "topic";
+    }
+
     //TODO PREPOD//////////////////////////////////////////////////////////////////////////
     @RequestMapping("/about/faculty")
     public ModelAndView aboutOfFaculty() {

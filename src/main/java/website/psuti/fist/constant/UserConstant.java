@@ -1,7 +1,7 @@
 package website.psuti.fist.constant;
 
 public enum UserConstant {
-    COUNT_USER_FOR_OUTPUT(1);
+    COUNT_USER_FOR_OUTPUT(10);
 
     private int count; //количество выводдимой информации для запроса к бд
 

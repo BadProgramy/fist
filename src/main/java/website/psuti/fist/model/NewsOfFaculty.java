@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.io.File;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class NewsOfFaculty {
@@ -17,7 +18,8 @@ public class NewsOfFaculty {
     @Column
     @Type(type = "org.hibernate.type.TextType")
     private String text;
-    private LocalDate date;
+
+    private LocalDateTime date;
     private long idPicture;
 
     @Column
@@ -99,11 +101,11 @@ public class NewsOfFaculty {
         this.pictureFile = pictureFile;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

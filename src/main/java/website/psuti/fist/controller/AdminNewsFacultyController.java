@@ -20,6 +20,8 @@ import java.io.File;
 import java.nio.file.Files;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Controller
 public class AdminNewsFacultyController {
@@ -77,7 +79,7 @@ public class AdminNewsFacultyController {
 
     @RequestMapping("/admin/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
-        newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
+        newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
         if (newFaculty.getPictureFile() != null) {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
@@ -94,10 +96,12 @@ public class AdminNewsFacultyController {
     public String test() throws IOException {
         File f ;
         for (Pictures pictures: picturesService.getAll()) {
-            f = new File("src\\main\\resources\\static\\" + pictures.getUrlPicture());
-            if (f.exists()) {
-                pictures.setPictureFile(Files.readAllBytes(f.toPath()));
-                picturesService.update(pictures);
+            if (pictures.getKeyPicture().equals(KeyPicture.DIPLOMAS)) {
+                f = new File("src\\main\\resources\\static\\" + pictures.getUrlPicture());
+                if (f.exists()) {
+                    pictures.setPictureFile(Files.readAllBytes(f.toPath()));
+                    picturesService.update(pictures);
+                }
             }
         }
         return "newsBlog";
@@ -151,7 +155,7 @@ public class AdminNewsFacultyController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
         }*/
-        newFaculty.setDate(LocalDate.parse(newFaculty.getDateStringLocalDate()));
+        newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
         if (!newFaculty.getPictureFile().isEmpty()) {
             picturesService.delete(newFaculty.getIdPicture());
             newFaculty.setIdPicture(savePicture(newFaculty));
@@ -161,6 +165,7 @@ public class AdminNewsFacultyController {
             newFaculty.setIdPicture(-1);
         }*/
         newsFacultyService.update(newFaculty);
+        modelAndViewConfiguration.initModelAndView();
         return "redirect:../../news";
     }
 

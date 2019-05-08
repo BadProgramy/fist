@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import website.psuti.fist.constant.DiplomConstant;
 import website.psuti.fist.constant.PathConstant;
+import website.psuti.fist.constant.PictureConstant;
 import website.psuti.fist.model.KeyPicture;
 import website.psuti.fist.model.Pictures;
 import website.psuti.fist.service.PicturesService;
@@ -33,18 +33,20 @@ public class AdminDiplomasController {
     public ModelAndView adminDiplomasPage(@PathVariable int idPage, Model model) {
         if (idPage <= 0) idPage = 1;
         model.addAttribute("firstPage", idPage);
-        List<Pictures> topics = picturesService.findPicturesByKey(KeyPicture.DIPLOMAS);
-        model.addAttribute("pageCount", (int)(Math.ceil((double) topics.size() / DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount())));
-        List<Pictures> resultTopic = new ArrayList<>();
-        for (int i = (idPage - 1) * DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(), j = 0; i < topics.size() && j < DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(); i++, j++) {
-            resultTopic.add(topics.get(i));
+        List<Pictures> diplomas = picturesService.findPicturesByKey(KeyPicture.DIPLOMAS);
+        model.addAttribute("pageCount", (int)(Math.ceil((double) diplomas.size() / PictureConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount())));
+        List<Pictures> resultDiplomas = new ArrayList<>();
+        for (int i = (idPage - 1) * PictureConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(), j = 0; i < diplomas.size() && j < PictureConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(); i++, j++) {
+            resultDiplomas.add(diplomas.get(i));
         }
-        model.addAttribute("diploms", resultTopic);
+        model.addAttribute("diploms", resultDiplomas);
         ModelAndView modelAndView = new ModelAndView("adminContentDiplom");
         modelAndView.addObject("picture",  new Pictures());
         modelAndView.addAllObjects(model.asMap());
         return modelAndView;
     }
+
+
 
     @RequestMapping("/admin/content/diplomas/add/submit")
     public String addDiplomasSubmit(@ModelAttribute Pictures picture ) throws IOException {

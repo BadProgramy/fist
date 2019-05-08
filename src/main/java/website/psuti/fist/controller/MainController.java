@@ -169,9 +169,9 @@ public class  MainController {
         if (idPage <= 0) idPage = 1;
         modelAndView.addObject("firstPage", idPage);
         List<Pictures> diplomas = modelAndViewConfiguration.getPicturesByKeyPicture(KeyPicture.DIPLOMAS);
-        modelAndView.addObject("pageCount", (diplomas.size() / (DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount() + 1)) + 1);
+        modelAndView.addObject("pageCount", (diplomas.size() / (PictureConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount() + 1)) + 1);
         List<Pictures> resultDiplomas = new ArrayList<>();
-        for (int i = (idPage - 1) * DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(), j = 0; i < diplomas.size() && j < DiplomConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(); i++, j++) {
+        for (int i = (idPage - 1) * PictureConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(), j = 0; i < diplomas.size() && j < PictureConstant.COUNT_DIPLOMAS_FOR_OUTPUT.getCount(); i++, j++) {
             resultDiplomas.add(diplomas.get(i));
         }
         modelAndView.addObject("resultDiplomas", resultDiplomas);

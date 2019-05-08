@@ -13,6 +13,7 @@ import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.NewsFacultyConstant;
 import website.psuti.fist.model.NewsOfFaculty;
 import website.psuti.fist.model.Pictures;
+import website.psuti.fist.model.Role;
 import website.psuti.fist.model.User;
 import website.psuti.fist.service.NewsFacultyService;
 import website.psuti.fist.service.PicturesService;
@@ -26,9 +27,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class AdminController {
@@ -48,25 +47,14 @@ public class AdminController {
         return "authentication";
     }
 
+    @RequestMapping("/admin/setting/cash")
+    public String updateModelView() {
+        modelAndViewConfiguration.updateCash();
+        return "admin";
+    }
 
-    /*@RequestMapping("/admin/login/submit")
-    public String testCreateUser() throws SQLException {
-        List<Role> roles = new ArrayList<>();
-        roles.add(Role.FULLADMIN);
-        User user = new User();
-        user.setAccountNonExpired(true);
-        user.setAccountNonLocked(true);
-        user.setCredentialsNonExpired(true);
-        user.setEnabled(true);
-        user.setFirstname("Айрат");
-        user.setSecondname("Мухутдинов");
-        user.setUsername("airat23059");
-        user.setPassword("19970808");
-        user.setPagevk("https://vk.com/id109488730");
-        user.setRole(roles);
-        userService.save(user);
-        return authPage();
-    }*/
+
+
 
     private byte[] getPicture(long idPicture) {
         //todo по кешу ищет картинку

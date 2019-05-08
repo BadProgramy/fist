@@ -37,6 +37,10 @@ public class Pictures {
 
     public Pictures() {
         date = LocalDate.now();
+        namePicture = "";
+        urlPicture = "";
+        href = "";
+        styles = "";
     }
 
     public Pictures(String namePicture, String urlPicture, LocalDate date) {

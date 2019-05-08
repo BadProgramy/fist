@@ -83,25 +83,7 @@ public class ModelAndViewConfiguration {
     public ModelAndView initModelAndView() {
         initPicturesCache();
         if (modelAndView == null) {
-            modelAndView = new ModelAndView();
-            employees = new ArrayList<>();
-            departments = new ArrayList<>();
-            files = new ArrayList<>();
-            newsOfFaculties = new ArrayList<>();
-            modelAndView = new ModelAndView("", "", "");
-
-            updateCandidateAssignment();
-            updateCurator();
-            updateBestStudentTable();
-            updateEducationProcessTable();
-            updateMenuItemHeaderInMainPageTable();
-            updateNewsOfFacultyTable();
-            updatePicturesTable();
-            updateUsersRoleTable();
-            updateUsersTable();
-            updateEmployee();
-            updateDepartment();
-            updateFile();
+            updateCashBD();
 
             return modelAndView;
         } else if (MainPageObjectConstant.getCheckModelAndView().size() > 0) {
@@ -111,6 +93,37 @@ public class ModelAndViewConfiguration {
             MainPageObjectConstant.clearCheckModel();
             return modelAndView;
         } else return modelAndView;
+    }
+
+    public void updateCash() {
+        if (picturesCache != null) picturesCache.clear();
+        picturesCache = new HashMap<>();
+        for (Pictures pictures : picturesService.getAll()) {
+            picturesCache.put(pictures.getId(), pictures.getPictureFile());
+        }
+        updateCashBD();
+    }
+
+    private void updateCashBD() {
+        modelAndView = new ModelAndView();
+        employees = new ArrayList<>();
+        departments = new ArrayList<>();
+        files = new ArrayList<>();
+        newsOfFaculties = new ArrayList<>();
+        modelAndView = new ModelAndView("", "", "");
+
+        updateCandidateAssignment();
+        updateCurator();
+        updateBestStudentTable();
+        updateEducationProcessTable();
+        updateMenuItemHeaderInMainPageTable();
+        updateNewsOfFacultyTable();
+        updatePicturesTable();
+        updateUsersRoleTable();
+        updateUsersTable();
+        updateEmployee();
+        updateDepartment();
+        updateFile();
     }
 
     public void changeModel(NameTableBD nameTable) {

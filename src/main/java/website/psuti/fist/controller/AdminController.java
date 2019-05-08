@@ -48,6 +48,12 @@ public class AdminController {
         return "authentication";
     }
 
+    @RequestMapping("/admin/setting/cash")
+    public String updateModelView() {
+        modelAndViewConfiguration.updateCash();
+        return "admin";
+    }
+
 
     /*@RequestMapping("/admin/login/submit")
     public String testCreateUser() throws SQLException {

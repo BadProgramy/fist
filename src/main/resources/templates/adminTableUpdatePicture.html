@@ -21,21 +21,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/js/isotope/isotope.css" type="text/css">
-    <link rel="stylesheet" href="/js/flexslider/flexslider.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
-    <!-- JS Font Script -->
-    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,15 +62,11 @@
                         </p>
 
                         <p class="fieldset black_p">
-                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
                             <input th:value="${picture.href}"  name="href" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Ссылка - http://vk.com (НЕОБЯЗАТЕЛЬНО)">
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
                         </p>
 
                         <p class="fieldset black_p">
-                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
                             <input type="date" th:value="${picture.date}"  name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
                         </p>
 
                         <p class="fieldset black_p">
@@ -87,14 +74,8 @@
                         </p>
 
                         <p class="fieldset black_p">
-                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
                             <input th:value="${picture.styles}" name="styles" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Пример: color : red (Знание css)">
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
                         </p>
-
-                        <!--<input name="date" type="hidden" th:field="*{date}">-->
-                        <!--<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">-->
                         <p class="fieldset black_p">
 
                             <button class="full-width" type="submit">Добавить</button>
@@ -112,7 +93,6 @@
             <form th:action="@{/admin/table/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                 <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${picture.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/admin/picture/' + ${picture.getId()}}" alt=""></a></li>
             </form>
-                <li><a class="cd-signin"><input th:id="@{'/admin/picture/' + ${picture.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/admin/picture/' + ${picture.getId()}}" value="Другие изменения.." type="submit"></a></li>
             <script th:inline="javascript">
                 document.body.onclick = function(e) {
                     var elem = e ? e.target : window.event.srcElement;
@@ -188,28 +168,61 @@
                 <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
             </form>
         </div>
+        <div class="close-btn fa fa-times"></div>
     </div>
+    <!-- Pagination -->
+    <div class="page_nav" th:object="${pageCount}">
+
+        <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/1'}" style="float: left;">
+            <i class="fa fa-angle-left"></i>
+            <i class="fa fa-angle-left"></i>
+        </a>
+
+        <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage - 1}}" style="float: left;">
+            <i class="fa fa-angle-left"></i>
+        </a>
+
+        <a style="background: #3c689e; float: left;" id="firstPage" th:object="${firstPage}" th:utext="${firstPage}" th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage}}"></a>
+
+        <div style="float: left;" th:if="${pageCount - firstPage - 1 >= 0}">
+            <a id="secondPage" th:utext="${firstPage + 1}" th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage + 1}}"></a>
+        </div>
+
+        <div style="float: left;" th:if="${pageCount - firstPage - 2 >= 0}">
+            <a id="thirdPage" th:utext="${firstPage + 2}" th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage + 2}}"></a>
+        </div>
+
+        <div style="float: left;" th:if="${pageCount > firstPage + 2}">
+            <a style="float: left;" class="no-active">...</a>
+            <a style="float: left;" th:utext="${pageCount}" th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${pageCount}}"></a>
+        </div>
+
+        <div style="float: left;" th:if="${pageCount >= firstPage + 1}">
+            <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${firstPage + 1}}" style="float: left;">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+
+        <div style="float: left;" th:if="${pageCount < firstPage + 1}">
+            <a th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${pageCount}}" style="float: left;">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+
+        <a style="float: left;" th:href="@{'/admin/table/picture/'+ ${nameApi} +'/update/page/' + ${pageCount}}">
+            <i class="fa fa-angle-right"></i>
+            <i class="fa fa-angle-right"></i>
+        </a>
     </div>
+    <!-- End Pagination -->
+</div>
 
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
-
-<!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/jquery.bpopup.js"></script>
-
-
 <script src="/js/classie.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
 <script src="/js/modal.js"></script>
 <script>
     function isVisible(elem) {

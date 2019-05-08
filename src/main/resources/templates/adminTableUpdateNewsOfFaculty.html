@@ -21,21 +21,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/js/isotope/isotope.css" type="text/css">
-    <link rel="stylesheet" href="/js/flexslider/flexslider.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
-    <!-- JS Font Script -->
-    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,7 +69,7 @@
                                 document.getElementById("Picture").src = /*[[@{'/admin/picture/' + ${top.getIdPicture()}}]]*/ null;
                                 document.getElementById("idPicture").value = /*[[@{${top.getIdPicture()}}]]*/ null;
                                 document.getElementById("id").value = /*[[@{${top.getId()}}]]*/ null;
-                                document.getElementById("dateStringLocalDate").value = /*[[@{${top.getDate()}}]]*/ null;
+                                document.getElementById("dateStringLocalDate").value = /*[[@{${top.getDate().toLocalDate()}}]]*/ null;
                                 document.getElementById("heading").value = /*[[@{${top.getHeading()}}]]*/ null;
                                 document.getElementById("text").value = /*[[@{${top.getText()}}]]*/ null;
                                 document.getElementById("headingStyles").value = /*[[@{${top.getHeadingStyles()}}]]*/ null;
@@ -99,7 +90,7 @@
     <div class="cd-user-modal1">
         <div class="cd-user-modal-container1">
             <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;"> <a><img id="Picture"  alt=""></a>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;overflow: hidden;"> <a><img id="Picture"  alt=""></a>
                     <p>Идентификатор картинки</p>
                     <input id="idPicture" name="idPicture"/>
                     <input type="file" accept=".jpg, .jpeg, .png" id="pictureFileMultipart" name="pictureFileMultipart"/>
@@ -113,28 +104,28 @@
                     <input type="date" id="dateStringLocalDate" class="menuItemTables" name="dateStringLocalDate">
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Загаловок</p>
-                    <input id="heading" class="menuItemTables" name="heading">
+                    <p>Заголовок</p>
+                    <textarea id="heading" class="menuItemTables" name="heading"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Текст</p>
-                    <input id="text" class="menuItemTables" name="text">
+                    <textarea id="text" class="menuItemTables" name="text"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
-                    <p>Стили для загаловка</p>
-                    <input id="headingStyles" class="menuItemTables" name="headingStyles">
+                    <p>Стили для заголовка</p>
+                    <textarea id="headingStyles" class="menuItemTables" name="headingStyles"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Стили для текста</p>
-                    <input id="textStyles" class="menuItemTables" name="textStyles">
+                    <textarea id="textStyles" class="menuItemTables" name="textStyles"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Стили для даты</p>
-                    <input id="dateStyles" class="menuItemTables" name="dateStyles">
+                    <textarea id="dateStyles" class="menuItemTables" name="dateStyles"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Стили для картинки</p>
-                    <input id="pictureStyles" class="menuItemTables" name="pictureStyles">
+                    <textarea id="pictureStyles" class="menuItemTables" name="pictureStyles"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Действие</p>
@@ -143,28 +134,16 @@
                 <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
             </form>
         </div>
+        <div class="close-btn fa fa-times"></div>
     </div>
 </div>
 
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
-
-<!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/jquery.bpopup.js"></script>
-
 <script src="/js/classie.js"></script>
-
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
 <script src="/js/modal.js"></script>
 </body>
 </html>

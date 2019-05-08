@@ -21,20 +21,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/js/isotope/isotope.css" type="text/css">
-    <link rel="stylesheet" href="/js/flexslider/flexslider.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-    <!-- JS Font Script -->
-    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,10 +52,6 @@
     </form>
     <section id="cd-timeline" class="cd-container">
         <div class="cd-timeline-block" th:each="topic : ${news}">
-       <!--     <div class="cd-timeline-img cd-picture">
-                <img src="img/cd-icon-picture.svg" alt="Picture">
-            </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
-
             <div class="cd-timeline-content">
                 <h2 th:utext="${topic.getHeading()}"></h2>
                 <p class="black_p" th:utext="${topic.getText()}"></p>
@@ -75,70 +63,22 @@
                         <li><a th:href="@{'/admin/news/delete/' + ${topic.getId()}}" class="cd-read-more">Удалить</a></li>
                     </ul>
                 </nav>
-                <!--<ul><li><a th:href="@{'/admin/news/delete/' + ${newFaculty.getId()}}" class="cd-read-more">Удалить</a></li></ul>-->
 
                 <span th:text="${topic.getDate()}" class="cd-date"></span>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
-
-        <!--<div class="cd-timeline-block">
-          &lt;!&ndash;  <div class="cd-timeline-img cd-picture">
-                <img src="img/cd-icon-picture.svg" alt="Picture">
-            </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;&ndash;&gt;
-
-            <div class="cd-timeline-content">
-                <h2>Title of section 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                <a href="#0" class="cd-read-more">Read more</a>
-
-                <span class="cd-date">Jan 14</span>
-            </div> &lt;!&ndash; cd-timeline-content &ndash;&gt;
-        </div> &lt;!&ndash; cd-timeline-block &ndash;&gt;-->
     </section> <!-- cd-timeline -->
 
 
     <div class="close-btn fa fa-times"></div>
-
-    <!--&lt;!&ndash; SLIDER &ndash;&gt;
-    <div class="container-fluid no-padding">
-        <div id="home-slider2" class="owl-carousel owl-theme">
-            <div class="item">
-                &lt;!&ndash;<img src="images/slider/2/1.jpg" class="img-responsive" style="width: 100%; height: 500px; " alt=""/>&ndash;&gt;
-
-            </div>
-            &lt;!&ndash;<div class="item">
-                <img src="images/slider/2/2.jpg" class="img-responsive" style="width: 100%; height: 500px;" alt=""/>
-
-            </div>
-            <div class="item">
-                <img src="images/slider/2/3.jpg" class="img-responsive" alt="" style="width: 100%; height: 500px;"/>
-
-            </div>&ndash;&gt;
-        </div>
-    </div>-->
 </div>
 
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
-
-<!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/jquery.bpopup.js"></script>
-
-
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
 
 </body>
 </html>

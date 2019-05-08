@@ -21,21 +21,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/js/isotope/isotope.css" type="text/css">
-    <link rel="stylesheet" href="/js/flexslider/flexslider.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
-    <!-- JS Font Script -->
-    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +36,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -65,9 +56,7 @@
                 <form th:action="@{/admin/content/files/add/submit}" th:object="${file}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <!--<input type="date" name="date" th:field="*{dateStringLocalDate}" th:value="${date}" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>-->
                             <input type="date" th:value="${file.date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
-                            <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
                         </p>
 
                         <p class="fieldset black_p">
@@ -79,10 +68,6 @@
                                 <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
                             </select>
                         </p>
-
-                        <!--<input name="date" type="hidden" th:field="*{date}">-->
-                        <!--<input name="idLeftPicture" type="hidden" th:field="*{idLeftPicture}">
-                        <input name="idRightPicture" type="hidden" th:field="*{idRightPicture}">-->
                         <p class="fieldset black_p">
 
                             <button class="full-width" type="submit">Добавить</button>
@@ -93,8 +78,9 @@
 
         </div> <!-- cd-user-modal-container -->
     </div> <!-- cd-user-modal -->
-    <h2>Просмотр файлов. Для редактирования необходимо обладать правами разработчика</h2>
-    <table class="color">
+    <h2 style="text-align: center">Просмотр файлов. Для редактирования необходимо обладать правами разработчика</h2>
+    <div class="shortcontain container">
+    <table class="color" style="padding: 50px">
         <tr>
             <th>Идентификатор</th>
             <th>Тип файла</th>
@@ -102,64 +88,31 @@
             <th>Вложенный файл</th>
         </tr>
         <tr th:each="file : ${files}">
-            <form th:action="@{/admin/table/files/update/submit}" method="post" enctype="multipart/form-data">
-                <td><input id="id" class="menuItemTables" name="id" th:value="${file.getId()}" readonly></td>
+            <div th:action="@{/admin/table/files/update/submit}" method="post" enctype="multipart/form-data">
+                <td><p id="id" class="menuItemTables" name="id" th:utext="${file.getId()}"></p></td>
                <input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}" hidden>
-                <td><!--<input class="menuItemTables" id="extension"  name="extension" th:value="${file.getExtension()}">-->
+                <td>
                     <select id="extension" name="extension" required>
                         <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
                     </select>
                 </td>
                 <input class="menuItemTables" id="name" name="name" th:value="${file.getName()}" hidden>
 
-                <td><input class="menuItemTables" name="uniqueName" id="uniqueName" th:value="${file.getUniqueName()}" readonly></td>
+                <td><p class="menuItemTables" name="uniqueName" id="uniqueName" th:utext="${file.getUniqueName()}"></p></td>
                 <td>
                     <a th:href="@{'/files/id=' + ${file.getId()}}" alt="">Ссылка на файл для просмотра</a>
                 </td>
-            </form>
+            </div>
         </tr>
     </table>
-
+    </div>
 </div>
 
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
-
-<!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/jquery.bpopup.js"></script>
-
-
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
-<!--<script type="text/javascript">-->
-
-<!--$(function() {-->
-
-<!--$("h2")-->
-<!--.wrapInner("<span></span>")-->
-
-<!--$("h2 br")-->
-<!--.before("<span class='spacer'>&nbsp;</span>")-->
-<!--.after("<span class='spacer'>&nbsp;</span>");-->
-
-<!--});-->
-
-<!--</script>-->
-
-<!-- Custom-scroll JS -->
-<!--<script src="js/jquery.custom-scroll.js"></script>-->
-
 </body>
 </html>

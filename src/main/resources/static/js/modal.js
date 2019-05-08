@@ -1,6 +1,7 @@
 jQuery(document).ready(function($){
     var formModal = $('.cd-user-modal1'),
         formLogin = formModal.find('#cd-login'),
+        formButton=$('.close-btn'),
         formSignup = formModal.find('#cd-signup'),
         formForgotPassword = formModal.find('#cd-reset-password'),
         formModalTab = $('.cd-switcher'),
@@ -13,6 +14,7 @@ jQuery(document).ready(function($){
     //open modal
     mainNav.on('click', function(event){
         $(event.target).is(mainNav) && mainNav.children('ul').toggleClass('is-visible');
+        formButton.addClass('visible');
     });
 
 
@@ -22,21 +24,22 @@ jQuery(document).ready(function($){
 
     //close modal
     formModal.on('click', function(event){
-        if( $(event.target).is(formModal) || $(event.target).is('.cd-close-form') ) {
+        if(  $(event.target).is('.close-btn') ) {
             formModal.removeClass('is-visible');
+            formButton.removeClass('visible');
         }
     });
     //close modal when clicking the esc keyboard button
     $(document).keyup(function(event){
         if(event.which=='27'){
             formModal.removeClass('is-visible');
+            formButton.removeClass('visible');
         }
     });
 
 
 
     function login_selected(){
-
         mainNav.children('ul').removeClass('is-visible');
         formModal.addClass('is-visible');
         formLogin.addClass('is-selected');

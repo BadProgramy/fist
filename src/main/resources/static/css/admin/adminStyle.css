@@ -604,7 +604,27 @@ header[role=banner]::after {
     transform: scale(1);
   }
 }
+textarea{
+  min-height: 200px;
+  min-width:200px;
+}
 
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  min-width: 100px;
+  min-height: 50px;
+  background: cornflowerblue;
+  border-radius: 10px;
+  color: white;
+}
+.close-btn:hover{
+  color:white;
+}
+.visible{
+  opacity: 1 !important;
+  visibility: initial !important;
+}
 .main-nav {
   float: right;
   margin-right: 5%;
@@ -702,7 +722,6 @@ header[role=banner]::after {
   /*background: rgba(52, 54, 66, 0.9);*/
   z-index: 3;
   overflow-y: auto;
-  cursor: pointer;
   /*visibility: hidden;*/
   /*opacity: 0;*/
   -webkit-transition: opacity 0.3s, visibility 0.3s;
@@ -710,7 +729,10 @@ header[role=banner]::after {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-
+.big_p{
+  font-size: 18px;
+  font-weight: bold;
+}
 .cd-user-modal.is-visible {
   visibility: visible;
   opacity: 1;
@@ -840,15 +862,8 @@ header[role=banner]::after {
   background-repeat: no-repeat;
   background-position: 50% 0;
 }
-.cd-form label.cd-username {
-  background-image: url("../img/cd-icon-username.svg");
-}
-.cd-form label.cd-email {
-  background-image: url("../img/cd-icon-email.svg");
-}
-.cd-form label.cd-password {
-  background-image: url("../img/cd-icon-password.svg");
-}
+
+
 .cd-form input,button {
   margin: 0;
   padding: 0;

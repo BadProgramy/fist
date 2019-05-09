@@ -230,10 +230,16 @@ public class AdminUserController {
                 userService.save(user);
                 model.addAttribute("checkPassword", true);
             } else {
-                model.addAttribute("checkPassword", false);
+                model.addAttribute("user", userOriginal);
+                return "redirect:../../profile?error";
+                /*model.addAttribute("checkPassword", false);*/
             }
-        } else  model.addAttribute("checkPassword", false);
-        model.addAttribute("user", user);
+        } else {
+            model.addAttribute("user", userOriginal);
+            /*model.addAttribute("checkPassword", false);*/
+            return "redirect:../../profile?error";
+        }
+        model.addAttribute("user", userOriginal);
         return "redirect:../../profile";
     }
 

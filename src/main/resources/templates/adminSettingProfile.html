@@ -21,21 +21,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/js/isotope/isotope.css" type="text/css">
-    <link rel="stylesheet" href="/js/flexslider/flexslider.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="/js/owl-carousel/owl.transitions.css" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/light.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
-    <!-- JS Font Script -->
-    <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +36,7 @@
     <![endif]-->
 
     <!-- Modernizer -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 
 </head>
 <body class="multi-page">
@@ -53,7 +44,6 @@
 <div id="wrapper" class="wrapper">
     <!-- HEADER -->
     <div th:replace="templates :: headerAdmin"></div>
-
     <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
@@ -107,20 +97,46 @@
                 <!--<li><a href="#0">New account</a></li>-->
             </ul>
 
-            <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/setting/profile/update/submit}" th:object="${user}" method="post" class="cd-form" enctype="multipart/form-data">
+            <div id="cd-login1"> <!-- log in form -->
+                <form id="form" th:action="@{/admin/setting/profile/update/submit}" th:object="${user}" method="post" class="cd-form" enctype="multipart/form-data">
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Неверный предыдущий пароль, пожалуйста повторите ввод
+                        </div>
+                        <script>
+                            function ScrollTo(name) {
+                                ScrollToResolver(document.getElementById(name));
+                            }
+
+                            function ScrollToResolver(elem) {
+                                var jump = parseInt(elem.getBoundingClientRect().top * .2);
+                                document.body.scrollTop += jump;
+                                document.documentElement.scrollTop += jump;
+                                if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
+                                    elem.lastjump = Math.abs(jump);
+                                    setTimeout(function() {
+                                        ScrollToResolver(elem);
+                                    }, "20");
+                                } else {
+                                    elem.lastjump = null;
+                                }
+                            }
+                        ScrollTo('cd-login1')</script>
+                    </div>
                     <fieldset>
                         <p class="fieldset black_p">
                             <input type="password" required th:object="${prevPassword}" name="prevPassword" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Старый пароль">
                         </p>
 
                         <p class="fieldset black_p">
-                            <input type="password" required th:object="${newPassword}" name="newPassword" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Новый пароль">
+                            <input id="txtNewPassword" minlength="8" type="password" required th:object="${newPassword}" name="newPassword" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Новый пароль">
                         </p>
 
                         <p class="fieldset black_p">
-                            <input type="password" id="repeatNewPassword" required style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Повторите новый пароль">
+                            <input type="password" minlength="8" id="repeatNewPassword" required style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Повторите новый пароль">
                         </p>
+                        <div class="registrationFormAlert" id="divCheckPasswordMatch">
+                        </div>
 
                         <input name="id" type="hidden" th:field="*{id}">
                         <input name="firstname" type="hidden" th:field="*{firstname}">
@@ -134,7 +150,7 @@
                         <input name="enabled" type="hidden" th:field="*{enabled}">
 
                         <p class="fieldset black_p">
-                            <button class="full-width" type="submit">Изменить</button>
+                            <button id="target" class="full-width" type="submit">Изменить</button>
                         </p>
                     </fieldset>
                 </form>
@@ -146,28 +162,40 @@
 
     <div class="close-btn fa fa-times"></div>
 </div>
-
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/flexslider/jquery.flexslider.js"></script>
-
-<!--sds-->
-<script src="/js/navigation/jquery.easing.js"></script>
-<script src="/js/navigation/scroll.js"></script>
-<script src="/js/navigation/jquery.sticky.js"></script>
-<script src="/js/jquery.bpopup.js"></script>
-
 <script src="/js/classie.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/isotope/isotope.pkgd.js"></script>
-<!---->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/booking.js"></script>
-<script src="/js/modal.js"></script>
+
+<script>
+    $('#target').prop('disabled', true);
+    $('#target').css({'background' :'silver'});
+    $("#divCheckPasswordMatch").html("Введите пароли");
+    var action=$("#form").attr("action");
+    function checkPasswordMatch() {
+        var password = $("#txtNewPassword").val();
+        var confirmPassword = $("#repeatNewPassword").val();
+
+        if (password != confirmPassword){
+            $('#target').css({'background' :'silver'});
+            $('#target').prop('disabled', true);
+            $("#form").removeAttr("action");
+            $("#divCheckPasswordMatch").html("Пароли не совпадают!");
+        }
+        else{
+            $('#target').css({'background' :'#2f889a'});
+            $('#target').prop('disabled', false);
+            $("#form").attr("action",action);
+            $("#divCheckPasswordMatch").html("Пароли совпадают.");
+            }
+    }
+
+    $(document).ready(function () {
+        $("#repeatNewPassword").keyup(checkPasswordMatch);
+    });
+</script>
 
 </body>
 </html>

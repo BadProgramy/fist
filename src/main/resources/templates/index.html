@@ -136,9 +136,9 @@
 									<div class="post-media img-container">
 										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive" alt="">
 									</div>
-									<h2 class="post-title"><a th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"></a></h2>
+									<h2 class="post-title"><a th:href="@{'/newsBlog/topic/id='+${newFaculty.getId()}}" th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"></a></h2>
 									<div class="post-meta">
-										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}" th:style="${newFaculty.getDateStyles()}"><i class="fa fa-calendar"></i></a></span>
+										<i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate().toLocalDate()}" th:style="${newFaculty.getDateStyles()}"><i class="fa fa-calendar"></i></a></span>
 									</div>
 									<div class="post-excerpt box">
 										<p th:utext="${newFaculty.getText()}" th:style="${newFaculty.getTextStyles()}"></p>

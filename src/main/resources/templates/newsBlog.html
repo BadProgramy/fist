@@ -57,9 +57,9 @@
                                 <div class="img-container">
                                     <img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt="">
                                 </div>
-                                <h2 class="post-title"><a th:utext="${newFaculty.getHeading()}"></a></h2>
+                                <h2 class="post-title"><a th:href="@{'/newsBlog/topic/id='+${newFaculty.getId()}}" th:utext="${newFaculty.getHeading()}"></a></h2>
                                 <div class="post-meta">
-                                    <i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate()}"><i class="fa fa-calendar"></i></a></span>
+                                    <i class="fa fa-calendar" style="padding-right: 2%"></i><span><a th:utext="${newFaculty.getDate().toLocalDate()}"><i class="fa fa-calendar"></i></a></span>
                                 </div>
                                 <div class="post-excerpt">
                                     <p th:utext="${newFaculty.getText()}"></p>

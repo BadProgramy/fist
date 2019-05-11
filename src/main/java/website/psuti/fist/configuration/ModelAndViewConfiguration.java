@@ -307,8 +307,8 @@ public class ModelAndViewConfiguration {
                 .replace("#mainSiteName", "Главная")
                 .replace("#newsBlogSite", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi())
                 .replace("#newsFaculty", "Новости")
-                .replace("#aboutFacultyName", "")//о факультете
-                .replace("#aboutFaculty", UrlForSearch.getUrlSite() + UrlForSearch.URL_FACULTY.getApi())
+                //.replace("#aboutFacultyName", "")//о факультете
+                //.replace("#aboutFaculty", UrlForSearch.getUrlSite() + UrlForSearch.URL_FACULTY.getApi())
                 .replace("#deanTeamName", "Состав деканата")
                 .replace("#deanTeam", UrlForSearch.getUrlSite() + UrlForSearch.URL_DEAN_TEAM.getApi())
                 .replace("#unsubscribeName", "Отписаться")

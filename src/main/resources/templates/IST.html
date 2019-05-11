@@ -37,77 +37,8 @@
         console.log('callback - particles.js config loaded');
     });
 </script>
-<div id="content" class="trends text_shadow">
-    <div id="container">
-    <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
-    <div class="container-fluid only_one_trend">
-        <div class="row" style="background: url(../images/home-page/Layer/IST.png);background-size: cover">
-                <div class="trend">
-                    <div class="col-md-2"> <img src="/images/home-page/IST.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Информационные системы и технологии</h1></div>
-                </div>
-        </div>
-        <div class="container list-marker">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 about-info2">
-                        <p>Специальность утверждена приказом Министерства образования РФ в 2000 г. Областью профессиональной деятельности является: машиностроение, приборостроение, наука и образование, металлургия, энергетика, техническая физика, административное управление, бизнес, ядерная энергетика, геология и нефтегазодобыча, химико-лесной комплекс, телекоммуникации, связь, горное дело, управление технологическими процессами, медицинские технологии, системы массовой информации, химико-лесной комплекс, текстильная и легкая промышленность, строительство, экология, а также на предприятиях и в других областях человеческой деятельности.</p>
-                    </div>
-                </div>
-            <div class="row">
-                <div class="col-md-4 col-md-push-2">
-                        <h5>Какие дисциплины изучите</h5>
-                        <ul>
-                            <li>Языки программирования высокого уровня</li>
-                            <li>Информационные технологии</li>
-                            <li>Теория информационных процессов и систем</li>
-                            <li>Методы и средства проектирования информационных систем</li>
-                            <li>Администрирование в информационных системах</li>
-                            <li>Технология программирования</li>
-                            <li>Архитектура информационных систем</li>
-                            <li>Интеллектуальные системы и технологии и многое другое</li>
-                        </ul>
-                </div>
-                <div class="col-md-4 col-md-push-2">
-                    <h5>Кем сможете работать</h5>
-                    <ul>
-                        <li>ИТ-специалистами</li>
-                        <li>Программистами</li>
-                        <li>Системными администраторами</li>
-                        <li>Специалистами по обслуживанию компьютерных сетей и т.п.</li>
-                    </ul>
-                </div>
-                </div>
-        </div>
-        <div class="col-md-offset-2 site-fist logos">
-            <div class="row">
-                <div class="col-md-1">
-            <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/uits"><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
-            </div>
-                <div class="col-md-1">
-            <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
-            </div>
-            </div>
-        </div>
-    </div>
-    </div>
+<div id="content" class="trends text_shadow" th:utext="${istHTMLStructure.getHtmlCode()}">
+
 </div>
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>

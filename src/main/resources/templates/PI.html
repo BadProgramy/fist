@@ -37,76 +37,7 @@
         console.log('callback - particles.js config loaded');
     });
 </script>
-<div id="content" class="trends text_shadow">
-        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
-        <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/PI.png);background-size: cover">
-                <div class="trend">
-                    <div class="col-md-2"> <img src="/images/home-page/PI.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Программная инженерия</h1></div>
-                </div>
-            </div>
-            <div class="container list-marker">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 about-info2">
-                        <p>Специальность утверждена приказом Министерства образования РФ в 2009 г. Программная инженерия - индустриальное производство программного обеспечения для информационно-вычислительных систем различного назначения.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Какие дисциплины изучите</h5>
-                        <ul>
-                            <li>Языки программирования высокого уровня</li>
-                            <li>Объектно-ориентированное программирование на языке Java</li>
-                            <li>Теория информационных процессов и систем</li>
-                            <li>Методы и средства проектирования информационных систем</li>
-                            <li>Администрирование в информационных системах</li>
-                            <li>Технология программирования</li>
-                            <li>Архитектура информационных систем</li>
-                            <li>Интеллектуальные системы и технологии</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Кем сможете работать</h5>
-                        <ul>
-                            <li>ИТ-специалистами</li>
-                            <li>программистами</li>
-                            <li>системными администраторами</li>
-                            <li>специалистами по обслуживанию компьютерных сетей и т.п.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-offset-2 site-fist logos">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/uits"><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+<div id="content" class="trends text_shadow" th:utext="${piHTMLStructure.getHtmlCode()}"></div>
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">

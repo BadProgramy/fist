@@ -51,41 +51,7 @@
     <div th:insert="templates :: headerUserInsertSearch"></div>
 
     <!-- INNER CONTENT -->
-    <section id="content" style="margin-bottom: 10%">
-        <div class="content-blog">
-            <div class="container-fluid">
-                <div class="row">
-                        <h1 class="no-margin">Контакты</h1>
-                        <div class="space20"></div>
-                        <p style="text-align: center;">Часы работы деканата: с 9.00 до 17.00 (с 12.00 - 13.00 обед)<br>
-                            суббота, воскресенье – выходной день.</p>
-                        <div class="col-md-5 col-md-offset-1" style="margin-top: 10px">
-                        <ul class="contact-info">
-                            <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-map-marker"></i> Адрес:</strong></p></div>
-                                <div class="col-md-7" style="float: right"><p style="float: left"><span>443090, г. Самара, Московское шоссе, 77, каб.302 и 303</span></p></div>
-                            </li>
-                            <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-envelope"></i> Электронная почта:</strong></p></div>
-                                <div class="col-md-7" style="float: right"><p style="float: left"><span><a href="#">fist@psuti.ru</a></span></p></div>
-                            </li>
-                            <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Деканат:</strong></p></div>
-                                <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 228-00-05</span></p></div>
-                            </li>
-                            <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Декан:</strong></p></div>
-                                <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 339-11-96 </span></p></div>
-                            </li>
-                        </ul>
-                        </div>
-                        <div class="col-md-5" style="margin-top: 40px">
-                            <div id="map"></div>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="content" th:utext="${contactsHTMLStructure.getHtmlCode()}" style="margin-bottom: 10%"></section>
 
     <div class="clearfix space70"></div>
     <!-- FOOTER -->

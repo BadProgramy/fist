@@ -57,24 +57,7 @@
     </div>
 
     <!-- INNER CONTENT -->
-    <section id="content" style="margin-bottom: 10%">
-        <div class="content-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h2 class=" header2" style="margin-left:40px ">Списки групп</h2>
-                        <div class="space20"></div>
-                        <div class="col-md-5">
-                            <a href="#" class="button button-lists" >1 курс скачать .DOC файл</a>
-                            <a href="#" class="button button-lists" >2 курс скачать .DOC файл</a>
-                            <a href="#" class="button button-lists" >3 курс скачать .DOC файл</a>
-                            <a href="#" class="button button-lists" >4 курс скачать .DOC файл</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="content" th:utext="${groupListsHTMLStructure.getHtmlCode()}" style="margin-bottom: 10%"></section>
 
     <div class="clearfix space70"></div>
     <!-- FOOTER -->

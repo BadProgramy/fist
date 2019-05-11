@@ -15,6 +15,7 @@
         <typeAlias alias="File" type="website.psuti.fist.model.File"/>
         <typeAlias alias="CandidateAssignment" type="website.psuti.fist.model.CandidateAssignment"/>
         <typeAlias alias="Curator" type="website.psuti.fist.model.Curator"/>
+        <typeAlias alias="HTMLStructurePage" type="website.psuti.fist.model.HTMLStructurePage"/>
     </typeAliases>
 
     <mappers>
@@ -28,5 +29,6 @@
         <mapper resource="mapper/File.xml"/>
         <mapper resource="mapper/CandidateAssignment.xml"/>
         <mapper resource="mapper/Curator.xml"/>
+        <mapper resource="mapper/HTMLStructurePage.xml"/>
     </mappers>
 </configuration>

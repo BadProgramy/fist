@@ -13,7 +13,8 @@ public enum NameTableBD {
     USERS_ROLE("users_role"),
     FILE("files"),
     CANDIDATE_ASSIGNMENT("candidate_assignment"),
-    CURATOR("curator");
+    CURATOR("curator"),
+    HTMLStructurePage("htmlstructure_page");
 
     private String name;
 

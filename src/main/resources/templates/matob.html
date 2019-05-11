@@ -35,76 +35,7 @@
     /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
     particlesJS.load('particles-js', '/assets/particles.json', function() {});
 </script>
-<div id="content" class="trends text_shadow">
-        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
-        <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
-                <div class="trend">
-                    <div class="col-md-2"> <img src="/images/home-page/matob.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Математическое обеспечение и администрирование информационных систем</h1></div>
-                </div>
-            </div>
-            <div class="container list-marker">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 about-info2">
-                    <p>Специальность утверждена приказом Министерства образования РФ в 2000 г. Областью профессиональной деятельности является: математические и алгоритмические модели, программы, программные системы и комплексы, методы проектирования и реализации, способы производства, сопровождения, эксплуатации и администрирования в различных областях, включая междисциплинарные. </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Какие дисциплины изучите</h5>
-                        <ul>
-                            <li>Алгоритмы и структуры данных</li>
-                            <li>Объектно-ориентированное программирование на языке Java</li>
-                            <li>Технология разработки программного обеспечения</li>
-                            <li>Управление программными проектами</li>
-                            <li>Администрирование информационных систем</li>
-                            <li>Системы реального времени</li>
-                            <li>Параллельное программирование</li>
-                            <li>Операционные системы</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Кем сможете работать</h5>
-                        <ul>
-                            <li>ИТ-специалистами</li>
-                            <li>программистами</li>
-                            <li>системными администраторами</li>
-                            <li>специалистами по обслуживанию компьютерных сетей и т.п.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-offset-2 site-fist logos">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/uits"><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+<div id="content" class="trends text_shadow" th:utext="${matobHTMLStructure.getHtmlCode()}"></div>
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">

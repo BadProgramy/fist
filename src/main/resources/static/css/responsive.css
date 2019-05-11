@@ -71,7 +71,7 @@
 }
 
 
-@media (min-width: 920px) and (max-width: 991px){
+@media (min-width: 700px) and (max-width: 1050px){
 
     .tb-info {
         margin-left: 0px;
@@ -166,14 +166,8 @@
 
 .top-bar ul li {
     float: left;
-    /*margin-left: 30px;*/
 }
-
-.sf-menu > li > a {
-    border-left: medium none;
-    border-top: medium none;
-    padding: 25px 29px;
-}
+   
 
 .one-header .navbar-nav li a {padding: 0px 11px !important;}
 #navbar { padding: 32px 0 0; }
@@ -204,6 +198,29 @@
 #portfolio-gal .main-navigation { position:relative; left:auto; margin-right:0; top:auto; transform:none; margin-bottom:44px; }
 .portfolio-gal .folio-item .folio-border .folio-detail { padding: 25px; }
 }
+@media (max-width: 1199px){
+    .col-lg-3 {
+        width: 33.33333333%;
+    }
+    .col-md-offset-1 {
+         margin-left: 0;
+    }
+}
+@media (max-width: 1300px)and (min-width: 800px){
+.site-fist{
+    max-width: 20%;
+}
+    .sf-menu > li > a {
+        padding: 20px 10px;
+        font-size: 15px;
+    }
+    .menu-wrap .row{
+    margin-left: 1% !important;
+    }
+    .ban p{
+        font-size: 30px !important;
+    }
+}
 
 @media (min-width: 992px) and (max-width: 1199px){
 
@@ -213,7 +230,6 @@
 .blog .main-blog ul li .box-holder a {width: 100%;}
 .navbar-nav > li { padding:0 10px; }
 .service-left .ico { height:162px; }
-.service-right .ico { height:162px; }
 .service-right::after, .service-left::after { top:14px; }
 .service-left .ico img.icon_1 { left:78%; top:50%; }
 .service-left .ico img.icon_2 {	 left:78%; top:50%;}
@@ -221,7 +237,6 @@
 .service-right .ico img.icon_1 { top:50%; }
 .main-team ul.cs-style-7 li figcaption h5 { padding-bottom:10px; }
 .main-team ul.cs-style-7 li figcaption p { padding-bottom:10px; }
-/*.pricing-bg .main-pricing .price-block .inner-price { padding: 40px 50px; }*/
 } 
 
 @media (min-width: 240px) and (max-width: 480px){
@@ -274,7 +289,6 @@
 .tb-info {
     position: relative;
     left: 0 !important;
-    top: 17px;
 }
 
 .top-bar {
@@ -312,8 +326,14 @@
 }
 
 }
-
-@media (min-width: 200px) and (max-width:1130px){
+@media (min-width: 998px) and (max-width:1130px){
+    .sf-menu > li > a {
+        padding: 20px 10px;
+        font-size: 15px;
+        max-width: 15%;
+    }
+}
+@media (min-width: 200px) and (max-width:1000px){
 
 .is-sticky .navbar-brand {
     display: none;
@@ -864,4 +884,16 @@ h2.big-text {font-size: 93px;}
     top:-5px;
 }
 
+}
+@media (max-width:800px ) {
+    .ban p {
+        font-size: 20px !important;
+        margin-top: 5%;
+    }
+    .logo-psuti{
+        max-width: 20%;
+    }
+    .top-bar ul li{
+        display: none;
+    }
 }

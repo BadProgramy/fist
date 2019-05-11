@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
-    <link rel="stylesheet" href="/js/pikaday/pikaday.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/light.css">
     <link rel="stylesheet" href="/css/responsive.css">
@@ -75,9 +74,8 @@
 
         <div class="container curators-table-center">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <table>
-                        <caption>1 Курс</caption>
+                <div class="col-md-12">
+                    <table id="mytd" style="position: relative;">
                         <tr>
                             <th>№ группы</th>
                             <th>Ф.И.О. куратора-преподавателя</th>
@@ -99,23 +97,36 @@
     </section>
 
     <div class="clearfix space70"></div>
-    <!-- FOOTER -->
     <div th:replace="templates :: footerUser"></div>
-    <!-- FOOTER -->
 </div>
 
 <div th:replace="templates :: footerUserInsertMap"></div>
 
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
+<script>
+    function resizeTable() {
+        var table=document.getElementById("mytd");
+        var doc=document.getElementById("mytd").offsetWidth;
+        var marginx=doc/-2;
+        table.style.marginLeft=marginx+'px';
+    }
+    $(document).ready(function(){
+        $(document).scroll(function(){
+            resizeTable();
+        });
+        resizeTable();
+        $(window).resize(function(){
+            resizeTable();
+        });
+
+    });
+</script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/classie.js"></script>
 <script src="/js/masonry.pkgd.min.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
 <script src="/js/superfish/js/superfish.js"></script>
-
-<script src="/js/jquery.bpopup.js"></script>
-<script src="/js/pikaday/pikaday.js"></script>
 <script src="/js/dialogFx.js"></script>
 <script src="/js/dialog-js.js"></script>
 <!---->

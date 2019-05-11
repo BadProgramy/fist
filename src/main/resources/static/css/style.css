@@ -2999,7 +2999,8 @@ line-height:28px;
     border-radius: 0px;
     text-transform: uppercase;
     color: #000;
-    font-size: 13px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
     padding: 15px 40px;
 	font-weight:600;
 }
@@ -3485,7 +3486,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     background: white;
 }
 .other-pages-search{
-    position: fixed;
+    position: relative;
     top: 14%;
     left: 100%;
     z-index: 50;

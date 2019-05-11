@@ -53,6 +53,9 @@ public class ModelAndViewConfiguration {
     @Autowired CuratorService curatorService;
 
     @Autowired
+    private HTMLStructurePageService htmlStructurePageService;
+
+    @Autowired
     private Sender sender;
 
     @Autowired
@@ -112,6 +115,7 @@ public class ModelAndViewConfiguration {
         newsOfFaculties = new ArrayList<>();
         modelAndView = new ModelAndView("", "", "");
 
+        updateHTMLStructurePages();
         updateCandidateAssignment();
         updateCurator();
         updateBestStudentTable();
@@ -128,6 +132,7 @@ public class ModelAndViewConfiguration {
 
     public void changeModel(NameTableBD nameTable) {
         if (nameTable.equals(NameTableBD.BEST_STUDENT)) updateBestStudentTable();
+        else if (nameTable.equals(NameTableBD.HTMLStructurePage)) updateHTMLStructurePages();
         else if (nameTable.equals(NameTableBD.CANDIDATE_ASSIGNMENT)) updateCandidateAssignment();
         else if (nameTable.equals(NameTableBD.CURATOR)) updateCurator();
         else if (nameTable.equals(NameTableBD.EDUCATION_PROCESS)) updateEducationProcessTable();
@@ -139,6 +144,29 @@ public class ModelAndViewConfiguration {
         else if (nameTable.equals(NameTableBD.EMPLOYEE)) updateEmployee();
         else if (nameTable.equals(NameTableBD.DEPARTMENT)) updateDepartment();
         else if (nameTable.equals(NameTableBD.FILE)) updateFile();
+    }
+
+    private void updateHTMLStructurePages() {
+        modelAndView.addObject("commissionsFISTHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.COMMISSIONS_FIST.getId()));
+        modelAndView.addObject("contactsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CONTACTS.getId()));
+        modelAndView.addObject("costEducationHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.COST_EDUCATION.getId()));
+        modelAndView.addObject("facultyHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.FACULTY.getId()));
+        modelAndView.addObject("gradStudentsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GRAD_STUDENTS.getId()));
+        modelAndView.addObject("graduatesHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GRADUATES.getId()));
+        modelAndView.addObject("groupListsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GROUP_LISTS.getId()));
+        modelAndView.addObject("innovatikaHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.INNOVATIKA.getId()));
+        modelAndView.addObject("interimControlHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.INTERIM_CONTROL.getId()));
+        modelAndView.addObject("istHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.IST.getId()));
+        modelAndView.addObject("ivtHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.IVT.getId()));
+        modelAndView.addObject("mainTrendHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.MAIN_TREND.getId()));
+        modelAndView.addObject("matobHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.MATOB.getId()));
+        modelAndView.addObject("piHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.PI.getId()));
+        modelAndView.addObject("prikladInfoHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.PRIKLAD_INFO.getId()));
+        modelAndView.addObject("resultOfControlHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RESULT_OF_CONTROL.getId()));
+        modelAndView.addObject("rightsAndObligationHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RIGHT_AND_OBLIGATION.getId()));
+        modelAndView.addObject("rsoHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RSO.getId()));
+        modelAndView.addObject("trainingDirectionsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.TRAINING_DIRECTIONS.getId()));
+        modelAndView.addObject("uitsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.UITS.getId()));
     }
 
     private void updateCurator() {

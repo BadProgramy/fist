@@ -29,76 +29,7 @@
 </head>
 
 <body style="background-color: #ededf1 !important;">
-<div id="content" class="trends text_shadow">
-    <div class="back_img"><a href="/main" class="change"></a> </div>
-    <div class="container-fluid" >
-        <div class="row" style="background: url(../images/home-page/Layer1/matob.png);background-size: cover">
-            <a href="/example" class="transition">
-                <div class="trend" >
-                    <img src="/images/home-page/matob.png" class="img-responsive"><p>Математическое обеспечение и администрирование информационных систем</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="row" style="background: url(../images/home-page/Layer1/IVT.png);background-size: cover">
-            <a href="/example" class="transition">
-                <div class="trend" >
-                    <img src="/images/home-page/IVT.png" class="img-responsive"><p>ИНФОРМАТИКА И ВЫЧИСЛИТЕЛЬНАЯ ТЕХНИКА</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="row" style="background: url(../images/home-page/Layer1/IST.png);background-size: cover">
-            <a href="/example" class="transition">
-                <div class="trend" >
-                    <img src="/images/home-page/IST.png" class="img-responsive"><p>Информационные системы и технологии</p>
-                </div>
-            </a>
-        </div>
-        <div class="row" style="background: url(../images/home-page/Layer1/prikladInfo.png);background-size: cover" >
-            <a href="/prikladInfo" class="transition">
-                <div class=" trend" >
-                    <img src="/images/home-page/prikladInfo.png" class="img-responsive"><p>Прикладная информатика</p>
-                </div>
-            </a>
-        </div>
-        <div class="row" style="background: url(../images/home-page/Layer1/PI.png);background-size: cover">
-            <a href="/PI" class="transition">
-                <div class=" trend" >
-                    <img src="/images/home-page/PI.png" class="img-responsive"><p>Программная инженерия</p>
-                </div>
-            </a>
-        </div>
-        <div class="row" style="background-image: url(../images/home-page/Layer1/uits.png);background-size: cover">
-            <a href="/uits" class="transition">
-                <div class=" trend" >
-                    <img src="/images/home-page/uits.png" class="img-responsive"><p>Управление и информатика в технических системах</p>
-                </div>
-            </a>
-        </div>
-        <div class="row" style="background: url(../images/home-page/Layer1/Innovatika.png);background-size: cover">
-            <a href="/innovatika" class="transition">
-                <div class="trend" >
-                    <img src="/images/home-page/Innovatika.png" class="img-responsive"><p>Инноватика</p>
-                </div>
-            </a>
-        </div>
-        <div class="row" style="background: url(../images/home-page/Layer1/RSO.png);background-size: cover">
-            <a href="/RSO" class="transition">
-                <div class="trend">
-                    <img src="/images/home-page/RSO.png" class="img-responsive"><p>Реклама и связь с общественностью</p>
-                </div>
-            </a>
-        </div>
-        <div class="row lastrow"  style="background: url(../images/home-page/Layer1/BuisnessInfo.png);background-size: cover">
-            <a href="/BI" class="transition">
-                <div class="trend" >
-                    <img src="/images/home-page/BuisnessInfo.png" class="img-responsive"><p>Бизнес информатика</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+<div id="content" class="trends text_shadow" th:utext="${trainingDirectionsHTMLStructure.getHtmlCode()}"></div>
 
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">

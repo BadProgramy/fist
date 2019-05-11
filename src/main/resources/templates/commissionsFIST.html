@@ -60,68 +60,7 @@
     </div>
 
     <!-- INNER CONTENT -->
-    <section id="content">
-        <div class="page_header page_header2 text-center">
-            <h2>Комиссии ФИСТ</h2>
-        </div>
-        <div class="container" style="margin-bottom: 10%">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="accordion">
-                        <div class="panel-group" id="accordion-e1">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseOne">
-                                            Аттестационная комиссия
-                                            <span class="fa fa-angle-down"></span>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <h2 style="font-size: 20px;text-align: center;padding-bottom: 20px;">Аттестационная комиссия ФИСТ занимается вопросами перевода студентов с одной образовательной программы на другую, а также вопросам восстановления студентов в ПГУТИ на факультет ИСТ.</h2>
-                                            <strong><p>Председатель аттестационной комиссии факультета ИСТ:</p></strong>
-                                            <p>Богомолова Мария Анатольевна, декан ФИСТ, кандидат технических наук, доцент</p>
-                                            <strong><p>Члены аттестационной комиссии факультета ИСТ:</p></strong>
-                                            <p>Андронова Ирина Владимировна, зав. каф. Связи с общественностью, доктор политических наук, профессор</p>
-                                            <p>Бахарева Надежда Федоровна, зав. каф. Информатики и вычислительной техники, доктор технических наук, профессор</p>
-                                            <p>Тарасов Вениамин Николаевич, зав. каф. Программного обеспечения и управления в технических системах, доктор технических наук, профессор</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-e1" href="#collapseTwo">
-                                            Стипендиальная комиссия
-                                            <span class="fa fa-angle-down"></span>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <h2 style="font-size: 20px"></h2>
-                                            <strong><p>Председатель стипендиальной комиссии факультета ИСТ:</p></strong>
-                                            <p>Богомолова Мария Анатольевна, декан ФИСТ, кандидат технических наук, доцент</p>
-                                            <strong><p>Члены стипендиальной комиссии факультета ИСТ:</p></strong>
-                                            <p>Белова Оксана Викторовна, зам. декана ФИСТ по УВР, кандидат политических наук, доцент</p>
-                                            <p>Тучкова Анна Сергеевна, зам. декана ФИСТ по УВР</p>
-                                            <p>Чернова Светлана Владимировна, зам. декана ФИСТ по УВР</p>
-                                            <p>Аброськина Елена Сергеевна, студентка гр. ПО-51, председатель профбюро ФИСТ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="content" th:utext="${commissionsFISTHTMLStructure.getHtmlCode()}"></section>
 
     <div class="clearfix space70"></div>
     <!-- FOOTER -->

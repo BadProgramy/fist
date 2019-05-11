@@ -37,77 +37,7 @@
         console.log('callback - particles.js config loaded');
     });
 </script>
-<div id="content" class="trends text_shadow">
-        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
-        <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/uits.png);background-size: cover">
-                <div class="trend">
-                    <div class="col-md-2"> <img src="/images/home-page/uits.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Управление и информатика в технических университетах</h1></div>
-                </div>
-            </div>
-            <div class="container list-marker">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 about-info2">
-                    <p>Специальность утверждена приказом Министерства образования РФ в 2009 г. Область профессиональной деятельности включает проектирование, исследование, производство и эксплуатацию систем и средств управления в промышленной и оборонной отраслях, в экономике, на транспорте, в сельском хозяйстве, медицине; создание современных программных и аппаратных средств исследования и проектирования, контроля, технического диагностирования и промышленных испытаний систем автоматического и автоматизированного управления.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Какие дисциплины изучите</h5>
-                        <ul>
-                            <li>Моделирование систем управления</li>
-                            <li>Технические средства автоматизации и управления</li>
-                            <li>Автоматизированные и информационно-управляющие системы</li>
-                            <li>Идентификация и диагностика систем</li>
-                            <li>Управление сложными техническими системами</li>
-                            <li>Системы реального времени</li>
-                            <li>Системное программное обеспечение</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Кем сможете работать</h5>
-                        <ul>
-                            <li>инженер</li>
-                            <li>конструктор</li>
-                            <li>технолог</li>
-                            <li>научный сотрудник</li>
-                            <li>в научно-исследовательских организациях, предприятиях, занимающимися системами управления, телекоммуникационных компаниях</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-offset-2 site-fist logos">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+<div id="content" class="trends text_shadow" th:utext="${uitsHTMLStructure.getHtmlCode()}"></div>
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">

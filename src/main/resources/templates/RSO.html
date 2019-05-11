@@ -37,78 +37,7 @@
         console.log('callback - particles.js config loaded');
     });
 </script>
-<div id="content" class="trends text_shadow">
-        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
-        <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/RSO.png);background-size: cover">
-                <div class="trend">
-                    <div class="col-md-2"> <img src="/images/home-page/RSO.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Реклама и связь с общественностью</h1></div>
-                </div>
-            </div>
-            <div class="container list-marker">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 about-info2">
-                    <p>Специальность утверждена приказом Министерства образования РФ в 2000 г. Квалификация специалиста по связям с общественностью предусматривает овладение необходимыми знаниями и навыками для выполнения функций пресссекретаря, менеджера коммуникационной структуры, эксперта, консультанта,референта в государственных и общественных учреждениях и организациях,коммерческих структурах по вопросам массовой информации и деловой коммуникации, Общественных связей, гуманитарных технологий, научных, культурных и туристических обменов.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Какие дисциплины изучите</h5>
-                        <ul>
-                            <li>проведения PR-акций</li>
-                            <li>пресс-конференций, выставок</li>
-                            <li>презентаций, брифингов и т.п.</li>
-                            <li>взаимодействия со средствами массовой информации</li>
-                            <li>разработки и реализации PR-проектов</li>
-                            <li>общения на английском языке</li>
-                            <li>создания мультимедийной рекламы</li>
-                            <li>фото- и видеомонтажа</li>
-                            <li>проведения мероприятий с использованием мультимедийных средств</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Кем сможете работать</h5>
-                        <ul>
-                            <li>менеджером рекламной службы</li>
-                            <li>пресс-секретарем</li>
-                            <li>консультантом по рекламе и связям с общественностью</li>
-                            <li>PR-менеджером и т.п.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-offset-2 site-fist logos">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href=""><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+<div id="content" class="trends text_shadow" th:utext="${rsoHTMLStructure.getHtmlCode()}"></div>
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">

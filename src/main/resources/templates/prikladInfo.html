@@ -30,85 +30,14 @@
 </head>
 
 <body style="background-color: #ededf1 !important;">
-<div id="particles-js"></div>
+<div id="particles-js" th:utext="${prikladInfoHTMLStructure.getHtmlCode()}"></div>
 <script>
     /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
     particlesJS.load('particles-js', '/assets/particles.json', function() {
         console.log('callback - particles.js config loaded');
     });
 </script>
-<div id="content" class="trends text_shadow">
-        <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
-        <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/prikladInfo.png);background-size: cover">
-                <div class="trend">
-                    <div class="col-md-2"> <img src="/images/home-page/prikladInfo.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Прикладная информатика</h1></div>
-                </div>
-            </div>
-            <div class="container list-marker">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 about-info2">
-                        <p>Специальность утверждена приказом Министерства образования РФ в 2000 г.  Выпускник – информатик в своей практической деятельности анализирует, прогнозирует, моделирует и создает информационные процессы и технологии в рамках профессионально-ориентированных информационных систем. В большей степени имеет дело с профессионально-ориентированной оболочкой (которую он проектирует, создаёт и применяет), состоящей из специальных программных средств, информационного обеспечения и организационных мероприятий поддержки функционирования конкретных процессов в области применения, и в меньшей степени имеет дело с ядром информационной системы (разработкой комплекса вычислительных средств, операционной системы, систем управления базами данных и др.).</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Какие дисциплины изучите</h5>
-                        <ul>
-                            <li>Имитационное моделирование</li>
-                            <li>Теорию имитационных экономических систем</li>
-                            <li>Проектирование информационных систем</li>
-                            <li>Информационные системы и технологии</li>
-                            <li>Базы данных</li>
-                            <li>Реинжиниринг бизнес-процессов</li>
-                            <li>Экономическая безопасность в корпоративных информационных системах</li>
-                            <li>Интеллектуальные информационные системы</li>
-                            <li>Электронный бизнес</li>
-                            <li>Информационные аналитические системы в бизнесе</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-md-push-2">
-                        <h5>Кем сможете работать</h5>
-                        <ul>
-                            <li>специалистами по разработке и внедрению информационных систем</li>
-                            <li>менеджерами по поддержке информационных систем</li>
-                            <li>бизнес-аналитиками и т.п.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-offset-2 site-fist logos">
-                <div class="row">
-
-                    <div class="col-md-1">
-                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/uits"><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="/BI"><img src="/images/home-page/BuisnessInfo.png" class="transition img-responsive" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+<div id="content" class="trends text_shadow" th:utext="${prikladInfoHTMLStructure.getHtmlCode()}"></div>
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">

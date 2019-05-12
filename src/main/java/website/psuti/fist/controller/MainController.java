@@ -206,24 +206,6 @@ public class  MainController {
 
 
     //TODO абитуриентам.....................................................................
-    @RequestMapping("/abitur/trainingDirections")
-    public ModelAndView trainingDirections() {
-        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
-        modelAndView.setViewName("trainingDirections");
-        return modelAndView;
-    }
-    @RequestMapping("/example")
-    public ModelAndView example() {
-        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
-        modelAndView.setViewName("example");
-        return modelAndView;
-    }
-    @RequestMapping("/example2")
-    public ModelAndView example2() {
-        ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
-        modelAndView.setViewName("example2");
-        return modelAndView;
-    }
 
 
     @RequestMapping("/abitur/costEducation")

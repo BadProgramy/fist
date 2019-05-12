@@ -229,7 +229,6 @@
 .blog .main-blog ul li .box-holder a {width: 100%;}
 .navbar-nav > li { padding:0 10px; }
 .service-left .ico { height:162px; }
-.service-right::after, .service-left::after { top:14px; }
 .service-left .ico img.icon_1 { left:78%; top:50%; }
 .service-left .ico img.icon_2 {	 left:78%; top:50%;}
 .service-right .ico img.icon_2 { top:50%; }

@@ -44,7 +44,7 @@
 	<script src="/js/modernizr.custom.js"></script>
 
 </head>
-<body class="multi-page">
+<body id="firstPage" class="multi-page">
 
 <div id="wrapper" class="wrapper">
 	<!-- HEADER -->
@@ -75,9 +75,9 @@
 				<div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"></div>
 					<ul class="sf-menu" th:each="mapEntry : ${menuItems}">
 						<li>
-							<a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}" th:style="${mapEntry.key.getStyles()}"></a>
+							<a class="list-to-a" th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}" th:style="${mapEntry.key.getStyles()}"></a>
 							<div class="mobnav-subarrow"></div>
-							<ul >
+							<ul class="is-s">
 								<div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
 									<li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
 										<a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}" th:style="${menuItemHeaderInMainPage.getStyles()}"></a>
@@ -103,7 +103,7 @@
 		</form>
 	</div>
 	<!--HEADER-->
-	<div class="header" style="height: 100px"></div>
+	<div class="header heigh"></div>
 
 	<!-- BANER -->
 	<div class="container-fluid no-padding" style="background: black">
@@ -239,12 +239,14 @@
 								</div>
 							</div>
 						</div>
+                        <!-- SnapWidget -->
+
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 							<div id="secondT" class="price-block">
 								<div id="secondTT" class="inner-price">
 									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}" th:style="${ItemHeader5.getStyles()}"></h3>
 									<div class='widget-content'>
-										<iframe src="" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
+                                        <iframe src="https://snapwidget.com/embed/683995" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
 									</div>
 								</div>
 							</div>

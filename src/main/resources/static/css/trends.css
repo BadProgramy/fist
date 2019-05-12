@@ -27,7 +27,12 @@ html,body {
 .trends .row:hover {
     cursor: pointer;
 }
-
+.trend{
+    overflow: hidden;
+}
+.only_one_trend .row .trend{
+    overflow: inherit !important;
+}
 .trend {
     z-index: 40;
     position: relative;

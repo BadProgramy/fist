@@ -39,4 +39,5 @@ $(window).load(function() {
         });
 });
 
+    $("ul.sf-menu a:not([href^='#'])").addClass("zindex");
 

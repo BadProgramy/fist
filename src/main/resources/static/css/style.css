@@ -412,12 +412,12 @@ container-fluid{
 
 /* 3.1. ========== Common Class Start ==========*/
 h1 {
-	font-weight:700;
-	font-size:35px;
-	line-height:35px;
-	text-align:center;
-	text-transform:uppercase;	
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
 }
+.info-doc p{margin-left: -15px}
 .main-btn {
 	border: medium none;
     border-radius: 0;
@@ -3486,12 +3486,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     background: white;
 }
 .other-pages-search{
-    position: relative;
+    position: fixed;
     top: 14%;
     left: 100%;
-    z-index: 50;
+    z-index: 1000;
     opacity: 0;
     width: 100%;
+}
+.zindex{
+    z-index: 1000;
+}
+.heigh{
+    height:100px;
 }
 #mytd{
     left: 50%;

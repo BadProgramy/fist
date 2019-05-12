@@ -144,9 +144,9 @@
                 <div th:object="${menuItemMobile}" th:utext="${menuItemMobile.getName()}" th:style="${menuItemMobile.getStyles()}" id="mobnav-btn"></div>
                 <ul class="sf-menu" th:each="mapEntry : ${menuItems}">
                     <li>
-                        <a th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
+                        <a class="list-to-a" th:object="${mapEntry.key}" th:href="${mapEntry.key.getUrlHref()}" th:utext="${mapEntry.key.getName()}"></a>
                         <div class="mobnav-subarrow"></div>
-                        <ul >
+                        <ul class="is-s">
                             <div class="bord" th:each="menuItemMinor : ${mapEntry.value}">
                                 <li th:each="menuItemHeaderInMainPage : ${menuItemMinor}">
                                     <a th:href="${menuItemHeaderInMainPage.getUrlHref()}" th:utext="${menuItemHeaderInMainPage.getName()}" th:style="${menuItemHeaderInMainPage.getStyles()}"></a>

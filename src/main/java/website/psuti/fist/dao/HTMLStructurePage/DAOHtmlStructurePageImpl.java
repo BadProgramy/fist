@@ -29,7 +29,7 @@ public class DAOHtmlStructurePageImpl implements DAOHtmlStructurePage {
         List<HTMLStructurePage> htmlStructurePages;
         SqlSession session = factory.getFactory().openSession();
         try {
-            htmlStructurePages = session.selectList("File.selectAll");
+            htmlStructurePages = session.selectList("HTMLStructurePage.selectAll");
         } finally {
             session.close();
         }

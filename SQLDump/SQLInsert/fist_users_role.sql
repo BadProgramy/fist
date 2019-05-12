@@ -1,0 +1,1 @@
+INSERT INTO fist.users_role (users_id, role) VALUES (62, 'SUBSCRIBER');

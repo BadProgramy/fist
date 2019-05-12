@@ -57,7 +57,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_hea
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 1;
+        </div>', name_page = 'commissionsFIST.html (Комииссия факультета)' WHERE id = 1;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="content-blog">
             <div class="container-fluid">
                 <div class="row">
@@ -90,7 +90,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="content-blog">
                         </div>
                 </div>
             </div>
-        </div>' WHERE id = 2;
+        </div>', name_page = 'contacts.html (Контакты)' WHERE id = 2;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="content-blog">
                 <div class="shortcontain container">
                     <div class="row">
@@ -135,7 +135,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="content-blog">
                         </div>
                     </div>
                 </div>
-            </div>' WHERE id = 3;
+            </div>', name_page = 'costEducation.html (Стоимость обучения)' WHERE id = 3;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_header2 text-center">
             <h2>О факультете</h2>
         </div>
@@ -193,7 +193,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_hea
                 </div>
             </div>
         </div>
-        <p style="padding-left: 10%;padding-top: 20px; font-size: 20px;">С 01.11.2017 года факультет возглавляет декан Богомолова Мария Анатольевна, к.т.н., доцент.</p>' WHERE id = 4;
+        <p style="padding-left: 10%;padding-top: 20px; font-size: 20px;">С 01.11.2017 года факультет возглавляет декан Богомолова Мария Анатольевна, к.т.н., доцент.</p>', name_page = 'faculty.html (О факультете)' WHERE id = 4;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="text-center page_header">
             <h2 >Документы</h2>
             <p>для оформления выпускной квалификационной работы (ВКР)<br>в 2018/2019 учебном году</p>
@@ -290,7 +290,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="text-center page_hea
                         </ul>
                     </div>
                 </div>
-            </div>' WHERE id = 5;
+            </div>', name_page = 'gradStudent.html (Дипломники)' WHERE id = 5;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_header2 text-center">
             <h2>Выпускники</h2>
             <p>факультета информационных систем и технологий</p>
@@ -392,7 +392,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_hea
                     <p style="font-style:italic">"Обучение на факультете информационных систем и технологий способствовало получению широкого круга знаний в области IT. Все компетенции, заложенные в программе обучения ФИСТ, делают выпускников ВУЗа востребованными специалистами на рынке труда."</p>
                 </div>
             </div>
-        </div>' WHERE id = 6;
+        </div>', name_page = 'graduates.html (Выпускники факультета)' WHERE id = 6;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="content-blog">
             <div class="container">
                 <div class="row">
@@ -408,7 +408,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="content-blog">
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 7;
+        </div>', name_page = 'groupLists.html (Списки групп)' WHERE id = 7;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/Innovatika.png);background-size: cover">
@@ -482,7 +482,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 8;
+        </div>', name_page = 'innovatika.html (Инноватика)' WHERE id = 8;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="text-center page_header">
             <h2 >Промежуточный контроль</h2>
         </div>
@@ -537,7 +537,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="text-center page_hea
                     <p>Убедительная просьба к преподавателям кафедр: просим Вас своевременно выставить результаты внутрисеместровой аттестации студентов ФИСТ.<br>Раздел "Общая оценка" подразумевает выставление оценки по пяти бальной шкале (допускается выставление "н/а" в случае, если студент не посещает занятия и не выполнил задания согласно рабочей прогамме/учебному плану).</p>
                 </div>
             </div>
-        </div>' WHERE id = 9;
+        </div>', name_page = 'interimControl.html (Промежуточный контроль)' WHERE id = 9;
 UPDATE fist.htmlstructure_page SET html_code = '<div id="container">
     <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
     <div class="container-fluid only_one_trend">
@@ -607,7 +607,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div id="container">
             </div>
         </div>
     </div>
-    </div>' WHERE id = 10;
+    </div>', name_page = 'ist.html (ИСТ)' WHERE id = 10;
 UPDATE fist.htmlstructure_page SET html_code = '<div id="container">
         <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
@@ -677,7 +677,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div id="container">
                 </div>
             </div>
         </div>
-    </div>' WHERE id = 11;
+    </div>', name_page = 'ivt.html (ИВТ)' WHERE id = 11;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/main" class="change"></a> </div>
      <div class="container-fluid" >
          <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
@@ -745,7 +745,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
              </div>
              </a>
          </div>
-     </div>' WHERE id = 12;
+     </div>', name_page = 'mainTrend.html (Основные направления подготовки)' WHERE id = 12;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
@@ -813,7 +813,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 13;
+        </div>', name_page = 'matob.html (Математическое обсепечение)' WHERE id = 13;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/PI.png);background-size: cover">
@@ -881,7 +881,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 14;
+        </div>', name_page = 'pi.html (Программная инженерия)' WHERE id = 14;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/prikladInfo.png);background-size: cover">
@@ -951,7 +951,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 15;
+        </div>', name_page = 'prikladInfo.html (Прикладная информатика)' WHERE id = 15;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="text-center page_header">
             <h2 >Итоги промежуточного контроля</h2>
         </div>
@@ -1025,7 +1025,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="text-center page_hea
                     <a href="#">3 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
             </div>
-        </div>' WHERE id = 16;
+        </div>', name_page = 'resultOfControl.html (Итоги промеж.контроля)' WHERE id = 16;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_header2 text-center">
             <h2>Права, обязанности и поощрения студентов ПГУТИ</h2>
         </div>
@@ -1264,7 +1264,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="page_header page_hea
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 17;
+        </div>', name_page = 'rightsAndObligations.html (Права и обязанности)' WHERE id = 17;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/RSO.png);background-size: cover">
@@ -1334,7 +1334,7 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 18;
+        </div>', name_page = 'rso.html (РСО)' WHERE id = 18;
 UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/uits.png);background-size: cover">
@@ -1403,4 +1403,4 @@ UPDATE fist.htmlstructure_page SET html_code = '<div class="back_img"><a href="/
                     </div>
                 </div>
             </div>
-        </div>' WHERE id = 20;
+        </div>', name_page = 'uits.html (УИТС)' WHERE id = 20;

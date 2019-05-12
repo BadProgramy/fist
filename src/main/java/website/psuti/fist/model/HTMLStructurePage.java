@@ -12,6 +12,7 @@ public class HTMLStructurePage {
     @Column
     @Type(type = "org.hibernate.type.TextType")
     private String htmlCode;
+    private String namePage;
 
     public HTMLStructurePage() {
     }
@@ -30,5 +31,13 @@ public class HTMLStructurePage {
 
     public void setHtmlCode(String htmlCode) {
         this.htmlCode = htmlCode;
+    }
+
+    public String getNamePage() {
+        return namePage;
+    }
+
+    public void setNamePage(String namePage) {
+        this.namePage = namePage;
     }
 }

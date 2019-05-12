@@ -1,4 +1,4 @@
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (1, '<div class="page_header page_header2 text-center">
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (1, '<div class="page_header page_header2 text-center">
             <h2>Комиссии ФИСТ</h2>
         </div>
         <div class="container" style="margin-bottom: 10%">
@@ -57,8 +57,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (1, '<div class="page
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (2, '<div class="content-blog">
+        </div>', 'commissionsFIST.html (Комииссия факультета)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (2, '<div class="content-blog">
             <div class="container-fluid">
                 <div class="row">
                         <h1 class="no-margin">Контакты</h1>
@@ -90,8 +90,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (2, '<div class="cont
                         </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (3, '<div class="content-blog">
+        </div>', 'contacts.html (Контакты)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (3, '<div class="content-blog">
                 <div class="shortcontain container">
                     <div class="row">
                         <div class="page_header text-center">
@@ -135,8 +135,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (3, '<div class="cont
                         </div>
                     </div>
                 </div>
-            </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (4, '<div class="page_header page_header2 text-center">
+            </div>', 'costEducation.html (Стоимость обучения)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (4, '<div class="page_header page_header2 text-center">
             <h2>О факультете</h2>
         </div>
         <div class="container">
@@ -193,8 +193,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (4, '<div class="page
                 </div>
             </div>
         </div>
-        <p style="padding-left: 10%;padding-top: 20px; font-size: 20px;">С 01.11.2017 года факультет возглавляет декан Богомолова Мария Анатольевна, к.т.н., доцент.</p>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (5, '<div class="text-center page_header">
+        <p style="padding-left: 10%;padding-top: 20px; font-size: 20px;">С 01.11.2017 года факультет возглавляет декан Богомолова Мария Анатольевна, к.т.н., доцент.</p>', 'faculty.html (О факультете)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (5, '<div class="text-center page_header">
             <h2 >Документы</h2>
             <p>для оформления выпускной квалификационной работы (ВКР)<br>в 2018/2019 учебном году</p>
         </div>
@@ -290,8 +290,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (5, '<div class="text
                         </ul>
                     </div>
                 </div>
-            </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (6, '<div class="page_header page_header2 text-center">
+            </div>', 'gradStudent.html (Дипломники)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (6, '<div class="page_header page_header2 text-center">
             <h2>Выпускники</h2>
             <p>факультета информационных систем и технологий</p>
         </div>
@@ -392,8 +392,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (6, '<div class="page
                     <p style="font-style:italic">"Обучение на факультете информационных систем и технологий способствовало получению широкого круга знаний в области IT. Все компетенции, заложенные в программе обучения ФИСТ, делают выпускников ВУЗа востребованными специалистами на рынке труда."</p>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (7, '<div class="content-blog">
+        </div>', 'graduates.html (Выпускники факультета)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (7, '<div class="content-blog">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -408,8 +408,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (7, '<div class="cont
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (8, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        </div>', 'groupLists.html (Списки групп)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (8, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/Innovatika.png);background-size: cover">
                 <div class="trend">
@@ -482,8 +482,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (8, '<div class="back
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (9, '<div class="text-center page_header">
+        </div>', 'innovatika.html (Инноватика)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (9, '<div class="text-center page_header">
             <h2 >Промежуточный контроль</h2>
         </div>
         <div class="shortcontain container">
@@ -537,8 +537,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (9, '<div class="text
                     <p>Убедительная просьба к преподавателям кафедр: просим Вас своевременно выставить результаты внутрисеместровой аттестации студентов ФИСТ.<br>Раздел "Общая оценка" подразумевает выставление оценки по пяти бальной шкале (допускается выставление "н/а" в случае, если студент не посещает занятия и не выполнил задания согласно рабочей прогамме/учебному плану).</p>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (10, '<div id="container">
+        </div>', 'interimControl.html (Промежуточный контроль)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (10, '<div id="container">
     <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: url(../images/home-page/Layer/IST.png);background-size: cover">
@@ -607,8 +607,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (10, '<div id="contai
             </div>
         </div>
     </div>
-    </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (11, '<div id="container">
+    </div>', 'ist.html (ИСТ)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (11, '<div id="container">
         <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/IVT.png);background-size: cover">
@@ -677,8 +677,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (11, '<div id="contai
                 </div>
             </div>
         </div>
-    </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (12, '<div class="back_img"><a href="/main" class="change"></a> </div>
+    </div>', 'ivt.html (ИВТ)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (12, '<div class="back_img"><a href="/main" class="change"></a> </div>
      <div class="container-fluid" >
          <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
              <a href="/matob" class="transition">
@@ -745,8 +745,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (12, '<div class="bac
              </div>
              </a>
          </div>
-     </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (13, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+     </div>', 'mainTrend.html (Основные направления подготовки)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (13, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
                 <div class="trend">
@@ -813,8 +813,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (13, '<div class="bac
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (14, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        </div>', 'matob.html (Математическое обсепечение)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (14, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/PI.png);background-size: cover">
                 <div class="trend">
@@ -881,8 +881,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (14, '<div class="bac
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (15, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        </div>', 'pi.html (Программная инженерия)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (15, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/prikladInfo.png);background-size: cover">
                 <div class="trend">
@@ -951,8 +951,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (15, '<div class="bac
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (16, '<div class="text-center page_header">
+        </div>', 'prikladInfo.html (Прикладная информатика)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (16, '<div class="text-center page_header">
             <h2 >Итоги промежуточного контроля</h2>
         </div>
         <div class="shortcontain container">
@@ -1025,8 +1025,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (16, '<div class="tex
                     <a href="#">3 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (17, '<div class="page_header page_header2 text-center">
+        </div>', 'resultOfControl.html (Итоги промеж.контроля)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (17, '<div class="page_header page_header2 text-center">
             <h2>Права, обязанности и поощрения студентов ПГУТИ</h2>
         </div>
         <div class="container">
@@ -1264,8 +1264,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (17, '<div class="pag
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (18, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        </div>', 'rightsAndObligations.html (Права и обязанности)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (18, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/RSO.png);background-size: cover">
                 <div class="trend">
@@ -1334,8 +1334,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (18, '<div class="bac
                     </div>
                 </div>
             </div>
-        </div>');
-INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (20, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        </div>', 'rso.html (РСО)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (20, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/uits.png);background-size: cover">
                 <div class="trend">
@@ -1403,4 +1403,4 @@ INSERT INTO fist.htmlstructure_page (id, html_code) VALUES (20, '<div class="bac
                     </div>
                 </div>
             </div>
-        </div>');
+        </div>', 'uits.html (УИТС)');

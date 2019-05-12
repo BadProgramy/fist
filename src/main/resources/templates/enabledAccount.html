@@ -1,18 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Для жени</title>
-</head>
-<body>
-Женя должен сделать страницу, чтобы уведомить пользователя, что он подтвердил почту!!
-<br>
-Также это страница будет и для подписчиков, что они успешно подписались и им отправилось письмо на почту с подтвердждением и (повторной отправки, возможно не нужно????)
-<br>
-Также это страница будет уведомлением и для отписки пользователя от новостей
-<br>
-Структура этого html будет меняться от thymeleaf
-<br>
 
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Контакты</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <link type="text/css" rel="stylesheet" href="/css/404/style.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen">
+    <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/light.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/studentStyle.css">
+
+    <!-- Modernizer -->
+    <script src="/js/modernizr.custom.js"></script>
+
+</head>
+
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+    <!-- HEADER -->
+    <div th:replace="templates :: headerUser"></div>
+    <div th:insert="templates :: headerUserInsertSearch"></div>
+
+<div id="notfound">
+    <div class="notfound-bg"></div>
+    <div class="notfound">
+        <input type="checkbox" name="c1" id="c1" />
+        <label for="c1"></label>
+        <h2>СПАСИБО ЧТО ПОДПИСАЛИСЬ</h2>
+        <p>Какой то текст</p>
+        <a href="/main">Вернуться на главную страницу</a>
+    </div>
+</div>
+    <div th:replace="templates :: footerUser"></div>
+</div>
+<div th:replace="templates :: footerUserInsertMap"></div>
+<!-- Javascript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/classie.js"></script>
+<script src="/js/superfish/js/hoverIntent.js"></script>
+<script src="/js/superfish/js/superfish.js"></script>
+<script src="/js/dialogFx.js"></script>
+<script src="/js/dialog-js.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="/js/gmap2.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

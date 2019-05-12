@@ -7,6 +7,7 @@
     <resultMap id="result" type="HTMLStructurePage">
         <id property="id" column="id"/>
         <result property="htmlCode" column="html_code"/>
+        <result property="namePage" column="name_page"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
@@ -14,8 +15,8 @@
     </select>
 
     <insert id="add" parameterType="HTMLStructurePage">
-        insert into htmlstructure_page(html_code)
-        values (#{htmlCode});
+        insert into htmlstructure_page(html_code, name_page)
+        values (#{htmlCode}, #{namePage});
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
@@ -25,6 +26,7 @@
     <update id="update" parameterType="HTMLStructurePage">
         update htmlstructure_page SET
         html_code = #{htmlCode},
+        name_page = #{namePage},
         where id = #{id};
     </update>
 

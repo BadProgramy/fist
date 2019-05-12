@@ -60,6 +60,7 @@
                             <label>Выберите родителя...</label>
                             <select id="idMenuItemParentHeaderInMainPage" name="idMenuItemParentHeaderInMainPage" required>
                                 <option th:each="item : ${parentMenuItems}" th:value="${item.getId()}" th:utext="${item.getName()}"></option>
+                                <option th:value="${'-1'}" th:utext="${'Нет родителя'}"></option>
                             </select>
                         </p>
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Таблица учебный процесс</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/light.css" type="text/css">
+    <link rel="stylesheet" href="/css/responsive.css" type="text/css">
+    <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizer -->
+    <script src="/js/modernizr.custom.js"></script>
+
+</head>
+<body class="multi-page">
+
+<div id="wrapper" class="wrapper">
+    <!-- HEADER -->
+    <div th:replace="templates :: headerAdmin"></div>
+
+    <div class="container" style="padding-top: 5%">
+        <div th:each="page : ${pages}">
+            <div class="col-md-4" style="margin-bottom: 50px">
+                <div class="product-thumb">
+                    <form th:action="@{/admin/page/htmlStructure/update/submit}" th:object="${item}" method="post">
+                        <li>
+                            <a class="cd-signin">
+                                <p th:src="${page.getId()}" th:id="${page.getId()}" class="menuItemTables" name="namePage" th:value="${page.getNamePage()}" th:text="${page.getNamePage()}"></p>
+                            </a>
+                        </li>
+                    </form>
+                    <script th:inline="javascript">
+                        document.body.onclick = function(e) {
+                            var elem = e ? e.target : window.event.srcElement;
+                            while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
+                            if (!elem.id) return; else id = elem.id;
+                            var rightPart;
+                            var srcImg=document.getElementById(id).getAttribute("src");
+                            /*<![CDATA[*/
+                            /*[# th:each="element : ${pages}"]*/
+                            rightPart = /*[[@{${element.getId()}}]]*/ null;
+                            if (srcImg == rightPart) {
+                                document.getElementById("idPage").value = /*[[@{${element.getId()}}]]*/ null;
+                                document.getElementById("htmlCode").value = /*[[@{${element.getHtmlCode()}}]]*/ null;
+                            }
+                            /*[/]*/
+                            /*]]>*/
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cd-user-modal1">
+        <div class="cd-user-modal-container1">
+            <form th:action="@{/admin/page/htmlStructure/update/submit}" th:object="${item}" method="post">
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Идентификатор</p>
+                    <input id="idPage" class="menuItemTables" name="id" readonly>
+                </div>
+                <div class="col-md-4  left" style="padding: 10px 10px 10px;">
+                    <p>HTML код основного тело. (Менять только контент, html теги не трогать!)</p>
+                    <textarea id="htmlCode" class="menuItemTables" name="htmlCode"></textarea>
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Действие</p>
+                </div>
+                <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>
+            </form>
+        </div>
+        <div class="close-btn fa fa-times"></div>
+    </div>
+</div>
+
+
+<!-- Javascript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/classie.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/modal.js"></script>
+
+</body>
+</html>

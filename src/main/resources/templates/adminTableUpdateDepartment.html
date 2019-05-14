@@ -111,6 +111,8 @@
                                 document.getElementById("idMainEmployee").value = /*[[@{${dep.getIdMainEmployee()}}]]*/ null;
                                 document.getElementById("name").value = /*[[@{${dep.getName()}}]]*/ null;
                                 document.getElementById("address").value = /*[[@{${dep.getAddress()}}]]*/ null;
+                                document.getElementById("idPictureIcon").value = /*[[@{${dep.getIdPictureIcon()}}]]*/ null;
+                                document.getElementById("description").value = /*[[@{${dep.getDescription()}}]]*/ null;
                                 document.getElementById("del").href = /*[[@{'/admin/table/department/delete/id=' + ${dep.getId()}}]]*/ null;
                             }
                             /*[/]*/
@@ -140,6 +142,14 @@
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Адрес</p>
                     <textarea id="address" class="menuItemTables" name="address"></textarea>
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Описание на html</p>
+                    <textarea id="description" class="menuItemTables" name="description"></textarea>
+                </div>
+                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                    <p>Идентификатор логотипа</p>
+                    <input id="idPictureIcon" class="menuItemTables" name="idPictureIcon"></input>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Действие</p>

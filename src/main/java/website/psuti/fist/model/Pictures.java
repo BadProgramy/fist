@@ -136,4 +136,18 @@ public class Pictures {
     public void setPictureFileMultipart(MultipartFile pictureFileMultipart) {
         this.pictureFileMultipart = pictureFileMultipart;
     }
+
+    @Override
+    public String toString() {
+        return "Pictures{" +
+                "id=" + id +
+                ", namePicture='" + namePicture + '\'' +
+                ", idPage=" + idPage +
+                ", urlPicture='" + urlPicture + '\'' +
+                ", date=" + date +
+                ", keyPicture=" + keyPicture +
+                ", href='" + href + '\'' +
+                ", styles='" + styles + '\'' +
+                '}';
+    }
 }

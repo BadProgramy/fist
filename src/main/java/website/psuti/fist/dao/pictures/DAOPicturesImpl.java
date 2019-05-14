@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.pictures;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,7 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOPicturesImpl implements DAOPictures {
+    public final Logger logger = LoggerFactory.getLogger(DAOPicturesImpl.class);
 
     @Autowired
     private Factory factory;
@@ -47,6 +50,7 @@ public class DAOPicturesImpl implements DAOPictures {
             if (id == 1) {
                 id = session.selectOne("Pictures.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
+                logger.info("Добавлена картинка - " + pictures);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +67,10 @@ public class DAOPicturesImpl implements DAOPictures {
         try {
             RequestPostConnection.requestions(dataSource);
             check = session.update("Pictures.update", pictures);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
+                logger.info("Обновлена картинка - " + pictures);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -73,11 +80,15 @@ public class DAOPicturesImpl implements DAOPictures {
 
     @Override
     public int delete(long id) {
+        Pictures pictures = findPictureById(id);
         int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("Pictures.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.PICTURES);
+                logger.info("Удалена картинка - " + pictures);
+            }
         } finally {
             session.close();
         }

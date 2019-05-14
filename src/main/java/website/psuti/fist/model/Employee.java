@@ -147,4 +147,24 @@ public class Employee {
     public void setCurator(String curator) {
         this.curator = curator;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", idDepartment=" + idDepartment +
+                ", idPictureMajor=" + idPictureMajor +
+                ", idPictureMinor=" + idPictureMinor +
+                ", nameDepartment='" + nameDepartment + '\'' +
+                ", pinNumber=" + pinNumber +
+                ", name='" + name + '\'' +
+                ", post='" + post + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", qualificationDetailed='" + qualificationDetailed + '\'' +
+                ", qualificationBriefly='" + qualificationBriefly + '\'' +
+                ", characteristic='" + characteristic + '\'' +
+                ", curator='" + curator + '\'' +
+                '}';
+    }
 }

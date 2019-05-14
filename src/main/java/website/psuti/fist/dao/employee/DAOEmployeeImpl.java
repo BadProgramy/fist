@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.employee;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,7 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOEmployeeImpl implements DAOEmployee {
+    public final Logger logger = LoggerFactory.getLogger(DAOEmployeeImpl.class);
 
     @Autowired
     private Factory factory;
@@ -50,6 +53,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
             if (id == 1) {
                 id = session.selectOne("Employee.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
+                logger.info("Добавлен сотрудник - " + employee);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,7 +74,10 @@ public class DAOEmployeeImpl implements DAOEmployee {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("Employee.update", employee);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
+                logger.info("Обновлен сотрудник - " + employee);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -84,7 +91,10 @@ public class DAOEmployeeImpl implements DAOEmployee {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("Employee.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);
+                logger.info("Удален сотрудник - " + id);
+            }
         } finally {
             session.close();
         }

@@ -199,7 +199,7 @@
                 <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
                 <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
                 <form th:action="${'/user/add/subscriber'}" th:object="${username}" class="newsletter">
-                    <input name="username" type="text" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
+                    <input name="username" type="email" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
                     <button type="submit"><i class="fa fa-paper-plane"></i></button>
                 </form>
             </div>
@@ -240,8 +240,9 @@
     </div>
     <div class="footer-bottom container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <p th:utext="${ItemHeader11.getName()}" th:style="${ItemHeader11.getStyles()}"></p>
+                <a href="/rssFeed" style="text-decoration: underline !important; float: right"><p class="blue_p">RSS канал</p> </a>
             </div>
         </div>
     </div>

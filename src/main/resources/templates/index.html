@@ -371,8 +371,38 @@
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/classie.js"></script>
 <script src="/js/masonry.pkgd.min.js"></script>
+<script>
+    $(window).load(function() {
+        var $container = $('#blog-mason');
+        $container.masonry({
+            itemSelector: '.grid-item'
+        });
+        var $optionSets = $('#portfolio .folio-filter'),
+            $optionLinks = $optionSets.find('a');
+        $optionLinks.on('click', function() {
+            var $this = $(this);
+            if ($this.hasClass('selected')) {
+                return false;
+            }
+            var $optionSet = $this.parents('.folio-filter');
+            $optionSet.find('.selected').removeClass('selected');
+            $this.addClass('selected');
+            var options = {},
+                key = $optionSet.attr('data-option-key'),
+                value = $this.attr('data-option-value');
+            value = value === 'false' ? false : value;
+            options[key] = value;
+            if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
+                changeLayoutMode($this, options);
+            } else {
+                $container.masonry(options);
+            }
+            return false;
+        });
+    });
+</script>
+<script src="/js/classie.js"></script>
 <script src="/js/owl-carousel/owl.carousel.min.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
 <script src="/js/superfish/js/superfish.js"></script>
@@ -559,9 +589,6 @@
         slideSpeed: 1000,
         navigation: false,
         pagination: true
-    });
-    $('.grid').masonry({
-        itemSelector: '.grid-item'
     });
 </script>
 </body>

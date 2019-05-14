@@ -64,7 +64,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div id="curators" class="col-md-8">
                     <h3 class="heading">Уважаемые студенты 1 курса и их родители!</h3>
                     <p>Для скорой и успешной адаптации к учебе в ПГУТИ к каждой студенческой группе прикреплены кураторы: куратор-преподаватель, куратор-студент.<br>У них Вы можете получить любую консультацию по вопросам, связанным с учебой в университете, общественной, научной и культурной жизни, экзаменационной сессии и мн.др.</p>
                 </div>
@@ -109,6 +109,8 @@
         var table=document.getElementById("mytd");
         var doc=document.getElementById("mytd").offsetWidth;
         var marginx=doc/-2;
+        var curators=document.getElementById("curators");
+        curators.style.marginLeft=marginx+'px';
         table.style.marginLeft=marginx+'px';
     }
     $(document).ready(function(){

@@ -111,4 +111,19 @@ public class MenuItemHeaderInMainPage {
     public void setStyles(String styles) {
         this.styles = styles;
     }
+
+    @Override
+    public String toString() {
+        return "MenuItemHeaderInMainPage{" +
+                "id=" + id +
+                ", idMenuItemParentHeaderInMainPage=" + idMenuItemParentHeaderInMainPage +
+                ", name='" + name + '\'' +
+                ", level=" + level +
+                ", pinNumber=" + pinNumber +
+                ", urlHref='" + urlHref + '\'' +
+                ", keyWord='" + keyWord + '\'' +
+                ", idPicture=" + idPicture +
+                ", styles='" + styles + '\'' +
+                '}';
+    }
 }

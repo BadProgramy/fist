@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.menuItemHeaderInMainPage;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,7 @@ import java.util.*;
 @Primary
 @Repository
 public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainPage {
+    public final Logger logger = LoggerFactory.getLogger(DAOMenuItemHeaderInMainPageImpl.class);
 
     @Autowired
     private Factory factory;
@@ -47,6 +50,7 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
             if (id == 1) {
                 id = session.selectOne("MenuItemHeaderInMainPage.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+                logger.info("Добавлен меню сайта - " + menuItemHeaderInMainPage);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,6 +70,7 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
             if (id == 1) {
                 id = session.selectOne("MenuItemHeaderInMainPage.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+                logger.info("Добавлен меню сайта - " + menuItem);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,7 +87,10 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("MenuItemHeaderInMainPage.update", menuItemHeaderInMainPage);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+                logger.info("Обновлен меню сайта - " + menuItemHeaderInMainPage);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -92,11 +100,15 @@ public class DAOMenuItemHeaderInMainPageImpl implements DAOMenuItemHeaderInMainP
 
     @Override
     public void delete(long id) {
+        MenuItemHeaderInMainPage menuItemHeaderInMainPage = findItemById(id);
         int check = -1;
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("MenuItemHeaderInMainPage.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
+                logger.info("Удален меню сайта - " + menuItemHeaderInMainPage);
+            }
         } finally {
             session.close();
         }

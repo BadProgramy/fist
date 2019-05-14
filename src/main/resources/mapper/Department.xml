@@ -7,7 +7,7 @@
     <resultMap id="result" type="Department">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="idMainEmployee" column="id_main_Employee"/>
+        <result property="idMainEmployee" column="id_main_employee"/>
         <result property="address" column="address"/>
         <result property="idPictureIcon" column="id_picture_icon"/>
         <result property="description" column="description"/>
@@ -31,7 +31,7 @@
         id_main_employee = #{idMainEmployee},
         name = #{name},
         address = #{address},
-        id_picture_icon = #{id_picture_icon},
+        id_picture_icon = #{idPictureIcon},
         description = #{description}
         where id = #{id};
     </update>

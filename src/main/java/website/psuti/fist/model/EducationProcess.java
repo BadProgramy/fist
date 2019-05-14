@@ -149,4 +149,23 @@ public class EducationProcess {
     public void setRightPictureStyles(String rightPictureStyles) {
         this.rightPictureStyles = rightPictureStyles;
     }
+
+    @Override
+    public String toString() {
+        return "EducationProcess{" +
+                "id=" + id +
+                ", idMenuItemHeaderInMainPageLeft=" + idMenuItemHeaderInMainPageLeft +
+                ", idPictureLeft=" + idPictureLeft +
+                ", idMenuItemHeaderInMainPageRight=" + idMenuItemHeaderInMainPageRight +
+                ", idPictureRight=" + idPictureRight +
+                ", leftMenuItemStyles='" + leftMenuItemStyles + '\'' +
+                ", rightMenuItemStyles='" + rightMenuItemStyles + '\'' +
+                ", leftPictureStyles='" + leftPictureStyles + '\'' +
+                ", rightPictureStyles='" + rightPictureStyles + '\'' +
+                ", menuItemHeaderInMainPageLeft=" + menuItemHeaderInMainPageLeft +
+                ", menuItemHeaderInMainPageRight=" + menuItemHeaderInMainPageRight +
+                ", picturesLeft=" + picturesLeft +
+                ", picturesRight=" + picturesRight +
+                '}';
+    }
 }

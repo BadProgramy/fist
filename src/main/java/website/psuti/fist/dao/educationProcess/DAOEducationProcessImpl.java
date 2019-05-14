@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.educationProcess;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -20,6 +22,7 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOEducationProcessImpl implements DAOEducationProcess {
+    public final Logger logger = LoggerFactory.getLogger(DAOEducationProcessImpl.class);
 
     @Autowired
     private DAOPictures daoPictures;
@@ -61,6 +64,7 @@ public class DAOEducationProcessImpl implements DAOEducationProcess {
 /*                MainPageObjectConstant.checkModelAndView.add(NameTableBD.MENU_ITEM_HEADER_IN_MAIN_PAGE);
                 MainPageObjectConstant.checkModelAndView.add(NameTableBD.PICTURES);*/
                 MainPageObjectConstant.addCheck(NameTableBD.EDUCATION_PROCESS);
+                logger.info("Обновлен учебный процесс - " + educationProcess);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,7 +79,10 @@ public class DAOEducationProcessImpl implements DAOEducationProcess {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("EducationProcess.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.EDUCATION_PROCESS);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.EDUCATION_PROCESS);
+                logger.info("Удален учебный процесс - " + id);
+            }
         } finally {
             session.close();
         }

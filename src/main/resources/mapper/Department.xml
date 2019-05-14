@@ -31,7 +31,7 @@
         id_main_employee = #{idMainEmployee},
         name = #{name},
         address = #{address},
-        idPictureIcon = #{id_picture_icon},
+        id_picture_icon = #{id_picture_icon},
         description = #{description}
         where id = #{id};
     </update>

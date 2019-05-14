@@ -26,7 +26,7 @@
     <update id="update" parameterType="HTMLStructurePage">
         update htmlstructure_page SET
         html_code = #{htmlCode},
-        name_page = #{namePage},
+        name_page = #{namePage}
         where id = #{id};
     </update>
 

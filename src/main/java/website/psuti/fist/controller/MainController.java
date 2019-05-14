@@ -16,6 +16,7 @@ import website.psuti.fist.service.UserService;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.Email;
 import java.io.*;
 import java.io.File;
 import java.sql.SQLException;
@@ -294,7 +295,7 @@ public ModelAndView gradStudents() {
 
     //TODO а тут для подписки
     @RequestMapping("/user/add/subscriber")
-    public ModelAndView addSubscriber(@RequestParam("username") String username) {
+    public ModelAndView addSubscriber(@RequestParam("username") String username) throws Exception {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("enabledAccount");
         User user = userService.findUserByName(username);

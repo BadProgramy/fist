@@ -244,7 +244,7 @@ public class AdminUserController {
     }
 
     @RequestMapping("/login/submit")
-    public String testCreateUser() throws SQLException {
+    public String testCreateUser() throws Exception {
         List<Role> roles = new ArrayList<>();
         roles.add(Role.DEVELOPER);
         User user = new User();

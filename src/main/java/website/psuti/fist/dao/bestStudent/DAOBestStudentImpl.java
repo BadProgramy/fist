@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.bestStudent;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -9,6 +11,7 @@ import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.dao.pictures.DAOPictures;
 import website.psuti.fist.model.BestStudent;
+import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.RequestPostConnection;
 
 import javax.sql.DataSource;
@@ -18,6 +21,8 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOBestStudentImpl implements DAOBestStudent {
+    public final Logger logger = LoggerFactory.getLogger(DAOBestStudentImpl.class);
+
     @Autowired
     private Factory factory;
 
@@ -33,9 +38,6 @@ public class DAOBestStudentImpl implements DAOBestStudent {
         SqlSession session = factory.getFactory().openSession();
         try {
             bestStudents = session.selectList("BestStudent.selectAll");
-            /*for (BestStudent bestStudent: bestStudents) {
-                bestStudent.setCharacteristic(bestStudent.getCharacteristic().replace("<br>","\r\n"));
-            }*/
         } finally {
             session.close();
         }
@@ -55,6 +57,7 @@ public class DAOBestStudentImpl implements DAOBestStudent {
             if (id == 1) {
                 id = session.selectOne("BestStudent.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
+                logger.info("Добавлен пользователь - " + bestStudent);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,7 +76,10 @@ public class DAOBestStudentImpl implements DAOBestStudent {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("BestStudent.update", bestStudent);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
+                logger.info("Обновлен пользователь " + bestStudent);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -84,10 +90,14 @@ public class DAOBestStudentImpl implements DAOBestStudent {
     @Override
     public void delete(long id) throws IllegalArgumentException {
         int check = -1;
+        BestStudent student = findById(id);
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("BestStudent.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.BEST_STUDENT);
+                logger.info("Удален лучший студент - "+ student);
+            }
         } finally {
             session.close();
         }

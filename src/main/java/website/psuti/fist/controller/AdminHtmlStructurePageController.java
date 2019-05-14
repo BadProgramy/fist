@@ -29,6 +29,7 @@ public class AdminHtmlStructurePageController {
 
     @RequestMapping("/admin/page/htmlStructure/update/submit")
     public String adminHtmlStructureUpdateSubmit(@ModelAttribute("item") HTMLStructurePage item) {
+        item.setNamePage(htmlStructurePageService.findHTMLStructurePageById(item.getId()).getNamePage());
         htmlStructurePageService.update(item);
         modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";

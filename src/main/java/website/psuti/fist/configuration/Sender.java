@@ -1,5 +1,6 @@
 package website.psuti.fist.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.mail.*;
 import javax.mail.internet.AddressException;
@@ -9,6 +10,22 @@ import java.util.Properties;
 
 @Component
 public class Sender {
+
+    /*private final String username = "fist@psati.ru";
+    private final String password = "zaq1xsw2";
+    private Properties props;
+
+    public Sender() {
+
+        props = new Properties();
+        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.socketFactory.port", "587");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.UseDefaultCredentials;", "true");
+    }*/
 
     private final String username = "help.warspear.gold@gmail.com";
     private final String password = "1q2w3e4r5tqwert";

@@ -1,6 +1,5 @@
 package website.psuti.fist.model;
 
-import org.springframework.boot.util.LambdaSafe;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -22,7 +22,6 @@ public class User implements UserDetails {
     private boolean accountNonLocked; //если не заблокированный
     private boolean credentialsNonExpired; //если настройка учетных данных не истекли
     private boolean enabled;//активированный
-
     private String firstname;
     private String secondname;
     private String pagevk;
@@ -34,6 +33,8 @@ public class User implements UserDetails {
 
     @Transient
     private String[] rolesString;
+
+    private static final String REGULAR_EMAIL = "^[a-zA-Z0-9_\\.\\-]+@([a-zA-Z0-9][a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,6}$";
 
     public User() {
         accountNonExpired = true;
@@ -60,8 +61,13 @@ public class User implements UserDetails {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String username) throws Exception {
+        if (!validationEmail(username)) throw new Exception("Неправильная почта");
+        else this.username = username;
+    }
+
+    private boolean validationEmail(String email){
+        return Pattern.compile(REGULAR_EMAIL).matcher(email).matches();
     }
 
     @Override

@@ -138,4 +138,17 @@ public class BestStudent {
     public void setCharacteristicStyles(String characteristicStyles) {
         this.characteristicStyles = characteristicStyles;
     }
+
+    @Override
+    public String toString() {
+        return "BestStudent{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", groupInUniversity='" + groupInUniversity + '\'' +
+                ", url='" + url + '\'' +
+                ", idPicture=" + idPicture +
+                ", characteristic='" + characteristic + '\'' +
+                ", nameStyles='" + nameStyles + '\'' +
+                '}';
+    }
 }

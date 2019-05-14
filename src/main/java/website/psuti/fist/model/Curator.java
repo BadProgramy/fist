@@ -64,4 +64,16 @@ public class Curator {
     public void setNameCuratorStudentAndGroup(String nameCuratorStudentAndGroup) {
         this.nameCuratorStudentAndGroup = nameCuratorStudentAndGroup;
     }
+
+    @Override
+    public String toString() {
+        return "Curator{" +
+                "id=" + id +
+                ", groupInUniversity='" + groupInUniversity + '\'' +
+                ", nameCuratorTeacher='" + nameCuratorTeacher + '\'' +
+                ", nameDepartment='" + nameDepartment + '\'' +
+                ", phone='" + phone + '\'' +
+                ", nameCuratorStudentAndGroup='" + nameCuratorStudentAndGroup + '\'' +
+                '}';
+    }
 }

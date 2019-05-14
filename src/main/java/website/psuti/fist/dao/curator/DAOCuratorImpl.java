@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.curator;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,8 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOCuratorImpl implements DAOCurator {
+    public final Logger logger = LoggerFactory.getLogger(DAOCuratorImpl.class);
+
     @Autowired
     private Factory factory;
 
@@ -45,6 +49,7 @@ public class DAOCuratorImpl implements DAOCurator {
             if (id == 1) {
                 id = session.selectOne("Curator.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.CURATOR);
+                logger.info("Добавлен куратор - " + curator);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +66,10 @@ public class DAOCuratorImpl implements DAOCurator {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("Curator.update", curator);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.CURATOR);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.CURATOR);
+                logger.info("Обновлён куратор - " + curator);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -72,10 +80,14 @@ public class DAOCuratorImpl implements DAOCurator {
     @Override
     public void delete(long id) {
         int check = -1;
+        Curator curator = findById(id);
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("Curator.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.CURATOR);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.CURATOR);
+                logger.info("Удален куратор - " + curator);
+            }
         } finally {
             session.close();
         }

@@ -165,6 +165,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("resultOfControlHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RESULT_OF_CONTROL.getId()));
         modelAndView.addObject("rightsAndObligationHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RIGHT_AND_OBLIGATION.getId()));
         modelAndView.addObject("rsoHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RSO.getId()));
+        modelAndView.addObject("biHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.BI.getId()));
         modelAndView.addObject("uitsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.UITS.getId()));
     }
 

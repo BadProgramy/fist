@@ -19,6 +19,7 @@ public enum HtmlStructurePageConstant {
     RESULT_OF_CONTROL(16L),
     RIGHT_AND_OBLIGATION(17L),
     RSO(18L),
+    BI(19L),
     UITS(20L);
 
 

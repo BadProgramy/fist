@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.department;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,7 @@ import java.util.List;
 @Primary
 @Repository
 public class DAODepartmentImpl implements DAODepartment {
+    public final Logger logger = LoggerFactory.getLogger(DAODepartmentImpl.class);
 
     @Autowired
     private Factory factory;
@@ -46,6 +49,7 @@ public class DAODepartmentImpl implements DAODepartment {
             if (id == 1) {
                 id = session.selectOne("Department.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.DEPARTMENT);
+                logger.info("Добавлен департамент - " + department);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,7 +66,10 @@ public class DAODepartmentImpl implements DAODepartment {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("Department.update", department);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.DEPARTMENT);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.DEPARTMENT);
+                logger.info("Обновлен департамент - " + department);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -76,7 +83,10 @@ public class DAODepartmentImpl implements DAODepartment {
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("Department.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.DEPARTMENT);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.DEPARTMENT);
+                logger.info("Удален департамент - " + id);
+            }
         } finally {
             session.close();
         }

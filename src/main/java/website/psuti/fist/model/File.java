@@ -84,4 +84,15 @@ public class File {
     public void setDateStringLocalDate(String dateStringLocalDate) {
         this.dateStringLocalDate = dateStringLocalDate;
     }
+
+    @Override
+    public String toString() {
+        return "File{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", uniqueName='" + uniqueName + '\'' +
+                ", extension=" + extension +
+                ", date=" + date +
+                '}';
+    }
 }

@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.file;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,7 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOFileImpl implements DAOFile{
+    public final Logger logger = LoggerFactory.getLogger(DAOFileImpl.class);
 
     @Autowired
     private Factory factory;
@@ -46,6 +49,7 @@ public class DAOFileImpl implements DAOFile{
             if (id == 1) {
                 id = session.selectOne("File.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.FILE);
+                logger.info("Добавлен файл - " + file);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,7 +66,10 @@ public class DAOFileImpl implements DAOFile{
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("File.update", file);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.FILE);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.FILE);
+                logger.info("Обновлен файл - " + file);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -73,10 +80,14 @@ public class DAOFileImpl implements DAOFile{
     @Override
     public int delete(long id) {
         int check = -1;
+        File file = findFileById(id);
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("File.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.FILE);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.FILE);
+                logger.info("Удален файл - " + file);
+            }
         } finally {
             session.close();
         }

@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.newsFaculty;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -27,6 +29,7 @@ import java.util.Map;
 @Primary
 @Repository
 public class DAONewsFacultyImpl implements DAONewsFaculty {
+    public final Logger logger = LoggerFactory.getLogger(DAONewsFacultyImpl.class);
 
     @Autowired
     private Factory factory;
@@ -64,6 +67,7 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
             if (id == 1) {
                 id = session.selectOne("NewsOfFaculty.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.NEWS_OF_FACULTY);
+                logger.info("Добавлена новость - " + newsOfFaculty);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,7 +86,10 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("NewsOfFaculty.update", newsOfFaculty);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.NEWS_OF_FACULTY);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.NEWS_OF_FACULTY);
+                logger.info("Обновлена новость - " + newsOfFaculty);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -93,10 +100,14 @@ public class DAONewsFacultyImpl implements DAONewsFaculty {
     @Override
     public void delete(long id) {
         int check = -1;
+        NewsOfFaculty faculty = findById(id);
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("NewsOfFaculty.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.NEWS_OF_FACULTY);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.NEWS_OF_FACULTY);
+                logger.info("Удалена новость - " + faculty);
+            }
         } finally {
             session.close();
         }

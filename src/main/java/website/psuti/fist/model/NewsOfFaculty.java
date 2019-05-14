@@ -167,4 +167,19 @@ public class NewsOfFaculty {
     public void setDateStyles(String dateStyles) {
         this.dateStyles = dateStyles;
     }
+
+    @Override
+    public String toString() {
+        return "NewsOfFaculty{" +
+                "id=" + id +
+                ", heading='" + heading + '\'' +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", idPicture=" + idPicture +
+                ", headingStyles='" + headingStyles + '\'' +
+                ", textStyles='" + textStyles + '\'' +
+                ", pictureStyles='" + pictureStyles + '\'' +
+                ", dateStyles='" + dateStyles + '\'' +
+                '}';
+    }
 }

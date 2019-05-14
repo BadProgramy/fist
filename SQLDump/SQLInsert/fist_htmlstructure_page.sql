@@ -61,26 +61,26 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (1, '<div 
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (2, '<div class="content-blog">
             <div class="container-fluid">
                 <div class="row">
-                        <h1 class="no-margin">Контакты</h1>
+                        <h1 class="no-margin">????????</h1>
                         <div class="space20"></div>
-                        <p style="text-align: center;">Часы работы деканата: с 9.00 до 17.00 (с 12.00 - 13.00 обед)<br>
-                            суббота, воскресенье – выходной день.</p>
+                        <p style="text-align: center;">???? ?????? ????????: ? 9.00 ?? 17.00 (? 12.00 - 13.00 ????)<br>
+                            ???????, ??????????? – ???????? ????.</p>
                         <div class="col-md-5 col-md-offset-1" style="margin-top: 10px">
                         <ul class="contact-info">
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-map-marker"></i> Адрес:</strong></p></div>
-                                <div class="col-md-7" style="float: right"><p style="float: left"><span>443090, г. Самара, Московское шоссе, 77, каб.302 и 303</span></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-map-marker"></i> ?????:</strong></p></div>
+                                <div class="col-md-7" style="float: right"><p style="float: left"><span>443090, ?. ???????, ?????????? ?????, 77, ???.302 ? 303</span></p></div>
                             </li>
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-envelope"></i> Электронная почта:</strong></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-envelope"></i> ??????????? ?????:</strong></p></div>
                                 <div class="col-md-7" style="float: right"><p style="float: left"><span><a href="#">fist@psuti.ru</a></span></p></div>
                             </li>
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Деканат:</strong></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> ???????:</strong></p></div>
                                 <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 228-00-05</span></p></div>
                             </li>
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Декан:</strong></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> ?????:</strong></p></div>
                                 <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 339-11-96 </span></p></div>
                             </li>
                         </ul>
@@ -90,7 +90,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (2, '<div 
                         </div>
                 </div>
             </div>
-        </div>', 'contacts.html (Контакты)');
+        </div>', null);
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (3, '<div class="content-blog">
                 <div class="shortcontain container">
                     <div class="row">
@@ -1335,6 +1335,81 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (18, '<div
                 </div>
             </div>
         </div>', 'rso.html (РСО)');
+INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (19, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
+        <div class="container-fluid only_one_trend">
+            <div class="row" style="background: url(../images/home-page/Layer/BuisnessInfo.jpg);background-size: cover">
+                <div class="trend">
+                    <div class="col-md-2"> <img src="/images/home-page/BuisnessInfo.png" class="img-responsive"></div>
+                    <div class="col-md-8"> <h1>Бизнес информатика</h1></div>
+                </div>
+            </div>
+            <div class="container list-marker">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 about-info2">
+                    <p>Специальность утверждена приказом Министерства образования РФ в 2003 г. Область профессиональной деятельности включает: проектирование архитектуры предприятия •Стратегическое планирование развития ИС и ИКТ управления предприятием • Организацию процессов жизненного цикла ИС и ИКТ управления предприятием • Аналитическую поддержку процессов принятия решений для управления предприятием.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-push-2">
+                        <h5>Какие дисциплины изучите</h5>
+                        <ul>
+                            <li>Бухгалтерский и управленческий учет</li>
+                            <li>Финансы и кредит</li>
+                            <li>Информационные системы моделирования бизнес-процессов</li>
+                            <li>Инвестиционное проектирование и бизнес-планирование</li>
+                            <li>Информационные системы финансово-экономического анализа</li>
+                            <li>Информационные системы управления производственной компанией</li>
+                            <li>Интернет-технологии</li>
+                            <li>Электронный бизнес</li>
+                            <li>Системы поддержки принятия решений</li>
+                            <li>ERP-системы и корпоративные порталы</li>
+                            <li>Интернет-маркетинг</li>
+                            <li>Интернет-трейдинг</li>
+                            <li>Конфигуририрование и администрирование бухгалтерского ПО</li>
+                            <li>Архитектура корпоративных информационных систем</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-md-push-2">
+                        <h5>Кем сможете работать</h5>
+                        <ul>
+                            <li>информационных систем</li>
+                            <li>в банковском деле и финансовом анализе</li>
+                            <li>информационных систем в административном управлении</li>
+                            <li>информационных систем фондового рынка и других сферах финансового мира</li>
+                            <li>в компаниях как BSGV, Альфа-Банк, 1С, Microsoft, ВТБ и др.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-offset-2 site-fist logos">
+                <div class="row">
+                    <div class="col-md-1">
+                        <a href="/matob"><img src="/images/home-page/matob.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/IVT"><img src="/images/home-page/IVT.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/IST"><img src="/images/home-page/IST.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/prikladInfo"><img src="/images/home-page/prikladInfo.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/PI"><img src="/images/home-page/PI.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/uits"><img src="/images/home-page/uits.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/innovatika"><img src="/images/home-page/Innovatika.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/RSO"><img src="/images/home-page/RSO.png" class="transition img-responsive" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>', 'BI.html (Бизнес информатика)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (20, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: url(../images/home-page/Layer/uits.png);background-size: cover">

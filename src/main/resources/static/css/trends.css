@@ -128,6 +128,8 @@ html,body {
     z-index: 60;
     top: 2%;
     left:4%;
+    border-radius: 100px;
+    background: white;
 }
 a.change {
     background: url(/images/str3.png);

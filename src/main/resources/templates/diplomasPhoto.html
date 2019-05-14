@@ -162,7 +162,6 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/classie.js"></script>
-<script src="/js/masonry.pkgd.min.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
 <script src="/js/superfish/js/superfish.js"></script>
 <script src="/js/dialogFx.js"></script>
@@ -171,7 +170,8 @@
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
-<script >
+<script src="/js/masonry.pkgd.min.js"></script>
+<script>
     var opac=0;
     function searchFunc() {
         var elements=document.getElementsByClassName('other-pages-search');
@@ -203,9 +203,35 @@
             });
         }
     }
-    $('.grid').masonry({
-        itemSelector: '.grid-item'
+    $(window).load(function() {
+        var $container = $('#shop-mason');
+        $container.masonry({
+            itemSelector: '.grid-item'
+        });
+        var $optionSets = $('#portfolio .folio-filter'),
+            $optionLinks = $optionSets.find('a');
+        $optionLinks.on('click', function() {
+            var $this = $(this);
+            if ($this.hasClass('selected')) {
+                return false;
+            }
+            var $optionSet = $this.parents('.folio-filter');
+            $optionSet.find('.selected').removeClass('selected');
+            $this.addClass('selected');
+            var options = {},
+                key = $optionSet.attr('data-option-key'),
+                value = $this.attr('data-option-value');
+            value = value === 'false' ? false : value;
+            options[key] = value;
+            if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
+                changeLayoutMode($this, options);
+            } else {
+                $container.masonry(options);
+            }
+            return false;
+        });
     });
 </script>
+
 </body>
 </html>

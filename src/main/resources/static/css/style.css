@@ -418,6 +418,18 @@ h1 {
     font-weight: bold;
 }
 .info-doc p{margin-left: -15px}
+#curators{
+    left: 50%;
+}
+.contact-info p{
+    font-size: 20px !important;
+}
+.footer-bottom a:hover{
+     color:#4a7ac2 !important;
+ }
+.blue_p:hover{
+    color:#4a7ac2 !important;
+}
 .main-btn {
 	border: medium none;
     border-radius: 0;
@@ -881,13 +893,6 @@ display: unset;
     /* width: 98%; */
     cursor: pointer;
 }
-
-/*.left-service:first-child {background: linear-gradient(to left, rgb(0, 255, 83) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%, rgb(0, 255, 83) 100%);;}
- .left-service:nth-child(2) { background: linear-gradient(to left, rgb(255, 240, 131) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%, rgb(255, 240, 131) 100%);; }
- .left-service:nth-child(3) { background: linear-gradient(to left, rgb(255, 86, 92) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%, rgb(255, 86, 92) 100%);; }
-  .left-service:nth-child(4) { background: linear-gradient(to left, rgb(255, 130, 195) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%, rgb(255, 130, 195) 100%);; }
- .left-service:nth-child(5) { background: linear-gradient(to left, rgb(0, 255, 83) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%, rgb(0, 255, 83) 100%);; }
-  .left-service:nth-child(6) { background: linear-gradient(to left, rgb(0, 255, 83) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%, rgb(0, 255, 83) 100%);; }*/
 
 .service-info h4 {
     font-size: 20px;
@@ -2527,7 +2532,7 @@ right: 0;
 .contact-info strong {
 	color:#3c689e ;
 	text-transform:uppercase;
-	font-size:13px;
+	font-size:17px;
 }
 
 .contact-info strong i {

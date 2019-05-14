@@ -194,8 +194,8 @@ public class AdminNewsFacultyController {
     }
 
     private long savePicture(NewsOfFaculty newFaculty) throws IOException {
-        if (!newFaculty.getPictureFile().isEmpty())
-            writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());
+        /*if (!newFaculty.getPictureFile().isEmpty())
+            writeFile(newFaculty.getPictureFile().getBytes(), newFaculty.getPictureFile().getOriginalFilename());*/
         Pictures pictures = new Pictures();
         pictures.setUrlPicture(PathConstant.SAVE_PICTURE_NEWS_FACULTY.getPath() + newFaculty.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
@@ -205,11 +205,11 @@ public class AdminNewsFacultyController {
         return picturesService.insert(pictures);
     }
 
-    private void writeFile(byte[] buffer, String filename) throws IOException {
+    /*private void writeFile(byte[] buffer, String filename) throws IOException {
         //new File(PathConstant.SAVE_PICTURE_NEWS_FACULTY.getPath() + filename).mkdir();
             FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE_NEWS_FACULTY.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
-    }
+    }*/
 }

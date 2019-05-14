@@ -45,4 +45,14 @@ public class CandidateAssignment {
     public void setGroupInUniversity(String groupInUniversity) {
         this.groupInUniversity = groupInUniversity;
     }
+
+    @Override
+    public String toString() {
+        return "CandidateAssignment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", course='" + course + '\'' +
+                ", groupInUniversity='" + groupInUniversity + '\'' +
+                '}';
+    }
 }

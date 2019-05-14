@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.candidateAssignment;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,8 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOCandidateAssignmentImpl implements DAOCandidateAssignment {
+    public final Logger logger = LoggerFactory.getLogger(DAOCandidateAssignmentImpl.class);
+
     @Autowired
     private Factory factory;
 
@@ -45,6 +49,7 @@ public class DAOCandidateAssignmentImpl implements DAOCandidateAssignment {
             if (id == 1) {
                 id = session.selectOne("CandidateAssignment.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.CANDIDATE_ASSIGNMENT);
+                logger.info("Добавлен кандидат на отчисление - " + student);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +66,10 @@ public class DAOCandidateAssignmentImpl implements DAOCandidateAssignment {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("CandidateAssignment.update", student);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.CANDIDATE_ASSIGNMENT);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.CANDIDATE_ASSIGNMENT);
+                logger.info("Обновлен кандидат на отчисление - " + student);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -72,10 +80,14 @@ public class DAOCandidateAssignmentImpl implements DAOCandidateAssignment {
     @Override
     public void delete(long id) {
         int check = -1;
+        CandidateAssignment student = findById(id);
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("CandidateAssignment.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.CANDIDATE_ASSIGNMENT);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.CANDIDATE_ASSIGNMENT);
+                logger.info("Удален кандидат на отчисление - " + student);
+            }
         } finally {
             session.close();
         }

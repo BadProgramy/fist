@@ -1,6 +1,8 @@
 package website.psuti.fist.dao.HTMLStructurePage;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,7 @@ import java.util.List;
 @Primary
 @Repository
 public class DAOHtmlStructurePageImpl implements DAOHtmlStructurePage {
+    public final Logger logger = LoggerFactory.getLogger(DAOHtmlStructurePageImpl.class);
 
     @Autowired
     private Factory factory;
@@ -46,6 +49,7 @@ public class DAOHtmlStructurePageImpl implements DAOHtmlStructurePage {
             if (id == 1) {
                 id = session.selectOne("HTMLStructurePage.getLastIdInsert");
                 MainPageObjectConstant.addCheck(NameTableBD.HTMLStructurePage);
+                logger.info("Добавлен html код - " + htmlStructurePage);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,7 +66,10 @@ public class DAOHtmlStructurePageImpl implements DAOHtmlStructurePage {
         try {
             RequestPostConnection.requestions(dataSource);
             id = session.update("HTMLStructurePage.update", htmlStructurePage);
-            if (id == 1) MainPageObjectConstant.addCheck(NameTableBD.HTMLStructurePage);
+            if (id == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.HTMLStructurePage);
+                logger.info("Обновлен html код - " + htmlStructurePage);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -73,10 +80,14 @@ public class DAOHtmlStructurePageImpl implements DAOHtmlStructurePage {
     @Override
     public int delete(long id) {
         int check = -1;
+        HTMLStructurePage htmlStructurePage = findHTMLStructurePageById(id);
         SqlSession session = factory.getFactory().openSession();
         try {
             check = session.delete("HTMLStructurePage.deleteById", id);
-            if (check == 1) MainPageObjectConstant.addCheck(NameTableBD.HTMLStructurePage);
+            if (check == 1) {
+                MainPageObjectConstant.addCheck(NameTableBD.HTMLStructurePage);
+                logger.info("Удален html код - " + htmlStructurePage);
+            }
         } finally {
             session.close();
         }

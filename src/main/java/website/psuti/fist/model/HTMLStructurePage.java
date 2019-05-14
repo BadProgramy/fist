@@ -40,4 +40,13 @@ public class HTMLStructurePage {
     public void setNamePage(String namePage) {
         this.namePage = namePage;
     }
+
+    @Override
+    public String toString() {
+        return "HTMLStructurePage{" +
+                "id=" + id +
+                ", htmlCode='" + htmlCode + '\'' +
+                ", namePage='" + namePage + '\'' +
+                '}';
+    }
 }

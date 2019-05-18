@@ -53,7 +53,7 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/bestStudents/add/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/bestStudents/add/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
                             <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="Фамилие и имя: Пример - Иван Иванов"></textarea>

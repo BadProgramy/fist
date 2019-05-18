@@ -247,6 +247,8 @@ public class AdminUserController {
     public String testCreateUser() throws Exception {
         List<Role> roles = new ArrayList<>();
         roles.add(Role.DEVELOPER);
+        roles.add(Role.ADMIN);
+        roles.add(Role.MODERATOR);
         User user = new User();
         user.setAccountNonExpired(true);
         user.setAccountNonLocked(true);

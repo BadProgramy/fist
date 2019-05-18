@@ -45,7 +45,7 @@
     <!-- HEADER -->
     <div th:replace="templates :: headerAdmin"></div>
 
-    <form style="left: 40%; position: absolute;" action="/admin/news/range" method="POST">
+    <form style="left: 40%; position: absolute;" action="/admin/content/news/range" method="POST">
         с <input type="date" name="withDate" modelAttribute ="withDate" th:value="${withDate}">
         до <input type="date" name="fromDate" modelAttribute = "fromDate" th:value="${fromDate}">
         <input type="submit" value="Показать">
@@ -55,12 +55,12 @@
             <div class="cd-timeline-content">
                 <h2 th:utext="${topic.getHeading()}"></h2>
                 <p class="black_p" th:utext="${topic.getText()}"></p>
-                <img th:src="@{'/admin/news/' + ${topic.getIdPicture()}}" alt="">
+                <img th:src="@{'/admin/content/news/' + ${topic.getIdPicture()}}" alt="">
                 <nav class="main-nav">
                     <ul>
                         <!-- inser more links here -->
-                        <li><a th:href="@{'/admin/news/update/' + ${topic.getId()}}" class="cd-read-more" >Изменить</a></li>
-                        <li><a th:href="@{'/admin/news/delete/' + ${topic.getId()}}" class="cd-read-more">Удалить</a></li>
+                        <li><a th:href="@{'/admin/content/news/update/' + ${topic.getId()}}" class="cd-read-more" >Изменить</a></li>
+                        <li><a th:href="@{'/admin/content/news/delete/' + ${topic.getId()}}" class="cd-read-more">Удалить</a></li>
                     </ul>
                 </nav>
 

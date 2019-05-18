@@ -37,13 +37,7 @@ public class AdminNewsFacultyController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private Sender sender;
-
-    @Autowired
-    private ApplicationContext applicationContext;
-
-    @RequestMapping("/admin/news")
+    @RequestMapping("/admin/content/news")
     public ModelAndView news() {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -57,7 +51,7 @@ public class AdminNewsFacultyController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/news/add")
+    @RequestMapping("/admin/content/news/add")
     public ModelAndView addNewFaculty() {
         ModelAndView modelAndView = new ModelAndView("adminAddNews");
         modelAndView.addObject("date", LocalDate.now());
@@ -66,7 +60,7 @@ public class AdminNewsFacultyController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/admin/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    @RequestMapping(value = "/admin/content/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
         /*for (Map.Entry picture: initPicturesCashe().entrySet()) {
             if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
@@ -77,7 +71,7 @@ public class AdminNewsFacultyController {
         else return new byte[0];
     }
 
-    @RequestMapping("/admin/news/add/submit")
+    @RequestMapping("/admin/content/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
         newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
         if (newFaculty.getPictureFile() != null) {
@@ -92,7 +86,7 @@ public class AdminNewsFacultyController {
         return "redirect:../";
     }
 
-    @RequestMapping("/test")
+    /*@RequestMapping("/test")
     public String test() throws IOException {
         File f ;
         for (Pictures pictures: picturesService.getAll()) {
@@ -105,9 +99,9 @@ public class AdminNewsFacultyController {
             }
         }
         return "newsBlog";
-    }
+    }*/
 
-    @RequestMapping("/admin/news/range")
+    @RequestMapping("/admin/content/news/range")
     public ModelAndView newsByRange(String withDate,
                                     String fromDate) throws SQLException {
 /*        if (this.user == null) {
@@ -121,7 +115,7 @@ public class AdminNewsFacultyController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/news/delete/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/content/news/delete/{id}",method = RequestMethod.GET)
     public String deleteNewFaculty(@PathVariable("id") long newsId, Model model) {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -133,7 +127,7 @@ public class AdminNewsFacultyController {
         return "redirect:../../news";
     }
 
-    @RequestMapping(value = "/admin/news/update/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/content/news/update/{id}", method = RequestMethod.GET)
     public ModelAndView updateFaculty(@PathVariable("id") Long id/*, Model model*/) {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -149,7 +143,7 @@ public class AdminNewsFacultyController {
         //return "adminUpdateNews";
     }
 
-    @RequestMapping(value = "/admin/news/update/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/content/news/update/submit", method = RequestMethod.POST)
     public String updateNewFaculty(@ModelAttribute NewsOfFaculty newFaculty) throws IOException {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

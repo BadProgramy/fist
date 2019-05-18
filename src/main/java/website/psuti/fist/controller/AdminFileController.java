@@ -16,6 +16,7 @@ import website.psuti.fist.model.File;
 import website.psuti.fist.service.FileService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -109,15 +110,23 @@ public class AdminFileController {
 
     private String getFile(website.psuti.fist.model.File file, HttpServletRequest request) throws IOException {
         switch (file.getExtension()) {
-            case APPLICATION_PDF_VALUE: return "redirect:" + file.getUniqueName();// предпосылка outputPDFFile() \|/
+            case APPLICATION_PDF_VALUE: return "redirect:../files/pdf/" + file.getUniqueName();// предпосылка outputPDFFile() \|/
+            default: return "redirect:../files/download/" + file.getUniqueName();// предпосылка outputPDFFile() \|/
         }
-        return "redirect";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/files/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE)
+    @RequestMapping(value = "/files/pdf/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE)
     private byte[] outputPDFFile(@PathVariable("fileNameUnique") String fileNameUnique) throws IOException {
         java.io.File ff = new java.io.File(PathConstant.SAVE_FILE.getPath() + fileNameUnique);
+        return Files.readAllBytes(ff.toPath());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/files/download/{fileNameUnique}", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    private byte[] outputDownloadFile(@PathVariable("fileNameUnique") String fileNameUnique, HttpServletResponse response) throws IOException {
+        java.io.File ff = new java.io.File(PathConstant.SAVE_FILE.getPath() + fileNameUnique);
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileService.findFileByNameUnique(fileNameUnique).getName());
         return Files.readAllBytes(ff.toPath());
     }
 }

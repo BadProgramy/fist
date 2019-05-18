@@ -13,4 +13,6 @@ public interface DAOFile {
     int delete(long id);
 
     File findFileById(Long id);
+
+    File findFileByNameUnique(String fileNameUnique);
 }

@@ -32,4 +32,8 @@ public class FileService {
     public int delete(Long id) {
        return daoFile.delete(id);
     }
+
+    public File findFileByNameUnique(String fileNameUnique) {
+        return daoFile.findFileByNameUnique(fileNameUnique);
+    }
 }

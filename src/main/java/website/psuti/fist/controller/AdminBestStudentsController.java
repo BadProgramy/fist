@@ -122,8 +122,8 @@ public class AdminBestStudentsController {
     }
 
     private long savePicture(BestStudent bestStudent) throws IOException {
-        if (!bestStudent.getPictureFile().isEmpty())
-            writeFile(bestStudent.getPictureFile().getBytes(), bestStudent.getPictureFile().getOriginalFilename());
+        /*if (!bestStudent.getPictureFile().isEmpty())
+            writeFile(bestStudent.getPictureFile().getBytes(), bestStudent.getPictureFile().getOriginalFilename());*/
         Pictures pictures = new Pictures();
         pictures.setUrlPicture(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + bestStudent.getPictureFile().getOriginalFilename());
         pictures.setIdPage(2);
@@ -133,11 +133,11 @@ public class AdminBestStudentsController {
         return picturesService.insert(pictures);
     }
 
-    private void writeFile(byte[] buffer, String filename) throws IOException {
+    /*private void writeFile(byte[] buffer, String filename) throws IOException {
         //new File(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + filename).mkdir();
         FileOutputStream fos = new FileOutputStream(PathConstant.SAVE_PICTURE_BEST_STUDENT.getPath() + filename);
         // перевод строки в байты
         fos.write(buffer, 0, buffer.length);
         fos.close();
-    }
+    }*/
 }

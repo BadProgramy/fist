@@ -254,7 +254,7 @@ public class AdminUserController {
         user.setEnabled(true);
         user.setFirstname("Айрат");
         user.setSecondname("Мухутдинов");
-        user.setUsername("airat23059");
+        user.setUsername("airatmyhytdinov08@gmail.com");
         user.setPassword("19970808");
         user.setPagevk("https://vk.com/id109488730");
         user.setRole(roles);

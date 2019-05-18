@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>404 HTML Template by Colorlib</title>
+	<title th:utext="${title}"></title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Muli:400" rel="stylesheet">
@@ -33,9 +33,9 @@
 		<div class="notfound-bg"></div>
 		<div class="notfound">
 			<div class="notfound-404">
-				<h1>404</h1>
+				<h1 th:text="${httpStatus}">404</h1>
 			</div>
-			<h2>УПС! Страница не найдена</h2>
+			<h2 th:text="${header}">УПС! Страница не найдена</h2>
 			<form th:action="${'/search'}" th:object="${searchword}" class="notfound-search">
 				<input name="searchword" type="text" placeholder="Поиск...">
 				<button type="submit">Поиск</button>

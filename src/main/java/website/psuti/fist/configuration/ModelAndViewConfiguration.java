@@ -325,7 +325,7 @@ public class ModelAndViewConfiguration {
 
         try {
             sender.send(header, htmlBody, user.getUsername());
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             System.out.println("Я открыл scheduler");
             HashMap<String, String> message = new HashMap<>();
             message.put(header, htmlBody);

@@ -175,8 +175,8 @@ public class AdminUserController {
                 .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/email="+ user.getUsername());
 
         try {
-            sender.send("Пример загаловка", htmlBody, user.getUsername());
-        } catch (MessagingException e) {
+            sender.send("Пригласительный", htmlBody, user.getUsername());
+        } catch (Exception e) {
             System.out.println("Я открыл scheduler");
             HashMap<String, String> message = new HashMap<>();
             message.put("Пример загаловка", htmlBody);

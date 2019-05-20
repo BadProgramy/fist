@@ -36,7 +36,7 @@ public class SendMessageScheduler {
                         SendMessageEmailConstant.removeNonSendingMessage((User) keyUser.getKey());
                         logger.info("Я отправил сообщение - " + ((User)keyUser.getKey()).getUsername());
                         break;
-                    } catch (MessagingException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }

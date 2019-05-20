@@ -111,6 +111,7 @@
         var marginx=doc/-2;
         var curators=document.getElementById("curators");
         curators.style.marginLeft=marginx+'px';
+        curators.style.width=doc +'px';
         table.style.marginLeft=marginx+'px';
     }
     $(document).ready(function(){
@@ -121,7 +122,6 @@
         $(window).resize(function(){
             resizeTable();
         });
-
     });
 </script>
 <script src="/js/bootstrap.min.js"></script>

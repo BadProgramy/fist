@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.Role;
@@ -42,6 +43,9 @@ public class AdminUserController {
 
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
+
+    @Autowired
+    private ModelAndViewConfiguration modelAndViewConfiguration;
 
     @RequestMapping("/admin/user/cms")
     public ModelAndView userCmsAdd(Model model) {
@@ -177,14 +181,14 @@ public class AdminUserController {
                 .replace("#nameClient", "Здраствуйте, "+user.getFirstname()+",")
                 .replace("#textClient", "На сайте факультета информационных систем и технологий ПГУТИ. Вам доступны такие роли - " + rolesString + ". Подтвердите свою почту, чтобы использовать её в качестве логина.")
                 .replace("#buttonCheck", "Подтвердить почту")
-                .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/email="+ user.getUsername());
+                .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/cms/email="+ user.getUsername());
 
         try {
             sender.send("Пригласительный", htmlBody, user.getUsername());
         } catch (Exception e) {
             System.out.println("Я открыл scheduler");
             HashMap<String, String> message = new HashMap<>();
-            message.put("Пример загаловка", htmlBody);
+            message.put("Пригласительный", htmlBody);
             SendMessageEmailConstant.addSendMessage(user, message);
             ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor = applicationContext.getBean(ScheduledAnnotationBeanPostProcessor.class);
             scheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
@@ -199,10 +203,28 @@ public class AdminUserController {
     }
 
     @RequestMapping("/user/enable/email={email}")
-    public String activationUser(@PathVariable("email") String email) throws SQLException {
+    public String activationUser(@PathVariable("email") String email, Model model) throws SQLException {
         User user = userService.findUserByName(email);
-        user.setEnabled(true);
-        userService.save(user);
+        if (user != null) {
+            user.setEnabled(true);
+            userService.save(user);
+        }
+        model.addAttribute("headerAnswer", "СПАСИБО ЧТО ПОДПИСАЛИСЬ");
+        model.addAttribute("textAnswer", "Теперь вы будете в числе первых узнавать о самых актуальных событиях в нашем факультете");
+        model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
+        return "enabledAccount";
+    }
+
+    @RequestMapping("/user/enable/cms/email={email}")
+    public String activationUserCms(@PathVariable("email") String email, Model model) throws SQLException {
+        User user = userService.findUserByName(email);
+        if (user != null) {
+            user.setEnabled(true);
+            userService.save(user);
+        }
+        model.addAttribute("headerAnswer", "СПАСИБО ЧТО ВЫ С НАМИ");
+        model.addAttribute("textAnswer", "Теперь вы можете редактировать контент на нашем сайте");
+        model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
         return "enabledAccount";
     }
 

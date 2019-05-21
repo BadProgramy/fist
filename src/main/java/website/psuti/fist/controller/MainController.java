@@ -327,7 +327,11 @@ public ModelAndView gradStudents() {
     @RequestMapping("/user/unsubscribe/email={email}")
     public String activationUser(@PathVariable("email") String email,Model model) {
         User user = userService.findUserByName(email);
-        userService.delete(user);
+        if (user != null) {
+            userService.delete(user);
+        }
+        model.addAttribute("headerAnswer", "СПАСИБО ЧТО ПОДПИСАЛИСЬ");
+        model.addAttribute("textAnswer", "Теперь вы будете в числе первых узнавать о самых актуальных событиях в нашем факультете");
         model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
         return "enabledAccount";
     }

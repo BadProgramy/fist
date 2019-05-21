@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.Role;
@@ -22,6 +23,8 @@ import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.UserService;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.*;
@@ -41,6 +44,9 @@ public class AdminUserController {
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
 
+    @Autowired
+    private ModelAndViewConfiguration modelAndViewConfiguration;
+
     @RequestMapping("/admin/user/cms")
     public ModelAndView userCmsAdd(Model model) {
         return adminUserPage(1, "cms", model);
@@ -59,27 +65,23 @@ public class AdminUserController {
         List<User> cmsUsers = new ArrayList<>();
         List<User> resulUser = new ArrayList<>();
         List<Role> roles = new ArrayList<>();
+        if (idPage <= 0) idPage = 1;
+        model.addAttribute("firstPage", idPage);
+        roles.add(Role.ADMIN);
+        roles.add(Role.DEVELOPER);
+        roles.add(Role.MODERATOR);
+
         if (check.equals("cms")) {
-            if (idPage <= 0) idPage = 1;
-            model.addAttribute("firstPage", idPage);
             for (User user: userService.getAll()) {
                 if (user.getRole().contains(Role.ADMIN) ||
                     user.getRole().contains(Role.DEVELOPER) ||
                     user.getRole().contains(Role.MODERATOR))
                     cmsUsers.add(user);
             }
-            roles.clear();
-            roles.add(Role.ADMIN);
-            roles.add(Role.DEVELOPER);
-            roles.add(Role.MODERATOR);
             model.addAttribute("checkPage", true);
         } else if (check.equals("subscriber")) {
-            if (idPage <= 0) idPage = 1;
-            model.addAttribute("firstPage", idPage);
             cmsUsers.addAll(userService.getUsersByRole(Role.SUBSCRIBER));
             model.addAttribute("checkPage", false);
-            roles.clear();
-            roles.add(Role.SUBSCRIBER);
         }
 
         model.addAttribute("pageCount", (int) (Math.ceil((double) cmsUsers.size() / UserConstant.COUNT_USER_FOR_OUTPUT.getCount())));
@@ -132,7 +134,8 @@ public class AdminUserController {
             user.setEnabled(false);
         } else {
             for (Role role: roles) {
-                userBD.addRole(role);
+                if (!userBD.getRole().contains(role))
+                    userBD.addRole(role);
             }
             userBD.setCredentialsNonExpired(true);
             userBD.setAccountNonLocked(true);
@@ -160,6 +163,12 @@ public class AdminUserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String rolesString = "";
+        for (int i=0; i<user.getRole().size(); i++) {
+            if (i != user.getRole().size() - 1)
+                rolesString += user.getRole().get(i).getName() + ", ";
+            else rolesString += user.getRole().get(i).getName();
+        }
         String htmlBody = String.copyValueOf(c)
                 .replace("#headerTop", "Факультет информационных систем и технологий")
                 .replace("#logotipFIST", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
@@ -170,16 +179,16 @@ public class AdminUserController {
                 .replace("#headerEmailHtml", "Добавлен пользователь в CMS")
                 .replace("#footer", "Вы получаете это письмо, потому что вас добавили в пользователи CMS сайта ФИСТ.")
                 .replace("#nameClient", "Здраствуйте, "+user.getFirstname()+",")
-                .replace("#textClient", "Здесь какой нить текст")
+                .replace("#textClient", "На сайте факультета информационных систем и технологий ПГУТИ. Вам доступны такие роли - " + rolesString + ". Подтвердите свою почту, чтобы использовать её в качестве логина.")
                 .replace("#buttonCheck", "Подтвердить почту")
-                .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/email="+ user.getUsername());
+                .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/cms/email="+ user.getUsername());
 
         try {
             sender.send("Пригласительный", htmlBody, user.getUsername());
         } catch (Exception e) {
             System.out.println("Я открыл scheduler");
             HashMap<String, String> message = new HashMap<>();
-            message.put("Пример загаловка", htmlBody);
+            message.put("Пригласительный", htmlBody);
             SendMessageEmailConstant.addSendMessage(user, message);
             ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor = applicationContext.getBean(ScheduledAnnotationBeanPostProcessor.class);
             scheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
@@ -190,14 +199,32 @@ public class AdminUserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:../add";
+        return "redirect:../cms";
     }
 
     @RequestMapping("/user/enable/email={email}")
-    public String activationUser(@PathVariable("email") String email) throws SQLException {
+    public String activationUser(@PathVariable("email") String email, Model model) throws SQLException {
         User user = userService.findUserByName(email);
-        user.setEnabled(true);
-        userService.save(user);
+        if (user != null) {
+            user.setEnabled(true);
+            userService.save(user);
+        }
+        model.addAttribute("headerAnswer", "СПАСИБО ЧТО ПОДПИСАЛИСЬ");
+        model.addAttribute("textAnswer", "Теперь вы будете в числе первых узнавать о самых актуальных событиях в нашем факультете");
+        model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
+        return "enabledAccount";
+    }
+
+    @RequestMapping("/user/enable/cms/email={email}")
+    public String activationUserCms(@PathVariable("email") String email, Model model) throws SQLException {
+        User user = userService.findUserByName(email);
+        if (user != null) {
+            user.setEnabled(true);
+            userService.save(user);
+        }
+        model.addAttribute("headerAnswer", "СПАСИБО ЧТО ВЫ С НАМИ");
+        model.addAttribute("textAnswer", "Теперь вы можете редактировать контент на нашем сайте");
+        model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
         return "enabledAccount";
     }
 
@@ -243,7 +270,20 @@ public class AdminUserController {
         return "redirect:../../profile";
     }
 
-    @RequestMapping("/login/submit")
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            if (session != null) {
+                session.invalidate();
+            }
+            SecurityContextHolder.clearContext();
+        }
+        return "redirect:";
+    }
+
+    /*@RequestMapping("/login/submit")
     public String testCreateUser() throws Exception {
         List<Role> roles = new ArrayList<>();
         roles.add(Role.DEVELOPER);
@@ -262,5 +302,5 @@ public class AdminUserController {
         user.setRole(roles);
         userService.save(user);
         return "adminSettingProfile";
-    }
+    }*/
 }

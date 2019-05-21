@@ -21,11 +21,13 @@ public class SendMessageScheduler {
     private ApplicationContext applicationContext;
 
     public final Logger logger = LoggerFactory.getLogger(SendMessageScheduler.class);
+    private static final int countRepeat = 2;
+    private static int currentNumberRepeat = 0;
 
     //каждые 5 мин проверяяет, что нет сообщений для отправки
     @Scheduled(fixedDelay = 30000)
     public void sendRepeatMessage() {
-        if (!SendMessageEmailConstant.getNonSendingMessage().isEmpty()) {
+        if (!SendMessageEmailConstant.getNonSendingMessage().isEmpty() && currentNumberRepeat <= countRepeat) {
             for (Map.Entry keyUser : SendMessageEmailConstant.getNonSendingMessage().entrySet()) {
                 for (Map.Entry valueMessage : ((HashMap<String, String>)keyUser.getValue()).entrySet()) {
                     try {
@@ -41,11 +43,12 @@ public class SendMessageScheduler {
                     }
                 }
             }
-            //SendMessageEmailConstant.clearNonSendingMessage();
+            currentNumberRepeat++;
         } else {
             ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor = applicationContext.getBean(ScheduledAnnotationBeanPostProcessor.class);
             scheduledAnnotationBeanPostProcessor.postProcessBeforeDestruction(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
             logger.info("Закрыл scheduler");
+            currentNumberRepeat = 0;
         }
     }
 }

@@ -54,7 +54,7 @@
                     <div class="col-md-7 col-md-offset-2">
                         <div th:each="newFaculty : ${resultTopic}">
                             <article class="blogpost">
-                                <div class="img-container">
+                                <div class="post-media img-container">
                                     <img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt="">
                                 </div>
                                 <h2 class="post-title"><a th:href="@{'/newsBlog/topic/id='+${newFaculty.getId()}}" th:utext="${newFaculty.getHeading()}"></a></h2>
@@ -162,10 +162,9 @@
                         img.height('100%');
                         img.width('auto');
                     }
-                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
-                    /*console.log(marginx);*/
-                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
-
+                    var marginy=(img.height()-container.height())/-2;
+                    img.css({ 'margin-top': marginy});
+                    img.animate({opacity:'1'}, "swing");
                 }
             }
         }

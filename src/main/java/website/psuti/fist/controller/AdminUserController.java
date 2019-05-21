@@ -22,6 +22,8 @@ import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.UserService;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.*;
@@ -244,6 +246,19 @@ public class AdminUserController {
         }
         model.addAttribute("user", userOriginal);
         return "redirect:../../profile";
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            if (session != null) {
+                session.invalidate();
+            }
+            SecurityContextHolder.clearContext();
+        }
+        return "redirect:";
     }
 
     /*@RequestMapping("/login/submit")

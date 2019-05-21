@@ -59,27 +59,23 @@ public class AdminUserController {
         List<User> cmsUsers = new ArrayList<>();
         List<User> resulUser = new ArrayList<>();
         List<Role> roles = new ArrayList<>();
+        if (idPage <= 0) idPage = 1;
+        model.addAttribute("firstPage", idPage);
+        roles.add(Role.ADMIN);
+        roles.add(Role.DEVELOPER);
+        roles.add(Role.MODERATOR);
+
         if (check.equals("cms")) {
-            if (idPage <= 0) idPage = 1;
-            model.addAttribute("firstPage", idPage);
             for (User user: userService.getAll()) {
                 if (user.getRole().contains(Role.ADMIN) ||
                     user.getRole().contains(Role.DEVELOPER) ||
                     user.getRole().contains(Role.MODERATOR))
                     cmsUsers.add(user);
             }
-            roles.clear();
-            roles.add(Role.ADMIN);
-            roles.add(Role.DEVELOPER);
-            roles.add(Role.MODERATOR);
             model.addAttribute("checkPage", true);
         } else if (check.equals("subscriber")) {
-            if (idPage <= 0) idPage = 1;
-            model.addAttribute("firstPage", idPage);
             cmsUsers.addAll(userService.getUsersByRole(Role.SUBSCRIBER));
             model.addAttribute("checkPage", false);
-            roles.clear();
-            roles.add(Role.SUBSCRIBER);
         }
 
         model.addAttribute("pageCount", (int) (Math.ceil((double) cmsUsers.size() / UserConstant.COUNT_USER_FOR_OUTPUT.getCount())));
@@ -132,7 +128,8 @@ public class AdminUserController {
             user.setEnabled(false);
         } else {
             for (Role role: roles) {
-                userBD.addRole(role);
+                if (!userBD.getRole().contains(role))
+                    userBD.addRole(role);
             }
             userBD.setCredentialsNonExpired(true);
             userBD.setAccountNonLocked(true);
@@ -160,6 +157,12 @@ public class AdminUserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String rolesString = "";
+        for (int i=0; i<user.getRole().size(); i++) {
+            if (i != user.getRole().size() - 1)
+                rolesString += user.getRole().get(i).getName() + ", ";
+            else rolesString += user.getRole().get(i).getName();
+        }
         String htmlBody = String.copyValueOf(c)
                 .replace("#headerTop", "Факультет информационных систем и технологий")
                 .replace("#logotipFIST", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
@@ -170,7 +173,7 @@ public class AdminUserController {
                 .replace("#headerEmailHtml", "Добавлен пользователь в CMS")
                 .replace("#footer", "Вы получаете это письмо, потому что вас добавили в пользователи CMS сайта ФИСТ.")
                 .replace("#nameClient", "Здраствуйте, "+user.getFirstname()+",")
-                .replace("#textClient", "Здесь какой нить текст")
+                .replace("#textClient", "На сайте факультета информационных систем и технологий ПГУТИ. Вам доступны такие роли - " + rolesString + ". Подтвердите свою почту, чтобы использовать её в качестве логина.")
                 .replace("#buttonCheck", "Подтвердить почту")
                 .replace("#buttonHref", UrlForSearch.getUrlSite() + "/user/enable/email="+ user.getUsername());
 
@@ -190,7 +193,7 @@ public class AdminUserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:../add";
+        return "redirect:../cms";
     }
 
     @RequestMapping("/user/enable/email={email}")
@@ -243,7 +246,7 @@ public class AdminUserController {
         return "redirect:../../profile";
     }
 
-    @RequestMapping("/login/submit")
+    /*@RequestMapping("/login/submit")
     public String testCreateUser() throws Exception {
         List<Role> roles = new ArrayList<>();
         roles.add(Role.DEVELOPER);
@@ -262,5 +265,5 @@ public class AdminUserController {
         user.setRole(roles);
         userService.save(user);
         return "adminSettingProfile";
-    }
+    }*/
 }

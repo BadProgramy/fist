@@ -544,5 +544,19 @@
     });
 </script>
 <script src="/js/main.js" defer></script>
+<script>
+    var someimage = document.getElementById('content');
+    var myimgs = someimage.getElementsByTagName('img');
+    var mysrc,mysrc2;
+    var parent,parent2;
+        mysrc=myimgs[0].src;
+        mysrc2=myimgs[1].src;
+        if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0') &&(mysrc2.charAt(mysrc2.length-2)==='/') && (mysrc2.charAt(mysrc2.length-1)==='0')){
+            parent=myimgs[0].parentNode;
+            parent.style.display='none';
+            parent=myimgs[1].parentNode;
+            parent.style.display='none';
+        }
+</script>
 </body>
 </html>

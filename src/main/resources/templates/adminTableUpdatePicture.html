@@ -93,7 +93,9 @@
             <form th:action="@{/admin/table/picture/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                 <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${picture.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/admin/picture/' + ${picture.getId()}}" alt=""></a></li>
             </form>
-            <script th:inline="javascript">
+                <li><a class="cd-signin"><input th:id="@{'/admin/picture/' + ${picture.getId()}}" th:src="@{'/admin/picture/' + ${picture.getId()}}" value="Настройки" type="submit"></a></li>
+
+                <script th:inline="javascript">
                 document.body.onclick = function(e) {
                     var elem = e ? e.target : window.event.srcElement;
                     while (!(elem.id || (elem == document.body))) elem = elem.parentNode;

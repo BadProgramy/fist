@@ -33,7 +33,6 @@
              if($(this).attr('href')==='/main'){return true}
              var toLoad = $(this).attr('href')+' #content';
              $('#content').hide('fast',loadContent);
-             window.location.hash =$(this).attr('href');
              function loadContent() {
                  $('#content').load(toLoad,'',showNewContent())
              }

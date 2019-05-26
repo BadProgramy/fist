@@ -1,5 +1,6 @@
 package website.psuti.fist.controller;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
@@ -26,6 +27,7 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -151,13 +153,22 @@ public class AdminUserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        ClassLoader classLoader = getClass().getClassLoader();
         Reader s = null;
         try {
-            s = new InputStreamReader(new FileInputStream(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath()) );
+            s = new InputStreamReader(classLoader.getResource(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath()).openStream() );
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        char c[] = new char[(int)(new File(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath())).length()];
+        char c[] = new char[0];
+        try {
+            byte[] data = IOUtils.toByteArray(s);
+            c = new char[data.length];
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try {
             s.read(c);
         } catch (IOException e) {

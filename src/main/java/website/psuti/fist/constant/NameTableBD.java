@@ -13,7 +13,6 @@ public enum NameTableBD {
     FILE("files"),
     CANDIDATE_ASSIGNMENT("candidate_assignment"),
     CURATOR("curator"),
-    CHECKING_CHANGE_TABLE("checking_change_table"),
     HTMLStructurePage("htmlstructure_page");
 
     private String name;

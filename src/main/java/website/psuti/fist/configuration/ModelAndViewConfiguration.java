@@ -221,6 +221,39 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("rsoHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RSO.getId()));
         modelAndView.addObject("biHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.BI.getId()));
         modelAndView.addObject("uitsHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.UITS.getId()));
+        modelAndView.addObject("cathedrasHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CATHEDRAS_HEAD.getId()));
+        modelAndView.addObject("academicSovietHTMLStructure", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.ACADEMIC_SOVIET.getId()));
+        modelAndView.addObject("biHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.BI_HEAD.getId()));
+        modelAndView.addObject("candidateForExpulsionHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CANDIDATES_FOR_EXPULSION_HEAD.getId()));
+        modelAndView.addObject("characteristicEmployeeHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CHARACTERISTIC_EMPLOYEE_HEAD.getId()));
+        modelAndView.addObject("commissionsFISTHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.COMISSIONS_FIST_HEAD.getId()));
+        modelAndView.addObject("contactsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CONTACTS.getId()));
+        modelAndView.addObject("costEducationHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.COST_EDUCATION_HEAD.getId()));
+        modelAndView.addObject("deanTeamHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.DEAN_TEAM_HEAD.getId()));
+        modelAndView.addObject("diplomasPhotoHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.DIPLOMAS_PHOTO_HEAD.getId()));
+        modelAndView.addObject("enabledAccountHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.ENABLED_ACCOUNT_HEAD.getId()));
+        modelAndView.addObject("facultyHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.FACULTY_HEAD.getId()));
+        modelAndView.addObject("gradStudentsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GRAD_STUDENTS_HEAD.getId()));
+        modelAndView.addObject("graduatesHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GRADUATES_HEAD.getId()));
+        modelAndView.addObject("groupCuratorsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GROUP_CURATORS_HEAD.getId()));
+        modelAndView.addObject("groupListsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.GROUP_LISTS_HEAD.getId()));
+        modelAndView.addObject("indexHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.INDEX_HEAD.getId()));
+        modelAndView.addObject("innovatikaHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.INNOVATIKA_HEAD.getId()));
+        modelAndView.addObject("interimControlHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.INTERIM_CONTROL_HEAD.getId()));
+        modelAndView.addObject("istHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.IST_HEAD.getId()));
+        modelAndView.addObject("ivtHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.IVT_HEAD.getId()));
+        modelAndView.addObject("mainTrendHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.MAIN_TREND_HEAD.getId()));
+        modelAndView.addObject("matobHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.MATOB_HEAD.getId()));
+        modelAndView.addObject("newsBlogHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.NEWS_BLOG_HEAD.getId()));
+        modelAndView.addObject("piHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.PI_HEAD.getId()));
+        modelAndView.addObject("prikladInfoHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.PRIKLAD_INFO_HEAD.getId()));
+        modelAndView.addObject("resultOfControlHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RESULT_OF_CONTROL_HEAD.getId()));
+        modelAndView.addObject("rightAndObligationHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RIGHT_AND_OBLIGATIONS_HEAD.getId()));
+        modelAndView.addObject("rsoHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.RSO_HEAD.getId()));
+        modelAndView.addObject("searchHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.SEARCH_HEAD.getId()));
+        modelAndView.addObject("topicHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.TOPIC_HEAD.getId()));
+        modelAndView.addObject("uitsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.UITS_HEAD.getId()));
+        modelAndView.addObject("academicSovietHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.ACADEMIC_SOVIET_HEAD.getId()));
     }
 
     private void updateCurator() {

@@ -1,0 +1,2 @@
+INSERT INTO fist.users (id, account_non_expired, account_non_locked, credentials_non_expired, enabled, firstname, pagevk, password, secondname, username) VALUES (61, true, true, true, true, 'Айрат', 'https://vk.com/id109488730', '$2a$10$kgFrj07vkX0EZzAtMjIKE.muY6Ip8lbmSwiOfUcmh9qKsIZKz1VrG', 'Мухутдинов', 'airat23059');
+INSERT INTO fist.users (id, account_non_expired, account_non_locked, credentials_non_expired, enabled, firstname, pagevk, password, secondname, username) VALUES (62, false, false, false, true, null, null, null, null, 'myhytdinov@yandex.ru');

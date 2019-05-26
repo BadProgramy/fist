@@ -74,15 +74,15 @@ public class AdminNewsFacultyController {
     @RequestMapping("/admin/content/news/add/submit")
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
         newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
-        if (newFaculty.getPictureFile() != null) {
+        if (!newFaculty.getPictureFile().isEmpty()) {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.insert(newFaculty);
-        for (User user : userService.getUsersByRoleAndEnable(Role.SUBSCRIBER)) {
+        /*for (User user : userService.getUsersByRoleAndEnable(Role.SUBSCRIBER)) {
             modelAndViewConfiguration.sendMessageSubscriber(newFaculty.getHeading(), newFaculty.getText(), user,
                     "Посмотреть на сайте", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi(), "",
                     "Вы получаете это письмо, потому что вы подписаны на новости факультета.");
-        }
+        }*/
         return "redirect:../";
     }
 

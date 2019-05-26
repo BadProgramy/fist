@@ -1,11 +1,14 @@
 package website.psuti.fist.configuration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
+import org.xml.sax.SAXException;
+import website.psuti.fist.FistApplication;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
 import website.psuti.fist.model.File;
@@ -13,15 +16,22 @@ import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.*;
 
 import javax.annotation.PostConstruct;
-import javax.mail.MessagingException;
+import javax.sql.DataSource;
+import javax.xml.XMLConstants;
+import javax.xml.validation.SchemaFactory;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 @Component
 public class ModelAndViewConfiguration {
+    private boolean checkTableBDDATA = false;
 
+    public final Logger logger = LoggerFactory.getLogger(ModelAndViewConfiguration.class);
 
     @Autowired
     private MenuItemHeaderInMainPagesService menuItemHeaderInMainPagesService;
@@ -61,6 +71,8 @@ public class ModelAndViewConfiguration {
     @Autowired
     private ApplicationContext applicationContext;
 
+
+
     //--------------------------------------------------КЭШ------------------------------------------
     private ModelAndView modelAndView;
 
@@ -72,6 +84,10 @@ public class ModelAndViewConfiguration {
     private List<NewsOfFaculty> newsOfFaculties;
     //-------------------------------------------------Оперативная память-----------------------------
 
+    @Autowired
+    private DataSource dataSource;
+
+
     public HashMap<Long, byte[]> initPicturesCache() {
         if (picturesCache == null) {
             picturesCache = new HashMap<>();
@@ -82,8 +98,46 @@ public class ModelAndViewConfiguration {
         return picturesCache;
     }
 
+    public void filledDataBase() throws IOException, SQLException {
+        Connection connection = dataSource.getConnection();
+        for (NameTableBD tableBD: NameTableBD.values()) {
+            try {
+                ClassLoader classLoader = getClass().getClassLoader();
+                /*BufferedReader in = new BufferedReader();*/
+                Scanner in = new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + tableBD.getName() + ".sql").openStream());
+                String str;
+                String result = "";
+                while (in.hasNextLine()) {
+                    result += in.nextLine();
+                    if (result.toCharArray()[result.length() - 2] == ')' && result.toCharArray()[result.length() - 1] == ';') {
+                        connection.createStatement().executeUpdate(result);
+                        result = "";
+                    }
+                }
+                logger.info("Выполнил запросы к " + tableBD.getName());
+                in.close();
+            } catch (java.sql.SQLSyntaxErrorException ex) {
+
+            } catch (java.sql.SQLIntegrityConstraintViolationException ex) {
+
+            }
+        }
+        /*fore
+        dataSource.getConnection().createStatement().executeUpdate(new String(Files.readAllBytes(Paths.get("website.psuti.fist.SQLDump/SQLInsert/fist_best_student.sql"))));
+*/    }
+
     @PostConstruct
-    public ModelAndView initModelAndView() {
+    public ModelAndView initModelAndView(){
+        try {
+            if (!checkTableBDDATA){
+                checkTableBDDATA = true;
+                filledDataBase();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         initPicturesCache();
         if (modelAndView == null) {
             updateCashBD();

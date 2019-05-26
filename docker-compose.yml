@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  docker-mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fist
+      - MYSQL_PASSWORD=root
+  spring-boot-jpa-docker-webapp:
+    image: docker/fist
+    depends_on:
+      - docker-mysql
+    ports:
+      - 80:80
+    environment:
+      - DATABASE_HOST=fist
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=fist
+      - DATABASE_PORT=3306

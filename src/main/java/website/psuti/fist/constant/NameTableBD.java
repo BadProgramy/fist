@@ -5,7 +5,6 @@ public enum NameTableBD {
     EMPLOYEE("employee"),
     BEST_STUDENT("best_student"),
     EDUCATION_PROCESS("education_process"),
-    MAIN_PAGE("main_page"),
     MENU_ITEM_HEADER_IN_MAIN_PAGE("menu_item_header_in_main_page"),
     NEWS_OF_FACULTY("news_of_faculty"),
     PICTURES("pictures"),
@@ -14,6 +13,7 @@ public enum NameTableBD {
     FILE("files"),
     CANDIDATE_ASSIGNMENT("candidate_assignment"),
     CURATOR("curator"),
+    CHECKING_CHANGE_TABLE("checking_change_table"),
     HTMLStructurePage("htmlstructure_page");
 
     private String name;

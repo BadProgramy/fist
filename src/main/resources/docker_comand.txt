@@ -1,0 +1,9 @@
+docker pull 199720000202/mysql:8.0.16
+docker pull 199720000202/fist:0.0.1
+docker run --name mysql-fist -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=fist -e MYSQL_USER=root -e MYSQL_PASSWORD=root -d 199720000202/mysql:8.0.16
+//docker build . -t 199720000202/fist:0.0.1
+docker start /mysql-fist
+docker run -p 8080:8080 --name fist --link mysql-fist:mysql -d 199720000202/fist:0.0.1
+docker start /fist
+
+

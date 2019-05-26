@@ -18,6 +18,18 @@
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        if($("#particles-js .back_img").hasClass("back_img")) {
+            $("#particles-js .back_img").addClass( "hiddenn");
+            $("#particles-js .back_img").removeClass( "back_img");
+        }
+        if($("#particles-js .container-fluid").hasClass("container-fluid")) {
+            $("#particles-js .container-fluid").addClass( "hiddenn");
+            $("#particles-js .container-fluid").removeClass( "container-fluid");}
+        if($("#particles-js .only_one_trend").hasClass("only_one_trend"))
+        {
+            $("#particles-js .only_one_trend").addClass( "hiddenn");
+            $("#particles-js .only_one_trend").removeClass( "only_one_trend");
+        }
         var hash = window.location.hash.substr(1);
         var href = $('#content a').each(function(){
             var href = $(this).attr('href');

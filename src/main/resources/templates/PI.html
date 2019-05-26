@@ -42,20 +42,11 @@
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        var hash = window.location.hash.substr(1);
-        var href = $('#content a').each(function(){
-            var href = $(this).attr('href');
-            if(hash===href.substr(0,href.length)){
-                var toLoad = hash+' #content';
-                $('#content').load(toLoad)
-            }
-        });
 
         $('#content a').click(function(){
             if($(this).attr('href')==='/main'){return true}
             var toLoad = $(this).attr('href')+' #content';
             $('#content').hide('fast',loadContent);
-            window.location.hash =$(this).attr('href');
             function loadContent() {
                 $('#content').load(toLoad,'',showNewContent())
             }

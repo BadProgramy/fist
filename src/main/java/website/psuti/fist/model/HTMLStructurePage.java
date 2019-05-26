@@ -13,6 +13,8 @@ public class HTMLStructurePage {
     @Type(type = "org.hibernate.type.TextType")
     private String htmlCode;
     private String namePage;
+    @Enumerated(EnumType.STRING)
+    private TypeHtmlCode typeHtmlCode;
 
     public HTMLStructurePage() {
     }
@@ -41,12 +43,21 @@ public class HTMLStructurePage {
         this.namePage = namePage;
     }
 
+    public TypeHtmlCode getTypeHtmlCode() {
+        return typeHtmlCode;
+    }
+
+    public void setTypeHtmlCode(TypeHtmlCode typeHtmlCode) {
+        this.typeHtmlCode = typeHtmlCode;
+    }
+
     @Override
     public String toString() {
         return "HTMLStructurePage{" +
                 "id=" + id +
                 ", htmlCode='" + htmlCode + '\'' +
                 ", namePage='" + namePage + '\'' +
+                ", typeHtmlCode=" + typeHtmlCode +
                 '}';
     }
 }

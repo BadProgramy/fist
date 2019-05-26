@@ -10,6 +10,7 @@ import website.psuti.fist.constant.MainPageObjectConstant;
 import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.model.HTMLStructurePage;
+import website.psuti.fist.model.TypeHtmlCode;
 import website.psuti.fist.service.RequestPostConnection;
 
 import javax.sql.DataSource;
@@ -107,5 +108,17 @@ public class DAOHtmlStructurePageImpl implements DAOHtmlStructurePage {
             session.close();
         }
         return file;
+    }
+
+    @Override
+    public List<HTMLStructurePage> findHTMLCodeByType(TypeHtmlCode typeHtmlCode) {
+        List<HTMLStructurePage> htmlStructurePages;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            htmlStructurePages = session.selectList("HTMLStructurePage.findHTMLCodeByType", typeHtmlCode.name());
+        } finally {
+            session.close();
+        }
+        return htmlStructurePages;
     }
 }

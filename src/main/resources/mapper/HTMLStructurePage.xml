@@ -8,6 +8,7 @@
         <id property="id" column="id"/>
         <result property="htmlCode" column="html_code"/>
         <result property="namePage" column="name_page"/>
+        <result property="typeHtmlCode" column="type_html_code"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
@@ -16,7 +17,7 @@
 
     <insert id="add" parameterType="HTMLStructurePage">
         insert into htmlstructure_page(html_code, name_page)
-        values (#{htmlCode}, #{namePage});
+        values (#{htmlCode}, #{namePage}, #{typeHtmlCode} );
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
@@ -26,7 +27,8 @@
     <update id="update" parameterType="HTMLStructurePage">
         update htmlstructure_page SET
         html_code = #{htmlCode},
-        name_page = #{namePage}
+        name_page = #{namePage},
+        type_html_code = #{typeHtmlCode}
         where id = #{id};
     </update>
 
@@ -37,4 +39,8 @@
     <delete id="deleteById" parameterType="Long">
         DELETE from htmlstructure_page where id = #{id};
     </delete>
+
+    <select id="findHTMLCodeByType" parameterType="String" resultMap="result">
+        SELECT * FROM htmlstructure_page where type_html_code = #{typeHtmlCode};
+    </select>
 </mapper>

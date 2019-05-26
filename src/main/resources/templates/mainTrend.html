@@ -43,36 +43,48 @@
 
 <!-- Javascript -->
  <script src="/js/jquery.min.js"></script>
- <script type="text/javascript">
-     $(document).ready(function() {
-         var hash = window.location.hash.substr(1);
-         var href = $('#content a').each(function(){
-             var href = $(this).attr('href');
-             if(hash===href.substr(0,href.length)){
-                 var toLoad = hash+' #content';
-                 $('#content').load(toLoad)
-             }
-         });
+<script type="text/javascript">
+    $(document).ready(function() {
+        if($("#particles-js .back_img").hasClass("back_img")) {
+            $("#particles-js .back_img").addClass( "hiddenn");
+            $("#particles-js .back_img").removeClass( "back_img");
+        }
+        if($("#particles-js .container-fluid").hasClass("container-fluid")) {
+            $("#particles-js .container-fluid").addClass( "hiddenn");
+            $("#particles-js .container-fluid").removeClass( "container-fluid");}
+        if($("#particles-js .only_one_trend").hasClass("only_one_trend"))
+        {
+            $("#particles-js .only_one_trend").addClass( "hiddenn");
+            $("#particles-js .only_one_trend").removeClass( "only_one_trend");
+        }
+        var hash = window.location.hash.substr(1);
+        var href = $('#content a').each(function(){
+            var href = $(this).attr('href');
+            if(hash===href.substr(0,href.length)){
+                var toLoad = hash+' #content';
+                $('#content').load(toLoad)
+            }
+        });
 
-         $('#content a').click(function(){
-             if($(this).attr('href')==='/main'){return true}
-             var toLoad = $(this).attr('href')+' #content';
-             $('#content').hide('fast',loadContent);
-             function loadContent() {
-                 $('#content').load(toLoad,'',showNewContent())
-             }
-             function showNewContent() {
-                 $('#content').show('normal',hideLoader());
-             }
-             function hideLoader() {
-                 $('.version').text(NProgress.version);
-                 NProgress.start();
-                 setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
-             }
-             return false;
-         });
-     });
- </script>
+        $('#content a').click(function(){
+            if($(this).attr('href')==='/main'){return true}
+            var toLoad = $(this).attr('href')+' #content';
+            $('#content').hide('fast',loadContent);
+            function loadContent() {
+                $('#content').load(toLoad,'',showNewContent())
+            }
+            function showNewContent() {
+                $('#content').show('normal',hideLoader());
+            }
+            function hideLoader() {
+                $('.version').text(NProgress.version);
+                NProgress.start();
+                setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+            }
+            return false;
+        });
+    });
+</script>
 <script src="/js/bootstrap.min.js" defer></script>
  <script src='/js/nprogress.js' defer></script>
  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer></script>

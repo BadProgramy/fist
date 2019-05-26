@@ -61,26 +61,26 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (1, '<div 
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (2, '<div class="content-blog">
             <div class="container-fluid">
                 <div class="row">
-                        <h1 class="no-margin">????????</h1>
+                        <h1 class="no-margin" style="text-align:center;">Контакты</h1>
                         <div class="space20"></div>
-                        <p style="text-align: center;">???? ?????? ????????: ? 9.00 ?? 17.00 (? 12.00 - 13.00 ????)<br>
-                            ???????, ??????????? – ???????? ????.</p>
+                        <p style="text-align: center;">Часы работы деканата: с 9.00 до 17.00 (с 12.00 - 13.00 обед)<br>
+                            суббота, воскресенье – выходной день.</p>
                         <div class="col-md-5 col-md-offset-1" style="margin-top: 10px">
                         <ul class="contact-info">
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-map-marker"></i> ?????:</strong></p></div>
-                                <div class="col-md-7" style="float: right"><p style="float: left"><span>443090, ?. ???????, ?????????? ?????, 77, ???.302 ? 303</span></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-map-marker"></i> Адрес:</strong></p></div>
+                                <div class="col-md-7" style="float: right"><p style="float: left"><span>443090, г. Самара, Московское шоссе, 77, каб.302 и 303</span></p></div>
                             </li>
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-envelope"></i> ??????????? ?????:</strong></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-envelope"></i> Электронная почта:</strong></p></div>
                                 <div class="col-md-7" style="float: right"><p style="float: left"><span><a href="#">fist@psuti.ru</a></span></p></div>
                             </li>
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> ???????:</strong></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Деканат:</strong></p></div>
                                 <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 228-00-05</span></p></div>
                             </li>
                             <li>
-                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> ?????:</strong></p></div>
+                                <div class="col-md-5" style="float: left"><p><strong><i class="fa fa-phone"></i> Декан:</strong></p></div>
                                 <div class="col-md-7" style="float: right"><p style="float: left"><span>(846) 339-11-96 </span></p></div>
                             </li>
                         </ul>
@@ -90,7 +90,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (2, '<div 
                         </div>
                 </div>
             </div>
-        </div>', null);
+        </div>', 'contacts.html (Контакты)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (3, '<div class="content-blog">
                 <div class="shortcontain container">
                     <div class="row">
@@ -101,7 +101,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (3, '<div 
                             <article class="blogpost">
                                 <div class="post-excerpt">
                                     <h4 class="text-center" style="margin-bottom: 10px">Стоимость обучения утверждена на заседании Ученого Совета ПГУТИ протоколом №10 от 30 мая 2018 года.</h4>
-                                       <h4 class="text-center"> <a href="http://fist.psuti.ru/images/stoimost/Приказ_N60-3_от_31.05.2018.PDF">Стоимость на 2018-2019 год для обучающихся в ПГУТИ</a> </h4>
+                                       <h4 class="text-center"> <a href="/files/id=6">Стоимость на 2018-2019 год для обучающихся в ПГУТИ</a> </h4>
                                 </div>
                             </article>
                             <div class="blog-sep"></div>
@@ -125,11 +125,11 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (3, '<div 
                                     <a style="font-weight: bold "> ОКАТО</a> 36401000000<br>
                                     443010, г. Самара, ул. Л. Толстого, 23<br>
                                     <a style="font-weight: bold "> Код</a> 00000000000000000130 за платную образовательную деятельность</p>
-                                <p style="color: red ">Обязательно указать форму обучения: ДНЕВНАЯ<br>Плательщиком указывается тот, на кого составлен договор.<br>Чеки обязательно отправять на электронную почту <a href="contract@psuti.ru">contract@psuti.ru</a></p>
+                                <p style="color: red ">Обязательно указать форму обучения: ДНЕВНАЯ<br>Плательщиком указывается тот, на кого составлен договор.<br>Чеки обязательно отправять на электронную почту <a href="">contract@psuti.ru</a></p>
                             </article>
                                 <div class="blog-sep"></div>
                                 <article class="blogpost">
-                                <p><a href="http://fist.psuti.ru/images/Rukovod.DOCUMENT/vozvrat.pdf">Порядок возврата денежных средств при расторжении договора на оказание платных образовательных услуг в ФГБОУ ВО ПГУТИ</a> </p>
+                                <p><a href="/files/id=7">Порядок возврата денежных средств при расторжении договора на оказание платных образовательных услуг в ФГБОУ ВО ПГУТИ</a> </p>
                                 <p style="line-height: 1.5;">Контактный телефон договорного отдела<br>Тел. (846)332-46-92; (846)339-11-10 (доб.1)</p>
                             </article>
                         </div>
@@ -146,7 +146,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (4, '<div 
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab1-1" data-toggle="tab">О факультете</a></li>
                             <li><a href="#tab1-2" data-toggle="tab">Научные направления</a></li>
-                            <li><a href="#tab1-3" data-toggle="tab">Направления для бакалавров</a></li>
+                            <li><a href="#tab1-3" data-toggle="tab">Направления подготовки</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1-1">
@@ -202,76 +202,106 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (5, '<div 
                 <div class="col-md-10 col-md-offset-1">
 
                 <div class="row">
-                        <a href="#">Руководящий документ по оформлению ВКР (.pdf файл)</a>
+                        <a href="/files/id=8">Руководящий документ по оформлению ВКР (.pdf файл)</a>
                     </div>
                         <div class="row">
-                            <a href="#">Руководящий документ о порядке проверки выпускных квалификационных работу на объем заимствований (.pdf файл) </a>
+                            <a href="/files/id=9">Руководящий документ о порядке проверки выпускных квалификационных работу на объем заимствований (.pdf файл</a>
                         </div>
                     <div class="row">
-                            <a href="#">Бланки титульных листов(первоисточник)</a>
+                            <a href="https://www.psuti.ru/ru/university/quality/doc_vkr">Бланки титульных листов(первоисточник)</a>
                     </div>
                     <div class="row">
-                            <a href="#">Приказ об утверждении тем ВКР студентов ФИСТ № 93-2 от 09.04.2018 (.pdf файл)</a>
+                            <a href="">Приказ об утверждении тем ВКР студентов ФИСТ № ___ от __.__.2019 (.pdf файл)</a>
                     </div>
-                    <div class="row">
-                            <a href="#">Приложения к приказу № 93-2 от 09.04.2018 (.doc файл)</a>
-                    </div>
-                    <div class="row">
-                            <a href="#">Приказ о составе ГЭК (.pdf файл)</a>
-                    </div>
-                    <div class="row">
-                        <a href="#">Обходной лист (.pdf файл)</a>
-                    </div>
-                    <div class="row">
-                        <a href="#">Заявление на ВКР (.pdf файл)</a>
-                    </div>
-                    <div class="row">
-                        <a href="#">Заявление на ВКР (.doc файл)</a>
-                    </div>
+ <div class="blog-sep"></div>
 
+                    <div class="row">
+                            <h2 class="text-center">Приложения к приказу</h2>
+                    </div>
+                        <div class="row">
+                            <a href="/files/id=10">1. 09.03.01 ИВТ (.pdf файл)</a>
+                        </div>
+                        <div class="row">
+                                <a href="/files/id=11">2. 09.03.02 ИСТ (.pdf файл)</a>
+                         </div>
+                    <div class="row">
+                            <a href="/files/id=12">3. 09.03.04 РПИС (.pdf файл)</a>
+                    </div>
+                    <div class="row">
+                            <a href="/files/id=13">4. 27.03.04 УИТС (.pdf файл)</a>
+                    </div>
+                    <div class="row">
+                            <a href="/files/id=14">5. 27.03.05 УИ (.pdf файл)</a>
+                    </div>
+                    <div class="row">
+                            <a href="/files/id=15">6. 38.03.05 ЭБ (.pdf файл)</a>
+                    </div>
+                    <div class="row">
+                            <a href="/files/id=16">7. 42.03.01 РСО (.pdf файл)</a>
+                    </div>
                     <div class="blog-sep"></div>
+                    <div class="row">
+                            <a href="/files/id=20">Приказ о составе ГЭК (.pdf файл)</a>
+                    </div>
+                   <div class="row">
+                            <a href="/files/id=20">Приказ о расписании ГЭК (.pdf файл)</a>
+                    </div>
+ <div class="blog-sep"></div>
 
                     <div class="row">
                             <h2 class="text-center">Графики защит</h2>
                     </div>
                         <div class="row">
-                            <a href="#">1. 09.03.01 ИВТ (.pdf файл)</a>
+                            <p>1. 09.03.01 ИВТ</p>
                         </div>
                         <div class="row">
-                                <a href="#">2. 09.03.02 ИСТ (.pdf файл)</a>
+                                <p>2. 09.03.02 ИСТ </p>
                          </div>
                     <div class="row">
-                            <a href="#">3. 09.03.04 РПИС (.pdf файл)</a>
+                            <p>3. 09.03.04 РПИС </p>
                     </div>
                     <div class="row">
-                            <a href="#">4. 27.03.04 УИТС (.pdf файл)</a>
+                            <p>4. 27.03.04 УИТС </p>
                     </div>
                     <div class="row">
-                            <a href="#">5. 27.03.05 УИ (.pdf файл)</a>
+                            <p>5. 27.03.05 УИ </p>
                     </div>
                     <div class="row">
-                            <a href="#">6. 38.03.05 ЭБ (.pdf файл)</a>
+                            <p>6. 38.03.05 ЭБ</p>
                     </div>
                     <div class="row">
-                            <a href="#">7. 42.03.01 РСО (.pdf файл)</a>
+                            <p>7. 42.03.01 РСО</p>
+                    </div>
+                    <div class="blog-sep"></div>
+                    <div class="row">
+                        <a href="/files/id=17">Обходной лист (.pdf файл)</a>
+                    </div>
+                    <div class="row">
+                        <a href="/files/id=18">Заявление на ВКР (.pdf файл)</a>
+                    </div>
+                    <div class="row">
+                        <a href="/files/id=19">Заявление на ВКР (.doc файл)</a>
                     </div>
                     <div class="blog-sep"></div>
                     <div class="row">
                         <h2 class="text-center">Внимание дипломников!</h2>
                     </div>
                     <div class="row">
-                        <p>Обращаем внимание, что с 15 мая 2018 года изменился порядок проверки электронных версий выпускных квалификационных работ (ЭВ ВКР) на объем заимствования.<br>В настоящее время действует новый руководящий документ:<a href="https://www.psuti.ru/sites/store/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B0/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B%20%D0%A1%D0%9C%D0%9A/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%202/%D0%A0%D0%94%20%D0%9F%D0%93%D0%A3%D0%A2%D0%98-2.16.7-2018.pdf">РД ПГУТИ 2.16.7 – 2018.</a><br>Согласно указанному документу, итоговая проверка ЭВ ВКР на плагиат и передача файлов
-                           в электронную библиотечную систему осуществляется в научно-технической библиотеке (НТБ)
-                            (учебные корпуса №1 и 2). <br>Информация приведена на сайте НТБ (<a href="http://lib.psuti.ru/index.php?id=452">http://lib.psuti.ru/index.php?id=452</a>).</p>
+                        <p>Обращаем внимание, что изменился порядок проверки электронных версий выпускных квалификационных работ (ЭВ ВКР) на объем заимствования.<br>В настоящее время действует новый руководящий документ:<a href="https://www.psuti.ru/sites/store/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B0/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B%20%D0%A1%D0%9C%D0%9A/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%202/%D0%A0%D0%94%20%D0%9F%D0%93%D0%A3%D0%A2%D0%98%202.16.7-2019%20%D0%9F%D0%BE%D1%80%D1%8F%D0%B4%D0%BE%D0%BA%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B8%20%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%BD%D1%8B%D1%85%20%D0%BA%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%20%D0%BE%D0%B1%D1%83%D1%87%D0%B0%D1%8E%D1%89%D0%B8%D1%85%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%B0%D1%82%20%D0%B2%20%D0%9F%D0%93%D0%A3%D0%A2%D0%98.%20%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5.pdf">РД ПГУТИ 2.16.7 – 2018.</a><br>Согласно указанному документу, итоговая проверка ЭВ ВКР на плагиат и передача файлов в электронную библиотечную систему осуществляется в научно-технической библиотеке (НТБ)(учебные корпуса №1 и 2). <br>Информация приведена на сайте НТБ (<a href="https://www.psuti.ru/ru/ntb/studen">https://www.psuti.ru/ru/ntb/student</a>).</p>
                     </div>
                     <div class="blog-sep"></div>
                     <div class="row list-decimal">
                         <h2 class="text-center">Прошу обратить внимание на следующее</h2>
                         <ul>
-                            <li> ВАЖНО!!! На кафедрах предварительная проверка ЭВ ВКР на плагиат должна осуществляться только по электронным ключам (эк) 2018 года!!! При использовании эк 2017 года на кафедре последующая итоговая проверка ЭВ ВКР в НТБ не даст того же самого результата!!!</li>
+                            <li> ВАЖНО!!! На кафедрах предварительная проверка ЭВ ВКР на плагиат должна осуществляться только по электронным ключам (эк) 2019года!!! При использовании ключей прошлых лет последующая итоговая проверка ЭВ ВКР в НТБ не даст того же самого результата!!!</li>
                             <li> В НТБ дипломник должен принести в электронной форме ЭВ ВКР (в форматах pdf или docx) и реферат (в формате doc).</li>
-                            <li>В НТБ дипломник должен принести в распечатанном виде лист «Показатели качества» и заполненный лицензионный договор (должны быть заполнены паспортные данные и название ВКР). Электронную версию договора можно скачать по ссылке: <a href="http://lib.psuti.ru/uploads/licenzionii_dog_stud.2018.docx">http://lib.psuti.ru/uploads/licenzionii_dog_stud.2018.docx</a></li>
-                            <li> Время приема работ в НТБ с 9.30 до 16.00 (кроме субботы и воскресенья).</li>
+                            <li>Обучающийся для проверки на объем заимствований подготавливает два файла с электронной версией своей ВКР:
+                          <ul class="list-decimal">
+                          <li> Файл в формате doc или docx, содержащий: титульный лист; лист задания; лист показателей качества; реферат; основной текст ВКР. Все указанные страницы включаются в один файл ЭВ ВКР. Разделы ТЭО, ТБ и ОТ, а также приложения в файл не включаются.</li>
+                          <li>в формате pdf – полный набор печатной ВКР, включая все приложения. Все разделы включаются в один файл. Предоставление набора файлов не допускается. Файл в формате pdf с полным текстом ВКР сдается в НТБ для последующего размещения в файловом хранилище ПГУТИ.</li>
+                         <li>В НТБ дипломник должен принести в распечатанном виде лист «Показатели качества» и заполненный лицензионный договор (должны быть заполнены паспортные данные и название ВКР). Электронную версию договора можно скачать на сайте НТБ <a href="https://www.psuti.ru/ru/ntb/student">https://www.psuti.ru/ru/ntb/student</a></li>
+                         </ul>
+                          </li>
                         </ul>
                     </div>
                     <div class="blog-sep"></div>
@@ -281,12 +311,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (5, '<div 
                             <li> В научно-техническую библиотеку ПГУТИ должна передаваться версия пояснительной записки ВКР, прошедшая предварительную проверку на объем заимствований при помощи информационной системы «Антиплагиат-ВУЗ». Предварительная проверка проводится на выпускающей кафедре.</li>
                             <li>Файлы могут быть предоставлены только в форматах doc, docx, pdf (с текстовым слоем). Не допускается предоставление pdf файла, который получен путем сканирования.</li>
                             <li>Файл электронной версии бакалаврской работы должен содержать титульный лист, лист задания, лист показателей качества, реферат и основной текст ВКР. В передаваемый файл не включаются список литературы и приложения.</li>
-                            <li>Имя файла электронной версии бакалаврской работы должно содержать год, название факультета, аббревиатуру направления подготовки, наименование выпускающей кафедры, тип ВКР, фамилию, имя и отчество студента, аббревиатуру "ЭВВКР". Образец названия:
-                            <strong><i>2018_ФИСТ_ИВТ_ПОУТС_БР_Полетаева_Людмила_Александровна_ЭВВКР.doc</i></strong>
-                            (год_факультет_шифр направления подготовки_кафедра_БР_Ф_И_О_ЭВВКР.расширение)</li>
-                            <li>Имя файла электронной версии реферата должно содержать год, название факультета, код направления подготовки, название выпускающей кафедры, тип ВКР, фамилию, имя и отчество студента, слово "реферат". Образец названия:
-                            <strong><i>2018_ФИСТ_ИВТ_ПОУТС_БР_Полетаева_Людмила_Александровна_реферат.doc</i></strong>
-                            (год_факультет_шифр направления подготовки_кафедра_БР_Ф_И_О_реферат.расширение)</li>
+                            <li>Имя файла электронной версии бакалаврской работы должно содержать год, название факультета, аббревиатуру направления подготовки, наименование выпускающей кафедры, тип ВКР, фамилию, имя и отчество студента, аббревиатуру "ЭВВКР". Образец названия:<br>
+<strong>2019_FIST_IVT_POUTS_BR_Ivanov_Sergey_Arkadievich_EVVKR.doc</strong><br>(год_факультет_шифр направления подготовки_кафедра_БР_Ф_И_О_ЭВВКР.расширение) </li>
                         </ul>
                     </div>
                 </div>
@@ -400,10 +426,10 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (7, '<div 
                         <h2 class=" header2" style="margin-left:40px ">Списки групп</h2>
                         <div class="space20"></div>
                         <div class="col-md-5">
-                            <a href="#" class="button button-lists" >1 курс скачать .DOC файл</a>
-                            <a href="#" class="button button-lists" >2 курс скачать .DOC файл</a>
-                            <a href="#" class="button button-lists" >3 курс скачать .DOC файл</a>
-                            <a href="#" class="button button-lists" >4 курс скачать .DOC файл</a>
+                            <a href="/files/id=22" class="button button-lists" >1 курс скачать .DOC файл</a>
+                            <a href="/files/id=23" class="button button-lists" >2 курс скачать .DOC файл</a>
+                            <a href="/files/id=24" class="button button-lists" >3 курс скачать .DOC файл</a>
+                            <a href="/files/id=25" class="button button-lists" >4 курс скачать .DOC файл</a>
                         </div>
                     </div>
                 </div>
@@ -411,7 +437,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (7, '<div 
         </div>', 'groupLists.html (Списки групп)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (8, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/Innovatika.png);background-size: cover">
+            <div class="row" style="background: #ff2626;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/Innovatika.png" class="img-responsive"></div>
                     <div class="col-md-8"> <h1>Инноватика</h1></div>
@@ -489,7 +515,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (9, '<div 
         <div class="shortcontain container">
             <div class="col-md-8 col-md-offset-2">
 
-                <p class="text-center" style="font-size: 20px">Промежуточный контроль на факультете ИСТ будет проведен на 8 учебной неделе: <br>с  19 марта по 23 марта 2018 г.</p>
+                <p class="text-center" style="font-size: 20px">Промежуточный контроль на факультете ИСТ будет проведен на 9 учебной неделе:  <br>с  08 марта по 13 марта 2019 г.</p>
                 <br>
                 <br>
                 <div class="row">
@@ -497,8 +523,8 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (9, '<div 
                 </div>
                 <div class="row">
                    <p>Заполнение происходит интерактивно в режиме реального времени.<br>
-                       Шаг 1. Пройти авторизацию: перейти по ссылке <a href="https://accounts.google.com/AccountChooser">https://accounts.google.com/AccountChooser</a>, ввести логин кафедры (либо перед этим нажать «Добавить аккаунт»), затем пароль.<br>
-                       Шаг 2. Выбрать необходимую ведомость, щелкнув по нижеприведенным ссылкам.<br>
+                       <strong>Шаг 1.</strong> Пройти авторизацию: перейти по ссылке <a href="https://accounts.google.com/AccountChooser">https://accounts.google.com/AccountChooser</a>, ввести логин кафедры (либо перед этим нажать «Добавить аккаунт»), затем пароль.<br>
+                       <strong>Шаг 2.</strong> Выбрать необходимую ведомость, щелкнув по нижеприведенным ссылкам.<br>
                        После успешного входа в документ необходимо выбрать вкладку-лист с необходимой группой и заполнить столбец со своей дисциплиной. Работа аналогична программе Microsoft Excel. Все вносимые изменения сохраняются автоматически.</p>
                 </div>
 
@@ -508,28 +534,28 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (9, '<div 
                     <h2 class="text-center">Бланки для заполнения</h2>
                 </div>
                 <div class="row">
-                    <a href="#">1 курс: 09.03.00 - ИВТ,  ИСТ, ПИвЭ, РПИС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1l--6WhJ4_XENF25R9y5U6UfrONdne_3cR9qHmqZ2GPU/edit?usp=sharing">1 курс: 09.03.00 - ИВТ,  ИСТ, ПИвЭ, РПИС</a>
                 </div>
                 <div class="row">
-                    <a href="#">1 курс: 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1lLmfWfggiUUZHLRqnb0FElW6m1c2kexO-B66CyxIfh4/edit?usp=sharing">1 курс: 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">1-3 курс: 27.03.04 - УИТС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1LDwkmCoJ7YEG7pyAD3YlfPxEf-v_E5IcWQg4TAcLTOI/edit?usp=sharing">1-3 курс: 27.03.04 - УИТС</a>
                 </div>
                 <div class="row">
-                    <a href="#">1-3 курс: 42.03.01 РСО</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1PWbizLrmpbyv_s5BmalWg149nFAEBRkdImpXEZcq0Bg/edit?usp=sharing">1-3 курс: 42.03.01 РСО</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс: 09.03.00 - ИВТ, ИСТ, ПИвЭ, РПИС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1-ehUfvzzDT5EVo37mkZQBP6p13UuWZsAk5INT8Lxr8Y/edit?usp=sharing">2 курс: 09.03.00 - ИВТ, ИСТ, ПИвЭ, РПИС</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс: 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1VtapwOI-nODE0WKFdMejUeYpQxb3nTM4UvKTME75fDI/edit?usp=sharing">2 курс: 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс: 09.03.00 - ИВТ, ИСТ, РПИС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1s14zBWI03ctw58bLAaMgoJ_YlGPZFGloU75f4BVsIq4/edit?usp=sharing">3 курс: 09.03.00 - ИВТ, ИСТ, РПИС</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс: 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1f8EGgKCpeAisvS24WWQx3RrKR_DoA0HwO7KzARJphP0/edit?usp=sharing">3 курс: 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="blog-sep"></div>
 
@@ -541,7 +567,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (9, '<div 
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (10, '<div id="container">
     <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
     <div class="container-fluid only_one_trend">
-        <div class="row" style="background: url(../images/home-page/Layer/IST.png);background-size: cover">
+        <div class="row" style="background: #af9519;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/IST.png" class="img-responsive"></div>
                     <div class="col-md-8"> <h1>Информационные системы и технологии</h1></div>
@@ -611,7 +637,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (10, '<div
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (11, '<div id="container">
         <div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/IVT.png);background-size: cover">
+            <div class="row" style="background: #a5327c;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/IVT.png" class="img-responsive"></div>
                     <div class="col-md-8"> <h1>Информатика и вычислительная техника</h1></div>
@@ -680,7 +706,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (11, '<div
     </div>', 'ivt.html (ИВТ)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (12, '<div class="back_img"><a href="/main" class="change"></a> </div>
      <div class="container-fluid" >
-         <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
+         <div class="row" style="background: #045071;">
              <a href="/matob" class="transition">
              <div class="trend" >
                <img src="/images/home-page/matob.png" class="img-responsive"><p>Математическое обеспечение и администрирование информационных систем</p>
@@ -688,7 +714,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (12, '<div
              </a>
          </div>
 
-         <div class="row" style="background: url(../images/home-page/Layer/IVT.png);background-size: cover">
+         <div class="row" style="background: #a5327c;">
              <a href="/IVT" class="transition">
              <div class="trend" >
                  <img src="/images/home-page/IVT.png" class="img-responsive"><p>ИНФОРМАТИКА И ВЫЧИСЛИТЕЛЬНАЯ ТЕХНИКА</p>
@@ -696,59 +722,59 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (12, '<div
              </a>
          </div>
 
-         <div class="row" style="background: url(../images/home-page/Layer/IST.png);background-size: cover">
+         <div class="row" style="background: #af9519;">
              <a href="/IST" class="transition">
              <div class="trend" >
                  <img src="/images/home-page/IST.png" class="img-responsive"><p>Информационные системы и технологии</p>
              </div>
              </a>
          </div>
-         <div class="row" style="background: url(../images/home-page/Layer/prikladInfo.png);background-size: cover" >
+         <div class="row" style="background: #8400bb;" >
              <a href="/prikladInfo" class="transition">
              <div class=" trend" >
                  <img src="/images/home-page/prikladInfo.png" class="img-responsive"><p>Прикладная информатика</p>
              </div>
              </a>
          </div>
-         <div class="row" style="background: url(../images/home-page/Layer/PI.png);background-size: cover">
+         <div class="row" style="background: #c03f00;">
              <a href="/PI" class="transition">
              <div class=" trend" >
                  <img src="/images/home-page/PI.png" class="img-responsive"><p>Программная инженерия</p>
              </div>
              </a>
          </div>
-         <div class="row" style="background-image: url(../images/home-page/Layer/uits.png);background-size: cover">
+         <div class="row" style="background: #00a8a6;">
              <a href="/uits" class="transition">
              <div class=" trend" >
-                 <img src="/images/home-page/uits.png" class="img-responsive"><p>Управление и информатика в технических системах</p>
+                 <img src="/images/home-page/uits.png" class="img-responsive"><p>Управление в технических системах</p>
              </div>
              </a>
          </div>
-         <div class="row" style="background: url(../images/home-page/Layer/Innovatika.png);background-size: cover">
+         <div class="row" style="background: #ff2626;">
              <a href="/innovatika" class="transition">
              <div class="trend" >
                  <img src="/images/home-page/Innovatika.png" class="img-responsive"><p>Инноватика</p>
              </div>
              </a>
          </div>
-         <div class="row" style="background: url(../images/home-page/Layer/RSO.png);background-size: cover">
+         <div class="row" style="background: #7c0000;">
              <a href="/RSO" class="transition">
              <div class="trend">
-                 <img src="/images/home-page/RSO.png" class="img-responsive"><p>Реклама и связь с общественностью</p>
+                 <img src="/images/home-page/RSO.png" class="img-responsive"><p>Реклама и связи с общественностью</p>
              </div>
              </a>
          </div>
-         <div class="row lastrow"  style="background: url(../images/home-page/Layer/BuisnessInfo.png);background-size: cover">
+         <div class="row lastrow"  style="background: #268529;">
              <a href="/BI" class="transition">
              <div class="trend" >
-                 <img src="/images/home-page/BuisnessInfo.png" class="img-responsive"><p>Бизнес информатика</p>
+                 <img src="/images/home-page/BuisnessInfo.png" class="img-responsive"><p>Бизнес-информатика</p>
              </div>
              </a>
          </div>
      </div>', 'mainTrend.html (Основные направления подготовки)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (13, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/matob.png);background-size: cover">
+            <div class="row" style="background: #045071;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/matob.png" class="img-responsive"></div>
                     <div class="col-md-8"> <h1>Математическое обеспечение и администрирование информационных систем</h1></div>
@@ -816,7 +842,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (13, '<div
         </div>', 'matob.html (Математическое обсепечение)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (14, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/PI.png);background-size: cover">
+            <div class="row" style="background: #c03f00;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/PI.png" class="img-responsive"></div>
                     <div class="col-md-8"> <h1>Программная инженерия</h1></div>
@@ -884,7 +910,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (14, '<div
         </div>', 'pi.html (Программная инженерия)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (15, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/prikladInfo.png);background-size: cover">
+            <div class="row" style="background: #8400bb;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/prikladInfo.png" class="img-responsive"></div>
                     <div class="col-md-8"> <h1>Прикладная информатика</h1></div>
@@ -959,70 +985,70 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (16, '<div
             <div class="col-md-5 col-md-offset-1">
                 <p style="margin-bottom: 20px;font-size: 18px">8 учебная неделя 1 семестра 2018/2019 уч.года</p>
                 <div class="row">
-                    <a href="#">1-4 курс - 42.03.01 - РСО</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1fPhfot1H8mZvvpvknaOT8ypOXekGVWHUOSnLxBPLnfQ/pub?output=html">1-4 курс - 42.03.01 - РСО</a>
                 </div>
                 <div class="row">
-                    <a href="#">1 курс - 09.00.00 - ИВТ, РПИС, ИСТ, ПИвЭ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1MBhMdPEGU0Qy_tUSjjufMPClqOMtlL4BSft6vCapIAM/pub?output=html">1 курс - 09.00.00 - ИВТ, РПИС, ИСТ, ПИвЭ</a>
                 </div>
                 <div class="row">
-                    <a href="#">1 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1iNsoeuX55FEYhKj2vo1Asr3BVgdSivX16iX8BGgWLSk/pub?output=html">1 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">1 курс - 27.03.04 - УИТС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1XsXkTkAUI6FQ_Jt0PFLhdnPqBu6JPCRaMM4bgkIq7xY/pub?output=html">1 курс - 27.03.04 - УИТС</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс - 09.00.00 - ИВТ, РПИС, ИСТ, ПИвЭ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1JcNPcn3NfR53wyWvOqbh3lw4aC9ueuqJg51_qRSCur0/pub?output=html">2 курс - 09.00.00 - ИВТ, РПИС, ИСТ, ПИвЭ</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1MjCGsTKBg0UWzpGJrUn59uQXJiOjw05axqTBn0FIzLs/pub?output=html">2 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс - 27.03.04 - УИТС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1go0zb22XryYJo95jEXDRyC1EgUuIsOZbRW9ETlOevOg/pub?output=html">2 курс - 27.03.04 - УИТС</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс - 09.00.00 - ИВТ, РПИС, ИСТ, ПИвЭ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1aJIDG5HznIIjlgbfaBf7dCnAyGAcCDjcjaZSnRCoIaY/pub?output=html">3 курс - 09.00.00 - ИВТ, РПИС, ИСТ, ПИвЭ</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1Y-KtL6InpXMMjuesU-cQ4qWeWwxoQ2YHgBcINOD6LBU/pub?output=html">3 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс - 27.03.04 - УИТС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1g_eLfvhWCoB7uDDwhncbEx7_WafsasXEWhwHz_VgSUw/pub?output=html">3 курс - 27.03.04 - УИТС</a>
                 </div>
                 <div class="row">
-                    <a href="#">4 курс - 09.00.00 - ИВТ, РПИС, ИСТ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/14ZOrzIDAvmpFk34da4CLh9Md70A0X_zjDQ_GSMuns3o/pub?output=html">4 курс - 09.00.00 - ИВТ, РПИС, ИСТ</a>
                 </div>
                 <div class="row">
-                    <a href="#">4 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1vjT21exfikIpe7tOQnTScmI4X8n5QGJbW77ARcjeGPM/pub?output=html">4 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">4 курс - 27.03.04 - УИТС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/12ACt0P_cPB2Ia-QXWmZ8ke8eh64C3HZALGnh2zKbyUE/pub?output=html">4 курс - 27.03.04 - УИТС</a>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 col-md-offset-1">
                 <p style="margin-bottom: 20px;font-size: 18px">8 учебная неделя 2 семестра 2018/2019 уч.года</p>
                 <div class="row">
-                    <a href="#">1 курс - 09.03.00 - ИВТ, ИСТ, ПИвЭ, РПИС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1l--6WhJ4_XENF25R9y5U6UfrONdne_3cR9qHmqZ2GPU/pub?output=html">1 курс - 09.03.00 - ИВТ, ИСТ, ПИвЭ, РПИС</a>
                 </div>
                 <div class="row">
-                    <a href="#">1 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1lLmfWfggiUUZHLRqnb0FElW6m1c2kexO-B66CyxIfh4/pub?output=html">1 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">1-3 курс - 27.03.04 - УИТС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1LDwkmCoJ7YEG7pyAD3YlfPxEf-v_E5IcWQg4TAcLTOI/pub?output=html">1-3 курс - 27.03.04 - УИТС</a>
                 </div>
                 <div class="row">
-                    <a href="#">1-3 курс - 42.03.01 - РСО</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1PWbizLrmpbyv_s5BmalWg149nFAEBRkdImpXEZcq0Bg/pub?output=html">1-3 курс - 42.03.01 - РСО</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс - 09.03.00 - ИВТ, ИСТ, РПИС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1-ehUfvzzDT5EVo37mkZQBP6p13UuWZsAk5INT8Lxr8Y/pub?output=html">2 курс - 09.03.00 - ИВТ, ИСТ, РПИС</a>
                 </div>
                 <div class="row">
-                    <a href="#">2 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1VtapwOI-nODE0WKFdMejUeYpQxb3nTM4UvKTME75fDI/pub?output=html">2 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс - 09.03.00 - ИВТ, ИСТ, ПИвЭ, РПИС</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1s14zBWI03ctw58bLAaMgoJ_YlGPZFGloU75f4BVsIq4/pub?output=html">3 курс - 09.03.00 - ИВТ, ИСТ, ПИвЭ, РПИС</a>
                 </div>
                 <div class="row">
-                    <a href="#">3 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1f8EGgKCpeAisvS24WWQx3RrKR_DoA0HwO7KzARJphP0/edit#gid=0">3 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a>
                 </div>
             </div>
         </div>', 'resultOfControl.html (Итоги промеж.контроля)');
@@ -1267,16 +1293,16 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (17, '<div
         </div>', 'rightsAndObligations.html (Права и обязанности)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (18, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/RSO.png);background-size: cover">
+            <div class="row" style="background: #7c0000;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/RSO.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Реклама и связь с общественностью</h1></div>
+                    <div class="col-md-8"> <h1>Реклама и связи с общественностью</h1></div>
                 </div>
             </div>
             <div class="container list-marker">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 about-info2">
-                    <p>Специальность утверждена приказом Министерства образования РФ в 2000 г. Квалификация специалиста по связям с общественностью предусматривает овладение необходимыми знаниями и навыками для выполнения функций пресссекретаря, менеджера коммуникационной структуры, эксперта, консультанта,референта в государственных и общественных учреждениях и организациях,коммерческих структурах по вопросам массовой информации и деловой коммуникации, Общественных связей, гуманитарных технологий, научных, культурных и туристических обменов.</p>
+                    <p>Специальность утверждена приказом Министерства образования РФ в 2000 г. Квалификация специалиста по связям с общественностью предусматривает овладение необходимыми знаниями и навыками для выполнения функций пресс секретаря, менеджера коммуникационной структуры, эксперта, консультанта,референта в государственных и общественных учреждениях и организациях,коммерческих структурах по вопросам массовой информации и деловой коммуникации, Общественных связей, гуманитарных технологий, научных, культурных и туристических обменов.</p>
                     </div>
                 </div>
                 <div class="row">
@@ -1337,10 +1363,10 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (18, '<div
         </div>', 'rso.html (РСО)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (19, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/BuisnessInfo.jpg);background-size: cover">
+            <div class="row" style="background: #268529;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/BuisnessInfo.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Бизнес информатика</h1></div>
+                    <div class="col-md-8"> <h1>Бизнес-информатика</h1></div>
                 </div>
             </div>
             <div class="container list-marker">
@@ -1412,10 +1438,10 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (19, '<div
         </div>', 'BI.html (Бизнес информатика)');
 INSERT INTO fist.htmlstructure_page (id, html_code, name_page) VALUES (20, '<div class="back_img"><a href="/mainTrend" class="change transition"></a> </div>
         <div class="container-fluid only_one_trend">
-            <div class="row" style="background: url(../images/home-page/Layer/uits.png);background-size: cover">
+            <div class="row" style="background: #00a8a6;">
                 <div class="trend">
                     <div class="col-md-2"> <img src="/images/home-page/uits.png" class="img-responsive"></div>
-                    <div class="col-md-8"> <h1>Управление и информатика в технических университетах</h1></div>
+                    <div class="col-md-8"> <h1>Управление в технических университетах</h1></div>
                 </div>
             </div>
             <div class="container list-marker">

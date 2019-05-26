@@ -81,38 +81,5 @@
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
-<script type="text/javascript">
-    var opac=0;
-    function searchFunc() {
-        var elements=document.getElementsByClassName('other-pages-search');
-        if (elements.length>0){
-            if(opac===0){
-                opac++;
-                pull(elements[0]);
-            } else {
-                opac--;
-                push(elements[0]);
-            }
-        }
-        function pull(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/-1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1500, function () {
-            });
-        }
-        function push(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1500, function () {
-            });
-        }
-    }
-</script>
 </body>
 </html>

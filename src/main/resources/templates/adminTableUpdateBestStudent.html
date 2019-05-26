@@ -54,7 +54,7 @@
                     <form th:action="@{/admin/table/bestStudent/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
                         <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${student.getIdPicture()}}" th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" alt=""></a></li>
                     </form>
-                    <!--<li><a class="cd-signin"><input th:id="@{'student' + ${student.getId()}}" th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" value="Другие изменения.." type="submit"></a></li>-->
+                   <li><a class="cd-signin"><input th:id="@{'student' + ${student.getId()}}" th:src="@{'/admin/picture/' + ${student.getIdPicture()}}" value="Настройки" type="submit"></a></li>
                     <script th:inline="javascript">
                         document.body.onclick = function(e) {
                             var elem = e ? e.target : window.event.srcElement;

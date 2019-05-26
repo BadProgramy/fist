@@ -54,7 +54,7 @@
                     <div class="col-md-7 col-md-offset-2">
                         <div th:each="newFaculty : ${resultTopic}">
                             <article class="blogpost">
-                                <div class="img-container">
+                                <div class="post-media img-container">
                                     <img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" class="img-responsive" alt="">
                                 </div>
                                 <h2 class="post-title"><a th:href="@{'/newsBlog/topic/id='+${newFaculty.getId()}}" th:utext="${newFaculty.getHeading()}"></a></h2>
@@ -162,10 +162,9 @@
                         img.height('100%');
                         img.width('auto');
                     }
-                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
-                    /*console.log(marginx);*/
-                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
-
+                    var marginy=(img.height()-container.height())/-2;
+                    img.css({ 'margin-top': marginy});
+                    img.animate({opacity:'1'}, "swing");
                 }
             }
         }
@@ -183,39 +182,6 @@
         if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0')){
            parent=myimgs[i].parentNode;
            parent.style.display='none';
-        }
-    }
-</script>
-<script type="text/javascript">
-    var opac=0;
-    function searchFunc() {
-        var elements=document.getElementsByClassName('other-pages-search');
-        if (elements.length>0){
-            if(opac===0){
-                opac++;
-                pull(elements[0]);
-            } else {
-                opac--;
-                push(elements[0]);
-            }
-        }
-        function pull(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/-1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1500, function () {
-            });
-        }
-        function push(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1500, function () {
-            });
         }
     }
 </script>

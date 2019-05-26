@@ -117,7 +117,7 @@
                 </li>
             </ul>
             <div class="logo-exit">
-                <a><img src="/images/exit.png" class="img-responsive" title="Выход" alt="Выход"/></a>
+                <a href="/logout"><img src="/images/exit.png" class="img-responsive" title="Выход" alt="Выход"/></a>
             </div>
         </div>
     </div>
@@ -171,7 +171,7 @@
         </div>
     </div>
 </header>
-<div th:fragment="headerUserInsertSearch" class="other-pages-search">
+<div th:fragment="headerUserInsertSearch" id="search" class="other-pages-search">
     <form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
         <button class="search-button " type="submit">Поиск</button>
         <input class="search-input " name="searchword" type="text" placeholder="Поиск...">
@@ -197,10 +197,11 @@
             <div class="col-md-2">
                 <h3 th:utext="${ItemHeader9.getName()}" th:style="${ItemHeader9.getStyles()}"></h3>
                 <p th:utext="${ItemHeader9_1.getName()}" th:style="${ItemHeader9_1.getStyles()}"></p>
-                <form th:action="${'/user/add/subscriber'}" th:object="${username}" class="newsletter">
-                    <input name="username" type="email" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
-                    <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                <form id="form_id" onsubmit="javascript:return validate('form_id','email');" th:action="${'/user/add/subscriber'}" th:object="${username}" class="newsletter">
+                    <input id="email" name="username" type="email" th:placeholder="${ItemHeader9_2.getName()}" th:style="${ItemHeader9_2.getStyles()}">
+                    <button id="validate" type="submit" value="submit"><i class="fa fa-paper-plane"></i></button>
                 </form>
+                <p id="result"></p>
             </div>
 
             <!--<div class="col-md-3">

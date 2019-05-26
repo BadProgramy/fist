@@ -35,14 +35,14 @@
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" defer></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" defer></script>
 	<![endif]-->
 
 	<!-- Modernizer -->
-	<script src="/js/modernizr.custom.97074.js"></script>
-	<script src="/js/modernizr.custom.js"></script>
-
+	<script src="/js/modernizr.custom.97074.js" defer></script>
+	<script src="/js/modernizr.custom.js" defer></script>
+	<script src="/js/jquery.min.js"></script>
 </head>
 <body id="firstPage" class="multi-page">
 
@@ -96,7 +96,7 @@
 		</div>
 		</div>
 	</header>
-	<div class="other-pages-search">
+	<div id="search" class="other-pages-search">
 		<form th:action="${'/search'}" th:object="${searchword}" class="search-block ">
 			<button class="search-button " type="submit">Поиск</button>
 			<input class="search-input " name="searchword" type="text" placeholder="Поиск...">
@@ -170,6 +170,69 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+        jQuery(function ($) {
+            function fix_size() {
+                var images = $('.img-container img');
+                images.each(setsize);
+
+                function setsize() {
+                    var img = $(this),
+                        img_dom = img.get(0),
+                        container = img.parents('.img-container');
+                    if (img_dom.complete) {
+                        resize();
+                    } else img.one('load', resize);
+
+                    function resize() {
+                        if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
+                            img.width('100%');
+                            img.height('auto');
+                        } else {
+                            img.height('100%');
+                            img.width('auto');
+                        }
+                        var marginy=(img.height()-container.height())/-2;
+                        img.css({ 'margin-top': marginy});
+                        img.animate({opacity:'1'}, "swing");
+                    }
+                }
+            }
+            $(window).on('resize', fix_size);
+            fix_size();
+        });</script>
+	<script src="/js/masonry.pkgd.min.js" defer></script>
+	<script>
+        $(window).load(function() {
+            var $container = $('#blog-mason');
+            $container.masonry({
+                itemSelector: '.grid-item'
+            });
+            var $optionSets = $('#portfolio .folio-filter'),
+                $optionLinks = $optionSets.find('a');
+            $optionLinks.on('click', function() {
+                var $this = $(this);
+                if ($this.hasClass('selected')) {
+                    return false;
+                }
+                var $optionSet = $this.parents('.folio-filter');
+                $optionSet.find('.selected').removeClass('selected');
+                $this.addClass('selected');
+                var options = {},
+                    key = $optionSet.attr('data-option-key'),
+                    value = $this.attr('data-option-value');
+                value = value === 'false' ? false : value;
+                options[key] = value;
+                if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
+                    changeLayoutMode($this, options);
+                } else {
+                    $container.masonry(options);
+                }
+                return false;
+            });
+        });
+	</script>
 
 	<!-- Учебный процесс -->
 	<section id="service" class="service main-background">
@@ -364,60 +427,26 @@
 
 	<!-- FOOTER -->
 	<div th:replace="templates :: footerUser"></div>
-	<!-- FOOTER -->
 </div>
 
 <div th:replace="templates :: footerUserInsertMap"></div>
 
 <!-- Javascript -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/bootstrap.min.js" defer></script>
+<script src="/js/classie.js" defer ></script>
+<script src="/js/owl-carousel/owl.carousel.min.js" defer></script>
+<script src="/js/superfish/js/hoverIntent.js" defer ></script>
+<script src="/js/superfish/js/superfish.js" defer></script>
+<script src="/js/jquery.animateNumber.min.js" defer></script>
+<script src="/js/dialogFx.js" defer></script>
+<script src="/js/dialog-js.js" defer></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
+<script src="/js/gmap2.js" defer></script>
+<script src="/js/script.js" defer ></script>
+<script src="/js/student_character.js" defer></script>
+<script src="https://snapwidget.com/js/snapwidget.js"defer ></script>
 <script>
-    $(window).load(function() {
-        var $container = $('#blog-mason');
-        $container.masonry({
-            itemSelector: '.grid-item'
-        });
-        var $optionSets = $('#portfolio .folio-filter'),
-            $optionLinks = $optionSets.find('a');
-        $optionLinks.on('click', function() {
-            var $this = $(this);
-            if ($this.hasClass('selected')) {
-                return false;
-            }
-            var $optionSet = $this.parents('.folio-filter');
-            $optionSet.find('.selected').removeClass('selected');
-            $this.addClass('selected');
-            var options = {},
-                key = $optionSet.attr('data-option-key'),
-                value = $this.attr('data-option-value');
-            value = value === 'false' ? false : value;
-            options[key] = value;
-            if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
-                changeLayoutMode($this, options);
-            } else {
-                $container.masonry(options);
-            }
-            return false;
-        });
-    });
-</script>
-<script src="/js/classie.js"></script>
-<script src="/js/owl-carousel/owl.carousel.min.js"></script>
-<script src="/js/superfish/js/hoverIntent.js"></script>
-<script src="/js/superfish/js/superfish.js"></script>
-<script src="/js/jquery.animateNumber.min.js"></script>
-<script src="/js/dialogFx.js"></script>
-<script src="/js/dialog-js.js"></script>
-<!---->
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="/js/gmap2.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/student_character.js"></script>
-<script src="https://snapwidget.com/js/snapwidget.js"></script>
-<script >
 
     function isVisible(elem) {
 
@@ -459,8 +488,8 @@
     showVisible();
     window.addEventListener('resize', VK_Widget_Init, false);
     window.addEventListener('resize', VK_Widget_Init1, false);
-</script>
-<script >
+</script >
+<script>
     function checkPosition(){
         var div_position = $(".lines").offset();
         var div_top = div_position.top;
@@ -514,83 +543,20 @@
 
     });
 </script>
+<script src="/js/main.js" defer></script>
 <script>
-    jQuery(function ($) {
-        function fix_size() {
-            var images = $('.img-container img');
-            images.each(setsize);
-
-            function setsize() {
-                var img = $(this),
-                    img_dom = img.get(0),
-                    container = img.parents('.img-container');
-                if (img_dom.complete) {
-                    resize();
-                } else img.one('load', resize);
-
-                function resize() {
-                    if ((container.width() / container.height()) > (img_dom.width / img_dom.height)) {
-                        img.width('100%');
-                        img.height('auto');
-                    } else {
-                        img.height('100%');
-                        img.width('auto');
-                    }
-                    var marginy=(img.height()-container.height())/-2;
-                    img.css({ 'margin-top': marginy});
-
-                }
-            }
+    var someimage = document.getElementById('content');
+    var myimgs = someimage.getElementsByTagName('img');
+    var mysrc,mysrc2;
+    var parent,parent2;
+        mysrc=myimgs[0].src;
+        mysrc2=myimgs[1].src;
+        if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0') &&(mysrc2.charAt(mysrc2.length-2)==='/') && (mysrc2.charAt(mysrc2.length-1)==='0')){
+            parent=myimgs[0].parentNode;
+            parent.style.display='none';
+            parent=myimgs[1].parentNode;
+            parent.style.display='none';
         }
-        $(window).on('resize', fix_size);
-        fix_size();
-    });</script>
-<script>
-    var opac=0;
-    function searchFunc() {
-        var elements=document.getElementsByClassName('other-pages-search');
-        if (elements.length>0){
-            if(opac===0){
-                opac++;
-                pull(elements[0]);
-            } else {
-                opac--;
-                push(elements[0]);
-            }
-        }
-        function pull(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/-1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1000, function () {
-            });
-        }
-        function push(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 2000, function () {
-            });
-        }
-    }
-    var carous = $("#home-shop-carousel");
-    carous.owlCarousel({
-        itemsCustom: [
-            [0, 1],
-            [450, 1],
-            [600, 1],
-            [700, 2],
-            [1000, 4]
-        ],
-        autoPlay: 4000,
-        slideSpeed: 1000,
-        navigation: false,
-        pagination: true
-    });
 </script>
 </body>
 </html>

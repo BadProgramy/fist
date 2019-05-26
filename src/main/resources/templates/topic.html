@@ -115,9 +115,10 @@
                         img.height('100%');
                         img.width('auto');
                     }
-                    var /*marginx=(img.width()-container.width())/-2,*/marginy=(img.height()-container.height())/-2;
-                    /*console.log(marginx);*/
-                    img.css({ 'margin-top': marginy}); /*'margin-left': marginx,*/
+                    var marginy=(img.height()-container.height())/-2;
+
+                    img.css({ 'margin-top': marginy});
+                    img.animate({opacity:'1'}, "swing");
 
                 }
             }

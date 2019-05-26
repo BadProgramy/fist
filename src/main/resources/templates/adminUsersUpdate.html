@@ -66,6 +66,30 @@
                             <input required th:value="${user.secondname}" name="secondname" style="height: 60px; width: 100%;" class="full-width has-padding has-border" placeholder="Фамилия">
                         </p>
 
+                        <p class="fieldset black_p">
+                            <input name="password" th:field="*{password}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="password" placeholder="Новый пароль: Пример - 123456qwerty" minlength="8" required></input>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input id="accountNonExpired" type="checkbox" name="accountNonExpired" th:field="*{accountNonExpired}" th:value="${user.accountNonExpired}"></input>
+                            <label for="accountNonExpired">Eсли давно не заходил, то ставьте галочку</label>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input id="accountNonLocked" type="checkbox" name="accountNonLocked" th:field="*{accountNonLocked}" th:value="${user.accountNonLocked}" ></input>
+                            <label for="accountNonLocked">Eсли не заблокированный, то ставьте галочку</label>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input id="credentialsNonExpired" type="checkbox" name="credentialsNonExpired" th:field="*{credentialsNonExpired}" th:value="${user.credentialsNonExpired}" ></input>
+                            <label for="credentialsNonExpired">Eсли настройка учетных данных не истекли, то ставьте галочку</label>
+                        </p>
+
+                        <p class="fieldset black_p">
+                            <input id="enabled" type="checkbox" name="enabled" th:field="*{enabled}" th:value="${user.enabled}" ></input>
+                            <label for="enabled">Eсли учетная запись активирована, то ставьте галочку</label>
+                        </p>
+
                         <p>Права доступа:</p>
 
                         <p class="fieldset black_p">
@@ -77,10 +101,6 @@
                         <input name="id" type="hidden" th:field="*{id}">
                         <input name="username" type="hidden" th:field="*{username}">
                         <input name="pagevk" type="hidden" th:field="*{pagevk}">
-                        <input name="password" type="hidden" th:field="*{password}">
-                        <input name="accountNonExpired" type="hidden" th:field="*{accountNonExpired}">
-                        <input name="accountNonLocked" type="hidden" th:field="*{accountNonLocked}">
-                        <input name="credentialsNonExpired" type="hidden" th:field="*{credentialsNonExpired}">
                         <input name="enabled" type="hidden" th:field="*{enabled}">
 
                         <p class="fieldset black_p">

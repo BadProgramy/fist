@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import website.psuti.fist.model.Role;
 import website.psuti.fist.service.UserService;
 
 @Configuration
@@ -23,17 +24,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity config) throws Exception {
         config.csrf().disable().headers().cacheControl().disable().disable()
                 .authorizeRequests()
-                .antMatchers("admin").permitAll()
-                .antMatchers("/admin/**").authenticated()//.permitAll()
-                /*.antMatchers("/warspear/buyAccountYxi").permitAll()
-                .antMatchers("/warspear/buyAccountYxi/**").permitAll()
-                .antMatchers("/warspear/buyAccountGory").permitAll()
-                .antMatchers("/warspear/buyAccountGory/**").permitAll()
-                .antMatchers("/warspear/payment").permitAll()
-                .antMatchers("/warspear/notification").permitAll()
-                .antMatchers("/warspear/registration").permitAll()
-                .antMatchers("/warspear/registration/**").permitAll()
-                .antMatchers("/warspear/**").authenticated()*/
+                .antMatchers("/admin").hasAnyAuthority(Role.DEVELOPER.getAuthority(), Role.MODERATOR.getAuthority(), Role.ADMIN.getAuthority())
+                .antMatchers("/admin/content/**").hasAuthority(Role.MODERATOR.getAuthority())
+                .antMatchers("/admin/page/**").hasAuthority(Role.ADMIN.getAuthority())
+                .antMatchers("/admin/table/**").hasAuthority(Role.DEVELOPER.getAuthority())
+                .antMatchers("/admin/user/**").hasAuthority(Role.ADMIN.getAuthority())
+                .antMatchers("/admin/setting/**").hasAnyAuthority(Role.DEVELOPER.getAuthority(), Role.MODERATOR.getAuthority(), Role.ADMIN.getAuthority())
+
                 .and()
                 .formLogin().loginPage("/admin/login").defaultSuccessUrl("/admin").permitAll()
                 .and()

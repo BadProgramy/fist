@@ -65,7 +65,8 @@
 
                         <p class="fieldset black_p">
                             <select  name="extension" required>
-                                <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                                <option th:if="${file.getExtension() == extension}" selected th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                                <option th:if="${file.getExtension() != extension}" th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
                             </select>
                         </p>
                         <p class="fieldset black_p">

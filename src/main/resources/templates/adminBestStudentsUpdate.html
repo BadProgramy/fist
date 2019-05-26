@@ -53,7 +53,7 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/bestStudents/update/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/bestStudents/update/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
                             <textarea name="name" th:utext="${bestStudent.getName()}" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия и имя: Пример - Иван Иванов"></textarea>
@@ -71,7 +71,7 @@
                         <input name="id" type="hidden" th:field="*{id}">
                         <input name="idPicture" type="hidden" th:field="*{idPicture}">
 
-                        <img th:src="@{'/admin/news/' + ${bestStudent.getIdPicture()}}" alt="">
+                        <img th:src="@{'/admin/content/news/' + ${bestStudent.getIdPicture()}}" alt="">
                         <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
 
                         <p class="fieldset black_p">

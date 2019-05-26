@@ -9,72 +9,66 @@
             <div id="mobnav-btn">Меню</div>
             <ul class="sf-menu">
                 <li>
-                    <a href="#">Страницы</a>
+                    <a class="list-to-a" href="#">Страницы</a>
                     <div class="mobnav-subarrow"></div>
-                    <ul>
+                    <ul class="is-s">
                         <li>
                             <a href="/admin/page/menuItem/add">Элементы меню</a>
-                            <div class="mobnav-subarrow"></div>
                             <!--<ul>
                                 <li><a href="/admin/page/menuItem/add">Добавить меню в загаловках сайта</a></li>
                             </ul>-->
                         </li>
                         <li>
                             <a href="/admin/page/htmlStructure/update">Структура сайта</a>
-                            <div class="mobnav-subarrow"></div>
                             <!--<ul>
                                 <li><a href="/admin/page/menuItem/add">Добавить меню в загаловках сайта</a></li>
                             </ul>-->
                         </li>
                     </ul>
                 </li>
+            </ul>
+            <ul class="sf-menu">
                 <li>
-                    <a href="#">Контент</a>
+                    <a class="list-to-a" href="#">Контент</a>
                     <div class="mobnav-subarrow"></div>
-                    <ul>
+                    <ul class="is-s">
                         <li>
-                            <a class="sf-with-ul" href="/admin/news">Новости факультета</a>
-                            <div class="mobnav-subarrow"></div>
-                            <ul>
-                                <li><a href="/admin/news/add">Добавить новость</a></li>
-                                <li><a href="/admin/news">Редактировать новость</a></li>
+                            <a class="sf-with-ul" href="/admin/content/news">Новости факультета</a>
+                            <ul class="is-s">
+                                <li><a href="/admin/content/news/add">Добавить новость</a></li>
+                                <li><a href="/admin/content/news">Редактировать новость</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/admin/bestStudents">Лучшие студенты</a>
-                            <div class="mobnav-subarrow"></div>
-                            <ul>
-                                <li><a href="/admin/bestStudents/add">Добавить студента</a></li>
-                                <li><a href="/admin/bestStudents/">Редактировать студента</a></li>
+                            <a href="/admin/content/bestStudents">Лучшие студенты</a>
+                            <ul class="is-s">
+                                <li><a href="/admin/content/bestStudents/add">Добавить студента</a></li>
+                                <li><a href="/admin/content/bestStudents/">Редактировать студента</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="/admin/content/curator/">Кураторы групп</a>
-                            <div class="mobnav-subarrow"></div>
                         </li>
                         <li>
                             <a href="/admin/content/candidateAssignment/">Кандидаты на отчисление</a>
-                            <div class="mobnav-subarrow"></div>
                         </li>
                         <li>
                             <a href="/admin/content/diplomas/">Дипломы</a>
-                            <div class="mobnav-subarrow"></div>
                         </li>
                         <li>
                             <a href="/admin/content/files/add">Файлы</a>
-                            <div class="mobnav-subarrow"></div>
                         </li>
                     </ul>
                 </li>
-
+            </ul>
+            <ul class="sf-menu">
                 <li>
-                    <a href="#">Таблицы</a>
+                    <a class="list-to-a" href="#">Таблицы</a>
                     <div class="mobnav-subarrow"></div>
-                    <ul>
+                    <ul class="is-s">
                         <li>
                             <a href="#">Картинки</a>
-                            <div class="mobnav-subarrow"></div>
-                            <ul>
+                            <ul class="is-s">
                                 <li><a href="/admin/table/picture/bestStudent/update">Лучшие студенты</a></li>
                                 <li><a href="/admin/table/picture/topicFaculty/update">Новости</a></li>
                                 <li><a href="/admin/table/picture/deanTeam/update">Состав деканата</a></li>
@@ -85,8 +79,7 @@
                         </li>
                         <li>
                             <a href="#">Элементы меню</a>
-                            <div class="mobnav-subarrow"></div>
-                            <ul>
+                            <ul class="is-s">
                                 <li><a href="/admin/table/menuItem/headers/update">Меню</a></li>
                                 <li><a href="/admin/table/menuItem/labels/update">Загаловки</a></li>
                                 <li><a href="/admin/table/menuItem/statistic/update">Статиситика</a></li>
@@ -102,24 +95,30 @@
                         <li><a href="/admin/table/files/update">Файлы</a></li>
                     </ul>
                 </li>
-
+            </ul>
+            <ul class="sf-menu">
                 <li>
-                    <a href="#">Пользователи</a>
+                    <a class="list-to-a"  href="#">Пользователи</a>
                     <div class="mobnav-subarrow"></div>
-                    <ul>
+                    <ul class="is-s">
                         <li><a href="/admin/user/cms">Список администраторов</a></li>
                         <li><a href="/admin/user/subscriber">Список подписчиков</a></li>
                     </ul>
                 </li>
+            </ul>
+            <ul class="sf-menu">
                 <li>
-                    <a href="#">Настройка</a>
+                    <a class="list-to-a" href="#">Настройка</a>
                     <div class="mobnav-subarrow"></div>
-                    <ul>
+                    <ul class="is-s">
                         <li><a href="/admin/setting/profile">Мой профиль</a></li>
                         <li><a href="/admin/setting/cash">Обновить кеш на сервере</a></li>
                     </ul>
                 </li>
             </ul>
+            <div class="logo-exit">
+                <a><img src="/images/exit.png" class="img-responsive" title="Выход" alt="Выход"/></a>
+            </div>
         </div>
     </div>
 </header>
@@ -259,9 +258,6 @@
                 </div>
                 <div class="col-md-6 pop-contact">
                     <ul class="contact-info">
-                        <li>
-                            <p><strong th:utext="${DialogItem1.getName()}" th:style="${DialogItem1.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem1_1.getName()}" th:style="${DialogItem1_1.getStyles()}"></span></p>
-                        </li>
                         <li>
                             <p><strong th:utext="${DialogItem2.getName()}" th:style="${DialogItem2.getStyles()}"><i class="fa fa-map-marker"></i></strong> <span th:utext="${DialogItem2_1.getName()}" th:style="${DialogItem2_1.getStyles()}"></span></p>
                         </li>

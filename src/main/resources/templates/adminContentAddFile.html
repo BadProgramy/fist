@@ -65,7 +65,8 @@
 
                         <p class="fieldset black_p">
                             <select id="extension" name="extension" required>
-                                <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                                <option th:if="${file.getExtension() == extension}" selected th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                                <option th:if="${file.getExtension() != extension}" th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
                             </select>
                         </p>
                         <p class="fieldset black_p">
@@ -83,20 +84,23 @@
     <table class="color" style="padding: 50px">
         <tr>
             <th>Идентификатор</th>
+            <th>Дата создания</th>
             <th>Тип файла</th>
-            <th>Название</th>
+            <th>Имя для пользователей</th>
+            <th>Имя на сервере</th>
             <th>Вложенный файл</th>
         </tr>
         <tr th:each="file : ${files}">
             <div th:action="@{/admin/table/files/update/submit}" method="post" enctype="multipart/form-data">
                 <td><p id="id" class="menuItemTables" name="id" th:utext="${file.getId()}"></p></td>
-               <input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}" hidden>
+                <td><input type="date" class="menuItemTables" id="dateStringLocalDate" name="dateStringLocalDate" th:value="${file.getDate()}"></td>
                 <td>
                     <select id="extension" name="extension" required>
-                        <option th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                        <option th:if="${file.getExtension() == extension}" selected th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
+                        <option th:if="${file.getExtension() != extension}" th:each="extension : ${extensions}" th:value="${extension}" th:utext="${extension.getType()}"></option>
                     </select>
                 </td>
-                <input class="menuItemTables" id="name" name="name" th:value="${file.getName()}" hidden>
+                <td><input class="menuItemTables" id="name" name="name" th:value="${file.getName()}"></td>
 
                 <td><p class="menuItemTables" name="uniqueName" id="uniqueName" th:utext="${file.getUniqueName()}"></p></td>
                 <td>

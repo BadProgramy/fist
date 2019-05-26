@@ -420,6 +420,8 @@ h1 {
 .info-doc p{margin-left: -15px}
 #curators{
     left: 50%;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
 .contact-info p{
     font-size: 20px !important;
@@ -788,16 +790,6 @@ display: unset;
 	position: relative;
 	margin-top: 25px;
 }
-
-/*.product-thumb a:after {
-	content: '';
-	!*position: absolute;*!
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	border:1px solid black;
-	opacity: 0; }*/
 
 .product-thumb a:hover:before,
 .product-thumb a:hover:after { opacity: 1; }

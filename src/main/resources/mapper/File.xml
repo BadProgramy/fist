@@ -38,6 +38,10 @@
         SELECT * from files where id = #{id};
     </select>
 
+    <select id="findByNameUnique" parameterType="String" resultMap="result">
+        SELECT * from files where unique_name = #{fileNameUnique};
+    </select>
+
     <delete id="deleteById" parameterType="Long">
         DELETE from files where id = #{id};
     </delete>

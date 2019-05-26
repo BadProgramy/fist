@@ -55,12 +55,12 @@
                 <h2 th:utext="${student.getName()}"></h2>
                 <p class="black_p" th:utext="'Группа - '+${student.getGroupInUniversity()}"></p>
                 <p class="black_p" th:utext="${student.getCharacteristic()}"></p>
-                <img th:src="@{'/admin/news/' + ${student.getIdPicture()}}" alt="">
+                <img th:src="@{'/admin/content/news/' + ${student.getIdPicture()}}" alt="">
                 <nav class="main-nav">
                     <ul>
                         <!-- inser more links here -->
-                        <li><a th:href="@{'/admin/bestStudents/update/' + ${student.getId()}}" class="cd-read-more" >Изменить</a></li>
-                        <li><a th:href="@{'/admin/bestStudents/delete/' + ${student.getId()}}" class="cd-read-more">Удалить</a></li>
+                        <li><a th:href="@{'/admin/content/bestStudents/update/' + ${student.getId()}}" class="cd-read-more" >Изменить</a></li>
+                        <li><a th:href="@{'/admin/content/bestStudents/delete/' + ${student.getId()}}" class="cd-read-more">Удалить</a></li>
                     </ul>
                 </nav>
             </div> <!-- cd-timeline-content -->

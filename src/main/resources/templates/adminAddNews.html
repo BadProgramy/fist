@@ -53,10 +53,10 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/news/add/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/news/add/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                         <p class="fieldset black_p">
-                            <label class="image-replace cd-email" for="signin-email">Загаловок</label>
+                            <label class="image-replace cd-email" for="signin-email">Заголовок</label>
                             <textarea name="heading" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
                         </p>
 

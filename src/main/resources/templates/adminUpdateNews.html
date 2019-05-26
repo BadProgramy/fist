@@ -53,10 +53,10 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form th:action="@{/admin/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
+                <form th:action="@{/admin/content/news/update/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
                     <p class="fieldset black_p">
-                        <label class="image-replace cd-email" for="signin-email">Загаловок</label>
+                        <label class="image-replace cd-email" for="signin-email">Заголовок</label>
                         <textarea name="heading" th:utext="${newFaculty.getHeading()}" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
                     </p>
 
@@ -66,13 +66,13 @@
                     </p>
 
                         <p class="fieldset black_p">
-                            <input id="dateStringLocalDate" type="date" name="dateStringLocalDate" th:value="${newFaculty.getDate()}" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
+                            <input id="dateStringLocalDate" type="date" name="dateStringLocalDate" th:value="${newFaculty.getDate().toLocalDate()}" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
                         </p>
 
                         <input name="id" type="hidden" th:field="*{id}">
                         <input name="idPicture" type="hidden" th:field="*{idPicture}">
 
-                        <img th:src="@{'/admin/news/' + ${newFaculty.getIdPicture()}}" alt="">
+                        <img th:src="@{'/admin/content/news/' + ${newFaculty.getIdPicture()}}" alt="">
                         <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
 
                     <p class="fieldset black_p">

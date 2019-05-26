@@ -6,7 +6,8 @@ public enum Extension {
      APPLICATION_JSON_VALUE("application/json"),
      APPLICATION_JSON_UTF8_VALUE("application/json),charset=UTF-8"),
      APPLICATION_OCTET_STREAM_VALUE("application/octet-stream"),*/
-     APPLICATION_PDF_VALUE("application/pdf");
+     APPLICATION_PDF_VALUE("PDF файл"),
+    APPLICATION_OCTET_STREAM_VALUE("Файл на загрузку");
      /*APPLICATION_PROBLEM_JSON_VALUE("application/problem+json"),
      APPLICATION_PROBLEM_JSON_UTF8_VALUE("application/problem+json),charset=UTF-8"),
      APPLICATION_PROBLEM_XML_VALUE("application/problem+xml"),
@@ -36,12 +37,5 @@ public enum Extension {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return "Extension{" +
-                "type='" + type + '\'' +
-                '}';
     }
 }

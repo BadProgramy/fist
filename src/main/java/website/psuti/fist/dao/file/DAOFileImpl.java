@@ -108,4 +108,19 @@ public class DAOFileImpl implements DAOFile{
         }
         return file;
     }
+
+    @Override
+    public File findFileByNameUnique(String fileNameUnique) {
+        File file = null;
+        SqlSession session = factory.getFactory().openSession();
+        try {
+            RequestPostConnection.requestions(dataSource);
+            file = session.selectOne("File.findByNameUnique", fileNameUnique);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return file;
+    }
 }

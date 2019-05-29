@@ -3773,6 +3773,10 @@ left:100%;
 	float:left;
 	margin-left:50px;
 }*/
+.shortcontain .col-md-5 .row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
  #footer2 .tb-info a{
      z-index: 1;
  }

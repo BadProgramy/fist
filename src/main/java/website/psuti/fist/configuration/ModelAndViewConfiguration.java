@@ -229,7 +229,7 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("candidateForExpulsionHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CANDIDATES_FOR_EXPULSION_HEAD.getId()));
         modelAndView.addObject("characteristicEmployeeHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CHARACTERISTIC_EMPLOYEE_HEAD.getId()));
         modelAndView.addObject("commissionsFISTHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.COMISSIONS_FIST_HEAD.getId()));
-        modelAndView.addObject("contactsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CONTACTS.getId()));
+        modelAndView.addObject("contactsHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.CONTACTS_HEAD.getId()));
         modelAndView.addObject("costEducationHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.COST_EDUCATION_HEAD.getId()));
         modelAndView.addObject("deanTeamHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.DEAN_TEAM_HEAD.getId()));
         modelAndView.addObject("diplomasPhotoHead", htmlStructurePageService.findHTMLStructurePageById(HtmlStructurePageConstant.DIPLOMAS_PHOTO_HEAD.getId()));
@@ -374,30 +374,19 @@ public class ModelAndViewConfiguration {
 
     public void sendMessageSubscriber(String header, String text, User user,
                                       String buttonName, String buttonHref, String nameClient, String footer) {
-        Reader s = null;
+        String resultRead = "";
         ClassLoader classLoader = getClass().getClassLoader();
         try {
 
-            s = new InputStreamReader(classLoader.getResource(PathConstant.HTML_FILE_FOR_USER_SUBSCRIBE.getPath()).openStream());
-            System.out.println(s.read());
+            Scanner in = new Scanner(classLoader.getResource(PathConstant.HTML_FILE_FOR_USER_SUBSCRIBE.getPath()).openStream());
+            while (in.hasNextLine())
+                resultRead += in.nextLine();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        char c[] = new char[0];
-        try {
-            byte[] data = IOUtils.toByteArray(s);
-            c = new char[data.length];
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            s.read(c);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String htmlBody = String.copyValueOf(c)
+        String htmlBody = resultRead
                 .replace("#footer", footer)
                 .replace("#nameClient", nameClient)
                 .replace("#textClient", text)
@@ -433,11 +422,6 @@ public class ModelAndViewConfiguration {
             SendMessageEmailConstant.addSendMessage(user, message);
             ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor = applicationContext.getBean(ScheduledAnnotationBeanPostProcessor.class);
             scheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
-            e.printStackTrace();
-        }
-        try {
-            s.close();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }

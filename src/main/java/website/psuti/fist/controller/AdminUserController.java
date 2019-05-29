@@ -153,24 +153,14 @@ public class AdminUserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        String resultRead = "";
         ClassLoader classLoader = getClass().getClassLoader();
-        Reader s = null;
         try {
-            s = new InputStreamReader(classLoader.getResource(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath()).openStream() );
+            Scanner in = new Scanner(classLoader.getResource(PathConstant.HTML_FILE_FOR_USER_ADD_CMS.getPath()).openStream());
+            while (in.hasNextLine())
+                resultRead += in.nextLine();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        char c[] = new char[0];
-        try {
-            byte[] data = IOUtils.toByteArray(s);
-            c = new char[data.length];
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            s.read(c);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -180,7 +170,7 @@ public class AdminUserController {
                 rolesString += user.getRole().get(i).getName() + ", ";
             else rolesString += user.getRole().get(i).getName();
         }
-        String htmlBody = String.copyValueOf(c)
+        String htmlBody = resultRead
                 .replace("#headerTop", "Факультет информационных систем и технологий")
                 .replace("#logotipFIST", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_FIST.getId())
                 .replace("#logotipPSUTI", UrlForSearch.getUrlSite() + "/main/picture/"+ MainPageConstant.LOGOTIP_PSUTI.getId())
@@ -203,11 +193,6 @@ public class AdminUserController {
             SendMessageEmailConstant.addSendMessage(user, message);
             ScheduledAnnotationBeanPostProcessor scheduledAnnotationBeanPostProcessor = applicationContext.getBean(ScheduledAnnotationBeanPostProcessor.class);
             scheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(applicationContext.getBean(SendMessageScheduler.class), "scheduler");
-            e.printStackTrace();
-        }
-        try {
-            s.close();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return "redirect:../cms";

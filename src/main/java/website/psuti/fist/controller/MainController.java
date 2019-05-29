@@ -298,6 +298,8 @@ public ModelAndView gradStudents() {
     public ModelAndView addSubscriber(@RequestParam("username") String username) throws Exception {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("enabledAccount");
+        modelAndView.addObject("headerAnswer", "СПАСИБО ЧТО ПОДПИСАЛИСЬ");
+        modelAndView.addObject("textAnswer", "Теперь вы будете в числе первых узнавать о самых актуальных событиях в нашем факультете");
         User user = userService.findUserByName(username);
         if (user == null) {
             user = new User();
@@ -330,8 +332,8 @@ public ModelAndView gradStudents() {
         if (user != null) {
             userService.delete(user);
         }
-        model.addAttribute("headerAnswer", "СПАСИБО ЧТО ПОДПИСАЛИСЬ");
-        model.addAttribute("textAnswer", "Теперь вы будете в числе первых узнавать о самых актуальных событиях в нашем факультете");
+        model.addAttribute("headerAnswer", "Отписка");
+        model.addAttribute("textAnswer", "Вы отписались от портала ФИСТ ПГУТИ, возвращайтесь скорее :)");
         model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
         return "enabledAccount";
     }

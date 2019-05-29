@@ -13,8 +13,8 @@ import java.net.URI;
 @Component
 public class Sender {
     private final ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP2); // change to whatever server you are running, though 2010_SP2 is the most recent version the Api supports
-    private final String username = "asd";
-    private final String password = "asd";
+    private final String username = "robot.fist@psuti.ru";
+    private final String password = "FIst_RePlY_NO_2019";
 
     public Sender() {
         try {

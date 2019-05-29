@@ -13,7 +13,7 @@
 
     <h2 class="page_header2 text-center">Результаты поиска</h2>
 
-    <section id="content">
+    <section id="content" th:if="${resultSearch.size()!=0}">
         <div class="shortcontain">
         <div th:each="item : ${resultSearch}">
             <div class="row" style="padding-bottom: 10px">
@@ -24,7 +24,13 @@
         </div>
         </div>
     </section>
-
+    <section id="content" th:if="${resultSearch.size()==0}">
+        <div class="shortcontain">
+                <div class="row" style="padding-bottom: 100px; text-align: center">
+                    <h2 class="page_header2">По Вашему запросу нам не удалось найти никакой информации.</h2>
+                </div>
+        </div>
+    </section>
     <div class="clearfix space70"></div>
     <!-- FOOTER -->
     <div th:replace="templates :: footerUser"></div>
@@ -47,38 +53,5 @@
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="/js/gmap2.js"></script>
 <script src="/js/script.js"></script>
-<script type="text/javascript">
-    var opac=0;
-    function searchFunc() {
-        var elements=document.getElementsByClassName('other-pages-search');
-        if (elements.length>0){
-            if(opac===0){
-                opac++;
-                pull(elements[0]);
-            } else {
-                opac--;
-                push(elements[0]);
-            }
-        }
-        function pull(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/-1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1500, function () {
-            });
-        }
-        function push(el){
-            var img = $('.other-pages-search');
-            var marginx=(img.width()+100)/1;
-            img.animate({
-                marginLeft: "+=" + marginx + "px",
-                opacity: "+=1"
-            }, 1500, function () {
-            });
-        }
-    }
-</script>
 </body>
 </html>

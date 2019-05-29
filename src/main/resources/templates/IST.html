@@ -20,6 +20,18 @@
 <script src="/js/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        function checkIsStr() {
+            if ($(window).width() <= '700') {
+                var hr = jQuery(".change").attr("href");
+                if (hr === "/main") {
+                    jQuery(".change").css({"display": "none"});
+                }else {
+                    jQuery(".change").css({"display": "block"});
+                }
+            }
+        }
+        checkIsStr();
+
         if($("#particles-js .back_img").hasClass("back_img")) {
             $("#particles-js .back_img").addClass( "hiddenn");
             $("#particles-js .back_img").removeClass( "back_img");
@@ -56,6 +68,7 @@
                 NProgress.start();
                 setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
             }
+            checkIsStr();
             return false;
         });
     });

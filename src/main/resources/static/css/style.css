@@ -409,7 +409,7 @@ h1 {
     font-size: 40px;
     font-weight: bold;
 }
-.info-doc p{margin-left: -15px}
+
 #curators{
     left: 50%;
     padding-right: 0 !important;
@@ -3362,6 +3362,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .search-button:focus{
     border: 1px solid black;
 }
+.info-doc .row{
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
+.info-doc .blog-sep{
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
 .search-input{
     float: right;
     /* width: 100%; */
@@ -3765,7 +3773,9 @@ left:100%;
 	float:left;
 	margin-left:50px;
 }*/
-
+ #footer2 .tb-info a{
+     z-index: 1;
+ }
 .tb-info a {
 	cursor:pointer;
 	position:relative;

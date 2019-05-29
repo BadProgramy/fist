@@ -628,7 +628,7 @@ clear: both;
 
 .top-bar {
     display: table;
-    padding-left: 20%;
+
 }
 
 .top-bar ul li:last-child {
@@ -875,6 +875,13 @@ h2.big-text {font-size: 93px;}
     h1,h2{
         font-size: 30px;
     }
+    .row{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .trends .site-fist img{
+        height: 60px;
+    }
 
     .pre {display: flex;flex-flow: wrap;}
     .inf1,.photo, .inf2 { width: 100%;}
@@ -959,8 +966,8 @@ h2.big-text {font-size: 93px;}
         font-size: 27px !important;
     }
     .top-bar {
-        padding-left: 35%;
         width: 100%;
+        text-align: -webkit-center;
     }
     #footer2 p {
         text-align: center;

@@ -78,11 +78,11 @@ public class AdminNewsFacultyController {
             newFaculty.setIdPicture(savePicture(newFaculty));
         }
         newsFacultyService.insert(newFaculty);
-        /*for (User user : userService.getUsersByRoleAndEnable(Role.SUBSCRIBER)) {
+        for (User user : userService.getUsersByRoleAndEnable(Role.SUBSCRIBER)) {
             modelAndViewConfiguration.sendMessageSubscriber(newFaculty.getHeading(), newFaculty.getText(), user,
                     "Посмотреть на сайте", UrlForSearch.getUrlSite() + UrlForSearch.URL_NEWS_BLOG.getApi(), "",
                     "Вы получаете это письмо, потому что вы подписаны на новости факультета.");
-        }*/
+        }
         return "redirect:../";
     }
 

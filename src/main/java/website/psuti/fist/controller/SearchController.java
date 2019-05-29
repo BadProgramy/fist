@@ -107,6 +107,7 @@ public class SearchController {
                     searchObjects.add(new SearchObject(entry.getValue().toString(), argi[i], entry.getKey().toString()));
                     if (searchObjects.size() >= COUNT_OUTPUT_RESULT_SEARCH) { // максимум результат вывода
                         model.addAttribute("resultSearch", sorted(searchObjects));
+                        model.addAttribute("title", word + " - " + "результат поиска");
                         return "search";
                     }
                 }

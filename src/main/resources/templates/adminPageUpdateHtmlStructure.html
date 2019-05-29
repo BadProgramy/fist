@@ -69,6 +69,7 @@
                             if (srcImg == rightPart) {
                                 document.getElementById("idPage").value = /*[[@{${element.getId()}}]]*/ null;
                                 document.getElementById("htmlCode").value = /*[[@{${element.getHtmlCode()}}]]*/ null;
+                                document.getElementById("typeHtmlCode").value = /*[[@{${element.getTypeHtmlCode()}}]]*/ null;
                             }
                             /*[/]*/
                             /*]]>*/
@@ -90,6 +91,7 @@
                     <strong><p>HTML код основного тело. (Менять только контент, html теги не трогать!)</p></strong>
                     <textarea id="htmlCode" class="menuItemTables" name="htmlCode" style="width: 100%;min-height: 500px"></textarea>
                 </div>
+                <input hidden id="typeHtmlCode" name="typeHtmlCode">
                 <div class="col-md-4 " style="padding: 10px 10px 10px;float: right;">
                     <p>Действие</p>
                     <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>

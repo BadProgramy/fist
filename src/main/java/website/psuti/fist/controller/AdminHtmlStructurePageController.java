@@ -22,16 +22,22 @@ public class AdminHtmlStructurePageController {
     @RequestMapping("/admin/page/htmlStructure/body/update")
     public ModelAndView updateHtmlStructureBody() {
         ModelAndView modelAndView = new ModelAndView("adminPageUpdateHtmlStructure");
-        modelAndView.addObject("item", new HTMLStructurePage());
+        HTMLStructurePage item = new HTMLStructurePage();
+        item.setTypeHtmlCode(TypeHtmlCode.BODY);
+        modelAndView.addObject("item", item);
         modelAndView.addObject("pages", htmlStructurePageService.findHTMLCodeByType(TypeHtmlCode.BODY));
+        modelAndView.addObject("typesHtmlCode", TypeHtmlCode.values());
         return modelAndView;
     }
 
     @RequestMapping("/admin/page/htmlStructure/head/update")
     public ModelAndView updateHtmlStructureHead() {
         ModelAndView modelAndView = new ModelAndView("adminPageUpdateHtmlStructure");
-        modelAndView.addObject("item", new HTMLStructurePage());
+        HTMLStructurePage item = new HTMLStructurePage();
+        item.setTypeHtmlCode(TypeHtmlCode.BODY);
+        modelAndView.addObject("item", item);
         modelAndView.addObject("pages", htmlStructurePageService.findHTMLCodeByType(TypeHtmlCode.HEAD));
+        modelAndView.addObject("typesHtmlCode", TypeHtmlCode.values());
         return modelAndView;
     }
 

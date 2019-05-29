@@ -110,8 +110,8 @@ public class ModelAndViewConfiguration {
                 String str;
                 String result = "";
                 while (in.hasNextLine()) {
-                    result += in.nextLine();
-                    if (result.toCharArray()[result.length() - 2] == ')' && result.toCharArray()[result.length() - 1] == ';') {
+                    result += in.nextLine() + "\r\n";
+                    if (result.toCharArray()[result.length() - 4] == ')' && result.toCharArray()[result.length() - 3] == ';') {
                         connection.createStatement().executeUpdate(result);
                         result = "";
                     }

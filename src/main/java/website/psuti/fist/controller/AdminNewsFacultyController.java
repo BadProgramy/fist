@@ -174,6 +174,7 @@ public class AdminNewsFacultyController {
 
     @RequestMapping("/admin/table/newsOfFaculty/update/submit")
     public String adminNewsFacultyUpdateSubmit(@ModelAttribute("item") NewsOfFaculty item) {
+        item.setDate(LocalDateTime.of(LocalDate.parse(item.getDateStringLocalDate()), LocalTime.now()));
         newsFacultyService.update(item);
         modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";

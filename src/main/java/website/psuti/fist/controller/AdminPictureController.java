@@ -27,51 +27,51 @@ public class AdminPictureController {
 
 
 
-    @RequestMapping("/admin/table/picture/add/submit")
+    @RequestMapping(value = "/admin/table/picture/add/submit", method = RequestMethod.POST)
     public String adminAddPicture(@ModelAttribute("picture") Pictures picture) throws IOException {
         picturesService.insert(updatePicture(picture));
         modelAndViewConfiguration.initModelAndView();
         return returnPage(picture);
     }
 
-    @RequestMapping("/admin/table/picture/department/update")
+    @RequestMapping(value = "/admin/table/picture/department/update", method = RequestMethod.GET)
     public String adminPictureDepartmentUpdate( Model model) {
         return pagination("department", 1, model);
     }
 
-    @RequestMapping("/admin/table/picture/bestStudent/update")
+    @RequestMapping(value = "/admin/table/picture/bestStudent/update", method = RequestMethod.GET)
     public String adminPictureBestStudentUpdate( Model model) {
         return pagination("bestStudent", 1, model);
     }
 
-    @RequestMapping("/admin/table/picture/deanTeam/update")
+    @RequestMapping(value = "/admin/table/picture/deanTeam/update", method = RequestMethod.GET)
     public String adminPictureDeanTeamUpdate(Model model) {
         return pagination("deanTeam", 1, model);
     }
 
-    @RequestMapping("/admin/table/picture/topicFaculty/update")
+    @RequestMapping(value = "/admin/table/picture/topicFaculty/update", method = RequestMethod.GET)
     public String adminPictureTopicFacultyUpdate(Model model) {
         return pagination("topicFaculty", 1, model);
     }
 
-    @RequestMapping("/admin/table/picture/other/update")
+    @RequestMapping(value = "/admin/table/picture/other/update", method = RequestMethod.GET)
     public String adminPictureOtherUpdate(Model model) {
         return pagination("other", 1, model);
     }
 
-    @RequestMapping("/admin/table/picture/diploma/update")
+    @RequestMapping(value = "/admin/table/picture/diploma/update", method = RequestMethod.GET)
     public String adminPictureDiplomaUpdate(Model model) {
         return pagination("diploma", 1, model);
     }
 
-    @RequestMapping("/admin/table/picture/update/submit")
+    @RequestMapping(value = "/admin/table/picture/update/submit", method = RequestMethod.POST)
     public String adminPictureUpdateSubmit(@ModelAttribute("item") Pictures item) throws IOException {
         picturesService.update(updatePicture(item));
         modelAndViewConfiguration.initModelAndView();
         return returnPage(item);
     }
 
-    @RequestMapping("/admin/table/picture/delete/id={id}")
+    @RequestMapping(value = "/admin/table/picture/delete/id={id}", method = RequestMethod.GET)
     public String adminPictureDelete(@PathVariable("id") Long id) {
         Pictures picture = picturesService.findPictureById(id);
         picturesService.delete(id);
@@ -110,7 +110,7 @@ public class AdminPictureController {
         return item;
     }
 
-    @RequestMapping("/admin/table/picture/{name}/update/page/{idPage}")
+    @RequestMapping(value = "/admin/table/picture/{name}/update/page/{idPage}", method = RequestMethod.GET)
     private String pagination(@PathVariable String name, @PathVariable Integer idPage, Model model) {
         if (idPage <= 0) idPage = 1;
         KeyPicture keyPicture = KeyPicture.OTHER;

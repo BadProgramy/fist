@@ -37,17 +37,17 @@ public class AdminController {
     @Autowired
     private PicturesService picturesService;
 
-    @RequestMapping("/admin")
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage() {
         return "admin";
     }
 
-    @RequestMapping("/admin/login")
+    @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String login() {
         return "authentication";
     }
 
-    @RequestMapping("/admin/setting/cash")
+    @RequestMapping(value = "/admin/setting/cash", method = RequestMethod.GET)
     public String updateModelView() {
         modelAndViewConfiguration.updateCash();
         return "admin";

@@ -16,7 +16,7 @@ public class AdminCuratorController {
     private CuratorService curatorService;
 
 
-    @RequestMapping("/admin/content/curator")
+    @RequestMapping(value = "/admin/content/curator", method = RequestMethod.GET)
     public ModelAndView curator() {
         ModelAndView modelAndView = new ModelAndView("adminContentCurator");
         modelAndView.addObject("curators",  curatorService.getAll());
@@ -24,7 +24,7 @@ public class AdminCuratorController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/content/curator/add/submit")
+    @RequestMapping(value = "/admin/content/curator/add/submit", method = RequestMethod.POST)
     public String addNewCuratorSubmit(@ModelAttribute Curator curator ) {
         curatorService.insert(curator);
         return "redirect:../";

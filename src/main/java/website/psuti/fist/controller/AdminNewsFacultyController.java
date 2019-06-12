@@ -37,7 +37,7 @@ public class AdminNewsFacultyController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/admin/content/news")
+    @RequestMapping(value = "/admin/content/news", method = RequestMethod.GET)
     public ModelAndView news() {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -51,7 +51,7 @@ public class AdminNewsFacultyController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/content/news/add")
+    @RequestMapping(value = "/admin/content/news/add", method = RequestMethod.GET)
     public ModelAndView addNewFaculty() {
         ModelAndView modelAndView = new ModelAndView("adminAddNews");
         modelAndView.addObject("date", LocalDate.now());
@@ -71,7 +71,7 @@ public class AdminNewsFacultyController {
         else return new byte[0];
     }
 
-    @RequestMapping("/admin/content/news/add/submit")
+    @RequestMapping(value = "/admin/content/news/add/submit", method = RequestMethod.POST)
     public String addNewFacultySubmit(@ModelAttribute NewsOfFaculty newFaculty ) throws IOException {
         newFaculty.setDate(LocalDateTime.of(LocalDate.parse(newFaculty.getDateStringLocalDate()), LocalTime.now()));
         if (!newFaculty.getPictureFile().isEmpty()) {
@@ -101,7 +101,7 @@ public class AdminNewsFacultyController {
         return "newsBlog";
     }*/
 
-    @RequestMapping("/admin/content/news/range")
+    @RequestMapping(value = "/admin/content/news/range", method = RequestMethod.GET)
     public ModelAndView newsByRange(String withDate,
                                     String fromDate) throws SQLException {
 /*        if (this.user == null) {
@@ -163,7 +163,7 @@ public class AdminNewsFacultyController {
         return "redirect:../../news";
     }
 
-    @RequestMapping("/admin/table/newsOfFaculty/update")
+    @RequestMapping(value = "/admin/table/newsOfFaculty/update", method = RequestMethod.GET)
     public ModelAndView updateNewsFaculty() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateNewsOfFaculty");
         modelAndView.addObject("item", new NewsOfFaculty());
@@ -172,7 +172,7 @@ public class AdminNewsFacultyController {
     }
 
 
-    @RequestMapping("/admin/table/newsOfFaculty/update/submit")
+    @RequestMapping(value = "/admin/table/newsOfFaculty/update/submit", method = RequestMethod.POST)
     public String adminNewsFacultyUpdateSubmit(@ModelAttribute("item") NewsOfFaculty item) {
         item.setDate(LocalDateTime.of(LocalDate.parse(item.getDateStringLocalDate()), LocalTime.now()));
         newsFacultyService.update(item);
@@ -180,7 +180,7 @@ public class AdminNewsFacultyController {
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/newsOfFaculty/delete/id={id}")
+    @RequestMapping(value = "/admin/table/newsOfFaculty/delete/id={id}", method = RequestMethod.GET)
     public String adminNewsFacultyDelete(@PathVariable("id") long id) {
         //NewsOfFaculty newsOfFaculty = newsFacultyService.findById(id);
         newsFacultyService.delete(id);

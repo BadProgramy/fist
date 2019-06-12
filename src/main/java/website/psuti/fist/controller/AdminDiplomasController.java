@@ -24,12 +24,12 @@ public class AdminDiplomasController {
     @Autowired
     private PicturesService picturesService;
 
-    @RequestMapping("/admin/content/diplomas")
+    @RequestMapping(value = "/admin/content/diplomas", method = RequestMethod.GET)
     public ModelAndView adminDiplomas(Model model) {
         return adminDiplomasPage(1, model);
     }
 
-    @RequestMapping("/admin/content/diplomas/page/{idPage}")
+    @RequestMapping(value = "/admin/content/diplomas/page/{idPage}", method = RequestMethod.GET)
     public ModelAndView adminDiplomasPage(@PathVariable int idPage, Model model) {
         if (idPage <= 0) idPage = 1;
         model.addAttribute("firstPage", idPage);
@@ -48,19 +48,19 @@ public class AdminDiplomasController {
 
 
 
-    @RequestMapping("/admin/content/diplomas/add/submit")
+    @RequestMapping(value = "/admin/content/diplomas/add/submit", method = RequestMethod.POST)
     public String addDiplomasSubmit(@ModelAttribute Pictures picture ) throws IOException {
         picturesService.insert(updatePicture(picture));
         return "redirect:../";
     }
 
-    @RequestMapping("/admin/content/diplomas/update/submit")
+    @RequestMapping(value = "/admin/content/diplomas/update/submit", method = RequestMethod.POST)
     public String adminDiplomasUpdateSubmit(@ModelAttribute("item") Pictures item) throws IOException {
         picturesService.update(updatePicture(item));
         return "redirect:../";
     }
 
-    @RequestMapping("/admin/content/diplomas/delete/{id}")
+    @RequestMapping(value = "/admin/content/diplomas/delete/{id}", method = RequestMethod.GET)
     public String adminDiplomasDelete(@PathVariable("id") Long id) {
         picturesService.delete(id);
         return "redirect:../";

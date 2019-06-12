@@ -17,7 +17,7 @@ public class AdminCandidateAssignmentController {
     @Autowired
     private CandidateAssignmentService candidateAssignmentService;
 
-    @RequestMapping("/admin/content/candidateAssignment")
+    @RequestMapping(value = "/admin/content/candidateAssignment", method = RequestMethod.GET)
     public ModelAndView candidateAssignment() {
         ModelAndView modelAndView = new ModelAndView("adminContentCandidateAssignment");
         modelAndView.addObject("candidateAssignments",  candidateAssignmentService.getAll());
@@ -25,7 +25,7 @@ public class AdminCandidateAssignmentController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/content/candidateAssignment/add/submit")
+    @RequestMapping(value = "/admin/content/candidateAssignment/add/submit", method = RequestMethod.POST)
     public String addCandidateSubmit(@ModelAttribute CandidateAssignment candidateAssignment ) {
         candidateAssignmentService.insert(candidateAssignment);
         return "redirect:../";

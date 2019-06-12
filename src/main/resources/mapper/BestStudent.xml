@@ -22,8 +22,8 @@
     </select>
 
     <insert id="add" parameterType="BestStudent">
-        insert into best_student(id_picture, name, url, group_in_university, characteristic)
-        values (#{idPicture}, #{name}, #{url}, #{groupInUniversity}, #{characteristic});
+        insert into best_student(characteristic, characteristic_styles, group_in_university, group_in_university_styles, id_picture, name, name_styles, picture_styles, url)
+        values (#{characteristic}, #{characteristicStyles}, #{groupInUniversity}, #{groupInUniversityStyles}, #{idPicture}, #{name}, #{nameStyles}, #{pictureStyles}, #{url});
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
@@ -40,7 +40,11 @@
         name = #{name},
         url = #{url},
         group_in_university = #{groupInUniversity},
-        characteristic = #{characteristic}
+        characteristic = #{characteristic},
+        name_styles = #{nameStyles},
+        group_in_university_styles = #{groupInUniversityStyles},
+        picture_styles = #{pictureStyles},
+        characteristic_styles = #{characteristicStyles}
         WHERE id = #{id};
     </update>
 

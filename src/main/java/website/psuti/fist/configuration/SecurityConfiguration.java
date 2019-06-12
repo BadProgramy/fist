@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/table/**").hasAuthority(Role.DEVELOPER.getAuthority())
                 .antMatchers("/admin/user/**").hasAuthority(Role.ADMIN.getAuthority())
                 .antMatchers("/admin/setting/**").hasAnyAuthority(Role.DEVELOPER.getAuthority(), Role.MODERATOR.getAuthority(), Role.ADMIN.getAuthority())
+                .antMatchers("/swagger-ui.html/**").hasAnyAuthority(Role.DEVELOPER.getAuthority(), Role.MODERATOR.getAuthority(), Role.ADMIN.getAuthority())
 
                 .and()
                 .formLogin().loginPage("/admin/login").defaultSuccessUrl("/admin").permitAll()

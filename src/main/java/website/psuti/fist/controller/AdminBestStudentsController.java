@@ -31,22 +31,22 @@ public class AdminBestStudentsController {
     @Autowired
     private PicturesService picturesService;
 
-    @RequestMapping("/admin/content/bestStudents")
+    @RequestMapping(value = "/admin/content/bestStudents", method = RequestMethod.GET)
     public ModelAndView bestStudents() {
         ModelAndView modelAndView = new ModelAndView("adminBestStudents");
         modelAndView.addObject("bestStudents",  bestStudentService.getAll());
         return modelAndView;
     }
 
-    @RequestMapping("/admin/content/bestStudents/add")
-    public ModelAndView addNewFaculty() {
+    @RequestMapping(value = "/admin/content/bestStudents/add", method = RequestMethod.GET)
+    public ModelAndView addBestStudent() {
         ModelAndView modelAndView = new ModelAndView("adminBestStudentsAdd");
         modelAndView.addObject("bestStudent", new BestStudent());
         return modelAndView;
     }
 
-    @RequestMapping("/admin/content/bestStudents/add/submit")
-    public String addNewFacultySubmit(@ModelAttribute BestStudent bestStudent ) throws IOException {
+    @RequestMapping(value = "/admin/content/bestStudents/add/submit", method = RequestMethod.POST)
+    public String addBestStudentSubmit(@ModelAttribute BestStudent bestStudent ) throws IOException {
         if (bestStudent.getPictureFile() != null) {
             bestStudent.setIdPicture(savePicture(bestStudent));
         }
@@ -55,7 +55,7 @@ public class AdminBestStudentsController {
     }
 
     @RequestMapping(value = "/admin/content/bestStudents/update/{id}", method = RequestMethod.GET)
-    public ModelAndView updateFaculty(@PathVariable("id") Long id/*, Model model*/) {
+    public ModelAndView updateBestStudent(@PathVariable("id") Long id/*, Model model*/) {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
@@ -69,7 +69,7 @@ public class AdminBestStudentsController {
     }
 
     @RequestMapping(value = "/admin/content/bestStudents/update/submit", method = RequestMethod.POST)
-    public String updateNewFaculty(@ModelAttribute BestStudent bestStudent) throws IOException {
+    public String updateBestStudent(@ModelAttribute BestStudent bestStudent) throws IOException {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
@@ -87,7 +87,7 @@ public class AdminBestStudentsController {
     }
 
     @RequestMapping(value = "/admin/content/bestStudents/delete/{id}",method = RequestMethod.GET)
-    public String deleteNewFaculty(@PathVariable("id") long bestStudentId, Model model) {
+    public String deleteBestStudent(@PathVariable("id") long bestStudentId, Model model) {
 /*        if (this.user == null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             this.user = userService.findUserByName(authentication.getName());
@@ -98,7 +98,7 @@ public class AdminBestStudentsController {
         return "redirect:../../bestStudents";
     }
 
-    @RequestMapping("/admin/table/bestStudent/update")
+    @RequestMapping(value = "/admin/table/bestStudent/update", method = RequestMethod.GET)
     public ModelAndView updateBestStudent() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateBestStudent");
         modelAndView.addObject("item", new BestStudent());
@@ -107,14 +107,14 @@ public class AdminBestStudentsController {
     }
 
 
-    @RequestMapping("/admin/table/bestStudent/update/submit")
+    @RequestMapping(value = "/admin/table/bestStudent/update/submit", method = RequestMethod.POST)
     public String adminBestStudentUpdateSubmit(@ModelAttribute("item") BestStudent item) {
         bestStudentService.update(item);
         modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/bestStudent/delete/id={id}")
+    @RequestMapping(value = "/admin/table/bestStudent/delete/id={id}", method = RequestMethod.GET)
     public String adminBestStudentDelete(@PathVariable("id") Long id) {
         //BestStudent bestStudent = bestStudentService.findById(id);
         picturesService.delete(id);

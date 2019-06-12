@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.PathConstant;
@@ -31,7 +28,7 @@ public class AdminFileController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/admin/table/files/update")
+    @RequestMapping(value = "/admin/table/files/update", method = RequestMethod.GET)
     public ModelAndView addFile() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateFile");
         modelAndView.addObject("file", new File());
@@ -40,14 +37,14 @@ public class AdminFileController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/content/files/add")
+    @RequestMapping(value = "/admin/content/files/add", method = RequestMethod.GET)
     public ModelAndView addContentFile() {
         ModelAndView modelAndView = addFile();
         modelAndView.setViewName("adminContentAddFile");
         return modelAndView;
     }
 
-    @RequestMapping("/admin/table/files/add/submit")
+    @RequestMapping(value = "/admin/table/files/add/submit", method = RequestMethod.POST)
     public String addFileSubmit(@ModelAttribute File file, Model model ) throws IOException {
         model.addAttribute("file", new File());
         model.addAttribute("files", fileService.getAll());
@@ -63,13 +60,13 @@ public class AdminFileController {
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/content/files/add/submit")
+    @RequestMapping(value = "/admin/content/files/add/submit", method = RequestMethod.POST)
     public String addContentFileSubmit(@ModelAttribute File file, Model model) throws IOException {
         addFileSubmit(file, model);
         return "redirect:../add";
     }
 
-    @RequestMapping("/admin/table/files/update/submit")
+    @RequestMapping(value = "/admin/table/files/update/submit", method = RequestMethod.POST)
     public String updateFileSubmit(@ModelAttribute File file) throws IOException {
         file.setDate(LocalDate.parse(file.getDateStringLocalDate()));
         if (!file.getFile().isEmpty()) {
@@ -87,7 +84,7 @@ public class AdminFileController {
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/files/delete/id={id}")
+    @RequestMapping(value = "/admin/table/files/delete/id={id}", method = RequestMethod.GET)
     public String adminPictureDelete(@PathVariable("id") Long id) {
         File file = fileService.findFileById(id);
         fileService.delete(id);
@@ -103,7 +100,7 @@ public class AdminFileController {
         fos.close();
     }
 
-    @RequestMapping(value = "/files/id={idFile}")
+    @RequestMapping(value = "/files/id={idFile}", method = RequestMethod.GET)
     public String file(@PathVariable("idFile") Long idFile, HttpServletRequest request) throws IOException {
         return getFile((website.psuti.fist.model.File) modelAndViewConfiguration.getItemById(modelAndViewConfiguration.getFiles(), idFile), request);
     }
@@ -116,14 +113,14 @@ public class AdminFileController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/files/pdf/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE)
+    @RequestMapping(value = "/files/pdf/{fileNameUnique}", produces = MediaType.APPLICATION_PDF_VALUE, method = RequestMethod.GET)
     private byte[] outputPDFFile(@PathVariable("fileNameUnique") String fileNameUnique) throws IOException {
         java.io.File ff = new java.io.File(PathConstant.SAVE_FILE.getPath() + fileNameUnique);
         return Files.readAllBytes(ff.toPath());
     }
 
     @ResponseBody
-    @RequestMapping(value = "/files/download/{fileNameUnique}", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/files/download/{fileNameUnique}", produces = MediaType.MULTIPART_FORM_DATA_VALUE, method = RequestMethod.GET)
     private byte[] outputDownloadFile(@PathVariable("fileNameUnique") String fileNameUnique, HttpServletResponse response) throws IOException {
         java.io.File ff = new java.io.File(PathConstant.SAVE_FILE.getPath() + fileNameUnique);
         response.setHeader("Content-Disposition", "attachment; filename=" + fileService.findFileByNameUnique(fileNameUnique).getName());

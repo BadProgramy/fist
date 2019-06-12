@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.model.HTMLStructurePage;
@@ -19,7 +20,7 @@ public class AdminHtmlStructurePageController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/admin/page/htmlStructure/body/update")
+    @RequestMapping(value = "/admin/page/htmlStructure/body/update", method = RequestMethod.GET)
     public ModelAndView updateHtmlStructureBody() {
         ModelAndView modelAndView = new ModelAndView("adminPageUpdateHtmlStructure");
         HTMLStructurePage item = new HTMLStructurePage();
@@ -30,7 +31,7 @@ public class AdminHtmlStructurePageController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/page/htmlStructure/head/update")
+    @RequestMapping(value = "/admin/page/htmlStructure/head/update", method = RequestMethod.GET)
     public ModelAndView updateHtmlStructureHead() {
         ModelAndView modelAndView = new ModelAndView("adminPageUpdateHtmlStructure");
         HTMLStructurePage item = new HTMLStructurePage();
@@ -42,7 +43,7 @@ public class AdminHtmlStructurePageController {
     }
 
 
-    @RequestMapping("/admin/page/htmlStructure/update/submit")
+    @RequestMapping(value = "/admin/page/htmlStructure/update/submit", method = RequestMethod.POST)
     public String adminHtmlStructureUpdateSubmit(@ModelAttribute("item") HTMLStructurePage item) {
         item.setNamePage(htmlStructurePageService.findHTMLStructurePageById(item.getId()).getNamePage());
         htmlStructurePageService.update(item);

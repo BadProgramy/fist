@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import website.psuti.fist.constant.NewsFacultyConstant;
@@ -32,7 +33,7 @@ public class RssFeedController {
     @Autowired
     private NewsFacultyService newsFacultyService;
 
-    @GetMapping("/rssFeed")
+    @GetMapping(value = "/rssFeed")
     public View handleForexRequest(Model model) {
         model.addAttribute("feedInfo", getFeedInfo());
         return (View)applicationContext.getBean("rssFeedView");

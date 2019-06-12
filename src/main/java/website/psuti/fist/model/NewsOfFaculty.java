@@ -48,6 +48,7 @@ public class NewsOfFaculty {
     private MultipartFile pictureFile;
 
     public NewsOfFaculty() {
+        date = LocalDateTime.now();
     }
 
     public long getId() {

@@ -3,6 +3,7 @@ package website.psuti.fist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.NameDepartmentConstant;
@@ -18,7 +19,7 @@ public class DepartmentController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/faculty/cathedras")
+    @RequestMapping(value = "/faculty/cathedras", method = RequestMethod.GET)
     public ModelAndView cathedras() {
         List<HTMLOutputDepartmentForThymeleaf> departments = new ArrayList<>();
         for (Department department: modelAndViewConfiguration.getDepartments()) {

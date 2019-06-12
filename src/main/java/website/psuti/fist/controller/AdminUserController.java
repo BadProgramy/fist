@@ -49,17 +49,17 @@ public class AdminUserController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/admin/user/cms")
+    @RequestMapping(value = "/admin/user/cms", method = RequestMethod.GET)
     public ModelAndView userCmsAdd(Model model) {
         return adminUserPage(1, "cms", model);
     }
 
-    @RequestMapping("/admin/user/subscriber")
+    @RequestMapping(value = "/admin/user/subscriber", method = RequestMethod.GET)
     public ModelAndView userSubscriberAdd(Model model) {
         return adminUserPage(1, "subscriber", model);
     }
 
-    @RequestMapping("/admin/user/{check}/page/{idPage}")
+    @RequestMapping(value = "/admin/user/{check}/page/{idPage}", method = RequestMethod.GET)
     public ModelAndView adminUserPage(@PathVariable int idPage,
                                           @PathVariable String check,
                                           Model model) {
@@ -107,7 +107,7 @@ public class AdminUserController {
         return modelAndView;
     }
 
-    @RequestMapping("/admin/user/update/submit")
+    @RequestMapping(value = "/admin/user/update/submit", method = RequestMethod.POST)
     public String adminUserUpdateSubmit(@ModelAttribute("item") User item) throws SQLException {
         boolean checkMove = false;
         List<Role> roles = new ArrayList<>();
@@ -124,7 +124,7 @@ public class AdminUserController {
         else return "redirect:../subscriber";
     }
 
-    @RequestMapping("/admin/user/add/submit")
+    @RequestMapping(value = "/admin/user/add/submit", method = RequestMethod.POST)
     public String userAddSubmit(@ModelAttribute("user") User user) {
         List<Role> roles = new ArrayList<>();
         for (String role: user.getRolesString()) {
@@ -198,7 +198,7 @@ public class AdminUserController {
         return "redirect:../cms";
     }
 
-    @RequestMapping("/user/enable/email={email}")
+    @RequestMapping(value = "/user/enable/email={email}", method = RequestMethod.GET)
     public String activationUser(@PathVariable("email") String email, Model model) throws SQLException {
         User user = userService.findUserByName(email);
         if (user != null) {
@@ -211,7 +211,7 @@ public class AdminUserController {
         return "enabledAccount";
     }
 
-    @RequestMapping("/user/enable/cms/email={email}")
+    @RequestMapping(value = "/user/enable/cms/email={email}", method = RequestMethod.GET)
     public String activationUserCms(@PathVariable("email") String email, Model model) throws SQLException {
         User user = userService.findUserByName(email);
         if (user != null) {
@@ -224,7 +224,7 @@ public class AdminUserController {
         return "enabledAccount";
     }
 
-    @RequestMapping("/admin/setting/profile")
+    @RequestMapping(value = "/admin/setting/profile", method = RequestMethod.GET)
     public String settingProfile(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("user", userService.findUserByName(authentication.getName()));
@@ -234,7 +234,7 @@ public class AdminUserController {
         return "adminSettingProfile";
     }
 
-    @RequestMapping("/admin/setting/profile/update/submit")
+    @RequestMapping(value = "/admin/setting/profile/update/submit", method = RequestMethod.POST)
     public String settingProfileUpdateSubmit(Model model,
                                              @ModelAttribute("user") User user,
                                              @ModelAttribute("newPassword") String newPassword,
@@ -266,7 +266,7 @@ public class AdminUserController {
         return "redirect:../../profile";
     }
 
-    @RequestMapping("logout")
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {

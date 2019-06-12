@@ -34,12 +34,12 @@ public class  MainController {
     private UserService userService;
 
 
-    @RequestMapping("")
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView main(Model model) {
         return mainPage(model);
     }
 
-    @RequestMapping("/main")
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
     public ModelAndView mainPage(Model model) {
         ModelAndView modelview = modelAndViewConfiguration.initModelAndView();
         modelview.addAllObjects(model.asMap());
@@ -76,12 +76,12 @@ public class  MainController {
         return b;
     }
 
-    @RequestMapping("/newsBlog")
+    @RequestMapping(value = "/newsBlog", method = RequestMethod.GET)
     public ModelAndView newsBlog(Model model) {
         return newsBlogPage(1, model);
     }
 
-    @RequestMapping("/newsBlog/page/{idPage}")
+    @RequestMapping(value = "/newsBlog/page/{idPage}", method = RequestMethod.GET)
     public ModelAndView newsBlogPage(@PathVariable int idPage, Model model) {
         if (idPage <= 0) idPage = 1;
         model.addAttribute("firstPage", idPage);
@@ -99,7 +99,7 @@ public class  MainController {
         return modelview;
     }
 
-    @RequestMapping("/newsBlog/topic/id={id}")
+    @RequestMapping(value = "/newsBlog/topic/id={id}", method = RequestMethod.GET)
     public String newsBlogTopic(Model model, @PathVariable long id) {
         model.addAllAttributes(modelAndViewConfiguration.initModelAndView().getModelMap());
         model.addAttribute("topic", modelAndViewConfiguration.getItemById(modelAndViewConfiguration.getNewsOfFaculties(), id));
@@ -107,14 +107,14 @@ public class  MainController {
     }
 
     //TODO PREPOD//////////////////////////////////////////////////////////////////////////
-    @RequestMapping("/about/faculty")
+    @RequestMapping(value = "/about/faculty", method = RequestMethod.GET)
     public ModelAndView aboutOfFaculty() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("faculty");
         return modelAndView;
     }
 
-    @RequestMapping("/groupLists")
+    @RequestMapping(value = "/groupLists", method = RequestMethod.GET)
     public ModelAndView groupLists() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("groupLists");
@@ -124,14 +124,14 @@ public class  MainController {
 
     //TODO STUDENT ////////////////////////////////////////////////////////
 
-    @RequestMapping("/students/rightAndObligations")
+    @RequestMapping(value = "/students/rightAndObligations", method = RequestMethod.GET)
     public ModelAndView studentRightAndObligations() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("rightsAndObligations");
         return modelAndView;
     }
 
-    @RequestMapping("/students/costEducation")
+    @RequestMapping(value = "/students/costEducation", method = RequestMethod.GET)
     public ModelAndView costEducation() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("costEducation");
@@ -139,7 +139,7 @@ public class  MainController {
     }
 /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////
-    @RequestMapping("/resultOfControl")
+    @RequestMapping(value = "/resultOfControl", method = RequestMethod.GET)
     public ModelAndView resultOfControl() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("resultOfControl");
@@ -147,14 +147,14 @@ public class  MainController {
     }
     //TODO faculty /////////////////////////////////////////////////////////////
 
-    @RequestMapping("/faculty/academicSoviet")
+    @RequestMapping(value = "/faculty/academicSoviet", method = RequestMethod.GET)
     public ModelAndView academicSoviet() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("academicSoviet");
         return modelAndView;
     }
 
-    @RequestMapping("/faculty/diplomasPhoto")
+    @RequestMapping(value = "/faculty/diplomasPhoto", method = RequestMethod.GET)
     public ModelAndView diplomasPhoto() {
         return diplomasPhotoPage(1);
         /*ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
@@ -162,7 +162,7 @@ public class  MainController {
         return modelAndView;*/
     }
 
-    @RequestMapping("/faculty/diplomasPhoto/page/{idPage}")
+    @RequestMapping(value = "/faculty/diplomasPhoto/page/{idPage}", method = RequestMethod.GET)
     public ModelAndView diplomasPhotoPage(@PathVariable int idPage) {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("diplomasPhoto");
@@ -183,14 +183,14 @@ public class  MainController {
         return modelAndView;
     }
 
-    @RequestMapping("/faculty/graduates")
+    @RequestMapping(value = "/faculty/graduates", method = RequestMethod.GET)
     public ModelAndView graduates() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("graduates");
         return modelAndView;
     }
 
-    @RequestMapping("/faculty/commissionsFIST")
+    @RequestMapping(value = "/faculty/commissionsFIST", method = RequestMethod.GET)
     public ModelAndView commissionsFIST() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("commissionsFIST");
@@ -198,7 +198,7 @@ public class  MainController {
     }
 
     //TODO контакты/////////////////////////////////////////////////////////////
-    @RequestMapping("/contacts")
+    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public ModelAndView contacts() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("contacts");
@@ -209,7 +209,7 @@ public class  MainController {
     //TODO абитуриентам.....................................................................
 
 
-    @RequestMapping("/abitur/costEducation")
+    @RequestMapping(value = "/abitur/costEducation", method = RequestMethod.GET)
     public ModelAndView abiturCostEducation() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("costEducation");
@@ -217,76 +217,76 @@ public class  MainController {
     }
 
     //TODO направления(основная страница).....................................................................
-    @RequestMapping("/mainTrend")
+    @RequestMapping(value = "/mainTrend", method = RequestMethod.GET)
     public ModelAndView mainTrend() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("mainTrend");
         return modelAndView;
     }
 
-    @RequestMapping("/BI")
+    @RequestMapping(value = "/BI", method = RequestMethod.GET)
     public ModelAndView BI() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("BI");
         return modelAndView;
     }
-    @RequestMapping("/IVT")
+    @RequestMapping(value = "/IVT", method = RequestMethod.GET)
     public ModelAndView IVT() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("IVT");
         return modelAndView;
     }
-    @RequestMapping("/innovatika")
+    @RequestMapping(value = "/innovatika", method = RequestMethod.GET)
     public ModelAndView innovatika() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("innovatika");
         return modelAndView;
     }
-    @RequestMapping("/RSO")
+    @RequestMapping(value = "/RSO", method = RequestMethod.GET)
     public ModelAndView RSO() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("RSO");
         return modelAndView;
     }
-    @RequestMapping("/uits")
+    @RequestMapping(value = "/uits", method = RequestMethod.GET)
     public ModelAndView uits() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("uits");
         return modelAndView;
     }
-    @RequestMapping("/PI")
+    @RequestMapping(value = "/PI", method = RequestMethod.GET)
     public ModelAndView PI() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("PI");
         return modelAndView;
     }
-    @RequestMapping("/prikladInfo")
+    @RequestMapping(value = "/prikladInfo", method = RequestMethod.GET)
     public ModelAndView prikladInfo() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("prikladInfo");
         return modelAndView;
     }
-    @RequestMapping("/IST")
+    @RequestMapping(value = "/IST", method = RequestMethod.GET)
     public ModelAndView IST() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("IST");
         return modelAndView;
     }
-    @RequestMapping("/matob")
+    @RequestMapping(value = "/matob", method = RequestMethod.GET)
     public ModelAndView matob() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("matob");
         return modelAndView;
     }
 //TODO учебный процесс /////////////////////////////////////////////////////////////
-@RequestMapping("/gradStudents")
+@RequestMapping(value = "/gradStudents", method = RequestMethod.GET)
 public ModelAndView gradStudents() {
     ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
     modelAndView.setViewName("gradStudents");
     return modelAndView;
 }
 
-    @RequestMapping("/interimControl")
+    @RequestMapping(value = "/interimControl", method = RequestMethod.GET)
     public ModelAndView interimControl() {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("interimControl");
@@ -294,7 +294,7 @@ public ModelAndView gradStudents() {
     }
 
     //TODO а тут для подписки
-    @RequestMapping("/user/add/subscriber")
+    @RequestMapping(value = "/user/add/subscriber", method = RequestMethod.POST)
     public ModelAndView addSubscriber(@RequestParam("username") String username) throws Exception {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("enabledAccount");
@@ -326,7 +326,7 @@ public ModelAndView gradStudents() {
         return modelAndView;
     }
 
-    @RequestMapping("/user/unsubscribe/email={email}")
+    @RequestMapping(value = "/user/unsubscribe/email={email}", method = RequestMethod.POST)
     public String activationUser(@PathVariable("email") String email,Model model) {
         User user = userService.findUserByName(email);
         if (user != null) {

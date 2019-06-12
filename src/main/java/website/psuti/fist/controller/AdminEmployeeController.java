@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.constant.NameDepartmentConstant;
@@ -20,13 +21,13 @@ public class AdminEmployeeController {
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
-    @RequestMapping("/admin/table/employee/add/submit")
+    @RequestMapping(value = "/admin/table/employee/add/submit", method = RequestMethod.POST)
     public String addEmployeeSubmit(@ModelAttribute("employee") Employee employee) {
         employeeService.add(employee);
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/employee/update")
+    @RequestMapping(value = "/admin/table/employee/update", method = RequestMethod.GET)
     public ModelAndView updateEmployee() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateEmployee");
         modelAndView.addObject("item", new Employee());
@@ -37,14 +38,14 @@ public class AdminEmployeeController {
     }
 
 
-    @RequestMapping("/admin/table/employee/update/submit")
+    @RequestMapping(value = "/admin/table/employee/update/submit", method = RequestMethod.POST)
     public String adminEmployeeUpdateSubmit(@ModelAttribute("item") Employee item) {
         employeeService.update(item);
         modelAndViewConfiguration.initModelAndView();
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/employee/delete/id={id}")
+    @RequestMapping(value = "/admin/table/employee/delete/id={id}", method = RequestMethod.GET)
     public String adminEmployeeDelete(@PathVariable("id") Long id) {
         //Employee newsOfFaculty = employeeService.findById(id);
         employeeService.delete(id);

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
 import website.psuti.fist.model.Department;
@@ -17,13 +18,13 @@ public class AdminDepartmentController {
     private DepartmentService departmentService;
 
 
-    @RequestMapping("/admin/table/department/add/submit")
+    @RequestMapping(value = "/admin/table/department/add/submit", method = RequestMethod.POST)
     public String addDepartmentSubmit(@ModelAttribute("newDepartment") Department newDepartment) {
         departmentService.add(newDepartment);
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/department/update")
+    @RequestMapping(value = "/admin/table/department/update", method = RequestMethod.GET)
     public ModelAndView updateDepartment() {
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateDepartment");
         modelAndView.addObject("item", new Department());
@@ -33,13 +34,13 @@ public class AdminDepartmentController {
     }
 
 
-    @RequestMapping("/admin/table/department/update/submit")
+    @RequestMapping(value = "/admin/table/department/update/submit", method = RequestMethod.POST)
     public String adminDepartmentUpdateSubmit(@ModelAttribute("item") Department item) {
         departmentService.update(item);
         return "redirect:../update";
     }
 
-    @RequestMapping("/admin/table/department/delete/id={id}")
+    @RequestMapping(value = "/admin/table/department/delete/id={id}", method = RequestMethod.GET)
     public String adminDepartmentDelete(@PathVariable("id") long id) {
         //NewsOfFaculty newsOfFaculty = newsFacultyService.findById(id);
         departmentService.delete(id);

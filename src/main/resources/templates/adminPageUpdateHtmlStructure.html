@@ -19,13 +19,13 @@
     <link rel="shortcut icon" href="/images/favicon.png">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/megafish.css" media="screen" type="text/css">
     <link rel="stylesheet" href="/js/superfish/css/superfish.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="stylesheet" href="/css/light.css" type="text/css">
-    <link rel="stylesheet" href="/css/responsive.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/light.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/responsive.min.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -79,6 +79,33 @@
         </div>
     </div>
 
+    <div id="wrapper" class="wrapper">
+        <!-- HEADER -->
+        <div th:replace="templates :: headerAdmin"></div>
+
+        <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block" th:each="page : ${pages}">
+                <!--     <div class="cd-timeline-img cd-picture">
+                         <img src="img/cd-icon-picture.svg" alt="Picture">
+                     </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
+
+                <div class="cd-timeline-content">
+                    <h2 th:utext="${page.getId()}"></h2>
+                    <p class="black_p" th:utext="'Группа - '+${page.getHtmlCode()}"></p>
+                    <nav class="main-nav">
+                        <ul>
+                            <!-- inser more links here -->
+                            <li><a th:href="@{'/admin/page/htmlStructure/update/' + ${student.getId()}}" class="cd-read-more" >Изменить</a></li>
+                            <li><a th:href="@{'/admin/page/htmlStructure/delete/' + ${student.getId()}}" class="cd-read-more">Удалить</a></li>
+                        </ul>
+                    </nav>
+                </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+        </section> <!-- cd-timeline -->
+
+
+        <div class="close-btn fa fa-times"></div>
+    </div>
     <div class="cd-user-modal1">
         <div class="cd-user-modal-container1">
             <form th:action="@{/admin/page/htmlStructure/update/submit}" th:object="${item}" method="post">
@@ -105,10 +132,12 @@
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/classie.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/modal.js"></script>
+<script src="/js/classie.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous" defer></script>
+<script src="/js/script.min.js"></script>
+<script src="/js/modal.min.js"></script>
 
 </body>
 </html>

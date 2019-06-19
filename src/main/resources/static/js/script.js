@@ -50,7 +50,7 @@ $(document).ready(function() {
 });
 
 // RESPONSIVE MENU
-$(window).load(function() {
+$(window).on('load', function() {
     $('#mobnav-btn').click(
         function() {
             $('.sf-menu').toggleClass("xactive");
@@ -96,6 +96,13 @@ function searchFunc() {
         });
     }
 }
+
+
+
+
+
+
+
 
 
 

@@ -872,6 +872,19 @@ h2.big-text {font-size: 93px;}
 
 }
 @media (max-width:800px ) and (min-width: 200px){
+    .ban:hover img {
+        opacity: 1;
+        cursor: pointer;
+        transition: 0.5s ease-in;
+    }
+    .ban:hover p {
+        position: absolute;
+        top: 35%;
+        left: 35%;
+        display: none;
+        cursor: pointer;
+        transition: 0.5s ease-in;
+    }
     h1,h2{
         font-size: 30px;
     }
@@ -880,7 +893,7 @@ h2.big-text {font-size: 93px;}
         margin-right: 0px;
     }
     .trends .site-fist img{
-        height: 60px;
+        height: 50px;
     }
 
     .pre {display: flex;flex-flow: wrap;}

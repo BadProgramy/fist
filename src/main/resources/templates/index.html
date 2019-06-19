@@ -164,7 +164,7 @@
         });</script>
 	<script src="/js/masonry.pkgd.min.js" defer></script>
 	<script>
-        $(window).load(function() {
+        $(window).on('load',function() {
             var $container = $('#blog-mason');
             $container.masonry({
                 itemSelector: '.grid-item'
@@ -269,7 +269,7 @@
 								<div id="secondTT" class="inner-price">
 									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}" th:style="${ItemHeader5.getStyles()}"></h3>
 									<div class='widget-content'>
-                                      <iframe href="https://www.instagram.com/fist.psuti/" src="https://snapwidget.com/embed/683995" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
+                                      <iframe href="https://www.instagram.com/fist.psuti/" src="" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
 									</div>
 								</div>
                                 <a href="https://www.instagram.com/fist.psuti/" style="text-align: center;position: relative; bottom:20px !important;text-transform: uppercase;">instagram</a>
@@ -304,7 +304,7 @@
             <div class="scroll">
 			<div class="container">
 				<div th:each="mapEntry : ${characterUniversity}" class="col-xs-12 col-sm-3 col-md-3">
-					<h1 class="lines" th:data-count="${mapEntry.getLevel()}"></h1><!--th:utext="${mapEntry.getLevel()}"-->
+					<h1 class="lines" th:data-count="${mapEntry.getLevel()}"></h1>
 					<img th:src="@{'/main/picture/' + ${mapEntry.getIdPicture()}}">
 					<h6 th:utext="${mapEntry.getName()}" th:style="${mapEntry.getStyles()}"></h6>
 				</div>
@@ -352,7 +352,6 @@
                                                 }
                                                 /*[/]*/
                                                 /*]]>*/
-
                                          }
 										</script>
 									</a>
@@ -393,130 +392,21 @@
 
 <!-- Javascript -->
 <script src="/js/bootstrap.min.js" defer></script>
-<script src="/js/classie.js" defer ></script>
+<script src="/js/classie.min.js" defer ></script>
 <script src="/js/owl-carousel/owl.carousel.min.js" defer></script>
 <script src="/js/superfish/js/hoverIntent.js" defer ></script>
-<script src="/js/superfish/js/superfish.js" defer></script>
+<script src="/js/superfish/js/superfish.min.js" defer></script>
 <script src="/js/jquery.animateNumber.min.js" defer></script>
-<script src="/js/dialogFx.js" defer></script>
-<script src="/js/dialog-js.js" defer></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer></script>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
-<script src="/js/gmap2.js" defer></script>
-<script src="/js/script.js" defer ></script>
-<script src="/js/student_character.js" defer></script>
+<script src="/js/dialogFx.min.js" defer></script>
+<script src="/js/dialog-js.min.js" defer></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+		crossorigin="anonymous" defer></script>
+<script src="/js/gmap2.min.js" defer ></script>
+<script src="/js/script.min.js" defer ></script>
+<script src="/js/main.min.js" defer></script>
+<script src="/js/student_character.min.js" defer></script>
 <script src="https://snapwidget.com/js/snapwidget.js"defer ></script>
-<script>
 
-    function isVisible(elem) {
-
-        var coords = elem.getBoundingClientRect();
-
-        var windowHeight = document.documentElement.clientHeight;
-
-        var topVisible = coords.top > 0 && coords.top < windowHeight;
-        var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
-
-        return topVisible || bottomVisible;
-    }
-    function showVisible() {
-        var imgs = document.getElementsByTagName('img');
-        for (var i = 0; i < imgs.length; i++) {
-            var img = imgs[i];
-            var realsrc = img.getAttribute('realsrc');
-            if (!realsrc) continue;
-            if (isVisible(img)) {
-                img.src = realsrc;
-                img.setAttribute('realsrc', '');
-            }
-        }
-    }
-    function homeShowVisible() {
-        var snap = document.getElementsByClassName('snapwidget-widget');
-        var widgets = document.getElementsByClassName('widgets');
-        if(widgets.length>0){
-            if (isVisible(widgets[0])) {
-                VK_Widget_Init();
-                VK_Widget_Init1();
-                $('.snapwidget-widget').attr('src', 'https://snapwidget.com/embed/683995');
-                $(".pricing-bg").removeClass('widgets');
-            }
-        }
-    }
-    window.onscroll = function () {  homeShowVisible();showVisible();};
-    homeShowVisible();
-    showVisible();
-    window.addEventListener('resize', VK_Widget_Init, false);
-    window.addEventListener('resize', VK_Widget_Init1, false);
-</script >
-<script>
-    function checkPosition(){
-        var div_position = $(".lines").offset();
-        var div_top = div_position.top;
-        var div_left = div_position.left;
-        var div_width = $(".lines").width();
-        var div_height = $(".lines").height();
-        var top_scroll = $(document).scrollTop();
-        var left_scroll = $(document).scrollLeft();
-        var screen_width = $(window).width();
-        var screen_height = $(window).height();
-        var see_x1 = left_scroll;
-        var see_x2 = screen_width + left_scroll;
-        var see_y1 = top_scroll;
-        var see_y2 = screen_height + top_scroll;
-        var div_x1 = div_left;
-        var div_x2 = div_left + div_width;
-        var div_y1 = div_top;
-        var div_y2 = div_top + div_height;
-        if( div_x1 >= see_x1 && div_x2 <= see_x2 && div_y1 >= see_y1 && div_y2 <= see_y2 ){
-            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(' ');
-            $(".lines").each(function () {
-                var tcount = $(this).data("count");
-                $(this).animateNumber({
-                        number: tcount,
-                        easing: 'easeInQuad',
-                        "font-size": "50px",
-                        numberStep: comma_separator_number_step}, 4000);
-            });
-        }
-    }
-    function resizeTable() {
-        var secondItem=document.getElementById("secondT");
-        var second=document.getElementById("secondTT");
-        var doc1=document.getElementById("firstT").offsetHeight;
-        var doc2=document.getElementById("firstTT").offsetHeight;
-        secondItem.style.height=doc1+'px';
-        secondItem.style.overflow='hidden';
-        second.style.height=doc2+'px';
-    }
-    $(document).ready(function(){
-        $(document).scroll(function(){
-            resizeTable();
-            checkPosition();
-        });
-        resizeTable();
-        checkPosition();
-        $(window).resize(function(){
-            resizeTable();
-            checkPosition();
-        });
-
-    });
-</script>
-<script src="/js/main.js" defer></script>
-<script>
-    var someimage = document.getElementById('content');
-    var myimgs = someimage.getElementsByTagName('img');
-    var mysrc,mysrc2;
-    var parent,parent2;
-        mysrc=myimgs[0].src;
-        mysrc2=myimgs[1].src;
-        if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0') &&(mysrc2.charAt(mysrc2.length-2)==='/') && (mysrc2.charAt(mysrc2.length-1)==='0')){
-            parent=myimgs[0].parentNode;
-            parent.style.display='none';
-            parent=myimgs[1].parentNode;
-            parent.style.display='none';
-        }
-</script>
 </body>
 </html>

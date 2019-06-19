@@ -22,26 +22,26 @@
     $(document).ready(function() {
         function checkIsStr() {
             if ($(window).width() <= '700') {
-                var hr = jQuery(".change").attr("href");
+                var hr = $(".change").attr("href");
                 if (hr === "/main") {
-                    jQuery(".change").css({"display": "none"});
+                    $(this).css({"display": "none"});
                 }else {
-                    jQuery(".change").css({"display": "block"});
+                    jQuery(this).css({"display": "block"});
                 }
             }
         }
         checkIsStr();
         if($("#particles-js .back_img").hasClass("back_img")) {
-            $("#particles-js .back_img").addClass( "hiddenn");
-            $("#particles-js .back_img").removeClass( "back_img");
+            $(this).addClass( "hiddenn");
+            $(this).removeClass( "back_img");
         }
         if($("#particles-js .container-fluid").hasClass("container-fluid")) {
-            $("#particles-js .container-fluid").addClass( "hiddenn");
-            $("#particles-js .container-fluid").removeClass( "container-fluid");}
+            $(this).addClass( "hiddenn");
+            $(this).removeClass( "container-fluid");}
         if($("#particles-js .only_one_trend").hasClass("only_one_trend"))
         {
-            $("#particles-js .only_one_trend").addClass( "hiddenn");
-            $("#particles-js .only_one_trend").removeClass( "only_one_trend");
+            $(this).addClass( "hiddenn");
+            $(this).removeClass( "only_one_trend");
         }
         var hash = window.location.hash.substr(1);
         var href = $('#content a').each(function(){
@@ -60,7 +60,7 @@
                 $('#content').load(toLoad,'',showNewContent())
             }
             function showNewContent() {
-                $('#content').show('normal',hideLoader());
+                $('#content').show('fast',hideLoader());
             }
             function hideLoader() {
                 $('.version').text(NProgress.version);
@@ -73,8 +73,10 @@
     });
 </script>
 <script src="/js/bootstrap.min.js" defer></script>
-<script src='/js/nprogress.js' defer></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer></script>
+<script src='/js/nprogress.min.js' defer></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous" defer></script>
 
 </body>
 </html>

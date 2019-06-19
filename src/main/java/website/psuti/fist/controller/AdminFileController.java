@@ -1,5 +1,9 @@
 package website.psuti.fist.controller;
 
+import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.command.InspectVolumeResponse;
+import com.github.dockerjava.api.command.ListVolumesResponse;
+import com.github.dockerjava.core.DockerClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

@@ -294,7 +294,7 @@ public ModelAndView gradStudents() {
     }
 
     //TODO а тут для подписки
-    @RequestMapping(value = "/user/add/subscriber", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/add/subscriber", method = RequestMethod.GET)
     public ModelAndView addSubscriber(@RequestParam("username") String username) throws Exception {
         ModelAndView modelAndView = modelAndViewConfiguration.initModelAndView();
         modelAndView.setViewName("enabledAccount");
@@ -326,7 +326,7 @@ public ModelAndView gradStudents() {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/user/unsubscribe/email={email}", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/unsubscribe/email={email}", method = RequestMethod.GET)
     public String activationUser(@PathVariable("email") String email,Model model) {
         User user = userService.findUserByName(email);
         if (user != null) {

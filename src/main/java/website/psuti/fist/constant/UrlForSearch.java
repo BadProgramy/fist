@@ -29,7 +29,7 @@ public enum  UrlForSearch {
     URL_DEAN_TEAM8("/deanTeams/8");
 
 
-    private static final String URL_SITE = "http://85.236.185.89:8080";
+    private static final String URL_SITE = "http://109.124.251.49:8080";
 
     private String api;
 

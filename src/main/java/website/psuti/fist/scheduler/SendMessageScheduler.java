@@ -21,7 +21,7 @@ public class SendMessageScheduler {
     private ApplicationContext applicationContext;
 
     public final Logger logger = LoggerFactory.getLogger(SendMessageScheduler.class);
-    private static final int countRepeat = 2;
+    private static final int countRepeat = 3;
     private static int currentNumberRepeat = 0;
 
     //каждые 5 мин проверяяет, что нет сообщений для отправки

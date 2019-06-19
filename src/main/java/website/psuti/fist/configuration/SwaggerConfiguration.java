@@ -15,8 +15,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 public class SwaggerConfiguration {
     private static final  String SWAGGER_API_VERSION = "1.0.0";
     private static final  String LICENSE_TEXT = "License";
-    private static final String title = "FIST REST API";
-    private static final String description = "REST API for Properties. Creation Airat";
+    private static final String title = "FIST API";
+    private static final String description = "API for Properties. Creation Airat";
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()

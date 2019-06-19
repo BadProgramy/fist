@@ -8,7 +8,7 @@ public enum PathConstant {
     SAVE_PICTURE_BEST_STUDENT(""),//src\main\resources\downloadPictures\bestStudents\
     HTML_FILE_FOR_USER_ADD_CMS("cms.html"),//src\main\resources\downloadPictures\sendEmailHtml\cms.html
     HTML_FILE_FOR_USER_SUBSCRIBE("subscriber.html"),//src\main\resources\downloadPictures\sendEmailHtml\subscriber.html
-    SAVE_FILE("");//files\
+    SAVE_FILE("fist/files/");//files\
 
     private String path;
 

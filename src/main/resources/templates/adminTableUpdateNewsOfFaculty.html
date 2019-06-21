@@ -27,17 +27,6 @@
     <link rel="stylesheet" href="/css/light.min.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.min.css" type="text/css">
     <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
-
 </head>
 <body class="multi-page">
 
@@ -47,12 +36,20 @@
 
     <h2 class="text-center padding5p page_header2">Добавлять новости можно только через контент</h2>
 
-    <div class="container">
+    <div id="sample" class="container">
+        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+        //<![CDATA[
+        bkLib.onDomLoaded(function() {
+            new nicEditor().panelInstance('heading');
+            new nicEditor().panelInstance('text');
+        });
+        //]]>
+    </script>
         <div th:each="topic : ${newsOfFaculty}">
             <div class="col-md-4" style="margin-bottom: 50px">
                 <div class="product-thumb">
                     <form th:action="@{/admin/table/newsOfFaculty/update/submit}" th:object="${item}" method="post" enctype="multipart/form-data">
-                        <li><a class="cd-signin">  <img th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" alt=""></a></li>
+                        <li><a class="cd-signin">  <img class="img-responsive" th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" alt=""></a></li>
                     </form>
                     <li><a class="cd-signin" th:id="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:src="@{'/admin/picture/' + ${topic.getIdPicture()}}" th:value="${topic.getHeading()}" th:utext="${topic.getHeading()}"></a></li>
                     <script th:inline="javascript">
@@ -70,8 +67,8 @@
                                 document.getElementById("idPicture").value = /*[[@{${top.getIdPicture()}}]]*/ null;
                                 document.getElementById("id").value = /*[[@{${top.getId()}}]]*/ null;
                                 document.getElementById("dateStringLocalDate").value = /*[[@{${top.getDate().toLocalDate()}}]]*/ null;
-                                document.getElementById("heading").value = /*[[@{${top.getHeading()}}]]*/ null;
-                                document.getElementById("text").value = /*[[@{${top.getText()}}]]*/ null;
+                                nicEditors.findEditor('heading').setContent(/*[[@{${top.getHeading()}}]]*/ null);
+                                nicEditors.findEditor('text').setContent(/*[[@{${top.getText()}}]]*/ null);
                                 document.getElementById("headingStyles").value = /*[[@{${top.getHeadingStyles()}}]]*/ null;
                                 document.getElementById("textStyles").value = /*[[@{${top.getTextStyles()}}]]*/ null;
                                 document.getElementById("dateStyles").value = /*[[@{${top.getDateStyles()}}]]*/ null;
@@ -103,13 +100,13 @@
                     <p>Дата создания</p>
                     <input type="date" id="dateStringLocalDate" class="menuItemTables" name="dateStringLocalDate">
                 </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                <div class="col-md-8 left" style="padding: 10px 10px 10px;">
                     <p>Заголовок</p>
-                    <textarea id="heading" class="menuItemTables" name="heading"></textarea>
+                    <textarea cols="70" id="heading" class="menuItemTables" name="heading"></textarea>
                 </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                <div class="col-md-8 left" style="padding: 10px 10px 10px;">
                     <p>Текст</p>
-                    <textarea id="text" class="menuItemTables" name="text"></textarea>
+                    <textarea cols="70" id="text" class="menuItemTables" name="text"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Стили для заголовка</p>

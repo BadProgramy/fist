@@ -46,6 +46,12 @@
     <div th:replace="templates :: headerAdmin"></div>
 
     <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+            //]]>
+        </script>
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
                 <li><a style="font-size: 26px;left: 50%;position: relative;" href="#">Добавить департамент</a></li>
@@ -109,10 +115,10 @@
                             if (srcImg == rightPart) {
                                 document.getElementById("id").value = /*[[@{${dep.getId()}}]]*/ null;
                                 document.getElementById("idMainEmployee").value = /*[[@{${dep.getIdMainEmployee()}}]]*/ null;
-                                document.getElementById("name").value = /*[[@{${dep.getName()}}]]*/ null;
-                                document.getElementById("address").value = /*[[@{${dep.getAddress()}}]]*/ null;
+                                nicEditors.findEditor('name').setContent(/*[[@{${dep.getName()}}]]*/ null);
+                                nicEditors.findEditor('address').setContent(/*[[@{${dep.getAddress()}}]]*/ null);
                                 document.getElementById("idPictureIcon").value = /*[[@{${dep.getIdPictureIcon()}}]]*/ null;
-                                document.getElementById("description").value = /*[[@{${dep.getDescription()}}]]*/ null;
+                                nicEditors.findEditor('description').setContent(/*[[@{${dep.getDescription()}}]]*/ null);
                                 document.getElementById("del").href = /*[[@{'/admin/table/department/delete/id=' + ${dep.getId()}}]]*/ null;
                             }
                             /*[/]*/
@@ -137,19 +143,19 @@
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Название</p>
-                    <textarea id="name" class="menuItemTables" name="name"></textarea>
+                    <textarea cols="40" id="name" class="menuItemTables" name="name"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Адрес</p>
-                    <textarea id="address" class="menuItemTables" name="address"></textarea>
+                    <textarea cols="40" id="address" class="menuItemTables" name="address"></textarea>
                 </div>
-                <div class="col-md-4 left" style="padding: 10px 10px 10px;">
+                <div class="col-md-8 left" style="padding: 10px 10px 10px;">
                     <p>Описание на html</p>
-                    <textarea id="description" class="menuItemTables" name="description"></textarea>
+                    <textarea cols="70" id="description" class="menuItemTables" name="description"></textarea>
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Идентификатор логотипа</p>
-                    <input id="idPictureIcon" class="menuItemTables" name="idPictureIcon"></input>
+                    <input id="idPictureIcon" class="menuItemTables" name="idPictureIcon">
                 </div>
                 <div class="col-md-4 left" style="padding: 10px 10px 10px;">
                     <p>Действие</p>

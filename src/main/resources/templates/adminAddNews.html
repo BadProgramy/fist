@@ -35,7 +35,13 @@
     <!-- HEADER -->
     <div th:replace="templates :: headerAdmin"></div>
 
-    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+    <div id="sample" class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+            //]]>
+        </script>
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
                 <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить новость</a></li>

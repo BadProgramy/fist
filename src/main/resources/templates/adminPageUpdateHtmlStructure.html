@@ -26,17 +26,7 @@
     <link rel="stylesheet" href="/css/style.min.css" type="text/css">
     <link rel="stylesheet" href="/css/light.min.css" type="text/css">
     <link rel="stylesheet" href="/css/responsive.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/admin/adminStyle.css"> <!-- Resource style -->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Modernizer -->
-    <script src="/js/modernizr.custom.js"></script>
+    <link rel="stylesheet" href="/css/admin/adminStyle.css" type="text/css"> <!-- Resource style -->
 
 </head>
 <body class="multi-page">
@@ -45,67 +35,43 @@
     <!-- HEADER -->
     <div th:replace="templates :: headerAdmin"></div>
 
-    <div class="container" style="padding-top: 5%">
+    <div id="sample" class="container" style="padding-top: 5%">
+        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+        <script type="text/javascript">
+        //<![CDATA[
+        bkLib.onDomLoaded(function() { new nicEditor({fullPanel : true}).panelInstance('htmlCode'); });
+        //]]>
+    </script>
         <div th:each="page : ${pages}">
             <div class="col-md-4" style="margin-bottom: 50px">
                 <div class="product-thumb">
                     <form th:action="@{/admin/page/htmlStructure/update/submit}" th:object="${item}" method="post">
-                        <li>
-                            <a class="cd-signin">
                                 <p th:src="${page.getId()}" th:id="${page.getId()}" class="menuItemTables" name="namePage" th:value="${page.getNamePage()}" th:text="${page.getNamePage()}"></p>
-                            </a>
-                        </li>
                     </form>
+                    <a  class="cd-signin"><input th:src="${page.getId()}" th:id="${page.getId()}" name="text" class="menuItemTables" type="submit" value="Текст"></a>
                     <script th:inline="javascript">
                         document.body.onclick = function(e) {
-                            var elem = e ? e.target : window.event.srcElement;
+                            var elem = e ? e.target : window.event.srcElement ;
                             while (!(elem.id || (elem == document.body))) elem = elem.parentNode;
                             if (!elem.id) return; else id = elem.id;
-                            var rightPart;
-                            var srcImg=document.getElementById(id).getAttribute("src");
-                            /*<![CDATA[*/
-                            /*[# th:each="element : ${pages}"]*/
-                            rightPart = /*[[@{${element.getId()}}]]*/ null;
-                            if (srcImg == rightPart) {
-                                document.getElementById("idPage").value = /*[[@{${element.getId()}}]]*/ null;
-                                document.getElementById("htmlCode").value = /*[[@{${element.getHtmlCode()}}]]*/ null;
-                                document.getElementById("typeHtmlCode").value = /*[[@{${element.getTypeHtmlCode()}}]]*/ null;
+                                var rightPart;
+                                var srcImg = document.getElementById(id).getAttribute("src");
+                                /*<![CDATA[*/
+                                /*[# th:each="element : ${pages}"]*/
+                                rightPart = /*[[@{${element.getId()}}]]*/ null;
+                                if (srcImg == rightPart) {
+                                    document.getElementById("idPage").value = /*[[@{${element.getId()}}]]*/ null;
+                                    nicEditors.findEditor('htmlCode').setContent(/*[[@{${element.getHtmlCode()}}]]*/ null);
+                                    document.getElementById("typeHtmlCode").value = /*[[@{${element.getTypeHtmlCode()}}]]*/ null;
+                                }
+                                /*[/]*/
+                                /*]]>*/
                             }
-                            /*[/]*/
-                            /*]]>*/
-                        }
                     </script>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="wrapper" class="wrapper">
-        <!-- HEADER -->
-        <div th:replace="templates :: headerAdmin"></div>
-
-        <section id="cd-timeline" class="cd-container">
-            <div class="cd-timeline-block" th:each="page : ${pages}">
-                <!--     <div class="cd-timeline-img cd-picture">
-                         <img src="img/cd-icon-picture.svg" alt="Picture">
-                     </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
-
-                <div class="cd-timeline-content">
-                    <h2 th:utext="${page.getId()}"></h2>
-                    <p class="black_p" th:utext="'Группа - '+${page.getHtmlCode()}"></p>
-                    <nav class="main-nav">
-                        <ul>
-                            <!-- inser more links here -->
-                            <li><a th:href="@{'/admin/page/htmlStructure/update/' + ${student.getId()}}" class="cd-read-more" >Изменить</a></li>
-                            <li><a th:href="@{'/admin/page/htmlStructure/delete/' + ${student.getId()}}" class="cd-read-more">Удалить</a></li>
-                        </ul>
-                    </nav>
-                </div> <!-- cd-timeline-content -->
-            </div> <!-- cd-timeline-block -->
-        </section> <!-- cd-timeline -->
-
-
-        <div class="close-btn fa fa-times"></div>
     </div>
     <div class="cd-user-modal1">
         <div class="cd-user-modal-container1">
@@ -118,7 +84,9 @@
                     <strong><p>HTML код основного тело. (Менять только контент, html теги не трогать!)</p></strong>
                     <textarea id="htmlCode" class="menuItemTables" name="htmlCode" style="width: 100%;min-height: 500px"></textarea>
                 </div>
+                <div class="col-md-4  left" style="padding: 10px 10px 10px;width: 100%">
                 <input hidden id="typeHtmlCode" name="typeHtmlCode">
+                </div>
                 <div class="col-md-4 " style="padding: 10px 10px 10px;float: right;">
                     <p>Действие</p>
                     <input id="buttonUpdateMenuItem" class="menuItemTables" type="submit" value="Изменить"><br><br><br>

@@ -50,19 +50,16 @@
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/bestStudents/add/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                        <p class="fieldset black_p">
-                            <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="Фамилие и имя: Пример - Иван Иванов"></textarea>
+                        <p>Фамилия и имя: Пример - Иван Иванов</p>
+                            <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="Фамилия и имя: Пример - Иван Иванов"></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                        </p>
 
-                        <p class="fieldset black_p">
+                        <p>Группа: Пример - ПО-52</p>
                             <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Группа: Пример - ПО-52"></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                        </p>
 
-                        <p class="fieldset black_p">
+                        <p>Характеристика</p>
                             <textarea name="characteristic" th:field="*{characteristic}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Характеристика"></textarea>
-                        </p>
 
                         <p class="fieldset black_p">
                             <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">

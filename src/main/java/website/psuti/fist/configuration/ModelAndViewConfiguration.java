@@ -115,7 +115,6 @@ public class ModelAndViewConfiguration {
                         } catch (SQLException ex) {
 
                         }
-                        logger.info("Выполнил запрос" + result);
                     }
                 }
                 logger.info("Выполнил запросы к " + tableBD.getName());

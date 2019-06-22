@@ -100,7 +100,7 @@ public class ModelAndViewConfiguration {
     public void filledDataBase() throws IOException, SQLException {
         Connection connection = dataSource.getConnection();
         for (NameTableBD tableBD: NameTableBD.values()) {
-            try {
+            //try {
                 ClassLoader classLoader = getClass().getClassLoader();
                 /*BufferedReader in = new BufferedReader();*/
                 Scanner in = new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + tableBD.getName() + ".sql").openStream());
@@ -109,17 +109,22 @@ public class ModelAndViewConfiguration {
                 while (in.hasNextLine()) {
                     result += in.nextLine() + "\r\n";
                     if (result.toCharArray()[result.length() - 4] == ')' && result.toCharArray()[result.length() - 3] == ';') {
-                        connection.createStatement().executeUpdate(result);
-                        result = "";
+                        try {
+                            connection.createStatement().executeUpdate(result);
+                            result = "";
+                        } catch (SQLException ex) {
+
+                        }
+                        logger.info("Выполнил запрос" + result);
                     }
                 }
                 logger.info("Выполнил запросы к " + tableBD.getName());
                 in.close();
-            } catch (java.sql.SQLSyntaxErrorException ex) {
+            /*} catch (java.sql.SQLSyntaxErrorException ex) {
 
             } catch (java.sql.SQLIntegrityConstraintViolationException ex) {
 
-            }
+            }*/
         }
         /*fore
         dataSource.getConnection().createStatement().executeUpdate(new String(Files.readAllBytes(Paths.get("website.psuti.fist.SQLDump/SQLInsert/fist_best_student.sql"))));

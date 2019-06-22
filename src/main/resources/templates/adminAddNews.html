@@ -51,22 +51,21 @@
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/news/add/submit}" th:object="${newFaculty}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                        <p class="fieldset black_p">
+                        <p>Заголовок</p>
                             <label class="image-replace cd-email" for="signin-email">Заголовок</label>
                             <textarea name="heading" th:field="*{heading}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="Загаловок"></textarea>
-                        </p>
 
-                        <p class="fieldset black_p">
+
+                        <p>Текст</p>
                             <label class="image-replace cd-password" for="signin-password">Текст</label>
                             <textarea name="text" th:field="*{text}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Текст"></textarea>
+
+                        <p class="fieldset black_p">
+                            <input type="date" th:value="${date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
                         </p>
 
                         <p class="fieldset black_p">
-                            <input type="date" th:value="${date}" id="dateStringLocalDate" name="dateStringLocalDate" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
-                        </p>
-
-                        <p class="fieldset black_p">
-                            <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border"></input>
+                            <input type="file" accept=".jpg, .jpeg, .png" id="pictureFile" name="pictureFile" style="height: 60px; width: 100%;" class="full-width has-padding has-border">
                         </p>
                         <p class="fieldset black_p">
                             <button class="full-width" type="submit">Добавить</button>

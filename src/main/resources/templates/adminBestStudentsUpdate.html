@@ -50,18 +50,15 @@
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/bestStudents/update/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                        <p class="fieldset black_p">
+                        <p>Фамилия и имя: Пример - Иван Иванов</p>
                             <textarea name="name" th:utext="${bestStudent.getName()}" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия и имя: Пример - Иван Иванов"></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                        </p>
 
-                        <p class="fieldset black_p">
+                        <p>Группа: Пример - ПО-52</p>
                             <textarea name="groupInUniversity" th:utext="${bestStudent.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Группа: Пример - ПО-52"></textarea>
-                        </p>
 
-                        <p class="fieldset black_p">
+                        <p>Характеристика</p>
                             <textarea name="characteristic" th:utext="${bestStudent.getCharacteristic()}" th:field="*{characteristic}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Характеристика"></textarea>
-                        </p>
 
                         <input name="id" type="hidden" th:field="*{id}">
                         <input name="idPicture" type="hidden" th:field="*{idPicture}">

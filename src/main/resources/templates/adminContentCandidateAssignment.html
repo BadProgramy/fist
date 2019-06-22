@@ -61,18 +61,15 @@
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/candidateAssignment/add/submit}" th:object="${candidateAssignment}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                        <p class="fieldset black_p">
+                       <p>Фамилия, имя, отчество: Пример - Иван Иванов Иванович</p>
                             <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия, имя, отчество: Пример - Иван Иванов Иванович" required></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
-                        </p>
 
-                        <p class="fieldset black_p">
+                        <p>Курс: Пример - 4</p>
                             <textarea name="course" th:field="*{course}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Курс: Пример - 4" required></textarea>
-                        </p>
 
-                        <p class="fieldset black_p">
+                        <p>Группа: Пример - ПО-52</p>
                             <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Группа: Пример - ПО-52" required></textarea>
-                        </p>
 
                         <p class="fieldset black_p">
                             <button class="full-width" type="submit">Добавить</button>

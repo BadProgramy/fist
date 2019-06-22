@@ -2,7 +2,6 @@ package website.psuti.fist.dao.menuItemHeaderInMainPage;
 
 import org.apache.ibatis.annotations.Mapper;
 import website.psuti.fist.model.MenuItemHeaderInMainPage;
-import website.psuti.fist.model.Pictures;
 
 import java.util.List;
 import java.util.Map;

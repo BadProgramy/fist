@@ -24,10 +24,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @Component
 public class ModelAndViewConfiguration {

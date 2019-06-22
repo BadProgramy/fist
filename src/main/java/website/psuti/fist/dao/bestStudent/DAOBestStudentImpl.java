@@ -11,7 +11,6 @@ import website.psuti.fist.constant.NameTableBD;
 import website.psuti.fist.dao.Factory;
 import website.psuti.fist.dao.pictures.DAOPictures;
 import website.psuti.fist.model.BestStudent;
-import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.RequestPostConnection;
 
 import javax.sql.DataSource;

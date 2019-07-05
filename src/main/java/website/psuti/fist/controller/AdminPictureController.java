@@ -99,9 +99,9 @@ public class AdminPictureController {
             //writeFile(item.getPictureFile(), item.getNamePicture());
         } else {
             //item.setPictureFile(picturesService.findPictureById(item.getId()).getPictureFile());
-            for (Map.Entry entry : modelAndViewConfiguration.getPicturesCache().entrySet()) {
-                if (entry.getKey().equals(item.getId()))
-                    item.setPictureFile((byte[]) entry.getValue());
+            for (Pictures pictures : modelAndViewConfiguration.getPicturesCache()) {
+                if (pictures.getId() == item.getId())
+                    item.setPictureFile(pictures.getPictureFile());
             }
         }
         item.setUrlPicture(PathConstant.SAVE_PICTURE.getPath() +item.getNamePicture());

@@ -142,7 +142,7 @@ public class AdminMainPageController {
         return constants;
     }
 
-    @RequestMapping(value = "/admin/table/menuItem/headers/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/table/menuItem/headers/update", method = RequestMethod.GET)
     public String adminHeaderUpdate(Model model) {
         model.addAttribute("menuItems", menuItemHeaderInMainPagesService.findItemByKeyWord(MainPageConstant.HEADERS.getKeyWord()));
         model.addAttribute("menuItem", new MenuItemHeaderInMainPage());

@@ -14,10 +14,10 @@ import java.io.IOException;
 
 @Controller
 public class AdminCandidateAssignmentController {
-    @Autowired
-    private CandidateAssignmentService candidateAssignmentService;
+    /*@Autowired
+    private CandidateAssignmentService candidateAssignmentService;*/
 
-    @RequestMapping(value = "/admin/content/candidateAssignment", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/admin/content/candidateAssignment", method = RequestMethod.GET)
     public ModelAndView candidateAssignment() {
         ModelAndView modelAndView = new ModelAndView("adminContentCandidateAssignment");
         modelAndView.addObject("candidateAssignments",  candidateAssignmentService.getAll());
@@ -32,7 +32,7 @@ public class AdminCandidateAssignmentController {
     }
 
     @RequestMapping(value = "/admin/content/candidateAssignment/update/{id}", method = RequestMethod.GET)
-    public ModelAndView updateCandidate(@PathVariable("id") Long id/*, Model model*/) {
+    public ModelAndView updateCandidate(@PathVariable("id") Long id*//*, Model model*//*) {
         ModelAndView modelAndView = new ModelAndView("adminContentCandidateAssignmentUpdate");
         CandidateAssignment student = candidateAssignmentService.findById(id);
         modelAndView.addObject("candidateAssignment", student);
@@ -50,5 +50,5 @@ public class AdminCandidateAssignmentController {
     public String deleteCandidate(@PathVariable("id") long studentId) {
         candidateAssignmentService.delete(studentId);
         return "redirect:../../candidateAssignment";
-    }
+    }*/
 }

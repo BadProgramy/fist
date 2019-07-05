@@ -75,7 +75,7 @@ public class ModelAndViewConfiguration {
     //--------------------------------------------------КЭШ------------------------------------------
     private ModelAndView modelAndView;
 
-    private HashMap<Long, byte[]> picturesCache;
+    private List<Pictures> picturesCache;
 
     private List<Employee> employees;
     private List<Department> departments;
@@ -87,11 +87,11 @@ public class ModelAndViewConfiguration {
     private DataSource dataSource;
 
 
-    public HashMap<Long, byte[]> initPicturesCache() {
+    public List<Pictures> initPicturesCache() {
         if (picturesCache == null) {
-            picturesCache = new HashMap<>();
+            picturesCache = new ArrayList<>();
             for (Pictures pictures : picturesService.getAll()) {
-                picturesCache.put(pictures.getId(), pictures.getPictureFile());
+                picturesCache.add(pictures);
             }
         }
         return picturesCache;
@@ -99,13 +99,12 @@ public class ModelAndViewConfiguration {
 
     public void filledDataBase() throws IOException, SQLException {
         Connection connection = dataSource.getConnection();
+        ClassLoader classLoader = getClass().getClassLoader();
+        Scanner in = null;
+        String result = "";
         for (NameTableBD tableBD: NameTableBD.values()) {
-            //try {
-                ClassLoader classLoader = getClass().getClassLoader();
-                /*BufferedReader in = new BufferedReader();*/
-                Scanner in = new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + tableBD.getName() + ".sql").openStream());
-                String str;
-                String result = "";
+            if (!tableBD.equals(NameTableBD.PICTURES)) {
+                in = new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + tableBD.getName() + ".sql").openStream());
                 while (in.hasNextLine()) {
                     result += in.nextLine() + "\r\n";
                     if (result.toCharArray()[result.length() - 4] == ')' && result.toCharArray()[result.length() - 3] == ';') {
@@ -113,18 +112,17 @@ public class ModelAndViewConfiguration {
                             connection.createStatement().executeUpdate(result);
                             result = "";
                         } catch (SQLException ex) {
-
+                            logger.info(String.valueOf(ex.getErrorCode()));
                         }
                     }
                 }
                 logger.info("Выполнил запросы к " + tableBD.getName());
-                in.close();
-            /*} catch (java.sql.SQLSyntaxErrorException ex) {
-
-            } catch (java.sql.SQLIntegrityConstraintViolationException ex) {
-
-            }*/
+            }
         }
+        FilledDataBase filledDataBase = new FilledDataBase(connection, false, false);
+        filledDataBase.runScript(new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + "pictures" + ".sql").openStream()));
+        in.close();
+        connection.close();
         /*fore
         dataSource.getConnection().createStatement().executeUpdate(new String(Files.readAllBytes(Paths.get("website.psuti.fist.SQLDump/SQLInsert/fist_best_student.sql"))));
 */    }
@@ -157,9 +155,8 @@ public class ModelAndViewConfiguration {
 
     public void updateCash() {
         if (picturesCache != null) picturesCache.clear();
-        picturesCache = new HashMap<>();
         for (Pictures pictures : picturesService.getAll()) {
-            picturesCache.put(pictures.getId(), pictures.getPictureFile());
+            picturesCache.add(pictures);
         }
         updateCashBD();
     }
@@ -357,10 +354,9 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
         if (picturesCache != null)
         {
-            picturesCache = new HashMap<>();
             picturesCache.clear();
             for (Pictures pictures : picturesService.getAll()) {
-                picturesCache.put(pictures.getId(), pictures.getPictureFile());
+                picturesCache.add(pictures);
             }
         }
     }
@@ -477,7 +473,7 @@ public class ModelAndViewConfiguration {
         return files;
     }
 
-    public HashMap<Long, byte[]> getPicturesCache() {
+    public List<Pictures> getPicturesCache() {
         return picturesCache;
     }
 
@@ -486,6 +482,10 @@ public class ModelAndViewConfiguration {
     }
 
     public List<Pictures> getPicturesByKeyPicture(KeyPicture keyPicture) {
-        return picturesService.findPicturesByKey(keyPicture);
+        List<Pictures> pictures = new ArrayList<>();
+        for (Pictures picture: picturesCache) {
+            if (picture.getKeyPicture().equals(keyPicture)) pictures.add(picture);
+        }
+        return pictures;
     }
 }

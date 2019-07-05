@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
+import website.psuti.fist.constant.FileConstant;
 import website.psuti.fist.constant.PathConstant;
 import website.psuti.fist.model.Extension;
 import website.psuti.fist.model.File;
@@ -22,6 +23,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -33,18 +36,39 @@ public class AdminFileController {
     private ModelAndViewConfiguration modelAndViewConfiguration;
 
     @RequestMapping(value = "/admin/table/files/update", method = RequestMethod.GET)
-    public ModelAndView addFile() {
-        ModelAndView modelAndView = new ModelAndView("adminTableUpdateFile");
-        modelAndView.addObject("file", new File());
-        modelAndView.addObject("files", fileService.getAll());
-        modelAndView.addObject("extensions", Extension.values());
-        return modelAndView;
+    public ModelAndView addFile(Model model) {
+        return addFilePage(1, model);
+    }
+
+    @RequestMapping(value = "/admin/table/files/update/page/{idPage}", method = RequestMethod.GET)
+    public ModelAndView addFilePage(@PathVariable int idPage, Model model) {
+        return getModelForPagination(idPage, model, "adminTableUpdateFile");
     }
 
     @RequestMapping(value = "/admin/content/files/add", method = RequestMethod.GET)
-    public ModelAndView addContentFile() {
-        ModelAndView modelAndView = addFile();
-        modelAndView.setViewName("adminContentAddFile");
+    public ModelAndView addContentFile(Model model) {
+        return addContentFilePage(1, model);
+    }
+
+    @RequestMapping(value = "/admin/content/files/add/page/{idPage}", method = RequestMethod.GET)
+    public ModelAndView addContentFilePage(@PathVariable int idPage, Model model) {
+        return getModelForPagination(idPage, model, "adminContentAddFile");
+    }
+
+    private ModelAndView getModelForPagination(int idPage, Model model, String viewName) {
+        if (idPage <= 0) idPage = 1;
+        model.addAttribute("firstPage", idPage);
+        List<File> files = fileService.getAll();
+        model.addAttribute("pageCount", (int)(Math.ceil((double) files.size() / FileConstant.COUNT_FILE_FOR_OUTPUT_PAGE.getCount())));
+        List<File> resultFiles = new ArrayList<>();
+        for (int i = (idPage - 1) * FileConstant.COUNT_FILE_FOR_OUTPUT_PAGE.getCount(), j = 0; i < files.size() && j < FileConstant.COUNT_FILE_FOR_OUTPUT_PAGE.getCount(); i++, j++) {
+            resultFiles.add(files.get(i));
+        }
+        model.addAttribute("files", resultFiles);
+        ModelAndView modelAndView = new ModelAndView(viewName);
+        modelAndView.addObject("file",  new File());
+        modelAndView.addObject("extensions", Extension.values());
+        modelAndView.addAllObjects(model.asMap());
         return modelAndView;
     }
 

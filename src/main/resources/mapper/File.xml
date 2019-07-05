@@ -13,7 +13,8 @@
     </resultMap>
 
     <select id="selectAll" resultMap="result">
-        SELECT * FROM files;
+        SELECT * FROM files
+        ORDER BY date DESC;
     </select>
 
     <insert id="add" parameterType="File">

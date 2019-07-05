@@ -1,4 +1,4 @@
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (1, '    <div class="page_header page_header2 text-center"><h2>Комиссии ФИСТ</h2></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (1, '    <div class="page_header page_header2 text-center"><h2>Комиссии ФИСТ</h2></div>
     <div class="container" style="margin-bottom: 10%">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -58,7 +58,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'commissionsFIST.html (Комииссия факультета)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (2, '    <div class="content-blog">
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (2, '    <div class="content-blog">
         <div class="container-fluid">
             <div class="row"><h1 class="no-margin" style="text-align:center;">Контакты</h1>
                 <div class="space20"></div>
@@ -98,7 +98,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'contacts.html (Контакты)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (3, '    <div class="content-blog">
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (3, '    <div class="content-blog">
         <div class="shortcontain container">
             <div class="row">
                 <div class="page_header text-center"><h2>Стоимость обучения</h2></div>
@@ -145,7 +145,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'costEducation.html (Стоимость обучения)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (4, '    <div class="page_header page_header2 text-center"><h2>О факультете</h2></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (4, '    <div class="page_header page_header2 text-center"><h2>О факультете</h2></div>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -241,7 +241,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
     <p style="padding-left: 10%;padding-top: 20px; font-size: 20px;">С 01.11.2017 года факультет возглавляет декан
         Богомолова Мария Анатольевна, к.т.н., доцент.</p>
 ', 'faculty.html (О факультете)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (5, '    <div class="text-center page_header"><h2>Документы</h2>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (5, '    <div class="text-center page_header"><h2>Документы</h2>
         <p>для оформления выпускной квалификационной работы (ВКР)<br>в 2018/2019 учебном году</p></div>
     <div class="shortcontain container">
         <div class="col-md-10 col-md-offset-1">
@@ -339,7 +339,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'gradStudent.html (Дипломники)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (6, '    <div class="page_header page_header2 text-center"><h2>Выпускники</h2>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (6, '    <div class="page_header page_header2 text-center"><h2>Выпускники</h2>
         <p>факультета информационных систем и технологий</p></div>
     <div class="container graduent ">
         <div class="row padding-bot">
@@ -448,7 +448,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'graduates.html (Выпускники факультета)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (7, '    <div class="content-blog">
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (7, '    <div class="content-blog">
         <div class="container">
             <div class="row">
                 <div class="col-md-8"><h2 class=" header2" style="margin-left:40px ">Списки групп</h2>
@@ -461,7 +461,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'groupLists.html (Списки групп)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (8, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (8, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #ff2626;">
             <div class="trend">
@@ -531,7 +531,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'innovatika.html (Инноватика)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (9, '    <div class="text-center page_header"><h2>Промежуточный контроль</h2></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (9, '    <div class="text-center page_header"><h2>Промежуточный контроль</h2></div>
     <div class="shortcontain container">
         <div class="col-md-8 col-md-offset-2"><p class="text-center" style="font-size: 20px">Промежуточный контроль на
             факультете ИСТ будет проведен на 9 учебной неделе: <br>с 08 марта по 13 марта 2019 г.</p>
@@ -578,7 +578,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
                 посещает занятия и не выполнил задания согласно рабочей прогамме/учебному плану).</p></div>
         </div>
     </div>', 'interimControl.html (Промежуточный контроль)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (10, '    <div id="container">
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (10, '    <div id="container">
         <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: #af9519;">
@@ -644,7 +644,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'ist.html (ИСТ)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (11, '    <div id="container">
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (11, '    <div id="container">
         <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
         <div class="container-fluid only_one_trend">
             <div class="row" style="background: #a5327c;">
@@ -711,7 +711,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'ivt.html (ИВТ)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (12, '    <div class="back_img"><a href="/main" class="change"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (12, '    <div class="back_img"><a href="/main" class="change"></a></div>
     <div class="container-fluid">
         <div class="row" style="background: #045071;"><a href="/matob" class="transition">
             <div class="trend"><img src="/images/home-page/matob.png" class="img-responsive">
@@ -750,7 +750,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
                 <p>Бизнес-информатика</p></div>
         </a></div>
     </div>', 'mainTrend.html (Основные направления подготовки)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (13, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (13, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #045071;">
             <div class="trend">
@@ -811,7 +811,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'matob.html (Математическое обсепечение)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (14, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (14, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #c03f00;">
             <div class="trend">
@@ -869,7 +869,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'pi.html (Программная инженерия)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (15, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (15, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #8400bb;">
             <div class="trend">
@@ -934,7 +934,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'prikladInfo.html (Прикладная информатика)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (16, '    <div class="text-center page_header"><h2>Итоги промежуточного контроля</h2></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (16, '    <div class="text-center page_header"><h2>Итоги промежуточного контроля</h2></div>
     <div class="shortcontain container">
         <div class="col-md-5 col-md-offset-1"><p style="margin-bottom: 20px;font-size: 18px">8 учебная неделя 1 семестра
             2018/2019 уч.года</p>
@@ -985,7 +985,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
                 курс - 38.03.05, 27.03.05 - ЭБ, УИ</a></div>
         </div>
     </div>', 'resultOfControl.html (Итоги промеж.контроля)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (17, '    <div class="page_header page_header2 text-center"><h2>Права, обязанности и поощрения студентов ПГУТИ</h2></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (17, '    <div class="page_header page_header2 text-center"><h2>Права, обязанности и поощрения студентов ПГУТИ</h2></div>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -1301,7 +1301,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'rightsAndObligations.html (Права и обязанности)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (18, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (18, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #7c0000;">
             <div class="trend">
@@ -1364,7 +1364,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'rso.html (РСО)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (19, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (19, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #268529;">
             <div class="trend">
@@ -1431,7 +1431,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
             </div>
         </div>
     </div>', 'BI.html (Бизнес информатика)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (20, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (20, '    <div class="back_img"><a href="/mainTrend" class="change transition"></a></div>
     <div class="container-fluid only_one_trend">
         <div class="row" style="background: #00a8a6;">
             <div class="trend">
@@ -1496,7 +1496,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
         </div>
     </div>
 ', 'uits.html (УИТС)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (21, '<div class="page_header page_header2 text-center">
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (21, '<div class="page_header page_header2 text-center">
             <h2>Ученый совет факультета</h2>
         </div>
         <div class="container" style="margin-bottom: 10%">
@@ -1595,7 +1595,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
                 </div>
             </div>
         </div>', 'academicSoviet.html (Ученый совет факультета)', 'BODY');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (22, '<!— Meta —> 
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (22, '<!— Meta —> 
 <meta charset="utf-8"> 
 <meta name="keywords" content="HTML5 Template"/> 
 <meta name="description" content=""> 
@@ -1617,7 +1617,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css"> 
 <link rel=''stylesheet'' href=''/css/nprogress.min.css''/> 
 <script src=''/js/particles.min.js''></script>', 'BI.html (Бизнес информатика)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (23, '<!— Meta —> 
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (23, '<!— Meta —> 
 <meta charset="utf-8"> 
 <meta name="keywords" content="HTML5 Template"/> 
 <meta name="description" content=""> 
@@ -1650,7 +1650,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!— Modernizer —> 
 <script src="/js/modernizr.custom.js"></script>', 'candidateForExpulsion.html (Кандидаты на отчисление)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (24, '<!— Meta —> 
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (24, '<!— Meta —> 
 <meta charset="utf-8"> 
 <meta name="keywords" content="HTML5 Template" /> 
 <meta name="description" content=""> 
@@ -1683,7 +1683,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!— Modernizer —> 
 <script src="/js/modernizr.custom.js"></script>', 'cathedras.html (Кафедры факультета)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (25, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (25, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -1709,7 +1709,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
     <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'characteristicEmployee.html (Характеристика)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (26, ' <!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (26, ' <!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -1735,7 +1735,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
     <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'commissionsFIST.html (Комииссия факультета)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (27, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (27, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -1768,7 +1768,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
     <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'contacts.html (Контакты)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (28, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (28, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1794,7 +1794,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'costEducation.html (Стоимость обучения)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (29, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (29, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1821,7 +1821,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'deanTeam.html (Состав деканата)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (30, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (30, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1847,7 +1847,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'diplomasPhoto.html (Грамоты и дипломы)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (31, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (31, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="">
@@ -1879,7 +1879,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
     <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'enabledAccount.html (Уведомление)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (32, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (32, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1905,7 +1905,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'faculty.html (О факультете)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (33, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (33, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1931,7 +1931,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'gradStudents.html (Дипломники)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (34, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (34, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1957,7 +1957,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'graduates.html (Выпускники факультета)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (35, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (35, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -1983,7 +1983,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'groupCurators.html (Кураторы групп)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (36, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (36, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2009,7 +2009,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'groupLists.html (Списки групп)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (37, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (37, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2047,7 +2047,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <script src="/js/modernizr.custom.97074.js" defer=""></script>
 <script src="/js/modernizr.custom.js" defer=""></script>
 <script src="/js/jquery.min.js"></script>', 'index.html (Главная страница)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (38, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (38, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2069,7 +2069,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'innovatika.html (Инноватика)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (39, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (39, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2095,7 +2095,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'interimControl.html (Промежуточный контроль)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (40, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (40, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2117,7 +2117,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'ist.html (ИСТ)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (41, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (41, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2139,7 +2139,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'ivt.html (ИВТ)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (42, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (42, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2162,7 +2162,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'mainTrend (Основные направления подготовки)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (43, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (43, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2184,7 +2184,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'matob.html (Математическое обсепечение)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (44, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (44, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2210,7 +2210,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'newsBlog.html (Новости)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (45, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (45, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2232,7 +2232,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'pi.html (Программная инженерия)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (46, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (46, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2254,7 +2254,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 <link rel="stylesheet" href="/css/trends.min.css">
 <link rel="stylesheet" href="/css/nprogress.min.css">
 <script src="/js/particles.min.js"></script>', 'prikladInfo.html (Прикладная информатика)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (47, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (47, '<!-- Meta -->
 <meta charset="utf-8">
 <meta name="keywords" content="HTML5 Template">
 <meta name="description" content="">
@@ -2281,7 +2281,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
 <!-- Modernizer -->
 <script src="/js/modernizr.custom.js"></script>', 'resultOfControl.html (Итоги промеж.контроля)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (48, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (48, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -2307,7 +2307,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
     <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'rightAndObligation.html (Права и обязанности)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (49, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (49, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -2329,7 +2329,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
     <link rel="stylesheet" href="/css/trends.min.css">
     <link rel="stylesheet" href="/css/nprogress.min.css">
     <script src="/js/particles.min.js"></script>', 'RSO.html (РСО)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (50, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (50, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -2355,7 +2355,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
      <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'search.html (Результат поиска)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (51, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (51, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -2381,7 +2381,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
 
        <!-- Modernizer -->
     <script src="/js/modernizr.custom.js"></script>', 'topic.html (Отдельная новость)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (52, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (52, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">
@@ -2403,7 +2403,7 @@ INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) V
     <link rel="stylesheet" href="/css/trends.min.css">
     <link rel="stylesheet" href="/css/nprogress.min.css">
     <script src="/js/particles.min.js"></script>', 'uits.html (УИТС)', 'HEAD');
-INSERT INTO fist.htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (53, '<!-- Meta -->
+INSERT INTO htmlstructure_page (id, html_code, name_page, type_html_code) VALUES (53, '<!-- Meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="">

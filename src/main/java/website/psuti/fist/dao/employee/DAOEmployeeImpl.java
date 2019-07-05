@@ -1,9 +1,11 @@
 package website.psuti.fist.dao.employee;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import website.psuti.fist.constant.MainPageObjectConstant;
@@ -25,7 +27,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
     private Factory factory;
 
     @Autowired
-    private DataSource dataSource;
+    private BasicDataSource dataSourceCMD;
 
     @Override
     public List<Employee> getAll() {
@@ -48,7 +50,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
         employee.setQualificationBriefly(employee.getQualificationBriefly().replace("\r\n","<br>").replace("\n","<br>"));
         employee.setQualificationDetailed(employee.getQualificationDetailed().replace("\r\n","<br>").replace("\n","<br>"));
         try {
-            RequestPostConnection.requestions(dataSource);
+            RequestPostConnection.requestions(dataSourceCMD);
             id = session.insert("Employee.add", employee);
             if (id == 1) {
                 id = session.selectOne("Employee.getLastIdInsert");
@@ -72,7 +74,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
         employee.setQualificationBriefly(employee.getQualificationBriefly().replace("\r\n","<br>").replace("\n","<br>"));
         employee.setQualificationDetailed(employee.getQualificationDetailed().replace("\r\n","<br>").replace("\n","<br>"));
         try {
-            RequestPostConnection.requestions(dataSource);
+            RequestPostConnection.requestions(dataSourceCMD);
             id = session.update("Employee.update", employee);
             if (id == 1) {
                 MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);

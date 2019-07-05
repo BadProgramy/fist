@@ -50,10 +50,10 @@ public class  MainController {
 
     //@Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
-        for (Map.Entry picture : modelAndViewConfiguration.initPicturesCache().entrySet()) {
+        for (Pictures picture : modelAndViewConfiguration.initPicturesCache()) {
 
-            if (picture.getKey().equals(idPicture)) {
-                return (byte[]) picture.getValue();
+            if (picture.getId() == idPicture) {
+                return picture.getPictureFile();
             }
         }
         return null;

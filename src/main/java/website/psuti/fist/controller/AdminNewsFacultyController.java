@@ -22,6 +22,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AdminNewsFacultyController {
@@ -164,10 +166,27 @@ public class AdminNewsFacultyController {
     }
 
     @RequestMapping(value = "/admin/table/newsOfFaculty/update", method = RequestMethod.GET)
-    public ModelAndView updateNewsFaculty() {
+    public ModelAndView updateNewsFaculty(Model model) {
+        //ModelAndView modelAndView = new ModelAndView("adminTableUpdateNewsOfFaculty");
+        //modelAndView.addObject("item", new NewsOfFaculty());
+        //modelAndView.addObject("newsOfFaculty", newsFacultyService.getAll());
+        return updateNewsFacultyPage(1, model);
+    }
+
+    @RequestMapping(value = "/admin/table/newsOfFaculty/update/page/{idPage}", method = RequestMethod.GET)
+    public ModelAndView updateNewsFacultyPage(@PathVariable int idPage, Model model) {
+        if (idPage <= 0) idPage = 1;
+        model.addAttribute("firstPage", idPage);
+        List<NewsOfFaculty> news = newsFacultyService.getAll();
+        model.addAttribute("pageCount", (int)(Math.ceil((double) news.size() / NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount())));
+        List<NewsOfFaculty> resultNewsFaculty = new ArrayList<>();
+        for (int i = (idPage - 1) * NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount(), j = 0; i < news.size() && j < NewsFacultyConstant.COUNT_NEWS_FACULTY_FOR_OUTPUT_PAGE.getCount(); i++, j++) {
+            resultNewsFaculty.add(news.get(i));
+        }
+        model.addAttribute("newsOfFaculty", resultNewsFaculty);
         ModelAndView modelAndView = new ModelAndView("adminTableUpdateNewsOfFaculty");
-        modelAndView.addObject("item", new NewsOfFaculty());
-        modelAndView.addObject("newsOfFaculty", newsFacultyService.getAll());
+        modelAndView.addObject("item",  new NewsOfFaculty());
+        modelAndView.addAllObjects(model.asMap());
         return modelAndView;
     }
 

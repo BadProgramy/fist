@@ -72,6 +72,19 @@ html,body {
     height: 100%;
     vertical-align: middle;
 }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .trend img{
+        display: inline !important;
+    }
+    .trend p {
+        display: inline !important;
+    }
+    .text_shadow p {
+        text-shadow: none !important;
+    }
+
+}
+
 .trend img{
     position: relative;
     height: 80%;

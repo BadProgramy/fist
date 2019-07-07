@@ -21,7 +21,6 @@ import java.util.Properties;
 @Component
 public class Factory {
     private SqlSessionFactory factory;
-    private BasicDataSource dataSourceCMD;
 
 
     public Factory() {
@@ -45,21 +44,20 @@ public class Factory {
         this.factory = factory;
     }
 
-    @Bean(name = "dataSourceCMD", autowire = Autowire.BY_NAME)
     public BasicDataSource dataSource() {
-        if (dataSourceCMD == null) {
+        //if (dataSourceCMD == null) {
             BasicDataSource dataSource = new BasicDataSource();
-            if (FistApplication.args.length >= 4) {
+            /*if (FistApplication.args.length >= 4) {
                 dataSource.setDriverClassName(FistApplication.args[0].split("=")[1]);
                 dataSource.setUrl(FistApplication.args[1].split("=")[1]);
                 dataSource.setUsername(FistApplication.args[2].split("=")[1]);
                 dataSource.setPassword(FistApplication.args[3].split("=")[1]);
-            } else {
-                String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-                String appConfigPath = rootPath + "application.properties";
+            } else {*/
+                /*String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+                String appConfigPath = rootPath + "application.properties";*/
                 Properties appProps = new Properties();
                 try {
-                    appProps.load(new FileInputStream(appConfigPath));
+                    appProps.load(Thread.currentThread().getContextClassLoader().getResource("application.properties").openStream());
                     dataSource.setDriverClassName(appProps.getProperty("spring.datasource.driver-class-name"));
                     dataSource.setUrl(appProps.getProperty("spring.datasource.url"));
                     dataSource.setUsername(appProps.getProperty("spring.datasource.username"));
@@ -67,14 +65,14 @@ public class Factory {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-            try {
+            //}
+            /*try {
                 RequestPostConnection.requestions(dataSource);
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
-            dataSourceCMD = dataSource;
+            }*/
+            //dataSourceCMD = dataSource;
             return dataSource;
-        } else return dataSourceCMD;
+       // } else return dataSourceCMD;
     }
 }

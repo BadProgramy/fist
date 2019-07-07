@@ -242,6 +242,7 @@ public class AdminUserController {
                                              @ModelAttribute("passwordProfile") String passwordProfile) throws SQLException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userOriginal = userService.findUserByName(authentication.getName());
+        user.setRole(userOriginal.getRole());
         if (user.getUsername().equals(userOriginal.getUsername())) {
             if (bcryptEncoder.matches(passwordProfile, userOriginal.getPassword())) {
                 user.setPassword(passwordProfile);

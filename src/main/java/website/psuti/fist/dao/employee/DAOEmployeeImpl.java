@@ -27,7 +27,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
     private Factory factory;
 
     @Autowired
-    private BasicDataSource dataSourceCMD;
+    private DataSource dataSource;
 
     @Override
     public List<Employee> getAll() {
@@ -50,7 +50,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
         employee.setQualificationBriefly(employee.getQualificationBriefly().replace("\r\n","<br>").replace("\n","<br>"));
         employee.setQualificationDetailed(employee.getQualificationDetailed().replace("\r\n","<br>").replace("\n","<br>"));
         try {
-            RequestPostConnection.requestions(dataSourceCMD);
+            RequestPostConnection.requestions(dataSource);
             id = session.insert("Employee.add", employee);
             if (id == 1) {
                 id = session.selectOne("Employee.getLastIdInsert");
@@ -74,7 +74,7 @@ public class DAOEmployeeImpl implements DAOEmployee {
         employee.setQualificationBriefly(employee.getQualificationBriefly().replace("\r\n","<br>").replace("\n","<br>"));
         employee.setQualificationDetailed(employee.getQualificationDetailed().replace("\r\n","<br>").replace("\n","<br>"));
         try {
-            RequestPostConnection.requestions(dataSourceCMD);
+            RequestPostConnection.requestions(dataSource);
             id = session.update("Employee.update", employee);
             if (id == 1) {
                 MainPageObjectConstant.addCheck(NameTableBD.EMPLOYEE);

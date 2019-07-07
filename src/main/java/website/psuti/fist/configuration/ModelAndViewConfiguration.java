@@ -112,7 +112,6 @@ public class ModelAndViewConfiguration {
                             connection.createStatement().executeUpdate(result);
                             result = "";
                         } catch (SQLException ex) {
-                            logger.info(String.valueOf(ex.getErrorCode()));
                         }
                     }
                 }
@@ -121,6 +120,7 @@ public class ModelAndViewConfiguration {
         }
         FilledDataBase filledDataBase = new FilledDataBase(connection, false, false);
         filledDataBase.runScript(new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + "pictures" + ".sql").openStream()));
+        logger.info("Выполнил запросы к " + NameTableBD.PICTURES.getName());
         in.close();
         connection.close();
         /*fore

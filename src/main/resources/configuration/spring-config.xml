@@ -21,7 +21,7 @@ http://www.springframework.org/schema/task http://www.springframework.org/schema
         <property name="password" value="${spring.datasource.password}" />
     </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="prototype">
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="configuration/config.xml"/>
     </bean>

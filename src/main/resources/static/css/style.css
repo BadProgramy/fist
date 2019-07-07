@@ -2190,6 +2190,18 @@ blockquote {
     display: inline-table;
 }
 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .blog-mason-2col .grid-item {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+    .search-block {
+        display: inline !important;
+    }
+}
+
 .blog-mason-3col .grid-item {
 	width:33.3333%;
 	padding:0 15px;

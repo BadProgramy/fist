@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 <html class="no-js" xmlns:th="http://www.thymeleaf.org" lang="ru">
-<head th:utext="${indexHead.getHtmlCode()}"></head>
+<head th:utext="${indexHead.getHtmlCode()}">
+</head>
 <body id="firstPage" class="multi-page">
 
 <div id="wrapper" class="wrapper">
@@ -12,7 +12,7 @@
 		<div class="navbr">
 				<div class="row">
 					<div class="logo-psuti" style="margin: 10px;">
-						<a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive" alt=""/></a>
+						<a th:object="${logotipFIST}" th:href="${logotipFIST.getHref()}" th:style="${logotipFIST.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipFIST.getId()}}" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-9 col-xs-7">
 						<div class="top-bar" style="width:100%; margin-right: 50px;">
@@ -47,10 +47,10 @@
 						</li>
 					</ul>
 				<div class="logo-psuti admin" style=" float:right; margin: 15px 15px 0 0; ">
-					<a onclick="searchFunc()"><img src='/images/search.png' class="img-responsive img-nohidden" alt=""/></a>
+					<a onclick="searchFunc()"><img src='/images/search.png' class="img-responsive img-nohidden" /></a>
 				</div>
 				<div class="logo-psuti" style=" float:right; margin: 15px 0px 0 0; ">
-					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}" th:style="${logotipPSUTI.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive" alt=""/></a>
+					<a th:object="${logotipPSUTI}" th:href="${logotipPSUTI.getHref()}" th:style="${logotipPSUTI.getStyles()}"><img th:src="@{'/main/picture/' + ${logotipPSUTI.getId()}}"  class="img-responsive"/></a>
 				</div>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 		<div style="position: relative">
 			<div class="item" th:each="picture : ${slider}">
 				<div class="ban">
-			<a href="/mainTrend"><img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" alt=""/></a>
+			<a href="/mainTrend"><img th:src="@{'/main/picture/' + ${picture.getId()}}" th:style="${picture.getStyles()}" class="img-responsive max-wid" /></a>
 					<a href="/mainTrend"><p>Узнать подробнее<br> о направлениях подготовки <br>...</p></a>
 				</div>
 			</div>
@@ -92,9 +92,9 @@
 					<div class="col-md-10" style="margin-left: 10%;">
 						<div class="row">
 							<div id="blog-mason" class="grid blog-mason-2col">
-								<article th:each="newFaculty : ${newsOfFaculty}" class="blogpost grid-item center-block">
+								<article th:each="newFaculty : ${newsOfFaculty}" class="blogpost grid-item center-block" >
 									<div class="post-media img-container">
-										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive" alt="">
+										<img th:src="@{'/main/picture/' + ${newFaculty.getIdPicture()}}" th:style="${newFaculty.getPictureStyles()}" class="img-responsive">
 									</div>
 									<h2 class="post-title"><a th:href="@{'/newsBlog/topic/id='+${newFaculty.getId()}}" th:utext="${newFaculty.getHeading()}" th:style="${newFaculty.getHeadingStyles()}"></a></h2>
 									<div class="post-meta">
@@ -162,7 +162,7 @@
             $(window).on('resize', fix_size);
             fix_size();
         });</script>
-	<script src="/js/masonry.pkgd.min.js" defer></script>
+	<script src="/js/masonry.pkgd.min.js" ></script>
 	<script>
         $(window).on('load',function() {
             var $container = $('#blog-mason');
@@ -193,14 +193,13 @@
             });
         });
 	</script>
-
 	<!-- Учебный процесс -->
 	<section id="service" class="service main-background">
 		<div class="container">
 			<div class="h-page-title">
 				<h1 th:object="${ItemHeader2}" th:text="${ItemHeader2.getName()}" th:styles="${ItemHeader2.getStyles()}"></h1>
 				<div class="mustache">
-					<span><img class="img-responsive" th:src="@{'/main/picture/' + ${ItemHeaderPictureSplit.getId()}}" th:style="${ItemHeaderPictureSplit.getStyles()}" alt=""></span>
+					<span><img class="img-responsive" th:src="@{'/main/picture/' + ${ItemHeaderPictureSplit.getId()}}" th:style="${ItemHeaderPictureSplit.getStyles()}"></span>
 				</div>
 			</div>
 
@@ -209,8 +208,8 @@
 					<div class="col-md-5 col-sm-6 service-left" th:style="${mapEntry.getLeftPictureStyles()}">
 						<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}">
                         <span class="ico">
-                            <img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
-                            <img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" alt="">
+                            <img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" >
+                            <img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesLeft().getId()}}" >
                         </span>
 						</a>
 						<a th:href="${mapEntry.getMenuItemHeaderInMainPageLeft().getUrlHref()}"><span class="card-link"></span></a>
@@ -223,8 +222,8 @@
 					<div class="col-md-6 col-sm-6 service-right" th:style="${mapEntry.getRightPictureStyles()}">
 						<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}">
                         <span class="ico">
-                            <img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
-                            <img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" alt="">
+                            <img class="icon_1" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" >
+                            <img class="icon_2" th:src="@{'/main/picture/' + ${mapEntry.getPicturesRight().getId()}}" >
                         </span>
 						</a>
 						<a th:href="${mapEntry.getMenuItemHeaderInMainPageRight().getUrlHref()}"><span class="card-link"></span></a>
@@ -265,14 +264,12 @@
                         <!-- SnapWidget -->
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 							<a href="https://www.instagram.com/fist.psuti/"><div id="secondT" class="price-block">
-								<a href="https://www.instagram.com/fist.psuti/"><span class="card-link"></span></a>
 								<div id="secondTT" class="inner-price">
 									<h3 th:object="${ItemHeader5}" th:text="${ItemHeader5.getName()}" th:style="${ItemHeader5.getStyles()}"></h3>
 									<div class='widget-content'>
-                                      <iframe href="https://www.instagram.com/fist.psuti/" src="" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
+                                      <iframe href="https://www.instagram.com/fist.psuti/" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
 									</div>
 								</div>
-                                <a href="https://www.instagram.com/fist.psuti/" style="text-align: center;position: relative; bottom:20px !important;text-transform: uppercase;">instagram</a>
 							</div></a>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
@@ -329,7 +326,7 @@
 							<div class="product" >
 								<div class="product-thumb">
 									<li><a class="cd-signin">
-										<img th:id="@{'student' + ${student.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" alt="">
+										<img th:id="@{'student' + ${student.getId()}}" src="/images/1.gif" width="300" height="300" th:realsrc="@{'/main/picture/' + ${student.getIdPicture()}}" th:style="${student.getPictureStyles()}" class="img-responsive" >
 										<div><span class="fa fa-search-plus"></span></div>
 										<script th:inline="javascript">
                                             document.body.onclick = function(e) {
@@ -373,7 +370,7 @@
 		<div class="cd-user-modal-container">
 			<div class="border-stud">
 				<div class="stud-photo">
-					<a><img id="studPicture" class="img-responsive" alt=""/></a>
+					<a><img id="studPicture" class="img-responsive" /></a>
 				</div>
 				<h2 id="stud-name" class="stud-name"></h2>
 				<div class="text-stud">
@@ -406,7 +403,7 @@
 <script src="/js/script.min.js" defer ></script>
 <script src="/js/main.min.js" defer></script>
 <script src="/js/student_character.min.js" defer></script>
-<script src="https://snapwidget.com/js/snapwidget.js"defer ></script>
+<script src="https://snapwidget.com/js/snapwidget.js" defer ></script>
 
 </body>
 </html>

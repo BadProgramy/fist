@@ -43,6 +43,8 @@
         id_department = #{idDepartment},
         name_department = #{nameDepartment},
         id_picture_major = #{idPictureMajor},
+        id_picture_minor = #{idPictureMinor},
+        pin_number = #{pinNumber},
         name = #{name},
         post = #{post},
         phone = #{phone},

@@ -39,7 +39,7 @@
     </select>
 
     <select id="selectAll" resultMap="result">
-        SELECT * FROM pictures;
+        SELECT * FROM pictures ORDER BY date DESC;
     </select>
 
     <select id="selectPicturesByKey" parameterType="String" resultMap="result">
@@ -48,7 +48,8 @@
     </select>
 
     <select id="selectPicturesByName" parameterType="String" resultMap="result">
-        SELECT * FROM pictures where name_picture = #{namePicture};
+        SELECT * FROM pictures where name_picture = #{namePicture}
+        ORDER BY date DESC;
     </select>
 
     <select id="findById" parameterType="long" resultMap="result">

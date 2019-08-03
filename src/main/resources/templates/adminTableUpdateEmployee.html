@@ -69,7 +69,7 @@
                         <p class="fieldset black_p">
                             <label>Куда отнести сотрудника?</label>
                             <select  name="nameDepartment" required>
-                                <option th:each="name : ${nameDepartments}" th:value="${name}" th:utext="${name.getName()}"></option>
+                                <option th:each="name : ${nameDepartments}" th:value="${name.getName()}" th:utext="${name.getName()}"></option>
                             </select>
                         </p>
 
@@ -80,7 +80,7 @@
 
 
                         <p class="fieldset black_p">
-                            <input placeholder="Название департамента" type="text" th:value="${employee.name}" name="name" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
+                            <input placeholder="Имя сотрудника" type="text" th:value="${employee.name}" name="name" style="height: 60px; width: 100%;" class="full-width has-padding has-border" required>
                         </p>
 
                         <p class="fieldset black_p">

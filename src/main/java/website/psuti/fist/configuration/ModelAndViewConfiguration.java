@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.constant.*;
@@ -13,14 +14,11 @@ import website.psuti.fist.model.File;
 import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.*;
 import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 import java.io.*;
-import java.sql.SQLException;
 import java.util.*;
 
 @Component
 public class ModelAndViewConfiguration {
-    private boolean checkTableBDDATA = false;
 
     public final Logger logger = LoggerFactory.getLogger(ModelAndViewConfiguration.class);
 
@@ -48,9 +46,6 @@ public class ModelAndViewConfiguration {
     @Autowired
     private DepartmentService departmentService;
 
-    @Autowired
-    private FileService fileService;
-
     @Autowired CuratorService curatorService;
 
     @Autowired
@@ -67,89 +62,32 @@ public class ModelAndViewConfiguration {
     //--------------------------------------------------КЭШ------------------------------------------
     private ModelAndView modelAndView;
 
-    private List<Pictures> picturesCache;
-
     private List<Employee> employees;
     private List<Department> departments;
-    private List<File> files;
     private List<NewsOfFaculty> newsOfFaculties;
     //-------------------------------------------------Оперативная память-----------------------------
 
-    @Autowired
-    private DataSource dataSource;
-
-
-    public List<Pictures> initPicturesCache() {
-        if (picturesCache == null) {
-            picturesCache = new ArrayList<>();
-            for (Pictures pictures : picturesService.getAll()) {
-                picturesCache.add(pictures);
-            }
-        }
-        return picturesCache;
-    }
-
-    public void filledDataBase() throws IOException, SQLException {
-        /*Connection connection = dataSource.getConnection();
-        ClassLoader classLoader = getClass().getClassLoader();
-        Scanner in = null;
-        String result = "";
-        for (NameTableBD tableBD: NameTableBD.values()) {
-            if (!tableBD.equals(NameTableBD.PICTURES)) {
-                in = new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + tableBD.getName() + ".sql").openStream());
-                while (in.hasNextLine()) {
-                    result += in.nextLine() + "\r\n";
-                    if (result.toCharArray()[result.length() - 4] == ')' && result.toCharArray()[result.length() - 3] == ';') {
-                        try {
-                            connection.createStatement().executeUpdate(result);
-                            result = "";
-                        } catch (SQLException ex) {
-                        }
-                    }
-                }
-                logger.info("Выполнил запросы к " + tableBD.getName());
-            }
-        }
-        FilledDataBase filledDataBase = new FilledDataBase(connection, false, false);
-        filledDataBase.runScript(new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + "pictures" + ".sql").openStream()));
-        logger.info("Выполнил запросы к " + NameTableBD.PICTURES.getName());
-        in.close();
-        connection.close();*/
-        /*fore
-        dataSource.getConnection().createStatement().executeUpdate(new String(Files.readAllBytes(Paths.get("website.psuti.fist.SQLDump/SQLInsert/fist_best_student.sql"))));
-*/    }
-
     @PostConstruct
-    public ModelAndView initModelAndView(){
+    public ModelAndView initModelAndView() {
         try {
-            if (!checkTableBDDATA){
-                checkTableBDDATA = true;
-                filledDataBase();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        initPicturesCache();
-        if (modelAndView == null) {
-            updateCashBD();
+            if (modelAndView == null) {
+                updateCashBD();
 
+                return modelAndView;
+            } else if (MainPageObjectConstant.getCheckModelAndView().size() > 0) {
+                for (NameTableBD change : MainPageObjectConstant.getCheckModelAndView()) {
+                    changeModel(change);
+                }
+                MainPageObjectConstant.clearCheckModel();
+                return modelAndView;
+            } else return modelAndView;
+        } catch (ConcurrentModificationException ex) {
+            updateCashBD();
             return modelAndView;
-        } else if (MainPageObjectConstant.getCheckModelAndView().size() > 0) {
-            for (NameTableBD change : MainPageObjectConstant.getCheckModelAndView()) {
-                changeModel(change);
-            }
-            MainPageObjectConstant.clearCheckModel();
-            return modelAndView;
-        } else return modelAndView;
+        }
     }
 
     public void updateCash() {
-        if (picturesCache != null) picturesCache.clear();
-        for (Pictures pictures : picturesService.getAll()) {
-            picturesCache.add(pictures);
-        }
         updateCashBD();
     }
 
@@ -157,7 +95,6 @@ public class ModelAndViewConfiguration {
         modelAndView = new ModelAndView();
         employees = new ArrayList<>();
         departments = new ArrayList<>();
-        files = new ArrayList<>();
         newsOfFaculties = new ArrayList<>();
         modelAndView = new ModelAndView("", "", "");
 
@@ -173,7 +110,6 @@ public class ModelAndViewConfiguration {
         updateUsersTable();
         updateEmployee();
         updateDepartment();
-        updateFile();
     }
 
     public void changeModel(NameTableBD nameTable) {
@@ -189,7 +125,6 @@ public class ModelAndViewConfiguration {
         else if (nameTable.equals(NameTableBD.USERS_ROLE)) updateUsersRoleTable();
         else if (nameTable.equals(NameTableBD.EMPLOYEE)) updateEmployee();
         else if (nameTable.equals(NameTableBD.DEPARTMENT)) updateDepartment();
-        else if (nameTable.equals(NameTableBD.FILE)) updateFile();
     }
 
     private void updateHTMLStructurePages() {
@@ -254,10 +189,6 @@ public class ModelAndViewConfiguration {
 
     private void updateCandidateAssignment() {
         modelAndView.addObject("candidateAssignments", candidateAssignmentService.getAll());
-    }
-
-    private void updateFile() {
-        files = fileService.getAll();
     }
 
     private void updateEmployee() {
@@ -344,13 +275,6 @@ public class ModelAndViewConfiguration {
         modelAndView.addObject("ItemHeaderPictureSplit", getItemById(listPictures, MainPageConstant.ITEM_HEADER_PICTURE_SPLIT.getId()));
         modelAndView.addObject("logotipPSUTI", getItemById(listPictures, MainPageConstant.LOGOTIP_PSUTI.getId()));
         modelAndView.addObject("educationProcess", educationProcessService.educationProcess());
-        if (picturesCache != null)
-        {
-            picturesCache.clear();
-            for (Pictures pictures : picturesService.getAll()) {
-                picturesCache.add(pictures);
-            }
-        }
     }
 
     private void updateUsersTable() {
@@ -444,15 +368,6 @@ public class ModelAndViewConfiguration {
         return new Object();
     }
 
-    public File getFileByName(String nameFile) {
-        for (File file: files) {
-            if (file.getName().equals(nameFile)) {
-                return file;
-            }
-        }
-        return null;
-    }
-
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -461,23 +376,11 @@ public class ModelAndViewConfiguration {
         return departments;
     }
 
-    public List<File> getFiles() {
-        return files;
-    }
-
-    public List<Pictures> getPicturesCache() {
-        return picturesCache;
-    }
-
     public List<NewsOfFaculty> getNewsOfFaculties() {
         return newsOfFaculties;
     }
 
     public List<Pictures> getPicturesByKeyPicture(KeyPicture keyPicture) {
-        List<Pictures> pictures = new ArrayList<>();
-        for (Pictures picture: picturesCache) {
-            if (picture.getKeyPicture().equals(keyPicture)) pictures.add(picture);
-        }
-        return pictures;
+        return picturesService.findPicturesByKey(keyPicture);
     }
 }

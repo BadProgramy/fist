@@ -60,7 +60,7 @@ public class AdminController {
         Pictures pictures = picturesService.findPictureById(idPicture);
         if (pictures != null)
             return pictures.getPictureFile();
-        else return null;
+        else return new byte[0];
     }
 
     //@Cacheable("mainPictures")

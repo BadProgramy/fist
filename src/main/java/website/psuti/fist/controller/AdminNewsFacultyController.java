@@ -59,9 +59,6 @@ public class AdminNewsFacultyController {
     @ResponseBody
     @RequestMapping(value = "/admin/content/news/{idPicture}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getPhoto(@PathVariable long idPicture) {
-        /*for (Map.Entry picture: initPicturesCashe().entrySet()) {
-            if (picture.getKey().equals(idPicture)) return (byte[]) picture.getValue();
-        }*/
         Pictures foto = picturesService.findPictureById(idPicture);
         if (foto!=null)
             return foto.getPictureFile();

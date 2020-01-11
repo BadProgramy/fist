@@ -1,9 +1,5 @@
 package website.psuti.fist.controller;
 
-import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.command.InspectVolumeResponse;
-import com.github.dockerjava.api.command.ListVolumesResponse;
-import com.github.dockerjava.core.DockerClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -130,7 +126,7 @@ public class AdminFileController {
 
     @RequestMapping(value = "/files/id={idFile}", method = RequestMethod.GET)
     public String file(@PathVariable("idFile") Long idFile, HttpServletRequest request) throws IOException {
-        return getFile((website.psuti.fist.model.File) modelAndViewConfiguration.getItemById(modelAndViewConfiguration.getFiles(), idFile), request);
+        return getFile(fileService.findFileById(idFile), request);
     }
 
     private String getFile(website.psuti.fist.model.File file, HttpServletRequest request) throws IOException {

@@ -13,6 +13,7 @@ jQuery(document).ready(function($){
 
     //open modal
     mainNav.on('click', function(event){
+        window.scrollBy(0, $(window).height());
         $(event.target).is(mainNav) && mainNav.children('ul').toggleClass('is-visible');
         formButton.addClass('visible');
     });

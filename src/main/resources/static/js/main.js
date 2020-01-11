@@ -29,8 +29,8 @@ function showVisible() {
     var imgs = document.getElementsByTagName('img');
     var img, realsrc;
     for (var i = 0; i < imgs.length; i++) {
-         img = imgs[i];
-         realsrc = img.getAttribute('realsrc');
+        img = imgs[i];
+        realsrc = img.getAttribute('realsrc');
         if (!realsrc) continue;
         if (isVisible(img)) {
             img.src = realsrc;
@@ -103,16 +103,25 @@ if(re===false) {
     });
 }
 
-var someimage = document.getElementById('content');
-var myimgs = someimage.getElementsByTagName('img');
-var mysrc,mysrc2;
-var parent;
-mysrc=myimgs[0].src;
-mysrc2=myimgs[1].src;
-if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0') &&(mysrc2.charAt(mysrc2.length-2)==='/') && (mysrc2.charAt(mysrc2.length-1)==='0')){
-    parent=myimgs[0].parentNode;
-    parent.style.display='none';
-    parent=myimgs[1].parentNode;
-    parent.style.display='none';
-}
+jQuery(function ($) {
+    var someimage = document.getElementById('content');
+    var myimgs = someimage.getElementsByTagName('img');
+    var mysrc,mysrc2;
+    var parent;
+    for (var i = 0; i < myimgs.length; i++) {
+        mysrc = myimgs[i].src;
+        if ((mysrc.charAt(mysrc.length - 2) === '/') && (mysrc.charAt(mysrc.length - 1) === '0')) {
+            parent=myimgs[i].parentNode;
+            parent.style.opacity='0';
+        }
+    }
+    mysrc=myimgs[0].src;
+    mysrc2=myimgs[1].src;
+    if((mysrc.charAt(mysrc.length-2)==='/') && (mysrc.charAt(mysrc.length-1)==='0') &&(mysrc2.charAt(mysrc2.length-2)==='/') && (mysrc2.charAt(mysrc2.length-1)==='0')){
+        parent=myimgs[0].parentNode;
+        parent.style.display='none';
+        parent=myimgs[1].parentNode;
+        parent.style.display='none';
+    }
+});
 

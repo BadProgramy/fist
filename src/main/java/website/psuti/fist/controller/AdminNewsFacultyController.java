@@ -1,23 +1,18 @@
 package website.psuti.fist.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
-import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
 import website.psuti.fist.service.NewsFacultyService;
 import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
-
 import java.io.*;
-import java.io.File;
-import java.nio.file.Files;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -103,7 +98,7 @@ public class AdminNewsFacultyController {
         return "newsBlog";
     }*/
 
-    @RequestMapping(value = "/admin/content/news/range", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/content/news/range", method = RequestMethod.POST)
     public ModelAndView newsByRange(String withDate,
                                     String fromDate) throws SQLException {
 /*        if (this.user == null) {

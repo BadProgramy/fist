@@ -11,15 +11,16 @@
         <result property="nameDepartment" column="name_department"/>
         <result property="phone" column="phone"/>
         <result property="nameCuratorStudentAndGroup" column="name_curator_student_and_group"/>
+        <result property="pinNumber" column="pin_number"/>
     </resultMap>
 
     <select id="selectAll" resultMap="result">
-        SELECT * FROM curator;
+        SELECT * FROM curator order by pin_number ASC;
     </select>
 
     <insert id="add" parameterType="Curator">
-        insert into curator(group_in_university, name_curator_teacher, name_department, phone, name_curator_student_and_group)
-        values (#{groupInUniversity}, #{nameCuratorTeacher}, #{nameDepartment}, #{phone}, #{nameCuratorStudentAndGroup});
+        insert into curator(group_in_university, name_curator_teacher, name_department, phone, name_curator_student_and_group, pin_number)
+        values (#{groupInUniversity}, #{nameCuratorTeacher}, #{nameDepartment}, #{phone}, #{nameCuratorStudentAndGroup}, #{pinNumber});
     </insert>
 
     <select id="getLastIdInsert" resultType="long">
@@ -32,7 +33,8 @@
         name_curator_teacher = #{nameCuratorTeacher},
         name_department = #{nameDepartment},
         phone = #{phone},
-        name_curator_student_and_group = #{nameCuratorStudentAndGroup}
+        name_curator_student_and_group = #{nameCuratorStudentAndGroup},
+        pin_number = #{pinNumber}
         where id = #{id};
     </update>
 

@@ -1,6 +1,5 @@
 package website.psuti.fist.configuration;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,21 +7,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
-import org.xml.sax.SAXException;
-import website.psuti.fist.FistApplication;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
 import website.psuti.fist.model.File;
 import website.psuti.fist.scheduler.SendMessageScheduler;
 import website.psuti.fist.service.*;
-
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
-import javax.xml.XMLConstants;
-import javax.xml.validation.SchemaFactory;
 import java.io.*;
-import java.net.URISyntaxException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -98,7 +90,7 @@ public class ModelAndViewConfiguration {
     }
 
     public void filledDataBase() throws IOException, SQLException {
-        Connection connection = dataSource.getConnection();
+        /*Connection connection = dataSource.getConnection();
         ClassLoader classLoader = getClass().getClassLoader();
         Scanner in = null;
         String result = "";
@@ -122,7 +114,7 @@ public class ModelAndViewConfiguration {
         filledDataBase.runScript(new Scanner(classLoader.getResource("SQLDump/SQLInsert/fist_" + "pictures" + ".sql").openStream()));
         logger.info("Выполнил запросы к " + NameTableBD.PICTURES.getName());
         in.close();
-        connection.close();
+        connection.close();*/
         /*fore
         dataSource.getConnection().createStatement().executeUpdate(new String(Files.readAllBytes(Paths.get("website.psuti.fist.SQLDump/SQLInsert/fist_best_student.sql"))));
 */    }

@@ -15,6 +15,7 @@ public class Curator {
     private String nameDepartment;//Пример ИСТ
     private String phone;
     private String nameCuratorStudentAndGroup;
+    private int pinNumber;
 
 
     public long getId() {
@@ -65,6 +66,14 @@ public class Curator {
         this.nameCuratorStudentAndGroup = nameCuratorStudentAndGroup;
     }
 
+    public int getPinNumber() {
+        return pinNumber;
+    }
+
+    public void setPinNumber(int pinNumber) {
+        this.pinNumber = pinNumber;
+    }
+
     @Override
     public String toString() {
         return "Curator{" +
@@ -74,6 +83,7 @@ public class Curator {
                 ", nameDepartment='" + nameDepartment + '\'' +
                 ", phone='" + phone + '\'' +
                 ", nameCuratorStudentAndGroup='" + nameCuratorStudentAndGroup + '\'' +
+                ", pinNumber=" + pinNumber +
                 '}';
     }
 }

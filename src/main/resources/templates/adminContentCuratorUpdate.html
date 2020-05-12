@@ -46,12 +46,6 @@
     <div th:replace="templates :: headerAdmin"></div>
 
     <div id="sample" class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            //<![CDATA[
-            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-            //]]>
-        </script>
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
                 <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Редактирование</a></li>
@@ -60,21 +54,18 @@
 
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/curator/update/submit}" th:object="${curatorGroup}" method="post" class="cd-form" enctype="multipart/form-data">
-                    <fieldset>
-                        <p>№ группы: Пример - ПО-52</p>
-                            <textarea name="groupInUniversity" th:utext="${curatorGroup.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="№ группы: Пример - ПО-52" required></textarea>
+                     <fieldset>
+                            <textarea id="groupInUniversity" name="groupInUniversity" th:utext="${curatorGroup.getGroupInUniversity()}" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="№ группы: Пример - ПО-52" required></textarea>
 
-                        <p>Ф.И.О. куратора-преподавателя: Пример - Часов Егор Александрович</p>
-                            <textarea name="nameCuratorTeacher" th:utext="${curatorGroup.getNameCuratorTeacher()}" th:field="*{nameCuratorTeacher}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-преподавателя: Пример - Часов Егор Александрович" required></textarea>
+                            <textarea id="nameCuratorTeacher" name="nameCuratorTeacher" th:utext="${curatorGroup.getNameCuratorTeacher()}" th:field="*{nameCuratorTeacher}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-преподавателя: Пример - Часов Егор Александрович" required></textarea>
 
-                        <p>Кафедра: Пример - ПОУТС</p>
-                            <textarea name="nameDepartment" th:utext="${curatorGroup.getNameDepartment()}" th:field="*{nameDepartment}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Кафедра: Пример - ПОУТС" required></textarea>
+                            <textarea id="nameDepartment" name="nameDepartment" th:utext="${curatorGroup.getNameDepartment()}" th:field="*{nameDepartment}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Кафедра: Пример - ПОУТС" required></textarea>
 
-                        <p>Телефон: Пример - 228-00-13</p>
-                            <textarea name="phone" th:utext="${curatorGroup.getPhone()}" th:field="*{phone}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Телефон: Пример - 228-00-13" required></textarea>
+                            <textarea id="phone" name="phone" th:utext="${curatorGroup.getPhone()}" th:field="*{phone}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Телефон: Пример - 228-00-13" required></textarea>
 
-                        <p>Ф.И.О. куратора-студента, группа: Пример - Зубков Евгений Романович</p>
-                            <textarea name="nameCuratorStudentAndGroup" th:utext="${curatorGroup.getNameCuratorStudentAndGroup()}" th:field="*{nameCuratorStudentAndGroup}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-студента, группа: Пример - Зубков Евгений Романович" required></textarea>
+                            <textarea id="nameCuratorStudentAndGroup" name="nameCuratorStudentAndGroup" th:utext="${curatorGroup.getNameCuratorStudentAndGroup()}" th:field="*{nameCuratorStudentAndGroup}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Ф.И.О. куратора-студента, группа: Пример - Зубков Евгений Романович" required></textarea>
+
+                         <textarea id="pinNumber" name="pinNumber" th:field="*{pinNumber}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Очередь вывода" required></textarea>
 
                         <input name="id" type="hidden" th:field="*{id}">
 

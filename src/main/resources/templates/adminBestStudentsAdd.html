@@ -35,12 +35,6 @@
     <div th:replace="templates :: headerAdmin"></div>
 
     <div id="sample" class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            //<![CDATA[
-            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-            //]]>
-        </script>
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
                 <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить студента</a></li>
@@ -50,15 +44,12 @@
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/bestStudents/add/submit}" th:object="${bestStudent}" method="post" class="cd-form" enctype="multipart/form-data">
                     <fieldset>
-                        <p>Фамилия и имя: Пример - Иван Иванов</p>
                             <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="Фамилия и имя: Пример - Иван Иванов"></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
 
-                        <p>Группа: Пример - ПО-52</p>
-                            <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Группа: Пример - ПО-52"></textarea>
+                            <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" id="groupIn" class="full-width has-padding has-border" type="text" placeholder="Группа: Пример - ПО-52"></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
 
-                        <p>Характеристика</p>
                             <textarea name="characteristic" th:field="*{characteristic}" style="height: 250px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Характеристика"></textarea>
 
                         <p class="fieldset black_p">

@@ -1,24 +1,17 @@
 package website.psuti.fist.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
-import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import website.psuti.fist.configuration.ModelAndViewConfiguration;
-import website.psuti.fist.configuration.Sender;
 import website.psuti.fist.constant.*;
 import website.psuti.fist.model.*;
-import website.psuti.fist.scheduler.SendMessageScheduler;
+import website.psuti.fist.service.PicturesService;
 import website.psuti.fist.service.UserService;
-
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.Email;
-import java.io.*;
-import java.io.File;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -29,6 +22,9 @@ public class  MainController {
 
     @Autowired
     private ModelAndViewConfiguration modelAndViewConfiguration;
+
+    @Autowired
+    private PicturesService picturesService;
 
     @Autowired
     private UserService userService;
@@ -50,13 +46,12 @@ public class  MainController {
 
     //@Cacheable("mainPictures")
     public byte[] getPicture(long idPicture) {
-        for (Pictures picture : modelAndViewConfiguration.initPicturesCache()) {
-
-            if (picture.getId() == idPicture) {
-                return picture.getPictureFile();
-            }
+        try {
+            byte[] pictureFile = picturesService.findPictureById(idPicture).getPictureFile();
+            return pictureFile;
+        } catch (Exception ex) {
+            return new byte[0];
         }
-        return null;
     }
 
     //@Cacheable("mainPictures")

@@ -46,12 +46,6 @@
     <div th:replace="templates :: headerAdmin"></div>
 
     <div id="sample" class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            //<![CDATA[
-            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-            //]]>
-        </script>
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
                 <li><a style="font-size: 26px;left: 50%;position: relative;" href="#0">Добавить кандидата</a></li>
@@ -60,15 +54,12 @@
 
             <div id="cd-login"> <!-- log in form -->
                 <form th:action="@{/admin/content/candidateAssignment/add/submit}" th:object="${candidateAssignment}" method="post" class="cd-form" enctype="multipart/form-data">
-                    <fieldset>
-                       <p>Фамилия, имя, отчество: Пример - Иван Иванов Иванович</p>
-                            <textarea name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия, имя, отчество: Пример - Иван Иванов Иванович" required></textarea>
+                     <fieldset>
+                            <textarea id="name" name="name" th:field="*{name}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text" placeholder="Фамилия, имя, отчество: Пример - Иван Иванов Иванович" required></textarea>
                             <!--<span class="cd-error-message">Ошибка ввода загаловка!</span>-->
 
-                        <p>Курс: Пример - 4</p>
-                            <textarea name="course" th:field="*{course}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Курс: Пример - 4" required></textarea>
+                            <textarea id="course" name="course" th:field="*{course}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" type="text"  placeholder="Курс: Пример - 4" required></textarea>
 
-                        <p>Группа: Пример - ПО-52</p>
                             <textarea name="groupInUniversity" th:field="*{groupInUniversity}" style="height: 60px; width: 100%;" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Группа: Пример - ПО-52" required></textarea>
 
                         <p class="fieldset black_p">

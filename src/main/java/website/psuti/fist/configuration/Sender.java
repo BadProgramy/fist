@@ -19,7 +19,7 @@ public class Sender {
     public Sender() {
         try {
             service.setCredentials(new WebCredentials(username, password));
-            service.setUrl(new URI("https://mail.psuti.ru/ews/exchange.asmx"));
+            service.setUrl(new URI(""));
         }
         catch (Exception e) { e.printStackTrace(); }
     }

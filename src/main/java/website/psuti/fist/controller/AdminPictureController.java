@@ -98,11 +98,7 @@ public class AdminPictureController {
             item.setNamePicture(item.getPictureFileMultipart().getOriginalFilename());
             //writeFile(item.getPictureFile(), item.getNamePicture());
         } else {
-            //item.setPictureFile(picturesService.findPictureById(item.getId()).getPictureFile());
-            for (Pictures pictures : modelAndViewConfiguration.getPicturesCache()) {
-                if (pictures.getId() == item.getId())
-                    item.setPictureFile(pictures.getPictureFile());
-            }
+            item.setPictureFile(picturesService.findPictureById(item.getId()).getPictureFile());
         }
         item.setUrlPicture(PathConstant.SAVE_PICTURE.getPath() +item.getNamePicture());
         item.setDate(LocalDate.parse(item.getDateStringLocalDate()));

@@ -2187,7 +2187,6 @@ blockquote {
 	width:48%;
 	padding:0 15px;
 	margin:0 0 65px;
-    display: inline-table;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

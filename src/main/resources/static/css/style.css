@@ -1,6 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400);
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400);
-@import url(http://fonts.googleapis.com/css?family=Oswald:400);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400);
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
 
 @font-face { font-family: 'FuturaPTCond-Bold';  src: local('FuturaPTCond-Bold'), url('https://nomail.com.ua/files/woff/ee7cdaca20cd76a504334698de5b63c4.woff') format('woff'); }
 
@@ -2713,7 +2713,7 @@ line-height:28px;
 }
 
 
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(https://weloveiconfonts.com/api/?family=fontawesome);
 /* ---------------------- */
 /*       TESTIMONIAL      */
 /* ---------------------- */

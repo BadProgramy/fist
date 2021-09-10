@@ -270,15 +270,7 @@
                                         th:style="${ItemHeader5.getStyles()}"></h3>
                                     <div class='widget-content'>
                                         <div id="instafeed" style="background-color: #fff; padding: 5%;height: 400px; box-shadow: 0 0 0 1px rgba(4,47,89,0.12) inset;border-radius: 3px;cursor: default;">
-                                            <script src="/js/jquery.instagramFeed.min.js"></script>
-                                            <script>
-            (function ($) {
-                $(window).on('load', function () {
-                    $.instagramFeed({
-                    });
-                });
-            })(jQuery);
-                                            </script>
+
                                         </div>
                                     </div>
                                 </div>
@@ -318,7 +310,7 @@
 					<img th:src="@{'/main/picture/' + ${mapEntry.getIdPicture()}}">
 					<h6 th:utext="${mapEntry.getName()}" th:style="${mapEntry.getStyles()}"></h6>
 				</div>
-				<h6 style="text-transform: none;position: absolute;bottom: 5%;left:45%">за 2020-2021 год</h6>
+				<h6 style="text-transform: none;position: absolute;bottom: 5%;left:45%">за 2021-2022 год</h6>
 			</div>
             </div>
 		</div>
@@ -409,7 +401,7 @@
 <script src="/js/jquery.animateNumber.min.js" defer></script>
 <script src="/js/dialogFx.min.js" defer></script>
 <script src="/js/dialog-js.min.js" defer></script>
-<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
 		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 		crossorigin="anonymous" defer></script>
 <script src="/js/gmap2.min.js" defer ></script>

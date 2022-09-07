@@ -24,11 +24,10 @@
     <section id="content">
         <div class="page_header page_header2 text-center">
             <h2>Кураторы групп</h2>
-            <p>на 2020/2021 уч.год</p>
         </div>
         <div class="container">
             <div class="row">
-                <div id="curators" class="col-md-8">
+                <div id="curators">
                     <h3 class="heading">Уважаемые студенты 1 курса и их родители!</h3>
                     <p>Для скорой и успешной адаптации к учебе в ПГУТИ к каждой студенческой группе прикреплены кураторы: куратор-преподаватель, куратор-студент.<br>У них Вы можете получить любую консультацию по вопросам, связанным с учебой в университете, общественной, научной и культурной жизни, экзаменационной сессии и мн.др.</p>
                 </div>
@@ -38,20 +37,16 @@
 
         <div class="container curators-table-center">
             <div class="row">
-                <div class="col-md-12" style="overflow-x: scroll">
-                    <table id="mytd" style="position: relative;">
+                <div style="overflow-x: scroll; padding: 0 15px;">
+                    <table id="mytd">
                         <tr>
                             <th>№ группы</th>
-                            <th>Ф.И.О. куратора-преподавателя</th>
                             <th>Кафедра</th>
-                            <th>Телефон</th>
                             <th>Ф.И.О. куратора-студента, группа</th>
                         </tr>
                         <tr th:each="curator : ${curators}">
                             <td th:utext="${curator.getGroupInUniversity()}"></td>
-                            <td th:utext="${curator.getNameCuratorTeacher()}"></td>
                             <td th:utext="${curator.getNameDepartment()}"></td>
-                            <td th:utext="${curator.getPhone()}"></td>
                             <td th:utext="${curator.getNameCuratorStudentAndGroup()}"></td>
                         </tr>
                         </table>
@@ -68,26 +63,6 @@
 
 <!-- Javascript -->
 <script src="/js/jquery.min.js"></script>
-<script>
-    function resizeTable() {
-        var table=document.getElementById("mytd");
-        var doc=document.getElementById("mytd").offsetWidth;
-        var marginx=doc/-2;
-        var curators=document.getElementById("curators");
-        curators.style.marginLeft=marginx+'px';
-        curators.style.width=doc +'px';
-        table.style.marginLeft=marginx+'px';
-    }
-    $(document).ready(function(){
-        $(document).scroll(function(){
-            resizeTable();
-        });
-        resizeTable();
-        $(window).resize(function(){
-            resizeTable();
-        });
-    });
-</script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/classie.min.js"></script>
 <script src="/js/superfish/js/hoverIntent.js"></script>
